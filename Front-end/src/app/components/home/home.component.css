@@ -1,0 +1,22 @@
+
+.bg-fundo{
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    z-index: -1;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("../../../assets/imgs/1.png");
+}
+
+
+.titulo-home{
+    color: white;
+    text-shadow: 2px 1px 5px black;
+    font-size: 96px;
+    font-style: italic;
+    line-height: 1.1;
+    text-transform: uppercase;
+}

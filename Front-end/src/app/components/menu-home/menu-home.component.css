@@ -1,0 +1,26 @@
+header .container-menu{
+   background-image: linear-gradient(rgba(0, 0, 0, 0.855), rgba(48, 47, 47, 0));    
+}
+
+
+header .bg-body-tertiary{
+    background-color: rgb(46, 44, 44);
+    padding: 0px;
+}
+.navbar-brand{
+    color: white;
+}
+
+
+header .text-logo{
+    margin-left: 40px;
+}
+
+header .text-logo:hover{
+    background-color: black;
+    padding: 10px;
+}
+
+header .navbar-menu{
+    font-size: 20px;
+}

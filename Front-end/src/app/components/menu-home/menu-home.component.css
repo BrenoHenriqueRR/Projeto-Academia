@@ -1,10 +1,17 @@
+header{
+    position: fixed;
+    width: 100%;
+}
+
 header .container-menu{
-   background-image: linear-gradient(rgba(0, 0, 0, 0.855), rgba(48, 47, 47, 0));    
+   background-image: linear-gradient(rgba(0, 0, 0, 0.855), rgba(48, 47, 47, 0)); 
+   height: 5rem;   
 }
 
 
 header .bg-body-tertiary{
     background-color: rgb(46, 44, 44);
+
 }
 .navbar-brand{
     color: white;
@@ -12,7 +19,7 @@ header .bg-body-tertiary{
 
 
 header .text-logo{
-    margin-left: 40px;
+    margin-left: 4rem;
 }
 
 header .text-logo:hover{

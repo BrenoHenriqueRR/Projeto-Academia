@@ -1,7 +1,4 @@
-
-<div class="menu-login">
-  <app-menu-home></app-menu-home>
-</div>
+<app-menu-home></app-menu-home>
 <div class="fundo">
 </div>
   <div class="container">
@@ -13,11 +10,11 @@
               <label for="exampleFormControlInput1" class="form-label">Email:</label>
               <input type="email" formControlName = "email" class="form-control" id="exampleFormControlInput1" placeholder="nome@exemplo.com">
             </div>
-            <div class="mb-3">
+            <div class="mb-3 input-box">
               <label for="senha" class="form-label">Senha:</label>
               <input type="password" formControlName = "senha" name="senha" id="senha" class="form-control">
             </div>
-            <div class="mb-3 align-items-center d-flex justify-content-center">
+            <div class="input-box mb-3 align-items-center d-flex justify-content-center">
               <input type="submit" (click)="submit()" value="Entrar" class="button">
             </div>
           </form>

@@ -52,14 +52,22 @@
    border-radius: 10px;
 }
 
+.button:hover{
+    background-color: #deed39;
+}
+
 .link-cad{
     color: white;
     cursor: pointer ;
     font-size: 22px;
 }
 
-.menu-login{
-    background-color: #272626;
+.link-cad:hover{
+    color: rgb(236, 234, 234);  
+}
+
+.input:hover{
+    background-color: rgb(236, 234, 234);
 }
 
 @media screen and (max-width: 992px) {

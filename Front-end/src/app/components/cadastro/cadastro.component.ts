@@ -31,6 +31,8 @@ export class CadastroComponent {
      email: new FormControl('', [Validators.required, Validators.email]),
      senha: new FormControl('', [Validators.required]),
      endereco: new FormControl('', [Validators.required]),
+     datanascimento: new FormControl('', [Validators.required]),
+     personal: new FormControl('', [Validators.required]),
     });
   }
 

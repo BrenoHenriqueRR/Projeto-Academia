@@ -12,7 +12,7 @@
                         <h1>Cadastre-se</h1>
                     </div>
                     <div class="login-button">
-                        <button><a href="#">Entrar</a></button>
+                        <button><a routerLink ="/login">Entrar</a></button>
                     </div>
                 </div>
 
@@ -30,9 +30,14 @@
                         <label for="endereco">Data de Nascimento</label>
                         <input type="text" formControlName = "endereco" class="form-control" id="endereco" placeholder="Av Vinicius de Morais, 25" required>
                     </div>
-                    <div class="input-box">
-                        <label for="endereco">Personal</label>
-                        <input type="text" formControlName = "endereco" class="form-control" id="endereco" placeholder="Av Vinicius de Morais, 25" required>
+                    <div class="personal">
+                        <label for="personal">Personal</label>
+                        <select id="personal" formControlName="endereco" class="form-control">
+                            <option value="1" disabled selected>Escolha um personal</option>
+                            <option value="opcao1">Peronal 1</option>
+                            <option value="opcao2">Peronal 2</option>
+                            <option value="opcao3">Peronal 3</option>
+                          </select>
                     </div>
                     
                     <div class="input-box">
@@ -42,15 +47,6 @@
                     <div class="input-box">
                         <label for="senha">Senha</label>
                         <input type="password" formControlName = "senha" class="form-control" id="senha" placeholder="123@abc" required>
-                    </div>
-                    <div class="personal">
-                        <label for="personal">Personal</label>
-                        <select id="personal" formControlName="endereco" class="">
-                            <option value="1" disabled selected>Escolha um personal</option>
-                            <option value="opcao1">Peronal 1</option>
-                            <option value="opcao2">Peronal 2</option>
-                            <option value="opcao3">Peronal 3</option>
-                          </select>
                     </div>
                 </div>
         <div class="continue-button">

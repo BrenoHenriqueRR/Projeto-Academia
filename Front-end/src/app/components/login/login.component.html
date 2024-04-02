@@ -7,21 +7,22 @@
   <div class="container">
     <div class="cont-2">
       <div class="formulario">
+        <form [formGroup]="formlogin" method="post">
           <div class="mb-3">
               <h1 class="text-center">Faça o seu Login</h1><br>
               <label for="exampleFormControlInput1" class="form-label">Email:</label>
-              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="nome@exemplo.com">
+              <input type="email" formControlName = "email" class="form-control" id="exampleFormControlInput1" placeholder="nome@exemplo.com">
             </div>
             <div class="mb-3">
               <label for="senha" class="form-label">Senha:</label>
-              <input type="password" name="senha" id="senha" class="form-control">
+              <input type="password" formControlName = "senha" name="senha" id="senha" class="form-control">
             </div>
             <div class="mb-3 align-items-center d-flex justify-content-center">
-              <input type="submit" value="Entrar" class="button">
+              <input type="submit" (click)="submit()" value="Entrar" class="button">
             </div>
-            <br>
-            <a routerLink="/../cadastro" class="link-cad d-flex align-items-center justify-content-center">Ainda não tenho uma conta</a>
-
+          </form>
+          <br>
+          <a routerLink="/../cadastro" class="link-cad d-flex align-items-center justify-content-center">Ainda não tenho uma conta</a>
       </div>
       <div class="bg-img">
       </div>

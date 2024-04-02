@@ -12,37 +12,36 @@
     transform: translate(-50%, -50%);
     padding: 150px 100px 100px ;
     background-color: black;
-    width: 1000px;
+    width: 80%;
+    height: 75%;
     border-radius: 20px;
-    height: 0 auto
+    height: 0 auto;
 }
 
-.bg-img , .formulario{
-    flex: 1;
+.cont-2{
+    width: 100%;
+    height: 100%;
 }
-
 .formulario{
     color: white;
-    z-index: 2;
-    width: 400px;
-
+    width: 50%;
 }
 
 .bg-img{
    background-image: url(../../../assets/imgs/2.jpg);
    width: 50%;
    height: 100%;
-   background-size: cover ;
+   background-size: cover;
    position: absolute;
    top: 0;
    right: 0;
    opacity: 0.7;
    border-radius: 20px;
-   z-index: -1;
 }
 
+
 .button{
-   width: 400px;
+   width: 100%;
    height: 60px;
    color: black;
    background-color: #E7F53D;
@@ -61,4 +60,56 @@
 
 .menu-login{
     background-color: #272626;
+}
+
+@media screen and (max-width: 992px) {
+    
+    .container{
+        height: 70%;
+        width: 70%;
+    }
+    .cont-2{
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        padding: 0px;
+    }
+
+    .formulario{
+        align-items: center;
+        justify-content: center;
+        display: block;
+        width: auto; 
+        height: auto;
+    }
+
+    .bg-img {
+        display: none;
+    }
+
+    input{
+        width: 100%;
+    }
+
+    .link-cad{
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .container{
+        height: 70%;
+        width: 90%;
+        padding: 0px;
+    }
+
+    .cont-2{
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        
+    }
+
 }

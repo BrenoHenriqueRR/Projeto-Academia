@@ -4,13 +4,14 @@ import { LoginComponent } from '../login/login.component';
 import { RouterLink } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CadastroService } from '../../services/cadastro.service';
+import { NgIf } from '@angular/common';
 
 
 
 @Component({
   selector: 'app-cadastro',
   standalone: true,
-  imports: [MenuHomeComponent, LoginComponent, RouterLink, ReactiveFormsModule],
+  imports: [MenuHomeComponent, LoginComponent, RouterLink, ReactiveFormsModule, NgIf],
   providers: [
     CadastroService
   ],
@@ -20,7 +21,9 @@ import { CadastroService } from '../../services/cadastro.service';
 export class CadastroComponent {
   formcadastro!: FormGroup;
   @Output("enviar") onSubmit = new EventEmitter();
-  loading = signal(false);
+  loading = false;
+  mensagemSucesso!: string;
+  
 
   constructor(private service: CadastroService){
     this.formcadastro = new FormGroup({
@@ -30,19 +33,23 @@ export class CadastroComponent {
      endereco: new FormControl('', [Validators.required]),
     });
   }
+
   submit(){
-    this.onSubmit.emit();
-    this.loading.set(true);
-    if(this.formcadastro.valid){
-      this.service.sendData(
-        this.formcadastro.value.nome,
-        this.formcadastro.value.email,
-        this.formcadastro.value.senha,
-        this.formcadastro.value.endereco,
-        ).subscribe({
-          next: () => {
+    if (this.formcadastro.valid) {
+      // Obter os valores do formulário e converter para JSON
+      const dados = JSON.stringify(this.formcadastro.getRawValue());
+  
+      // Emitir evento onSubmit e definir loading como verdadeiro
+      this.onSubmit.emit();
+      this.loading = true;
+  
+      // Enviar os dados
+      this.service.sendData(dados).subscribe({
+          next: (resposta) => {
+            this.mensagemSucesso = resposta.msg ;
+            console.log(this.mensagemSucesso);
             this.formcadastro.reset();
-            this.loading.set(false);
+            this.loading = false;
           }
         })
     }

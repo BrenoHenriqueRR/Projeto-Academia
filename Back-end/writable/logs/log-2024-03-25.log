@@ -1,0 +1,36 @@
+CRITICAL - 2024-03-25 23:29:00 --> BadMethodCallException: Call to undefined method App\Models\ClienteModel::get_where
+in SYSTEMPATH\Model.php on line 874.
+ 1 APPPATH\Controllers\Cliente.php(35): CodeIgniter\Model->__call('get_where', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->login()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-25 23:30:23 --> BadMethodCallException: Call to undefined method App\Models\ClienteModel::get_where
+in SYSTEMPATH\Model.php on line 874.
+ 1 APPPATH\Controllers\Cliente.php(35): CodeIgniter\Model->__call('get_where', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->login()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-25 23:33:20 --> TypeError: CodeIgniter\Database\BaseBuilder::select(): Argument #2 ($escape) must be of type ?bool, array given, called in C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php on line 872
+in SYSTEMPATH\Database\BaseBuilder.php on line 394.
+ 1 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->select('usuarios', [...])
+ 2 APPPATH\Controllers\Cliente.php(34): CodeIgniter\Model->__call('select', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->login()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-25 23:37:20 --> BadMethodCallException: Call to undefined method App\Models\ClienteModel::get_where
+in SYSTEMPATH\Model.php on line 874.
+ 1 APPPATH\Controllers\Cliente.php(39): CodeIgniter\Model->__call('get_where', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->login()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-25 23:40:55 --> BadMethodCallException: Call to undefined method App\Models\ClienteModel::get_where
+in SYSTEMPATH\Model.php on line 874.
+ 1 APPPATH\Controllers\Cliente.php(39): CodeIgniter\Model->__call('get_where', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->login()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

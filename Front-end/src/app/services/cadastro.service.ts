@@ -7,14 +7,15 @@ import { formresponse } from '../interfaces/formresponse';
   providedIn: 'root'
 })
 export class CadastroService {
-   private url = 'http://localhost:8000/public/Cliente/create' 
+   private url = 'http://localhost/sites/Projeto1/Back-end/public/Cliente/create' 
    
 
   constructor(private http: HttpClient) {} 
 
-    sendData(nome: string, email: string, senha: string, endereco: string)
+     sendData(dados: any)
      : Observable<formresponse> {
-      const data = {nome, email,senha,endereco};
+      const data = dados;
+      // console.log(data);
 
       return this.http.post<formresponse>(this.url, data);
   }

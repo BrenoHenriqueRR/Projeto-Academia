@@ -1,0 +1,8 @@
+{
+    "/api": {
+      "target": "http://localhost/sites/Projeto1/Back-end/public/",
+      "secure": false,
+      "changeOrigin": true
+    }
+  }
+  

@@ -4,9 +4,6 @@ Options -Indexes
 # ----------------------------------------------------------------------
 # Rewrite engine
 # ----------------------------------------------------------------------
-<FilesMatch ".(eot|ttf|otf|woff)">
-    Header set Access-Control-Allow-Origin "*"
-</FilesMatch>
 
 # Turning on the rewrite engine is necessary for the following rules and features.
 # FollowSymLinks must be enabled for this to work.
@@ -23,6 +20,7 @@ Options -Indexes
 	RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteCond %{REQUEST_URI} (.+)/$
 	RewriteRule ^ %1 [L,R=301]
+	
 
 	# Rewrite "www.example.com -> example.com"
 	RewriteCond %{HTTPS} !=on
@@ -45,6 +43,7 @@ Options -Indexes
 	# If we don't have mod_rewrite installed, all 404's
 	# can be sent to index.php, and everything works as normal.
 	ErrorDocument 404 index.php
+	Header set Access-Control-Allow-Origin "*"
 </IfModule>
 
 # Disable server signature start

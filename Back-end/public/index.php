@@ -1,8 +1,10 @@
 <?php
 
-header('Access-Control-Allow-Origin', '*');
-header('Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE');
-header('Access-Control-Allow-Headers: Content-Type, Accept, X-Requested-With, X-API-KEY, Access-Control-Request-Method');
+header('Access-Control-Allow-Origin: *');
+
+header('Access-Control-Allow-Methods: GET, POST');
+
+header("Access-Control-Allow-Headers: X-Requested-With");
 
 // Check PHP version.
 $minPhpVersion = '7.4'; // If you update this, don't forget to update `spark`.

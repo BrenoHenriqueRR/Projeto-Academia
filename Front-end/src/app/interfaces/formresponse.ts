@@ -1,3 +1,3 @@
 export interface formresponse{
-    mensagem:string;
+    msg:string;
 }

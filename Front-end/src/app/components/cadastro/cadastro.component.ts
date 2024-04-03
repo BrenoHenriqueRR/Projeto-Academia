@@ -23,6 +23,7 @@ export class CadastroComponent {
   @Output("enviar") onSubmit = new EventEmitter();
   loading = false;
   mensagemSucesso!: string;
+  Nome = "teste"; 
   
 
   constructor(private service: CadastroService){
@@ -32,7 +33,7 @@ export class CadastroComponent {
      senha: new FormControl('', [Validators.required]),
      endereco: new FormControl('', [Validators.required]),
      datanascimento: new FormControl('', [Validators.required]),
-     personal: new FormControl('', [Validators.required]),
+     personal: new FormControl('', [Validators.required] ),
     });
   }
 

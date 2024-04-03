@@ -20,6 +20,10 @@ class Cliente extends BaseController
         // Decodificar o JSON em um array PHP
         $data = json_decode($json, true);
 
+        if($this->model->where('email', $data['email'])){
+            echo "não existe";
+        }
+
         $this->model->insert($data);
 
         $msg = array("msg" => "Cadastro Enviado");

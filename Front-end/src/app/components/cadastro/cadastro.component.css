@@ -168,6 +168,19 @@
     color: black;
 }
 
+.label{
+    margin-left: 2rem ;
+}
+
+.personal-options{
+    margin: 0.4rem 2rem;
+    padding: 0.8rem 1.5rem;
+    width: 85%;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 1px 1px 6px #0000001c;
+    font-size: 0.8rem;
+}
 
 
 @media screen and (max-width: 1330px) {
@@ -179,6 +192,9 @@
     }
     .form {
         width: 100%;
+    }
+    .label, .personal-options{
+        margin: 0;
     }
 }
 
@@ -205,6 +221,12 @@
         margin: 0;
     }
     .gender-input {
+        margin-top: 0.5rem;
+    }
+    .label,.personal-options{
+        margin: 0;
+    }
+    .personal-options{
         margin-top: 0.5rem;
     }
 }

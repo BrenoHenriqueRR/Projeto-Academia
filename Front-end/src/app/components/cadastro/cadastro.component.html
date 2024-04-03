@@ -27,17 +27,19 @@
                         <input type="text" formControlName = "endereco" class="form-control" id="endereco" placeholder="Av Vinicius de Morais, 25" required>
                     </div>
                     <div class="input-box">
-                        <label for="endereco">Data de Nascimento</label>
-                        <input type="text" formControlName = "endereco" class="form-control" id="endereco" placeholder="Av Vinicius de Morais, 25" required>
+                        <label for="datanascimento">Data de Nascimento</label>
+                        <input type="date" formControlName = "datanascimento" class="form-control" id="datanascimento">
                     </div>
-                    <div class="personal">
-                        <label for="personal">Personal</label>
-                        <select id="personal" formControlName="endereco" class="form-control">
+                    <div class="input-box">
+                        <div class="label">
+                            <label for="personal">Personal</label>
+                        </div>  
+                        <select formControlName="personal" class="form-control personal-options">
                             <option value="1" disabled selected>Escolha um personal</option>
-                            <option value="opcao1">Peronal 1</option>
-                            <option value="opcao2">Peronal 2</option>
-                            <option value="opcao3">Peronal 3</option>
-                          </select>
+                            <option value="Personal1">Personal 1</option>
+                            <option value="Personal2">Personal 2</option>
+                            <option value="Personal3">Personal 3</option>
+                          </select>                          
                     </div>
                     
                     <div class="input-box">

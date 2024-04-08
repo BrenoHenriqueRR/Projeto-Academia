@@ -15,7 +15,7 @@ export class LoginService {
      sendData(dados: any)
      : Observable<formresponse> {
       const data = dados;
-      console.log(data);
+      // console.log(data);
 
       return this.http.post<formresponse>(this.url, data);
     }

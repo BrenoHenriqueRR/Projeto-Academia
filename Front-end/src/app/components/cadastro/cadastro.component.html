@@ -1,7 +1,7 @@
 
 <app-menu-home></app-menu-home>
 <div class="fundo">    
-    <div class="container">
+    <div class="p-0 container">
         <div class="form-image">
             <img src="" alt="">
         </div>
@@ -34,11 +34,11 @@
                         <div class="label">
                             <label for="personal">Personal</label>
                         </div>  
-                        <select formControlName="personal" class="form-control personal-options">
+                        <select (click)="personal()" formControlName="personal" class="form-control personal-options">
                             <option value="1" disabled selected>Escolha um personal</option>
-                            <option value="Personal1">Personal 1</option>
-                            <option value="Personal2">Personal 2</option>
-                            <option value="Personal3">Personal 3</option>
+                            @for (dado of Personal; track dado;) {
+                                <option value="{{ dado['Nome'] }}">{{ dado['Nome'] }}</option>
+                            }
                           </select>                          
                     </div>
                     
@@ -62,9 +62,10 @@
         <div *ngIf="loading">Carregando...</div>
         </form> 
 
-        <div *ngIf="mensagemSucesso">
+        <div class="mensagem" *ngIf="mensagemSucesso">
             <p>{{ mensagemSucesso }}</p>
         </div>
     </div>
+</div>
 </div>
 

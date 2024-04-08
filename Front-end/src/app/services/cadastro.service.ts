@@ -8,6 +8,7 @@ import { formresponse } from '../interfaces/formresponse';
 })
 export class CadastroService {
    private url = 'http://localhost/sites/Projeto1/Back-end/public/Cliente/create' 
+   private url_pesquisar = 'http://localhost/sites/Projeto1/Back-end/public/Personal/pesquisar'
    
 
   constructor(private http: HttpClient) {} 
@@ -18,5 +19,8 @@ export class CadastroService {
       // console.log(data);
 
       return this.http.post<formresponse>(this.url, data);
+  }
+  pesquisar(): Observable<any> {
+    return this.http.get<any>(this.url_pesquisar); // Substitua 'any' pelo tipo de dados esperado
   }
 }

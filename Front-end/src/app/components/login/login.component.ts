@@ -3,11 +3,12 @@ import { MenuHomeComponent } from '../menu-home/menu-home.component';
 import { RouterLink } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LoginService } from '../../services/login/login.service';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [MenuHomeComponent,RouterLink,ReactiveFormsModule],
+  imports: [MenuHomeComponent,RouterLink,ReactiveFormsModule,NgIf],
   templateUrl: './login.component.html',
   providers: [
     LoginService
@@ -18,7 +19,8 @@ export class LoginComponent {
   formlogin!: FormGroup;
   @Output("enviar") onSubmit = new EventEmitter();
   loading = false;
-  mensagemSucesso!: string;
+  mensagem!: string;
+  clicado = false;
   
 
   constructor(private service: LoginService){
@@ -29,6 +31,7 @@ export class LoginComponent {
   }
 
   submit(){
+    this.clicado = true;
     if (this.formlogin.valid) {
       // Obter os valores do formulário e converter para JSON
       const dados = JSON.stringify(this.formlogin.getRawValue());
@@ -40,8 +43,8 @@ export class LoginComponent {
       // Enviar os dados
       this.service.sendData(dados).subscribe({
           next: (resposta) => {
-            this.mensagemSucesso = resposta.msg ;
-            console.log(this.mensagemSucesso);
+            this.mensagem = resposta.msg ;
+            console.log(this.mensagem);
             this.formlogin.reset();
             this.loading = false;
           }

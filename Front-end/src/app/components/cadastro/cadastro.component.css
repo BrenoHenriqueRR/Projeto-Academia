@@ -120,27 +120,6 @@
     color: #000000be;
 }
 
-.gender-group {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 0.62rem;
-    padding: 0 .5rem;
-}
-
-.gender-input {
-    display: flex;
-    align-items: center;
-}
-
-.gender-input input {
-    margin-right: 0.35rem;
-}
-
-.gender-input label {
-    font-size: 0.81rem;
-    font-weight: 600;
-    color: #000000c0;
-}
 
 .continue-button button {
     width: 100%;

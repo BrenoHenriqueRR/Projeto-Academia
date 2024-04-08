@@ -10,6 +10,7 @@ use CodeIgniter\Router\RouteCollection;
 // $routes->resource('Cliente');
 $routes->post('/Cliente/create', 'Cliente::create');
 $routes->post('/Cliente/login', 'Cliente::login');
+$routes->get('/Personal/pesquisar', 'Personal::pesquisar');
 
 
 

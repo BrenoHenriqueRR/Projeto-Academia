@@ -23,9 +23,9 @@ export class CadastroComponent {
   @Output("enviar") onSubmit = new EventEmitter();
   loading = false;
   mensagemSucesso!: string;
-  Nome = "teste"; 
+  Personal!: any;
+  i = 0;
   
-
   constructor(private service: CadastroService){
     this.formcadastro = new FormGroup({
      nome: new FormControl('', [Validators.required]),
@@ -56,6 +56,18 @@ export class CadastroComponent {
           }
         })
     }
+  }
+  personal(){
+    this.service.pesquisar().subscribe(
+      (dado) => {
+        console.log('Dados recebidos:', dado);
+        this.Personal = dado;
+        
+      },
+      (erro) => {
+        console.error('Erro ao buscar dados:', erro);
+      }
+    );
   }
 
 }

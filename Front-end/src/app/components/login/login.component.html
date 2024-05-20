@@ -15,7 +15,8 @@
               <input type="password" formControlName = "senha" name="senha" id="senha" class="form-control">
             </div>
             <div class="input-box mb-3 align-items-center d-flex justify-content-center">
-              <input type="submit" (click)="submit()" value="Entrar" class="button">
+              <input type="submit" (click)="submit()" value="Entrar" class="button" [disabled]="isLoading" >
+
             </div>
           </form>
           <br>
@@ -26,9 +27,10 @@
                 <div class="mensagem-erro">
                   <p>*Usuário ou senha incorretos</p>
                 </div>
-            }@else{
+            }@else if(mensagem == 'true'){
                 <div class="mensagem">
-                  <p>Logado com sucesso</p>
+                  {{ isLoading ? 'Aguarde...' : 'Login' }}
+                  {{logado()}};
                 </div>
             }
         }

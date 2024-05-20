@@ -1,0 +1,46 @@
+.fundo{
+    height: 70vh;
+    width: 100%;
+    display: flex;
+}
+
+.container{
+    width: 70%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.formulario{
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.input-box {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.5rem;
+    margin-right: 2rem;
+    
+}
+
+
+
+.input-box input {
+    margin: 0.1rem;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 1px 1px 6px #0000001c;
+    font-size: 0.8rem;
+}
+
+.img-perfil{
+    width: 35%;
+}
+
+.img-perfil img{
+    width: 10rem;
+}

@@ -1,0 +1,54 @@
+.bg-fundo{
+    background-color: rgba(33,37,41);
+    height: 9vh;
+}
+
+.navbar-brand{
+    color: white ;
+}
+
+.navbar-brand:hover{
+    color: #e1dfdf;
+}
+
+.menu{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 100%;
+}
+
+.menu-cell{
+    display: none;
+}
+
+
+.menu ul li a{
+    margin-right: 2rem;
+    color: white;
+}
+
+.menu ul li a:hover{
+    color: #e1dfdf;
+}
+
+.menu ul li a:active{
+    color: #ffe900;
+}
+.btn-menu{
+    color: white;
+    z-index: 99;
+    position: relative;
+    display: flex;
+    justify-content: end;
+}
+
+@media screen and (max-width: 996px){
+    .menu-cell{
+        display: flex;
+    }
+
+    .menu-pc{
+        display: none;
+    }
+}

@@ -1,0 +1,63 @@
+.fundo{
+        width: 100%; /* Defina a largura desejada */
+        overflow-x: auto;
+        height: 80vh;
+}
+
+.container{
+    margin-top: 5rem;
+}
+
+
+.faturas{
+    margin-top: 2rem;  
+    background-color: #272626;
+    color: white;
+    height: 18vh;
+    font-size: 19px;
+    border-radius: 5px;
+}
+
+
+.text-fatura i{
+    display: flex;
+    color: white; 
+    border-bottom: 2px solid;
+}
+
+.icon{
+    margin-left: 1rem; 
+    padding: 15px 5px;
+}
+.text-fatura i p{
+    margin-left: 0.3rem;
+    text-transform: uppercase;
+    font-weight: 100;
+    /* margin-bottom: 2px solid white; */
+}
+
+.pagamento{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.3rem;
+    
+}
+
+.pagamento p{
+    margin-bottom: 0;
+}
+
+.btn-pagar{
+    padding: 10px;
+    border: none;
+    color: black;
+    font-weight: 800;
+    background-color: #E7F53D;
+    border-radius: 10px;
+}
+
+
+.btn-pagar:hover{
+    background-color: #ddee27;
+}

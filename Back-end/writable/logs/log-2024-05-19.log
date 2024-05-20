@@ -1,0 +1,70 @@
+CRITICAL - 2024-05-19 17:34:03 --> ErrorException: Undefined array key "email"
+in APPPATH\Controllers\Admin.php on line 54.
+ 1 APPPATH\Controllers\Admin.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "email"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Admin.php', 54)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Admin->funcao()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-19 17:34:03 --> ErrorException: Undefined array key "email"
+in APPPATH\Controllers\Admin.php on line 54.
+ 1 APPPATH\Controllers\Admin.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "email"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Admin.php', 54)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Admin->funcao()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-19 17:34:11 --> ErrorException: Undefined array key "email"
+in APPPATH\Controllers\Admin.php on line 54.
+ 1 APPPATH\Controllers\Admin.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "email"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Admin.php', 54)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Admin->funcao()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-19 17:34:23 --> ErrorException: Undefined array key "email"
+in APPPATH\Controllers\Admin.php on line 54.
+ 1 APPPATH\Controllers\Admin.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "email"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Admin.php', 54)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Admin->funcao()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-19 17:35:36 --> ErrorException: Undefined array key "email"
+in APPPATH\Controllers\Admin.php on line 54.
+ 1 APPPATH\Controllers\Admin.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "email"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Admin.php', 54)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Admin->funcao()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-19 17:35:42 --> ErrorException: Undefined array key "email"
+in APPPATH\Controllers\Admin.php on line 54.
+ 1 APPPATH\Controllers\Admin.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "email"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Admin.php', 54)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Admin->funcao()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-19 17:35:52 --> ErrorException: Undefined array key "email"
+in APPPATH\Controllers\Admin.php on line 54.
+ 1 APPPATH\Controllers\Admin.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "email"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Admin.php', 54)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Admin->funcao()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-19 17:36:02 --> ErrorException: Undefined array key "email"
+in APPPATH\Controllers\Admin.php on line 54.
+ 1 APPPATH\Controllers\Admin.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "email"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Admin.php', 54)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Admin->funcao()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-19 17:38:03 --> ErrorException: Undefined array key "email"
+in APPPATH\Controllers\Admin.php on line 54.
+ 1 APPPATH\Controllers\Admin.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "email"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Admin.php', 54)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Admin->funcao()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-19 17:38:07 --> ErrorException: Undefined array key "email"
+in APPPATH\Controllers\Admin.php on line 54.
+ 1 APPPATH\Controllers\Admin.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "email"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Admin.php', 54)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Admin->funcao()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

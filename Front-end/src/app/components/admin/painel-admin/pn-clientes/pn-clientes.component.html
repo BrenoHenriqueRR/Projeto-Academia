@@ -1,0 +1,37 @@
+<div class="fundo">
+    <div class="container">
+        <h1>Listagem de Clientes</h1>
+        <table id="clientes-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>CPF</th>
+                    <th>Personal</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="clientes-list">
+                @for (dados of dados_cli | paginate: { itemsPerPage: 5, currentPage: paginaAtual }; track dados) {
+                <tr>
+                    <td>{{dados.id}}</td>
+                    <td>{{dados.cliente_nome}}</td>
+                    <td>{{dados.email}}</td>
+                    <td>{{dados.CPF}}</td>
+                    <td>{{dados.nome_personal}}</td>
+                    <td>
+                        @if(func != 'administrador'){
+                            <button  routerLink="treinos" [queryParams]="{ id: dados.id}">Cadastrar Treinos</button>
+                        }@else {
+                            <button routerLink="editar" [queryParams]="{ id: dados.id}">Editar</button>
+                            <button class="btn-excluir"(click)="excluir(dados.id)">Excluir</button>            
+                         }
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+        <pagination-controls class="pagination" (pageChange)="paginaAtual = $event"></pagination-controls>
+    </div>
+</div>

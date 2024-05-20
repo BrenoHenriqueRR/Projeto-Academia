@@ -1,0 +1,38 @@
+<div class="fundo">
+    <div class="p-0 container">
+        <div class="login">
+            <div class="login-img">
+                <img src="assets/imgs/logo/logo.jpg" alt="" >
+            </div>
+            <div class="form">
+                <form [formGroup]="formlogin" method="post">
+                    <div class="input">
+                        <label for="email">Email:</label>
+                        <input type="text" id="email" name="email" formControlName="email" >
+                    </div>
+                    <div class="input">
+                        <label for="Senha">Senha:</label>
+                        <input type="password" id="senha" name="senha" formControlName="senha">
+                    </div>
+                    <div class="input-button">
+                        <input type="submit" value="Logar" (click)="submit()">
+                    </div>
+                </form>
+            </div>
+            <div class="resultado">
+                @if (clicado == true) {
+                  @if (mensagem == 'false'){
+                      <div class="mensagem-erro">
+                        <p>*Usuário ou senha incorretos</p>
+                      </div>
+                  }@else if(mensagem == 'true'){
+                      <div class="mensagem">
+                        <!-- {{ isLoading ? 'Aguarde...' : 'Login' }} -->
+                        {{logado()}};
+                      </div>
+                  }
+              }
+            </div>
+        </div>
+    </div>
+</div>

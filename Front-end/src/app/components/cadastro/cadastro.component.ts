@@ -33,7 +33,8 @@ export class CadastroComponent {
      senha: new FormControl('', [Validators.required]),
      endereco: new FormControl('', [Validators.required]),
      datanascimento: new FormControl('', [Validators.required]),
-     personal: new FormControl('', [Validators.required] ),
+     CPF: new FormControl('', [Validators.required]),
+     personal_id: new FormControl('', [Validators.required] ),
     });
   }
 
@@ -41,10 +42,11 @@ export class CadastroComponent {
     if (this.formcadastro.valid) {
       // Obter os valores do formulário e converter para JSON
       const dados = JSON.stringify(this.formcadastro.getRawValue());
-  
+        
       // Emitir evento onSubmit e definir loading como verdadeiro
       this.onSubmit.emit();
       this.loading = true;
+      // console.log (dados);
   
       // Enviar os dados
       this.service.sendData(dados).subscribe({
@@ -60,7 +62,7 @@ export class CadastroComponent {
   personal(){
     this.service.pesquisar().subscribe(
       (dado) => {
-        console.log('Dados recebidos:', dado);
+        // console.log('Dados recebidos:', dado);
         this.Personal = dado;
         
       },

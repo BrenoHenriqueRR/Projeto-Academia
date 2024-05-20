@@ -6,8 +6,8 @@ use CodeIgniter\Model;
 
 class PersonalModel extends Model
 {
-    protected $table = 'personal'; // Nome da tabela no banco de dados
+    protected $table = 'funcionarios'; // Nome da tabela no banco de dados
     protected $primaryKey = 'id'; // Chave primária da tabela
-    protected $allowedFields = ['Nome','datanascimento','cpf', 'email', 'senha'];   
+    protected $allowedFields = ['nome','data_nascimento','CPF', 'email', 'senha','funcao'];   
  }
     

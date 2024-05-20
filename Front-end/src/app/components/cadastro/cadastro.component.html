@@ -3,7 +3,7 @@
 <div class="fundo">    
     <div class="p-0 container">
         <div class="form-image">
-            <img src="" alt="">
+            <img src="assets/imgs/halter.jpg" alt="">
         </div>
         <div class="form">
             <form [formGroup]="formcadastro" method="post">
@@ -31,24 +31,30 @@
                         <input type="date" formControlName = "datanascimento" class="form-control" id="datanascimento">
                     </div>
                     <div class="input-box">
-                        <div class="label">
-                            <label for="personal">Personal</label>
-                        </div>  
-                        <select (click)="personal()" formControlName="personal" class="form-control personal-options">
-                            <option value="1" disabled selected>Escolha um personal</option>
-                            @for (dado of Personal; track dado;) {
-                                <option value="{{ dado['Nome'] }}">{{ dado['Nome'] }}</option>
-                            }
-                          </select>                          
+                        <label for="CPF">CPF</label>
+                        <input type="text" formControlName = "CPF" class="form-control" id="CPF">
                     </div>
                     
                     <div class="input-box">
                         <label for="email">Email</label>
                         <input type="email" formControlName = "email" class="form-control" id="email" placeholder="doejohnn@email.com" required>
-                     </div>
+                    </div>
                     <div class="input-box">
                         <label for="senha">Senha</label>
                         <input type="password" formControlName = "senha" class="form-control" id="senha" placeholder="123@abc" required>
+                    </div>
+                    <div class="personal">
+                        <div class="input-box">
+                            <div class="label">
+                                <label for="personal">Personal</label>
+                            </div>  
+                            <select (click)="personal()" formControlName="personal_id" class="form-control personal-options">
+                                <option value="1" disabled selected>Escolha um personal</option>
+                                @for (dado of Personal; track dado;) {
+                                    <option value="{{ dado['id'] }}">{{ dado['nome'] }}</option>
+                                }
+                            </select>                          
+                        </div>
                     </div>
                 </div>
         <div class="continue-button">
@@ -58,8 +64,11 @@
         (click)="submit()"  
         class="btn btn-primary">Enviar</button>
         </div>
-
-        <div *ngIf="loading">Carregando...</div>
+        <div class="continue-button">
+            <div *ngIf="loading"><button class="btn btn-primary">
+                Carregando...</button>
+            </div>
+        </div>
         </form> 
 
         <div class="mensagem" *ngIf="mensagemSucesso">

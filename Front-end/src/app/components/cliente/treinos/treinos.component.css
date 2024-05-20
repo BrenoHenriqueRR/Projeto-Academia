@@ -1,0 +1,111 @@
+.fundo{
+    height: 90vh;
+    width: 100%;
+    /* background-color: ; */
+}
+.ficha{
+    display: flex;
+}
+
+.fundo-table{
+    height: 50vh;
+    width: 80%;
+}
+
+.container{
+    padding: 0.625rem;
+}
+
+.treino{
+    width: 10%;
+    background-color: #272626;
+    margin: 1rem 0;
+}
+.treino p{
+    padding: 0.2rem;
+    color: white;
+    text-align: center;
+    font-size: 25px;
+}
+
+table {
+    font-family: 'Anton' , serif;
+    width: 90%;
+    border-collapse: collapse;
+    background-color: #272626;
+}
+
+thead tr {
+    background-color:#1b1a1a ;
+}
+th, td {
+    padding: 1rem;
+    border: 2px solid black;
+    font-weight: 100;
+    font-size: 20px;
+    color: white;
+}
+#clientes-list td{
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#check-box {
+    width: 18px; /* Ajuste conforme necessário */
+    height: 18px;
+    border-radius: 30px ;
+}
+
+.feedback{
+    background-color: #272626;
+    width: 20%;
+    color:white;
+}
+
+.text-feed{
+    margin-top: 1rem;
+    background-color: #1b1a1a;
+}
+.text-feed h1{
+    font-size: 35px;
+    padding: 0.5rem;
+}
+.text-area{
+    margin-top: 2rem;
+}
+
+.text-area textarea{
+    width: 80%;
+    height: 15rem;
+    padding: 0.5rem;
+}
+
+.text-area, .text-feed{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-enviar{
+    margin-top: 1rem;
+    padding: 10px 60px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 200;
+    background-color: #E7F53D;
+    font-family: 'Anton' , serif;
+    text-transform: uppercase;
+}
+
+.btn-enviar:hover{
+    background-color: #e6f829;
+}
+/* 
+@media only screen and (max-width: 600px) {
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+} */
+

@@ -1,0 +1,47 @@
+<div class="fundo">
+    <div class="container">
+        <div class="img-perfil">
+            <img src="assets/imgs/user.png" alt="user">
+        </div>
+        <div class="formulario">
+            <form [formGroup]="formcadastro" method="post">
+            @for (dados of data; track dados){
+             <h1>Cliente: {{dados.cliente_nome}}</h1>   
+            }
+            @for (dados of data; track dados){
+            <div class="input-group">
+                <div class="input-box">
+                    <label for="nome">Nome</label>
+                    <input style="color: black;" type="text" id="nome" formControlName = "nome" class="form-control"  required>
+                </div>
+
+                <div class="input-box">
+                    <label for="personal">Personal</label>
+                    <input type="text" formControlName = "personal_id" class="form-control" id="personal"  required>
+                </div>
+                <div class="input-box">
+                    <label for="CPF">CPF</label>
+                    <input type="text" formControlName = "CPF" class="form-control" id="CPF" > 
+                </div>
+                
+                <div class="input-box">
+                    <label for="email">Email</label>
+                    <input type="email" formControlName = "email" class="form-control" id="email" required>
+                </div>
+            </div>
+        }
+            <div class="continue-button">
+                <button 
+                type="submit" 
+                (click)="edit()"  
+                class="btn btn-primary">Enviar</button>
+                </div>
+                <!-- <div class="continue-button">
+                    <div *ngIf="loading"><button class="btn btn-primary">
+                        Carregando...</button>
+                    </div> -->
+                <!-- </div> -->
+        </form>
+        </div>
+    </div>
+</div>

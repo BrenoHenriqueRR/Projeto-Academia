@@ -9,5 +9,5 @@ import { RouterOutlet } from '@angular/router';
     imports: [RouterOutlet]// Tem que chamar os componentes no import
 })
 export class AppComponent {
-  title = 'projeto1';
+  title = 'Fitness Prime';
 }

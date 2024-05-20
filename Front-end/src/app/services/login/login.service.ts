@@ -8,6 +8,7 @@ import { formresponse } from '../../interfaces/formresponse';
 })
 export class LoginService {
   private url = 'http://localhost/sites/Projeto1/Back-end/public/Cliente/login' 
+  private url_id = 'http://localhost/sites/Projeto1/Back-end/public/Cliente/pesquisarid' ;
    
 
   constructor(private http: HttpClient) {} 
@@ -18,6 +19,10 @@ export class LoginService {
       // console.log(data);
 
       return this.http.post<formresponse>(this.url, data);
+    }
+
+    pesquisar(email:any){
+      return this.http.post<any>(this.url_id, email);
     }
   }
 

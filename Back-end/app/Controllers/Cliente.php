@@ -20,9 +20,9 @@ class Cliente extends BaseController
         // Decodificar o JSON em um array PHP
         $data = json_decode($json, true);
 
-        if($this->model->where('email', $data['email'])){
-            echo "não existe";
-        }
+        // if($this->model->where('email', $data['email'])){
+        //     return $this->response->setJSON('Email ja existe')->setStatusCode(200);
+        // }
 
         $this->model->insert($data);
 
@@ -56,6 +56,29 @@ class Cliente extends BaseController
             return $this->response->setJSON($msg)->setStatusCode(200);
         }        
      }
-}
+
+     public function pesquisar(){
+        $dados = $this->model->select('c.id, c.nome AS cliente_nome, c.CPF, c.email, p.nome AS nome_personal')
+        ->from('cliente AS c')
+        ->join('funcionarios AS p', 'c.personal_id = p.id', 'INNER')
+        ->groupBy('c.id');
+ 
+        $data = $dados->get();  
+ 
+        return $this->response->setJSON($data->getResult())->setStatusCode(200);
+ 
+    }
+     public function pesquisarid(){
+        $json = file_get_contents('php://input');
+        $data = json_decode($json, true);
+        $dados = $this->model->select('id')
+        ->where('email',$data['email'] );
+ 
+        $data = $dados->get();  
+ 
+        return $this->response->setJSON($data->getResult())->setStatusCode(200);
+ 
+    }
+ }
 
 ?>

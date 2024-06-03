@@ -18,8 +18,15 @@ $routes->post('/Admin/funcao', 'Admin::funcao');
 $routes->post('/Admin/funcaoPncli', 'Admin::funcaoPncli');
 $routes->post('/Admin/buscar', 'Admin::buscar');
 $routes->post('/Admin/editar', 'Admin::editar');
+$routes->get('/Admin/buscarfun', 'Admin::buscarfun');
 $routes->post('/Treino/create', 'Treino::create');
 $routes->post('/Treino/pesquisar', 'Treino::pesquisar');
+$routes->post('/Treino/cadgrupo', 'Treino::cadgrupo');
+$routes->post('/Treino/cadexer', 'Treino::cadexer');
+$routes->get('/Treino/ptipo', 'Treino::ptipo');
+$routes->get('/Treino/pgrupo', 'Treino::pgrupo');
+$routes->get('/Treino/pexer', 'Treino::pexer');
+$routes->post('/Ficha/create', 'Ficha::create');
 
 
 

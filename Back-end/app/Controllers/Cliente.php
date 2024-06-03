@@ -20,9 +20,9 @@ class Cliente extends BaseController
         // Decodificar o JSON em um array PHP
         $data = json_decode($json, true);
 
-        // if($this->model->where('email', $data['email'])){
-        //     return $this->response->setJSON('Email ja existe')->setStatusCode(200);
-        // }
+        if($this->model->where('email', $data['email'])){
+            return $this->response->setJSON('Email ja existe')->setStatusCode(200);
+        }
 
         $this->model->insert($data);
 
@@ -34,6 +34,7 @@ class Cliente extends BaseController
     public function login(){
         $json = file_get_contents('php://input');
         $data = json_decode($json, true);
+        $logindate = date("Y-m-d");
         
         if ($data && isset($data['email']) && isset($data['senha'])) {
             $this->model->where('email', $data['email']);
@@ -43,6 +44,13 @@ class Cliente extends BaseController
             if ($query->getResult()) {
                 // O email e a senha existem no banco de dados
                 $msg = array("msg" => "true");
+                $this->model->where('email', $data['email'])
+                ->where('senha', $data['senha'])
+                ->set([
+                    'ultimo_login' => $logindate,
+                    'status' => 'ativo'
+                ])
+                ->update();
                 return $this->response->setJSON($msg)->setStatusCode(200);
             } else {
                 // O email e/ou a senha não existem
@@ -62,6 +70,7 @@ class Cliente extends BaseController
         ->from('cliente AS c')
         ->join('funcionarios AS p', 'c.personal_id = p.id', 'INNER')
         ->groupBy('c.id');
+        // $dados = $this->model->select('*');
  
         $data = $dados->get();  
  

@@ -18,6 +18,7 @@ import { PagamentosComponent } from './components/cliente/pagamentos/pagamentos/
 import { PerfilComponent } from './components/cliente/perfil/perfil.component';
 import { CadTreinoComponent } from './components/admin/painel-admin/cad-treino/cad-treino.component';
 import { authGuard } from './guard/auth.guard';
+import { PnTreinoComponent } from './components/admin/painel-admin/pn-treino/pn-treino.component';
 
 
 
@@ -57,7 +58,7 @@ export const routes: Routes = [
         { path: 'dashboard', component: DashboardComponent},
         { path: 'funcionarios', component: PnFuncionariosComponent },
         { path: 'clientes', component: PnClientesComponent},
-        { path: 'treinos', component: CadTreinoComponent},
+        { path: 'treinos', component: PnTreinoComponent},
         {path: 'clientes/editar', component: ModalEditarComponent},
         {path: 'clientes/treinos', component: CadTreinoComponent},
     ], 

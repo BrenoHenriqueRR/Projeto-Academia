@@ -14,6 +14,8 @@
 
 .container{
     padding: 0.625rem;
+    overflow-x: scroll;
+    height: 87vh;
 }
 
 .treino{
@@ -100,6 +102,18 @@ th, td {
 .btn-enviar:hover{
     background-color: #e6f829;
 }
+
+.p-treino{
+    text-transform: uppercase;
+}
+
+.carga{
+    width: 3rem;
+    border-radius: 10px;
+    border: none;
+    padding: 0.2rem;
+}
+
 /* 
 @media only screen and (max-width: 600px) {
     table {

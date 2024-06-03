@@ -5,20 +5,24 @@ import { RouterLink } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CadastroService } from '../../services/cadastro.service';
 import { NgIf } from '@angular/common';
+import { NgxMaskDirective, provideNgxMask  } from 'ngx-mask';
+
 
 
 
 @Component({
   selector: 'app-cadastro',
   standalone: true,
-  imports: [MenuHomeComponent, LoginComponent, RouterLink, ReactiveFormsModule, NgIf],
+  imports: [MenuHomeComponent, LoginComponent, RouterLink, ReactiveFormsModule, NgIf,NgxMaskDirective],
   providers: [
-    CadastroService
+    CadastroService,
+    provideNgxMask(),
   ],
   templateUrl: './cadastro.component.html',
   styleUrl: './cadastro.component.css'
 })
 export class CadastroComponent {
+[x: string]: any;
   formcadastro!: FormGroup;
   @Output("enviar") onSubmit = new EventEmitter();
   loading = false;

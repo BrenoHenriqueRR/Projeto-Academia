@@ -8,9 +8,9 @@
                     <span class="item-description">
                         {{funcionalidade}}
                     </span>
-                    <span class="item-description">
+                    <!-- <span class="item-description">
                         Lorem Ipsum
-                    </span>
+                    </span> -->
                 </p>
             </div>
     
@@ -23,6 +23,16 @@
                         </span>
                     </a>
                 </li>
+                @if (funcionalidade != 'secretario') {
+                <li class="side-item" routerLinkActive="mat-accent" >
+                    <a routerLink="treinos">
+                        <i class="fa-solid fa-dumbbell"></i>
+                        <span class="item-description">
+                            Treinos
+                        </span>
+                    </a>
+                </li>
+            }
 
                 <li class="side-item" routerLinkActive="mat-accent">
                     <a routerLink="clientes">
@@ -32,16 +42,27 @@
                         </span>
                     </a>
                 </li>
-                
-                <li class="side-item" routerLinkActive="mat-accent">
-                    <a routerLink="funcionarios">
-                        <i class="fa-solid fa-user-tie"></i>
-                        <span class="item-description">
-                            Funcionários
-                        </span>
-                    </a>
-                </li>
-                
+                @if (funcionalidade != 'personal') {
+                    <li class="side-item" routerLinkActive="mat-accent">
+                        <a routerLink="funcionarios">
+                            <i class="fa-solid fa-user-tie"></i>
+                            <span class="item-description">
+                                Funcionários
+                            </span>
+                        </a>
+                    </li>
+                }
+                @if (funcionalidade == 'personal') {
+                    <li class="side-item" routerLinkActive="mat-accent">
+                        <a routerLink="chat">
+                            <i class="fa-solid fa-comment"></i>
+                            <span class="item-description">
+                                Chat
+                            </span>
+                        </a>
+                    </li>
+                }
+                @if (funcionalidade != 'personal') {
                 <li class="side-item" routerLinkActive="mat-accent">
                     <a href="#">
                         <i class="fa-solid fa-coins"></i>
@@ -50,6 +71,7 @@
                         </span>
                     </a>
                 </li>
+            }
     
                 <li class="side-item" routerLinkActive="mat-accent">
                     <a href="#">

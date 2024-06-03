@@ -8,7 +8,7 @@ import { FuncionarioPesquisar } from '../../../interfaces/funcionario-pesquisar'
 })
 export class PnFuncionarioService {
 
-  private url = 'http://localhost/sites/Projeto1/Back-end/public/adm/funpesquisar';
+  private url = 'http://localhost/sites/Projeto1/Back-end/public/Admin/buscarfun';
 
   constructor(private http: HttpClient) {} 
 

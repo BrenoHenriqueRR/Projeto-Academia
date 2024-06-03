@@ -4,7 +4,7 @@ header{
 }
 
 header .container-menu{
-   background-image: linear-gradient(rgba(0, 0, 0, 0.855), rgba(48, 47, 47, 0)); 
+   background-image: linear-gradient(rgb(0, 0, 0), rgba(23, 22, 22, 0)); 
    height: 5rem;   
 }
 
@@ -24,8 +24,9 @@ header .text-logo{
 
 header .text-logo:hover{
     background-color: black;
-    padding: 10px;
+    border-bottom: 2px solid rgb(255, 157, 0);  
 }
+
 
 header .navbar-menu{
     font-size: 20px;

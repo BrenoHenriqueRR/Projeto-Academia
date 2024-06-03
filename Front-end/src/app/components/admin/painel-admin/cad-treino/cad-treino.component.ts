@@ -13,8 +13,15 @@ import { TreinoItem } from '../../../../interfaces/treino-item';
   styleUrl: './cad-treino.component.css'
 })
 export class CadTreinoComponent {
-  isDisabled: boolean = false;
+  ttreino!: any;
+  gtreino!: any;
+  etreino!: any;
+  tipo: any;
+  grupo: any;
+  exer: any[] = [];
+  teste : any;
 
+  isDisabled: boolean = false;
   inputData!: any;
   treinos: TreinoItem[] = [];
   formcadastro!: FormGroup;
@@ -37,8 +44,33 @@ export class CadTreinoComponent {
     });
   }
 
+  ptreino(){
+    this.service.ptipo().subscribe({
+      next: (dados) => {
+        this.ttreino = dados;
+      }
+    })
+  }
+
+  pgrupo(){
+    this.service.pgrupo().subscribe({
+      next: (dados) => {
+        this.gtreino = dados;
+      }
+    })
+  }
+
+  pgexer(){
+    this.service.pexer().subscribe({
+      next: (dados) => {
+        this.etreino = dados;
+      }
+    })
+  }
+
   submit(){
     // if (this.formcadastro.valid) {
+      
       this.isDisabled = false;
       const dados = JSON.stringify(this.treinos);
       this.service.enviar(dados).subscribe({
@@ -53,11 +85,17 @@ export class CadTreinoComponent {
   }
 
   adicionarTreino(){
+    for(let i = 0; i < this.etreino.length; i++){
+      if( this.formcadastro.value.exer == this.etreino[i].id)
+        this.exer.push(this.etreino[i].exercicio);
+    }
+
+
     if (this.formcadastro.valid) {
       const novoItem: TreinoItem = {
-        treino: this.formcadastro.value.treino,
-        grupo: this.formcadastro.value.grupo,
-        exer: this.formcadastro.value.exer,
+        treino_id: this.formcadastro.value.treino,
+        grupo_id: this.formcadastro.value.grupo,
+        exer_id: this.formcadastro.value.exer,
         series: this.formcadastro.value.series,
         repeticoes: this.formcadastro.value.repeticoes,
         cliente_id: this.formcadastro.value.cliente_id,
@@ -71,4 +109,22 @@ export class CadTreinoComponent {
       this.isDisabled = true;
     }
   }
+  onTreinoChange(event: Event): void {
+    const selectElement = event.target as HTMLSelectElement;
+    const selectedText = selectElement.options[selectElement.selectedIndex].text;
+    this.tipo = selectedText;
+    
+  } 
+  ongrupoChange(event: Event): void {
+    const selectElement = event.target as HTMLSelectElement;
+    const selectedText = selectElement.options[selectElement.selectedIndex].text;
+    this.grupo = selectedText;
+    
+  } 
+  // onexerChange(event: Event): void {
+  //   const selectElement = event.target as HTMLSelectElement;
+  //   const selectedText = selectElement.options[selectElement.selectedIndex].text;
+  //   this.exer = selectedText;
+    
+  // } 
 }

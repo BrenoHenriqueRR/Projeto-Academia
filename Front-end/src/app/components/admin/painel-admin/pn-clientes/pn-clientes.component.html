@@ -21,7 +21,7 @@
                     <td>{{dados.CPF}}</td>
                     <td>{{dados.nome_personal}}</td>
                     <td>
-                        @if(func != 'administrador'){
+                        @if(func == 'personal'){
                             <button  routerLink="treinos" [queryParams]="{ id: dados.id}">Cadastrar Treinos</button>
                         }@else {
                             <button routerLink="editar" [queryParams]="{ id: dados.id}">Editar</button>

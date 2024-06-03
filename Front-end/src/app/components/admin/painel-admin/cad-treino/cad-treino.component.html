@@ -5,15 +5,33 @@
             <form  [formGroup]="formcadastro">
               <p>
                 <label for="treino">Treino:</label>
-                <input type="text" id="treino" formControlName="treino" [readOnly]="isDisabled"/>
+                <!-- <input type="text" id="treino" formControlName="treino" [readOnly]="isDisabled"/> -->
+                <select [attr.disabled]="isDisabled ? true : null" (change)="onTreinoChange($event)" (click)="ptreino()" formControlName="treino"  class="form-control personal-options">
+                  <option value="0"  disabled selected>Tipos</option>
+                  @for (dado of ttreino; track dado;) {
+                      <option value="{{ dado['id'] }}">{{ dado['tipo'] }}</option>
+                  }
+              </select>  
               </p>
               <p>
                 <label for="grupo">Grupo Muscular:</label>
-                <input type="text" id="grupo" formControlName="grupo"  [readOnly]="isDisabled"/>
+                <!-- <input type="text" id="grupo" formControlName="grupo"  [readOnly]="isDisabled"/> -->
+                <select [attr.disabled]="isDisabled ? true : null" (change)="ongrupoChange($event)" (click)="pgrupo()" formControlName="grupo"  class="form-control personal-options">
+                  <option value="0"  disabled selected>Grupos</option>
+                  @for (dado of gtreino; track dado;) {
+                      <option value="{{ dado['id'] }}">{{ dado['grupo'] }}</option>
+                  }
+              </select>
               </p>
               <p>
                 <label for="exer">Exercício:</label>
-                <input type="text" id="exer" formControlName="exer" />
+                <!-- <input type="text" id="exer" formControlName="exer" /> -->
+                <select id="exerrr" (click)="pgexer()" formControlName="exer"  class="form-control personal-options">
+                  <option value="0"  disabled selected>Exercicios</option>
+                  @for (dado of etreino; track dado;) {
+                      <option  value="{{ dado['id'] }}">{{ dado['exercicio'] }}</option>
+                  }
+              </select>
               </p>
               <p>
                 <label for="series">Séries:</label>
@@ -35,8 +53,8 @@
           <div class="ficha">
             <h2>Ficha:</h2>
             @if (click == true) {
-              <p class="p-treino">Treino: {{ treinos[0].treino }}</p>
-              <p class="p-grupo">Grupo: {{ treinos[0].grupo }}</p>
+              <p class="p-treino">Treino: {{ tipo }}</p>
+              <p class="p-grupo">Grupo: {{ grupo }}</p>
             }
             <div class="d-flex">
             <table>
@@ -45,9 +63,11 @@
                 <th>Séries:</th>
                 <th>Repetições:</th>
               </tr>
-            @for (treino of treinos; track treino) {
+            @for (treino of treinos; track $index) {
                 <tr>
-                  <td>{{ treino.exer }}</td>
+                  <td>
+                  {{ exer[$index]}}
+                </td>
                   <td>{{ treino.series }}</td>
                   <td>{{ treino.repeticoes }}</td>
               </tr>

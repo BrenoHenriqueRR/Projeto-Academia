@@ -25,6 +25,9 @@ export class LoginComponent {
   
 
   constructor(private service: LoginService, private router: Router){
+    if(localStorage.getItem('idcliente')){
+      this.logar();
+    }
     this.formlogin = new FormGroup({
      email: new FormControl('', [Validators.required]),
      senha: new FormControl('', [Validators.required]),
@@ -65,7 +68,7 @@ export class LoginComponent {
 
   isLoading = false;
 
-logado() {
+logar() {
   this.isLoading = true;
 
   this.router.navigate(['/home-cliente']),{

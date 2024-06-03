@@ -4,6 +4,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ModalEditarService } from '../../../services/modal-editar/modal-editar.service';
 import { ActivatedRoute } from '@angular/router';
 import { CliPesquisar } from '../../../interfaces/cli-pesquisar';
+import { CadastroService } from '../../../services/cadastro.service';
 
 @Component({
   selector: 'app-modal-editar',
@@ -19,8 +20,9 @@ loading = false;
 mensagemSucesso!: string;
 data: any;
 identificador!: any;
+idnamepersonal!: any;
 
-constructor(private service: ModalEditarService, private route: ActivatedRoute){
+constructor(private service: ModalEditarService, private route: ActivatedRoute, private personalp:CadastroService){
   this.route.queryParams.subscribe(params => {
     this.identificador = params['id'];
   });
@@ -47,7 +49,7 @@ form(){
       nome: new FormControl(this.data[0].cliente_nome, [Validators.required]),
       email: new FormControl(this.data[0].email, [Validators.required, Validators.email]),
       CPF: new FormControl(this.data[0].CPF, [Validators.required]),
-      personal_id: new FormControl(this.data[0].nome_personal, [Validators.required] ),
+      personal_id: new FormControl(this.data[0].personal_id, [Validators.required] ),
     });
   } else {
     // Trate o caso em que nenhum dado foi retornado ou os dados estão vazios
@@ -64,14 +66,28 @@ edit(){
     this.onSubmit.emit();
     this.loading = true;
 
-    this.service.editar(dados).subscribe({
-      next: (resposta) => {
-        this.mensagemSucesso = resposta.msg ;
-        console.log(this.mensagemSucesso);
-        this.formcadastro.reset();
-        this.loading = false;
-        }
-      })
+    // this.service.editar(dados).subscribe({
+    //   next: (resposta) => {
+    //     this.mensagemSucesso = resposta.msg ;
+    //     console.log(this.mensagemSucesso);
+    //     // this.formcadastro.reset();
+    //     this.loading = false;
+        
+    //     }
+    //   })
     }
   // }
+
+  personal(){
+    this.personalp.pesquisar().subscribe(
+      (dado) => {
+        // console.log('Dados recebidos:', dado);
+        this.idnamepersonal = dado;
+        
+      },
+      (erro) => {
+        console.error('Erro ao buscar dados:', erro);
+      }
+    );
+  }
 }

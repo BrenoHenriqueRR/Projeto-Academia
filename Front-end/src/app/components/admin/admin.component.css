@@ -60,7 +60,7 @@ label, input{
     justify-content: center;
 }
 
-.input-button input{
+.input-button input, .btn{
     width: 14rem;
     border: none;
     padding: 0.4rem;

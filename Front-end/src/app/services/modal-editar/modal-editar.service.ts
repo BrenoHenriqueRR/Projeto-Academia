@@ -20,7 +20,7 @@ export class ModalEditarService {
      return this.http.post<formresponse>(this.url_cliente, data);
   }
 
-  pesquisar(identificador: any): Observable<CliPesquisar> {
-    return this.http.post<CliPesquisar>(this.url_pesquisar, identificador); 
+  pesquisar(identificador: any): Observable<any> {
+    return this.http.post<any>(this.url_pesquisar, identificador); 
   }
 }

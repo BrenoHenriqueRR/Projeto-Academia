@@ -15,7 +15,13 @@
                         <input type="password" id="senha" name="senha" formControlName="senha">
                     </div>
                     <div class="input-button">
-                        <input type="submit" value="Logar" (click)="submit()">
+                        <input class="btn" *ngIf="!loading" type="submit" value="Logar" (click)="submit()">
+                        <div *ngIf="loading" class="spinner-container">
+                            <button class="btn btn-primary" disabled>
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            Carregando...
+                            </button>
+                            </div>
                     </div>
                 </form>
             </div>

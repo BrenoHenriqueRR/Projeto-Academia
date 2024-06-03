@@ -1,12 +1,22 @@
 <div class="fundo">
     <div class="container">
-        <div class="img-perfil">
-            <img src="assets/imgs/user.png" alt="user">
+        <div class="img-perfil d-block">
+            <div class="img-inserir">
+                <label for="fileInput">
+                  <p class="meio-img">Adicionar imagem</p>
+                  <img src="assets/imgs/user.png" alt="">
+                </label>
+              </div>
+              
+            <div class="mt-3">
+                <input type="file" id="fileInput" style="display: none;" (change)="onFileSelected($event)">
+                <!-- <button (click)="uploadImage()">Enviar Imagem</button> -->
+            </div>            
         </div>
         <div class="formulario">
             <form [formGroup]="formcadastro" method="post">
             @for (dados of data; track dados){
-             <h1>Cliente: {{dados.cliente_nome}}</h1>   
+             <h1> {{dados.cliente_nome}}</h1>   
             }
             @for (dados of data; track dados){
             <div class="input-group">
@@ -15,10 +25,10 @@
                     <input style="color: black;" type="text" id="nome" formControlName = "nome" class="form-control"  required>
                 </div>
 
-                <div class="input-box">
+                <!-- <div class="input-box">
                     <label for="personal">Personal</label>
                     <input type="text" formControlName = "personal_id" class="form-control" id="personal"  required>
-                </div>
+                </div> -->
                 <div class="input-box">
                     <label for="CPF">CPF</label>
                     <input type="text" formControlName = "CPF" class="form-control" id="CPF" > 
@@ -30,17 +40,15 @@
                 </div>
             </div>
         }
+
             <div class="continue-button">
-                <button 
-                type="submit" 
-                (click)="edit()"  
-                class="btn btn-primary">Enviar</button>
+                @if(btn_editar == false){
+                    <button class="btn btn-primary" (click)="HabilitarEditar()">Editar</button>
+                }
+                @else{
+                    <button type="submit" (click)="edit()" class="btn btn-primary">Enviar</button>
+                }
                 </div>
-                <!-- <div class="continue-button">
-                    <div *ngIf="loading"><button class="btn btn-primary">
-                        Carregando...</button>
-                    </div> -->
-                <!-- </div> -->
         </form>
         </div>
     </div>

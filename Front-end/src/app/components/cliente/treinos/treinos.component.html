@@ -1,43 +1,47 @@
 <div class="fundo">
     <div class="container">
         <div class="treino">
-            <p>Treino {{dados_cli[0].treino}} </p>
+                <p class="p-treino">Treino {{nameTreino()}} </p>
         </div>
         <div class="ficha">
             <div class="fundo-table">
-                <!-- <h2>Tipo do treino</h2> -->
-                <table id="treino-table">
+                <h2>Tipo do treino</h2> 
+                 <table id="treino-table">
                     <thead>
                         <tr>
                             <th>Exercício</th>
                             <th>Series</th>
                             <th>Repetições</th>
+                            <th>Carga(opcional)</th>
                             <th>Concluido</th>
                         </tr>
                     </thead>
-                    <tbody id="clientes-list">
-                        @for (dados of dados_cli; track dados) {
-                        <tr>
-                            <td>{{dados.exer}}</td>
-                            <td>{{dados.series}}</td>
-                            <td>{{dados.repeticoes}}</td>
-                            <td><input type="checkbox" id="check-box"></td>
-                        </tr>
-                    }
-                    </tbody>
-                </table>
-            </div>
-            <div class="feedback">
-                <div class="text-feed">
-                    <h1>Feedback</h1>
+                        <tbody id="clientes-list">
+                            @for (dados of dados_cli; track $index) {
+                            <tr>
+                                
+                                <td>{{ dados.exercicio }}</td>
+                                <td>{{ dados.series }}</td>
+                                <td>{{ dados.repeticoes }}</td>
+                                
+                                    <td><input class="carga" type="number" id="carga{{ dados.exer_id }}" name="carga" (change)="cargaset($event,dados.exer_id)" > Kg</td>                
+                                    <td><input type="checkbox" class="check-box" (change)="checkCheckBoxvalue($event,dados.exer_id)"></td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                    <div class="enviar">
+                        <button class="btn-enviar mb-5" id="send" (click)="enviar()">Enviar</button>
+                    </div>
                 </div>
-                <div class="text-area">
-                    <textarea name="area" id="area"></textarea>
+                <div class="feedback">
+                    <div class="text-feed">
+                        <h1>Feedback</h1>
+                    </div>
+                    <div class="text-area" >
+                        <textarea name="feedback" id="area" [(ngModel)] = "feedback"></textarea>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="enviar">
-            <button class="btn-enviar" onclick="">Enviar</button>
         </div>
     </div>
 </div>

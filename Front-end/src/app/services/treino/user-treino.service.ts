@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TreinoItem } from '../../interfaces/treino-item';
+// import { TreinoItem } from '../../interfaces/treino-item';
+import { Treinos } from '../../interfaces/treinos';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class UserTreinoService {
 
   constructor(private http: HttpClient) { }
 
-  pesquisar(data: any): Observable<TreinoItem> {
-    return this.http.post<TreinoItem>(this.url_pesquisar,data); // Substitua 'any' pelo tipo de dados esperado
+  pesquisar(data: any): Observable<any> {
+    return this.http.post<Treinos>(this.url_pesquisar,data); // Substitua 'any' pelo tipo de dados esperado
   }
 }

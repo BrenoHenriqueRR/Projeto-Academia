@@ -41,7 +41,6 @@ export class PainelAdminComponent  {
     const jsonString: string = '{"email": "' + localStorage.getItem('email') + '"}';
     this.service.funcao(jsonString).subscribe(
       (dado) => {
-        console.log('Dados recebidos:', dado);
         this.funcionalidade = dado[0].funcao;
         localStorage.setItem('id', dado[0].id);
 

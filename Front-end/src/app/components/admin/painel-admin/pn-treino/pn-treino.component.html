@@ -1,0 +1,27 @@
+<div class="fundo">
+    <div class="container">
+        <div class="d-block">
+                <h1 class="t-h1">Cadastro de Itens no Sistema</h1>
+                    <div>
+                        <div class="mb-5 exer"> 
+                            <h2 >Exercicios</h2>
+                            <form [formGroup]="exer">
+                                <label for="exercicio">Exercicio</label>
+                                <input type="text" formControlName="exercicio" id="exercicio">
+
+                                <input class="btn" type="submit" (click)="cadexer()" value="Enviar">
+                            </form>
+                        </div>
+                        <div class="grupo">
+                            <h2>Grupo Muscular</h2>
+                            <form [formGroup]="Grupo">
+                                <label for="grupo">Grupo Muscular</label>
+                                <input type="text" formControlName="grupo" id="grupo">
+
+                                <input class="btn" type="submit" (click)="cadgrupo()" value="Enviar">
+                            </form>
+                        </div>
+                    </div>
+            </div>
+    </div>
+</div>

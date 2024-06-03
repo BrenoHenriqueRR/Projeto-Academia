@@ -73,11 +73,23 @@ class Admin extends BaseController
         $json = file_get_contents('php://input');
         $datajson = json_decode($json, true);
 
-        $dados = $this->modelcli->select('c.id, c.nome AS cliente_nome, c.CPF, c.email, p.nome AS nome_personal')
+        $dados = $this->modelcli->select('c.id, c.nome AS cliente_nome, c.CPF, c.email,c.personal_id, p.nome AS nome_personal')
         ->from('cliente AS c')
         ->join('funcionarios AS p', 'c.personal_id = p.id', 'INNER')
         ->where('c.id', $datajson['id'])
         ->groupBy('c.id');
+
+        $data = $dados->get();  
+
+        return $this->response->setJSON($data->getResult())->setStatusCode(200);
+
+    }
+
+    public function buscarfun(){
+        $json = file_get_contents('php://input');
+        $data = json_decode($json, true);
+
+        $dados = $this->model->select('*');
 
         $data = $dados->get();  
 
@@ -92,18 +104,19 @@ class Admin extends BaseController
         
         $data = json_decode($json, true);
         //pegar o id do personal
-        $this->model->select('*');
-        $this->model->where('nome', $data['personal_id'] );
+        // $this->model->select('*');
+        // $this->model->where('id', $data['id'] );
      
-        // Verifique se a consulta retornou algum resultado antes de tentar acessá-lo
-        // echo $personal['id'];
+        // // Verifique se a consulta retornou algum resultado antes de tentar acessá-lo
+        // // echo $personal['id'];
 
 
-        // $this->modelcli->where($data['id'])
-        // ->update('clientes', $data);
+        $this->modelcli->set($data)
+        ->where('id',$data['id'])
+        ->update();
 
-        // $msg = array("msg" => "Cadastro Editado");
+        $msg = array("msg" => "Cadastro Editado");
 
-        // return $this->response->setJSON($msg)->setStatusCode(200);
+        return $this->response->setJSON($msg)->setStatusCode(200);
     }
 }

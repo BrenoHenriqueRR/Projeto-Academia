@@ -17,8 +17,15 @@
 
                 <div class="input-box">
                     <label for="personal">Personal</label>
-                    <input type="text" formControlName = "personal_id" class="form-control" id="personal"  required>
-                </div>
+                    <!-- <input type="text" formControlName = "personal_id" class="form-control" id="personal"  required> -->
+                    <select (click)="personal()" formControlName="personal_id" class="form-control personal-options">
+                        <option value="1" disabled selected>Escolha um personal</option>
+                        @for (dado of idnamepersonal; track dado;) {
+                            <option value="{{ dado['id'] }}">{{ dado['nome'] }}</option>
+                        }
+                    </select>   
+                </div>                       
+
                 <div class="input-box">
                     <label for="CPF">CPF</label>
                     <input type="text" formControlName = "CPF" class="form-control" id="CPF" > 
@@ -35,12 +42,12 @@
                 type="submit" 
                 (click)="edit()"  
                 class="btn btn-primary">Enviar</button>
-                </div>
-                <!-- <div class="continue-button">
-                    <div *ngIf="loading"><button class="btn btn-primary">
-                        Carregando...</button>
-                    </div> -->
-                <!-- </div> -->
+            </div>
+            <div class="continue-button">
+                <div *ngIf="loading"><button class="btn btn-primary">
+                    Carregando...</button>
+                </div> 
+            </div>
         </form>
         </div>
     </div>

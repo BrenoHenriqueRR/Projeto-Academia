@@ -76,3 +76,10 @@ p input{
     width: 10rem;
     font-weight: 600;
 }
+
+select{
+    width: 60%;
+    display: inline;
+    box-shadow: 1px 1px 1px rgb(180, 178, 178);
+
+}

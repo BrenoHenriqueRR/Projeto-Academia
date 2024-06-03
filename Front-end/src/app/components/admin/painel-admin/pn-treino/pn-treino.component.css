@@ -1,0 +1,43 @@
+.fundo{
+    height: 70vh;
+    width: 100%;
+    display: flex;
+}
+
+.container{
+    width: 70%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.t-h1{
+    margin: 6rem 0;
+    background-color: rgb(250, 250, 75);
+    padding: 1.5rem;
+    border-radius: 20px;
+}
+.exer,.grupo{
+    background-color: white;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 1px 1px 2px rgb(179, 178, 178);
+}
+
+input{
+    margin: 0 0.4rem;
+}
+
+input[type ="text"]{
+    border: none;
+    box-shadow: 1px 1px 2px rgb(179, 178, 178);
+    border-radius: 10px;
+    padding: 0.5rem ;
+}
+
+.btn{
+    padding: 5px 10px;
+    border: none;
+    background-color: rgb(255, 255, 35);
+    font-weight: 800;
+}

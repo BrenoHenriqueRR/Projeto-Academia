@@ -29,4 +29,9 @@ class Ficha extends BaseController
         return $this->response->setJSON($msg)->setStatusCode(200);
 
     }
+
+    // public function pesquisarcont($data){
+    //     return $this->model->select('contagem')
+    //     ->where('id', $data);
+    // }
 }

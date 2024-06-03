@@ -19,7 +19,7 @@ main {
     transition: all .5s;
     min-width: 82px;
     z-index: 2;
-    position: fixed;
+    /* position: fixed; */
 }
 
 #sidebar_content {

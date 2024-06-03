@@ -2,16 +2,20 @@
 .fundo{
   height: 100vh;
   width: 100%;
+  overflow-y: hidden;
 }
 
 .container {
-  max-width: 80%;
+  max-width: 100%;
   /* margin: 0 auto; */
 }
 
 
 .grid-container {
   margin: 20px;
+  height: 90vh;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
 .dashboard-card {

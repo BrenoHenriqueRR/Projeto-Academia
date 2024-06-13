@@ -57,15 +57,15 @@
                         </div>
                     </div>
                 </div>
-        <div class="continue-button">
+        <div *ngIf="!loading" class="continue-button">
         <button 
         type="submit" 
         (click)="submit()"  
         class="btn btn-primary">Enviar</button>
         </div>
         <div class="continue-button">
-            <div *ngIf="loading"><button class="btn btn-primary">
-                Carregando...</button>
+            <div *ngIf="loading">
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
             </div>
         </div>
         </form> 

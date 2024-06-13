@@ -9,14 +9,22 @@
               <h1 class="text-center">Faça o seu Login</h1><br>
               <label for="exampleFormControlInput1" class="form-label">Email:</label>
               <input type="email" formControlName = "email" class="form-control" id="exampleFormControlInput1" placeholder="nome@exemplo.com">
+              <div *ngIf="formlogin.get('email')?.touched && formlogin.get('email')?.invalid">
+                <span style="color: red;">Email é obrigatório.</span>
+              </div>
             </div>
             <div class="mb-3 input-box">
               <label for="senha" class="form-label">Senha:</label>
               <input type="password" formControlName = "senha" name="senha" id="senha" class="form-control">
-            </div>
-            <div class="input-box mb-3 align-items-center d-flex justify-content-center">
-              <input type="submit" (click)="submit()" value="Entrar" class="button" [disabled]="isLoading" >
-
+              <div *ngIf="formlogin.get('senha')?.touched && formlogin.get('senha')?.invalid">
+                <span style="color: red;">Senha é obrigatório.</span>
+              </div>
+            </div> 
+            <div *ngIf="!loading" class="input-box mb-3 align-items-center d-flex justify-content-center">
+              <input type="submit" (click)="submit()" value="Entrar" class="button">
+              </div>
+            <div *ngIf="loading" class="spinner-container input-box mb-3 align-items-center d-flex justify-content-center">
+              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
             </div>
           </form>
           <br>
@@ -29,7 +37,6 @@
                 </div>
             }@else if(mensagem == 'true'){
                 <div class="mensagem">
-                  {{ isLoading ? 'Aguarde...' : 'Login' }}
                   {{logar()}};
                 </div>
             }

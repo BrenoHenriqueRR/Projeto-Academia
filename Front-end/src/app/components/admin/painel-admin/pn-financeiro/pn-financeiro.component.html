@@ -1,0 +1,141 @@
+<div class="fundo">
+    <div class="container">
+        <h1>Controle Financeiro</h1>
+        <div class="financeiro">
+            <div class="card">
+                <h3>Total de pagamentos realizados:</h3>
+                <div class="total-pagamentos">
+                    <p>R${{total}}</p>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Cadastrar pagamento do cliente</h3>
+                <div class="cad-pagamentos">
+                    <select (click)="Clientes()" formcontrolname="nmcliente" [(ngModel)]="selectedOption"  class="form-control">
+                        <option value="0" disabled selected>Escolha um cliente</option>
+                        @for (dado of clientes; track dado;) {
+                            <option value="{{ dado['id'] }}">{{ dado['cliente_nome'] }}</option>
+                        }
+                        </select>
+                    <button [disabled]="!selectedOption" class="cad-btn" (click)="openModal();">Cadastrar</button>
+                    <app-modal-cadpagamentos (confirm)="validarmodal($event)"></app-modal-cadpagamentos>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Clientes com pagamento pendente:</h3>
+                <div class="cli-pendentes">
+                    <table id="clientes-table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>CPF</th>
+                                <th>Pagamentos</th>
+                                <th>Data Criação</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="clientes-list">
+                            <tr>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                            </tr>
+                            <tr>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                            </tr>
+                            <tr>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                            </tr>
+                            <tr>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                            </tr>
+                            <tr>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                            </tr>
+                            <tr>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                            </tr>
+                            <tr>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                            </tr>
+                            <tr>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                            </tr>
+                            <tr>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                            </tr>
+                            <tr>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                            </tr>
+                            <tr>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                            </tr>
+                            <tr>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                                <td>teste</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -5,6 +5,7 @@ import { ModalEditarService } from '../../../services/modal-editar/modal-editar.
 import { ActivatedRoute } from '@angular/router';
 import { CliPesquisar } from '../../../interfaces/cli-pesquisar';
 import { CadastroService } from '../../../services/cadastro.service';
+import { window } from 'rxjs';
 
 @Component({
   selector: 'app-modal-editar',
@@ -66,15 +67,16 @@ edit(){
     this.onSubmit.emit();
     this.loading = true;
 
-    // this.service.editar(dados).subscribe({
-    //   next: (resposta) => {
-    //     this.mensagemSucesso = resposta.msg ;
-    //     console.log(this.mensagemSucesso);
-    //     // this.formcadastro.reset();
-    //     this.loading = false;
+    this.service.editar(dados).subscribe({
+      next: (resposta) => {
+        this.mensagemSucesso = resposta.msg ;
+        console.log(this.mensagemSucesso);
+        // this.formcadastro.reset();
+        this.loading = false;
+        location.reload();
         
-    //     }
-    //   })
+        }
+      })
     }
   // }
 

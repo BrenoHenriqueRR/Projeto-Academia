@@ -1,0 +1,119 @@
+CRITICAL - 2024-06-04 22:41:43 --> ErrorException: Trying to access array offset on value of type int
+in APPPATH\Controllers\Cliente.php on line 41.
+ 1 APPPATH\Controllers\Cliente.php(41): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type int', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Cliente.php', 41)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->delete()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-04 22:41:56 --> ErrorException: Trying to access array offset on value of type int
+in APPPATH\Controllers\Cliente.php on line 41.
+ 1 APPPATH\Controllers\Cliente.php(41): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type int', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Cliente.php', 41)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->delete()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-04 22:43:22 --> ErrorException: Trying to access array offset on value of type int
+in APPPATH\Controllers\Cliente.php on line 41.
+ 1 APPPATH\Controllers\Cliente.php(41): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type int', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Cliente.php', 41)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->delete()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-04 22:50:51 --> ErrorException: Trying to access array offset on value of type int
+in APPPATH\Controllers\Cliente.php on line 41.
+ 1 APPPATH\Controllers\Cliente.php(41): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type int', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Cliente.php', 41)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->delete()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-04 23:02:19 --> ErrorException: Trying to access array offset on value of type int
+in APPPATH\Controllers\Cliente.php on line 41.
+ 1 APPPATH\Controllers\Cliente.php(41): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type int', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Cliente.php', 41)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->delete()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-04 23:02:20 --> ErrorException: Trying to access array offset on value of type int
+in APPPATH\Controllers\Cliente.php on line 41.
+ 1 APPPATH\Controllers\Cliente.php(41): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type int', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Cliente.php', 41)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->delete()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-04 23:02:58 --> ErrorException: Trying to access array offset on value of type int
+in APPPATH\Controllers\Cliente.php on line 41.
+ 1 APPPATH\Controllers\Cliente.php(41): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type int', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Cliente.php', 41)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->delete()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-04 23:03:00 --> ErrorException: Trying to access array offset on value of type int
+in APPPATH\Controllers\Cliente.php on line 41.
+ 1 APPPATH\Controllers\Cliente.php(41): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type int', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Cliente.php', 41)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->delete()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-04 23:03:00 --> ErrorException: Trying to access array offset on value of type int
+in APPPATH\Controllers\Cliente.php on line 41.
+ 1 APPPATH\Controllers\Cliente.php(41): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type int', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Cliente.php', 41)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->delete()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-04 23:03:00 --> ErrorException: Trying to access array offset on value of type int
+in APPPATH\Controllers\Cliente.php on line 41.
+ 1 APPPATH\Controllers\Cliente.php(41): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type int', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Cliente.php', 41)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->delete()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-04 23:19:25 --> ErrorException: Trying to access array offset on value of type int
+in APPPATH\Controllers\Cliente.php on line 41.
+ 1 APPPATH\Controllers\Cliente.php(41): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type int', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Cliente.php', 41)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->delete()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-04 23:19:28 --> ErrorException: Trying to access array offset on value of type int
+in APPPATH\Controllers\Cliente.php on line 41.
+ 1 APPPATH\Controllers\Cliente.php(41): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type int', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Cliente.php', 41)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->delete()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-04 23:25:13 --> ErrorException: Trying to access array offset on value of type int
+in APPPATH\Controllers\Cliente.php on line 41.
+ 1 APPPATH\Controllers\Cliente.php(41): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type int', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Cliente.php', 41)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->delete()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-04 23:28:33 --> ErrorException: Trying to access array offset on value of type int
+in APPPATH\Controllers\Cliente.php on line 41.
+ 1 APPPATH\Controllers\Cliente.php(41): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type int', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Cliente.php', 41)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->delete()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-04 23:31:28 --> ErrorException: Trying to access array offset on value of type int
+in APPPATH\Controllers\Cliente.php on line 41.
+ 1 APPPATH\Controllers\Cliente.php(41): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type int', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Cliente.php', 41)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->delete()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-04 23:31:40 --> ErrorException: Trying to access array offset on value of type int
+in APPPATH\Controllers\Cliente.php on line 41.
+ 1 APPPATH\Controllers\Cliente.php(41): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type int', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Cliente.php', 41)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->delete()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-04 23:32:20 --> ErrorException: Trying to access array offset on value of type int
+in APPPATH\Controllers\Cliente.php on line 41.
+ 1 APPPATH\Controllers\Cliente.php(41): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type int', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Cliente.php', 41)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->delete()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

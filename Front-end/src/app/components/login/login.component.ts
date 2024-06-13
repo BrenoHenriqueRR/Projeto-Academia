@@ -49,13 +49,13 @@ export class LoginComponent {
       this.service.sendData(dados).subscribe({
           next: (resposta) => {
             this.mensagem = resposta.msg;
-            console.log(this.mensagem);
             this.formlogin.reset();
             this.loading = false;
           }
         })
-    }
+      }
   }
+
 
   pesquisar(email: any){
     const jsonString: string = '{"email": "' + email + '"}';
@@ -66,11 +66,7 @@ export class LoginComponent {
     });
   }
 
-  isLoading = false;
-
 logar() {
-  this.isLoading = true;
-
   this.router.navigate(['/home-cliente']),{
   };
 }

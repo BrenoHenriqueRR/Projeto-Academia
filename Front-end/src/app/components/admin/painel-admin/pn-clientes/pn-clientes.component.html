@@ -1,5 +1,8 @@
 <div class="fundo">
     <div class="container">
+        <div *ngIf="loading == true" class="spinner-container">
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        </div>
         <h1>Listagem de Clientes</h1>
         <table id="clientes-table">
             <thead>
@@ -25,13 +28,18 @@
                             <button  routerLink="treinos" [queryParams]="{ id: dados.id}">Cadastrar Treinos</button>
                         }@else {
                             <button routerLink="editar" [queryParams]="{ id: dados.id}">Editar</button>
-                            <button class="btn-excluir"(click)="excluir(dados.id)">Excluir</button>            
+                            <button class="btn-excluir"(click)="openmodal(dados.id)">Excluir</button> 
+                            @if(func == 'administrador'){
+                                <button  routerLink="treinos" [queryParams]="{ id: dados.id}">Cad Treinos</button>
+                            }
+                            <app-modal-confirmar (confirm)="validarmodal($event)"></app-modal-confirmar>
                          }
                     </td>
                 </tr>
             }
             </tbody>
         </table>
-        <pagination-controls class="pagination" (pageChange)="paginaAtual = $event"></pagination-controls>
+        <pagination-controls class="pagination" (pageChange)="paginaAtual = $event" previousLabel="Anterior"
+        nextLabel="Próximo"></pagination-controls>
     </div>
 </div>

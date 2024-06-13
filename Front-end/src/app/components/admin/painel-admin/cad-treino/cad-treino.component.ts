@@ -121,10 +121,4 @@ export class CadTreinoComponent {
     this.grupo = selectedText;
     
   } 
-  // onexerChange(event: Event): void {
-  //   const selectElement = event.target as HTMLSelectElement;
-  //   const selectedText = selectElement.options[selectElement.selectedIndex].text;
-  //   this.exer = selectedText;
-    
-  // } 
 }

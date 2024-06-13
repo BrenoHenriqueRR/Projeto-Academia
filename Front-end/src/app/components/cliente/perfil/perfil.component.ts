@@ -3,6 +3,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ModalEditarService } from '../../../services/modal-editar/modal-editar.service';
 import { ActivatedRoute } from '@angular/router';
+import { PnClienteService } from '../../../services/admin/pn-cliente/pn-cliente.service';
 // import { CliPesquisar } from '../../../interfaces/cli-pesquisar';
 
 
@@ -23,36 +24,56 @@ export class PerfilComponent {
   data: any;
   btn_editar:boolean = false;
   identificador!: any;
+  caminhoFoto!: any;
+  isReadonly = true;
   
-  
-  constructor(private service: ModalEditarService, private route: ActivatedRoute){
+  constructor(private service: ModalEditarService, private route: ActivatedRoute, private SinserirFoto: PnClienteService){
     // this.route.queryParams.subscribe(params => {
     //   this.identificador = params['id'];
     // }); 
     this.identificador = localStorage.getItem("idcliente");
-    this.Bucasdados(); 
+    this.Buscardados(); 
+    this.pegarImagem();
   }
 
   onFileSelected(event: Event) {
     this.selectedFile = (event.target as HTMLInputElement).files![0];
-    this.uploadImage();
+    this.uploadImagem();
   }
 
-  uploadImage() {
-    if (!this.selectedFile) {
-      console.log('Nenhuma imagem selecionada.');
-      return;
-    }else{
-      console.log(this.selectedFile)
-    }
+  pegarImagem(){
+    const idjson  = '{"id": "' + this.identificador + '"}';
+    this.SinserirFoto.pegarfoto(idjson).subscribe({
+      next: (foto) => {
+        this.caminhoFoto = 'http://localhost/sites/Projeto1/Back-end/public/' + foto[0].foto_perfil;
+      },error(err) {
+        console.log(err);
+      },
+    })
   }
 
+  uploadImagem() {
+    const formData = new FormData();
+    if (this.selectedFile) {
+      formData.append('image', this.selectedFile, this.selectedFile.name);
+      formData.append('id', this.identificador);
+      console.log(formData.get('image'));
+      console.log(formData.get('id'));
+      this.SinserirFoto.inserirfoto(formData).subscribe({
+        next(retorno) {
+          alert(retorno.msg);
+          location.reload();
+        },
+      })
+    };
+  }
 
   HabilitarEditar(){
     this.btn_editar = true;
+    this.isReadonly = false;
   }
 
-  Bucasdados(){
+  Buscardados(){
     const jsonString  = '{"id": "' + this.identificador + '"}';
     this.service.pesquisar(jsonString).subscribe(
       (dados) => {

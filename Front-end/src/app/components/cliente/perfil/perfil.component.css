@@ -11,13 +11,17 @@
     align-items: center;
 }
 
+
 .formulario{
     width: 70%;
-    display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
 }
 
+.h1-perfil{
+    margin: 3rem;
+    border-bottom: 2px solid rgba(255, 230, 0, 0.76);
+    width: 30%;
+}
 .input-box {
     display: flex;
     flex-direction: column;
@@ -25,8 +29,6 @@
     margin-right: 2rem;
     
 }
-
-
 
 .input-box input {
     margin: 0.1rem;
@@ -49,16 +51,21 @@
     position: relative;
 }
 
+.fotoperfil{
+    border-radius: 50%;
+}
+
 .meio-img{
     position: absolute;  
-    top: 5.4rem; 
-    left: 1.3rem; 
-    z-index: 2;
+    top: 6rem; 
+    left: 8rem;  
+     z-index: 2;
     color: white;
     background-color: rgba(0, 0, 0, 0.87);
     cursor: pointer;
     border-radius: 10px;
     padding: 5px;
+    margin-top: 1rem;
 }
 
 .btn{
@@ -71,4 +78,23 @@
     background-color: #E7F53D;
     font-family: 'Anton' , serif;
     text-transform: uppercase;
+}
+
+.readonly-input[readonly] {
+    background-color: #EEE;
+  }
+  
+.excluir-cont{
+    width: 65%;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+}
+
+.excluir-cont button{
+    color: red;
+    border: none;
+    background-color: transparent;
+    text-decoration:underline ;
+    font-family: 'Anton' , serif;
 }

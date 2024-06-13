@@ -8,5 +8,5 @@ class FichaModel extends Model
 {
     protected $table = 'ficha'; // Nome da tabela no banco de dados
     protected $primaryKey = 'id'; // Chave primária da tabela
-    protected $allowedFields = ['status','data_conclusao','treinos_concluido','carga', 'feedback', 'treino_id','cliente_id','tipo_idw']; 
+    protected $allowedFields = ['data_conclusao','exer_concluido','carga', 'feedback', 'exer_id','cliente_id','tipo_grupo_id']; 
 }

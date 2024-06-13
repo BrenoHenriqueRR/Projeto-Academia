@@ -19,14 +19,35 @@ class Cliente extends BaseController
         
         // Decodificar o JSON em um array PHP
         $data = json_decode($json, true);
-
-        if($this->model->where('email', $data['email'])){
-            return $this->response->setJSON('Email ja existe')->setStatusCode(200);
+        $this->model->select('*');
+        $this->model->where('email', $data['email']);
+        $validaremail = $this->model->countAllResults(); // traz a quantidade de resultados da consulta
+        
+        if ($validaremail == 0)
+        {
+            $this->model->insert($data);
+            $msg = array("msg" => "Cadastro Enviado");
+        return $this->response->setJSON($msg)->setStatusCode(200);
         }
+        else
+             return $this->response->setJSON('Email ja existe')->setStatusCode(200);
+        // if($validaremail != '' ){
+        //     return $this->response->setJSON('Email ja existe')->setStatusCode(200);
+        // }
 
-        $this->model->insert($data);
+    }
+    public function delete()
+    {
 
-        $msg = array("msg" => "Cadastro Enviado");
+        $json = file_get_contents('php://input');
+        
+        // Decodificar o JSON em um array PHP
+        $data = json_decode($json, true);
+
+        $this->model->where('id',$data['id'])
+        ->delete();
+
+        $msg = array("msg" => "Cliente deletado");
 
         return $this->response->setJSON($msg)->setStatusCode(200);
     }
@@ -88,6 +109,51 @@ class Cliente extends BaseController
         return $this->response->setJSON($data->getResult())->setStatusCode(200);
  
     }
+    
+    public function inserirFoto(){
+        //apagar imagem anterior do usuário
+        $file = $this->request->getFile('image');
+        $id = $this->request->getPost('id');
+        
+        $dados = $this->model->select('foto_perfil')
+        ->where('id',$id );
+        $query = $dados->get();
+        
+        foreach($query->getResult() as $row){
+            unlink($row->foto_perfil);
+        }
+        
+    
+        // inserir imagem de perfil do usuário
+        if($file->isValid() && !$file->hasMoved()){
+            $nomeimg = $file->getRandomName();//gera um nome aleatorio a foto
+            $file->move('assets/fotos-perfil', $nomeimg); // move a imagem para a pasta
+            $caminhoImagem = 'assets/fotos-perfil/' . $nomeimg;
+            $this->model->where('id',$id)
+                ->set([
+                    'foto_perfil' => $caminhoImagem
+                ])
+                ->update();
+            $msg = array("msg" => "Foto de perfil alterada com sucesso!!");
+            return $this->response->setJSON($msg)->setStatusCode(200);
+            
+        } else {
+            $msg = array("msg" => "Ocorreu um erro ao alterar a foto, tente novamente!");
+            return $this->response->setJSON($msg)->setStatusCode(200);
+        }
+    }
+
+    public function pegarFoto(){
+        $json = file_get_contents('php://input');
+        $data = json_decode($json, true);
+        $dados = $this->model->select('foto_perfil')
+        ->where('id',$data['id'] );
+ 
+        $data = $dados->get();  
+ 
+        return $this->response->setJSON($data->getResult())->setStatusCode(200);
+    }
+    
  }
 
 ?>

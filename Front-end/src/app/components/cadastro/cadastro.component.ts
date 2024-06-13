@@ -46,6 +46,8 @@ export class CadastroComponent {
     if (this.formcadastro.valid) {
       // Obter os valores do formulário e converter para JSON
       const dados = JSON.stringify(this.formcadastro.getRawValue());
+
+      console.log(dados);
         
       // Emitir evento onSubmit e definir loading como verdadeiro
       this.onSubmit.emit();

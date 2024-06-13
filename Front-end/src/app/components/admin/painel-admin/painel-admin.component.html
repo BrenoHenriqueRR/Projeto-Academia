@@ -3,7 +3,7 @@
         <div id="sidebar_content">
             <div id="user">
                 <img src="assets/imgs/user.png" id="user_avatar" alt="Avatar">
-    
+
                 <p id="user_infos">
                     <span class="item-description">
                         {{funcionalidade}}
@@ -13,10 +13,10 @@
                     </span> -->
                 </p>
             </div>
-    
+
             <ul id="side_items" class="p-0">
                 <li class="side-item" routerLinkActive="mat-accent">
-                    <a routerLink="dashboard"  >
+                    <a routerLink="dashboard">
                         <i class="fa-solid fa-chart-line"></i>
                         <span class="item-description">
                             Dashboard
@@ -24,7 +24,7 @@
                     </a>
                 </li>
                 @if (funcionalidade != 'secretario') {
-                <li class="side-item" routerLinkActive="mat-accent" >
+                <li class="side-item" routerLinkActive="mat-accent">
                     <a routerLink="treinos">
                         <i class="fa-solid fa-dumbbell"></i>
                         <span class="item-description">
@@ -32,7 +32,7 @@
                         </span>
                     </a>
                 </li>
-            }
+                }
 
                 <li class="side-item" routerLinkActive="mat-accent">
                     <a routerLink="clientes">
@@ -43,36 +43,36 @@
                     </a>
                 </li>
                 @if (funcionalidade != 'personal') {
-                    <li class="side-item" routerLinkActive="mat-accent">
-                        <a routerLink="funcionarios">
-                            <i class="fa-solid fa-user-tie"></i>
-                            <span class="item-description">
-                                Funcionários
-                            </span>
-                        </a>
-                    </li>
+                <li class="side-item" routerLinkActive="mat-accent">
+                    <a routerLink="funcionarios">
+                        <i class="fa-solid fa-user-tie"></i>
+                        <span class="item-description">
+                            Funcionários
+                        </span>
+                    </a>
+                </li>
                 }
                 @if (funcionalidade == 'personal') {
-                    <li class="side-item" routerLinkActive="mat-accent">
-                        <a routerLink="chat">
-                            <i class="fa-solid fa-comment"></i>
-                            <span class="item-description">
-                                Chat
-                            </span>
-                        </a>
-                    </li>
+                <li class="side-item" routerLinkActive="mat-accent">
+                    <a routerLink="chat">
+                        <i class="fa-solid fa-comment"></i>
+                        <span class="item-description">
+                            Chat
+                        </span>
+                    </a>
+                </li>
                 }
                 @if (funcionalidade != 'personal') {
                 <li class="side-item" routerLinkActive="mat-accent">
-                    <a href="#">
+                    <a routerLink="financeiro">
                         <i class="fa-solid fa-coins"></i>
                         <span class="item-description">
                             Financeiro
                         </span>
                     </a>
                 </li>
-            }
-    
+                }
+
                 <li class="side-item" routerLinkActive="mat-accent">
                     <a href="#">
                         <i class="fa-regular fa-pen-to-square"></i>
@@ -81,8 +81,8 @@
                         </span>
                     </a>
                 </li>
-    
-                <li class="side-item" routerLinkActive="mat-accent" >
+
+                <li class="side-item" routerLinkActive="mat-accent">
                     <a href="#">
                         <i class="fa-solid fa-gear"></i>
                         <span class="item-description">
@@ -91,25 +91,45 @@
                     </a>
                 </li>
             </ul>
-    
-            <button (click) = "AbrirSidebar()" id="open_btn">
+
+            <button (click)="AbrirSidebar()" id="open_btn">
                 <i id="open_btn_icon" class="fa-solid fa-chevron-right"></i>
             </button>
         </div>
 
         <div id="logout">
             <a style="text-decoration: none;" href="/admin">
-            <button id="logout_btn">
-                <i class="fa-solid fa-right-from-bracket"></i>
-                <span class="item-description">
-                    Logout
-                </span>
-            </button>
+                <button id="logout_btn">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span class="item-description">
+                        Logout
+                    </span>
+                </button>
             </a>
         </div>
     </nav>
-    
+
     <main class="b-main">
+        <div class="pesquisar">
+            <div>
+                <input type="text" class="input-pesq" [(ngModel)]="termoBusca" placeholder="Buscar...">
+                <ul id="ul-pesquisar" class="p-0">
+                    <!-- Utiliza o *ngFor para iterar sobre as opções de menu -->
+                    <li *ngFor="let item of menuItems" class="li-pesq" routerLinkActive="mat-accent">
+                        <!-- Aplica o filtro utilizando *ngIf -->
+                        <a *ngIf="correspondeBusca(item) && termoBusca" 
+                           [routerLink]="item.routerLink" 
+                           (click)="resetarBusca()">
+                            <i class="{{item.iconClass}}"></i>
+                            <span class="item-description">
+                                {{item.description}}
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
         <router-outlet></router-outlet>
     </main>
 </div>

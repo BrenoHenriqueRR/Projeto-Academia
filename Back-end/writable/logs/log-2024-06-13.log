@@ -1,0 +1,801 @@
+CRITICAL - 2024-06-13 00:32:57 --> TypeError: CodeIgniter\BaseModel::transformDataToArray(): Return value must be of type array, string returned
+in SYSTEMPATH\BaseModel.php on line 1804.
+ 1 SYSTEMPATH\BaseModel.php(768): CodeIgniter\BaseModel->transformDataToArray('1', 'insert')
+ 2 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert('1', true)
+ 3 APPPATH\Controllers\Treino.php(38): CodeIgniter\Model->insert('1')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->create()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-13 00:44:01 --> ErrorException: Attempt to read property "treino_id" on array
+in APPPATH\Controllers\Treino.php on line 40.
+ 1 APPPATH\Controllers\Treino.php(40): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "treino_id" on array', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Treino.php', 40)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-06-13 00:54:06 --> mysqli_sql_exception: Table 'projeto-1.tipo_grupo_id' doesn't exist in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `ti...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ti...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ti...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ti...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(802): CodeIgniter\Model->doInsert(Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(744): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Treino.php(48): CodeIgniter\Model->insert(Array)
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Treino->create()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-06-13 00:54:07 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'projeto-1.tipo_grupo_id' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tipo_grupo_id` (`status`, `treino_id`, `cliente_id`, `grupo_id`, `funcionario_id`) VALUES (:status:, :treino_id:, :cliente_id:, :grupo_id:, :funcionario_id:)', [...], false)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Treino.php(48): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->create()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-13 00:54:07 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'projeto-1.tipo_grupo_id' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `tipo_grupo_id` (`status`, `treino_id`, `cliente_id`, `grupo_id`, `funcionario_id`) VALUES (\'Pendente\', \'1\', \'1\', \'1\', \'1\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `tipo_grupo_id` (`status`, `treino_id`, `cliente_id`, `grupo_id`, `funcionario_id`) VALUES (\'Pendente\', \'1\', \'1\', \'1\', \'1\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tipo_grupo_id` (`status`, `treino_id`, `cliente_id`, `grupo_id`, `funcionario_id`) VALUES (:status:, :treino_id:, :cliente_id:, :grupo_id:, :funcionario_id:)', [...], false)
+ 4 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\Treino.php(48): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->create()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-13 00:54:07 --> [Caused by] mysqli_sql_exception: Table 'projeto-1.tipo_grupo_id' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `tipo_grupo_id` (`status`, `treino_id`, `cliente_id`, `grupo_id`, `funcionario_id`) VALUES (\'Pendente\', \'1\', \'1\', \'1\', \'1\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `tipo_grupo_id` (`status`, `treino_id`, `cliente_id`, `grupo_id`, `funcionario_id`) VALUES (\'Pendente\', \'1\', \'1\', \'1\', \'1\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `tipo_grupo_id` (`status`, `treino_id`, `cliente_id`, `grupo_id`, `funcionario_id`) VALUES (\'Pendente\', \'1\', \'1\', \'1\', \'1\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tipo_grupo_id` (`status`, `treino_id`, `cliente_id`, `grupo_id`, `funcionario_id`) VALUES (:status:, :treino_id:, :cliente_id:, :grupo_id:, :funcionario_id:)', [...], false)
+ 5 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Treino.php(48): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->create()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-13 00:54:20 --> ErrorException: Undefined array key "exer_id"
+in APPPATH\Controllers\Treino.php on line 52.
+ 1 APPPATH\Controllers\Treino.php(52): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "exer_id"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Treino.php', 52)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-13 00:55:24 --> ErrorException: Undefined array key "exer_id"
+in APPPATH\Controllers\Treino.php on line 52.
+ 1 APPPATH\Controllers\Treino.php(52): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "exer_id"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Treino.php', 52)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-13 01:03:44 --> ErrorException: Undefined array key "cliente_id"
+in APPPATH\Controllers\Treino.php on line 94.
+ 1 APPPATH\Controllers\Treino.php(94): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "cliente_id"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Treino.php', 94)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-06-13 01:03:53 --> mysqli_sql_exception: Table 'projeto-1.exercicio' doesn't exist in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `ct`.`id...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `ct`.`id...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `ct`.`id...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Treino.php(97): CodeIgniter\Model->__call('get', Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-06-13 01:03:53 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'projeto-1.exercicio' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `exercicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = :c.id:
+GROUP BY `ct`.`id`', [...], false)
+ 2 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Treino.php(97): CodeIgniter\Model->__call('get', [])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-13 01:03:53 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'projeto-1.exercicio' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `exercicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `ct`.`id`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `exercicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `ct`.`id`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `exercicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = :c.id:
+GROUP BY `ct`.`id`', [...], false)
+ 4 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Treino.php(97): CodeIgniter\Model->__call('get', [])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-13 01:03:53 --> [Caused by] mysqli_sql_exception: Table 'projeto-1.exercicio' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `exercicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `ct`.`id`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `exercicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `ct`.`id`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `exercicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `ct`.`id`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `exercicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = :c.id:
+GROUP BY `ct`.`id`', [...], false)
+ 5 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Treino.php(97): CodeIgniter\Model->__call('get', [])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-06-13 01:06:01 --> mysqli_sql_exception: Table 'projeto-1.exercicio' doesn't exist in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `ct`.`id...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `ct`.`id...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `ct`.`id...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Treino.php(97): CodeIgniter\Model->__call('get', Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-06-13 01:06:01 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'projeto-1.exercicio' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `execicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `exercicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = :c.id:
+GROUP BY `ct`.`id`', [...], false)
+ 2 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Treino.php(97): CodeIgniter\Model->__call('get', [])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-13 01:06:01 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'projeto-1.exercicio' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `execicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `exercicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `ct`.`id`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `execicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `exercicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `ct`.`id`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `execicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `exercicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = :c.id:
+GROUP BY `ct`.`id`', [...], false)
+ 4 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Treino.php(97): CodeIgniter\Model->__call('get', [])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-13 01:06:01 --> [Caused by] mysqli_sql_exception: Table 'projeto-1.exercicio' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `execicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `exercicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `ct`.`id`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `execicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `exercicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `ct`.`id`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `execicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `exercicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `ct`.`id`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `execicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `exercicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = :c.id:
+GROUP BY `ct`.`id`', [...], false)
+ 5 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Treino.php(97): CodeIgniter\Model->__call('get', [])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-06-13 01:28:32 --> mysqli_sql_exception: Unknown column 'status' in 'field list' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `fi...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `fi...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `fi...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `fi...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(802): CodeIgniter\Model->doInsert(Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(744): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Ficha.php(24): CodeIgniter\Model->insert(Array)
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Ficha->create()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-06-13 01:28:32 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'status' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`) VALUES (:exer_id:, :cliente_id:, :exer_concluido:, :carga:, :data_conclusao:, :feedback:, :status:)', [...], false)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Ficha.php(24): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-13 01:28:32 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'status' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`) VALUES (\'43\', \'1\', 0, \'2\', \'12/06/2024\', \'\', \'0\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`) VALUES (\'43\', \'1\', 0, \'2\', \'12/06/2024\', \'\', \'0\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`) VALUES (:exer_id:, :cliente_id:, :exer_concluido:, :carga:, :data_conclusao:, :feedback:, :status:)', [...], false)
+ 4 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\Ficha.php(24): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-13 01:28:32 --> [Caused by] mysqli_sql_exception: Unknown column 'status' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`) VALUES (\'43\', \'1\', 0, \'2\', \'12/06/2024\', \'\', \'0\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`) VALUES (\'43\', \'1\', 0, \'2\', \'12/06/2024\', \'\', \'0\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`) VALUES (\'43\', \'1\', 0, \'2\', \'12/06/2024\', \'\', \'0\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`) VALUES (:exer_id:, :cliente_id:, :exer_concluido:, :carga:, :data_conclusao:, :feedback:, :status:)', [...], false)
+ 5 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Ficha.php(24): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-06-13 01:28:38 --> mysqli_sql_exception: Unknown column 'status' in 'field list' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `fi...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `fi...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `fi...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `fi...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(802): CodeIgniter\Model->doInsert(Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(744): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Ficha.php(24): CodeIgniter\Model->insert(Array)
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Ficha->create()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-06-13 01:28:38 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'status' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`) VALUES (:exer_id:, :cliente_id:, :exer_concluido:, :carga:, :data_conclusao:, :feedback:, :status:)', [...], false)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Ficha.php(24): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-13 01:28:38 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'status' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`) VALUES (\'43\', \'1\', \'43\', \'2\', \'12/06/2024\', \'ssss\', \'0\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`) VALUES (\'43\', \'1\', \'43\', \'2\', \'12/06/2024\', \'ssss\', \'0\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`) VALUES (:exer_id:, :cliente_id:, :exer_concluido:, :carga:, :data_conclusao:, :feedback:, :status:)', [...], false)
+ 4 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\Ficha.php(24): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-13 01:28:38 --> [Caused by] mysqli_sql_exception: Unknown column 'status' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`) VALUES (\'43\', \'1\', \'43\', \'2\', \'12/06/2024\', \'ssss\', \'0\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`) VALUES (\'43\', \'1\', \'43\', \'2\', \'12/06/2024\', \'ssss\', \'0\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`) VALUES (\'43\', \'1\', \'43\', \'2\', \'12/06/2024\', \'ssss\', \'0\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`) VALUES (:exer_id:, :cliente_id:, :exer_concluido:, :carga:, :data_conclusao:, :feedback:, :status:)', [...], false)
+ 5 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Ficha.php(24): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-06-13 01:29:19 --> mysqli_sql_exception: Unknown column 'status' in 'field list' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `fi...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `fi...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `fi...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `fi...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(802): CodeIgniter\Model->doInsert(Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(744): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Ficha.php(24): CodeIgniter\Model->insert(Array)
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Ficha->create()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-06-13 01:29:19 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'status' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (:exer_id:, :cliente_id:, :exer_concluido:, :carga:, :data_conclusao:, :feedback:, :status:, :tipo_grupo_id:)', [...], false)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Ficha.php(24): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-13 01:29:19 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'status' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (\'43\', \'1\', \'43\', \'2\', \'12/06/2024\', \'ssss\', \'0\', \'3\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (\'43\', \'1\', \'43\', \'2\', \'12/06/2024\', \'ssss\', \'0\', \'3\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (:exer_id:, :cliente_id:, :exer_concluido:, :carga:, :data_conclusao:, :feedback:, :status:, :tipo_grupo_id:)', [...], false)
+ 4 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\Ficha.php(24): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-13 01:29:19 --> [Caused by] mysqli_sql_exception: Unknown column 'status' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (\'43\', \'1\', \'43\', \'2\', \'12/06/2024\', \'ssss\', \'0\', \'3\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (\'43\', \'1\', \'43\', \'2\', \'12/06/2024\', \'ssss\', \'0\', \'3\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (\'43\', \'1\', \'43\', \'2\', \'12/06/2024\', \'ssss\', \'0\', \'3\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (:exer_id:, :cliente_id:, :exer_concluido:, :carga:, :data_conclusao:, :feedback:, :status:, :tipo_grupo_id:)', [...], false)
+ 5 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Ficha.php(24): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-06-13 01:29:21 --> mysqli_sql_exception: Unknown column 'status' in 'field list' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `fi...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `fi...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `fi...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `fi...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(802): CodeIgniter\Model->doInsert(Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(744): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Ficha.php(24): CodeIgniter\Model->insert(Array)
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Ficha->create()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-06-13 01:29:21 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'status' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (:exer_id:, :cliente_id:, :exer_concluido:, :carga:, :data_conclusao:, :feedback:, :status:, :tipo_grupo_id:)', [...], false)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Ficha.php(24): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-13 01:29:21 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'status' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (\'43\', \'1\', \'43\', \'2\', \'12/06/2024\', \'ssss\', \'0\', \'3\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (\'43\', \'1\', \'43\', \'2\', \'12/06/2024\', \'ssss\', \'0\', \'3\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (:exer_id:, :cliente_id:, :exer_concluido:, :carga:, :data_conclusao:, :feedback:, :status:, :tipo_grupo_id:)', [...], false)
+ 4 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\Ficha.php(24): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-13 01:29:21 --> [Caused by] mysqli_sql_exception: Unknown column 'status' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (\'43\', \'1\', \'43\', \'2\', \'12/06/2024\', \'ssss\', \'0\', \'3\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (\'43\', \'1\', \'43\', \'2\', \'12/06/2024\', \'ssss\', \'0\', \'3\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (\'43\', \'1\', \'43\', \'2\', \'12/06/2024\', \'ssss\', \'0\', \'3\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (:exer_id:, :cliente_id:, :exer_concluido:, :carga:, :data_conclusao:, :feedback:, :status:, :tipo_grupo_id:)', [...], false)
+ 5 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Ficha.php(24): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-06-13 01:29:21 --> mysqli_sql_exception: Unknown column 'status' in 'field list' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `fi...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `fi...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `fi...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `fi...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(802): CodeIgniter\Model->doInsert(Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(744): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Ficha.php(24): CodeIgniter\Model->insert(Array)
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Ficha->create()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-06-13 01:29:21 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'status' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (:exer_id:, :cliente_id:, :exer_concluido:, :carga:, :data_conclusao:, :feedback:, :status:, :tipo_grupo_id:)', [...], false)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Ficha.php(24): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-13 01:29:21 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'status' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (\'43\', \'1\', \'43\', \'2\', \'12/06/2024\', \'ssss\', \'0\', \'3\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (\'43\', \'1\', \'43\', \'2\', \'12/06/2024\', \'ssss\', \'0\', \'3\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (:exer_id:, :cliente_id:, :exer_concluido:, :carga:, :data_conclusao:, :feedback:, :status:, :tipo_grupo_id:)', [...], false)
+ 4 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\Ficha.php(24): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-13 01:29:21 --> [Caused by] mysqli_sql_exception: Unknown column 'status' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (\'43\', \'1\', \'43\', \'2\', \'12/06/2024\', \'ssss\', \'0\', \'3\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (\'43\', \'1\', \'43\', \'2\', \'12/06/2024\', \'ssss\', \'0\', \'3\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (\'43\', \'1\', \'43\', \'2\', \'12/06/2024\', \'ssss\', \'0\', \'3\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (:exer_id:, :cliente_id:, :exer_concluido:, :carga:, :data_conclusao:, :feedback:, :status:, :tipo_grupo_id:)', [...], false)
+ 5 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Ficha.php(24): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-06-13 01:29:44 --> mysqli_sql_exception: Unknown column 'status' in 'field list' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `fi...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `fi...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `fi...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `fi...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(802): CodeIgniter\Model->doInsert(Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(744): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Ficha.php(24): CodeIgniter\Model->insert(Array)
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Ficha->create()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-06-13 01:29:44 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'status' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (:exer_id:, :cliente_id:, :exer_concluido:, :carga:, :data_conclusao:, :feedback:, :status:, :tipo_grupo_id:)', [...], false)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Ficha.php(24): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-13 01:29:44 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'status' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (\'43\', \'1\', 0, \'false\', \'12/06/2024\', \'\', \'0\', \'3\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (\'43\', \'1\', 0, \'false\', \'12/06/2024\', \'\', \'0\', \'3\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (:exer_id:, :cliente_id:, :exer_concluido:, :carga:, :data_conclusao:, :feedback:, :status:, :tipo_grupo_id:)', [...], false)
+ 4 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\Ficha.php(24): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-13 01:29:44 --> [Caused by] mysqli_sql_exception: Unknown column 'status' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (\'43\', \'1\', 0, \'false\', \'12/06/2024\', \'\', \'0\', \'3\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (\'43\', \'1\', 0, \'false\', \'12/06/2024\', \'\', \'0\', \'3\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (\'43\', \'1\', 0, \'false\', \'12/06/2024\', \'\', \'0\', \'3\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (:exer_id:, :cliente_id:, :exer_concluido:, :carga:, :data_conclusao:, :feedback:, :status:, :tipo_grupo_id:)', [...], false)
+ 5 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Ficha.php(24): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-06-13 01:30:06 --> mysqli_sql_exception: Unknown column 'status' in 'field list' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `fi...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `fi...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `fi...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `fi...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(802): CodeIgniter\Model->doInsert(Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(744): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Ficha.php(24): CodeIgniter\Model->insert(Array)
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Ficha->create()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-06-13 01:30:06 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'status' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (:exer_id:, :cliente_id:, :exer_concluido:, :carga:, :data_conclusao:, :feedback:, :status:, :tipo_grupo_id:)', [...], false)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Ficha.php(24): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-13 01:30:06 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'status' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (\'43\', \'1\', 0, \'false\', \'12/06/2024\', \'\', \'0\', \'3\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (\'43\', \'1\', 0, \'false\', \'12/06/2024\', \'\', \'0\', \'3\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (:exer_id:, :cliente_id:, :exer_concluido:, :carga:, :data_conclusao:, :feedback:, :status:, :tipo_grupo_id:)', [...], false)
+ 4 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\Ficha.php(24): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-13 01:30:06 --> [Caused by] mysqli_sql_exception: Unknown column 'status' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (\'43\', \'1\', 0, \'false\', \'12/06/2024\', \'\', \'0\', \'3\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (\'43\', \'1\', 0, \'false\', \'12/06/2024\', \'\', \'0\', \'3\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (\'43\', \'1\', 0, \'false\', \'12/06/2024\', \'\', \'0\', \'3\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (:exer_id:, :cliente_id:, :exer_concluido:, :carga:, :data_conclusao:, :feedback:, :status:, :tipo_grupo_id:)', [...], false)
+ 5 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Ficha.php(24): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-06-13 01:30:23 --> mysqli_sql_exception: Unknown column 'status' in 'field list' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `fi...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `fi...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `fi...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `fi...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(802): CodeIgniter\Model->doInsert(Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(744): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Ficha.php(24): CodeIgniter\Model->insert(Array)
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Ficha->create()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-06-13 01:30:23 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'status' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (:exer_id:, :cliente_id:, :exer_concluido:, :carga:, :data_conclusao:, :feedback:, :status:, :tipo_grupo_id:)', [...], false)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Ficha.php(24): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-13 01:30:23 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'status' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (\'43\', \'1\', \'43\', \'15\', \'12/06/2024\', \'ssss\', \'0\', \'3\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (\'43\', \'1\', \'43\', \'15\', \'12/06/2024\', \'ssss\', \'0\', \'3\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (:exer_id:, :cliente_id:, :exer_concluido:, :carga:, :data_conclusao:, :feedback:, :status:, :tipo_grupo_id:)', [...], false)
+ 4 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\Ficha.php(24): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-13 01:30:23 --> [Caused by] mysqli_sql_exception: Unknown column 'status' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (\'43\', \'1\', \'43\', \'15\', \'12/06/2024\', \'ssss\', \'0\', \'3\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (\'43\', \'1\', \'43\', \'15\', \'12/06/2024\', \'ssss\', \'0\', \'3\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (\'43\', \'1\', \'43\', \'15\', \'12/06/2024\', \'ssss\', \'0\', \'3\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (:exer_id:, :cliente_id:, :exer_concluido:, :carga:, :data_conclusao:, :feedback:, :status:, :tipo_grupo_id:)', [...], false)
+ 5 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Ficha.php(24): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-06-13 01:31:07 --> mysqli_sql_exception: Unknown column 'status' in 'field list' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `fi...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `fi...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `fi...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `fi...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(802): CodeIgniter\Model->doInsert(Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(744): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Ficha.php(24): CodeIgniter\Model->insert(Array)
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Ficha->create()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-06-13 01:31:07 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'status' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (:exer_id:, :cliente_id:, :exer_concluido:, :carga:, :data_conclusao:, :feedback:, :status:, :tipo_grupo_id:)', [...], false)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Ficha.php(24): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-13 01:31:07 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'status' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (\'43\', \'1\', \'43\', \'15\', \'12/06/2024\', \'ssss\', \'0\', \'3\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (\'43\', \'1\', \'43\', \'15\', \'12/06/2024\', \'ssss\', \'0\', \'3\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (:exer_id:, :cliente_id:, :exer_concluido:, :carga:, :data_conclusao:, :feedback:, :status:, :tipo_grupo_id:)', [...], false)
+ 4 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\Ficha.php(24): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-13 01:31:07 --> [Caused by] mysqli_sql_exception: Unknown column 'status' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (\'43\', \'1\', \'43\', \'15\', \'12/06/2024\', \'ssss\', \'0\', \'3\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (\'43\', \'1\', \'43\', \'15\', \'12/06/2024\', \'ssss\', \'0\', \'3\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (\'43\', \'1\', \'43\', \'15\', \'12/06/2024\', \'ssss\', \'0\', \'3\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ficha` (`exer_id`, `cliente_id`, `exer_concluido`, `carga`, `data_conclusao`, `feedback`, `status`, `tipo_grupo_id`) VALUES (:exer_id:, :cliente_id:, :exer_concluido:, :carga:, :data_conclusao:, :feedback:, :status:, :tipo_grupo_id:)', [...], false)
+ 5 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Ficha.php(24): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

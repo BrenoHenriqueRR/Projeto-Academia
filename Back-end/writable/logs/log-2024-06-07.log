@@ -1,0 +1,278 @@
+CRITICAL - 2024-06-07 01:09:16 --> TypeError: CodeIgniter\BaseModel::transformDataToArray(): Return value must be of type array, string returned
+in SYSTEMPATH\BaseModel.php on line 1804.
+ 1 SYSTEMPATH\BaseModel.php(768): CodeIgniter\BaseModel->transformDataToArray('foto_perfil', 'insert')
+ 2 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert('foto_perfil', true)
+ 3 APPPATH\Controllers\Cliente.php(115): CodeIgniter\Model->insert('foto_perfil', true)
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->inserirFoto()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 01:10:21 --> TypeError: CodeIgniter\BaseModel::transformDataToArray(): Return value must be of type array, string returned
+in SYSTEMPATH\BaseModel.php on line 1804.
+ 1 SYSTEMPATH\BaseModel.php(768): CodeIgniter\BaseModel->transformDataToArray('foto_perfil', 'insert')
+ 2 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert('foto_perfil', true)
+ 3 APPPATH\Controllers\Cliente.php(115): CodeIgniter\Model->insert('foto_perfil', true)
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->inserirFoto()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 01:15:46 --> TypeError: CodeIgniter\BaseModel::transformDataToArray(): Return value must be of type array, string returned
+in SYSTEMPATH\BaseModel.php on line 1804.
+ 1 SYSTEMPATH\BaseModel.php(956): CodeIgniter\BaseModel->transformDataToArray('assets/fotos-perfil/1717722946_232941b8e4a26b19d113.jpg', 'update')
+ 2 SYSTEMPATH\Model.php(807): CodeIgniter\BaseModel->update([...], 'assets/fotos-perfil/1717722946_232941b8e4a26b19d113.jpg')
+ 3 APPPATH\Controllers\Cliente.php(115): CodeIgniter\Model->update('foto_perfil', 'assets/fotos-perfil/1717722946_232941b8e4a26b19d113.jpg')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->inserirFoto()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 01:16:13 --> TypeError: CodeIgniter\BaseModel::transformDataToArray(): Return value must be of type array, string returned
+in SYSTEMPATH\BaseModel.php on line 1804.
+ 1 SYSTEMPATH\BaseModel.php(956): CodeIgniter\BaseModel->transformDataToArray('assets/fotos-perfil/1717722973_5c0a6eb1bfc7406b11a0.jpg', 'update')
+ 2 SYSTEMPATH\Model.php(807): CodeIgniter\BaseModel->update([...], 'assets/fotos-perfil/1717722973_5c0a6eb1bfc7406b11a0.jpg')
+ 3 APPPATH\Controllers\Cliente.php(115): CodeIgniter\Model->update('foto_perfil', 'assets/fotos-perfil/1717722973_5c0a6eb1bfc7406b11a0.jpg')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->inserirFoto()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 01:18:12 --> TypeError: CodeIgniter\BaseModel::transformDataToArray(): Return value must be of type array, string returned
+in SYSTEMPATH\BaseModel.php on line 1804.
+ 1 SYSTEMPATH\BaseModel.php(956): CodeIgniter\BaseModel->transformDataToArray('assets/fotos-perfil/1717723092_7a4fd4ad6d9d48557da8.png', 'update')
+ 2 SYSTEMPATH\Model.php(807): CodeIgniter\BaseModel->update([...], 'assets/fotos-perfil/1717723092_7a4fd4ad6d9d48557da8.png')
+ 3 APPPATH\Controllers\Cliente.php(115): CodeIgniter\Model->update('foto_perfil', 'assets/fotos-perfil/1717723092_7a4fd4ad6d9d48557da8.png')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->inserirFoto()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 01:18:19 --> TypeError: CodeIgniter\BaseModel::transformDataToArray(): Return value must be of type array, string returned
+in SYSTEMPATH\BaseModel.php on line 1804.
+ 1 SYSTEMPATH\BaseModel.php(956): CodeIgniter\BaseModel->transformDataToArray('assets/fotos-perfil/1717723099_33890aa2ac8fd52ff78d.jpeg', 'update')
+ 2 SYSTEMPATH\Model.php(807): CodeIgniter\BaseModel->update([...], 'assets/fotos-perfil/1717723099_33890aa2ac8fd52ff78d.jpeg')
+ 3 APPPATH\Controllers\Cliente.php(115): CodeIgniter\Model->update('foto_perfil', 'assets/fotos-perfil/1717723099_33890aa2ac8fd52ff78d.jpeg')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->inserirFoto()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 01:27:41 --> TypeError: CodeIgniter\BaseModel::transformDataToArray(): Return value must be of type array, string returned
+in SYSTEMPATH\BaseModel.php on line 1804.
+ 1 SYSTEMPATH\BaseModel.php(956): CodeIgniter\BaseModel->transformDataToArray('assets/fotos-perfil/1717723661_5528e5d92f603cae045d.jpg', 'update')
+ 2 SYSTEMPATH\Model.php(807): CodeIgniter\BaseModel->update([...], 'assets/fotos-perfil/1717723661_5528e5d92f603cae045d.jpg')
+ 3 APPPATH\Controllers\Cliente.php(118): CodeIgniter\Model->update('foto_perfil', 'assets/fotos-perfil/1717723661_5528e5d92f603cae045d.jpg')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->inserirFoto()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 01:32:05 --> TypeError: CodeIgniter\BaseModel::transformDataToArray(): Return value must be of type array, string returned
+in SYSTEMPATH\BaseModel.php on line 1804.
+ 1 SYSTEMPATH\BaseModel.php(956): CodeIgniter\BaseModel->transformDataToArray('assets/fotos-perfil/1717723925_b3332d00d803e0a557b8.jpeg', 'update')
+ 2 SYSTEMPATH\Model.php(807): CodeIgniter\BaseModel->update([...], 'assets/fotos-perfil/1717723925_b3332d00d803e0a557b8.jpeg')
+ 3 APPPATH\Controllers\Cliente.php(118): CodeIgniter\Model->update('foto_perfil', 'assets/fotos-perfil/1717723925_b3332d00d803e0a557b8.jpeg')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->inserirFoto()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 02:47:10 --> Error: Call to a member function isValid() on null
+in APPPATH\Controllers\Cliente.php on line 110.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->inserirFoto()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 02:47:33 --> Error: Call to a member function isValid() on null
+in APPPATH\Controllers\Cliente.php on line 110.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->inserirFoto()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 02:47:42 --> Error: Call to a member function isValid() on null
+in APPPATH\Controllers\Cliente.php on line 110.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->inserirFoto()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 02:47:45 --> Error: Call to a member function isValid() on null
+in APPPATH\Controllers\Cliente.php on line 110.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->inserirFoto()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 02:48:01 --> Error: Call to a member function isValid() on null
+in APPPATH\Controllers\Cliente.php on line 110.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->inserirFoto()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 02:48:06 --> Error: Call to a member function isValid() on null
+in APPPATH\Controllers\Cliente.php on line 110.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->inserirFoto()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 02:48:23 --> Error: Call to a member function isValid() on null
+in APPPATH\Controllers\Cliente.php on line 110.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->inserirFoto()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 02:49:03 --> Error: Call to a member function isValid() on null
+in APPPATH\Controllers\Cliente.php on line 110.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->inserirFoto()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 02:49:45 --> Error: Call to a member function isValid() on null
+in APPPATH\Controllers\Cliente.php on line 110.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->inserirFoto()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 02:49:47 --> Error: Call to a member function isValid() on null
+in APPPATH\Controllers\Cliente.php on line 110.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->inserirFoto()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 02:49:53 --> Error: Call to a member function isValid() on null
+in APPPATH\Controllers\Cliente.php on line 110.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->inserirFoto()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 02:49:55 --> Error: Call to a member function isValid() on null
+in APPPATH\Controllers\Cliente.php on line 110.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->inserirFoto()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 02:53:02 --> Error: Call to a member function isValid() on null
+in APPPATH\Controllers\Cliente.php on line 110.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->inserirFoto()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 02:53:08 --> Error: Call to a member function isValid() on null
+in APPPATH\Controllers\Cliente.php on line 110.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->inserirFoto()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 04:22:41 --> Error: Object of class CodeIgniter\Database\MySQLi\Result could not be converted to string
+in APPPATH\Controllers\Cliente.php on line 24.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 04:22:49 --> Error: Object of class CodeIgniter\Database\MySQLi\Result could not be converted to string
+in APPPATH\Controllers\Cliente.php on line 24.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 04:22:55 --> Error: Object of class CodeIgniter\Database\MySQLi\Result could not be converted to string
+in APPPATH\Controllers\Cliente.php on line 24.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 04:24:27 --> Error: Object of class CodeIgniter\Database\MySQLi\Result could not be converted to string
+in APPPATH\Controllers\Cliente.php on line 24.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 04:24:28 --> Error: Object of class CodeIgniter\Database\MySQLi\Result could not be converted to string
+in APPPATH\Controllers\Cliente.php on line 24.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 04:24:59 --> Error: Object of class CodeIgniter\Database\MySQLi\Result could not be converted to string
+in APPPATH\Controllers\Cliente.php on line 24.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 04:25:01 --> Error: Object of class CodeIgniter\Database\MySQLi\Result could not be converted to string
+in APPPATH\Controllers\Cliente.php on line 24.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 04:25:32 --> Error: Object of class CodeIgniter\Database\MySQLi\Result could not be converted to string
+in APPPATH\Controllers\Cliente.php on line 24.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 04:26:21 --> Error: Object of class App\Models\ClienteModel could not be converted to string
+in APPPATH\Controllers\Cliente.php on line 24.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 04:27:07 --> Error: Object of class App\Models\ClienteModel could not be converted to string
+in APPPATH\Controllers\Cliente.php on line 26.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 04:28:28 --> Error: Object of class CodeIgniter\Database\MySQLi\Result could not be converted to string
+in APPPATH\Controllers\Cliente.php on line 25.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 04:30:12 --> ErrorException: Array to string conversion
+in APPPATH\Controllers\Cliente.php on line 25.
+ 1 APPPATH\Controllers\Cliente.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Cliente.php', 25)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 04:32:12 --> TypeError: mysqli_result::fetch_object(): Argument #1 ($class) must be a valid class name, email given
+in SYSTEMPATH\Database\MySQLi\Result.php on line 154.
+ 1 SYSTEMPATH\Database\MySQLi\Result.php(154): mysqli_result->fetch_object('email')
+ 2 SYSTEMPATH\Database\BaseResult.php(159): CodeIgniter\Database\MySQLi\Result->fetchObject('email')
+ 3 SYSTEMPATH\Database\BaseResult.php(114): CodeIgniter\Database\BaseResult->getCustomResultObject('email')
+ 4 APPPATH\Controllers\Cliente.php(25): CodeIgniter\Database\BaseResult->getResult('email')
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 04:35:02 --> Error: Call to undefined method CodeIgniter\Database\MySQLi\Result::num_rows()
+in APPPATH\Controllers\Cliente.php on line 25.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 04:36:35 --> Error: Call to undefined method CodeIgniter\Database\MySQLi\Result::countAllResults()
+in APPPATH\Controllers\Cliente.php on line 25.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 04:37:08 --> Error: Call to undefined method CodeIgniter\Database\MySQLi\Result::countAllResults()
+in APPPATH\Controllers\Cliente.php on line 26.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 04:38:19 --> Error: Call to undefined method CodeIgniter\Database\MySQLi\Result::numRows()
+in APPPATH\Controllers\Cliente.php on line 26.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 04:38:58 --> Error: Call to a member function numRows() on array
+in APPPATH\Controllers\Cliente.php on line 27.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 04:40:54 --> ParseError: syntax error, unexpected token "if", expecting "," or ";"
+in APPPATH\Controllers\Cliente.php on line 27.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(290): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Cliente.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Cliente')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Cliente')
+ 4 SYSTEMPATH\CodeIgniter.php(899): class_exists('\\App\\Controllers\\Cliente', true)
+ 5 SYSTEMPATH\CodeIgniter.php(489): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

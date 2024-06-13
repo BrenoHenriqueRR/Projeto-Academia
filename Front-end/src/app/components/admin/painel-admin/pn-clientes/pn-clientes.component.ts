@@ -1,31 +1,46 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { PnClienteService } from '../../../../services/admin/pn-cliente/pn-cliente.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgFor, NgIf } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { LoginAdminService } from '../../../../services/admin/login/login-admin.service';
-
+import { ModalConfirmarComponent } from '../../../modal-confirmar/modal-confirmar.component';
 @Component({
   selector: 'app-pn-clientes',
   standalone: true,
-  imports: [NgxPaginationModule,NgFor,RouterLink,NgIf],
+  imports: [NgxPaginationModule,NgFor,RouterLink,NgIf,ModalConfirmarComponent],
   templateUrl: './pn-clientes.component.html',
   styleUrl: './pn-clientes.component.css'
 })
 export class PnClientesComponent {
+  @ViewChild(ModalConfirmarComponent) modal?: ModalConfirmarComponent
   public paginaAtual = 1;
   func!: string ;
-  dados_cli: any = '';
+  dados_cli: any = '';  
+loading: boolean = true;
+idDelete: any = '';
   constructor(private service:PnClienteService, private router:Router, private loginservice: LoginAdminService){
     this.List();
     this.funcao();
   }
 
+  openmodal(id: any){
+    this.idDelete = id;
+    this.modal?.openModal();
+  }
+  validarmodal(confirmed: boolean){
+    if (confirmed) {
+     this.excluir(this.idDelete);
+      // Execute further actions here
+    }
+  }
+  
   List(){
     this.service.pesquisar().subscribe(
       (dado) => {
         // console.log('Dados recebidos:', dado);
         this.dados_cli = dado;
+        this.loading = false;
         
       },
       (erro) => {
@@ -53,6 +68,11 @@ export class PnClientesComponent {
   }
 
   excluir(id: any){
-
+    const jsonString: string = '{"id": "' + id + '"}';
+    this.service.delete(jsonString).subscribe({
+      next: (msg) => {
+        location.reload();
+      }
+    })
   }
 }

@@ -8,10 +8,26 @@ import { Observable } from 'rxjs';
 })
 export class PnClienteService {
   private url = 'http://localhost/sites/Projeto1/Back-end/public/Cliente/pesquisar';
+  private urldel = 'http://localhost/sites/Projeto1/Back-end/public/Cliente/delete';
+  private urlFoto = 'http://localhost/sites/Projeto1/Back-end/public/Cliente/inserirFoto';
+  private urlgetFoto = 'http://localhost/sites/Projeto1/Back-end/public/Cliente/pegarFoto';
+  
 
   constructor(private http: HttpClient) {} 
 
   pesquisar(): Observable<CliPesquisar> {
     return this.http.get<CliPesquisar>(this.url);
+  }
+
+  delete(id: any): Observable<any>{
+    return this.http.post<any>(this.urldel,id)
+  }
+
+  inserirfoto(imagem: FormData): Observable<any>{
+    return this.http.post<any>(this.urlFoto,imagem)
+  }
+
+  pegarfoto(id: any): Observable<any>{
+    return this.http.post<any>(this.urlgetFoto,id)
   }
 }

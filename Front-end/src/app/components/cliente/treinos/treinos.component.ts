@@ -100,14 +100,14 @@ CreateArray(): void {
     }
     
     const arrayy: any = {
-      treino_id: exerId,
+      exer_id: exerId,
       cliente_id: this.dados_cli[index].cliente_id,
-      treinos_concluido: exerciciosConcluidos.includes(exerId) ? exerId : false,
+      exer_concluido: exerciciosConcluidos.includes(exerId) ? exerId : false,
       carga: cargavalue,
       data_conclusao: this.birthday.toLocaleDateString(),
       feedback: this.feedback,
-      status:'0' , // 0 concluido , 1 Em espera para fazer 
-      tipo_id: this.dados_cli[index].tipo_id,
+      status:'pendente' , // concluido , pendente , inativo 
+      tipo_grupo_id: this.dados_cli[index].tipo_grupo_id,
     };
     
     this.array[index] = arrayy;

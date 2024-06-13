@@ -1,0 +1,10 @@
+.fundo{
+    height: 100vh;
+    width: 100%;
+    overflow-y: hidden;
+  }
+  
+  .container {
+    max-width: 100%;
+    /* margin: 0 auto; */
+  }

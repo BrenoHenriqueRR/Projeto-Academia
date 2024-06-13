@@ -19,51 +19,59 @@ import { PerfilComponent } from './components/cliente/perfil/perfil.component';
 import { CadTreinoComponent } from './components/admin/painel-admin/cad-treino/cad-treino.component';
 import { authGuard } from './guard/auth.guard';
 import { PnTreinoComponent } from './components/admin/painel-admin/pn-treino/pn-treino.component';
+import { PnFinanceiroComponent } from './components/admin/painel-admin/pn-financeiro/pn-financeiro.component';
 
 
 
 export const routes: Routes = [
-{ path: '', 
-    component: HomeComponent
-},
+    {
+        path: '',
+        component: HomeComponent
+    },
 
-{path: 'login',
-    component: LoginComponent
-},
+    {
+        path: 'login',
+        component: LoginComponent
+    },
 
-{path: 'cadastro',
-    component: CadastroComponent
-},
+    {
+        path: 'cadastro',
+        component: CadastroComponent
+    },
 
-{path: 'home-cliente',
-    component: HomeClienteComponent, canActivate: [authGuard],
-    children:[
-        { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-        { path: 'dashboard', component: DashboardCliComponent, canActivate: [authGuard]},
-        {path: 'treinos', component: TreinosComponent, canActivate: [authGuard]},
-        {path: 'pagamentos', component: PagamentosComponent , canActivate: [authGuard]},
-        {path: 'perfil', component: PerfilComponent, canActivate: [authGuard]},
-    ]
-},
+    {
+        path: 'home-cliente',
+        component: HomeClienteComponent, canActivate: [authGuard],
+        children: [
+            { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+            { path: 'dashboard', component: DashboardCliComponent, canActivate: [authGuard] },
+            { path: 'treinos', component: TreinosComponent, canActivate: [authGuard] },
+            { path: 'pagamentos', component: PagamentosComponent, canActivate: [authGuard] },
+            { path: 'perfil', component: PerfilComponent, canActivate: [authGuard] },
+        ]
+    },
 
 
-{path: 'admin',
-    component: AdminComponent
-},
+    {
+        path: 'admin',
+        component: AdminComponent
+    },
 
-{path: 'admin/painel',
-    component: PainelAdminComponent,
-    children: [
-        { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-        { path: 'dashboard', component: DashboardComponent},
-        { path: 'funcionarios', component: PnFuncionariosComponent },
-        { path: 'clientes', component: PnClientesComponent},
-        { path: 'treinos', component: PnTreinoComponent},
-        {path: 'clientes/editar', component: ModalEditarComponent},
-        {path: 'clientes/treinos', component: CadTreinoComponent},
-    ], 
+    {
+        path: 'admin/painel',
+        component: PainelAdminComponent,
+        children: [
+            { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+            { path: 'dashboard', component: DashboardComponent },
+            { path: 'funcionarios', component: PnFuncionariosComponent },
+            { path: 'clientes', component: PnClientesComponent },
+            { path: 'treinos', component: PnTreinoComponent },
+            { path: 'financeiro', component: PnFinanceiroComponent },
+            { path: 'clientes/editar', component: ModalEditarComponent },
+            { path: 'clientes/treinos', component: CadTreinoComponent },
+        ],
 
-},
+    },
 
 ]
 

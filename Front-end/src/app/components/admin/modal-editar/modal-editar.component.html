@@ -1,6 +1,7 @@
 <div class="fundo">
     <div class="container">
         <div class="img-perfil">
+            <h1>Perfil</h1>
             <img src="assets/imgs/user.png" alt="user">
         </div>
         <div class="formulario">
@@ -16,7 +17,7 @@
                 </div>
 
                 <div class="input-box">
-                    <label for="personal">Personal</label>
+                    <label for="personal">Personal: {{dados.nome_personal}}</label>
                     <!-- <input type="text" formControlName = "personal_id" class="form-control" id="personal"  required> -->
                     <select (click)="personal()" formControlName="personal_id" class="form-control personal-options">
                         <option value="1" disabled selected>Escolha um personal</option>
@@ -37,18 +38,18 @@
                 </div>
             </div>
         }
-            <div class="continue-button">
-                <button 
-                type="submit" 
-                (click)="edit()"  
-                class="btn btn-primary">Enviar</button>
-            </div>
-            <div class="continue-button">
-                <div *ngIf="loading"><button class="btn btn-primary">
-                    Carregando...</button>
-                </div> 
+        <div class="continue-button">
+            <button *ngIf="!loading" type="submit" (click)="edit()" class="btn btn-primary">
+            Enviar
+            </button>
+            <div *ngIf="loading" class="spinner-container">
+                <button class="btn btn-primary" disabled>
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                </button>
+                </div>
             </div>
         </form>
         </div>
+        
     </div>
 </div>

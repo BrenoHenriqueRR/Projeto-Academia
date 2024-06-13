@@ -1,10 +1,14 @@
 <div class="fundo">
+    <div>
+        <h1 class="h1-perfil">Perfil</h1> 
+    </div>  
     <div class="container">
         <div class="img-perfil d-block">
             <div class="img-inserir">
                 <label for="fileInput">
-                  <p class="meio-img">Adicionar imagem</p>
-                  <img src="assets/imgs/user.png" alt="">
+                    <i class="fa-solid fa-plus meio-img"></i>
+                    <img class="fotoperfil" src={{caminhoFoto}} alt="">
+                    <!-- <p class="meio-img">Adicionar imagem</p> -->
                 </label>
               </div>
               
@@ -22,7 +26,7 @@
             <div class="input-group">
                 <div class="input-box">
                     <label for="nome">Nome</label>
-                    <input style="color: black;" type="text" id="nome" formControlName = "nome" class="form-control"  required>
+                    <input style="color: black;" type="text" id="nome" formControlName = "nome" class="form-control readonly-input" [readonly]="isReadonly" required>
                 </div>
 
                 <!-- <div class="input-box">
@@ -31,12 +35,12 @@
                 </div> -->
                 <div class="input-box">
                     <label for="CPF">CPF</label>
-                    <input type="text" formControlName = "CPF" class="form-control" id="CPF" > 
+                    <input type="text" formControlName = "CPF" class="form-control readonly-input" id="CPF" [readonly]="true"> 
                 </div>
                 
                 <div class="input-box">
                     <label for="email">Email</label>
-                    <input type="email" formControlName = "email" class="form-control" id="email" required>
+                    <input type="email" formControlName = "email" class="form-control readonly-input" id="email" [readonly]="isReadonly" required>
                 </div>
             </div>
         }
@@ -44,9 +48,10 @@
             <div class="continue-button">
                 @if(btn_editar == false){
                     <button class="btn btn-primary" (click)="HabilitarEditar()">Editar</button>
-                }
+                    }
                 @else{
                     <button type="submit" (click)="edit()" class="btn btn-primary">Enviar</button>
+                    <div class="excluir-cont"><button>Excluir conta</button></div>
                 }
                 </div>
         </form>

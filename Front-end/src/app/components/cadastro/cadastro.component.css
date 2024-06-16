@@ -96,12 +96,6 @@
     margin-bottom: 0.5rem;
 }
 
-.personal{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-}
 
 .input-box input {
     margin: 0.6rem 0;
@@ -159,14 +153,11 @@
     color: black;
 }
 
-.label{
-    margin-left: 2rem ;
-}
 
 .personal-options{
-    margin: 0.4rem 2rem;
+    margin: 0rem;
     padding: 0.8rem 1.5rem;
-    width: 85%;
+    width: 100%;
     border: none;
     border-radius: 10px;
     box-shadow: 1px 1px 6px #0000001c;

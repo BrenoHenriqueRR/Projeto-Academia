@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output , Input, signal } from '@angular/core';
 import { MenuHomeComponent } from '../menu-home/menu-home.component';
 import { LoginComponent } from '../login/login.component';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CadastroService } from '../../services/cadastro.service';
 import { NgIf } from '@angular/common';
@@ -30,7 +30,7 @@ export class CadastroComponent {
   Personal!: any;
   i = 0;
   
-  constructor(private service: CadastroService){
+  constructor(private service: CadastroService,private router: Router){
     this.formcadastro = new FormGroup({
      nome: new FormControl('', [Validators.required]),
      email: new FormControl('', [Validators.required, Validators.email]),
@@ -39,6 +39,7 @@ export class CadastroComponent {
      datanascimento: new FormControl('', [Validators.required]),
      CPF: new FormControl('', [Validators.required]),
      personal_id: new FormControl('', [Validators.required] ),
+     frequencia: new FormControl('', [Validators.required] ),
     });
   }
 
@@ -61,6 +62,9 @@ export class CadastroComponent {
             console.log(this.mensagemSucesso);
             this.formcadastro.reset();
             this.loading = false;
+            alert("Cadastro enviado com sucesso !!")
+            this.router.navigate(['/login']),{
+            };
           }
         })
     }

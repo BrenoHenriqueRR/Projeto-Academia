@@ -16,8 +16,7 @@ class Cliente extends BaseController
     {
 
         $json = file_get_contents('php://input');
-        
-        // Decodificar o JSON em um array PHP
+     
         $data = json_decode($json, true);
         $this->model->select('*');
         $this->model->where('email', $data['email']);
@@ -31,10 +30,6 @@ class Cliente extends BaseController
         }
         else
              return $this->response->setJSON('Email ja existe')->setStatusCode(200);
-        // if($validaremail != '' ){
-        //     return $this->response->setJSON('Email ja existe')->setStatusCode(200);
-        // }
-
     }
     public function delete()
     {
@@ -87,7 +82,7 @@ class Cliente extends BaseController
      }
 
      public function pesquisar(){
-        $dados = $this->model->select('c.id, c.nome AS cliente_nome, c.CPF, c.email, p.nome AS nome_personal')
+        $dados = $this->model->select('c.id, c.nome AS cliente_nome, c.CPF, c.email,c.frequencia, p.nome AS nome_personal')
         ->from('cliente AS c')
         ->join('funcionarios AS p', 'c.personal_id = p.id', 'INNER')
         ->groupBy('c.id');

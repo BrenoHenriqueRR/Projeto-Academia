@@ -38,10 +38,8 @@ idDelete: any = '';
   List(){
     this.service.pesquisar().subscribe(
       (dado) => {
-        // console.log('Dados recebidos:', dado);
         this.dados_cli = dado;
-        this.loading = false;
-        
+        this.loading = false;        
       },
       (erro) => {
         console.error('Erro ao buscar dados:', erro);

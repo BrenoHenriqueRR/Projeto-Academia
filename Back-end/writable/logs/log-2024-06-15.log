@@ -1,0 +1,623 @@
+CRITICAL - 2024-06-15 16:02:22 --> ErrorException: Undefined array key "cliente_id"
+in APPPATH\Controllers\Treino.php on line 95.
+ 1 APPPATH\Controllers\Treino.php(95): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "cliente_id"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Treino.php', 95)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-15 16:02:50 --> ErrorException: Undefined array key "cliente_id"
+in APPPATH\Controllers\Treino.php on line 95.
+ 1 APPPATH\Controllers\Treino.php(95): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "cliente_id"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Treino.php', 95)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-15 16:23:24 --> ErrorException: Undefined array key "exer_concluido"
+in APPPATH\Controllers\Ficha.php on line 26.
+ 1 APPPATH\Controllers\Ficha.php(26): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "exer_concluido"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Ficha.php', 26)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-15 16:26:20 --> ErrorException: Undefined array key "exer_concluido"
+in APPPATH\Controllers\Ficha.php on line 26.
+ 1 APPPATH\Controllers\Ficha.php(26): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "exer_concluido"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Ficha.php', 26)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-15 16:33:11 --> ErrorException: Trying to access array offset on value of type null
+in APPPATH\Controllers\Treino.php on line 103.
+ 1 APPPATH\Controllers\Treino.php(103): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Treino.php', 103)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-15 16:33:37 --> Error: Call to a member function getResult() on array
+in APPPATH\Controllers\Treino.php on line 128.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-06-15 16:54:31 --> mysqli_sql_exception: Unknown column 'tipo_grupo.tipo' in 'field list' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `cad_tre...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cad_tre...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cad_tre...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `cad_tre...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(676): CodeIgniter\Model->doFirst()
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Treino.php(110): CodeIgniter\BaseModel->first()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-06-15 16:54:31 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'tipo_grupo.tipo' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = :tipo_grupo.cliente_id:
+AND `tipo_grupo`.`tipo` = :tipo_grupo.tipo:
+AND `tipo_grupo`.`status` != :tipo_grupo.status:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\Treino.php(110): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-15 16:54:31 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'tipo_grupo.tipo' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = \'1\'
+AND `tipo_grupo`.`tipo` = \'A\'
+AND `tipo_grupo`.`status` != \'Concluído\'
+ LIMIT 1')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = \'1\'
+AND `tipo_grupo`.`tipo` = \'A\'
+AND `tipo_grupo`.`status` != \'Concluído\'
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = :tipo_grupo.cliente_id:
+AND `tipo_grupo`.`tipo` = :tipo_grupo.tipo:
+AND `tipo_grupo`.`status` != :tipo_grupo.status:
+ LIMIT 1', [...], false)
+ 4 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 6 APPPATH\Controllers\Treino.php(110): CodeIgniter\BaseModel->first()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-15 16:54:31 --> [Caused by] mysqli_sql_exception: Unknown column 'tipo_grupo.tipo' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = \'1\'
+AND `tipo_grupo`.`tipo` = \'A\'
+AND `tipo_grupo`.`status` != \'Concluído\'
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = \'1\'
+AND `tipo_grupo`.`tipo` = \'A\'
+AND `tipo_grupo`.`status` != \'Concluído\'
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = \'1\'
+AND `tipo_grupo`.`tipo` = \'A\'
+AND `tipo_grupo`.`status` != \'Concluído\'
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = :tipo_grupo.cliente_id:
+AND `tipo_grupo`.`tipo` = :tipo_grupo.tipo:
+AND `tipo_grupo`.`status` != :tipo_grupo.status:
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\Treino.php(110): CodeIgniter\BaseModel->first()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-06-15 16:54:41 --> mysqli_sql_exception: Unknown column 'tipo_grupo.tipo' in 'field list' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `cad_tre...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cad_tre...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cad_tre...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `cad_tre...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(676): CodeIgniter\Model->doFirst()
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Treino.php(110): CodeIgniter\BaseModel->first()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-06-15 16:54:41 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'tipo_grupo.tipo' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = :tipo_grupo.cliente_id:
+AND `tipo_grupo`.`tipo` = :tipo_grupo.tipo:
+AND `tipo_grupo`.`status` != :tipo_grupo.status:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\Treino.php(110): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-15 16:54:41 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'tipo_grupo.tipo' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = \'1\'
+AND `tipo_grupo`.`tipo` = \'A\'
+AND `tipo_grupo`.`status` != \'concluido\'
+ LIMIT 1')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = \'1\'
+AND `tipo_grupo`.`tipo` = \'A\'
+AND `tipo_grupo`.`status` != \'concluido\'
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = :tipo_grupo.cliente_id:
+AND `tipo_grupo`.`tipo` = :tipo_grupo.tipo:
+AND `tipo_grupo`.`status` != :tipo_grupo.status:
+ LIMIT 1', [...], false)
+ 4 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 6 APPPATH\Controllers\Treino.php(110): CodeIgniter\BaseModel->first()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-15 16:54:41 --> [Caused by] mysqli_sql_exception: Unknown column 'tipo_grupo.tipo' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = \'1\'
+AND `tipo_grupo`.`tipo` = \'A\'
+AND `tipo_grupo`.`status` != \'concluido\'
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = \'1\'
+AND `tipo_grupo`.`tipo` = \'A\'
+AND `tipo_grupo`.`status` != \'concluido\'
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = \'1\'
+AND `tipo_grupo`.`tipo` = \'A\'
+AND `tipo_grupo`.`status` != \'concluido\'
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = :tipo_grupo.cliente_id:
+AND `tipo_grupo`.`tipo` = :tipo_grupo.tipo:
+AND `tipo_grupo`.`status` != :tipo_grupo.status:
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\Treino.php(110): CodeIgniter\BaseModel->first()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-06-15 16:55:11 --> mysqli_sql_exception: Unknown column 'tipo_grupo.tipo' in 'field list' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `cad_tre...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cad_tre...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cad_tre...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `cad_tre...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(676): CodeIgniter\Model->doFirst()
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Treino.php(110): CodeIgniter\BaseModel->first()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-06-15 16:55:11 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'tipo_grupo.tipo' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = :tipo_grupo.cliente_id:
+AND `tipo_grupo`.`tipo` = :tipo_grupo.tipo:
+AND `tipo_grupo`.`status` != :tipo_grupo.status:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\Treino.php(110): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-15 16:55:11 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'tipo_grupo.tipo' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = \'1\'
+AND `tipo_grupo`.`tipo` = \'A\'
+AND `tipo_grupo`.`status` != \'concluido\'
+ LIMIT 1')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = \'1\'
+AND `tipo_grupo`.`tipo` = \'A\'
+AND `tipo_grupo`.`status` != \'concluido\'
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = :tipo_grupo.cliente_id:
+AND `tipo_grupo`.`tipo` = :tipo_grupo.tipo:
+AND `tipo_grupo`.`status` != :tipo_grupo.status:
+ LIMIT 1', [...], false)
+ 4 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 6 APPPATH\Controllers\Treino.php(110): CodeIgniter\BaseModel->first()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-15 16:55:11 --> [Caused by] mysqli_sql_exception: Unknown column 'tipo_grupo.tipo' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = \'1\'
+AND `tipo_grupo`.`tipo` = \'A\'
+AND `tipo_grupo`.`status` != \'concluido\'
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = \'1\'
+AND `tipo_grupo`.`tipo` = \'A\'
+AND `tipo_grupo`.`status` != \'concluido\'
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = \'1\'
+AND `tipo_grupo`.`tipo` = \'A\'
+AND `tipo_grupo`.`status` != \'concluido\'
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = :tipo_grupo.cliente_id:
+AND `tipo_grupo`.`tipo` = :tipo_grupo.tipo:
+AND `tipo_grupo`.`status` != :tipo_grupo.status:
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\Treino.php(110): CodeIgniter\BaseModel->first()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-06-15 16:57:36 --> mysqli_sql_exception: Unknown column 'tipo_grupo.tipo' in 'field list' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `cad_tre...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cad_tre...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cad_tre...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `cad_tre...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(676): CodeIgniter\Model->doFirst()
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Treino.php(111): CodeIgniter\BaseModel->first()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-06-15 16:57:36 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'tipo_grupo.tipo' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = :tipo_grupo.cliente_id:
+AND `tipo_grupo`.`tipo` = :tipo_grupo.tipo:
+AND `tipo_grupo`.`status` != :tipo_grupo.status:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\Treino.php(111): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-15 16:57:36 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'tipo_grupo.tipo' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = \'1\'
+AND `tipo_grupo`.`tipo` = \'A\'
+AND `tipo_grupo`.`status` != \'Concluído\'
+ LIMIT 1')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = \'1\'
+AND `tipo_grupo`.`tipo` = \'A\'
+AND `tipo_grupo`.`status` != \'Concluído\'
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = :tipo_grupo.cliente_id:
+AND `tipo_grupo`.`tipo` = :tipo_grupo.tipo:
+AND `tipo_grupo`.`status` != :tipo_grupo.status:
+ LIMIT 1', [...], false)
+ 4 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 6 APPPATH\Controllers\Treino.php(111): CodeIgniter\BaseModel->first()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-15 16:57:36 --> [Caused by] mysqli_sql_exception: Unknown column 'tipo_grupo.tipo' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = \'1\'
+AND `tipo_grupo`.`tipo` = \'A\'
+AND `tipo_grupo`.`status` != \'Concluído\'
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = \'1\'
+AND `tipo_grupo`.`tipo` = \'A\'
+AND `tipo_grupo`.`status` != \'Concluído\'
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = \'1\'
+AND `tipo_grupo`.`tipo` = \'A\'
+AND `tipo_grupo`.`status` != \'Concluído\'
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = :tipo_grupo.cliente_id:
+AND `tipo_grupo`.`tipo` = :tipo_grupo.tipo:
+AND `tipo_grupo`.`status` != :tipo_grupo.status:
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\Treino.php(111): CodeIgniter\BaseModel->first()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-06-15 16:57:37 --> mysqli_sql_exception: Unknown column 'tipo_grupo.tipo' in 'field list' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `cad_tre...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cad_tre...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cad_tre...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `cad_tre...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(676): CodeIgniter\Model->doFirst()
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Treino.php(111): CodeIgniter\BaseModel->first()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-06-15 16:57:37 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'tipo_grupo.tipo' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = :tipo_grupo.cliente_id:
+AND `tipo_grupo`.`tipo` = :tipo_grupo.tipo:
+AND `tipo_grupo`.`status` != :tipo_grupo.status:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\Treino.php(111): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-15 16:57:37 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'tipo_grupo.tipo' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = \'1\'
+AND `tipo_grupo`.`tipo` = \'A\'
+AND `tipo_grupo`.`status` != \'Concluído\'
+ LIMIT 1')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = \'1\'
+AND `tipo_grupo`.`tipo` = \'A\'
+AND `tipo_grupo`.`status` != \'Concluído\'
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = :tipo_grupo.cliente_id:
+AND `tipo_grupo`.`tipo` = :tipo_grupo.tipo:
+AND `tipo_grupo`.`status` != :tipo_grupo.status:
+ LIMIT 1', [...], false)
+ 4 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 6 APPPATH\Controllers\Treino.php(111): CodeIgniter\BaseModel->first()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-15 16:57:37 --> [Caused by] mysqli_sql_exception: Unknown column 'tipo_grupo.tipo' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = \'1\'
+AND `tipo_grupo`.`tipo` = \'A\'
+AND `tipo_grupo`.`status` != \'Concluído\'
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = \'1\'
+AND `tipo_grupo`.`tipo` = \'A\'
+AND `tipo_grupo`.`status` != \'Concluído\'
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = \'1\'
+AND `tipo_grupo`.`tipo` = \'A\'
+AND `tipo_grupo`.`status` != \'Concluído\'
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = :tipo_grupo.cliente_id:
+AND `tipo_grupo`.`tipo` = :tipo_grupo.tipo:
+AND `tipo_grupo`.`status` != :tipo_grupo.status:
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\Treino.php(111): CodeIgniter\BaseModel->first()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-06-15 16:58:12 --> mysqli_sql_exception: Unknown column 'tipo_grupo.tipo' in 'field list' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `cad_tre...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cad_tre...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cad_tre...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `cad_tre...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(676): CodeIgniter\Model->doFirst()
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Treino.php(111): CodeIgniter\BaseModel->first()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-06-15 16:58:12 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'tipo_grupo.tipo' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = :tipo_grupo.cliente_id:
+AND `tipo_grupo`.`tipo` = :tipo_grupo.tipo:
+AND `tipo_grupo`.`status` != :tipo_grupo.status:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\Treino.php(111): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-15 16:58:12 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'tipo_grupo.tipo' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = \'1\'
+AND `tipo_grupo`.`tipo` = \'A\'
+AND `tipo_grupo`.`status` != \'concluido\'
+ LIMIT 1')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = \'1\'
+AND `tipo_grupo`.`tipo` = \'A\'
+AND `tipo_grupo`.`status` != \'concluido\'
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = :tipo_grupo.cliente_id:
+AND `tipo_grupo`.`tipo` = :tipo_grupo.tipo:
+AND `tipo_grupo`.`status` != :tipo_grupo.status:
+ LIMIT 1', [...], false)
+ 4 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 6 APPPATH\Controllers\Treino.php(111): CodeIgniter\BaseModel->first()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-15 16:58:12 --> [Caused by] mysqli_sql_exception: Unknown column 'tipo_grupo.tipo' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = \'1\'
+AND `tipo_grupo`.`tipo` = \'A\'
+AND `tipo_grupo`.`status` != \'concluido\'
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = \'1\'
+AND `tipo_grupo`.`tipo` = \'A\'
+AND `tipo_grupo`.`status` != \'concluido\'
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = \'1\'
+AND `tipo_grupo`.`tipo` = \'A\'
+AND `tipo_grupo`.`status` != \'concluido\'
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `cad_treino`.*, `tipo_grupo`.`status`, `tipo_grupo`.`grupo_id`, `tipo_grupo`.`tipo`
+FROM `cad_treino`
+JOIN `tipo_grupo` ON `cad_treino`.`tipo_grupo_id` = `tipo_grupo`.`id`
+WHERE `tipo_grupo`.`cliente_id` = :tipo_grupo.cliente_id:
+AND `tipo_grupo`.`tipo` = :tipo_grupo.tipo:
+AND `tipo_grupo`.`status` != :tipo_grupo.status:
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\Treino.php(111): CodeIgniter\BaseModel->first()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

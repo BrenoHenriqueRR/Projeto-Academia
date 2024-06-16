@@ -6,5 +6,5 @@ use CodeIgniter\Model;
 class ClienteModel extends Model {
     protected $table = 'cliente'; // Nome da tabela no banco de dados
     protected $primaryKey = 'id'; // Chave primária da tabela
-    protected $allowedFields = ['nome','CPF', 'email', 'senha', 'endereco','datanascimento','personal_id','ultimo_login','status','foto_perfil'];   
+    protected $allowedFields = ['nome','CPF', 'email', 'senha', 'endereco','datanascimento','personal_id','ultimo_login','status','foto_perfil','frequencia'];    //frequencias 2,3 e 5(ilimitado);
 }

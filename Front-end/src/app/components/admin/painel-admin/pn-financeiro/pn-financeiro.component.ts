@@ -51,6 +51,6 @@ export class PnFinanceiroComponent {
   }
 
   cadastrar(){
-    console.log("testeee");
+    
   }
 }

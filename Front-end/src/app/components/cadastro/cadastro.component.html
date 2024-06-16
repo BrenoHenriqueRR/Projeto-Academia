@@ -1,6 +1,5 @@
-
 <app-menu-home></app-menu-home>
-<div class="fundo">    
+<div class="fundo">
     <div class="p-0 container">
         <div class="form-image">
             <img src="assets/imgs/halter.jpg" alt="">
@@ -12,68 +11,76 @@
                         <h1>Cadastre-se</h1>
                     </div>
                     <div class="login-button">
-                        <button><a routerLink ="/login">Entrar</a></button>
+                        <button><a routerLink="/login">Entrar</a></button>
                     </div>
                 </div>
 
                 <div class="input-group">
                     <div class="input-box">
                         <label for="nome">Nome</label>
-                        <input type="text" id="nome" formControlName = "nome" class="form-control" placeholder="John" required>
+                        <input type="text" id="nome" formControlName="nome" class="form-control" placeholder="John"
+                            required>
                     </div>
 
                     <div class="input-box">
                         <label for="endereco">Endereço</label>
-                        <input type="text" formControlName = "endereco" class="form-control" id="endereco" placeholder="Av Vinicius de Morais, 25" required>
+                        <input type="text" formControlName="endereco" class="form-control" id="endereco"
+                            placeholder="Av Vinicius de Morais, 25" required>
                     </div>
                     <div class="input-box">
                         <label for="datanascimento">Data de Nascimento</label>
-                        <input type="date" formControlName = "datanascimento" class="form-control" id="datanascimento">
+                        <input type="date" formControlName="datanascimento" class="form-control" id="datanascimento">
                     </div>
                     <div class="input-box">
                         <label for="CPF">CPF</label>
-                        <input type="text" mask="000.000.000-00" formControlName = "CPF" class="form-control" id="CPF">
+                        <input type="text" mask="000.000.000-00" formControlName="CPF" class="form-control" id="CPF">
                     </div>
-                    
+
                     <div class="input-box">
                         <label for="email">Email</label>
-                        <input type="email" formControlName = "email" class="form-control" id="email" placeholder="ifsp@email.com" required>
+                        <input type="email" formControlName="email" class="form-control" id="email"
+                            placeholder="ifsp@email.com" required>
                     </div>
                     <div class="input-box">
                         <label for="senha">Senha</label>
-                        <input type="password" formControlName = "senha" class="form-control" id="senha" placeholder="123@abc" required>
+                        <input type="password" formControlName="senha" class="form-control" id="senha"
+                            placeholder="123@abc" required>
                     </div>
                     <div class="personal">
                         <div class="input-box">
                             <div class="label">
                                 <label for="personal">Personal</label>
-                            </div>  
-                            <select (click)="personal()" formControlName="personal_id" class="form-control personal-options">
+                            </div>
+                            <select (click)="personal()" formControlName="personal_id"
+                                class="form-control personal-options">
                                 <option value="1" disabled selected>Escolha um personal</option>
                                 @for (dado of Personal; track dado;) {
-                                    <option value="{{ dado['id'] }}">{{ dado['nome'] }}</option>
+                                <option value="{{ dado['id'] }}">{{ dado['nome'] }}</option>
                                 }
-                            </select>                          
+                            </select>
                         </div>
                     </div>
+                    <div class="input-box">
+                        <div class="label">
+                            <label for="frequencia">Frequência</label>
+                        </div>
+                        <select formControlName="frequencia" title="Escolha quantos dias por semana você vai à academia" class="form-control personal-options">
+                            <option value="1" disabled selected>Escolha uma frequencia</option>
+                            <option value='2'>2 dias</option>
+                            <option value='3'>3 dias</option>
+                            <option value='5'>ilimitado</option> 
+                        </select>
+                    </div>
                 </div>
-        <div *ngIf="!loading" class="continue-button">
-        <button 
-        type="submit" 
-        (click)="submit()"  
-        class="btn btn-primary">Enviar</button>
-        </div>
-        <div class="continue-button">
-            <div *ngIf="loading">
-                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-            </div>
-        </div>
-        </form> 
-
-        <div class="mensagem" *ngIf="mensagemSucesso">
-            <p>{{ mensagemSucesso }}</p>
+                <div *ngIf="!loading" class="continue-button">
+                    <button type="submit" (click)="submit()" class="btn btn-primary">Enviar</button>
+                </div>
+                <div class="continue-button">
+                    <div *ngIf="loading">
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
-</div>
-

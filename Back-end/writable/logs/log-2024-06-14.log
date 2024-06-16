@@ -1,0 +1,239 @@
+CRITICAL - 2024-06-14 00:59:44 --> ErrorException: Undefined array key "cliente_id "
+in APPPATH\Controllers\Ficha.php on line 28.
+ 1 APPPATH\Controllers\Ficha.php(28): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "cliente_id "', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Ficha.php', 28)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-14 01:00:46 --> ErrorException: Undefined array key "cliente_id "
+in APPPATH\Controllers\Ficha.php on line 28.
+ 1 APPPATH\Controllers\Ficha.php(28): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "cliente_id "', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Ficha.php', 28)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-14 01:03:26 --> ErrorException: Undefined array key "feedback"
+in APPPATH\Controllers\Ficha.php on line 37.
+ 1 APPPATH\Controllers\Ficha.php(37): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "feedback"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Ficha.php', 37)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-14 01:11:08 --> ErrorException: Undefined array key ""
+in APPPATH\Controllers\Ficha.php on line 28.
+ 1 APPPATH\Controllers\Ficha.php(28): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key ""', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Ficha.php', 28)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-14 01:15:28 --> ErrorException: Undefined array key "email"
+in APPPATH\Controllers\Cliente.php on line 22.
+ 1 APPPATH\Controllers\Cliente.php(22): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "email"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Cliente.php', 22)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-14 01:20:18 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 970.
+ 1 SYSTEMPATH\BaseModel.php(970): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(807): CodeIgniter\BaseModel->update(null, [])
+ 3 APPPATH\Controllers\Ficha.php(44): CodeIgniter\Model->update()
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-14 01:20:36 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 970.
+ 1 SYSTEMPATH\BaseModel.php(970): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(807): CodeIgniter\BaseModel->update(null, [])
+ 3 APPPATH\Controllers\Ficha.php(44): CodeIgniter\Model->update()
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-14 01:21:31 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 970.
+ 1 SYSTEMPATH\BaseModel.php(970): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(807): CodeIgniter\BaseModel->update(null, [])
+ 3 APPPATH\Controllers\Ficha.php(44): CodeIgniter\Model->update()
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-14 01:21:32 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 970.
+ 1 SYSTEMPATH\BaseModel.php(970): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(807): CodeIgniter\BaseModel->update(null, [])
+ 3 APPPATH\Controllers\Ficha.php(44): CodeIgniter\Model->update()
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-14 01:21:33 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 970.
+ 1 SYSTEMPATH\BaseModel.php(970): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(807): CodeIgniter\BaseModel->update(null, [])
+ 3 APPPATH\Controllers\Ficha.php(44): CodeIgniter\Model->update()
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-14 01:21:38 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 970.
+ 1 SYSTEMPATH\BaseModel.php(970): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(807): CodeIgniter\BaseModel->update(null, [])
+ 3 APPPATH\Controllers\Ficha.php(44): CodeIgniter\Model->update()
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-14 01:22:13 --> ErrorException: Undefined variable $msg
+in APPPATH\Controllers\Ficha.php on line 49.
+ 1 APPPATH\Controllers\Ficha.php(49): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $msg', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Ficha.php', 49)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-14 01:23:58 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 970.
+ 1 SYSTEMPATH\BaseModel.php(970): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(807): CodeIgniter\BaseModel->update(null, [])
+ 3 APPPATH\Controllers\Ficha.php(45): CodeIgniter\Model->update()
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-14 01:24:01 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 970.
+ 1 SYSTEMPATH\BaseModel.php(970): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(807): CodeIgniter\BaseModel->update(null, [])
+ 3 APPPATH\Controllers\Ficha.php(45): CodeIgniter\Model->update()
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-06-14 01:39:11 --> mysqli_sql_exception: Unknown column 'g.status' in 'field list' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `ct`.`id...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `ct`.`id...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `ct`.`id...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Treino.php(100): CodeIgniter\Model->__call('get', Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-06-14 01:39:11 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'g.status' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `g`.`status` AS `status`, `tr`.`id` AS `tipo_id`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = :c.id:
+AND `g`.`status` = :g.status:
+GROUP BY `ct`.`id`', [...], false)
+ 2 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Treino.php(100): CodeIgniter\Model->__call('get', [])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-14 01:39:11 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'g.status' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `g`.`status` AS `status`, `tr`.`id` AS `tipo_id`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+AND `g`.`status` = \'pendente\'
+GROUP BY `ct`.`id`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `g`.`status` AS `status`, `tr`.`id` AS `tipo_id`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+AND `g`.`status` = \'pendente\'
+GROUP BY `ct`.`id`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `g`.`status` AS `status`, `tr`.`id` AS `tipo_id`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = :c.id:
+AND `g`.`status` = :g.status:
+GROUP BY `ct`.`id`', [...], false)
+ 4 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Treino.php(100): CodeIgniter\Model->__call('get', [])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-14 01:39:11 --> [Caused by] mysqli_sql_exception: Unknown column 'g.status' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `g`.`status` AS `status`, `tr`.`id` AS `tipo_id`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+AND `g`.`status` = \'pendente\'
+GROUP BY `ct`.`id`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `g`.`status` AS `status`, `tr`.`id` AS `tipo_id`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+AND `g`.`status` = \'pendente\'
+GROUP BY `ct`.`id`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `g`.`status` AS `status`, `tr`.`id` AS `tipo_id`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+AND `g`.`status` = \'pendente\'
+GROUP BY `ct`.`id`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `g`.`status` AS `status`, `tr`.`id` AS `tipo_id`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = :c.id:
+AND `g`.`status` = :g.status:
+GROUP BY `ct`.`id`', [...], false)
+ 5 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Treino.php(100): CodeIgniter\Model->__call('get', [])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

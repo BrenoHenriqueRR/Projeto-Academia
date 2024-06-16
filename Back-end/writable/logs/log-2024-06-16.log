@@ -1,0 +1,1197 @@
+ERROR - 2024-06-16 14:32:03 --> mysqli_sql_exception: Table 'projeto-1.status' doesn't exist in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `ct`.`id...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `ct`.`id...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `ct`.`id...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Treino.php(99): CodeIgniter\Model->__call('get', Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-06-16 14:32:03 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'projeto-1.status' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `status` `st` ON `tg`.`status` = `st`.`status`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = :c.id:
+GROUP BY `ct`.`id`', [...], false)
+ 2 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Treino.php(99): CodeIgniter\Model->__call('get', [])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-16 14:32:03 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'projeto-1.status' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `status` `st` ON `tg`.`status` = `st`.`status`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `ct`.`id`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `status` `st` ON `tg`.`status` = `st`.`status`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `ct`.`id`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `status` `st` ON `tg`.`status` = `st`.`status`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = :c.id:
+GROUP BY `ct`.`id`', [...], false)
+ 4 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Treino.php(99): CodeIgniter\Model->__call('get', [])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-16 14:32:03 --> [Caused by] mysqli_sql_exception: Table 'projeto-1.status' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `status` `st` ON `tg`.`status` = `st`.`status`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `ct`.`id`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `status` `st` ON `tg`.`status` = `st`.`status`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `ct`.`id`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `status` `st` ON `tg`.`status` = `st`.`status`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `ct`.`id`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `status` `st` ON `tg`.`status` = `st`.`status`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = :c.id:
+GROUP BY `ct`.`id`', [...], false)
+ 5 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Treino.php(99): CodeIgniter\Model->__call('get', [])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-06-16 14:32:49 --> mysqli_sql_exception: Table 'projeto-1.status' doesn't exist in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `ct`.`id...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `ct`.`id...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `ct`.`id...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Treino.php(100): CodeIgniter\Model->__call('get', Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-06-16 14:32:49 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'projeto-1.status' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `st`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `status` `st` ON `tg`.`status` = `st`.`status`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = :c.id:
+GROUP BY `ct`.`id`', [...], false)
+ 2 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Treino.php(100): CodeIgniter\Model->__call('get', [])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-16 14:32:49 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'projeto-1.status' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `st`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `status` `st` ON `tg`.`status` = `st`.`status`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `ct`.`id`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `st`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `status` `st` ON `tg`.`status` = `st`.`status`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `ct`.`id`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `st`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `status` `st` ON `tg`.`status` = `st`.`status`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = :c.id:
+GROUP BY `ct`.`id`', [...], false)
+ 4 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Treino.php(100): CodeIgniter\Model->__call('get', [])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-16 14:32:49 --> [Caused by] mysqli_sql_exception: Table 'projeto-1.status' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `st`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `status` `st` ON `tg`.`status` = `st`.`status`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `ct`.`id`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `st`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `status` `st` ON `tg`.`status` = `st`.`status`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `ct`.`id`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `st`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `status` `st` ON `tg`.`status` = `st`.`status`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `ct`.`id`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `st`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `status` `st` ON `tg`.`status` = `st`.`status`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = :c.id:
+GROUP BY `ct`.`id`', [...], false)
+ 5 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Treino.php(100): CodeIgniter\Model->__call('get', [])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-06-16 14:32:50 --> mysqli_sql_exception: Table 'projeto-1.status' doesn't exist in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `ct`.`id...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `ct`.`id...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `ct`.`id...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Treino.php(100): CodeIgniter\Model->__call('get', Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-06-16 14:32:50 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'projeto-1.status' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `st`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `status` `st` ON `tg`.`status` = `st`.`status`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = :c.id:
+GROUP BY `ct`.`id`', [...], false)
+ 2 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Treino.php(100): CodeIgniter\Model->__call('get', [])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-16 14:32:50 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'projeto-1.status' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `st`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `status` `st` ON `tg`.`status` = `st`.`status`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `ct`.`id`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `st`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `status` `st` ON `tg`.`status` = `st`.`status`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `ct`.`id`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `st`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `status` `st` ON `tg`.`status` = `st`.`status`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = :c.id:
+GROUP BY `ct`.`id`', [...], false)
+ 4 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Treino.php(100): CodeIgniter\Model->__call('get', [])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-16 14:32:50 --> [Caused by] mysqli_sql_exception: Table 'projeto-1.status' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `st`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `status` `st` ON `tg`.`status` = `st`.`status`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `ct`.`id`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `st`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `status` `st` ON `tg`.`status` = `st`.`status`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `ct`.`id`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `st`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `status` `st` ON `tg`.`status` = `st`.`status`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `ct`.`id`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `st`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `status` `st` ON `tg`.`status` = `st`.`status`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = :c.id:
+GROUP BY `ct`.`id`', [...], false)
+ 5 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Treino.php(100): CodeIgniter\Model->__call('get', [])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-06-16 14:34:16 --> mysqli_sql_exception: Table 'projeto-1.exercicio' doesn't exist in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `ct`.`id...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `ct`.`id...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `ct`.`id...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Treino.php(99): CodeIgniter\Model->__call('get', Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-06-16 14:34:16 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'projeto-1.exercicio' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `exercicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = :c.id:
+GROUP BY `ct`.`id`', [...], false)
+ 2 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Treino.php(99): CodeIgniter\Model->__call('get', [])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-16 14:34:16 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'projeto-1.exercicio' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `exercicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `ct`.`id`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `exercicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `ct`.`id`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `exercicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = :c.id:
+GROUP BY `ct`.`id`', [...], false)
+ 4 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Treino.php(99): CodeIgniter\Model->__call('get', [])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-16 14:34:16 --> [Caused by] mysqli_sql_exception: Table 'projeto-1.exercicio' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `exercicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `ct`.`id`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `exercicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `ct`.`id`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `exercicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `ct`.`id`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `exercicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = :c.id:
+GROUP BY `ct`.`id`', [...], false)
+ 5 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Treino.php(99): CodeIgniter\Model->__call('get', [])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-06-16 14:34:17 --> mysqli_sql_exception: Table 'projeto-1.exercicio' doesn't exist in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `ct`.`id...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `ct`.`id...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `ct`.`id...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Treino.php(99): CodeIgniter\Model->__call('get', Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-06-16 14:34:17 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'projeto-1.exercicio' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `exercicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = :c.id:
+GROUP BY `ct`.`id`', [...], false)
+ 2 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Treino.php(99): CodeIgniter\Model->__call('get', [])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-16 14:34:17 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'projeto-1.exercicio' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `exercicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `ct`.`id`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `exercicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `ct`.`id`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `exercicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = :c.id:
+GROUP BY `ct`.`id`', [...], false)
+ 4 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Treino.php(99): CodeIgniter\Model->__call('get', [])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-16 14:34:17 --> [Caused by] mysqli_sql_exception: Table 'projeto-1.exercicio' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `exercicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `ct`.`id`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `exercicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `ct`.`id`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `exercicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `ct`.`id`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `exercicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = :c.id:
+GROUP BY `ct`.`id`', [...], false)
+ 5 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Treino.php(99): CodeIgniter\Model->__call('get', [])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-16 14:35:58 --> Error: Call to a member function get() on array
+in APPPATH\Controllers\Treino.php on line 101.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-16 14:36:20 --> Error: Call to a member function get() on array
+in APPPATH\Controllers\Treino.php on line 101.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-16 14:36:25 --> Error: Call to a member function get() on array
+in APPPATH\Controllers\Treino.php on line 101.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-06-16 14:38:54 --> mysqli_sql_exception: Table 'projeto-1.exercicio' doesn't exist in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `ct`.`id...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `ct`.`id...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `ct`.`id...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Treino.php(102): CodeIgniter\Model->__call('get', Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-06-16 14:38:54 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'projeto-1.exercicio' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `exercicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = :c.id:
+AND `tg`.`status` = :tg.status:
+GROUP BY `ct`.`id`
+ORDER BY `ct`.`created_at` ASC
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Treino.php(102): CodeIgniter\Model->__call('get', [])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-16 14:38:54 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'projeto-1.exercicio' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `exercicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+AND `tg`.`status` = \'Pendente\'
+GROUP BY `ct`.`id`
+ORDER BY `ct`.`created_at` ASC
+ LIMIT 1')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `exercicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+AND `tg`.`status` = \'Pendente\'
+GROUP BY `ct`.`id`
+ORDER BY `ct`.`created_at` ASC
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `exercicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = :c.id:
+AND `tg`.`status` = :tg.status:
+GROUP BY `ct`.`id`
+ORDER BY `ct`.`created_at` ASC
+ LIMIT 1', [...], false)
+ 4 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Treino.php(102): CodeIgniter\Model->__call('get', [])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-16 14:38:54 --> [Caused by] mysqli_sql_exception: Table 'projeto-1.exercicio' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `exercicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+AND `tg`.`status` = \'Pendente\'
+GROUP BY `ct`.`id`
+ORDER BY `ct`.`created_at` ASC
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `exercicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+AND `tg`.`status` = \'Pendente\'
+GROUP BY `ct`.`id`
+ORDER BY `ct`.`created_at` ASC
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `exercicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+AND `tg`.`status` = \'Pendente\'
+GROUP BY `ct`.`id`
+ORDER BY `ct`.`created_at` ASC
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `exercicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = :c.id:
+AND `tg`.`status` = :tg.status:
+GROUP BY `ct`.`id`
+ORDER BY `ct`.`created_at` ASC
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Treino.php(102): CodeIgniter\Model->__call('get', [])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-06-16 14:39:00 --> mysqli_sql_exception: Unknown column 'ct.created_at' in 'order clause' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `ct`.`id...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `ct`.`id...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `ct`.`id...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Treino.php(102): CodeIgniter\Model->__call('get', Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-06-16 14:39:00 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'ct.created_at' in 'order clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = :c.id:
+AND `tg`.`status` = :tg.status:
+GROUP BY `ct`.`id`
+ORDER BY `ct`.`created_at` ASC
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Treino.php(102): CodeIgniter\Model->__call('get', [])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-16 14:39:00 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'ct.created_at' in 'order clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+AND `tg`.`status` = \'Pendente\'
+GROUP BY `ct`.`id`
+ORDER BY `ct`.`created_at` ASC
+ LIMIT 1')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+AND `tg`.`status` = \'Pendente\'
+GROUP BY `ct`.`id`
+ORDER BY `ct`.`created_at` ASC
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = :c.id:
+AND `tg`.`status` = :tg.status:
+GROUP BY `ct`.`id`
+ORDER BY `ct`.`created_at` ASC
+ LIMIT 1', [...], false)
+ 4 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Treino.php(102): CodeIgniter\Model->__call('get', [])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-16 14:39:00 --> [Caused by] mysqli_sql_exception: Unknown column 'ct.created_at' in 'order clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+AND `tg`.`status` = \'Pendente\'
+GROUP BY `ct`.`id`
+ORDER BY `ct`.`created_at` ASC
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+AND `tg`.`status` = \'Pendente\'
+GROUP BY `ct`.`id`
+ORDER BY `ct`.`created_at` ASC
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+AND `tg`.`status` = \'Pendente\'
+GROUP BY `ct`.`id`
+ORDER BY `ct`.`created_at` ASC
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = :c.id:
+AND `tg`.`status` = :tg.status:
+GROUP BY `ct`.`id`
+ORDER BY `ct`.`created_at` ASC
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Treino.php(102): CodeIgniter\Model->__call('get', [])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-06-16 14:47:36 --> mysqli_sql_exception: Unknown column 'ct.data_criacao' in 'order clause' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `ct`.`id...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `ct`.`id...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `ct`.`id...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Treino.php(103): CodeIgniter\Model->__call('get', Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-06-16 14:47:36 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'ct.data_criacao' in 'order clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = :c.id:
+AND `tg`.`status` = :tg.status:
+GROUP BY `ct`.`id`
+ORDER BY `ct`.`data_criacao` ASC
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Treino.php(103): CodeIgniter\Model->__call('get', [])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-16 14:47:36 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'ct.data_criacao' in 'order clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+AND `tg`.`status` = \'Pendente\'
+GROUP BY `ct`.`id`
+ORDER BY `ct`.`data_criacao` ASC
+ LIMIT 1')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+AND `tg`.`status` = \'Pendente\'
+GROUP BY `ct`.`id`
+ORDER BY `ct`.`data_criacao` ASC
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = :c.id:
+AND `tg`.`status` = :tg.status:
+GROUP BY `ct`.`id`
+ORDER BY `ct`.`data_criacao` ASC
+ LIMIT 1', [...], false)
+ 4 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Treino.php(103): CodeIgniter\Model->__call('get', [])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-16 14:47:36 --> [Caused by] mysqli_sql_exception: Unknown column 'ct.data_criacao' in 'order clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+AND `tg`.`status` = \'Pendente\'
+GROUP BY `ct`.`id`
+ORDER BY `ct`.`data_criacao` ASC
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+AND `tg`.`status` = \'Pendente\'
+GROUP BY `ct`.`id`
+ORDER BY `ct`.`data_criacao` ASC
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+AND `tg`.`status` = \'Pendente\'
+GROUP BY `ct`.`id`
+ORDER BY `ct`.`data_criacao` ASC
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = :c.id:
+AND `tg`.`status` = :tg.status:
+GROUP BY `ct`.`id`
+ORDER BY `ct`.`data_criacao` ASC
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Treino.php(103): CodeIgniter\Model->__call('get', [])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-16 15:01:13 --> Error: Call to a member function get() on array
+in APPPATH\Controllers\Treino.php on line 102.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-06-16 15:05:20 --> mysqli_sql_exception: Operand should contain 1 column(s) in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `ct`.`id...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `ct`.`id...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `ct`.`id...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Treino.php(106): CodeIgniter\Model->__call('get', Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-06-16 15:05:20 --> CodeIgniter\Database\Exceptions\DatabaseException: Operand should contain 1 column(s)
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = :c.id:
+AND `tg`.`status` = :tg.status:
+AND `tg`.`id` = :tg.id:
+GROUP BY `ct`.`id`
+ORDER BY `tg`.`data_criacao` ASC', [...], false)
+ 2 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Treino.php(106): CodeIgniter\Model->__call('get', [])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-16 15:05:20 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Operand should contain 1 column(s)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+AND `tg`.`status` = \'Pendente\'
+AND `tg`.`id` = (\'5\',\'Pendente\',\'\',\'2024-06-15\',\'2024-06-16 11:00:39\',\'1\',\'1\',\'1\',\'1\')
+GROUP BY `ct`.`id`
+ORDER BY `tg`.`data_criacao` ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+AND `tg`.`status` = \'Pendente\'
+AND `tg`.`id` = (\'5\',\'Pendente\',\'\',\'2024-06-15\',\'2024-06-16 11:00:39\',\'1\',\'1\',\'1\',\'1\')
+GROUP BY `ct`.`id`
+ORDER BY `tg`.`data_criacao` ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = :c.id:
+AND `tg`.`status` = :tg.status:
+AND `tg`.`id` = :tg.id:
+GROUP BY `ct`.`id`
+ORDER BY `tg`.`data_criacao` ASC', [...], false)
+ 4 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Treino.php(106): CodeIgniter\Model->__call('get', [])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-16 15:05:20 --> [Caused by] mysqli_sql_exception: Operand should contain 1 column(s)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+AND `tg`.`status` = \'Pendente\'
+AND `tg`.`id` = (\'5\',\'Pendente\',\'\',\'2024-06-15\',\'2024-06-16 11:00:39\',\'1\',\'1\',\'1\',\'1\')
+GROUP BY `ct`.`id`
+ORDER BY `tg`.`data_criacao` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+AND `tg`.`status` = \'Pendente\'
+AND `tg`.`id` = (\'5\',\'Pendente\',\'\',\'2024-06-15\',\'2024-06-16 11:00:39\',\'1\',\'1\',\'1\',\'1\')
+GROUP BY `ct`.`id`
+ORDER BY `tg`.`data_criacao` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = \'1\'
+AND `tg`.`status` = \'Pendente\'
+AND `tg`.`id` = (\'5\',\'Pendente\',\'\',\'2024-06-15\',\'2024-06-16 11:00:39\',\'1\',\'1\',\'1\',\'1\')
+GROUP BY `ct`.`id`
+ORDER BY `tg`.`data_criacao` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `ct`.`id`, `ct`.`series`, `ct`.`repeticoes`, `e`.`exercicio` AS `exercicio`, `g`.`grupo` AS `grupo`, `tr`.`tipo` AS `tipo`, `tg`.`id` AS `tipo_grupo_id`, `f`.`id` AS `funcionario_id`, `c`.`id` AS `cliente_id`, `g`.`id` AS `grupo_id`, `e`.`id` AS `exer_id`, `tr`.`id` AS `tipo_id`, `tg`.`status` AS `status`
+FROM (`cad_treino`, `cad_treino` `ct`)
+JOIN `execicio` `e` ON `ct`.`exer_id` = `e`.`id`
+JOIN `tipo_grupo` `tg` ON `ct`.`tipo_grupo_id` = `tg`.`id`
+JOIN `treino_grupo` `g` ON `tg`.`grupo_id` = `g`.`id`
+JOIN `treino_tipo` `tr` ON `tg`.`treino_id` = `tr`.`id`
+JOIN `funcionarios` `f` ON `tg`.`funcionario_id` = `f`.`id`
+JOIN `cliente` `c` ON `tg`.`cliente_id` = `c`.`id`
+WHERE `c`.`id` = :c.id:
+AND `tg`.`status` = :tg.status:
+AND `tg`.`id` = :tg.id:
+GROUP BY `ct`.`id`
+ORDER BY `tg`.`data_criacao` ASC', [...], false)
+ 5 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Treino.php(106): CodeIgniter\Model->__call('get', [])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

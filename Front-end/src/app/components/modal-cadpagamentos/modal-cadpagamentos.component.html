@@ -7,6 +7,16 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+              <div class="inf-cli">
+                @for (item of cliente; track $index) {
+                  <p><strong>Nome:</strong> {{ item['cliente_nome'] }}</p>
+                  <p><strong>Frequencia:</strong> {{ item['frequencia'] }} dias</p>
+                  <p><strong>Cpf:</strong> {{ item['CPF']}}</p>
+                  <div *ngFor="let valor of valores | keyvalue">
+                    <p *ngIf="valor.key == item['frequencia']"><strong>Valor:</strong> {{valor.value}}</p>
+                  </div>
+                }
+              </div>
               Clique em sim para cadastrar o pagamento mensal do cliente
             </div>
             <div class="modal-footer">

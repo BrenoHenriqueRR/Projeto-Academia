@@ -1,0 +1,38 @@
+<!-- Modal -->
+<div #modal class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmação</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="inf-cli">
+          @for (item of cliente; track $index) {
+            <div id="comprovante">
+              <div class="comprovante-header">
+                <h1>Comprovante de Pagamento</h1>
+              </div>
+              <div class="comprovante-body">
+                <p><strong>Nome do Cliente:</strong>{{item.nome}}</p>
+                <p><strong>CPF:</strong>{{item.cpf}}</p>
+                <p><strong>Data do Pagamento:</strong> {{item.data_pagamento}}</p>
+                <p><strong>Valor Pago:</strong> {{item.valor}}</p>
+                <p><strong>Método de Pagamento:</strong> Cartão de Crédito</p>
+                <p><strong>Referência da Fatura:</strong> #{{item.id}}</p>
+              </div>
+              <div class="comprovante-footer">
+                <p>Obrigado por seu pagamento!</p>
+                <p>Fitness Prime</p>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="returnfalse()">Fechar</button>
+        <button type="button" class="btn btn-primary" (click)="gerarPdf()"><i class="fa-solid fa-file-pdf"></i></button>
+      </div>
+    </div>
+  </div>
+</div>

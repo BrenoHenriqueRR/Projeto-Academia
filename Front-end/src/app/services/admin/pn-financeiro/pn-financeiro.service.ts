@@ -6,11 +6,19 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PnFinanceiroService {
-  url: any = 'http://localhost/sites/Projeto1/Back-end/public/Financeiro/create'
+  private url = 'http://localhost/sites/Projeto1/Back-end/public/Financeiro/create'
+  private urlP = 'http://localhost/sites/Projeto1/Back-end/public/Financeiro/pesquisar'
+  private urlUP = 'http://localhost/sites/Projeto1/Back-end/public/Financeiro/update'
 
   constructor(private http: HttpClient) {} 
 
   cadastrar(dados:any): Observable<any>{
      return this.http.post<any>(this.url,dados);
+  }
+  pesquisar(dados:any): Observable<any>{
+     return this.http.post<any>(this.urlP,dados);
+  }
+  update(dados:any): Observable<any>{
+     return this.http.post<any>(this.urlUP,dados);
   }
 }

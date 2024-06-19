@@ -93,6 +93,21 @@ class Cliente extends BaseController
         return $this->response->setJSON($data->getResult())->setStatusCode(200);
  
     }
+     public function pesquisarpid(){
+
+        $json = file_get_contents('php://input');
+        $data = json_decode($json, true);
+        $dados = $this->model->select('c.id, c.nome AS cliente_nome, c.CPF, c.email,c.frequencia,p.id as funcionario_id, p.nome AS nome_personal')
+        ->from('cliente AS c')
+        ->join('funcionarios AS p', 'c.personal_id = p.id', 'INNER')
+        ->where('c.id',$data['id'])
+        ->groupBy('c.id');
+ 
+        $data = $dados->get();  
+ 
+        return $this->response->setJSON($data->getResult())->setStatusCode(200);
+ 
+    }
      public function pesquisarid(){
         $json = file_get_contents('php://input');
         $data = json_decode($json, true);

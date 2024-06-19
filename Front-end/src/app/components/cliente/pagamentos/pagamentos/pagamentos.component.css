@@ -61,3 +61,8 @@
 .btn-pagar:hover{
     background-color: #ddee27;
 }
+
+.comprovante{
+    color: white;
+    cursor: pointer;
+}

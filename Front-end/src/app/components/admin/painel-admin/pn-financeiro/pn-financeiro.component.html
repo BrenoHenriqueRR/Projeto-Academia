@@ -10,15 +10,15 @@
             </div>
             <div class="card">
                 <h3>Cadastrar pagamento do cliente</h3>
-                <div class="cad-pagamentos">
-                    <select (click)="Clientes()" formcontrolname="nmcliente" [(ngModel)]="selectedOption"  class="form-control">
+                <div  class="cad-pagamentos">
+                    <select (click)="Clientes()"  [(ngModel)]="selectedOption"  class="form-control">
                         <option value="0" disabled selected>Escolha um cliente</option>
                         @for (dado of clientes; track dado;) {
                             <option value="{{ dado['id'] }}">{{ dado['cliente_nome'] }}</option>
                         }
                         </select>
                     <button [disabled]="!selectedOption" class="cad-btn" (click)="openModal();">Cadastrar</button>
-                    <app-modal-cadpagamentos (confirm)="validarmodal($event)"></app-modal-cadpagamentos>
+                    <app-modal-cadpagamentos [idcli]="selectedOption" (confirm)="validarmodal($event)"></app-modal-cadpagamentos>
                 </div>
             </div>
             <div class="card">
@@ -36,94 +36,6 @@
                             </tr>
                         </thead>
                         <tbody id="clientes-list">
-                            <tr>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                            </tr>
-                            <tr>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                            </tr>
-                            <tr>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                            </tr>
-                            <tr>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                            </tr>
-                            <tr>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                            </tr>
-                            <tr>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                            </tr>
-                            <tr>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                            </tr>
-                            <tr>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                            </tr>
-                            <tr>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                            </tr>
-                            <tr>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                            </tr>
-                            <tr>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                                <td>teste</td>
-                            </tr>
                             <tr>
                                 <td>teste</td>
                                 <td>teste</td>

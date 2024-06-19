@@ -1,0 +1,22 @@
+p{
+    font-family: "Poppins", sans-serif;;
+}
+
+.inf-cli{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px; 
+}
+
+.inf-cli p{
+    font-size: 14px;
+    font-weight: 500;
+}
+  .inf-cli > div {
+    display: block;
+  }
+
+  .inf-cli div p{
+    font-size:20px;
+    text-align: center;
+  }

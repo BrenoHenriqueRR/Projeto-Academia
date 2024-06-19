@@ -1,33 +1,39 @@
 <div class="fundo">
     <div class="container">
         <h1>Histórico de Faturas</h1>
-        <!-- @for (item of items; track $index) {} -->
+        @for (item of pagamentos; track $index) {
         <div class="faturas">
             <div class="text-fatura">
                 <div class="icon">
                     <i class="fa-solid fa-receipt">
-                        <p>Número da fatura</p>
+                        <p>{{item.id}}</p>
                     </i>
                 </div>
             </div>
             <div class="pagamento">
                 <div class="valor">
                     <p>VALOR</p>
-                    <p>R$100</p>
+                    <p>{{item.valor}}</p>
                 </div>
                 <div class="DATA DE VENCIMENTO">
-                    <p>DATA DE VENCIMENTO</p>
-                    <p>07/06/2024</p>
+                    <p>DATA DE CRIAÇÃO</p>
+                    <p>{{item.data_criacao}}</p>
                 </div>
                 <div class="DATA DO PAGAMENTO">
                     <p>DATA DO PAGAMENTO</p>
-                    <p>-</p>
+                    <p>{{item.data_pagamento}}</p>
                 </div>
                 <div class="btn-comprovante">
-                    <!-- @if () {} -->
-                    <button class="btn-pagar" (click)="pagar()">PAGAR AGORA</button>
+                    @if (item.status_pagamento == 'pendente') {
+                        <button class="btn-pagar" (click)="pagar(item.valor)">PAGAR AGORA</button>
+                     }
+                     @else {
+                        <a class="comprovante" (click)="openModal()">Ver Comprovante</a>
+                        <app-modal-comprovante [idcli]="idcli" (confirm)="validarmodal($event)"></app-modal-comprovante>
+                     }
                 </div>
             </div>
         </div>
+    }
     </div>
 </div>

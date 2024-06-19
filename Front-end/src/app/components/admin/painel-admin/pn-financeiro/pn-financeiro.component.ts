@@ -3,6 +3,7 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { PnClienteService } from '../../../../services/admin/pn-cliente/pn-cliente.service';
 import { ModalCadpagamentosComponent } from '../../../modal-cadpagamentos/modal-cadpagamentos.component';
 import { ModalConfirmarComponent } from '../../../modal-confirmar/modal-confirmar.component';
+import { PnFinanceiroService } from '../../../../services/admin/pn-financeiro/pn-financeiro.service';
 
 @Component({
   selector: 'app-pn-financeiro',
@@ -18,20 +19,17 @@ export class PnFinanceiroComponent {
   clientes!: any;
   selectedOption!: string;
   clientesform!: FormGroup;
+  cadpag!: any;
 
-  constructor(private service: PnClienteService){
-    this.clientes = new FormGroup({
-      nmcliente: new FormControl('', [Validators.required]),
-     });
+  constructor(private service: PnClienteService,private cadservice: PnFinanceiroService){
   }
 
   openModal(){
-    this.modal?.openModal()
+    this.modal?.openModal();
   }
   validarmodal(confirmed: boolean){
     if (confirmed) {
-     this.cadastrar();
-      // Execute further actions here
+     this.pesquisarcli();
     }
   }
 
@@ -41,7 +39,6 @@ export class PnFinanceiroComponent {
       (dado) => {
         // console.log('Dados recebidos:', dado);
         this.clientes = dado;
-        console.log(dado);
         
       },
       (erro) => {
@@ -50,7 +47,24 @@ export class PnFinanceiroComponent {
     );
   }
 
-  cadastrar(){
-    
+  pesquisarcli(){
+    const jsonString: string = '{"id": "' + this.selectedOption + '"}';
+    this.service.pesquisarpid(jsonString).subscribe({
+      next: (dados: any) =>{
+        this.cadpag = dados;
+        this.cadastrar(this.cadpag);
+      },
+    })
+   }
+  
+
+  cadastrar(json: any){
+    const cadjson = JSON.stringify(json[0]);
+    console.log(cadjson);
+    this.cadservice.cadastrar(cadjson).subscribe({
+      next(dados) {
+        alert(dados.msg);
+      }
+    })
   }
 }

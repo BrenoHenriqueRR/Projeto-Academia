@@ -13,6 +13,7 @@ $routes->post('/Cliente/delete', 'Cliente::delete');
 $routes->post('/Cliente/login', 'Cliente::login');
 $routes->get("/Cliente/pesquisar", 'Cliente::pesquisar');
 $routes->post("/Cliente/pesquisarid", 'Cliente::pesquisarid');
+$routes->post("/Cliente/pesquisarpid", 'Cliente::pesquisarpid');
 $routes->post("/Cliente/inserirFoto", 'Cliente::inserirFoto');
 $routes->post("/Cliente/pegarFoto", 'Cliente::pegarFoto');
 $routes->get('/Personal/pesquisar', 'Personal::pesquisar');
@@ -30,6 +31,10 @@ $routes->get('/Treino/ptipo', 'Treino::ptipo');
 $routes->get('/Treino/pgrupo', 'Treino::pgrupo');
 $routes->get('/Treino/pexer', 'Treino::pexer');
 $routes->post('/Ficha/create', 'Ficha::create');
+$routes->post('/Financeiro/create', 'Financeiro::create');
+$routes->post('/Financeiro/pesquisar', 'Financeiro::pesquisar');
+$routes->post('/Financeiro/update', 'Financeiro::update');
+$routes->post('/EmailController/create', 'EmailController::create');
 
 
 

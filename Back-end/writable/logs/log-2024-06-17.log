@@ -1,0 +1,75 @@
+CRITICAL - 2024-06-17 02:31:28 --> ErrorException: Undefined array key "frequencia"
+in APPPATH\Controllers\Financeiro.php on line 34.
+ 1 APPPATH\Controllers\Financeiro.php(34): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "frequencia"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Financeiro.php', 34)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-17 02:32:58 --> ErrorException: Trying to access array offset on value of type null
+in APPPATH\Controllers\Financeiro.php on line 34.
+ 1 APPPATH\Controllers\Financeiro.php(34): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Financeiro.php', 34)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-17 02:33:27 --> ErrorException: Trying to access array offset on value of type null
+in APPPATH\Controllers\Financeiro.php on line 34.
+ 1 APPPATH\Controllers\Financeiro.php(34): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Financeiro.php', 34)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-17 02:33:56 --> ErrorException: Trying to access array offset on value of type null
+in APPPATH\Controllers\Financeiro.php on line 34.
+ 1 APPPATH\Controllers\Financeiro.php(34): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Financeiro.php', 34)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-17 02:47:54 --> ErrorException: Undefined array key "frequencia"
+in APPPATH\Controllers\Financeiro.php on line 34.
+ 1 APPPATH\Controllers\Financeiro.php(34): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "frequencia"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Financeiro.php', 34)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->criar()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-17 02:49:36 --> ErrorException: Undefined array key "frequencia"
+in APPPATH\Controllers\Financeiro.php on line 34.
+ 1 APPPATH\Controllers\Financeiro.php(34): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "frequencia"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Financeiro.php', 34)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->criar()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-17 02:49:48 --> ErrorException: Undefined array key "frequencia"
+in APPPATH\Controllers\Financeiro.php on line 34.
+ 1 APPPATH\Controllers\Financeiro.php(34): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "frequencia"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Financeiro.php', 34)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->criar()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-17 02:50:57 --> ErrorException: Undefined array key "frequencia"
+in APPPATH\Controllers\Financeiro.php on line 34.
+ 1 APPPATH\Controllers\Financeiro.php(34): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "frequencia"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Financeiro.php', 34)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->criar()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-17 02:52:48 --> ErrorException: Undefined array key "frequencia"
+in APPPATH\Controllers\Financeiro.php on line 34.
+ 1 APPPATH\Controllers\Financeiro.php(34): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "frequencia"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Financeiro.php', 34)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->criar()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-17 03:07:29 --> Error: Call to a member function getResult() on array
+in APPPATH\Controllers\Financeiro.php on line 62.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->pesquisar()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-17 03:07:32 --> Error: Call to a member function getResult() on array
+in APPPATH\Controllers\Financeiro.php on line 62.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->pesquisar()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

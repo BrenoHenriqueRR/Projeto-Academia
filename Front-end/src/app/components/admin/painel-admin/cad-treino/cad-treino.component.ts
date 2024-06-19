@@ -4,11 +4,10 @@ import { ActivatedRoute } from '@angular/router';
 import { CadTreinoService } from '../../../../services/cad-treino/cad-treino.service';
 import { TreinoItem } from '../../../../interfaces/treino-item';
 
-
 @Component({
   selector: 'app-cad-treino',
   standalone: true,
-  imports: [FormsModule,ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule],
   templateUrl: './cad-treino.component.html',
   styleUrl: './cad-treino.component.css'
 })
@@ -19,7 +18,7 @@ export class CadTreinoComponent {
   tipo: any;
   grupo: any;
   exer: any[] = [];
-  teste : any;
+  teste: any;
 
   isDisabled: boolean = false;
   inputData!: any;
@@ -29,22 +28,23 @@ export class CadTreinoComponent {
   click: boolean = false;
   mensagemSucesso!: string;
 
-  constructor(private route: ActivatedRoute, private service: CadTreinoService){
+  constructor(private route: ActivatedRoute, private service: CadTreinoService) {
     this.route.queryParams.subscribe(params => {
-      this.cliente = params['id'] ;
+      this.cliente = params['id'];
     });
     this.formcadastro = new FormGroup({
-     treino: new FormControl('', [Validators.required]),
-     grupo: new FormControl('', [Validators.required]),
-     exer: new FormControl('', [Validators.required]),
-     series: new FormControl('', [Validators.required]),
-     repeticoes: new FormControl('', [Validators.required]),
-     cliente_id : new FormControl(this.cliente),
-     funcionario_id : new FormControl(localStorage.getItem('id')),
+      treino: new FormControl('', [Validators.required]),
+      grupo: new FormControl('', [Validators.required]),
+      exer: new FormControl('', [Validators.required]),
+      series: new FormControl('', [Validators.required]),
+      repeticoes: new FormControl('', [Validators.required]),
+      cliente_id: new FormControl(this.cliente),
+      funcionario_id: new FormControl(localStorage.getItem('id')),
     });
   }
+  
 
-  ptreino(){
+  ptreino() {
     this.service.ptipo().subscribe({
       next: (dados) => {
         this.ttreino = dados;
@@ -52,7 +52,7 @@ export class CadTreinoComponent {
     })
   }
 
-  pgrupo(){
+  pgrupo() {
     this.service.pgrupo().subscribe({
       next: (dados) => {
         this.gtreino = dados;
@@ -60,7 +60,7 @@ export class CadTreinoComponent {
     })
   }
 
-  pgexer(){
+  pgexer() {
     this.service.pexer().subscribe({
       next: (dados) => {
         this.etreino = dados;
@@ -68,25 +68,25 @@ export class CadTreinoComponent {
     })
   }
 
-  submit(){
+  submit() {
     // if (this.formcadastro.valid) {
-      
-      this.isDisabled = false;
-      const dados = JSON.stringify(this.treinos);
-      this.service.enviar(dados).subscribe({
-        next: (resposta) => {
-          this.mensagemSucesso = resposta.msg ;
-          console.log(this.mensagemSucesso);
-          this.formcadastro.reset();
-        }
-      })
-      location.reload();
-  // }
+
+    this.isDisabled = false;
+    const dados = JSON.stringify(this.treinos);
+    this.service.enviar(dados).subscribe({
+      next: (resposta) => {
+        this.mensagemSucesso = resposta.msg;
+        console.log(this.mensagemSucesso);
+        this.formcadastro.reset();
+      }
+    })
+    location.reload();
+    // }
   }
 
-  adicionarTreino(){
-    for(let i = 0; i < this.etreino.length; i++){
-      if( this.formcadastro.value.exer == this.etreino[i].id)
+  adicionarTreino() {
+    for (let i = 0; i < this.etreino.length; i++) {
+      if (this.formcadastro.value.exer == this.etreino[i].id)
         this.exer.push(this.etreino[i].exercicio);
     }
 
@@ -113,12 +113,12 @@ export class CadTreinoComponent {
     const selectElement = event.target as HTMLSelectElement;
     const selectedText = selectElement.options[selectElement.selectedIndex].text;
     this.tipo = selectedText;
-    
-  } 
+
+  }
   ongrupoChange(event: Event): void {
     const selectElement = event.target as HTMLSelectElement;
     const selectedText = selectElement.options[selectElement.selectedIndex].text;
     this.grupo = selectedText;
-    
-  } 
+
+  }
 }

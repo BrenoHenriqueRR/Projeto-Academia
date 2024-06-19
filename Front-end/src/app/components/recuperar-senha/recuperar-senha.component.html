@@ -1,0 +1,28 @@
+<div class="fundo">
+    <div class="container">
+        <div *ngIf="!showNewPasswordFields">
+            <form [formGroup]="recuperarForm" (ngSubmit)="onSubmitEmail()">
+              <div>
+                <label for="email">Email:</label>
+                <input id="email" formControlName="email" type="email" />
+              </div>
+              <button type="submit">Enviar</button>
+            </form>
+          </div>
+          
+          <div *ngIf="showNewPasswordFields">
+            <form [formGroup]="recuperarForm" (ngSubmit)="onSubmitNewSenha()">
+              <div>
+                <label for="senha">Nova Senha:</label>
+                <input id="senha" formControlName="senha" type="password" />
+              </div>
+              <div>
+                <label for="confirmeSenha">Confirme a Nova Senha:</label>
+                <input id="confirmeSenha" formControlName="confirmeSenha" type="password" />
+              </div>
+              <button type="submit">Alterar Senha</button>
+            </form>
+          </div>
+          
+    </div>
+</div>

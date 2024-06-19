@@ -1,0 +1,17 @@
+.fundo{
+    background-color: #272626;
+    height: 100vh;
+}
+
+.container{
+    position: absolute;
+    display: flex;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 80px 100px 100px ;
+    background-color: black;
+    width: 70%;
+    height: 79%;
+    border-radius: 20px;
+}

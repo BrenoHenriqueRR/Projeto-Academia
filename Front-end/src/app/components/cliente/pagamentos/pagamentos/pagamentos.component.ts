@@ -116,7 +116,6 @@ export class PagamentosComponent {
         console.log(dados.msg);
         this.router.navigate(['/home-cliente']),{
         };
-
       },
     })
   }

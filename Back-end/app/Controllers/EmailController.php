@@ -44,9 +44,14 @@ class EmailController extends BaseController
 
         if ($emailService->send()) {
             echo 'Email enviado com sucesso.';
-            return $this->response->setJSON('Email enviado com sucesso')->setStatusCode(200);
+            $dados = array(
+                'msg' => 'Email enviado com sucesso',
+                'senha' => $senha,
+            );
+            return $this->response->setJSON($dados)->setStatusCode(200);
         } else {
             echo $emailService->printDebugger();
+            return $this->response->setJSON('Erro ao enviar o email, Tente novamente!!')->setStatusCode(200);
         }
     }
 }

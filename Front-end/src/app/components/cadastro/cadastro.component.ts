@@ -8,8 +8,6 @@ import { NgIf } from '@angular/common';
 import { NgxMaskDirective, provideNgxMask  } from 'ngx-mask';
 
 
-
-
 @Component({
   selector: 'app-cadastro',
   standalone: true,
@@ -67,7 +65,9 @@ export class CadastroComponent {
             };
           }
         })
-    }
+      }else{
+        alert("campos vazio!!")
+      }
   }
   personal(){
     this.service.pesquisar().subscribe(

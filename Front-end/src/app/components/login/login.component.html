@@ -29,17 +29,20 @@
           </form>
           <br>
           <a routerLink="/../cadastro" class="link-cad d-flex align-items-center justify-content-center">Ainda não tenho uma conta</a>
+          <br>
+          <a routerLink="/../recuperar-senha" class="link-recu d-flex align-items-center justify-content-center">Esqueci a senha</a>
           <div class="resultado">
           @if (clicado == true) {
             @if (mensagem == 'false'){
                 <div class="mensagem-erro">
                   <p>*Usuário ou senha incorretos</p>
                 </div>
-            }@else if(mensagem == 'true'){
+              }
+            <!-- }@else if(mensagem == 'true'){
                 <div class="mensagem">
                   {{logar()}};
                 </div>
-            }
+            } -->
         }
           </div>
       </div>

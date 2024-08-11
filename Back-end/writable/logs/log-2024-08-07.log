@@ -1,0 +1,25 @@
+CRITICAL - 2024-08-07 23:44:47 --> Error: Call to a member function isValid() on null
+in APPPATH\Controllers\Academia.php on line 35.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Academia->create()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Academia))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-07 23:46:42 --> Error: Call to a member function isValid() on null
+in APPPATH\Controllers\Academia.php on line 35.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Academia->create()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Academia))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-07 23:47:16 --> Error: Call to a member function isValid() on null
+in APPPATH\Controllers\Academia.php on line 35.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Academia->create()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Academia))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-07 23:48:28 --> BadMethodCallException: Call to undefined method App\Models\AcademiaModel::affected_rows
+in SYSTEMPATH\Model.php on line 874.
+ 1 APPPATH\Controllers\Academia.php(55): CodeIgniter\Model->__call('affected_rows', [])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Academia->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Academia))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

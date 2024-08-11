@@ -10,17 +10,27 @@ import { CliPesquisar } from '../../interfaces/cli-pesquisar';
 export class ModalEditarService {
   url_cliente: string = 'http://localhost/sites/Projeto1/Back-end/public/Admin/editar';
   url_pesquisar: string = 'http://localhost/sites/Projeto1/Back-end/public/Admin/buscar';
+  url_funcionario: string = 'http://localhost/sites/Projeto1/Back-end/public/Admin/buscarfuncionario'
+  url_editfuncionario: string = 'http://localhost/sites/Projeto1/Back-end/public/Admin/editfuncionario'
 
-  constructor(private http: HttpClient) {}
-  
-    editar(dados: any)
+  constructor(private http: HttpClient) { }
+
+  editar(dados: any)
     : Observable<formresponse> {
-     const data = dados;
+    const data = dados;
 
-     return this.http.post<formresponse>(this.url_cliente, data);
+    return this.http.post<formresponse>(this.url_cliente, data);
   }
 
-  pesquisar(identificador: any): Observable<any> {
-    return this.http.post<any>(this.url_pesquisar, identificador); 
+  editarfun(dados: any) : Observable<any> {
+    const data = dados;
+    return this.http.post<any>(this.url_editfuncionario, data);
+    }
+
+    pesquisar(identificador: any): Observable < any > {
+      return this.http.post<any>(this.url_pesquisar, identificador);
+    }
+    pesquisarP(identificador: any): Observable < any > {
+      return this.http.post<any>(this.url_funcionario, identificador);
+    }
   }
-}

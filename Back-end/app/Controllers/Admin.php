@@ -23,18 +23,18 @@ class Admin extends BaseController
     public function login(){
         $json = file_get_contents('php://input');
         $data = json_decode($json, true);
+        $senhahash = hash('sha256', $data['senha']);
         
         if ($data && isset($data['email']) && isset($data['senha'])) {
             $this->model->where('email', $data['email']);
-            $this->model->where('senha', $data['senha']);
+            $this->model->where('senha', $senhahash);
             $query = $this->model->get();
     
             if ($query->getResult()) {
-                // O email e a senha existem no banco de dados
+                //Se o email e a senha existem no banco de dados
                 $msg = array("msg" => "true");
                 return $this->response->setJSON($msg)->setStatusCode(200);
             } else {
-                // O email e/ou a senha não existem
                 $msg = array("msg" => "false");
                 return $this->response->setJSON($msg)->setStatusCode(200);
             }
@@ -57,6 +57,7 @@ class Admin extends BaseController
         
         return $this->response->setJSON($dados->getResult())->setStatusCode(200);
     }
+
      public function funcaoPncli(){
         $json = file_get_contents('php://input');
         $data = json_decode($json, true);
@@ -97,6 +98,35 @@ class Admin extends BaseController
 
     }
 
+    public function deletefun()
+    {
+
+        $json = file_get_contents('php://input');
+        
+        // Decodificar o JSON em um array PHP
+        $data = json_decode($json, true);
+
+        $this->model->where('id',$data['id'])
+        ->delete();
+
+        $msg = array("msg" => "Funcionario deletado");
+
+        return $this->response->setJSON($msg)->setStatusCode(200);
+    }
+
+    public function buscarfuncionario(){
+        $json = file_get_contents('php://input');
+        $data = json_decode($json, true);
+
+        $dados = $this->model->select('*')
+        ->where('id', $data['id']);
+
+        $data = $dados->get();  
+
+        return $this->response->setJSON($data->getResult())->setStatusCode(200);
+
+    }
+
     public function editar()
     {
 
@@ -112,6 +142,22 @@ class Admin extends BaseController
 
 
         $this->modelcli->set($data)
+        ->where('id',$data['id'])
+        ->update();
+
+        $msg = array("msg" => "Cadastro Editado");
+
+        return $this->response->setJSON($msg)->setStatusCode(200);
+    }
+
+    public function editfuncionario()
+    {
+
+        $json = file_get_contents('php://input');
+        
+        $data = json_decode($json, true);
+
+        $this->model->set($data)
         ->where('id',$data['id'])
         ->update();
 

@@ -15,13 +15,20 @@ import { PnFinanceiroService } from '../../../../services/admin/pn-financeiro/pn
 export class PnFinanceiroComponent {
   @ViewChild(ModalCadpagamentosComponent) modal?: ModalCadpagamentosComponent
 
-  total: any = '1050';
+  total: any;
   clientes!: any;
+  cliPendente!: any;
   selectedOption!: string;
   clientesform!: FormGroup;
   cadpag!: any;
 
   constructor(private service: PnClienteService,private cadservice: PnFinanceiroService){
+    this.pesquisarCliPendente();
+      this.cadservice.getPagamentos().subscribe({
+        next: (total) => {
+          this.total = total[0].preco;
+        },
+      })
   }
 
   openModal(){
@@ -47,6 +54,19 @@ export class PnFinanceiroComponent {
     );
   }
 
+  pesquisarCliPendente(){
+    this.cadservice.pesquisarCliPendente().subscribe(
+      (dado) => {
+        // console.log('Dados recebidos:', dado);
+        this.cliPendente = dado;
+        
+      },
+      (erro) => {
+        console.error('Erro ao buscar dados:', erro);
+      }
+    );
+  }
+
   pesquisarcli(){
     const jsonString: string = '{"id": "' + this.selectedOption + '"}';
     this.service.pesquisarpid(jsonString).subscribe({
@@ -64,6 +84,7 @@ export class PnFinanceiroComponent {
     this.cadservice.cadastrar(cadjson).subscribe({
       next(dados) {
         alert(dados.msg);
+        location.reload();
       }
     })
   }

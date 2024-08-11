@@ -51,8 +51,13 @@ export class LoginComponent {
             this.mensagem = resposta.msg;
             this.formlogin.reset();
             this.loading = false;
+            if(this.mensagem == 'true' ){
+              this.logar();
+            }
           }
         })
+      }else{
+        alert("campos vazio!!")
       }
   }
 

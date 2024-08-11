@@ -57,8 +57,6 @@ export class PerfilComponent {
     if (this.selectedFile) {
       formData.append('image', this.selectedFile, this.selectedFile.name);
       formData.append('id', this.identificador);
-      console.log(formData.get('image'));
-      console.log(formData.get('id'));
       this.SinserirFoto.inserirfoto(formData).subscribe({
         next(retorno) {
           alert(retorno.msg);

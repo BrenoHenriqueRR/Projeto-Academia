@@ -63,6 +63,12 @@
     font-size: 22px;
 }
 
+.link-recu{
+    cursor: pointer;
+    font-size: 20px;
+    color: #deed39;
+}
+
 .link-cad:hover{
     color: rgb(236, 234, 234);  
 }

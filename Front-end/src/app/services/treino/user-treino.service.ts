@@ -15,4 +15,6 @@ export class UserTreinoService {
   pesquisar(data: any): Observable<any> {
     return this.http.post<Treinos>(this.url_pesquisar,data); // Substitua 'any' pelo tipo de dados esperado
   }
+
+  
 }

@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { UserTreinoService } from '../../../services/treino/user-treino.service';
 import { PnFinanceiroService } from '../../../services/admin/pn-financeiro/pn-financeiro.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-cli',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './dashboard-cli.component.html',
   styleUrl: './dashboard-cli.component.css'
 })
@@ -37,6 +38,7 @@ export class DashboardCliComponent {
       next:(dados) =>{
         if(dados){
         this.treino = dados;
+        console.log(dados);
       }
       }
     });

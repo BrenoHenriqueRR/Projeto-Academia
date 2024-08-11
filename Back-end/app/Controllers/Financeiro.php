@@ -70,6 +70,34 @@ class Financeiro extends BaseController
             ->from('pagamentos pag')
             ->join('cliente c','pag.cliente_id = c.id')
             ->where('pag.cliente_id', $data['cliente_id'])
+            ->groupBy('c.id')
+            ->get();
+
+        return $this->response->setJSON($dados->getResult())->setStatusCode(200);
+    }
+    public function pesquisarCliPendente()
+    {
+        $json = file_get_contents('php://input');
+
+        $data = json_decode($json, true);
+
+        $dados = $this->model->select('
+        pag.id,
+        pag.valor,
+         pag.data_pagamento, 
+         pag.data_criacao,
+         pag.status_pagamento,
+         pag.funcionario_id,
+         c.nome,
+         p.nome,
+         c.cpf,
+         c.email'
+         )
+            ->from('pagamentos pag')
+            ->join('cliente c','pag.cliente_id = c.id')
+            ->join('funcionarios p','pag.funcionario_id = p.id')
+            ->where('pag.status_pagamento', 'pendente')
+            ->groupBy('c.id')
             ->get();
 
         return $this->response->setJSON($dados->getResult())->setStatusCode(200);
@@ -77,6 +105,8 @@ class Financeiro extends BaseController
 
     public function update()
     {
+        date_default_timezone_set('America/Sao_Paulo');
+        
         $json = file_get_contents('php://input');
 
         $data = json_decode($json, true);

@@ -1,0 +1,533 @@
+CRITICAL - 2024-07-30 00:36:54 --> ErrorException: unlink(): Invalid argument
+in APPPATH\Controllers\Cliente.php on line 143.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(): Invalid argument', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Cliente.php', 143)
+ 2 APPPATH\Controllers\Cliente.php(143): unlink('')
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->inserirFoto()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-30 00:37:15 --> ErrorException: unlink(): Invalid argument
+in APPPATH\Controllers\Cliente.php on line 143.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(): Invalid argument', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Cliente.php', 143)
+ 2 APPPATH\Controllers\Cliente.php(143): unlink('')
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->inserirFoto()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-30 00:39:24 --> ErrorException: unlink(): Invalid argument
+in APPPATH\Controllers\Cliente.php on line 143.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(): Invalid argument', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Cliente.php', 143)
+ 2 APPPATH\Controllers\Cliente.php(143): unlink('')
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->inserirFoto()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-30 00:40:24 --> ErrorException: unlink(): Invalid argument
+in APPPATH\Controllers\Cliente.php on line 143.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(): Invalid argument', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Cliente.php', 143)
+ 2 APPPATH\Controllers\Cliente.php(143): unlink('')
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->inserirFoto()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-30 00:40:39 --> ErrorException: unlink(): Invalid argument
+in APPPATH\Controllers\Cliente.php on line 143.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(): Invalid argument', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Cliente.php', 143)
+ 2 APPPATH\Controllers\Cliente.php(143): unlink('')
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->inserirFoto()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-30 01:15:29 --> Error: Call to undefined method CodeIgniter\Database\MySQLi\Result::row_array()
+in APPPATH\Controllers\Relatorios.php on line 40.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Relatorios->rEstatistica()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Relatorios))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-30 01:16:01 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "relatorio-estatistica.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(216): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('relatorio-estatistica.php')
+ 2 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('relatorio-estatistica', [], true)
+ 3 APPPATH\Controllers\Relatorios.php(43): view('relatorio-estatistica', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Relatorios->rEstatistica()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Relatorios))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-30 01:17:02 --> Error: Call to a member function getResult() on array
+in APPPATH\Controllers\Relatorios.php on line 53.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Relatorios->rEstatistica()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Relatorios))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-30 01:19:06 --> ErrorException: Undefined array key "cliente_id"
+in APPPATH\Views\Relatorios\relatorio-estatistica.php on line 15.
+ 1 APPPATH\Views\Relatorios\relatorio-estatistica.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "cliente_id"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php', 15)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('Relatorios/relatorio-estatistica', [], true)
+ 5 APPPATH\Controllers\Relatorios.php(43): view('Relatorios/relatorio-estatistica', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Relatorios->rEstatistica()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Relatorios))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-30 01:19:20 --> ErrorException: Undefined array key "cliente_id"
+in APPPATH\Views\Relatorios\relatorio-estatistica.php on line 15.
+ 1 APPPATH\Views\Relatorios\relatorio-estatistica.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "cliente_id"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php', 15)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('Relatorios/relatorio-estatistica', [], true)
+ 5 APPPATH\Controllers\Relatorios.php(43): view('Relatorios/relatorio-estatistica', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Relatorios->rEstatistica()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Relatorios))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-30 01:19:25 --> ErrorException: Undefined array key "total_exercicios_concluidos"
+in APPPATH\Views\Relatorios\relatorio-estatistica.php on line 15.
+ 1 APPPATH\Views\Relatorios\relatorio-estatistica.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "total_exercicios_concluidos"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php', 15)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('Relatorios/relatorio-estatistica', [], true)
+ 5 APPPATH\Controllers\Relatorios.php(43): view('Relatorios/relatorio-estatistica', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Relatorios->rEstatistica()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Relatorios))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-30 01:20:21 --> Error: Call to a member function getResult() on array
+in APPPATH\Controllers\Relatorios.php on line 53.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Relatorios->rEstatistica()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Relatorios))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-30 01:20:24 --> ParseError: syntax error, unexpected token "return"
+in APPPATH\Controllers\Relatorios.php on line 53.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(290): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Relatorios.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Relatorios')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Relatorios')
+ 4 SYSTEMPATH\CodeIgniter.php(899): class_exists('\\App\\Controllers\\Relatorios', true)
+ 5 SYSTEMPATH\CodeIgniter.php(489): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-30 22:19:54 --> ErrorException: Undefined variable $dados
+in APPPATH\Views\Relatorios\relatorio-estatistica.php on line 15.
+ 1 APPPATH\Views\Relatorios\relatorio-estatistica.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $dados', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php', 15)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('Relatorios/relatorio-estatistica', [], true)
+ 5 APPPATH\Controllers\Relatorios.php(42): view('Relatorios/relatorio-estatistica', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Relatorios->rEstatistica()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Relatorios))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-30 22:20:24 --> ErrorException: Undefined variable $dados
+in APPPATH\Views\Relatorios\relatorio-estatistica.php on line 15.
+ 1 APPPATH\Views\Relatorios\relatorio-estatistica.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $dados', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php', 15)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('Relatorios/relatorio-estatistica', [], true)
+ 5 APPPATH\Controllers\Relatorios.php(43): view('Relatorios/relatorio-estatistica', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Relatorios->rEstatistica()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Relatorios))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-30 22:21:00 --> ErrorException: Undefined variable $data
+in APPPATH\Views\Relatorios\relatorio-estatistica.php on line 57.
+ 1 APPPATH\Views\Relatorios\relatorio-estatistica.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php', 57)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('Relatorios/relatorio-estatistica', [], true)
+ 5 APPPATH\Controllers\Relatorios.php(43): view('Relatorios/relatorio-estatistica', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Relatorios->rEstatistica()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Relatorios))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-30 22:22:26 --> ErrorException: Undefined variable $data
+in APPPATH\Views\Relatorios\relatorio-estatistica.php on line 57.
+ 1 APPPATH\Views\Relatorios\relatorio-estatistica.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php', 57)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('Relatorios/relatorio-estatistica', [], true)
+ 5 APPPATH\Controllers\Relatorios.php(43): view('Relatorios/relatorio-estatistica', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Relatorios->rEstatistica()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Relatorios))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-30 22:22:58 --> ErrorException: Undefined variable $data
+in APPPATH\Views\Relatorios\relatorio-estatistica.php on line 57.
+ 1 APPPATH\Views\Relatorios\relatorio-estatistica.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php', 57)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('Relatorios/relatorio-estatistica', [], true)
+ 5 APPPATH\Controllers\Relatorios.php(43): view('Relatorios/relatorio-estatistica', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Relatorios->rEstatistica()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Relatorios))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-30 22:24:07 --> ErrorException: Undefined variable $data
+in APPPATH\Views\Relatorios\relatorio-estatistica.php on line 57.
+ 1 APPPATH\Views\Relatorios\relatorio-estatistica.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php', 57)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('Relatorios/relatorio-estatistica', [], true)
+ 5 APPPATH\Controllers\Relatorios.php(43): view('Relatorios/relatorio-estatistica', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Relatorios->rEstatistica()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Relatorios))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-30 22:24:17 --> ErrorException: Undefined variable $data
+in APPPATH\Views\Relatorios\relatorio-estatistica.php on line 57.
+ 1 APPPATH\Views\Relatorios\relatorio-estatistica.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php', 57)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('Relatorios/relatorio-estatistica', [], true)
+ 5 APPPATH\Controllers\Relatorios.php(43): view('Relatorios/relatorio-estatistica', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Relatorios->rEstatistica()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Relatorios))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-30 22:24:34 --> BadMethodCallException: Call to undefined method App\Models\TipoGrupo::getResult
+in SYSTEMPATH\Model.php on line 874.
+ 1 APPPATH\Controllers\Relatorios.php(41): CodeIgniter\Model->__call('getResult', [])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Relatorios->rEstatistica()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Relatorios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-30 22:26:16 --> ErrorException: Undefined variable $data
+in APPPATH\Views\Relatorios\relatorio-estatistica.php on line 57.
+ 1 APPPATH\Views\Relatorios\relatorio-estatistica.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php', 57)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('Relatorios/relatorio-estatistica', [], true)
+ 5 APPPATH\Controllers\Relatorios.php(43): view('Relatorios/relatorio-estatistica', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Relatorios->rEstatistica()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Relatorios))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-30 22:26:40 --> ErrorException: Undefined variable $data
+in APPPATH\Views\Relatorios\relatorio-estatistica.php on line 57.
+ 1 APPPATH\Views\Relatorios\relatorio-estatistica.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php', 57)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('Relatorios/relatorio-estatistica', [], true)
+ 5 APPPATH\Controllers\Relatorios.php(43): view('Relatorios/relatorio-estatistica', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Relatorios->rEstatistica()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Relatorios))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-30 22:27:16 --> ErrorException: Undefined variable $data
+in APPPATH\Views\Relatorios\relatorio-estatistica.php on line 57.
+ 1 APPPATH\Views\Relatorios\relatorio-estatistica.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php', 57)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('Relatorios/relatorio-estatistica', [], true)
+ 5 APPPATH\Controllers\Relatorios.php(43): view('Relatorios/relatorio-estatistica', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Relatorios->rEstatistica()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Relatorios))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-30 22:27:49 --> ErrorException: Undefined variable $data
+in APPPATH\Views\Relatorios\relatorio-estatistica.php on line 57.
+ 1 APPPATH\Views\Relatorios\relatorio-estatistica.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php', 57)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('Relatorios/relatorio-estatistica', [], true)
+ 5 APPPATH\Controllers\Relatorios.php(43): view('Relatorios/relatorio-estatistica', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Relatorios->rEstatistica()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Relatorios))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-30 22:28:07 --> ErrorException: Undefined variable $data
+in APPPATH\Views\Relatorios\relatorio-estatistica.php on line 57.
+ 1 APPPATH\Views\Relatorios\relatorio-estatistica.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php', 57)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('Relatorios/relatorio-estatistica', [], true)
+ 5 APPPATH\Controllers\Relatorios.php(43): view('Relatorios/relatorio-estatistica', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Relatorios->rEstatistica()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Relatorios))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-30 22:28:08 --> ErrorException: Undefined variable $data
+in APPPATH\Views\Relatorios\relatorio-estatistica.php on line 57.
+ 1 APPPATH\Views\Relatorios\relatorio-estatistica.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php', 57)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('Relatorios/relatorio-estatistica', [], true)
+ 5 APPPATH\Controllers\Relatorios.php(43): view('Relatorios/relatorio-estatistica', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Relatorios->rEstatistica()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Relatorios))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-30 22:28:22 --> ErrorException: Undefined variable $data
+in APPPATH\Views\Relatorios\relatorio-estatistica.php on line 57.
+ 1 APPPATH\Views\Relatorios\relatorio-estatistica.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php', 57)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('Relatorios/relatorio-estatistica', [], true)
+ 5 APPPATH\Controllers\Relatorios.php(43): view('Relatorios/relatorio-estatistica', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Relatorios->rEstatistica()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Relatorios))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-30 22:28:33 --> ErrorException: Undefined variable $data
+in APPPATH\Views\Relatorios\relatorio-estatistica.php on line 57.
+ 1 APPPATH\Views\Relatorios\relatorio-estatistica.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php', 57)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('Relatorios/relatorio-estatistica', [], true)
+ 5 APPPATH\Controllers\Relatorios.php(43): view('Relatorios/relatorio-estatistica', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Relatorios->rEstatistica()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Relatorios))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-30 22:29:22 --> ErrorException: Undefined variable $cliente
+in APPPATH\Views\Relatorios\relatorio-estatistica.php on line 62.
+ 1 APPPATH\Views\Relatorios\relatorio-estatistica.php(62): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $cliente', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php', 62)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('Relatorios/relatorio-estatistica', [], true)
+ 5 APPPATH\Controllers\Relatorios.php(43): view('Relatorios/relatorio-estatistica', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Relatorios->rEstatistica()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Relatorios))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-30 22:29:31 --> ErrorException: Undefined variable $total_exercicios_concluido
+in APPPATH\Views\Relatorios\relatorio-estatistica.php on line 86.
+ 1 APPPATH\Views\Relatorios\relatorio-estatistica.php(86): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $total_exercicios_concluido', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php', 86)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('Relatorios/relatorio-estatistica', [], true)
+ 5 APPPATH\Controllers\Relatorios.php(43): view('Relatorios/relatorio-estatistica', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Relatorios->rEstatistica()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Relatorios))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-30 22:30:27 --> ErrorException: Undefined variable $total_exercicios_concluido
+in APPPATH\Views\Relatorios\relatorio-estatistica.php on line 86.
+ 1 APPPATH\Views\Relatorios\relatorio-estatistica.php(86): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $total_exercicios_concluido', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php', 86)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('Relatorios/relatorio-estatistica', [], true)
+ 5 APPPATH\Controllers\Relatorios.php(43): view('Relatorios/relatorio-estatistica', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Relatorios->rEstatistica()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Relatorios))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-30 22:55:56 --> ErrorException: Undefined variable $cliente_id
+in APPPATH\Views\Relatorios\relatorio-estatistica.php on line 61.
+ 1 APPPATH\Views\Relatorios\relatorio-estatistica.php(61): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $cliente_id', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php', 61)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('Relatorios/relatorio-estatistica', [], true)
+ 5 APPPATH\Controllers\Relatorios.php(44): view('Relatorios/relatorio-estatistica', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Relatorios->rEstatistica()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Relatorios))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-30 23:02:27 --> ErrorException: Undefined variable $total_exercicios_concluido
+in APPPATH\Views\Relatorios\relatorio-estatistica.php on line 86.
+ 1 APPPATH\Views\Relatorios\relatorio-estatistica.php(86): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $total_exercicios_concluido', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php', 86)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('Relatorios/relatorio-estatistica', [], true)
+ 5 APPPATH\Controllers\Relatorios.php(44): view('Relatorios/relatorio-estatistica', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Relatorios->rEstatistica()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Relatorios))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-30 23:02:57 --> ErrorException: Undefined variable $total_exercicios_concluido
+in APPPATH\Views\Relatorios\relatorio-estatistica.php on line 86.
+ 1 APPPATH\Views\Relatorios\relatorio-estatistica.php(86): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $total_exercicios_concluido', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php', 86)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio-estatistica.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('Relatorios/relatorio-estatistica', [], true)
+ 5 APPPATH\Controllers\Relatorios.php(44): view('Relatorios/relatorio-estatistica', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Relatorios->rEstatistica()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Relatorios))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-07-30 23:05:49 --> mysqli_sql_exception: Unknown column 'tipo_grupo.name' in 'field list' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `tipo_gr...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tipo_gr...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tipo_gr...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `tipo_gr...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Relatorios.php(40): CodeIgniter\Model->__call('get', Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Relatorios->rEstatistica()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Relatorios))
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-07-30 23:05:50 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'tipo_grupo.name' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `tipo_grupo`.`name`, `tipo_grupo`.`cliente_id`, COUNT(f.exer_concluido) AS total_exercicios_concluidos, SUM(f.carga) AS carga_total_levantada, COUNT(DISTINCT tipo_grupo.id) AS total_de_fichas_concluidos, MAX(tipo_grupo.data_conclusao) AS ultima_data_conclusao, GROUP_CONCAT(DISTINCT tipo_grupo.feedback SEPARATOR "; ") AS feedbacks
+FROM `tipo_grupo`
+JOIN `ficha` `f` ON `tipo_grupo`.`id` = `f`.`tipo_grupo_id`
+WHERE `tipo_grupo`.`cliente_id` = :tipo_grupo.cliente_id:
+AND `tipo_grupo`.`status` = :tipo_grupo.status:
+AND `f`.`exer_concluido` != :f.exer_concluido:
+GROUP BY `tipo_grupo`.`cliente_id`', [...], false)
+ 2 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Relatorios.php(40): CodeIgniter\Model->__call('get', [])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Relatorios->rEstatistica()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Relatorios))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-30 23:05:50 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'tipo_grupo.name' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tipo_grupo`.`name`, `tipo_grupo`.`cliente_id`, COUNT(f.exer_concluido) AS total_exercicios_concluidos, SUM(f.carga) AS carga_total_levantada, COUNT(DISTINCT tipo_grupo.id) AS total_de_fichas_concluidos, MAX(tipo_grupo.data_conclusao) AS ultima_data_conclusao, GROUP_CONCAT(DISTINCT tipo_grupo.feedback SEPARATOR "; ") AS feedbacks
+FROM `tipo_grupo`
+JOIN `ficha` `f` ON `tipo_grupo`.`id` = `f`.`tipo_grupo_id`
+WHERE `tipo_grupo`.`cliente_id` = \'1\'
+AND `tipo_grupo`.`status` = \'concluido\'
+AND `f`.`exer_concluido` != \'false\'
+GROUP BY `tipo_grupo`.`cliente_id`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tipo_grupo`.`name`, `tipo_grupo`.`cliente_id`, COUNT(f.exer_concluido) AS total_exercicios_concluidos, SUM(f.carga) AS carga_total_levantada, COUNT(DISTINCT tipo_grupo.id) AS total_de_fichas_concluidos, MAX(tipo_grupo.data_conclusao) AS ultima_data_conclusao, GROUP_CONCAT(DISTINCT tipo_grupo.feedback SEPARATOR "; ") AS feedbacks
+FROM `tipo_grupo`
+JOIN `ficha` `f` ON `tipo_grupo`.`id` = `f`.`tipo_grupo_id`
+WHERE `tipo_grupo`.`cliente_id` = \'1\'
+AND `tipo_grupo`.`status` = \'concluido\'
+AND `f`.`exer_concluido` != \'false\'
+GROUP BY `tipo_grupo`.`cliente_id`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `tipo_grupo`.`name`, `tipo_grupo`.`cliente_id`, COUNT(f.exer_concluido) AS total_exercicios_concluidos, SUM(f.carga) AS carga_total_levantada, COUNT(DISTINCT tipo_grupo.id) AS total_de_fichas_concluidos, MAX(tipo_grupo.data_conclusao) AS ultima_data_conclusao, GROUP_CONCAT(DISTINCT tipo_grupo.feedback SEPARATOR "; ") AS feedbacks
+FROM `tipo_grupo`
+JOIN `ficha` `f` ON `tipo_grupo`.`id` = `f`.`tipo_grupo_id`
+WHERE `tipo_grupo`.`cliente_id` = :tipo_grupo.cliente_id:
+AND `tipo_grupo`.`status` = :tipo_grupo.status:
+AND `f`.`exer_concluido` != :f.exer_concluido:
+GROUP BY `tipo_grupo`.`cliente_id`', [...], false)
+ 4 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Relatorios.php(40): CodeIgniter\Model->__call('get', [])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Relatorios->rEstatistica()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Relatorios))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-30 23:05:50 --> [Caused by] mysqli_sql_exception: Unknown column 'tipo_grupo.name' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `tipo_grupo`.`name`, `tipo_grupo`.`cliente_id`, COUNT(f.exer_concluido) AS total_exercicios_concluidos, SUM(f.carga) AS carga_total_levantada, COUNT(DISTINCT tipo_grupo.id) AS total_de_fichas_concluidos, MAX(tipo_grupo.data_conclusao) AS ultima_data_conclusao, GROUP_CONCAT(DISTINCT tipo_grupo.feedback SEPARATOR "; ") AS feedbacks
+FROM `tipo_grupo`
+JOIN `ficha` `f` ON `tipo_grupo`.`id` = `f`.`tipo_grupo_id`
+WHERE `tipo_grupo`.`cliente_id` = \'1\'
+AND `tipo_grupo`.`status` = \'concluido\'
+AND `f`.`exer_concluido` != \'false\'
+GROUP BY `tipo_grupo`.`cliente_id`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tipo_grupo`.`name`, `tipo_grupo`.`cliente_id`, COUNT(f.exer_concluido) AS total_exercicios_concluidos, SUM(f.carga) AS carga_total_levantada, COUNT(DISTINCT tipo_grupo.id) AS total_de_fichas_concluidos, MAX(tipo_grupo.data_conclusao) AS ultima_data_conclusao, GROUP_CONCAT(DISTINCT tipo_grupo.feedback SEPARATOR "; ") AS feedbacks
+FROM `tipo_grupo`
+JOIN `ficha` `f` ON `tipo_grupo`.`id` = `f`.`tipo_grupo_id`
+WHERE `tipo_grupo`.`cliente_id` = \'1\'
+AND `tipo_grupo`.`status` = \'concluido\'
+AND `f`.`exer_concluido` != \'false\'
+GROUP BY `tipo_grupo`.`cliente_id`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tipo_grupo`.`name`, `tipo_grupo`.`cliente_id`, COUNT(f.exer_concluido) AS total_exercicios_concluidos, SUM(f.carga) AS carga_total_levantada, COUNT(DISTINCT tipo_grupo.id) AS total_de_fichas_concluidos, MAX(tipo_grupo.data_conclusao) AS ultima_data_conclusao, GROUP_CONCAT(DISTINCT tipo_grupo.feedback SEPARATOR "; ") AS feedbacks
+FROM `tipo_grupo`
+JOIN `ficha` `f` ON `tipo_grupo`.`id` = `f`.`tipo_grupo_id`
+WHERE `tipo_grupo`.`cliente_id` = \'1\'
+AND `tipo_grupo`.`status` = \'concluido\'
+AND `f`.`exer_concluido` != \'false\'
+GROUP BY `tipo_grupo`.`cliente_id`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `tipo_grupo`.`name`, `tipo_grupo`.`cliente_id`, COUNT(f.exer_concluido) AS total_exercicios_concluidos, SUM(f.carga) AS carga_total_levantada, COUNT(DISTINCT tipo_grupo.id) AS total_de_fichas_concluidos, MAX(tipo_grupo.data_conclusao) AS ultima_data_conclusao, GROUP_CONCAT(DISTINCT tipo_grupo.feedback SEPARATOR "; ") AS feedbacks
+FROM `tipo_grupo`
+JOIN `ficha` `f` ON `tipo_grupo`.`id` = `f`.`tipo_grupo_id`
+WHERE `tipo_grupo`.`cliente_id` = :tipo_grupo.cliente_id:
+AND `tipo_grupo`.`status` = :tipo_grupo.status:
+AND `f`.`exer_concluido` != :f.exer_concluido:
+GROUP BY `tipo_grupo`.`cliente_id`', [...], false)
+ 5 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Relatorios.php(40): CodeIgniter\Model->__call('get', [])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Relatorios->rEstatistica()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Relatorios))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-07-30 23:05:55 --> mysqli_sql_exception: Unknown column 'tipo_grupo.nome' in 'field list' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `tipo_gr...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tipo_gr...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tipo_gr...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `tipo_gr...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Relatorios.php(40): CodeIgniter\Model->__call('get', Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Relatorios->rEstatistica()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Relatorios))
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-07-30 23:05:55 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'tipo_grupo.nome' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `tipo_grupo`.`nome`, `tipo_grupo`.`cliente_id`, COUNT(f.exer_concluido) AS total_exercicios_concluidos, SUM(f.carga) AS carga_total_levantada, COUNT(DISTINCT tipo_grupo.id) AS total_de_fichas_concluidos, MAX(tipo_grupo.data_conclusao) AS ultima_data_conclusao, GROUP_CONCAT(DISTINCT tipo_grupo.feedback SEPARATOR "; ") AS feedbacks
+FROM `tipo_grupo`
+JOIN `ficha` `f` ON `tipo_grupo`.`id` = `f`.`tipo_grupo_id`
+WHERE `tipo_grupo`.`cliente_id` = :tipo_grupo.cliente_id:
+AND `tipo_grupo`.`status` = :tipo_grupo.status:
+AND `f`.`exer_concluido` != :f.exer_concluido:
+GROUP BY `tipo_grupo`.`cliente_id`', [...], false)
+ 2 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Relatorios.php(40): CodeIgniter\Model->__call('get', [])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Relatorios->rEstatistica()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Relatorios))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-30 23:05:55 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'tipo_grupo.nome' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tipo_grupo`.`nome`, `tipo_grupo`.`cliente_id`, COUNT(f.exer_concluido) AS total_exercicios_concluidos, SUM(f.carga) AS carga_total_levantada, COUNT(DISTINCT tipo_grupo.id) AS total_de_fichas_concluidos, MAX(tipo_grupo.data_conclusao) AS ultima_data_conclusao, GROUP_CONCAT(DISTINCT tipo_grupo.feedback SEPARATOR "; ") AS feedbacks
+FROM `tipo_grupo`
+JOIN `ficha` `f` ON `tipo_grupo`.`id` = `f`.`tipo_grupo_id`
+WHERE `tipo_grupo`.`cliente_id` = \'1\'
+AND `tipo_grupo`.`status` = \'concluido\'
+AND `f`.`exer_concluido` != \'false\'
+GROUP BY `tipo_grupo`.`cliente_id`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tipo_grupo`.`nome`, `tipo_grupo`.`cliente_id`, COUNT(f.exer_concluido) AS total_exercicios_concluidos, SUM(f.carga) AS carga_total_levantada, COUNT(DISTINCT tipo_grupo.id) AS total_de_fichas_concluidos, MAX(tipo_grupo.data_conclusao) AS ultima_data_conclusao, GROUP_CONCAT(DISTINCT tipo_grupo.feedback SEPARATOR "; ") AS feedbacks
+FROM `tipo_grupo`
+JOIN `ficha` `f` ON `tipo_grupo`.`id` = `f`.`tipo_grupo_id`
+WHERE `tipo_grupo`.`cliente_id` = \'1\'
+AND `tipo_grupo`.`status` = \'concluido\'
+AND `f`.`exer_concluido` != \'false\'
+GROUP BY `tipo_grupo`.`cliente_id`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `tipo_grupo`.`nome`, `tipo_grupo`.`cliente_id`, COUNT(f.exer_concluido) AS total_exercicios_concluidos, SUM(f.carga) AS carga_total_levantada, COUNT(DISTINCT tipo_grupo.id) AS total_de_fichas_concluidos, MAX(tipo_grupo.data_conclusao) AS ultima_data_conclusao, GROUP_CONCAT(DISTINCT tipo_grupo.feedback SEPARATOR "; ") AS feedbacks
+FROM `tipo_grupo`
+JOIN `ficha` `f` ON `tipo_grupo`.`id` = `f`.`tipo_grupo_id`
+WHERE `tipo_grupo`.`cliente_id` = :tipo_grupo.cliente_id:
+AND `tipo_grupo`.`status` = :tipo_grupo.status:
+AND `f`.`exer_concluido` != :f.exer_concluido:
+GROUP BY `tipo_grupo`.`cliente_id`', [...], false)
+ 4 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Relatorios.php(40): CodeIgniter\Model->__call('get', [])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Relatorios->rEstatistica()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Relatorios))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-30 23:05:55 --> [Caused by] mysqli_sql_exception: Unknown column 'tipo_grupo.nome' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `tipo_grupo`.`nome`, `tipo_grupo`.`cliente_id`, COUNT(f.exer_concluido) AS total_exercicios_concluidos, SUM(f.carga) AS carga_total_levantada, COUNT(DISTINCT tipo_grupo.id) AS total_de_fichas_concluidos, MAX(tipo_grupo.data_conclusao) AS ultima_data_conclusao, GROUP_CONCAT(DISTINCT tipo_grupo.feedback SEPARATOR "; ") AS feedbacks
+FROM `tipo_grupo`
+JOIN `ficha` `f` ON `tipo_grupo`.`id` = `f`.`tipo_grupo_id`
+WHERE `tipo_grupo`.`cliente_id` = \'1\'
+AND `tipo_grupo`.`status` = \'concluido\'
+AND `f`.`exer_concluido` != \'false\'
+GROUP BY `tipo_grupo`.`cliente_id`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tipo_grupo`.`nome`, `tipo_grupo`.`cliente_id`, COUNT(f.exer_concluido) AS total_exercicios_concluidos, SUM(f.carga) AS carga_total_levantada, COUNT(DISTINCT tipo_grupo.id) AS total_de_fichas_concluidos, MAX(tipo_grupo.data_conclusao) AS ultima_data_conclusao, GROUP_CONCAT(DISTINCT tipo_grupo.feedback SEPARATOR "; ") AS feedbacks
+FROM `tipo_grupo`
+JOIN `ficha` `f` ON `tipo_grupo`.`id` = `f`.`tipo_grupo_id`
+WHERE `tipo_grupo`.`cliente_id` = \'1\'
+AND `tipo_grupo`.`status` = \'concluido\'
+AND `f`.`exer_concluido` != \'false\'
+GROUP BY `tipo_grupo`.`cliente_id`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tipo_grupo`.`nome`, `tipo_grupo`.`cliente_id`, COUNT(f.exer_concluido) AS total_exercicios_concluidos, SUM(f.carga) AS carga_total_levantada, COUNT(DISTINCT tipo_grupo.id) AS total_de_fichas_concluidos, MAX(tipo_grupo.data_conclusao) AS ultima_data_conclusao, GROUP_CONCAT(DISTINCT tipo_grupo.feedback SEPARATOR "; ") AS feedbacks
+FROM `tipo_grupo`
+JOIN `ficha` `f` ON `tipo_grupo`.`id` = `f`.`tipo_grupo_id`
+WHERE `tipo_grupo`.`cliente_id` = \'1\'
+AND `tipo_grupo`.`status` = \'concluido\'
+AND `f`.`exer_concluido` != \'false\'
+GROUP BY `tipo_grupo`.`cliente_id`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `tipo_grupo`.`nome`, `tipo_grupo`.`cliente_id`, COUNT(f.exer_concluido) AS total_exercicios_concluidos, SUM(f.carga) AS carga_total_levantada, COUNT(DISTINCT tipo_grupo.id) AS total_de_fichas_concluidos, MAX(tipo_grupo.data_conclusao) AS ultima_data_conclusao, GROUP_CONCAT(DISTINCT tipo_grupo.feedback SEPARATOR "; ") AS feedbacks
+FROM `tipo_grupo`
+JOIN `ficha` `f` ON `tipo_grupo`.`id` = `f`.`tipo_grupo_id`
+WHERE `tipo_grupo`.`cliente_id` = :tipo_grupo.cliente_id:
+AND `tipo_grupo`.`status` = :tipo_grupo.status:
+AND `f`.`exer_concluido` != :f.exer_concluido:
+GROUP BY `tipo_grupo`.`cliente_id`', [...], false)
+ 5 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Relatorios.php(40): CodeIgniter\Model->__call('get', [])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Relatorios->rEstatistica()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Relatorios))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

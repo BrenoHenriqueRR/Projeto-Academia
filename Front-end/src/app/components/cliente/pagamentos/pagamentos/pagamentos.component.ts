@@ -33,17 +33,13 @@ export class PagamentosComponent {
         this.validarPag = 'success';
         this.updatePag();
   
-        // Navegar para a mesma rota sem parâmetros
-        this.router.navigate([], {
-          queryParams: {},
-          replaceUrl: true
-        });
+        this.router.navigate(['/home-cliente']),{
+        };
       } else if (this.check == 'cancel') {
         alert("Pagamento cancelado");
         this.validarPag = 'cancel';
         this.updatePag();
   
-        // Navegar para a mesma rota sem parâmetros
       }
     }
   }
@@ -78,6 +74,7 @@ export class PagamentosComponent {
           mode: 'subscription',
           successUrl: `${window.location.href}?checkout=success`,
           cancelUrl: `${window.location.href}?checkout=cancel`,
+          // clientReferenceId: localStorage.getItem('idcliente') ?? undefined
         });
         if (error) {
           alert("Erro no pagamento");
@@ -114,8 +111,6 @@ export class PagamentosComponent {
     this.service.update(pagjson).subscribe({
       next: (dados) => {
         console.log(dados.msg);
-        this.router.navigate(['/home-cliente']),{
-        };
       },
     })
   }

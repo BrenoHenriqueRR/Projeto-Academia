@@ -1,10 +1,80 @@
 .fundo{
     height: 100vh;
     width: 100%;
-    overflow-y: hidden;
+    overflow-y: scroll;
   }
   
   .container {
     max-width: 100%;
     /* margin: 0 auto; */
   }
+
+  .cli-ativos-inativos,
+  .estatisticas-cli,
+  .vendas,
+  .situacao-cli{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin:  02rem;
+    width: 45%;
+    background-color: white;
+    font-size: 15px;
+    border: 1px solid ;
+  }
+
+ /* .vendas,
+  .situacao-cli{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin:  02rem;
+    width: 45%;
+    background-color: white;
+    font-size: 15px;
+    border: 1px solid ;
+  }*/
+
+  .cli-ativos-inativos h2,
+  .estatisticas-cli h2,
+  .vendas h2,
+  .situacao-cli h2
+  {
+    text-align: center;
+    font-size: 25px;
+  }
+
+  .cli-ativos-inativos ul li,
+  .estatisticas-cli ul li{
+    margin-left: 2rem;
+    list-style: none;
+  }
+
+  tr th, tr td{
+    padding: 0rem 0.6rem;
+    font-size: 17px;
+    /* border: 1px solid rgb(221, 221, 221); */
+    border-collapse: collapse;
+    transition: width 0.5s;
+}
+
+
+th:hover, td:hover {
+  width: 300px;
+}
+
+.cli-pendentes{
+    overflow-y: scroll;
+    height: 18rem;
+}
+
+.form-control{
+  width: 20rem;
+}
+
+.cad-btn{
+  padding: 0.2rem 2rem;
+  margin: 1rem 0;
+  border-radius: 10px;
+  color: black;
+  font-weight: 600;
+  background-color: rgba(217, 255, 1, 0.933);
+  border:none;
+}
+  

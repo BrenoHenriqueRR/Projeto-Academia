@@ -6,37 +6,27 @@
 }
 
 .container {
-  max-width: 100%;
-  /* margin: 0 auto; */
+  max-width: 50%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.total-pagamentos,.cad-treinos{
+  padding: 2rem;
 }
 
 
-.grid-container {
-  margin: 20px;
-  height: 90vh;
-  overflow: scroll;
-  overflow-x: hidden;
+.total-pagamentos p{
+  font-size: 40px;
 }
 
-.dashboard-card {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  right: 15px;
-  bottom: 15px;
+.card{
+  margin-bottom: 8rem;
+  padding: 1rem;
 }
 
-.more-button {
-  position: absolute;
-  top: 5px;
-  right: 10px;
+.cad-treinos{
+  padding: 2rem;
 }
 
-.dashboard-card-content {
-  text-align: center;
-}
-
-
-.mat-h1{
-  margin-top: 5rem;
-}

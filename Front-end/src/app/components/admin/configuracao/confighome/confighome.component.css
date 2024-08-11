@@ -1,0 +1,131 @@
+.fundo {
+    width: 100%;
+    background-color: white
+}
+
+p {
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+}
+
+.bg-blue {
+    background-color: #063981;
+    color: white;
+    padding: 13px;
+    font-size: 26px;
+    text-align: center;
+    line-height: 3rem;
+}
+
+.step1 {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.container-fluid {
+    margin-top: 1.5rem;
+}
+
+.container-fluid .config {
+    border: 1px solid rgba(128, 128, 128, 0.337);
+}
+
+.btn-proximo,
+.btn-anterior {
+    padding: 0.2rem 1.2rem;
+    border-radius: 10px;
+    color: white;
+    margin: 1rem;
+    border: none;
+}
+
+.btn-proximo {
+    background-color: green;
+}
+
+.btn-anterior {
+    background-color: rgb(243, 28, 28);
+}
+
+.btn {
+    display: flex;
+    justify-content: end;
+}
+
+.btn-proximo:hover {
+    background-color: rgb(0, 154, 0);
+}
+
+.container {
+    margin: auto;
+    border: 1px solid rgba(0, 0, 0, 0.303);
+    padding: 15px 50px;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #063981;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.2rem;
+}
+
+.table th,
+.table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.file-input {
+    display: none;
+}
+
+.file-input-label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #063981;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.file-input-label:hover {
+    background-color: #0056b3;
+}
+
+.file-name {
+    margin-top: 10px;
+    font-style: italic;
+}

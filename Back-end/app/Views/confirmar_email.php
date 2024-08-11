@@ -31,8 +31,8 @@
             display: inline-block;
             padding: 10px 20px;
             font-size: 16px;
-            color: #ffffff;
-            background-color: #007bff;
+            color: black;
+            background-color: #E7F53D;
             text-decoration: none;
             border-radius: 5px;
             margin-top: 20px;
@@ -52,7 +52,8 @@
         </div>
         <div class="content">
             <p>Olá,</p>
-            <p>Obrigado por se registrar. Clique no botão abaixo para confirmar seu email.</p>
+            <p>Recebemos uma solicitação para redefinir a senha associada ao seu e-mail.<br>
+             Para continuar com a redefinição de sua senha, por favor, utilize o seguinte código de verificação:</p>
             <a class="button">Sua senha: <?= $senha ?></a>
         </div>
         <div class="footer">

@@ -1,0 +1,147 @@
+<div class="fundo d-flex align-items-center justify-content-center">
+    <div class="container-fluid d-flex align-items-center justify-content-center">
+       <div *ngIf="loading"><app-modal-spinner></app-modal-spinner></div>
+        <div class="step1" *ngIf="currentStep === 1">
+            <div class="config">
+                <h1 class="bg-blue">Bem-vindo ao Sistema de Gerenciamento da Academia.<br>
+                    Vamos configurar seu sistema!</h1>
+                <p>Para garantir uma configuração bem-sucedida,<br> siga os passos indicados a seguir e evite <br>
+                    atualizar ou sair da página durante o processo.</p>
+                <div class="d-flex justify-content-end">
+                    <button class="btn-proximo" (click)="Proximo()" type="submit">Próximo</button>
+                </div>
+            </div>
+        </div>
+        <div class="container" *ngIf="currentStep === 2">
+            <div class="container-fluid">
+                <h1>Configuração Da Academia</h1>
+                <form [formGroup]="cadForm">
+                    <div class="form-group">
+                        <label for="logo">Adicione a sua logo</label>
+                        <input formControlName="logo" type="file" id="logo" class="file-input"
+                            (change)="onFileChange($event)">
+                        <label for="logo" class="file-input-label">Escolha um arquivo</label>
+                        <div class="file-name">{{fileName}}</div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col">
+                            <label for="nomeAcad">Nome da Academia</label>
+                            <input type="text" formControlName="nomeAcad" id="nomeAcad">
+                        </div>
+                        <div class="col">
+                            <label for="horarioFuncionamento">Horário de Funcionamento</label>
+                            <input list=hfunc type="text" id="horarioFuncionamento"
+                                formControlName="horarioFuncionamento"
+                                placeholder="Ex: Seg-Sex: 6h-22h, Sáb-Dom: 8h-18h">
+                            <datalist id="hfunc">
+                                <option value="Seg-Sex: 6h-22h, Sáb-Dom: 8h-18h"></option>
+                                <option value="Seg-Sex: 6h-23h, Sáb-Dom: 7h-13h"></option>
+                                <option value="Seg-Sex: 00h-00h, Sáb-Dom: 8h-23h"></option>
+                            </datalist>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col">
+                            <label for="telefoneAcademia">Telefone</label>
+                            <input type="text" id="telefoneAcademia" formControlName="telefoneAcademia">
+                        </div>
+                        <div class="col">
+                            <label for="emailAcademia">E-mail</label>
+                            <input type="email" id="emailAcademia" formControlName="emailAcademia">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="descricaoAcad">Descrição</label>
+                        <textarea id="descricaoAcad" formControlName="descricaoAcad"></textarea>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col">
+                            <label for="endereco">Endereço</label>
+                            <input id="endereco" formControlName="endereco">
+                        </div>
+                        <div class="col">
+                            <label for="cnpj">CNPJ</label>
+                            <input type="text" mask="00.000.000/0000-00" id="cnpj" formControlName="cnpj">
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <button class="btn-anterior" type="button" (click)="Anterior()">Voltar</button>
+                        <button class="btn-proximo" (click)="salvarConfiguracoes()">Salvar Configurações</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="container" *ngIf="currentStep === 3">
+            <div class="container-fluid">
+                <form [formGroup]="planForm">
+                    <h1>Configuração de Planos da Academia</h1>
+                    <div class="row form-group">
+                        <div class="col">
+                            <label for="nomePlano">Nome do Plano</label>
+                            <input type="text" id="nomePlano" formControlName="nomePlano">
+                        </div>
+                        <div class="col">
+                            <label for="precoPlano">Preço</label>
+                            <input type="number" id="precoPlano" formControlName="precoPlano">
+                        </div>
+                        <!-- <div class="col">
+                            <label for="descontoPlano">Desconto (%)</label>
+                            <input type="number" id="descontoPlano" formControlName="descontoPlano">
+                        </div> -->
+                    </div>
+                    <div class="form-group">
+                        <label for="descricaoPlano">Descrição</label>
+                        <textarea id="descricaoPlano" formControlName="descricaoPlano"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="duracaoPlano">Duração</label>
+                        <select id="duracaoPlano" formControlName="duracaoPlano">
+                            <option disabled selected>Escolhe uma opção</option>
+                            <option value="1">1 Mês</option>
+                            <option value="3">3 Meses</option>
+                            <option value="6">6 Meses</option>
+                            <option value="12">12 Meses</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="beneficiosPlano">Benefícios</label>
+                        <textarea id="beneficiosPlano" formControlName="beneficiosPlano"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="disponibilidadePlano">Disponibilidade</label>
+                        <select id="disponibilidadePlano" formControlName="disponibilidadePlano">
+                            <option value="ativo">Ativo</option>
+                            <option value="inativo">Inativo</option>
+                        </select>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <button class="button" (click)="salvarPlano()">Salvar Plano</button>
+                        <button class="button" (click)="adicionarNovoPlano()">Adicionar Novo Plano</button>
+                    </div>
+                    <br>
+                    <h2>Planos Existentes</h2>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Descrição</th>
+                                <th>Preço</th>
+                                <th>Duração</th>
+                                <th>Benefícios</th>
+                                <th>Disponibilidade</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="planosTableBody">
+                            <!-- Planos serão adicionados dinamicamente aqui -->
+                        </tbody>
+                    </table>
+                    <div class="d-flex justify-content-end">
+                        <!-- <button class="btn-anterior" type="button" (click)="Anterior()">Voltar</button> -->
+                        <button class="btn-proximo" (click)="Proximo()" type="submit">avançar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

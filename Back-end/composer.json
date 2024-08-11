@@ -14,8 +14,10 @@
         "ext-intl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
+        "dompdf/dompdf": "^3.0",
         "laminas/laminas-escaper": "^2.9",
-        "psr/log": "^1.1"
+        "psr/log": "^1.1",
+        "stripe/stripe-php": "^14.10"
     },
     "require-dev": {
         "codeigniter/coding-standard": "^1.7",

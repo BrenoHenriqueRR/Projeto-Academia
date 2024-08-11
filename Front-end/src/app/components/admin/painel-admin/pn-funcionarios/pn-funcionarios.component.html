@@ -21,8 +21,9 @@
                     <td>{{dados.CPF}}</td>
                     <td>{{dados.funcao}}</td>
                     <td>
-                        <button routerLink="editar" [queryParams]="{ id: dados.id}">Editar</button>
-                        <button class="btn-excluir"(click)="excluir(dados.id)">Excluir</button>            
+                        <button routerLink="editarf" [queryParams]="{ id: dados.id}">Editar</button>
+                        <button class="btn-excluir"(click)="openmodal(dados.id)">Excluir</button> 
+                        <app-modal-confirmar (confirm)="validarmodal($event)"></app-modal-confirmar>           
                     </td>
                 </tr>
             }

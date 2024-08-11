@@ -3,15 +3,26 @@
         <div class="dashboard">
             <div class="card">
                 <h2>Eventos</h2>
-                <p>Lorem ipsum dolor sit amet.</p>
+                <p>Inverno começou aquece-se na nossa academia !</p>
             </div>
             <div class="card">
                 <h2>Treinos</h2>
-                <p>Lorem ipsum dolor sit amet consectetur.</p>
+                    <p>Treino: {{treino[0].tipo}}</p>
+                    <p>Status: {{treino[0].status}}</p>
+                <a routerLink="/home-cliente/treinos">Ver</a>
             </div>
             <div class="card">
                 <h2>Pagamentos</h2>
-                <p></p>
+                @for (item of pagamentos; track $index) {
+                    @if (item.status_pagamento == 'pendente') {
+                        <p>valor: {{item.valor}}</p>
+                        <p>Clique abaixo Para pagar a sua Fatura</p>
+                     }
+                     @else {
+                        <p>Clique abaixo para ver o seus comprovantes</p>
+                        <a routerLink="/home-cliente/pagamentos">Ver</a>
+                     }
+                 }       
             </div>
         </div>
     </div>

@@ -1,0 +1,168 @@
+<div class="fundo">
+    <div class="container">
+        <h1>Relatórios</h1>
+        <div class="row row-cols-2">
+            <div class="col p-2 cli-ativos-inativos">
+                <h2>Clientes ativos e inativos</h2>
+                <button type="button" class="btn btn-primary" (click)="gerarPdf()"><i
+                        class="fa-solid fa-file-pdf"></i></button>
+                <div class="cli-pendentes" id="cli-ai">
+                    <table id="clientes-table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>CPF</th>
+                                <th>Ultimo Login</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="clientes-list">
+                            @if (func != 'personal') {
+                            @for (dado of clientes; track dado;) {
+                            <tr>
+                                <td>{{dado['cliente_nome']}}</td>
+                                <td>{{dado['email']}}</td>
+                                <td>{{dado['CPF']}}</td>
+                                <td>{{dado['ultimo_login']}}</td>
+                                @if(dado['status'] == null)
+                                {
+                                <td>Inativo</td>
+                                }@else {
+                                <td>{{dado['status']}}</td>
+                                }
+                            </tr>
+                            }
+                            }@else{
+                            @for (dado of clientes; track dado;) {
+                            @if (dado['id_func'] == idfunc) {
+                            <tr>
+                                <td>{{dado['cliente_nome']}}</td>
+                                <td>{{dado['email']}}</td>
+                                <td>{{dado['CPF']}}</td>
+                                <td>{{dado['ultimo_login']}}</td>
+                                @if(dado['status'] == null)
+                                {
+                                <td>Inativo</td>
+                                }@else {
+                                <td>{{dado['status']}}</td>
+                                }
+                            </tr>
+                            }
+                            }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            @if (func != 'personal') {
+            <div class="col p-2  estatisticas-cli">
+                <h2>Clientes com pagamento pendente:</h2>
+                <button type="button" class="btn btn-primary" (click)="gerarPdfP()"><i
+                        class="fa-solid fa-file-pdf"></i></button>
+                <div class="cli-pendentes"  id="cli-pagp">
+                    <table id="clientes-table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>CPF</th>
+                                <th>Valor</th>
+                                <th>Data Criação</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="clientes-list">
+                            @for (dado of cliPendente; track dado;) {
+                            <tr>
+                                <td>{{dado['nome']}}</td>
+                                <td>{{dado['email']}}</td>
+                                <td>{{dado['cpf']}}</td>
+                                <td>{{dado['valor']}}</td>
+                                <td>{{dado['data_criacao']}}</td>
+                                <td>{{dado['status_pagamento']}}</td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            }
+            <div class="col p-2  vendas">
+                <h2>Estatistica dos Clientes</h2>
+                <div class="flex-column">
+                    <p>Escolha o seu cliente</p>
+                    <select (click)="Clientes()" [(ngModel)]="optioncli" class="form-control">
+                        <option value="0" disabled selected>Escolha um cliente</option>
+                        @for (dado of cliselect; track dado;) {
+                        <option value="{{ dado['id'] }}">{{ dado['cliente_nome'] }}</option>
+                        }
+                    </select>
+                    <button [disabled]="!optioncli" class="cad-btn" (click)="pesquisarEstatisticas();">Buscar</button>
+
+                    <button type="button" class="btn btn-primary" (click)="gerarPdfPe()"><i
+                            class="fa-solid fa-file-pdf"></i></button>
+                    <div class="cli-pendentes" id="cli-pE">
+                        <table id="clientes-table">
+                            <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>Total exer concluidos</th>
+                                    <th>Carga total</th>
+                                    <th>Total de fichas concluidas</th>
+                                    <th>Ultima conclusão</th>
+                                    <th>Feedbacks</th>
+                                </tr>
+                            </thead>
+                            <tbody id="clientes-list">
+                                @for (dado of estatisticas; track dado;) {
+                                <tr>
+                                    <td>{{dado['cliente_id']}}</td>
+                                    <td>{{dado['total_exercicios_concluidos']}}</td>
+                                    <td>{{dado['carga_total_levantada']}}</td>
+                                    <td>{{dado['total_de_fichas_concluidos']}}</td>
+                                    <td>{{dado['ultima_data_conclusao']}}</td>
+                                    <td>{{dado['feedbacks']}}</td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            @if (func != 'personal') {
+            <div class="col p-2  situacao-cli">
+                <h2>Vendas</h2>
+                <button type="button" class="btn btn-primary" (click)="gerarPdfVenda()"><i
+                        class="fa-solid fa-file-pdf"></i></button>
+                <div class="cli-pendentes" id="venda">
+                    <table id="clientes-table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>CPF</th>
+                                <th>Valor</th>
+                                <th>Data Criação</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="clientes-list">
+                            @for (dado of cliPendente; track dado;) {
+                            <tr>
+                                <td>{{dado['nome']}}</td>
+                                <td>{{dado['email']}}</td>
+                                <td>{{dado['cpf']}}</td>
+                                <td>{{dado['valor']}}</td>
+                                <td>{{dado['data_criacao']}}</td>
+                                <td>{{dado['status_pagamento']}}</td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</div>

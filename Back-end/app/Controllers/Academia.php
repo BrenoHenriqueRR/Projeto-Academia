@@ -23,18 +23,8 @@ class Academia extends BaseController
     {
         $logo = $this->request->getFile('logo');
 
-        $query = $this->model->select('logo')
-            ->where('id', 1)
-            ->get()
-            ->getResult();
-        if (!isset($query)) {
-            foreach ($query->getResult() as $row) {
-                unlink($row->logo);
-            }
-        }
-
         if ($logo->isValid() && !$logo->hasMoved()) {
-            $nomeimg = $logo->getRandomName(); 
+            $nomeimg = $logo->getRandomName();
             $logo->move('assets/Logo-academia', $nomeimg);
             $caminhoImagem = 'assets/Logo-academia/' . $nomeimg;
         }
@@ -52,15 +42,15 @@ class Academia extends BaseController
             'data_modificacao' => date("Y-m-d"),
         ];
 
-        if($this->model->insert($dados)){
-            if($this->model->affectedRows() > 0){
+        if ($this->model->insert($dados)) {
+            if ($this->model->affectedRows() > 0) {
                 $cdados = [
                     "etapa_atual" => "2",
                 ];
                 $this->progressomodel->insert($cdados);
                 $msg = array("msg" => "Configuração enviada");
                 return $this->response->setJSON($msg)->setStatusCode(200);
-            }else{
+            } else {
                 $msg = array("msg" => "Nenhuma linha inserida");
                 return $this->response->setJSON($msg)->setStatusCode(200);
             }
@@ -70,15 +60,49 @@ class Academia extends BaseController
         }
     }
 
-    public function pesquisar(){
+    public function read()
+    {
 
         $dados = $this->progressomodel->select('*')
-        ->get();
+            ->get();
 
-        if(!empty($dados)){
+        if (!empty($dados)) {
             return $this->response->setJson($dados->getResult())->setStatusCode(200);
-        }else{
+        } else {
             return $this->response->setJson('false')->setStatusCode(200);
+        }
+    }
+
+    public function nextStep()
+    {
+        date_default_timezone_set('America/Sao_Paulo');
+        $data = $this->request->getJson();
+        switch ($data->etapa) {
+            case "Academia":
+                echo "Academia";
+                break;
+            case "Planos":
+                $etapa = [
+                    "etapa_atual" => "3",
+                ];
+                $date = ['data_ultima_atualizacao' => date('Y-m-d H:i:s')];
+
+                $this->progressomodel->update(1,$etapa,$date);
+                $msg = array("msg" => "Configuração enviada");
+                return $this->response->setJSON($msg)->setStatusCode(200);
+                break;
+            case "Funcionario":
+                $etapa = [
+                    "etapa_atual" => "4",
+                ];
+                $date = ['data_ultima_atualizacao' => date('Y-m-d H:i:s')];
+
+                $this->progressomodel->update(1,$etapa,$date);
+                $msg = array("msg" => "Configuração enviada");
+                return $this->response->setJSON($msg)->setStatusCode(200);
+                break;
+            default:
+                echo "dados incorretos";
         }
     }
 }

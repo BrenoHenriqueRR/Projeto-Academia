@@ -1,0 +1,9 @@
+CRITICAL - 2024-08-12 23:32:56 --> CodeIgniter\Database\Exceptions\DataException: There is no data to insert.
+in SYSTEMPATH\BaseModel.php on line 788.
+ 1 SYSTEMPATH\BaseModel.php(788): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('insert')
+ 2 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([], true)
+ 3 APPPATH\Controllers\Planos.php(23): CodeIgniter\Model->insert(Object(stdClass))
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Planos->create()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Planos))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

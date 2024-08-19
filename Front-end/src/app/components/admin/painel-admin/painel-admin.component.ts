@@ -58,15 +58,14 @@ export class PainelAdminComponent {
   }
   funcao() {
     const jsonString: string = '{"email": "' + localStorage.getItem('email') + '"}';
-    this.service.funcao(jsonString).subscribe(
-      (dado) => {
+    this.service.funcao(jsonString).subscribe({
+      next: (dado) => {
         this.funcionalidade = dado[0].funcao;
         localStorage.setItem('id', dado[0].id);
-
       },
-      (erro) => {
+      error: (erro) => {
         console.error('Erro ao buscar dados:', erro);
-      }
+      }}
     );
   }
 }

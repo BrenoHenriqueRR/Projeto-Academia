@@ -9,7 +9,7 @@ import { environment } from '../../environments/environment';
 })
 export class CadastroService {
    private url_cliente = environment.apiUrl + '/Cliente/create';
-   private url_pesquisar = environment.apiUrl + '/Personal/pesquisar';
+   private url_pesquisar = environment.apiUrl + '/Funcionarios/pesquisar';
    
 
   constructor(private http: HttpClient) {} 

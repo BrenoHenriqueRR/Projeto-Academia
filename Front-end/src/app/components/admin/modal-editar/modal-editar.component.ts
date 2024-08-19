@@ -32,15 +32,15 @@ constructor(private service: ModalEditarService, private route: ActivatedRoute, 
 
 Bucasdados(){
   const jsonString  = '{"id": "' + this.identificador + '"}';
-  this.service.pesquisar(jsonString).subscribe(
-    (dados) => {
+  this.service.pesquisar(jsonString).subscribe({
+    next: (dados) => {
       this.data = dados;
       // console.log(dados);
       this.form();
-    },(erro) => {
+    },error: (erro) => {
       console.error('Erro ao buscar dados:', erro);
     }
-  );
+  });
 }
 
 form(){

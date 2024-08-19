@@ -1,16 +1,16 @@
 import { Component, ViewChild } from '@angular/core';
-import { PnClienteService } from '../../../../services/admin/pn-cliente/pn-cliente.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgFor } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { PnFuncionarioService } from '../../../../services/admin/pn-funcionario/pn-funcionario.service';
 import { ModalConfirmarComponent } from '../../../modal-confirmar/modal-confirmar.component';
+import { ModalCadastroComponent } from "../../modal-cadastro/modal-cadastro.component";
 
 
 @Component({
   selector: 'app-pn-funcionarios',
   standalone: true,
-  imports: [NgxPaginationModule,NgFor,RouterLink,ModalConfirmarComponent],
+  imports: [NgxPaginationModule, NgFor, RouterLink, ModalConfirmarComponent, ModalCadastroComponent],
   templateUrl: './pn-funcionarios.component.html',
   styleUrl: './pn-funcionarios.component.css'
 })

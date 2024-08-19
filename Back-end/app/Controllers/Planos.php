@@ -29,4 +29,35 @@ class Planos extends BaseController
             return $this->response->setJSON(["msg" => "Erro na inserção:" . $error['message']])->setStatusCode(200);
         }
     }
+
+    public function edit(){
+        $data = $this->request->getJson();
+        
+        $dados = $this->model->where('id', $data['id'])
+        ->set($data)
+        ->update();
+
+        $msg = array("msg" => "Plano editado com sucesso !!");
+        return $this->response->setJson($msg)->setStatusCode(200);
+        
+    }
+    public function read(){
+        // $data = $this->request->getJson();
+        
+        $dados = $this->model->select()
+        ->get();
+
+        return $this->response->setJson($dados->getResult())->setStatusCode(200);
+        
+    }
+      public function delete(){
+        $data = $this->request->getJson();
+            
+        $dados = $this->model->where('id', $data['id'])
+        ->delete();
+
+        $msg = array("msg" => "Plano excluido com sucesso !!");
+        return $this->response->setJson($msg)->setStatusCode(200);
+        
+    }
 }

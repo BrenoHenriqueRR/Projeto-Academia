@@ -1,16 +1,16 @@
-CRITICAL - 2024-04-05 00:50:23 --> Error: Object of class App\Models\PersonalModel could not be converted to string
+CRITICAL - 2024-04-05 00:50:23 --> Error: Object of class App\Models\FuncionariosModel could not be converted to string
 in APPPATH\Controllers\Personal.php on line 25.
  1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Personal->pesquisar()
  2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Personal))
  3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
-CRITICAL - 2024-04-05 00:50:31 --> Error: Object of class App\Models\PersonalModel could not be converted to string
+CRITICAL - 2024-04-05 00:50:31 --> Error: Object of class App\Models\FuncionariosModel could not be converted to string
 in APPPATH\Controllers\Personal.php on line 25.
  1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Personal->pesquisar()
  2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Personal))
  3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
-CRITICAL - 2024-04-05 00:50:40 --> Error: Cannot use object of type App\Models\PersonalModel as array
+CRITICAL - 2024-04-05 00:50:40 --> Error: Cannot use object of type App\Models\FuncionariosModel as array
 in APPPATH\Controllers\Personal.php on line 25.
  1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Personal->pesquisar()
  2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Personal))

@@ -1,7 +1,10 @@
 <div class="fundo">
     <div class="container">
         <h1>Listagem de Funcionários</h1>
-        <table id="clientes-table">
+        <div class="mt-5">
+            <app-modal-cadastro tipo="funcionario"></app-modal-cadastro>
+        </div>
+        <table class="mt-3" id="clientes-table">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -11,7 +14,7 @@
                     <th>Função</th>
                     <th>Ações</th>
                 </tr>
-            </thead>
+            </thead> 
             <tbody id="clientes-list">
                 @for (dados of dados_funcionario | paginate: { itemsPerPage: 5, currentPage: paginaAtual }; track dados) {
                 <tr>

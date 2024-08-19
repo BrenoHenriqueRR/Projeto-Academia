@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\PersonalModel;
+use App\Models\FuncionariosModel;
 use App\Models\ClienteModel;
 
 
@@ -15,7 +15,7 @@ class Admin extends BaseController
     protected $modelcli; 
 
     public function __construct(){
-        $this->model = new PersonalModel();
+        $this->model = new FuncionariosModel();
         $this->modelcli = new ClienteModel();
     }
 

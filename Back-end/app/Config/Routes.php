@@ -17,7 +17,8 @@ $routes->post("/Cliente/pesquisarpid", 'Cliente::pesquisarpid');
 $routes->post("/Cliente/inserirFoto", 'Cliente::inserirFoto');
 $routes->post("/Cliente/pegarFoto", 'Cliente::pegarFoto');
 $routes->post("/Cliente/trocarSenha", 'Cliente::trocarSenha');
-$routes->get('/Personal/pesquisar', 'Personal::pesquisar');
+$routes->get('/Funcionarios/pesquisar', 'Funcionarios::pesquisar');
+$routes->post('/Funcionarios/create', 'Funcionarios::create');
 $routes->post('/Admin/login', 'Admin::login');
 $routes->post('/Admin/funcao', 'Admin::funcao');
 $routes->post('/Admin/funcaoPncli', 'Admin::funcaoPncli');
@@ -42,8 +43,13 @@ $routes->post('/Financeiro/update', 'Financeiro::update');
 $routes->post('/EmailController/create', 'EmailController::create');
 $routes->get('/StripeController/getPagamentos', 'StripeController::getPagamentos');
 $routes->post('/Relatorios/rEstatistica', 'Relatorios::rEstatistica');
-$routes->post('/Academia/create', 'Academia::create');
-$routes->get('/Academia/pesquisar', 'Academia::pesquisar');
+$routes->post('/Academia/create', 'Academia::create'); 
+$routes->post('/Academia/nextStep', 'Academia::nextStep'); 
+$routes->get('/Academia/read', 'Academia::read'); 
+$routes->post('/Planos/create', 'Planos::create');
+$routes->get('/Planos/read', 'Planos::read');
+$routes->post('/Planos/edit', 'Planos::edit');
+$routes->post('/Planos/delete', 'Planos::delete');
 
 
 

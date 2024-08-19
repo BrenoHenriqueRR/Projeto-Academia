@@ -13,11 +13,11 @@ export class ModalConfirmarComponent {
   validator: boolean = false;
 
   openModal(){
-    $(this.modal?.nativeElement).modal('show');
+    ($(this.modal?.nativeElement) as any).modal('show');
   }
-
+  
   closeModal(){
-    $(this.modal?.nativeElement).modal('hide');
+    ($(this.modal?.nativeElement) as any).modal('hide');
   }
 
   returntrue(){

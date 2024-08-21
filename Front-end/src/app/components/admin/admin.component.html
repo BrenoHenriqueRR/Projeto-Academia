@@ -25,20 +25,6 @@
                     </div>
                 </form>
             </div>
-            <div class="resultado">
-                @if (clicado == true) {
-                  @if (mensagem == 'false'){
-                      <div class="mensagem-erro">
-                        <p>*Usuário ou senha incorretos</p>
-                      </div>
-                  }@else if(mensagem == 'true'){
-                      <div class="mensagem">
-                        <!-- {{ isLoading ? 'Aguarde...' : 'Login' }} -->
-                        {{logado()}};
-                      </div>
-                  }
-              }
-            </div>
         </div>
     </div>
 </div>

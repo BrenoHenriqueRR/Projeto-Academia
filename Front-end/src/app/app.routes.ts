@@ -17,13 +17,14 @@ import { DashboardCliComponent } from './components/cliente/dashboard-cli/dashbo
 import { PagamentosComponent } from './components/cliente/pagamentos/pagamentos/pagamentos.component';
 import { PerfilComponent } from './components/cliente/perfil/perfil.component';
 import { CadTreinoComponent } from './components/admin/painel-admin/cad-treino/cad-treino.component';
-import { authGuard } from './guard/auth.guard';
+import { authGuard } from './guard/cliente/auth.guard';
 import { PnTreinoComponent } from './components/admin/painel-admin/pn-treino/pn-treino.component';
 import { PnFinanceiroComponent } from './components/admin/painel-admin/pn-financeiro/pn-financeiro.component';
 import { RecuperarSenhaComponent } from './components/recuperar-senha/recuperar-senha.component';
 import { PnRelatoriosComponent } from './components/admin/painel-admin/pn-relatorios/pn-relatorios.component';
 import { ModalEditarFuncionarioComponent } from './components/admin/modal-editar-funcionario/modal-editar.component';
 import { ConfighomeComponent } from './components/admin/configuracao/confighome/confighome.component';
+import { adminGuard } from './guard/admin/admin.guard';
 
 
 export const routes: Routes = [
@@ -70,17 +71,18 @@ export const routes: Routes = [
     {
         path: 'admin/painel',
         component: PainelAdminComponent,
+        canActivate: [adminGuard],
         children: [
             { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-            { path: 'dashboard', component: DashboardComponent },
-            { path: 'funcionarios', component: PnFuncionariosComponent },
-            { path: 'clientes', component: PnClientesComponent },
-            { path: 'treinos', component: PnTreinoComponent },
-            { path: 'financeiro', component: PnFinanceiroComponent },
-            { path: 'funcionarios/editarf', component: ModalEditarFuncionarioComponent },
-            { path: 'relatorios', component: PnRelatoriosComponent },
-            { path: 'clientes/editar', component: ModalEditarComponent },
-            { path: 'clientes/treinos', component: CadTreinoComponent },
+            { path: 'dashboard', component: DashboardComponent,  canActivate: [adminGuard] },
+            { path: 'funcionarios', component: PnFuncionariosComponent,  canActivate: [adminGuard] },
+            { path: 'clientes', component: PnClientesComponent,  canActivate: [adminGuard] },
+            { path: 'treinos', component: PnTreinoComponent,  canActivate: [adminGuard] },
+            { path: 'financeiro', component: PnFinanceiroComponent,  canActivate: [adminGuard] },
+            { path: 'funcionarios/editarf', component: ModalEditarFuncionarioComponent,  canActivate: [adminGuard] },
+            { path: 'relatorios', component: PnRelatoriosComponent,  canActivate: [adminGuard] },
+            { path: 'clientes/editar', component: ModalEditarComponent,  canActivate: [adminGuard] },
+            { path: 'clientes/treinos', component: CadTreinoComponent,  canActivate: [adminGuard] },
         ],
 
     },

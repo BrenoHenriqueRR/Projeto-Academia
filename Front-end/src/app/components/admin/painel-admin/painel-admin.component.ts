@@ -5,6 +5,7 @@ import { PnFuncionariosComponent } from './pn-funcionarios/pn-funcionarios.compo
 import { MatTabsModule } from '@angular/material/tabs';
 import { FormsModule } from '@angular/forms';
 import { CommonModule, NgFor } from '@angular/common';
+import { AuthserviceService } from '../../../services/authService/authservice.service';
 
 
 
@@ -31,7 +32,7 @@ export class PainelAdminComponent {
     { description: 'Financeiro', routerLink: 'financeiro', iconClass: 'fa-solid fa-coins' },
   ];
 
-  constructor(private service: LoginAdminService, @Inject(ActivatedRoute) private route: ActivatedRoute) {
+  constructor(private service: LoginAdminService, @Inject(ActivatedRoute) private route: ActivatedRoute,private guard: AuthserviceService) {
     this.route.queryParams.subscribe(params => {
       if (params['user'] !== undefined) {
         this.dados = params['user'];
@@ -61,12 +62,16 @@ export class PainelAdminComponent {
     this.service.funcao(jsonString).subscribe({
       next: (dado) => {
         this.funcionalidade = dado[0].funcao;
-        localStorage.setItem('id', dado[0].id);
       },
       error: (erro) => {
         console.error('Erro ao buscar dados:', erro);
       }}
     );
   }
+
+  logout(){
+    this.guard.logoutadm();
+  }
+
 }
 

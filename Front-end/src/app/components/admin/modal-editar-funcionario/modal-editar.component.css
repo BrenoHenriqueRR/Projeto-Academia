@@ -34,7 +34,7 @@
     padding: 0.4rem 2rem ;
 }
 
-.input-box input {
+.input-box input, .input-box select {
     margin: 0.4rem;
     padding: 0.8rem 1.5rem;
     border: none;

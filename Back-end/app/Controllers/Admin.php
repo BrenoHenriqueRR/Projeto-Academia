@@ -87,7 +87,9 @@ class Admin extends BaseController
     }
 
     public function buscarfun(){
+
         $json = file_get_contents('php://input');
+
         $data = json_decode($json, true);
 
         $dados = $this->model->select('*');
@@ -137,7 +139,7 @@ class Admin extends BaseController
         // $this->model->select('*');
         // $this->model->where('id', $data['id'] );
      
-        // // Verifique se a consulta retornou algum resultado antes de tentar acessá-lo
+        // // Verifica se a consulta retornou algum resultado antes de tentar acessá-lo
         // // echo $personal['id'];
 
 

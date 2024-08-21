@@ -17,7 +17,6 @@ import { NgIf } from '@angular/common';
 })
 export class LoginComponent {
   formlogin!: FormGroup;
-  @Output("enviar") onSubmit = new EventEmitter();
   loading = false;
   mensagem!: string;
   clicado = false;
@@ -37,12 +36,9 @@ export class LoginComponent {
   submit(){
     this.clicado = true;
     if (this.formlogin.valid) {
-      // Obter os valores do formulário e converter para JSON
       const dados = JSON.stringify(this.formlogin.getRawValue());
       this.pesquisar(this.formlogin.value.email);
   
-      // Emitir evento onSubmit e definir loading como verdadeiro
-      this.onSubmit.emit();
       this.loading = true;
   
       // Enviar os dados
@@ -50,13 +46,17 @@ export class LoginComponent {
           next: (resposta) => {
             this.mensagem = resposta.msg;
             this.formlogin.reset();
-            this.loading = false;
             if(this.mensagem == 'true' ){
-              this.logar();
+              setTimeout(() => {
+                this.loading = false;
+                this.router.navigate(['/home-cliente']),{
+                };
+              }, 200);
             }
           }
         })
       }else{
+        this.loading = false;
         alert("campos vazio!!")
       }
   }

@@ -30,7 +30,7 @@ export class PnRelatoriosComponent {
     this.pesquisarCliPendente();
     this.pClientes();
     this.funcao();
-    this.idfunc = localStorage.getItem('id');
+    this.idfunc = localStorage.getItem('adminid');
   }
 
 

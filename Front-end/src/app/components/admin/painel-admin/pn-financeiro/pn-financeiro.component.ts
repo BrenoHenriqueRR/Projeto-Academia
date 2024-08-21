@@ -24,11 +24,11 @@ export class PnFinanceiroComponent {
 
   constructor(private service: PnClienteService,private cadservice: PnFinanceiroService){
     this.pesquisarCliPendente();
-      this.cadservice.getPagamentos().subscribe({
-        next: (total) => {
-          this.total = total[0].preco;
-        },
-      })
+      // this.cadservice.getPagamentos().subscribe({
+      //   next: (total) => {
+      //     this.total = total[0].preco;
+      //   },
+      // })
   }
 
   openModal(){

@@ -25,6 +25,7 @@ import { PnRelatoriosComponent } from './components/admin/painel-admin/pn-relato
 import { ModalEditarFuncionarioComponent } from './components/admin/modal-editar-funcionario/modal-editar.component';
 import { ConfighomeComponent } from './components/admin/configuracao/confighome/confighome.component';
 import { adminGuard } from './guard/admin/admin.guard';
+import { PlanosComponent } from './components/planos/planos.component';
 
 
 export const routes: Routes = [
@@ -36,6 +37,10 @@ export const routes: Routes = [
     {
         path: 'login',
         component: LoginComponent
+    },
+    {
+        path: 'planos',
+        component: PlanosComponent
     },
 
     {

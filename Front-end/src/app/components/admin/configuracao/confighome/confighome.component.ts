@@ -1,4 +1,4 @@
-import { NgClass, NgIf } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, NgModel, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-confighome',
   standalone: true,
-  imports: [FormsModule, NgIf, NgClass, ReactiveFormsModule, NgxMaskDirective, ModalSpinnerComponent],
+  imports: [FormsModule, NgIf, NgClass, ReactiveFormsModule, NgxMaskDirective, ModalSpinnerComponent, NgFor, ],
   templateUrl: './confighome.component.html',
   providers: [provideNgxMask()],
   styleUrl: './confighome.component.css'
@@ -30,6 +30,8 @@ export class ConfighomeComponent implements OnInit {
   loading: boolean = false;
   planos: any;
   funcionarios: any;
+  novoBeneficio: string = ''; // Benefício atual que será adicionado
+  beneficios: string[] = []; // Array para armazenar os benefícios
 
   @HostListener('window:beforeunload', ['$event'])
   unloadNotification($event: any): void {
@@ -107,6 +109,15 @@ export class ConfighomeComponent implements OnInit {
     });
   }
 
+  adicionarBeneficio() {
+    if (this.planForm.value.beneficios.trim()) {
+      this.beneficios.push(this.planForm.value.beneficios.trim());
+      this.planForm.value.beneficios = ''; // Limpa o campo textarea
+
+      // Atualiza o campo 'beneficios' do formulário com todos os benefícios concatenados
+      this.planForm.get('beneficios')?.setValue(this.beneficios.join(', '));
+    }
+  }
 
   onFileChange(event: Event) {
     const input = event.target as HTMLInputElement;

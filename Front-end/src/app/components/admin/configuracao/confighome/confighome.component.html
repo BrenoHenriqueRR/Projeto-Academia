@@ -104,8 +104,22 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="beneficios">Benefícios</label>
+                        <label for="beneficio" title="Clique no botao para adicionar o benefício">Adicionar
+                            Benefício:</label>
                         <textarea id="beneficio" formControlName="beneficios" rows="2"></textarea>
+                        <button type="button" class="button mt-2" (click)="adicionarBeneficio()">Adicionar
+                            Benefício</button>
+                        <small class="ms-2">Clique no botao para adicionar o benefício.</small>
+                    </div>
+
+                    <div *ngIf="beneficios.length > 0" class="mt-4">
+                        <h4>Benefícios Adicionados</h4>
+                        <ul>
+                            <li *ngFor="let beneficio of beneficios; let i = index">
+                                {{ beneficio }}
+                                <!-- <button type="button" (click)="removerBeneficio(i)" class="btn btn-danger btn-sm ml-2">Remover</button> -->
+                            </li>
+                        </ul>
                     </div>
                     <div class="form-group">
                         <label for="disponibilidade">Disponibilidade</label>

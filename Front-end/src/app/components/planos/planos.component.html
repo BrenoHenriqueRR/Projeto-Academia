@@ -1,0 +1,44 @@
+<div *ngIf="loading"><app-modal-spinner></app-modal-spinner></div>
+<div *ngFor="let dado of dados" class="logo">
+    <img width="140" src="http://localhost/sites/Projeto1/Back-end/public/{{dado.logo}}" alt="Logo da empresa">
+</div>
+
+<div class="container-fluid">
+    <div class="planos">
+        <div *ngFor="let dado of dados" class="d-flex align-items-center justify-content-center flex-column">
+            <h1>{{dado.nome}}</h1>
+            <p class="descricao-academia text-center">{{dado.descricao}}</p>
+        </div>
+        <div class="row justify-content-center">
+            @for (item of planos; track $index) {
+                <div class="col-2 text-center card-plano card p-4 mx-5 mt-5" 
+                [ngClass]="{'bg-info text-white': $index === 0, 'bg-light': $index !== 0}">
+                <!-- <div class="foto-plano">
+                    <img src="{{item.foto}}" alt="foto do plano">
+                </div> -->
+                <div class="nome-plano">
+                    <h1>{{item.nome}}</h1>
+                </div>
+                <div class="descricao-plano">
+                    <p>{{item.descricao}}</p>
+                </div>
+                <div class="preco-plano">
+                    <h1>R$ {{item.preco}}</h1>
+                </div>
+                <div class="beneficios mt-2 ">
+                    <ul class="p-0">
+                        <!-- Divide a string de benefícios e itera sobre cada um -->
+                        <li *ngFor="let beneficio of item.beneficios?.split(',')">
+                            <i class="fa-solid fa-check"></i>
+                            {{ beneficio.trim() }}  
+                        </li>
+                    </ul>
+                </div>
+                <div class="inscricao">
+                    <button type="submit" (click)="cadastrar(item.nome,item.id)" class="btn btn-warning">Inscreva-se</button>
+                </div>
+            </div>
+        }
+        </div>
+    </div>
+</div>

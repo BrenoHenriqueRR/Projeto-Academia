@@ -46,6 +46,7 @@ $routes->post('/Relatorios/rEstatistica', 'Relatorios::rEstatistica');
 $routes->post('/Academia/create', 'Academia::create'); 
 $routes->post('/Academia/nextStep', 'Academia::nextStep'); 
 $routes->get('/Academia/read', 'Academia::read'); 
+$routes->get('/Academia/readAcademia', 'Academia::readAcademia'); 
 $routes->post('/Planos/create', 'Planos::create');
 $routes->get('/Planos/read', 'Planos::read');
 $routes->post('/Planos/edit', 'Planos::edit');

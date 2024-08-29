@@ -1,6 +1,55 @@
-<app-menu-home></app-menu-home>
-<div class="fundo">
-    <div class="p-0 container">
+<!-- <app-menu-home></app-menu-home> -->
+<div *ngIf="loading">
+    <app-modal-spinner></app-modal-spinner>
+</div>
+<div class="d-flex align-items-center justify-content-center">
+    <div *ngIf="etapa == 1" class="p-0 container">
+        <div class="logo-img"><img class="img-fluid" src="assets/imgs/logo/logo.jpg" alt=""></div>
+        <h1>Contratar Plano</h1>
+        <div class="float-start mt-5 w-80">
+            <div *ngFor="let item of planos" class="plano mb-3 border">
+                 <div class="px-4 pt-3">
+                     <h2>Plano <!--{{Blau}} --></h2>
+                 </div>
+                 <div class="px-4 pt-3 descricao-plano">
+                    <p>{{item.descricao}}</p>
+                </div>
+                <div class="px-4 pt-3 preco-plano">
+                    <h1>R$ {{item.preco}}</h1>
+                </div>
+                <div class="px-4 pt-3 beneficios-plano">
+                    <ul>
+                        <li style="list-style: none;" *ngFor="let beneficio of item.beneficios?.split(',')">
+                            <i class="fa-solid fa-check"></i>
+                            {{ beneficio.trim() }}  
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="float-end border border-gray bg-light p-5" [class.fixed]="Vscroll">
+            <h2>Resumo</h2>
+            <hr>
+            <div class="d-flex justify-content-between align-items-center">
+                <h5>Plano</h5>
+                 <h5>R$ 120</h5> <!-- Puxar da url / banco de dados -->
+            </div>
+            <hr>
+            <div class="d-flex justify-content-between mt-2 align-items-center">
+                <h5>Extras</h5>
+                 <span class="p-0 small text-center">
+                     <h5>R$ 120</h5> <!-- Puxar com base na escolha do cliente -->
+                     <small class="p-0 text-secondary">(por ano)</small>
+                 </span>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-between mt-2 align-items-center">
+                <h4>Total:</h4>
+                 <h5><strong>R$ 120</strong></h5> <!-- Puxar com base na escolha do cliente -->
+            </div>
+        </div>
+    </div>
+    <div *ngIf="etapa == 2" class="p-0 container">
         <div class="form-image">
             <img src="assets/imgs/halter.jpg" alt="">
         </div>
@@ -14,14 +63,12 @@
                         <button><a routerLink="/login">Entrar</a></button>
                     </div>
                 </div>
-
                 <div class="input-group">
                     <div class="input-box">
                         <label for="nome">Nome</label>
                         <input type="text" id="nome" formControlName="nome" class="form-control" placeholder="John"
                             required>
                     </div>
-
                     <div class="input-box">
                         <label for="endereco">Endereço</label>
                         <input type="text" formControlName="endereco" class="form-control" id="endereco"
@@ -35,7 +82,6 @@
                         <label for="CPF">CPF</label>
                         <input type="text" mask="000.000.000-00" formControlName="CPF" class="form-control" id="CPF">
                     </div>
-
                     <div class="input-box">
                         <label for="email">Email</label>
                         <input type="email" formControlName="email" class="form-control" id="email"
@@ -64,11 +110,12 @@
                         <div class="label">
                             <label for="frequencia">Frequência</label>
                         </div>
-                        <select formControlName="frequencia" title="Escolha quantos dias por semana você vai à academia" class="form-control personal-options">
+                        <select formControlName="frequencia" title="Escolha quantos dias por semana você vai à academia"
+                            class="form-control personal-options">
                             <option value="1" disabled selected>Escolha uma frequencia</option>
                             <option value='2'>2 dias</option>
                             <option value='3'>3 dias</option>
-                            <option value='5'>ilimitado</option> 
+                            <option value='5'>ilimitado</option>
                         </select>
                     </div>
                 </div>

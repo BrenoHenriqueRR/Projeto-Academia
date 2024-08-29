@@ -1,17 +1,19 @@
-import { Component, EventEmitter, Output , Input, signal } from '@angular/core';
+import { Component, EventEmitter, Output , Input, signal, ElementRef, HostListener } from '@angular/core';
 import { MenuHomeComponent } from '../menu-home/menu-home.component';
 import { LoginComponent } from '../login/login.component';
 import { Router, RouterLink } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CadastroService } from '../../services/cadastro.service';
-import { NgIf } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { NgxMaskDirective, provideNgxMask  } from 'ngx-mask';
+import { ModalSpinnerComponent } from "../modal-spinner/modal-spinner.component";
+import { ConfigService } from '../../services/admin/config/config.service';
 
 
 @Component({
   selector: 'app-cadastro',
   standalone: true,
-  imports: [MenuHomeComponent, LoginComponent, RouterLink, ReactiveFormsModule, NgIf,NgxMaskDirective],
+  imports: [MenuHomeComponent, LoginComponent, RouterLink, ReactiveFormsModule, NgIf,NgFor, NgxMaskDirective, ModalSpinnerComponent],
   providers: [
     CadastroService,
     provideNgxMask(),
@@ -20,15 +22,44 @@ import { NgxMaskDirective, provideNgxMask  } from 'ngx-mask';
   styleUrl: './cadastro.component.css'
 })
 export class CadastroComponent {
-[x: string]: any;
   formcadastro!: FormGroup;
-  @Output("enviar") onSubmit = new EventEmitter();
-  loading = false;
+  loading: boolean = false;
   mensagemSucesso!: string;
   Personal!: any;
   i = 0;
+  etapa : number = 1;
+  planos!: any;
+  Vscroll: boolean = false;
+  divPosition!: number;
+
   
-  constructor(private service: CadastroService,private router: Router){
+  ngOnInit(){
+    this.loading = true;
+    setTimeout(() => {
+      this.loading = false;
+    },200);
+    this.planosService.pesquisarPlanos().subscribe({
+      next: (dado) =>{
+        this.planos = dado;
+        this.planos.sort((a: { preco: number; }, b: { preco: number; }) => a.preco - b.preco);
+        this.loading = false;
+      }
+    })
+  }
+
+  ngAfterViewInit(): void {
+    // Agora é seguro acessar o DOM
+    const element = this.el.nativeElement.querySelector('.float-end');
+    
+    if (element) {
+      this.divPosition = element.offsetTop;
+    } else {
+      console.error('Elemento não encontrado no DOM.');
+    }
+  }
+
+
+  constructor(private service: CadastroService,private router: Router, private planosService: ConfigService,private el: ElementRef){
     this.formcadastro = new FormGroup({
      nome: new FormControl('', [Validators.required]),
      email: new FormControl('', [Validators.required, Validators.email]),
@@ -41,6 +72,16 @@ export class CadastroComponent {
     });
   }
 
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    // Verifica se o usuário rolou além da posição da div
+    if (window.scrollY >= this.divPosition) {
+      this.Vscroll = true;
+    } else {
+      this.Vscroll = false;
+    }
+  }
+
   submit(){
     if (this.formcadastro.valid) {
       // Obter os valores do formulário e converter para JSON
@@ -48,8 +89,6 @@ export class CadastroComponent {
 
       console.log(dados);
         
-      // Emitir evento onSubmit e definir loading como verdadeiro
-      this.onSubmit.emit();
       this.loading = true;
       // console.log (dados);
   
@@ -70,17 +109,15 @@ export class CadastroComponent {
       }
   }
   personal(){
-    this.service.pesquisar().subscribe(
-      (dado) => {
+    this.service.pesquisar().subscribe({
+      next: (dado) => {
         // console.log('Dados recebidos:', dado);
         this.Personal = dado;
         
-      },
-      (erro) => {
+      },error: (erro) => {
         console.error('Erro ao buscar dados:', erro);
       }
-    );
+  });
   }
-
 }
 

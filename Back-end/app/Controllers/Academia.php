@@ -62,8 +62,19 @@ class Academia extends BaseController
 
     public function read()
     {
-
         $dados = $this->progressomodel->select('*')
+            ->get();
+
+        if (!empty($dados)) {
+            return $this->response->setJson($dados->getResult())->setStatusCode(200);
+        } else {
+            return $this->response->setJson('false')->setStatusCode(200);
+        }
+    }
+
+    public function readAcademia()
+    {
+        $dados = $this->model->select('*')
             ->get();
 
         if (!empty($dados)) {
@@ -87,7 +98,7 @@ class Academia extends BaseController
                 ];
                 $date = ['data_ultima_atualizacao' => date('Y-m-d H:i:s')];
 
-                $this->progressomodel->update(1,$etapa,$date);
+                $this->progressomodel->update(1, $etapa, $date);
                 $msg = array("msg" => "Configuração enviada");
                 return $this->response->setJSON($msg)->setStatusCode(200);
                 break;
@@ -97,7 +108,7 @@ class Academia extends BaseController
                 ];
                 $date = ['data_ultima_atualizacao' => date('Y-m-d H:i:s')];
 
-                $this->progressomodel->update(1,$etapa,$date);
+                $this->progressomodel->update(1, $etapa, $date);
                 $msg = array("msg" => "Configuração enviada");
                 return $this->response->setJSON($msg)->setStatusCode(200);
                 break;

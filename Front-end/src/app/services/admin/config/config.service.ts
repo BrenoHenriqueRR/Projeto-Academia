@@ -12,6 +12,7 @@ export class ConfigService {
   private url_createconfig = apiurl + '/Academia/create'
   private url_createPlanos = apiurl + '/Planos/create'
   private url_pesquisar = apiurl + '/Academia/read'
+  private url_pesquisarAcademia = apiurl + '/Academia/readAcademia'
   private url_nextstep = apiurl + '/Academia/nextStep'
   private url_pesquisarPlanos = apiurl + '/Planos/read'
   constructor(private http: HttpClient) { }
@@ -28,6 +29,10 @@ export class ConfigService {
   
   pesquisar():Observable<any>{
     return this.http.get<any>(this.url_pesquisar);
+  }
+
+  pesquisarAcademia():Observable<any>{
+    return this.http.get<any>(this.url_pesquisarAcademia);
   }
   
   pesquisarPlanos():Observable<any>{

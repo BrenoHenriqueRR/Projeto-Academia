@@ -64,6 +64,16 @@
                 }
                 @if (funcionalidade != 'personal') {
                 <li class="side-item" routerLinkActive="mat-accent">
+                    <a routerLink="planos">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="item-description">
+                            Planos
+                        </span>
+                    </a>
+                </li>
+                }
+                @if (funcionalidade != 'personal') {
+                <li class="side-item" routerLinkActive="mat-accent">
                     <a routerLink="financeiro">
                         <i class="fa-solid fa-coins"></i>
                         <span class="item-description">

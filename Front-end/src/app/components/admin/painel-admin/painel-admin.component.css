@@ -13,7 +13,7 @@ main {
     flex-direction: column;
     justify-content: space-between;
     background-color: #ffffff;
-    height: 100vh;
+    /* height: 100vh; */
     border-radius: 0px 18px 18px 0px;
     position: relative;
     transition: all .5s;
@@ -169,7 +169,6 @@ main {
 
 .b-main{
     width: 100%;
-    height: 100vh;
     overflow-y: hidden;
 }
 

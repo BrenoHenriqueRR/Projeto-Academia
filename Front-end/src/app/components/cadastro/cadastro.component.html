@@ -5,13 +5,13 @@
 <div class="d-flex align-items-center justify-content-center">
     <div *ngIf="etapa == 1" class="p-0 container">
         <div class="logo-img"><img class="img-fluid" src="assets/imgs/logo/logo.jpg" alt=""></div>
-        <h1>Contratar Plano</h1>
+        <h2>Contratar Plano</h2>
         <div class="float-start mt-5 w-80">
             <div *ngFor="let item of planos" class="plano mb-3 border">
-                 <div class="px-4 pt-3">
-                     <h2>Plano <!--{{Blau}} --></h2>
-                 </div>
-                 <div class="px-4 pt-3 descricao-plano">
+                <div class="px-4 pt-3">
+                    <h2>Plano {{item.nome}}</h2>
+                </div>
+                <div class="px-4 pt-3 descricao-plano">
                     <p>{{item.descricao}}</p>
                 </div>
                 <div class="px-4 pt-3 preco-plano">
@@ -21,32 +21,47 @@
                     <ul>
                         <li style="list-style: none;" *ngFor="let beneficio of item.beneficios?.split(',')">
                             <i class="fa-solid fa-check"></i>
-                            {{ beneficio.trim() }}  
+                            {{ beneficio.trim() }}
                         </li>
                     </ul>
+                </div>
+            </div>
+
+            <h4 class="mt-5">Que tal adicionar mais benefícios ao seu plano?</h4>
+            <div *ngFor="let extra of extras" class="mb-3 p-3 mt-3 plano border">
+                <div class="d-flex justify-content-between p2 align-items-center" >
+                    <app-button-checked [name]="extra.nome" [checked]="extra.checked" [identifier]="extra.nome"
+                        (checkedChange)="onCheckedChange($event, extra)">
+                    </app-button-checked>
+                    <p>+{{extra.preco}}/mês</p>
+                </div>
+                <div class="px-4 pt-3 descricao-plano">
+                    <p>{{extra.descricao}}</p>
                 </div>
             </div>
         </div>
         <div class="float-end border border-gray bg-light p-5" [class.fixed]="Vscroll">
             <h2>Resumo</h2>
             <hr>
-            <div class="d-flex justify-content-between align-items-center">
+            <div *ngFor="let item of planos" class="d-flex justify-content-between align-items-center">
                 <h5>Plano</h5>
-                 <h5>R$ 120</h5> <!-- Puxar da url / banco de dados -->
+                <h5>R$ {{item.preco}}</h5> <!-- Puxar da url / banco de dados -->
             </div>
-            <hr>
-            <div class="d-flex justify-content-between mt-2 align-items-center">
+            <hr *ngIf="totalExtra != 0"> 
+            <div *ngIf="totalExtra != 0" class="d-flex justify-content-between mt-2 align-items-center">
                 <h5>Extras</h5>
-                 <span class="p-0 small text-center">
-                     <h5>R$ 120</h5> <!-- Puxar com base na escolha do cliente -->
-                     <small class="p-0 text-secondary">(por ano)</small>
-                 </span>
+                <span class="p-0 small text-center">
+                    <h5>R$ {{totalExtra}}</h5> <!-- Puxar com base na escolha do cliente -->
+                    <small class="p-0 text-secondary">(por mês)</small>
+                </span>
             </div>
             <hr>
             <div class="d-flex justify-content-between mt-2 align-items-center">
                 <h4>Total:</h4>
-                 <h5><strong>R$ 120</strong></h5> <!-- Puxar com base na escolha do cliente -->
+                <h5><strong>R$ {{total}}</strong></h5> <!-- Puxar com base na escolha do cliente -->
             </div>
+            <br>
+            <button (click)="nextEtapa();" class="btn btn-warning" type="button">Continue cadastrando</button>
         </div>
     </div>
     <div *ngIf="etapa == 2" class="p-0 container">
@@ -128,6 +143,29 @@
                     </div>
                 </div>
             </form>
+        </div>
+        <div class="float-end border border-gray bg-light p-5" [class.fixed]="Vscroll">
+            <h2>Resumo</h2>
+            <hr>
+            <div *ngFor="let item of planos" class="d-flex justify-content-between align-items-center">
+                <h5>Plano</h5>
+                <h5>R$ {{item.preco}}</h5> <!-- Puxar da url / banco de dados -->
+            </div>
+            <hr *ngIf="totalExtra != 0"> 
+            <div *ngIf="totalExtra != 0" class="d-flex justify-content-between mt-2 align-items-center">
+                <h5>Extras</h5>
+                <span class="p-0 small text-center">
+                    <h5>R$ {{totalExtra}}</h5> <!-- Puxar com base na escolha do cliente -->
+                    <small class="p-0 text-secondary">(por mês)</small>
+                </span>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-between mt-2 align-items-center">
+                <h4>Total:</h4>
+                <h5><strong>R$ {{total}}</strong></h5> <!-- Puxar com base na escolha do cliente -->
+            </div>
+            <br>
+            <button (click)="nextEtapa();" class="btn btn-warning" type="button">Continue cadastrando</button>
         </div>
     </div>
 </div>

@@ -1,0 +1,125 @@
+CRITICAL - 2024-09-05 00:44:58 --> ErrorException: Undefined property: stdClass::$valor_adicional
+in APPPATH\Controllers\Extras.php on line 27.
+ 1 APPPATH\Controllers\Extras.php(27): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$valor_adicional', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Extras.php', 27)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Extras->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Extras))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-09-05 00:45:37 --> ErrorException: Undefined property: stdClass::$valor_adicional
+in APPPATH\Controllers\Extras.php on line 27.
+ 1 APPPATH\Controllers\Extras.php(27): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$valor_adicional', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Extras.php', 27)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Extras->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Extras))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-09-05 00:47:56 --> ErrorException: Undefined property: stdClass::$valor_adicional
+in APPPATH\Controllers\Extras.php on line 27.
+ 1 APPPATH\Controllers\Extras.php(27): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$valor_adicional', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Extras.php', 27)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Extras->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Extras))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-09-05 00:48:25 --> ErrorException: Undefined property: stdClass::$projeto_id
+in APPPATH\Controllers\Extras.php on line 36.
+ 1 APPPATH\Controllers\Extras.php(36): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$projeto_id', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Extras.php', 36)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Extras->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Extras))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-09-05 00:48:54 --> ErrorException: Undefined property: stdClass::$projeto_id
+in APPPATH\Controllers\Extras.php on line 37.
+ 1 APPPATH\Controllers\Extras.php(37): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$projeto_id', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Extras.php', 37)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Extras->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Extras))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-09-05 00:56:20 --> ErrorException: Undefined property: stdClass::$projeto_id
+in APPPATH\Controllers\Extras.php on line 37.
+ 1 APPPATH\Controllers\Extras.php(37): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$projeto_id', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Extras.php', 37)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Extras->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Extras))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-09-05 00:56:37 --> ErrorException: Undefined property: stdClass::$projeto_id
+in APPPATH\Controllers\Extras.php on line 37.
+ 1 APPPATH\Controllers\Extras.php(37): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$projeto_id', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Extras.php', 37)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Extras->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Extras))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-09-05 00:57:30 --> ErrorException: Undefined property: stdClass::$projeto_id
+in APPPATH\Controllers\Extras.php on line 37.
+ 1 APPPATH\Controllers\Extras.php(37): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$projeto_id', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Extras.php', 37)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Extras->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Extras))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-09-05 00:58:19 --> mysqli_sql_exception: Table 'projeto-1.planos_extra' doesn't exist in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `pl...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `pl...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `pl...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `pl...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(802): CodeIgniter\Model->doInsert(Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(744): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Extras.php(40): CodeIgniter\Model->insert(Array)
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Extras->create()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Extras))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-09-05 00:58:19 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'projeto-1.planos_extra' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `planos_extra` (`plano_id`, `extra_id`) VALUES (:plano_id:, :extra_id:)', [...], false)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Extras.php(40): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Extras->create()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Extras))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-09-05 00:58:19 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'projeto-1.planos_extra' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `planos_extra` (`plano_id`, `extra_id`) VALUES (\'1\', 6)')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `planos_extra` (`plano_id`, `extra_id`) VALUES (\'1\', 6)')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `planos_extra` (`plano_id`, `extra_id`) VALUES (:plano_id:, :extra_id:)', [...], false)
+ 4 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\Extras.php(40): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Extras->create()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Extras))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-09-05 00:58:19 --> [Caused by] mysqli_sql_exception: Table 'projeto-1.planos_extra' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `planos_extra` (`plano_id`, `extra_id`) VALUES (\'1\', 6)', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `planos_extra` (`plano_id`, `extra_id`) VALUES (\'1\', 6)')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `planos_extra` (`plano_id`, `extra_id`) VALUES (\'1\', 6)')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `planos_extra` (`plano_id`, `extra_id`) VALUES (:plano_id:, :extra_id:)', [...], false)
+ 5 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Extras.php(40): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Extras->create()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Extras))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-09-05 01:00:49 --> Stripe\Exception\ApiConnectionException: Could not connect to Stripe (https://api.stripe.com/v1/payment_intents?created[gte]=1725152448&created[lt]=1727658048).  Please check your internet connection and try again.  If this problem persists, you should check Stripe's service status at https://twitter.com/stripestatus, or let us know at support@stripe.com.
+
+(Network error [errno 6]: Could not resolve host: api.stripe.com)
+in VENDORPATH\stripe\stripe-php\lib\HttpClient\CurlClient.php on line 570.
+ 1 VENDORPATH\stripe\stripe-php\lib\HttpClient\CurlClient.php(522): Stripe\HttpClient\CurlClient->handleCurlError('https://api.stripe.com/v1/payment_intents?created[gte]=1725152448&created[lt]=1727658048', 6, 'Could not resolve host: api.stripe.com', 0)
+ 2 VENDORPATH\stripe\stripe-php\lib\HttpClient\CurlClient.php(281): Stripe\HttpClient\CurlClient->executeRequestWithRetries([...], 'https://api.stripe.com/v1/payment_intents?created[gte]=1725152448&created[lt]=1727658048')
+ 3 VENDORPATH\stripe\stripe-php\lib\ApiRequestor.php(465): Stripe\HttpClient\CurlClient->request('get', 'https://api.stripe.com/v1/payment_intents?created[gte]=1725152448&created[lt]=1727658048', [...], [...], false)
+ 4 VENDORPATH\stripe\stripe-php\lib\ApiRequestor.php(134): Stripe\ApiRequestor->_requestRaw('get', '/v1/payment_intents', [...], [], [])
+ 5 VENDORPATH\stripe\stripe-php\lib\ApiOperations\Request.php(109): Stripe\ApiRequestor->request('get', '/v1/payment_intents', [...], [], [])
+ 6 VENDORPATH\stripe\stripe-php\lib\ApiOperations\Request.php(64): Stripe\ApiResource::_staticRequest('get', '/v1/payment_intents', [...], null, [])
+ 7 VENDORPATH\stripe\stripe-php\lib\PaymentIntent.php(140): Stripe\ApiResource::_requestPage('/v1/payment_intents', 'Stripe\\Collection', [...], null)
+ 8 APPPATH\Controllers\StripeController.php(25): Stripe\PaymentIntent::all([...])
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\StripeController->getPagamentos()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StripeController))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

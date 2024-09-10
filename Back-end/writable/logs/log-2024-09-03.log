@@ -1,0 +1,36 @@
+CRITICAL - 2024-09-03 22:38:27 --> Error: Cannot use object of type stdClass as array
+in APPPATH\Controllers\Planos.php on line 56.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Planos->delete()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Planos))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-09-03 22:40:06 --> Error: Cannot use object of type stdClass as array
+in APPPATH\Controllers\Planos.php on line 56.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Planos->delete()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Planos))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-09-03 22:41:03 --> Error: Cannot use object of type stdClass as array
+in APPPATH\Controllers\Planos.php on line 56.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Planos->delete()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Planos))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-09-03 22:41:57 --> TypeError: Cannot access offset of type string on string
+in APPPATH\Controllers\Planos.php on line 56.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Planos->delete()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Planos))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-09-03 22:42:13 --> TypeError: Cannot access offset of type string on string
+in APPPATH\Controllers\Planos.php on line 56.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Planos->delete()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Planos))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-09-03 22:44:29 --> Error: Cannot use object of type stdClass as array
+in APPPATH\Controllers\Planos.php on line 56.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Planos->delete()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Planos))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

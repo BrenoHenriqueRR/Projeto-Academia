@@ -15,6 +15,9 @@ export class ConfigService {
   private url_pesquisarAcademia = apiurl + '/Academia/readAcademia'
   private url_nextstep = apiurl + '/Academia/nextStep'
   private url_pesquisarPlanos = apiurl + '/Planos/read'
+  private url_deletarPlanos = apiurl + '/Planos/delete'
+  private url_pesquisarPlanosExtras = apiurl + '/Extras/read'
+  private url_createPlanosExtras = apiurl + '/Extras/create'
   constructor(private http: HttpClient) { }
 
   create(dados: any):Observable<any>{
@@ -25,6 +28,16 @@ export class ConfigService {
   createPlanos(dados: any):Observable<any>{
     const data = dados;
     return this.http.post<any>(this.url_createPlanos, data);
+  }
+
+  createExtras(dados: any):Observable<any>{
+    const data = dados;
+    return this.http.post<any>(this.url_createPlanosExtras, data);
+  }
+  
+  deletePlano(dados: any):Observable<any>{
+    const data = dados;
+    return this.http.post<any>(this.url_deletarPlanos, data);
   }
   
   pesquisar():Observable<any>{
@@ -37,6 +50,10 @@ export class ConfigService {
   
   pesquisarPlanos():Observable<any>{
     return this.http.get<any>(this.url_pesquisarPlanos);
+  }
+  
+  pesquisarPlanosExtras():Observable<any>{
+    return this.http.get<any>(this.url_pesquisarPlanosExtras);
   }
   
   updateEtapa(data:any):Observable<any>{

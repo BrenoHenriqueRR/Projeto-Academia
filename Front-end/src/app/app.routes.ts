@@ -26,6 +26,7 @@ import { ModalEditarFuncionarioComponent } from './components/admin/modal-editar
 import { ConfighomeComponent } from './components/admin/configuracao/confighome/confighome.component';
 import { adminGuard } from './guard/admin/admin.guard';
 import { PlanosComponent } from './components/planos/planos.component';
+import { PnPlanosComponent } from './components/admin/painel-admin/pn-planos/pn-planos.component';
 
 
 export const routes: Routes = [
@@ -83,6 +84,7 @@ export const routes: Routes = [
             { path: 'funcionarios', component: PnFuncionariosComponent,  canActivate: [adminGuard] },
             { path: 'clientes', component: PnClientesComponent,  canActivate: [adminGuard] },
             { path: 'treinos', component: PnTreinoComponent,  canActivate: [adminGuard] },
+            { path: 'planos', component: PnPlanosComponent,  canActivate: [adminGuard] },
             { path: 'financeiro', component: PnFinanceiroComponent,  canActivate: [adminGuard] },
             { path: 'funcionarios/editarf', component: ModalEditarFuncionarioComponent,  canActivate: [adminGuard] },
             { path: 'relatorios', component: PnRelatoriosComponent,  canActivate: [adminGuard] },

@@ -51,6 +51,10 @@ $routes->post('/Planos/create', 'Planos::create');
 $routes->get('/Planos/read', 'Planos::read');
 $routes->post('/Planos/edit', 'Planos::edit');
 $routes->post('/Planos/delete', 'Planos::delete');
+$routes->post('/Extras/create', 'Extras::create');
+$routes->get('/Extras/read', 'Extras::read');
+$routes->post('/Extras/edit', 'Extras::edit');
+$routes->post('/Extras/delete', 'Extras::delete');
 
 
 

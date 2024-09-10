@@ -1,19 +1,20 @@
 import { Component, EventEmitter, Output , Input, signal, ElementRef, HostListener } from '@angular/core';
 import { MenuHomeComponent } from '../menu-home/menu-home.component';
 import { LoginComponent } from '../login/login.component';
-import { Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CadastroService } from '../../services/cadastro.service';
 import { NgFor, NgIf } from '@angular/common';
 import { NgxMaskDirective, provideNgxMask  } from 'ngx-mask';
 import { ModalSpinnerComponent } from "../modal-spinner/modal-spinner.component";
 import { ConfigService } from '../../services/admin/config/config.service';
+import { ButtonCheckedComponent } from "../button-checked/button-checked.component";
 
 
 @Component({
   selector: 'app-cadastro',
   standalone: true,
-  imports: [MenuHomeComponent, LoginComponent, RouterLink, ReactiveFormsModule, NgIf,NgFor, NgxMaskDirective, ModalSpinnerComponent],
+  imports: [MenuHomeComponent, LoginComponent, RouterLink, ReactiveFormsModule, NgIf, NgFor, NgxMaskDirective, ModalSpinnerComponent, ButtonCheckedComponent],
   providers: [
     CadastroService,
     provideNgxMask(),
@@ -29,20 +30,39 @@ export class CadastroComponent {
   i = 0;
   etapa : number = 1;
   planos!: any;
+  extras!: any;
   Vscroll: boolean = false;
   divPosition!: number;
+  idPlano!: number;
+  total: number = 0;
+  totalExtra: number = 0;
 
   
   ngOnInit(){
+    this.route.queryParams.subscribe(params => {
+      this.idPlano = params['id'];
+    });
     this.loading = true;
     setTimeout(() => {
       this.loading = false;
     },200);
     this.planosService.pesquisarPlanos().subscribe({
       next: (dado) =>{
-        this.planos = dado;
-        this.planos.sort((a: { preco: number; }, b: { preco: number; }) => a.preco - b.preco);
-        this.loading = false;
+        for (let i = 0; i < dado.length; i++) {
+          if(this.idPlano == dado[i].id){
+            this.planos = Array(dado[i]);
+            this.loading = false;
+            this.total = parseInt(dado[i].preco);
+          }
+        }
+      }
+    })
+    this.planosService.pesquisarPlanosExtras().subscribe({
+      next: (dado) =>{
+            this.extras = dado.map((extras: any) => {
+              return { ...extras, checked: false };
+            }); // aicione um checked: false a cada indice do array
+            this.loading = false;
       }
     })
   }
@@ -59,7 +79,7 @@ export class CadastroComponent {
   }
 
 
-  constructor(private service: CadastroService,private router: Router, private planosService: ConfigService,private el: ElementRef){
+  constructor(private service: CadastroService,private router: Router, private planosService: ConfigService,private el: ElementRef, private route: ActivatedRoute){
     this.formcadastro = new FormGroup({
      nome: new FormControl('', [Validators.required]),
      email: new FormControl('', [Validators.required, Validators.email]),
@@ -118,6 +138,23 @@ export class CadastroComponent {
         console.error('Erro ao buscar dados:', erro);
       }
   });
+  }
+
+  onCheckedChange(checked: boolean, extra: any): void {
+    extra.checked = checked;
+    if (extra.checked) {
+      // Adiciona o preço do extra ao total se for selecionado
+      this.totalExtra +=parseInt(extra.preco);
+      this.total += parseInt(extra.preco) ;  
+    } else {
+      // Subtrai o preço do extra do total se for desmarcado
+      this.totalExtra -= parseInt(extra.preco);
+      this.total -= parseInt(extra.preco);
+    }
+  }
+
+  nextEtapa(){
+    this.etapa = 2;
   }
 }
 

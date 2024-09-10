@@ -1,0 +1,129 @@
+<div class="container mt-2">
+    <h2>Planos Existentes :</h2>
+    <div class="mt-4">
+        <app-modal-cadastro (CloseModal)="Closemodal()" [tipo]="'planos'"></app-modal-cadastro>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <!-- <th>Descrição</th> -->
+                <th>Preço</th>
+                <th>Duração</th>
+                <!-- <th>Benefícios</th> -->
+                <th>Disponibilidade</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody id="planosTableBody">
+            @for (plano of planos; track $index) {
+            <tr>
+                <td>{{plano.nome}}</td>
+                <!-- <td>{{plano.descricao}}</td> -->
+                <td>R$ {{plano.preco}}</td>
+                <td>{{plano.duracao}} meses </td>
+                <!-- <td>{{plano.beneficios}}</td> -->
+                <td>{{plano.disponibilidade}}</td>
+                <td>
+                    <button class="btn btn-primary">Editar</button>
+                    <button class="btn btn-danger ms-4" (click)="openmodal(plano.id)">Excluir</button> 
+                    <app-modal-confirmar (confirm)="validarmodal($event)"></app-modal-confirmar>           
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="container mt-4">
+    <h2>Extras :</h2>
+    <div class="mt-4">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalextra"><i
+            class="fa-solid fa-plus p-1"></i>Adicionar</button>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <!-- <th>Descrição</th> -->
+                <th>Valor</th>
+                <!-- <th>Benefícios</th> -->
+                <th>Status</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody id="extraTableBody">
+            @for (extra of extras; track $index) {
+            <tr>
+                <td>{{extra.nome}}</td>
+                <!-- <td>{{extras.descricao}}</td> -->
+                <td>{{extra.preco}}</td>
+                <!-- <td>{{extras.beneficios}}</td> -->
+                <td>{{extra.status}}</td>
+                <td>
+                    <button class="btn btn-primary">Editar</button>
+                    <button class="btn btn-danger ms-4" (click)="openmodal(extra.id)">Excluir</button> 
+                    <app-modal-confirmar (confirm)="validarmodal($event)"></app-modal-confirmar>           
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+<div class="modal modal-lg fade" id="modalextra" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title fs-10" id="exampleModalLabel">Cadastro de Extra</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <form [formGroup]="extraForm">
+                        <div class="row form-group">
+                            <div class="col">
+                                <label class="form-label" for="nomeFunc">Nome Extra</label>
+                                <input class="form-control" type="text" id="nomeFunc" name="nomeFunc" formControlName="nome_extra">
+                            </div>
+                            <div class="col">
+                                <label class="form-label" for="plano_id">Plano</label>
+                                <select class="form-control" id="plano_id" formControlName="plano_id">
+                                    <option disabled selected>Escolha uma opção</option>
+                                    @for (item of planos; track $index) {
+                                    <option value="{{item.id}}">{{item.nome}}</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row form-group mt-2">
+                            <div class="col">
+                                <label class="form-label" for="preco">Valor</label>
+                                <input class="form-control" type="text" id="preco" name="preco" mask="separator.2" prefix="R$ "
+                                    formControlName="preco">
+                            </div>
+                            <div class="col">
+                                    <label class="form-label" for="status">Status</label>
+                                    <select id="status" formControlName="status" class="form-control"> 
+                                        <option value="ativo">Ativo</option>
+                                        <option value="inativo">Inativo</option>
+                                    </select>
+                            </div>
+                        </div>
+                        <div class="row form-group mt-2">
+                            <div class="col">
+                                <label class="form-label" for="descricao_extra">Descricao</label>
+                                <textarea class="form-control" type="text" id="descricao_extra" name="descricao_extra"
+                                    formControlName="descricao_extra" rows="2"></textarea>
+                            </div>
+                        </div>
+                        <br>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button class="btn btn-primary" (click)="submitForm()">Cadastrar</button>
+            </div>
+        </div>
+    </div>

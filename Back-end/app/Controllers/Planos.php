@@ -53,7 +53,7 @@ class Planos extends BaseController
       public function delete(){
         $data = $this->request->getJson();
             
-        $dados = $this->model->where('id', $data['id'])
+        $this->model->where('id', $data->id)
         ->delete();
 
         $msg = array("msg" => "Plano excluido com sucesso !!");

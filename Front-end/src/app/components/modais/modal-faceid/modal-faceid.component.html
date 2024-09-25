@@ -1,0 +1,45 @@
+<span data-bs-toggle="modal" data-bs-target="#modalfaceid" style="cursor: pointer;"
+    class="d-flex justify-content-center align-items-center flex-column">
+    <i class="fa-solid fa-camera fa-2xl"></i>
+    <br>
+    <p>Face Id</p>
+</span>
+
+<div class="modal modal-lg fade" id="modalfaceid" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header d-flex align-items-center justify-content-center flex-column">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <i style="font-size: 3.5rem;" class="fa-solid fa-camera fa-2xl"></i>
+                <h2 class="modal-title mt-4 fs-10" id="exampleModalLabel">Faceid</h2>
+            </div>
+            <div class="modal-body">
+                <div class="container p-2">
+                    <div class="selfie-container">
+                        <h2>Tire uma Selfie</h2>
+                        
+                        <div class="camera">
+                          <video #video autoplay></video>
+                          <button (click)="capturarSelfie()">Capturar Selfie</button>
+                        </div>
+                      
+                        <div *ngIf="imagemCapturada" class="selfie-preview">
+                          <h3>Selfie Capturada</h3>
+                          <img [src]="imagemCapturada" alt="Selfie Capturada">
+                          <button (click)="salvarSelfie()">Salvar Selfie</button>
+                        </div>
+                      
+                        <div *ngIf="selfieSalva">
+                          <h3>Selfie Salva com Sucesso!</h3>
+                          <button (click)="realizarFaceID()">Verificar Face ID</button>
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button class="btn btn-primary">Cadastrar</button>
+            </div>
+        </div>
+    </div>
+</div>

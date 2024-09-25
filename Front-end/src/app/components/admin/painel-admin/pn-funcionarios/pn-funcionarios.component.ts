@@ -3,9 +3,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { NgFor, NgIf } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { PnFuncionarioService } from '../../../../services/admin/pn-funcionario/pn-funcionario.service';
-import { ModalConfirmarComponent } from '../../../modal-confirmar/modal-confirmar.component';
-import { ModalCadastroComponent } from "../../modal-cadastro/modal-cadastro.component";
-import { ModalSpinnerComponent } from "../../../modal-spinner/modal-spinner.component";
+import { ModalConfirmarComponent } from '../../../modais/modal-confirmar/modal-confirmar.component';
+import { ModalCadastroComponent } from "../../../modais/modal-cadastro/modal-cadastro.component";
+import { ModalSpinnerComponent } from "../../../modais/modal-spinner/modal-spinner.component";
 
 
 @Component({

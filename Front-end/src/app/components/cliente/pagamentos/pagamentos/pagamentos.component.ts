@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Stripe, loadStripe } from '@stripe/stripe-js';
 import { PnFinanceiroService } from '../../../../services/admin/pn-financeiro/pn-financeiro.service';
-import { ModalComprovanteComponent } from '../../../modal-comprovante/modal-comprovante.component';
+import { ModalComprovanteComponent } from '../../../modais/modal-comprovante/modal-comprovante.component';
 
 @Component({
   selector: 'app-pagamentos',

@@ -1,0 +1,41 @@
+CRITICAL - 2024-09-20 21:02:59 --> ErrorException: Trying to access array offset on value of type null
+in APPPATH\Controllers\Cliente.php on line 24.
+ 1 APPPATH\Controllers\Cliente.php(24): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Cliente.php', 24)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-09-20 21:04:09 --> ErrorException: Trying to access array offset on value of type null
+in APPPATH\Controllers\Cliente.php on line 24.
+ 1 APPPATH\Controllers\Cliente.php(24): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Cliente.php', 24)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-09-20 21:04:37 --> ErrorException: Trying to access array offset on value of type null
+in APPPATH\Controllers\Cliente.php on line 24.
+ 1 APPPATH\Controllers\Cliente.php(24): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Cliente.php', 24)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-09-20 21:05:16 --> ErrorException: Trying to access array offset on value of type null
+in APPPATH\Controllers\Cliente.php on line 24.
+ 1 APPPATH\Controllers\Cliente.php(24): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Cliente.php', 24)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-09-20 21:12:40 --> Error: Call to a member function isValid() on null
+in APPPATH\Controllers\Cliente.php on line 41.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-09-20 21:13:49 --> ErrorException: Undefined variable $caminhoImagem
+in APPPATH\Controllers\Cliente.php on line 51.
+ 1 APPPATH\Controllers\Cliente.php(51): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $caminhoImagem', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Cliente.php', 51)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

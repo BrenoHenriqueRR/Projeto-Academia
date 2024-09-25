@@ -10,7 +10,7 @@ import { MenuClienteComponent } from './components/cliente/menu-cliente/menu-cli
 import { PnFuncionariosComponent } from './components/admin/painel-admin/pn-funcionarios/pn-funcionarios.component';
 import { PnClientesComponent } from './components/admin/painel-admin/pn-clientes/pn-clientes.component';
 import { Component, NgModule } from '@angular/core';
-import { ModalEditarComponent } from './components/admin/modal-editar/modal-editar.component';
+import { ModalEditarComponent } from './components/modais/modal-editar/modal-editar.component';
 import { DashboardComponent } from './components/admin/painel-admin/dashboard/dashboard.component';
 import { TreinosComponent } from './components/cliente/treinos/treinos.component';
 import { DashboardCliComponent } from './components/cliente/dashboard-cli/dashboard-cli.component';
@@ -22,11 +22,12 @@ import { PnTreinoComponent } from './components/admin/painel-admin/pn-treino/pn-
 import { PnFinanceiroComponent } from './components/admin/painel-admin/pn-financeiro/pn-financeiro.component';
 import { RecuperarSenhaComponent } from './components/recuperar-senha/recuperar-senha.component';
 import { PnRelatoriosComponent } from './components/admin/painel-admin/pn-relatorios/pn-relatorios.component';
-import { ModalEditarFuncionarioComponent } from './components/admin/modal-editar-funcionario/modal-editar.component';
+import { ModalEditarFuncionarioComponent } from './components/modais/modal-editar-funcionario/modal-editar.component';
 import { ConfighomeComponent } from './components/admin/configuracao/confighome/confighome.component';
 import { adminGuard } from './guard/admin/admin.guard';
 import { PlanosComponent } from './components/planos/planos.component';
 import { PnPlanosComponent } from './components/admin/painel-admin/pn-planos/pn-planos.component';
+import { ModalEditarPlanosComponent } from './components/modais/modal-editar-planos/modal-editar-planos.component';
 
 
 export const routes: Routes = [
@@ -85,6 +86,7 @@ export const routes: Routes = [
             { path: 'clientes', component: PnClientesComponent,  canActivate: [adminGuard] },
             { path: 'treinos', component: PnTreinoComponent,  canActivate: [adminGuard] },
             { path: 'planos', component: PnPlanosComponent,  canActivate: [adminGuard] },
+            { path: 'planos/editar', component: ModalEditarPlanosComponent,  canActivate: [adminGuard] },
             { path: 'financeiro', component: PnFinanceiroComponent,  canActivate: [adminGuard] },
             { path: 'funcionarios/editarf', component: ModalEditarFuncionarioComponent,  canActivate: [adminGuard] },
             { path: 'relatorios', component: PnRelatoriosComponent,  canActivate: [adminGuard] },

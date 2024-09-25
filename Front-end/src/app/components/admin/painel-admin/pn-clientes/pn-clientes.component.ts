@@ -4,42 +4,55 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { NgFor, NgIf } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { LoginAdminService } from '../../../../services/admin/login/login-admin.service';
-import { ModalConfirmarComponent } from '../../../modal-confirmar/modal-confirmar.component';
+import { ModalCadastroComponent } from '../../../modais/modal-cadastro/modal-cadastro.component';
+import { ModalConfirmarComponent } from '../../../modais/modal-confirmar/modal-confirmar.component';
+import { ModalFaceidComponent } from '../../../modais/modal-faceid/modal-faceid.component';
+
 @Component({
   selector: 'app-pn-clientes',
   standalone: true,
-  imports: [NgxPaginationModule,NgFor,RouterLink,NgIf,ModalConfirmarComponent],
+  imports: [NgxPaginationModule, NgFor, RouterLink, NgIf, ModalConfirmarComponent, ModalCadastroComponent, ModalFaceidComponent],
   templateUrl: './pn-clientes.component.html',
   styleUrl: './pn-clientes.component.css'
 })
 export class PnClientesComponent {
   @ViewChild(ModalConfirmarComponent) modal?: ModalConfirmarComponent
   public paginaAtual = 1;
-  func!: string ;
-  dados_cli: any = '';  
-loading: boolean = true;
-idDelete: any = '';
-  constructor(private service:PnClienteService, private router:Router, private loginservice: LoginAdminService){
-    this.List();
+  func!: string;
+  dados_cli: any = '';
+  loading: boolean = true;
+  idDelete: any = '';
+
+  ngOnInit() {
     this.funcao();
+    this.List();
   }
 
-  openmodal(id: any){
+  constructor(private service: PnClienteService, private router: Router, private loginservice: LoginAdminService) { }
+
+
+  Closemodal() {
+    this.ngOnInit();
+  }
+
+
+  openmodal(id: any) {
     this.idDelete = id;
     this.modal?.openModal();
   }
-  validarmodal(confirmed: boolean){
+
+  validarmodal(confirmed: boolean) {
     if (confirmed) {
-     this.excluir(this.idDelete);
-      // Execute further actions here
+      this.excluir(this.idDelete);
     }
   }
-  
-  List(){
+
+  List() {
     this.service.pesquisar().subscribe(
       (dado) => {
+        console.log(dado);
         this.dados_cli = dado;
-        this.loading = false;        
+        this.loading = false;
       },
       (erro) => {
         console.error('Erro ao buscar dados:', erro);
@@ -47,11 +60,11 @@ idDelete: any = '';
     );
   }
 
-  funcao(){
+  funcao() {
     const jsonString: string = '{"id": "' + localStorage.getItem('id') + '"}';
     this.loginservice.funcaoCliente(jsonString).subscribe(
       (dado) => {
-          this.func = dado[0].funcao;
+        this.func = dado[0].funcao;
       },
       (erro) => {
         console.error('Erro ao buscar dados:', erro);
@@ -59,13 +72,13 @@ idDelete: any = '';
     );
   }
 
-  editarcliente(cliente: any){
+  editarcliente(cliente: any) {
     this.router.navigate(['/editar'], {
-      queryParams: { id: cliente.id}
+      queryParams: { id: cliente.id }
     });
   }
 
-  excluir(id: any){
+  excluir(id: any) {
     const jsonString: string = '{"id": "' + id + '"}';
     this.service.delete(jsonString).subscribe({
       next: (msg) => {

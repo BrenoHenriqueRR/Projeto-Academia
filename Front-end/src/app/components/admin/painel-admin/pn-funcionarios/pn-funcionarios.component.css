@@ -43,19 +43,19 @@ button{
     border-radius: 10px;
     font-weight: 700;
     padding: 0.3rem 1rem;
-    background-color: rgb(246, 62, 62);
+    background-color: rgb(46, 56, 240); 
     color: white;
     margin-left: 1rem;
 }
 
 .btn-excluir{
-    background-color: rgb(46, 56, 240); 
+    background-color: rgb(246, 62, 62);
 }
 
 .btn-excluir:hover{
-    background-color: rgb(31, 42, 247); 
+    background-color: rgb(244, 48, 48);
 }
 
 button:hover{
-    background-color: rgb(244, 48, 48);
+    background-color: rgb(31, 42, 247); 
 }

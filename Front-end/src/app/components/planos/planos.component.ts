@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MenuHomeComponent } from '../menu-home/menu-home.component';
 import { ConfigService } from '../../services/admin/config/config.service';
 import { NgClass, NgFor, NgIf } from '@angular/common';
-import { ModalSpinnerComponent } from "../modal-spinner/modal-spinner.component";
+import { ModalSpinnerComponent } from "../modais/modal-spinner/modal-spinner.component";
 import { Router } from '@angular/router';
 
 @Component({

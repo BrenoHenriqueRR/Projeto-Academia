@@ -5,14 +5,14 @@ import { Observable } from 'rxjs';
 import { ConfigService } from '../../../../services/admin/config/config.service';
 import { ToastrService } from 'ngx-toastr';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
-import { ModalSpinnerComponent } from '../../../modal-spinner/modal-spinner.component';
+import { ModalSpinnerComponent } from '../../../modais/modal-spinner/modal-spinner.component';
 import { PnFuncionarioService } from '../../../../services/admin/pn-funcionario/pn-funcionario.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-confighome',
   standalone: true,
-  imports: [FormsModule, NgIf, NgClass, ReactiveFormsModule, NgxMaskDirective, ModalSpinnerComponent, NgFor, ],
+  imports: [FormsModule, NgIf, NgClass, ReactiveFormsModule, NgxMaskDirective, ModalSpinnerComponent, NgFor ],
   templateUrl: './confighome.component.html',
   providers: [provideNgxMask()],
   styleUrl: './confighome.component.css'

@@ -1,16 +1,17 @@
 import { Component, ViewChild } from '@angular/core';
 import { ConfigService } from '../../../../services/admin/config/config.service';
-import { ModalConfirmarComponent } from "../../../modal-confirmar/modal-confirmar.component";
-import { ModalCadastroComponent } from "../../modal-cadastro/modal-cadastro.component";
+import { ModalConfirmarComponent } from "../../../modais/modal-confirmar/modal-confirmar.component";
+import { ModalCadastroComponent } from "../../../modais/modal-cadastro/modal-cadastro.component";
 import { ToastContainerDirective, ToastNoAnimation, ToastPackage, ToastrService } from 'ngx-toastr';
 import { NgFor } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-pn-planos',
   standalone: true,
-  imports: [ModalConfirmarComponent, ModalCadastroComponent, NgFor, ReactiveFormsModule, NgxMaskDirective],
+  imports: [ModalConfirmarComponent, ModalCadastroComponent, NgFor, ReactiveFormsModule, NgxMaskDirective, RouterLink],
   providers: [provideNgxMask()],
   templateUrl: './pn-planos.component.html',
   styleUrl: './pn-planos.component.css'

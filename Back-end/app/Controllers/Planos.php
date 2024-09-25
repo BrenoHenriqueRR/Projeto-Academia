@@ -50,6 +50,16 @@ class Planos extends BaseController
         return $this->response->setJson($dados->getResult())->setStatusCode(200);
         
     }
+    public function readId($id){
+    
+        $dados = $this->model->find($id);
+        if($dados) {
+            return $this->response->setJson($dados)->setStatusCode(200);
+        } else {
+            return $this->response->setJson(["msg" => ['Registro não encontrado com o ID: ' . $id]])->setStatusCode(200);
+        }   
+    }
+
       public function delete(){
         $data = $this->request->getJson();
             

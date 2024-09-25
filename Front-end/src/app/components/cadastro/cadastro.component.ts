@@ -1,12 +1,12 @@
-import { Component, EventEmitter, Output , Input, signal, ElementRef, HostListener } from '@angular/core';
+import { Component, EventEmitter, Output, Input, signal, ElementRef, HostListener } from '@angular/core';
 import { MenuHomeComponent } from '../menu-home/menu-home.component';
 import { LoginComponent } from '../login/login.component';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CadastroService } from '../../services/cadastro.service';
 import { NgFor, NgIf } from '@angular/common';
-import { NgxMaskDirective, provideNgxMask  } from 'ngx-mask';
-import { ModalSpinnerComponent } from "../modal-spinner/modal-spinner.component";
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
+import { ModalSpinnerComponent } from "../modais/modal-spinner/modal-spinner.component";
 import { ConfigService } from '../../services/admin/config/config.service';
 import { ButtonCheckedComponent } from "../button-checked/button-checked.component";
 
@@ -28,7 +28,7 @@ export class CadastroComponent {
   mensagemSucesso!: string;
   Personal!: any;
   i = 0;
-  etapa : number = 1;
+  etapa: number = 1;
   planos!: any;
   extras!: any;
   Vscroll: boolean = false;
@@ -36,20 +36,21 @@ export class CadastroComponent {
   idPlano!: number;
   total: number = 0;
   totalExtra: number = 0;
-
   
-  ngOnInit(){
+
+
+  ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.idPlano = params['id'];
     });
     this.loading = true;
     setTimeout(() => {
       this.loading = false;
-    },200);
+    }, 200);
     this.planosService.pesquisarPlanos().subscribe({
-      next: (dado) =>{
+      next: (dado) => {
         for (let i = 0; i < dado.length; i++) {
-          if(this.idPlano == dado[i].id){
+          if (this.idPlano == dado[i].id) {
             this.planos = Array(dado[i]);
             this.loading = false;
             this.total = parseInt(dado[i].preco);
@@ -58,11 +59,11 @@ export class CadastroComponent {
       }
     })
     this.planosService.pesquisarPlanosExtras().subscribe({
-      next: (dado) =>{
-            this.extras = dado.map((extras: any) => {
-              return { ...extras, checked: false };
-            }); // aicione um checked: false a cada indice do array
-            this.loading = false;
+      next: (dado) => {
+        this.extras = dado.map((extras: any) => {
+          return { ...extras, checked: false };
+        }); // aicione um checked: false a cada indice do array
+        this.loading = false;
       }
     })
   }
@@ -70,7 +71,7 @@ export class CadastroComponent {
   ngAfterViewInit(): void {
     // Agora é seguro acessar o DOM
     const element = this.el.nativeElement.querySelector('.float-end');
-    
+
     if (element) {
       this.divPosition = element.offsetTop;
     } else {
@@ -79,16 +80,16 @@ export class CadastroComponent {
   }
 
 
-  constructor(private service: CadastroService,private router: Router, private planosService: ConfigService,private el: ElementRef, private route: ActivatedRoute){
+  constructor(private service: CadastroService, private router: Router, private planosService: ConfigService, private el: ElementRef, private route: ActivatedRoute) {
     this.formcadastro = new FormGroup({
-     nome: new FormControl('', [Validators.required]),
-     email: new FormControl('', [Validators.required, Validators.email]),
-     senha: new FormControl('', [Validators.required]),
-     endereco: new FormControl('', [Validators.required]),
-     datanascimento: new FormControl('', [Validators.required]),
-     CPF: new FormControl('', [Validators.required]),
-     personal_id: new FormControl('', [Validators.required] ),
-     frequencia: new FormControl('', [Validators.required] ),
+      nome: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      senha: new FormControl('', [Validators.required]),
+      endereco: new FormControl('', [Validators.required]),
+      datanascimento: new FormControl('', [Validators.required]),
+      CPF: new FormControl('', [Validators.required]),
+      personal_id: new FormControl('', [Validators.required]),
+      frequencia: new FormControl('', [Validators.required]),
     });
   }
 
@@ -102,50 +103,55 @@ export class CadastroComponent {
     }
   }
 
-  submit(){
+  // @HostListener('window:beforeunload', ['$event'])
+  // unloadNotification($event: any): void {
+  //   $event.returnValue = 'Você tem alterações não salvas! Tem certeza que deseja sair?';
+  // }
+
+  submit() {
     if (this.formcadastro.valid) {
       // Obter os valores do formulário e converter para JSON
       const dados = JSON.stringify(this.formcadastro.getRawValue());
 
       console.log(dados);
-        
+
       this.loading = true;
       // console.log (dados);
-  
+
       // Enviar os dados
       this.service.sendData(dados).subscribe({
-          next: (resposta) => {
-            this.mensagemSucesso = resposta.msg ;
-            console.log(this.mensagemSucesso);
-            this.formcadastro.reset();
-            this.loading = false;
-            alert("Cadastro enviado com sucesso !!")
-            this.router.navigate(['/login']),{
-            };
-          }
-        })
-      }else{
-        alert("campos vazio!!")
-      }
+        next: (resposta) => {
+          this.mensagemSucesso = resposta.msg;
+          console.log(this.mensagemSucesso);
+          this.formcadastro.reset();
+          this.loading = false;
+          alert("Cadastro enviado com sucesso !!")
+          this.router.navigate(['/login']), {
+          };
+        }
+      })
+    } else {
+      alert("campos vazio!!")
+    }
   }
-  personal(){
+  personal() {
     this.service.pesquisar().subscribe({
       next: (dado) => {
         // console.log('Dados recebidos:', dado);
         this.Personal = dado;
-        
-      },error: (erro) => {
+
+      }, error: (erro) => {
         console.error('Erro ao buscar dados:', erro);
       }
-  });
+    });
   }
 
   onCheckedChange(checked: boolean, extra: any): void {
     extra.checked = checked;
     if (extra.checked) {
       // Adiciona o preço do extra ao total se for selecionado
-      this.totalExtra +=parseInt(extra.preco);
-      this.total += parseInt(extra.preco) ;  
+      this.totalExtra += parseInt(extra.preco);
+      this.total += parseInt(extra.preco);
     } else {
       // Subtrai o preço do extra do total se for desmarcado
       this.totalExtra -= parseInt(extra.preco);
@@ -153,8 +159,25 @@ export class CadastroComponent {
     }
   }
 
-  nextEtapa(){
-    this.etapa = 2;
+  nextEtapa(etapa: any) {
+    switch (etapa) {
+      case "0":
+        this.etapa = 1;
+        break;
+      case "1":
+        this.etapa = 2;
+        break;
+      case "2":
+        if (!this.formcadastro.valid) {
+          alert("campos vazio!!");
+          break;
+        } else {
+          this.etapa = 3;
+          break;
+        }
+      default:
+        break;
+    }
   }
 }
 

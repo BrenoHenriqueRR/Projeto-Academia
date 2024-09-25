@@ -29,7 +29,7 @@
 
             <h4 class="mt-5">Que tal adicionar mais benefícios ao seu plano?</h4>
             <div *ngFor="let extra of extras" class="mb-3 p-3 mt-3 plano border">
-                <div class="d-flex justify-content-between p2 align-items-center" >
+                <div class="d-flex justify-content-between p2 align-items-center">
                     <app-button-checked [name]="extra.nome" [checked]="extra.checked" [identifier]="extra.nome"
                         (checkedChange)="onCheckedChange($event, extra)">
                     </app-button-checked>
@@ -47,7 +47,7 @@
                 <h5>Plano</h5>
                 <h5>R$ {{item.preco}}</h5> <!-- Puxar da url / banco de dados -->
             </div>
-            <hr *ngIf="totalExtra != 0"> 
+            <hr *ngIf="totalExtra != 0">
             <div *ngIf="totalExtra != 0" class="d-flex justify-content-between mt-2 align-items-center">
                 <h5>Extras</h5>
                 <span class="p-0 small text-center">
@@ -61,21 +61,23 @@
                 <h5><strong>R$ {{total}}</strong></h5> <!-- Puxar com base na escolha do cliente -->
             </div>
             <br>
-            <button (click)="nextEtapa();" class="btn btn-warning" type="button">Continue cadastrando</button>
+            <button (click)="nextEtapa('1');" class="btn btn-warning" type="button">Continue cadastrando</button>
         </div>
     </div>
     <div *ngIf="etapa == 2" class="p-0 container">
-        <div class="form-image">
+        <div class="logo-img"><img class="img-fluid" src="assets/imgs/logo/logo.jpg" alt=""></div>
+
+        <!-- <div class="form-image">
             <img src="assets/imgs/halter.jpg" alt="">
-        </div>
-        <div class="form">
+        </div> -->
+        <div class="float-start form">
             <form [formGroup]="formcadastro" method="post">
                 <div class="form-header">
                     <div class="title">
                         <h1>Cadastre-se</h1>
                     </div>
                     <div class="login-button">
-                        <button><a routerLink="/login">Entrar</a></button>
+                        <button (click)="nextEtapa('0')" type="button">voltar</button>
                     </div>
                 </div>
                 <div class="input-group">
@@ -107,7 +109,7 @@
                         <input type="password" formControlName="senha" class="form-control" id="senha"
                             placeholder="123@abc" required>
                     </div>
-                    <div class="personal">
+                    <div class="personal w-100">
                         <div class="input-box">
                             <div class="label">
                                 <label for="personal">Personal</label>
@@ -121,7 +123,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="input-box">
+                    <!-- <div class="input-box">
                         <div class="label">
                             <label for="frequencia">Frequência</label>
                         </div>
@@ -132,10 +134,11 @@
                             <option value='3'>3 dias</option>
                             <option value='5'>ilimitado</option>
                         </select>
-                    </div>
+                    </div> -->
+                    
                 </div>
                 <div *ngIf="!loading" class="continue-button">
-                    <button type="submit" (click)="submit()" class="btn btn-primary">Enviar</button>
+                    <button type="submit" (click)="nextEtapa('2')" class="btn btn-primary">Continuar</button>
                 </div>
                 <div class="continue-button">
                     <div *ngIf="loading">
@@ -151,7 +154,7 @@
                 <h5>Plano</h5>
                 <h5>R$ {{item.preco}}</h5> <!-- Puxar da url / banco de dados -->
             </div>
-            <hr *ngIf="totalExtra != 0"> 
+            <hr *ngIf="totalExtra != 0">
             <div *ngIf="totalExtra != 0" class="d-flex justify-content-between mt-2 align-items-center">
                 <h5>Extras</h5>
                 <span class="p-0 small text-center">
@@ -165,7 +168,101 @@
                 <h5><strong>R$ {{total}}</strong></h5> <!-- Puxar com base na escolha do cliente -->
             </div>
             <br>
-            <button (click)="nextEtapa();" class="btn btn-warning" type="button">Continue cadastrando</button>
+            <!-- <button (click)="nextEtapa();" class="btn btn-warning" type="button">Continue cadastrando</button> -->
         </div>
+    </div>
+    <div *ngIf="etapa == 3" class="p-0 container">
+        <div class="form float-start">
+            <div class="mb-3 login-button">
+                <h1 class="mx-5">Ficha de Anamnese</h1>
+                <button (click)="nextEtapa('1')" type="button">voltar</button>
+            </div>
+            <form class="w-100">
+                <div class="input-box">
+                    <label for="nome">Nome Completo:</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="data-nascimento">Data de Nascimento:</label>
+                    <input type="date" id="data-nascimento" name="data-nascimento" required>
+                    <label for="sexo">Sexo:</label>
+                    <select class="form-control" id="sexo" name="sexo" required>
+                        <option disabled selected>Escolha uma opção</option>
+                        <option value="masculino">Masculino</option>
+                        <option value="feminino">Feminino</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                </div>
+                <div class="input-box">
+                    <label for="telefone">Telefone:</label>
+                    <input type="text" mask="(00) 0 0000-0000" id="telefone" name="telefone" required>
+                    <label for="email">E-mail:</label>
+                    <input type="text" id="email" name="email">
+                </div>
+
+                <div class="input-box">
+                    <label for="peso">Peso (kg):</label>
+                    <input type="text" mask="000" suffix="kg" id="peso" name="peso" min="0" step="0.1" required>
+                    <label for="altura">Altura (cm):</label>
+                    <input type="text" mask="0,00" suffix="cm" id="altura" min="0" name="altura" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="objetivo">Objetivo na Academia:</label>
+                    <select class="form-control" id="objetivo" name="objetivo" required>
+                        <option disabled selected>Escolha uma opção</option>
+                        <option value="emagrecimento">Emagrecimento</option>
+                        <option value="ganho-massa">Ganho de Massa Muscular</option>
+                        <option value="condicionamento">Condicionamento Físico</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                </div>
+                <br>
+
+                <div class="input-box">
+                    <label for="historico-saude">Histórico de Saúde (doenças, cirurgias, lesões):</label>
+                    <textarea class="form-control" id="historico-saude" name="historico-saude" rows="5"></textarea>
+                    <br>
+                    <label for="atividade-fisica">Já praticou alguma atividade física? Se sim, qual?</label>
+                    <textarea class="form-control" id="atividade-fisica" name="atividade-fisica" rows="3"></textarea>
+                    <br>
+                    <label for="medicamentos">Faz uso de algum medicamento? Se sim, qual?</label>
+                    <textarea class="form-control" id="medicamentos" name="medicamentos" rows="3"></textarea>
+                    <br>
+                    <label for="alergias">Possui alguma alergia? Se sim, qual?</label>
+                    <textarea class="form-control" id="alergias" name="alergias" rows="3"></textarea>
+                    <br>
+                    <label for="observacoes">Observações adicionais:</label>
+                    <textarea class="form-control" id="observacoes" name="observacoes" rows="5"></textarea>
+                    <br>
+                </div>
+
+                <button type="submit" class="btn btn-warning">Finalizar Cadastro</button>
+            </form>
+        </div>
+        <div class="float-end border border-gray bg-light p-5" [class.fixed]="Vscroll">
+            <h2>Resumo</h2>
+            <hr>
+            <div *ngFor="let item of planos" class="d-flex justify-content-between align-items-center">
+                <h5>Plano</h5>
+                <h5>R$ {{item.preco}}</h5> <!-- Puxar da url / banco de dados -->
+            </div>
+            <hr *ngIf="totalExtra != 0">
+            <div *ngIf="totalExtra != 0" class="d-flex justify-content-between mt-2 align-items-center">
+                <h5>Extras</h5>
+                <span class="p-0 small text-center">
+                    <h5>R$ {{totalExtra}}</h5> <!-- Puxar com base na escolha do cliente -->
+                    <small class="p-0 text-secondary">(por mês)</small>
+                </span>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-between mt-2 align-items-center">
+                <h4>Total:</h4>
+                <h5><strong>R$ {{total}}</strong></h5> <!-- Puxar com base na escolha do cliente -->
+            </div>
+            <br>
+        </div>
+        <!-- <button (click)="nextEtapa();" class="btn btn-warning" type="button">Continue cadastrando</button> -->
     </div>
 </div>

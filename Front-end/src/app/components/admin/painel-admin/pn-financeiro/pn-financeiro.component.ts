@@ -1,8 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PnClienteService } from '../../../../services/admin/pn-cliente/pn-cliente.service';
-import { ModalCadpagamentosComponent } from '../../../modal-cadpagamentos/modal-cadpagamentos.component';
-import { ModalConfirmarComponent } from '../../../modal-confirmar/modal-confirmar.component';
+import { ModalCadpagamentosComponent } from '../../../modais/modal-cadpagamentos/modal-cadpagamentos.component';
+import { ModalConfirmarComponent } from '../../../modais/modal-confirmar/modal-confirmar.component';
 import { PnFinanceiroService } from '../../../../services/admin/pn-financeiro/pn-financeiro.service';
 
 @Component({

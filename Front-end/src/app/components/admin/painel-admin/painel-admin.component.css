@@ -154,7 +154,7 @@ main {
 }
 
 #sidebar.open-sidebar {
-    min-width: 15%;
+    min-width: 14%;
 }
 
 #sidebar.open-sidebar .item-description {

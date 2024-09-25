@@ -49,12 +49,14 @@ $routes->get('/Academia/read', 'Academia::read');
 $routes->get('/Academia/readAcademia', 'Academia::readAcademia'); 
 $routes->post('/Planos/create', 'Planos::create');
 $routes->get('/Planos/read', 'Planos::read');
+$routes->get('/Planos/readId/(:num)', 'Planos::readId/$1');
 $routes->post('/Planos/edit', 'Planos::edit');
 $routes->post('/Planos/delete', 'Planos::delete');
 $routes->post('/Extras/create', 'Extras::create');
 $routes->get('/Extras/read', 'Extras::read');
 $routes->post('/Extras/edit', 'Extras::edit');
 $routes->post('/Extras/delete', 'Extras::delete');
+$routes->post('/Faceid/create', 'Faceid::create');
 
 
 

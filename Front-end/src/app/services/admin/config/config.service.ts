@@ -15,8 +15,10 @@ export class ConfigService {
   private url_pesquisarAcademia = apiurl + '/Academia/readAcademia'
   private url_nextstep = apiurl + '/Academia/nextStep'
   private url_pesquisarPlanos = apiurl + '/Planos/read'
+  private url_pesquisarPlanos_id = apiurl + '/Planos/readId'
   private url_deletarPlanos = apiurl + '/Planos/delete'
   private url_pesquisarPlanosExtras = apiurl + '/Extras/read'
+  private url_pesquisarPlanosExtras_id = apiurl + '/Extras/readId'
   private url_createPlanosExtras = apiurl + '/Extras/create'
   constructor(private http: HttpClient) { }
 
@@ -51,9 +53,17 @@ export class ConfigService {
   pesquisarPlanos():Observable<any>{
     return this.http.get<any>(this.url_pesquisarPlanos);
   }
+
+  pesquisarPlanosID(id: number):Observable<any>{
+    const url = `${this.url_pesquisarPlanos_id}/${id}`
+    return this.http.get<any>(url);
+  }
   
   pesquisarPlanosExtras():Observable<any>{
     return this.http.get<any>(this.url_pesquisarPlanosExtras);
+  }
+  pesquisarPlanosExtrasID():Observable<any>{
+    return this.http.get<any>(this.url_pesquisarPlanosExtras_id);
   }
   
   updateEtapa(data:any):Observable<any>{

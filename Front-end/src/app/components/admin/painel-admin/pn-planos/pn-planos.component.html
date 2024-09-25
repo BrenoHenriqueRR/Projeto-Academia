@@ -25,7 +25,7 @@
                 <!-- <td>{{plano.beneficios}}</td> -->
                 <td>{{plano.disponibilidade}}</td>
                 <td>
-                    <button class="btn btn-primary">Editar</button>
+                    <button class="btn btn-primary" routerLink="editar" [queryParams]="{ id: plano.id, tipo: 'plano'}">Editar</button>
                     <button class="btn btn-danger ms-4" (click)="openmodal(plano.id)">Excluir</button> 
                     <app-modal-confirmar (confirm)="validarmodal($event)"></app-modal-confirmar>           
                 </td>
@@ -60,7 +60,7 @@
                 <!-- <td>{{extras.beneficios}}</td> -->
                 <td>{{extra.status}}</td>
                 <td>
-                    <button class="btn btn-primary">Editar</button>
+                    <button class="btn btn-primary" routerLink="editar" [queryParams]="{ id: extra.id, tipo: 'extra'}">Editar</button>
                     <button class="btn btn-danger ms-4" (click)="openmodal(extra.id)">Excluir</button> 
                     <app-modal-confirmar (confirm)="validarmodal($event)"></app-modal-confirmar>           
                 </td>

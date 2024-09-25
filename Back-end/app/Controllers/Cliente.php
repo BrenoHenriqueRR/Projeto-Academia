@@ -20,20 +20,48 @@ class Cliente extends BaseController
         $json = file_get_contents('php://input');
 
         $data = json_decode($json, true);
-        $this->model->select('*');
-        $this->model->where('email', $data['email']);
-        $validaremail = $this->model->countAllResults(); // traz a quantidade de resultados da consulta
+        if (isset($data)) {
+            $this->model->select('*');
+            $this->model->where('email', $data['email']);
+            $validaremail = $this->model->countAllResults(); // traz a quantidade de resultados da consulta
 
-        if ($validaremail == 0) {
-            $senhahash = hash('sha256', $data['senha']);
+            if ($validaremail == 0) {
+                $senhahash = hash('sha256', $data['senha']);
 
-            $data['senha'] = $senhahash;
-            $this->model->insert($data);
+                $data['senha'] = $senhahash;
+                $this->model->insert($data);
 
+                $msg = array("msg" => "Cadastro Enviado");
+                return $this->response->setJSON($msg)->setStatusCode(200);
+            } else
+                return $this->response->setJSON('Email ja existe')->setStatusCode(200);
+        } else {
+            $dados = [
+                'nome' => $this->request->getPost('nome'),
+                'endereco' => $this->request->getPost('endereco'),
+                'telefone' => $this->request->getPost('telefone'),
+                'CPF' => $this->request->getPost('CPF'),
+                'datanascimento' => $this->request->getPost('data_nascimento'),
+                'email' => $this->request->getPost('email'),
+                'senha' => hash('sha256', $this->request->getPost('senha')),
+            ];
+            $foto = $this->request->getFile('foto');
+
+            if (isset($foto)) {
+                if ($foto->isValid() && !$foto->hasMoved()) {
+                    $nomeimg = $foto->getRandomName();
+                    $foto->move('assets/fotos-perfil', $nomeimg);
+                    $caminhoImagem = 'assets/fotos-perfil/' . $nomeimg;
+                    $dados['foto_perfil'] = $caminhoImagem;
+                }
+            }
+
+            // Receber os outros dados do formulário
+
+            $this->model->insert($dados);
             $msg = array("msg" => "Cadastro Enviado");
             return $this->response->setJSON($msg)->setStatusCode(200);
-        } else
-            return $this->response->setJSON('Email ja existe')->setStatusCode(200);
+        }
     }
     public function delete()
     {
@@ -64,7 +92,7 @@ class Cliente extends BaseController
             $this->model->where('senha', $senhahash);
             $query = $this->model->get();
 
-            if ($query->getResult()) { 
+            if ($query->getResult()) {
                 // O email e a senha existem no banco de dados
                 $msg = array("msg" => "true");
                 $this->model->where('email', $data['email'])
@@ -91,7 +119,7 @@ class Cliente extends BaseController
     {
         $dados = $this->model->select('c.id, c.nome AS cliente_nome, c.CPF, c.email,c.ultimo_login,c.status, p.nome AS nome_personal, p.id as id_func')
             ->from('cliente AS c')
-            ->join('funcionarios AS p', 'c.personal_id = p.id', 'INNER')
+            ->join('funcionarios AS p', 'c.personal_id = p.id', 'LEFT')
             ->groupBy('c.id');
         // $dados = $this->model->select('*');
 
@@ -135,7 +163,7 @@ class Cliente extends BaseController
         $dados = $this->model->select('foto_perfil')
             ->where('id', $id);
         $query = $dados->get();
-        if(!isset($query)){
+        if (!isset($query)) {
             foreach ($query->getResult() as $row) {
                 unlink($row->foto_perfil);
             }

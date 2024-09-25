@@ -1,0 +1,237 @@
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
+        class="fa-solid fa-plus p-1"></i>Adicionar</button>
+
+<div class="modal modal-lg fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 *ngIf="tipo == 'funcionario'" class="modal-title fs-10" id="exampleModalLabel">Cadastro de
+                    Funcionários</h1>
+                <h1 *ngIf="tipo == 'cliente'" class="modal-title fs-10" id="exampleModalLabel">Cadastro de Cliente</h1>
+                <h1 *ngIf="tipo == 'planos'" class="modal-title fs-10" id="exampleModalLabel">Cadastro de Plano</h1>
+                <h1 *ngIf="tipo == 'extras'" class="modal-title fs-10" id="exampleModalLabel">Cadastro de Extra</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div *ngIf="tipo == 'funcionario'" class="container">
+                    <form [formGroup]="funcForm">
+                        <div class="form-group">
+                            <label for="foto">Adicionar foto</label>
+                            <input formControlName="foto" type="file" id="foto" class="file-input"
+                                (change)="onFileChange($event)">
+                            <label for="foto" class="file-input-label">Escolha um arquivo</label>
+                            <div class="file-name">{{fileName}}</div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col">
+                                <label for="nomeFunc">Nome Completo</label>
+                                <input type="text" id="nomeFunc" name="nomeFunc" formControlName="nome">
+                            </div>
+                            <div class="col">
+                                <label for="funcao">Profissão</label>
+                                <select id="funcao" formControlName="funcao">
+                                    <option disabled selected>Escolha uma opção</option>
+                                    <option value="Personal">Personal</option>
+                                    <option value="Secretário">Secretário</option>
+                                    <option value="Administrador">Administrador</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col">
+                                <label for="telefoneFunc">Telefone</label>
+                                <input type="text" id="telefoneFunc" name="telefoneFunc" formControlName="telefone"
+                                    mask="(00) 00000-0000">
+                            </div>
+                            <div class="col">
+                                <label for="cpf">CPF</label>
+                                <input type="text" id="cpf" name="cpf" mask="000.000.000-00"
+                                    placeholder="EX: xxx.xxx.xxx-xx" formControlName="cpf">
+                            </div>
+                            <div class="col">
+                                <label for="cpf">Data de Nascimento</label>
+                                <input type="text" id="cpf" name="cpf" mask="00/00/0000" placeholder="EX: xx/xx/xxxx"
+                                    formControlName="data_nascimento">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col">
+                                <label for="emailAcademia">E-mail</label>
+                                <input type="email" id="emailFunc" name="emailFunc" formControlName="email">
+                            </div>
+                            <div class="col">
+                                <label for="senha">Senha</label>
+                                <input type="password" id="senha" name="senha" formControlName="senha">
+                            </div>
+                        </div>
+                        <br>
+                    </form>
+                </div>
+                <div *ngIf="tipo == 'planos'" class="container">
+                    <form [formGroup]="planoForm">
+                        <div class="row form-group">
+                            <div class="col">
+                                <label for="nome">Nome do Plano</label>
+                                <input type="text" id="nome" formControlName="nome">
+                            </div>
+                            <div class="col">
+                                <label for="preco">Preço</label>
+                                <input type="text" id="preco" formControlName="preco" mask="separator.2" prefix="R$ ">
+                            </div>
+                            <!-- <div class="col">
+                                <label for="descontoPlano">Desconto (%)</label>
+                                <input type="number" id="descontoPlano" formControlName="descontoPlano" min="0" (input)="calcularValorFinal()">
+                            </div> -->
+                        </div>
+                        <div class="form-group">
+                            <label for="descricao">Descrição</label>
+                            <textarea id="descricao" formControlName="descricao"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="duracao">Duração</label>
+                            <select id="duracao" formControlName="duracao">
+                                <option disabled selected>Escolhe uma opção</option>
+                                <option value="1">1 Mês</option>
+                                <option value="3">3 Meses</option>
+                                <option value="6">6 Meses</option>
+                                <option value="12">12 Meses</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="beneficio" title="Clique no botao para adicionar o benefício">Adicionar
+                                Benefício:</label>
+                            <textarea id="beneficio" formControlName="beneficios" rows="2"></textarea>
+                            <button type="button" class="btn btn-secondary mt-2"
+                                (click)="adicionarBeneficio()">Adicionar
+                                Benefício</button>
+                            <small class="ms-2">Clique no botao para adicionar o benefício.</small>
+                        </div>
+
+                        <div *ngIf="beneficios.length > 0" class="mt-4">
+                            <h4>Benefícios Adicionados</h4>
+                            <ul>
+                                <li *ngFor="let beneficio of beneficios; let i = index">
+                                    {{ beneficio }}
+                                    <!-- <button type="button" (click)="removerBeneficio(i)" class="btn btn-danger btn-sm ml-2">Remover</button> -->
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="form-group">
+                            <label for="disponibilidade">Disponibilidade</label>
+                            <select id="disponibilidade" formControlName="disponibilidade">
+                                <option value="ativo">Ativo</option>
+                                <option value="inativo">Inativo</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div *ngIf="tipo == 'extras'" class="container">
+                    <form [formGroup]="extraForm">
+                        <div class="row form-group">
+                            <div class="col">
+                                <label for="nomeFunc">Nome Extra</label>
+                                <input type="text" id="nomeFunc" name="nomeFunc" formControlName="nome_extra">
+                            </div>
+                            <div class="col">
+                                <label for="plano_id">Plano</label>
+                                <select id="plano_id" formControlName="plano_id">
+                                    <option disabled selected>Escolha uma opção</option>
+                                    @for (item of planos; track $index) {
+                                    <option value="{{item.id}}">{{item.nome}}</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col">
+                                <label for="valor_adicional">Valor</label>
+                                <input type="number" id="valor_adicional" name="valor_adicional" mask="separator.2"
+                                    prefix="R$ " formControlName="valor_adicional">
+                            </div>
+                            <div class="col">
+                                <label for="status">Status</label>
+                                <select id="status" formControlName="status">
+                                    <option value="ativo">Ativo</option>
+                                    <option value="inativo">Inativo</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col">
+                                <label for="descricao_extra">Descricao</label>
+                                <textarea type="text" id="descricao_extra" name="descricao_extra"
+                                    formControlName="descricao_extra" rows="2"></textarea>
+                            </div>
+                        </div>
+                        <br>
+                    </form>
+                </div>
+                <div *ngIf="tipo == 'cliente'" class="container">
+                    <form [formGroup]="CliForm">
+                        <div class="form-group">
+                            <label for="foto_perfil">Adicionar foto</label>
+                            <input formControlName="foto_perfil" type="file" id="foto_perfil" class="file-input"
+                                (change)="onFileChange($event)">
+                            <label for="foto_perfil" class="file-input-label">Escolha um arquivo</label>
+                            <div class="file-name">{{fileName}}</div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col">
+                                <label for="nome">Nome Completo</label>
+                                <input type="text" id="nomeFunc" name="nomeFunc" formControlName="nome">
+                            </div>
+                            <div class="col">
+                                <label for="endereco">endereco</label>
+                                <input type="text" id="endereco" name="endereco" formControlName="endereco">
+                            </div>
+                            <div class="col">
+                                <div class="label">
+                                    <label for="personal">Personal</label>
+                                </div>
+                                <select formControlName="personal_id"
+                                    class="form-control personal-options">
+                                    <option value="1" disabled selected>Escolha um personal</option>
+                                    @for (dado of Personal; track dado;) {
+                                    <option value="{{ dado['id'] }}">{{ dado['nome'] }}</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col">
+                                <label for="telefone">Telefone</label>
+                                <input type="text" id="telefone" name="telefone" formControlName="telefone"
+                                    mask="(00) 00000-0000">
+                            </div>
+                            <div class="col">
+                                <label for="cpf">CPF</label>
+                                <input type="text" id="cpf" name="cpf" mask="000.000.000-00"
+                                    placeholder="EX: xxx.xxx.xxx-xx" formControlName="CPF">
+                            </div>
+                            <div class="col">
+                                <label for="datanascimento">Data de Nascimento</label>
+                                <input type="text" id="datanascimento" name="datanascimento" mask="00/00/0000"
+                                    placeholder="EX: xx/xx/xxxx" formControlName="data_nascimento">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col">
+                                <label for="emailAcademia">E-mail</label>
+                                <input type="email" id="email" name="email" formControlName="email">
+                            </div>
+                            <div class="col">
+                                <label for="senha">Senha</label>
+                                <input type="password" id="senha" name="senha" formControlName="senha">
+                            </div>
+                        </div>
+                        <br>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button class="btn btn-primary" (click)="submitForm()">Cadastrar</button>
+            </div>
+        </div>
+    </div>
+</div>

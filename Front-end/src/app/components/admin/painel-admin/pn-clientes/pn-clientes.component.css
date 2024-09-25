@@ -1,5 +1,5 @@
 /* styles.css */
-.fundo{
+.fundo {
     height: 100vh;
     width: 100%;
     display: flex;
@@ -13,8 +13,8 @@
     position: relative;
 }
 
-  
-  .spinner-container {
+
+.spinner-container {
     position: absolute;
     top: 0;
     left: 0;
@@ -23,20 +23,31 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
+}
+
+.h1-cli::after{
+    content: '';
+    display: block;
+    width: 10rem;
+    height: 0.3rem;
+    background-color: #deed39;
+    margin: 0 auto;
+    position: absolute;
+    border-radius: 10px;
+}
 
 table {
-    width: 90%;
+    width: 100%;
     border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
     padding: 15px;
     border: 1px solid #ddd;
 }
 
-td{
+td {
     background-color: #ffff;
 }
 
@@ -45,7 +56,7 @@ th {
 }
 
 .pagination {
-    width: 85%;
+    width: 100%;
     margin-top: 0.5rem;
     text-align: center;
     display: flex;
@@ -53,24 +64,32 @@ th {
     font-weight: 200;
 }
 
-button{
+button {
     border: none;
     border-radius: 10px;
     font-weight: 700;
     padding: 0.3rem 1rem;
-    background-color: rgb(246, 62, 62);
+    background-color: rgb(46, 56, 240);
     color: white;
     margin-left: 1rem;
 }
 
-.btn-excluir{
-    background-color: rgb(46, 56, 240); 
+.btn-excluir {
+    background-color: rgb(246, 62, 62);
 }
 
-.btn-excluir:hover{
-    background-color: rgb(31, 42, 247); 
-}
-
-button:hover{
+.btn-excluir:hover {
     background-color: rgb(244, 48, 48);
+}
+
+.btn-treino {
+    background-color: rgb(210, 210, 1);
+}
+
+.btn-treino:hover {
+    background-color: rgb(175, 175, 1);
+}
+
+button:hover {
+    background-color: rgb(31, 42, 247);
 }

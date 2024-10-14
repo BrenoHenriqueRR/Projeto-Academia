@@ -6,6 +6,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { FormsModule } from '@angular/forms';
 import { CommonModule, NgFor } from '@angular/common';
 import { AuthserviceService } from '../../../services/authService/authservice.service';
+import { environment } from '../../../../environments/environment';
+import { ConfigService } from '../../../services/admin/config/config.service';
 
 
 
@@ -24,6 +26,7 @@ export class PainelAdminComponent {
   private dados: any;
   funcionalidade!: any;
   termoBusca: string = '';
+  fotoPerfil: string = '';
   menuItems: any[] = [
     { description: 'Dashboard', routerLink: 'dashboard', iconClass: 'fa-solid fa-chart-line' },
     { description: 'Treinos', routerLink: 'treinos', iconClass: 'fa-solid fa-dumbbell' },
@@ -32,7 +35,22 @@ export class PainelAdminComponent {
     { description: 'Financeiro', routerLink: 'financeiro', iconClass: 'fa-solid fa-coins' },
   ];
 
-  constructor(private service: LoginAdminService, @Inject(ActivatedRoute) private route: ActivatedRoute,private guard: AuthserviceService) {
+  ngOnInit(){
+    let etapa;
+    this.configservice.pesquisar().subscribe({
+      next: (value) => {
+        etapa = parseInt(value[0].etapa_atual);
+        console.log(etapa);
+    if (etapa < 4) {
+      this.router.navigate(['/admin/configuracoes']);
+      }
+     }, error: (err) => {
+        console.log(err);
+      },
+    })
+  }
+
+  constructor(private router: Router,private configservice: ConfigService ,private service: LoginAdminService, @Inject(ActivatedRoute) private route: ActivatedRoute,private guard: AuthserviceService) {
     this.route.queryParams.subscribe(params => {
       if (params['user'] !== undefined) {
         this.dados = params['user'];
@@ -62,6 +80,7 @@ export class PainelAdminComponent {
     this.service.funcao(jsonString).subscribe({
       next: (dado) => {
         this.funcionalidade = dado[0].funcao;
+        this.fotoPerfil = environment.apiUrl + '/' + dado[0].foto;
       },
       error: (erro) => {
         console.error('Erro ao buscar dados:', erro);

@@ -1,2 +1,8 @@
 
-<app-menu-cliente></app-menu-cliente>
+@defer () {
+    <app-menu-cliente></app-menu-cliente>
+}
+
+@loading(minimum 0.3s) {
+    <app-modal-spinner></app-modal-spinner>
+}

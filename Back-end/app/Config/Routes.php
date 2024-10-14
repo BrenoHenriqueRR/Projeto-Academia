@@ -41,7 +41,6 @@ $routes->post('/Financeiro/pesquisar', 'Financeiro::pesquisar');
 $routes->get('/Financeiro/pesquisarCliPendente', 'Financeiro::pesquisarCliPendente');
 $routes->post('/Financeiro/update', 'Financeiro::update');
 $routes->post('/EmailController/create', 'EmailController::create');
-$routes->get('/StripeController/getPagamentos', 'StripeController::getPagamentos');
 $routes->post('/Relatorios/rEstatistica', 'Relatorios::rEstatistica');
 $routes->post('/Academia/create', 'Academia::create'); 
 $routes->post('/Academia/nextStep', 'Academia::nextStep'); 
@@ -57,6 +56,12 @@ $routes->get('/Extras/read', 'Extras::read');
 $routes->post('/Extras/edit', 'Extras::edit');
 $routes->post('/Extras/delete', 'Extras::delete');
 $routes->post('/Faceid/create', 'Faceid::create');
+$routes->post('/Faceid/verificarFaceId', 'Faceid::verificarFaceId');
 
+$routes->get('/StripeController/getPagamentos', 'StripeController::getPagamentos');
+$routes->get('/StripeController/checkout', 'StripeController::checkout');
+$routes->post('/StripeController/gerarPagamento', 'StripeController::gerarPagamento');
+$routes->get('/StripeController/success', 'StripeController::success');
+$routes->get('/StripeController/cancel', 'StripeController::cancel');
 
 

@@ -1,5 +1,5 @@
 import { NgFor, NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ConfigService } from '../../../services/admin/config/config.service';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -20,7 +20,7 @@ export class ModalEditarPlanosComponent {
   beneficioAtual: string = '';  // Para armazenar o benefício que está sendo adicionado ou editado
   beneficios: string[] = [];    // Array para armazenar os benefícios
   indiceEdicao: number | null = null; // Armazena o índice do benefício que está sendo editado
-
+  editar :boolean = false
 
   ngOnInit(){   
     this.buscarDados();
@@ -96,10 +96,12 @@ export class ModalEditarPlanosComponent {
       
       // Limpa o campo de texto e atualiza o formulário
       this.beneficioAtual = '';
+      this.editar = false;
     }
   }
 
   editarBeneficio(index: number) {
+    this.editar = true;
     this.beneficioAtual = this.beneficios[index]; // Carrega o benefício no textarea
     this.indiceEdicao = index; // Define o índice do benefício que está sendo editado
   }
@@ -107,6 +109,8 @@ export class ModalEditarPlanosComponent {
   removerBeneficio(index: number) {
     this.beneficios.splice(index, 1); // Remove o benefício da lista
     this.planosForm.get('beneficios')?.setValue(this.beneficios.join(', ')); // Atualiza o campo do formulário
+    console.log(this.planosForm.getRawValue());
+    this.beneficioAtual = '';
   }
 
 }

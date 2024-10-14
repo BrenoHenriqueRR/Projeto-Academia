@@ -12,7 +12,7 @@ p{
     display: inline-block;
     position: relative;
 }
-
+/* 
 .logo-img::after {
     content: "";
     display: block;
@@ -20,7 +20,7 @@ p{
     height: 0.02rem;
     background-color: gray;
     margin-bottom: 1.5rem;
-}
+} */
 
 .plano{
     width: 90%;
@@ -194,6 +194,14 @@ p{
     border-radius: 10px;
     box-shadow: 1px 1px 6px #0000001c;
     font-size: 0.8rem;
+}
+
+.resumo{
+    top: 0;
+    right: 0;
+    z-index: 999;
+    width: 35%;
+    height: 100%;
 }
 
 

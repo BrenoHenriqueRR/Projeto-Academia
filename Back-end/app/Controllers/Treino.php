@@ -65,12 +65,14 @@ class Treino extends BaseController
     //faz a pesquisa dos treinos
     public function pesquisar()
     {
-        $json = file_get_contents('php://input');
+        // $json = file_get_contents('php://input');
+        
+        // // Decodificar o JSON em um array PHP
+        // $data = json_decode($json, true);
+        
+        $data = $this->request->getJSON();
 
-        // Decodificar o JSON em um array PHP
-        $data = json_decode($json, true);
-
-        $proximoTipoGrupo = $this->tipogrupo->where('cliente_id', $data['cliente_id'])
+        $proximoTipoGrupo = $this->tipogrupo->where('cliente_id', $data->cliente_id)
             ->where('status', 'Pendente')
             ->orderBy('data_criacao', 'ASC')
             ->first();
@@ -98,7 +100,7 @@ class Treino extends BaseController
                 ->join('treino_tipo tr', 'tg.treino_id = tr.id')
                 ->join('funcionarios f', 'tg.funcionario_id = f.id')
                 ->join('cliente c', 'tg.cliente_id = c.id')
-                ->where('c.id', $data['cliente_id'])
+                ->where('c.id', $data->cliente_id)
                 ->where('tg.status', 'Pendente')
                 ->where('tg.id',  $proximoTipoGrupoID)
                 ->orderBy('tg.data_criacao', 'ASC') // Ordena pela data de criação mais antiga
@@ -107,6 +109,8 @@ class Treino extends BaseController
             $data = $dados->get();
 
             return $this->response->setJSON($data->getResult())->setStatusCode(200);
+        }else{
+            return $this->response->setJSON(["msg" => "false"])->setStatusCode(200); 
         }
     }
     //Faz o cadastro na tabela de exercicios

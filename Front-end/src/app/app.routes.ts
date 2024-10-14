@@ -73,7 +73,7 @@ export const routes: Routes = [
     },
     {
         path: 'admin/configuracoes',
-        component: ConfighomeComponent
+        component: ConfighomeComponent,
     },
     {
         path: 'admin/painel',

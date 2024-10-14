@@ -1,6 +1,6 @@
 import { NgClass, NgFor, NgIf } from '@angular/common';
 import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, NgModel, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, FormsModule, NgModel, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { ConfigService } from '../../../../services/admin/config/config.service';
 import { ToastrService } from 'ngx-toastr';
@@ -32,6 +32,7 @@ export class ConfighomeComponent implements OnInit {
   funcionarios: any;
   novoBeneficio: string = ''; // Benefício atual que será adicionado
   beneficios: string[] = []; // Array para armazenar os benefícios
+  index: number = 0;
 
   @HostListener('window:beforeunload', ['$event'])
   unloadNotification($event: any): void {
@@ -83,8 +84,8 @@ export class ConfighomeComponent implements OnInit {
       preco: ['', Validators.required],
       // descontoPlano: ['', [Validators.required, Validators.min(1)]],
       descricao: ['', [Validators.required]],
+      beneficios: this.fb.array([]),
       duracao: ['', [Validators.required]],
-      beneficios: ['', [Validators.required]],
       disponibilidade: ['', [Validators.required]]
     });
     this.cadForm = this.fb.group({
@@ -109,14 +110,14 @@ export class ConfighomeComponent implements OnInit {
     });
   }
 
-  adicionarBeneficio() {
-    if (this.planForm.value.beneficios.trim()) {
-      this.beneficios.push(this.planForm.value.beneficios.trim());
-      this.planForm.value.beneficios = ''; // Limpa o campo textarea
-
-      // Atualiza o campo 'beneficios' do formulário com todos os benefícios concatenados
-      this.planForm.get('beneficios')?.setValue(this.beneficios.join(', '));
+  adicionarBeneficio(beneficio: string) {
+    if(beneficio == ''){
+      return;
     }
+    this.beneficios[this.index] = beneficio;
+    this.index++;
+    (document.getElementById('beneficio') as HTMLInputElement).value = '';
+    
   }
 
   onFileChange(event: Event) {
@@ -166,16 +167,26 @@ export class ConfighomeComponent implements OnInit {
     })
   }
 
+  get beneficiosArray(): FormArray {
+    return this.planForm.get('beneficios') as FormArray;
+  }
+
   salvarPlano() {
     if (this.planForm.valid) {
+      this.beneficios.forEach(beneficio => {
+        this.beneficiosArray.push(this.fb.control(beneficio));
+      });
+      
       const dados = JSON.stringify(this.planForm.getRawValue());
-      this.academiaservice.createPlanos(dados).subscribe({
-        next: (data) => {
-          this.ngOnInit();
-          this.planForm.reset();
-          this.alertas.success("Plano inserido");
-        }
-      })
+      
+      console.log(dados);
+      // this.academiaservice.createPlanos(dados).subscribe({
+      //   next: (data) => {
+      //     this.ngOnInit();
+      //     this.planForm.reset();
+      //     this.alertas.success("Plano inserido");
+      //   }
+      // })
 
     } else {
       this.alertas.error("Campos Vazios !!");

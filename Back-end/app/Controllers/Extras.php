@@ -10,12 +10,12 @@ use CodeIgniter\HTTP\ResponseInterface;
 class Extras extends BaseController
 {
     private $model;
-    private $planos_extras;
+    // private $planos_extras;
 
     public function __construct()
     {
         $this->model = new ExtrasModel;
-        $this->planos_extras = new PlanosExtra;
+        // $this->planos_extras = new PlanosExtra;
     }
 
     public function create()
@@ -37,7 +37,7 @@ class Extras extends BaseController
                     "plano_id" => $data->plano_id,
                     "extra_id" => $ultimoID
                 ];
-                $this->planos_extras->insert($dados_planos_extra);
+                // $this->planos_extras->insert($dados_planos_extra);
                 return $this->response->setJSON(['msg' => 'Extra cadastrado'])->setStatusCode(200);
             }
         }else{
@@ -49,13 +49,17 @@ class Extras extends BaseController
     public function edit()
     {
         $data = $this->request->getJson();
-
-        $dados = $this->model->where('id', $data['id'])
-            ->set($data)
-            ->update();
-
-        $msg = array("msg" => "Plano editado com sucesso !!");
-        return $this->response->setJson($msg)->setStatusCode(200);
+        try {
+                $this->model->where('id', $data['id'])
+                ->set($data)
+                ->update();
+    
+            $msg = array("msg" => "Plano Extra editado com sucesso !!");
+            return $this->response->setJson($msg)->setStatusCode(200);
+        } catch (\Throwable $th) {
+            $error = array("msg" => "Erro ao editar o plano extra!", "Erro" => $th->getMessage());
+            return $this->response->setJson($error)->setStatusCode(500);
+        }
     }
     public function read()
     {

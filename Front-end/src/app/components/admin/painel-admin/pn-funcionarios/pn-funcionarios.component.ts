@@ -30,7 +30,7 @@ export class PnFuncionariosComponent {
         this.dados_funcionario = dado;
         setTimeout(() =>{
           this.loading = false;
-        },200);
+        },100);
 
       },
       error: (erro) => {

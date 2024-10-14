@@ -12,6 +12,17 @@
     margin: 0 auto;
 }
 
+.h1-cli::after{
+    content: '';
+    display: block;
+    width: 10rem;
+    height: 0.3rem;
+    background-color: #deed39;
+    margin: 0 auto;
+    position: absolute;
+    border-radius: 10px;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;

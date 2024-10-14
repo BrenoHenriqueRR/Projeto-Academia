@@ -14,11 +14,11 @@ export class LoginService {
   constructor(private http: HttpClient) {} 
 
      sendData(dados: any)
-     : Observable<formresponse> {
+     : Observable<any> {
       const data = dados;
       // console.log(data);
 
-      return this.http.post<formresponse>(this.url, data);
+      return this.http.post<any>(this.url, data);
     }
 
     pesquisar(email:any){

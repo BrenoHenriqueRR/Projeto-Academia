@@ -1,55 +1,73 @@
-<div class="fundo">
-    <div class="container">
-        <div class="img-perfil">
-            <h1>Perfil</h1>
-            <img src="assets/imgs/user.png" alt="user">
-        </div>
-        <div class="formulario">
-            <form [formGroup]="formcadastro" method="post">
-            @for (dados of data; track dados){
-             <h1>Cliente: {{dados.cliente_nome}}</h1>   
-            }
-            @for (dados of data; track dados){
-            <div class="input-group">
-                <div class="input-box">
-                    <label for="nome">Nome</label>
-                    <input style="color: black;" type="text" id="nome" formControlName = "nome" class="form-control"  required>
+<div class="container">
+    <div class="img-perfil">
+        <div *ngIf="loading"><app-modal-spinner></app-modal-spinner></div>
+        @for (dados of data; track dados){
+        <h2>Cliente: {{dados.cliente_nome}}</h2>
+        }
+        <div class="d-flex align-items-center justify-content-between">
+            <div class="img-perfil d-block">
+                <div class="img-inserir">
+                    <label class="form-label" for="fileInput">
+                        <i class="fa-solid fa-plus meio-img"></i>
+                        <img *ngIf="verifi_foto_perfil == 'true'" class="fotoperfil" [src]="foto_perfil" [alt]="foto_perfil">
+                        <img *ngIf="verifi_foto_perfil == 'false'" class="fotoperfil" src="assets/imgs/user.png" alt="">
+                    </label>
                 </div>
-
-                <div class="input-box">
-                    <label for="personal">Personal: {{dados.nome_personal}}</label>
-                    <!-- <input type="text" formControlName = "personal_id" class="form-control" id="personal"  required> -->
-                    <select (click)="personal()" formControlName="personal_id" class="form-control personal-options">
-                        <option value="1" disabled selected>Escolha um personal</option>
-                        @for (dado of idnamepersonal; track dado;) {
-                            <option value="{{ dado['id'] }}">{{ dado['nome'] }}</option>
-                        }
-                    </select>   
-                </div>                       
-
-                <div class="input-box">
-                    <label for="CPF">CPF</label>
-                    <input type="text" formControlName = "CPF" class="form-control" id="CPF" > 
-                </div>
-                
-                <div class="input-box">
-                    <label for="email">Email</label>
-                    <input type="email" formControlName = "email" class="form-control" id="email" required>
+                <div class="mt-3">
+                    <input class="form-control" type="file" id="fileInput" style="display: none;"
+                        (change)="onFileSelected($event)">
                 </div>
             </div>
-        }
-        <div class="continue-button">
-            <button *ngIf="!loading" type="submit" (click)="edit()" class="btn btn-primary">
-            Enviar
-            </button>
-            <div *ngIf="loading" class="spinner-container">
-                <button class="btn btn-primary" disabled>
-                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        </div>
+    </div>
+    <div class="formulario">
+        <form [formGroup]="formcadastro" method="post">
+            @for (dados of data; track dados){
+            <div class="mt-3 row">
+                <div class="col">
+                    <label class="form-label" for="nome">Nome</label>
+                    <input class="form-control" style="color: black;" type="text" id="nome" formControlName="nome"
+                        class="form-control" required>
+                </div>
+
+                <div class="col">
+                    <label class="form-label" for="personal">Personal</label>
+                    <!-- <input class="form-control" type="text" formControlName = "personal_id" class="form-control" id="personal"  required> -->
+                    <select  (change)="cadFuncao($event)" class="form-control personal-options">
+                        @for (dado of idnamepersonal; track dado;) {
+                            <option *ngIf="dado['id'] == dados['personal_id']" value="{{ dado['id'] }}" disabled selected>{{ dado['nome'] }}</option>
+                            <!-- <option *ngIf="dado['id'] != dados['personal_id']" value="{{ dado['id'] }}" disabled selected>Escolha um Personal</option> -->
+                        }
+                        @for (dado of idnamepersonal; track dado;) {
+                        <option value="{{ dado['id'] }}">{{ dado['nome'] }}</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="mt-2 row">
+                <div class="col">
+                    <label class="form-label" for="CPF">CPF</label>
+                    <input class="form-control" type="text" formControlName="CPF" mask = "000.000.000-00" class="form-control" id="CPF">
+                </div>
+
+                <div class="col">
+                    <label class="form-label" for="email">Email</label>
+                    <input class="form-control" type="email" formControlName="email" class="form-control" id="email"
+                        required>
+                </div>
+            </div>
+            }
+            <div class="mt-4 continue-button">
+                <button *ngIf="!loading" type="submit" (click)="edit()" class="btn btn-primary">
+                    Enviar
                 </button>
+                <div *ngIf="loading" class="spinner-container">
+                    <button class="btn btn-primary" disabled>
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    </button>
                 </div>
             </div>
         </form>
-        </div>
-        
     </div>
+
 </div>

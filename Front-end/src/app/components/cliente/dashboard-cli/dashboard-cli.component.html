@@ -7,22 +7,24 @@
             </div>
             <div class="card">
                 <h2>Treinos</h2>
-                    <p>Treino: {{treino[0].tipo}}</p>
-                    <p>Status: {{treino[0].status}}</p>
+                @for (treino of treinos; track treino.id) {
+                <p>Treino: {{treino.tipo}}</p>
+                <p>Status: {{treino.status}}</p>
+                }
                 <a routerLink="/home-cliente/treinos">Ver</a>
             </div>
             <div class="card">
                 <h2>Pagamentos</h2>
                 @for (item of pagamentos; track $index) {
-                    @if (item.status_pagamento == 'pendente') {
-                        <p>valor: {{item.valor}}</p>
-                        <p>Clique abaixo Para pagar a sua Fatura</p>
-                     }
-                     @else {
-                        <p>Clique abaixo para ver o seus comprovantes</p>
-                        <a routerLink="/home-cliente/pagamentos">Ver</a>
-                     }
-                 }       
+                @if (item.status_pagamento == 'pendente') {
+                <p>valor: {{item.valor}}</p>
+                <p>Clique abaixo Para pagar a sua Fatura</p>
+                }
+                @else {
+                <p>Clique abaixo para ver o seus comprovantes</p>
+                <a routerLink="/home-cliente/pagamentos">Ver</a>
+                }
+                }
             </div>
         </div>
     </div>

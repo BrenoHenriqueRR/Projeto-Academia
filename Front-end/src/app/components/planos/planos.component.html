@@ -5,8 +5,8 @@
 
 <div class="container-fluid">
     <div class="planos">
-        <div *ngFor="let dado of dados" class="d-flex align-items-center justify-content-center flex-column">
-            <h1>{{dado.nome}}</h1>
+        <div *ngFor="let dado of dados" class="mt-4 d-flex align-items-center justify-content-center flex-column">
+            <h1 class="w-100 text-center">{{dado.nome}}</h1>
             <p class="descricao-academia text-center">{{dado.descricao}}</p>
         </div>
         <div class="row justify-content-center">
@@ -34,7 +34,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="inscricao">
+                <div class="inscricao mt-auto">
                     <button type="submit" (click)="cadastrar(item.nome,item.id)" class="btn btn-warning">Inscreva-se</button>
                 </div>
             </div>

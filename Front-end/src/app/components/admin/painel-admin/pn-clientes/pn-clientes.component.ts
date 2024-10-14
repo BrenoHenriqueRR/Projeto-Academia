@@ -7,11 +7,12 @@ import { LoginAdminService } from '../../../../services/admin/login/login-admin.
 import { ModalCadastroComponent } from '../../../modais/modal-cadastro/modal-cadastro.component';
 import { ModalConfirmarComponent } from '../../../modais/modal-confirmar/modal-confirmar.component';
 import { ModalFaceidComponent } from '../../../modais/modal-faceid/modal-faceid.component';
+import { ModalSpinnerComponent } from "../../../modais/modal-spinner/modal-spinner.component";
 
 @Component({
   selector: 'app-pn-clientes',
   standalone: true,
-  imports: [NgxPaginationModule, NgFor, RouterLink, NgIf, ModalConfirmarComponent, ModalCadastroComponent, ModalFaceidComponent],
+  imports: [NgxPaginationModule, NgFor, RouterLink, NgIf, ModalConfirmarComponent, ModalCadastroComponent, ModalFaceidComponent, ModalSpinnerComponent],
   templateUrl: './pn-clientes.component.html',
   styleUrl: './pn-clientes.component.css'
 })

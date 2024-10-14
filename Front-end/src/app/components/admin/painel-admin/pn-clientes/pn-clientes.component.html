@@ -1,4 +1,7 @@
 <div class="fundo">
+    <div *ngIf="loading">
+        <app-modal-spinner></app-modal-spinner>
+    </div>
     <div class="container">
         <div *ngIf="loading == true" class="spinner-container">
             <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>

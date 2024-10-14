@@ -93,8 +93,14 @@ class Cliente extends BaseController
             $query = $this->model->get();
 
             if ($query->getResult()) {
+                $result = $query->getRow();
+                if($result){
+                    $msg = array([
+                        "msg" => "true",
+                        "id" => $result->id
+                    ]);
+                }
                 // O email e a senha existem no banco de dados
-                $msg = array("msg" => "true");
                 $this->model->where('email', $data['email'])
                     ->where('senha', $senhahash)
                     ->set([
@@ -105,7 +111,7 @@ class Cliente extends BaseController
                 return $this->response->setJSON($msg)->setStatusCode(200);
             } else {
                 // O email e/ou a senha não existem
-                $msg = array("msg" => "false");
+                $msg = array(["msg" => "false"]);
                 return $this->response->setJSON($msg)->setStatusCode(200);
             }
         } else {
@@ -157,7 +163,7 @@ class Cliente extends BaseController
     public function inserirFoto()
     {
         //apagar imagem anterior do usuário
-        $file = $this->request->getFile('image');
+        $file = $this->request->getFile('foto');
         $id = $this->request->getPost('id');
 
         $dados = $this->model->select('foto_perfil')

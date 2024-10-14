@@ -6,11 +6,15 @@ import { ActivatedRoute } from '@angular/router';
 import { CliPesquisar } from '../../../interfaces/cli-pesquisar';
 import { CadastroService } from '../../../services/cadastro.service';
 import { window } from 'rxjs';
+import { environment } from '../../../../environments/environment';
+import { ModalSpinnerComponent } from "../modal-spinner/modal-spinner.component";
+import { provideNgxMask } from 'ngx-mask';
 
 @Component({
   selector: 'app-modal-editar',
   standalone: true,
-  imports: [ReactiveFormsModule, NgIf],
+  imports: [ReactiveFormsModule, NgIf, ModalSpinnerComponent],
+  providers: [provideNgxMask()],
   templateUrl: './modal-editar.component.html',
   styleUrl: './modal-editar.component.css'
 })
@@ -22,10 +26,21 @@ export class ModalEditarFuncionarioComponent {
   data: any;
   identificador!: any;
   idnamepersonal!: any;
+  selectedFile: File | undefined;
+  foto_perfil: string = "";
 
-  ngOnInit(){
+
+  ngOnInit() {
+    this.loading = true;
     this.Bucasdados();
+    setTimeout(() => {
+      this.loading = false;
+    },200)
     // this.form();
+  }
+
+  onFileSelected(event: Event) {
+    this.selectedFile = (event.target as HTMLInputElement).files![0];
   }
 
   constructor(private service: ModalEditarService, private route: ActivatedRoute, private personalp: CadastroService) {
@@ -33,13 +48,13 @@ export class ModalEditarFuncionarioComponent {
       this.identificador = params['id'];
     });
   }
-  
+
   Bucasdados() {
     const jsonString = '{"id": "' + this.identificador + '"}';
     this.service.pesquisarP(jsonString).subscribe(
       (dados) => {
         this.data = dados;
-        // console.log(dados);
+        this.foto_perfil = environment.apiUrl + '/' + dados[0].foto;
         this.form();
       }, (erro) => {
         console.error('Erro ao buscar dados:', erro);
@@ -47,9 +62,9 @@ export class ModalEditarFuncionarioComponent {
     );
   }
 
-  cadFuncao(event : Event) {
+  cadFuncao(event: Event) {
     const selectElement = event.target as HTMLSelectElement;
-    const selectedText = selectElement.options[selectElement.selectedIndex].text;
+    const selectedText = selectElement.options[selectElement.selectedIndex].value;
     this.formcadastro.patchValue({
       funcao: selectedText,
     });

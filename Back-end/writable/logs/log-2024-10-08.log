@@ -1,0 +1,48 @@
+CRITICAL - 2024-10-08 23:15:10 --> Error: Call to a member function findall() on null
+in APPPATH\Controllers\StripeController.php on line 51.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\StripeController->gerarPagamento()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StripeController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-08 23:15:33 --> Error: Call to a member function findAll() on null
+in APPPATH\Controllers\StripeController.php on line 51.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\StripeController->gerarPagamento()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StripeController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-08 23:16:48 --> Error: Call to a member function find() on null
+in APPPATH\Controllers\StripeController.php on line 51.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\StripeController->gerarPagamento()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StripeController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-08 23:16:59 --> Error: Call to a member function find() on null
+in APPPATH\Controllers\StripeController.php on line 51.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\StripeController->gerarPagamento()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StripeController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-08 23:17:21 --> Error: Call to a member function find() on null
+in APPPATH\Controllers\StripeController.php on line 51.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\StripeController->gerarPagamento()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StripeController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-08 23:18:11 --> Error: Call to a member function find() on null
+in APPPATH\Controllers\StripeController.php on line 51.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\StripeController->gerarPagamento()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StripeController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-08 23:18:27 --> Error: Call to a member function find() on null
+in APPPATH\Controllers\StripeController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\StripeController->gerarPagamento()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StripeController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-08 23:19:02 --> Error: Call to a member function find() on null
+in APPPATH\Controllers\StripeController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\StripeController->gerarPagamento()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StripeController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

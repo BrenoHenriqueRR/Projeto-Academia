@@ -42,6 +42,7 @@ export class CadastroComponent {
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.idPlano = params['id'];
+      this.etapa = params['etapa'];
     });
     this.loading = true;
     setTimeout(() => {
@@ -158,21 +159,44 @@ export class CadastroComponent {
       this.total -= parseInt(extra.preco);
     }
   }
+  // nextEtapa(){
+  //   this.etapa++;
+  //    this.router.navigate([], {
+  //     relativeTo: this.route,
+  //     queryParams: { etapa: this.etapa },
+  //     queryParamsHandling: 'merge' 
+  //   });
+  // }
 
   nextEtapa(etapa: any) {
     switch (etapa) {
       case "0":
-        this.etapa = 1;
+        this.etapa--;
+        this.router.navigate([], {
+          relativeTo: this.route,
+          queryParams: { etapa: this.etapa },
+          queryParamsHandling: 'merge' 
+        });
         break;
       case "1":
-        this.etapa = 2;
+        this.etapa++;
+        this.router.navigate([], {
+          relativeTo: this.route,
+          queryParams: { etapa: this.etapa },
+          queryParamsHandling: 'merge' 
+        });
         break;
       case "2":
         if (!this.formcadastro.valid) {
           alert("campos vazio!!");
           break;
         } else {
-          this.etapa = 3;
+          this.etapa++;
+          this.router.navigate([], {
+            relativeTo: this.route,
+            queryParams: { etapa: this.etapa },
+            queryParamsHandling: 'merge' 
+          });
           break;
         }
       default:

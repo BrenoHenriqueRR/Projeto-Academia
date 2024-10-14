@@ -74,15 +74,26 @@ class Admin extends BaseController
         $json = file_get_contents('php://input');
         $datajson = json_decode($json, true);
 
-        $dados = $this->modelcli->select('c.id, c.nome AS cliente_nome, c.CPF, c.email,c.personal_id, p.nome AS nome_personal')
+        $dados = $this->modelcli->select('c.id, c.nome AS cliente_nome,c.foto_perfil, c.CPF, c.email,c.personal_id, p.nome AS nome_personal')
         ->from('cliente AS c')
-        ->join('funcionarios AS p', 'c.personal_id = p.id', 'INNER')
+        ->join('funcionarios AS p', 'c.personal_id = p.id', 'LEFT')
         ->where('c.id', $datajson['id'])
         ->groupBy('c.id');
 
-        $data = $dados->get();  
+        $data = $dados->get();
+        if ($data) {
+            $result = $data->getRow();
+            if($result){
+                if(file_exists($result->foto_perfil)){
+                    $result->verifi_img = 'true';
+                }else{
+                    $result->verifi_img = 'false';
+                }
+            }
+        }
 
-        return $this->response->setJSON($data->getResult())->setStatusCode(200);
+
+        return $this->response->setJSON($result)->setStatusCode(200);
 
     }
 
@@ -147,7 +158,7 @@ class Admin extends BaseController
         ->where('id',$data['id'])
         ->update();
 
-        $msg = array("msg" => "Cadastro Editado");
+        $msg = array("msg" => "Cadastro Editado Com Sucesso !!");
 
         return $this->response->setJSON($msg)->setStatusCode(200);
     }

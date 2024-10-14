@@ -1,0 +1,19 @@
+CRITICAL - 2024-10-09 00:09:30 --> ArgumentCountError: Too few arguments to function App\Controllers\StripeController::checkout(), 0 passed in C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php on line 941 and exactly 1 expected
+in APPPATH\Controllers\StripeController.php on line 61.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\StripeController->checkout()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StripeController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-09 00:09:54 --> ArgumentCountError: Too few arguments to function App\Controllers\StripeController::checkout(), 0 passed in C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php on line 941 and exactly 1 expected
+in APPPATH\Controllers\StripeController.php on line 61.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\StripeController->checkout()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StripeController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-09 00:12:42 --> ErrorException: Undefined array key "frequencia"
+in APPPATH\Controllers\Financeiro.php on line 34.
+ 1 APPPATH\Controllers\Financeiro.php(34): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "frequencia"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Financeiro.php', 34)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

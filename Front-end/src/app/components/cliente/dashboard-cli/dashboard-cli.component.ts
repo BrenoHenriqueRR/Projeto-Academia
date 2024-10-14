@@ -11,7 +11,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './dashboard-cli.component.css'
 })
 export class DashboardCliComponent {
-  treino!: any;
+  treinos!: any;
   pagamentos!: any;
 
   constructor(private Streino:UserTreinoService, private sPagamento: PnFinanceiroService){
@@ -33,14 +33,27 @@ export class DashboardCliComponent {
     })
   }
   pesquisarTreino(){
-    const jsonString: string = '{"cliente_id": "' + localStorage.getItem('idcliente') + '"}';
-    this.Streino.pesquisar(jsonString).subscribe({
+    const idjson: string = '{"cliente_id": "' + localStorage.getItem('idcliente') + '"}';
+    console.log(idjson);
+    this.Streino.pesquisar(idjson).subscribe({
       next:(dados) =>{
-        if(dados){
-        this.treino = dados;
+        if(!dados.msg){
+        // this.treinos = dados;
         console.log(dados);
+      }else{
+        console.log("Nenhum treino cadastrado");
       }
-      }
+      },error: (error) => {
+
+        console.log('Erro na requisição:', error);
+        if (error.error instanceof ProgressEvent) {
+            // A requisição falhou completamente (ex.: servidor offline)
+            console.log('Problema na comunicação com o servidor.');
+        } else if (error.status === 500) {
+            console.log('Erro no servidor');
+        }
+        // Outras lógicas de tratamento de erro
+    }
     });
   }
 }

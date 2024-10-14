@@ -1,6 +1,6 @@
 <div class="fundo">
     <div class="container">
-        <h1>Listagem de Funcionários</h1>
+        <h1 class="h1-cli">Listagem de Funcionários</h1>
         <div *ngIf="loading"><app-modal-spinner></app-modal-spinner></div>
         <div class="mt-5">
             <app-modal-cadastro (CloseModal)="Closemodal()" tipo="funcionario"></app-modal-cadastro>

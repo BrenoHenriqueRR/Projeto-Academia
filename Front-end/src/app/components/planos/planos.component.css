@@ -25,3 +25,18 @@ li{
 .planos{
     margin-bottom: 5rem;
 }
+
+@media screen and (max-width: 1320px) {
+    .card-plano{
+        width: 30%;
+    }
+}
+@media screen and (max-width: 820px) {
+    .card-plano{
+        width: 60%;
+    }
+
+    .descricao-academia {
+        width: 100%;
+    }
+}

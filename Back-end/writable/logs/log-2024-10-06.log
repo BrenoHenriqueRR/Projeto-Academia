@@ -1,0 +1,60 @@
+CRITICAL - 2024-10-06 17:37:53 --> Error: Cannot use object of type CodeIgniter\Database\MySQLi\Result as array
+in APPPATH\Controllers\Cliente.php on line 99.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->login()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-06 17:38:17 --> Error: Cannot use object of type CodeIgniter\Database\MySQLi\Result as array
+in APPPATH\Controllers\Cliente.php on line 99.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->login()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-06 17:38:50 --> ErrorException: Undefined property: CodeIgniter\Database\MySQLi\Result::$id
+in APPPATH\Controllers\Cliente.php on line 99.
+ 1 APPPATH\Controllers\Cliente.php(99): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: CodeIgniter\\Database\\MySQLi\\Result::$id', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Cliente.php', 99)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->login()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-06 17:39:57 --> ErrorException: Undefined property: CodeIgniter\Database\MySQLi\Result::$id
+in APPPATH\Controllers\Cliente.php on line 99.
+ 1 APPPATH\Controllers\Cliente.php(99): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: CodeIgniter\\Database\\MySQLi\\Result::$id', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Cliente.php', 99)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->login()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-06 17:40:28 --> ErrorException: Attempt to read property "id" on array
+in APPPATH\Controllers\Cliente.php on line 99.
+ 1 APPPATH\Controllers\Cliente.php(99): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "id" on array', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Cliente.php', 99)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->login()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-06 18:00:18 --> ErrorException: Trying to access array offset on value of type null
+in APPPATH\Controllers\Treino.php on line 73.
+ 1 APPPATH\Controllers\Treino.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Treino.php', 73)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-06 18:00:21 --> ErrorException: Trying to access array offset on value of type null
+in APPPATH\Controllers\Treino.php on line 73.
+ 1 APPPATH\Controllers\Treino.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Treino.php', 73)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-06 20:26:53 --> ErrorException: Array to string conversion
+in APPPATH\Controllers\Treino.php on line 73.
+ 1 APPPATH\Controllers\Treino.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Treino.php', 73)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-06 21:20:41 --> Error: Cannot use object of type CodeIgniter\Database\MySQLi\Result as array
+in APPPATH\Controllers\Treino.php on line 111.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Treino->pesquisar()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Treino))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

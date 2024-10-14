@@ -1,7 +1,7 @@
 .fundo {
     display: flex;
     min-height: 100vh;
-    background-color: #f0f3f9;
+    background-color: white;
 }
 
 main {
@@ -12,7 +12,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: #ffffff;
+    background-color: #2d2d2d;
     /* height: 100vh; */
     border-radius: 0px 18px 18px 0px;
     position: relative;
@@ -44,6 +44,7 @@ main {
 #user_infos {
     display: flex;
     flex-direction: column;
+    color: white;
 }
 
 #user_infos span:last-child {
@@ -81,7 +82,7 @@ main {
 
 .side-item:hover:not(.active),
 #logout_btn:hover {
-    background-color: #c5d0e9;
+    background-color: #4d4d4d;
 }
 
 .side-item a {
@@ -89,7 +90,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #0a0a0a;
+    color: white;
 }
 
 .side-item.active a {
@@ -105,7 +106,7 @@ main {
 }
 
 #logout {
-    border-top: 1px solid #e3e9f7;
+    border-top: 1px solid #3b3b3b;
     padding: 12px;
 }
 
@@ -120,6 +121,7 @@ main {
     text-align: start;
     cursor: pointer;
     background-color: transparent;
+    color: white;
 }
 
 #open_btn {
@@ -155,6 +157,7 @@ main {
 
 #sidebar.open-sidebar {
     min-width: 14%;
+    
 }
 
 #sidebar.open-sidebar .item-description {
@@ -165,6 +168,7 @@ main {
 #sidebar.open-sidebar .side-item a {
     justify-content: flex-start;
     gap: 14px;
+    color: white;
 }
 
 .b-main{
@@ -185,7 +189,7 @@ main {
     border-bottom-left-radius: 10px;
     position: fixed;
     z-index: 5; 
-    padding: 10px 20px; 
+    padding: 5px 20px; 
     /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
 }
 

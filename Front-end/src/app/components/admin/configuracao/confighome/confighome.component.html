@@ -106,8 +106,8 @@
                     <div class="form-group">
                         <label for="beneficio" title="Clique no botao para adicionar o benefício">Adicionar
                             Benefício:</label>
-                        <textarea id="beneficio" formControlName="beneficios" rows="2"></textarea>
-                        <button type="button" class="button mt-2" (click)="adicionarBeneficio()">Adicionar
+                        <textarea id="beneficio" #beneficio rows="2"></textarea>
+                        <button type="button" class="button mt-2" (click)="adicionarBeneficio(beneficio.value)">Adicionar
                             Benefício</button>
                         <small class="ms-2">Clique no botao para adicionar o benefício.</small>
                     </div>

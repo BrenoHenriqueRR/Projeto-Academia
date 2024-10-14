@@ -40,7 +40,7 @@ export class PlanosComponent {
 
   cadastrar(plano: string, id: number){
       this.route.navigate(['/cadastro'], {
-        queryParams: { plano: plano, id: id}
+        queryParams: { plano: plano, id: id, etapa : 1}
       });
   }
 

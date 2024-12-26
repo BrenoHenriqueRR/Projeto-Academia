@@ -36,7 +36,9 @@ export class CadastroComponent {
   idPlano!: number;
   total: number = 0;
   totalExtra: number = 0;
-  
+  extrasnome: Array<{ nome: string; preco: string }> = [];
+  select_extras: Array<{ id: number, nome: string }> = [];
+
 
 
   ngOnInit() {
@@ -71,13 +73,13 @@ export class CadastroComponent {
 
   ngAfterViewInit(): void {
     // Agora é seguro acessar o DOM
-    const element = this.el.nativeElement.querySelector('.float-end');
+    // const element = this.el.nativeElement.querySelector('.float-end');
 
-    if (element) {
-      this.divPosition = element.offsetTop;
-    } else {
-      console.error('Elemento não encontrado no DOM.');
-    }
+    // if (element) {
+    //   this.divPosition = element.offsetTop;
+    // } else {
+    //   console.error('Elemento não encontrado no DOM.');
+    // }
   }
 
 
@@ -90,7 +92,7 @@ export class CadastroComponent {
       datanascimento: new FormControl('', [Validators.required]),
       CPF: new FormControl('', [Validators.required]),
       personal_id: new FormControl('', [Validators.required]),
-      frequencia: new FormControl('', [Validators.required]),
+      // frequencia: new FormControl('', [Validators.required]),
     });
   }
 
@@ -112,25 +114,27 @@ export class CadastroComponent {
   submit() {
     if (this.formcadastro.valid) {
       // Obter os valores do formulário e converter para JSON
-      const dados = JSON.stringify(this.formcadastro.getRawValue());
+      // const dados = JSON.stringify(this.formcadastro.getRawValue());
+      let dados = this.formcadastro.getRawValue();
+      // dados.push({extra : this.select_extras.nome});   
+      dados['extras'] = this.select_extras.map((extra: { id:number }) => extra.id);
+      dados['plano'] = this.planos.map((plano: {id: number}) => plano.id);
+    
+      // this.loading = true;
+      console.log (JSON.stringify(dados));
 
-      console.log(dados);
-
-      this.loading = true;
-      // console.log (dados);
-
-      // Enviar os dados
-      this.service.sendData(dados).subscribe({
-        next: (resposta) => {
-          this.mensagemSucesso = resposta.msg;
-          console.log(this.mensagemSucesso);
-          this.formcadastro.reset();
-          this.loading = false;
-          alert("Cadastro enviado com sucesso !!")
-          this.router.navigate(['/login']), {
-          };
-        }
-      })
+    //  //Enviar os dados
+    //   this.service.sendData(dados).subscribe({
+    //     next: (resposta) => {
+    //       this.mensagemSucesso = resposta.msg;
+    //       console.log(this.mensagemSucesso);
+    //       this.formcadastro.reset();
+    //       this.loading = false;
+    //       alert("Cadastro enviado com sucesso !!")
+    //       // this.router.navigate(['/login']), {
+    //       // };
+    //     }
+    //   })
     } else {
       alert("campos vazio!!")
     }
@@ -148,16 +152,24 @@ export class CadastroComponent {
   }
 
   onCheckedChange(checked: boolean, extra: any): void {
-    extra.checked = checked;
-    if (extra.checked) {
-      // Adiciona o preço do extra ao total se for selecionado
-      this.totalExtra += parseInt(extra.preco);
-      this.total += parseInt(extra.preco);
-    } else {
-      // Subtrai o preço do extra do total se for desmarcado
-      this.totalExtra -= parseInt(extra.preco);
-      this.total -= parseInt(extra.preco);
-    }
+    this.loading = true;
+    this.select_extras.push(extra);
+    setTimeout(() => {
+      extra.checked = checked;
+      if (extra.checked) {
+        // Adiciona o preço do extra ao total se for selecionado
+        this.extrasnome.push({ nome: extra.nome, preco: extra.preco });
+        // console.log(this.extrasnome);
+        this.totalExtra += parseInt(extra.preco);
+        this.total += parseInt(extra.preco);
+      } else {
+        // Subtrai o preço do extra do total se for desmarcado
+        this.extrasnome = this.extrasnome.filter(nome => nome.nome !== extra.nome);
+        this.totalExtra -= parseInt(extra.preco);
+        this.total -= parseInt(extra.preco);
+      }
+      this.loading = false;
+    }, 600);
   }
   // nextEtapa(){
   //   this.etapa++;
@@ -175,27 +187,33 @@ export class CadastroComponent {
         this.router.navigate([], {
           relativeTo: this.route,
           queryParams: { etapa: this.etapa },
-          queryParamsHandling: 'merge' 
+          queryParamsHandling: 'merge'
         });
         break;
       case "1":
-        this.etapa++;
-        this.router.navigate([], {
-          relativeTo: this.route,
-          queryParams: { etapa: this.etapa },
-          queryParamsHandling: 'merge' 
-        });
+        this.loading = true;
+        setTimeout(() => {
+          this.etapa++;
+          this.router.navigate([], {
+            relativeTo: this.route,
+            queryParams: { etapa: this.etapa },
+            queryParamsHandling: 'merge'
+          });
+          this.loading = false;
+        }, 300);
         break;
       case "2":
         if (!this.formcadastro.valid) {
           alert("campos vazio!!");
           break;
         } else {
+          this.submit();
+          break;
           this.etapa++;
           this.router.navigate([], {
             relativeTo: this.route,
             queryParams: { etapa: this.etapa },
-            queryParamsHandling: 'merge' 
+            queryParamsHandling: 'merge'
           });
           break;
         }

@@ -9,14 +9,22 @@
         <h5>Plano</h5>
         <h5>R$ {{item.preco}}</h5> <!-- Puxar da url / banco de dados -->
     </div>
-    <hr *ngIf="totalExtra != 0">
+    <!-- <hr *ngIf="totalExtra != 0">
     <div *ngIf="totalExtra != 0" class="d-flex justify-content-between mt-2 align-items-center">
         <h5>Extras</h5>
         <span class="p-0 small text-center">
-            <h5>R$ {{totalExtra}}</h5> <!-- Puxar com base na escolha do cliente -->
+            <h5>R$ {{totalExtra}}</h5>  Puxar com base na escolha do cliente 
             <small class="p-0 text-secondary">(por mês)</small>
         </span>
+    </div> -->
+    
+    @for (item of extrasnome; track $index) {
+    <hr>
+    <div class="d-flex justify-content-between mt-2 align-items-center">
+        <h5>{{item.nome}}</h5>
+        <h5>R$ {{item.preco.toString().replace(".",",")}}</h5>
     </div>
+    }
     <hr>
     <div class="d-flex justify-content-between mt-2 align-items-center">
         <h4>Total:</h4>
@@ -59,7 +67,7 @@
                     <app-button-checked [name]="extra.nome" [checked]="extra.checked" [identifier]="extra.nome"
                         (checkedChange)="onCheckedChange($event, extra)">
                     </app-button-checked>
-                    <p>+{{extra.preco}}/mês</p>
+                    <p>+{{extra.preco.toString().replace(".",",")}}/mês</p>
                 </div>
                 <div class="px-4 pt-3 descricao-plano">
                     <p>{{extra.descricao}}</p>
@@ -68,6 +76,9 @@
         </div>
     </div>
     <div *ngIf="etapa == 2" class="p-0 container-fluid ">
+        <div *ngIf="loading">
+            <app-modal-spinner></app-modal-spinner>
+        </div>
         <div class="logo-img"><img class="ms-5 img-fluid" src="assets/imgs/logo/logo.jpg" alt=""></div>
 
         <!-- <div class="form-image">

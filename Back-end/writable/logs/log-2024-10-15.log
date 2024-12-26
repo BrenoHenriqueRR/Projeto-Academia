@@ -1,0 +1,96 @@
+ERROR - 2024-10-15 00:58:10 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2024-10-15 00:58:10 --> 220 proxy.email-ssl.com.br ESMTP Postfix
+
+hello: 250-proxy.email-ssl.com.br
+250-PIPELINING
+250-SIZE 50000000
+250-VRFY
+250-ETRN
+250-STARTTLS
+250-AUTH PLAIN LOGIN
+250-ENHANCEDSTATUSCODES
+250-8BITMIME
+250-DSN
+250-SMTPUTF8
+250 CHUNKING
+
+starttls: 220 2.0.0 Ready to start TLS
+
+hello: 250-proxy.email-ssl.com.br
+250-PIPELINING
+250-SIZE 50000000
+250-VRFY
+250-ETRN
+250-AUTH PLAIN LOGIN
+250-ENHANCEDSTATUSCODES
+250-8BITMIME
+250-DSN
+250-SMTPUTF8
+250 CHUNKING
+
+Failed to authenticate password. Error: 535 5.7.8 Error: authentication failed: UGFzc3dvcmQ6
+
+ERROR - 2024-10-15 00:59:01 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2024-10-15 00:59:01 --> 220 proxy.email-ssl.com.br ESMTP Postfix
+
+hello: 250-proxy.email-ssl.com.br
+250-PIPELINING
+250-SIZE 50000000
+250-VRFY
+250-ETRN
+250-STARTTLS
+250-AUTH PLAIN LOGIN
+250-ENHANCEDSTATUSCODES
+250-8BITMIME
+250-DSN
+250-SMTPUTF8
+250 CHUNKING
+
+starttls: 220 2.0.0 Ready to start TLS
+
+hello: 250-proxy.email-ssl.com.br
+250-PIPELINING
+250-SIZE 50000000
+250-VRFY
+250-ETRN
+250-AUTH PLAIN LOGIN
+250-ENHANCEDSTATUSCODES
+250-8BITMIME
+250-DSN
+250-SMTPUTF8
+250 CHUNKING
+
+Failed to authenticate password. Error: 535 5.7.8 Error: authentication failed: UGFzc3dvcmQ6
+
+ERROR - 2024-10-15 00:59:32 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2024-10-15 00:59:32 --> 220 proxy.email-ssl.com.br ESMTP Postfix
+
+hello: 250-proxy.email-ssl.com.br
+250-PIPELINING
+250-SIZE 50000000
+250-VRFY
+250-ETRN
+250-STARTTLS
+250-AUTH PLAIN LOGIN
+250-ENHANCEDSTATUSCODES
+250-8BITMIME
+250-DSN
+250-SMTPUTF8
+250 CHUNKING
+
+starttls: 220 2.0.0 Ready to start TLS
+
+hello: 250-proxy.email-ssl.com.br
+250-PIPELINING
+250-SIZE 50000000
+250-VRFY
+250-ETRN
+250-AUTH PLAIN LOGIN
+250-ENHANCEDSTATUSCODES
+250-8BITMIME
+250-DSN
+250-SMTPUTF8
+250 CHUNKING
+
+Failed to authenticate password. Error: 535 5.7.8 Error: authentication failed: UGFzc3dvcmQ6
+

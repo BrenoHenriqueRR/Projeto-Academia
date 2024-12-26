@@ -8,27 +8,32 @@ use CodeIgniter\Database\Query;
 class Cliente extends BaseController
 {
     protected $model;
+    protected $ClientesPlanoModel;
+    protected $ClientesPlanoExtraModel;
 
     public function __construct()
     {
+        $this->model = new ClienteModel();
+        $this->ClientesPlanoModel = new ClienteModel();
         $this->model = new ClienteModel();
     }
 
     public function create()
     {
 
-        $json = file_get_contents('php://input');
+        $data = $this->request->getjSON();
 
-        $data = json_decode($json, true);
+        var_dump( $data->extras[1] );
+        die();
         if (isset($data)) {
             $this->model->select('*');
-            $this->model->where('email', $data['email']);
+            $this->model->where('email', $data->email);
             $validaremail = $this->model->countAllResults(); // traz a quantidade de resultados da consulta
 
             if ($validaremail == 0) {
-                $senhahash = hash('sha256', $data['senha']);
+                $senhahash = hash('sha256', $data->senha);
 
-                $data['senha'] = $senhahash;
+                $data->senha = $senhahash;
                 $this->model->insert($data);
 
                 $msg = array("msg" => "Cadastro Enviado");

@@ -7,8 +7,12 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 class ClientePlanos extends BaseController
 {
-    public function index()
+    public function __construct()
     {
-        //
+        
+    }
+
+    public function create($dados){
+        
     }
 }

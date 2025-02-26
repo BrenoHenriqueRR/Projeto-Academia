@@ -1,0 +1,306 @@
+CRITICAL - 2025-02-18 23:31:37 --> ErrorException: Undefined property: stdClass::$senha
+in APPPATH\Controllers\Cliente.php on line 37.
+ 1 APPPATH\Controllers\Cliente.php(37): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$senha', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Cliente.php', 37)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-02-18 23:32:08 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "verificar  _email.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(216): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('verificar  _email.php')
+ 2 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('verificar  _email', [], true)
+ 3 APPPATH\Controllers\EmailController.php(82): view('verificar  _email', [...])
+ 4 APPPATH\Controllers\Cliente.php(47): App\Controllers\EmailController->verificaEmail([...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-02-18 23:32:58 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2025-02-18 23:32:58 --> 220 proxy.email-ssl.com.br ESMTP Postfix
+
+hello: 250-proxy.email-ssl.com.br
+250-PIPELINING
+250-SIZE 50000000
+250-VRFY
+250-ETRN
+250-STARTTLS
+250-AUTH PLAIN LOGIN
+250-ENHANCEDSTATUSCODES
+250-8BITMIME
+250-DSN
+250-SMTPUTF8
+250 CHUNKING
+
+starttls: 220 2.0.0 Ready to start TLS
+
+hello: 250-proxy.email-ssl.com.br
+250-PIPELINING
+250-SIZE 50000000
+250-VRFY
+250-ETRN
+250-AUTH PLAIN LOGIN
+250-ENHANCEDSTATUSCODES
+250-8BITMIME
+250-DSN
+250-SMTPUTF8
+250 CHUNKING
+
+Failed to authenticate password. Error: 535 5.7.8 Error: authentication failed: UGFzc3dvcmQ6
+
+CRITICAL - 2025-02-18 23:32:58 --> Error: Call to a member function setJSON() on null
+in APPPATH\Controllers\EmailController.php on line 95.
+ 1 APPPATH\Controllers\Cliente.php(47): App\Controllers\EmailController->verificaEmail([...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-02-18 23:33:51 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2025-02-18 23:33:51 --> 220 proxy.email-ssl.com.br ESMTP Postfix
+
+hello: 250-proxy.email-ssl.com.br
+250-PIPELINING
+250-SIZE 50000000
+250-VRFY
+250-ETRN
+250-STARTTLS
+250-AUTH PLAIN LOGIN
+250-ENHANCEDSTATUSCODES
+250-8BITMIME
+250-DSN
+250-SMTPUTF8
+250 CHUNKING
+
+starttls: 220 2.0.0 Ready to start TLS
+
+hello: 250-proxy.email-ssl.com.br
+250-PIPELINING
+250-SIZE 50000000
+250-VRFY
+250-ETRN
+250-AUTH PLAIN LOGIN
+250-ENHANCEDSTATUSCODES
+250-8BITMIME
+250-DSN
+250-SMTPUTF8
+250 CHUNKING
+
+Failed to authenticate password. Error: 535 5.7.8 Error: authentication failed: UGFzc3dvcmQ6
+
+CRITICAL - 2025-02-18 23:33:51 --> Error: Call to a member function setJSON() on null
+in APPPATH\Controllers\EmailController.php on line 95.
+ 1 APPPATH\Controllers\Cliente.php(47): App\Controllers\EmailController->verificaEmail([...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-02-18 23:39:18 --> ErrorException: Attempt to read property "email" on array
+in APPPATH\Controllers\EmailController.php on line 86.
+ 1 APPPATH\Controllers\EmailController.php(86): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "email" on array', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\EmailController.php', 86)
+ 2 APPPATH\Controllers\Cliente.php(47): App\Controllers\EmailController->verificaEmail([...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-02-18 23:41:56 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2025-02-18 23:41:56 --> 220 proxy.email-ssl.com.br ESMTP Postfix
+
+hello: 250-proxy.email-ssl.com.br
+250-PIPELINING
+250-SIZE 50000000
+250-VRFY
+250-ETRN
+250-STARTTLS
+250-AUTH PLAIN LOGIN
+250-ENHANCEDSTATUSCODES
+250-8BITMIME
+250-DSN
+250-SMTPUTF8
+250 CHUNKING
+
+starttls: 220 2.0.0 Ready to start TLS
+
+hello: 250-proxy.email-ssl.com.br
+250-PIPELINING
+250-SIZE 50000000
+250-VRFY
+250-ETRN
+250-AUTH PLAIN LOGIN
+250-ENHANCEDSTATUSCODES
+250-8BITMIME
+250-DSN
+250-SMTPUTF8
+250 CHUNKING
+
+Failed to authenticate password. Error: 535 5.7.8 Error: authentication failed: UGFzc3dvcmQ6
+
+CRITICAL - 2025-02-18 23:41:56 --> Error: Call to a member function setJSON() on null
+in APPPATH\Controllers\EmailController.php on line 99.
+ 1 APPPATH\Controllers\Cliente.php(47): App\Controllers\EmailController->verificaEmail([...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-02-18 23:46:42 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2025-02-18 23:46:42 --> 220 proxy.email-ssl.com.br ESMTP Postfix
+
+hello: 250-proxy.email-ssl.com.br
+250-PIPELINING
+250-SIZE 50000000
+250-VRFY
+250-ETRN
+250-STARTTLS
+250-AUTH PLAIN LOGIN
+250-ENHANCEDSTATUSCODES
+250-8BITMIME
+250-DSN
+250-SMTPUTF8
+250 CHUNKING
+
+starttls: 220 2.0.0 Ready to start TLS
+
+hello: 250-proxy.email-ssl.com.br
+250-PIPELINING
+250-SIZE 50000000
+250-VRFY
+250-ETRN
+250-AUTH PLAIN LOGIN
+250-ENHANCEDSTATUSCODES
+250-8BITMIME
+250-DSN
+250-SMTPUTF8
+250 CHUNKING
+
+Failed to authenticate password. Error: 535 5.7.8 Error: authentication failed: UGFzc3dvcmQ6
+
+CRITICAL - 2025-02-18 23:46:42 --> Error: Call to a member function setJSON() on null
+in APPPATH\Controllers\EmailController.php on line 94.
+ 1 APPPATH\Controllers\Cliente.php(47): App\Controllers\EmailController->verificaEmail([...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-02-18 23:55:49 --> CodeIgniter\HTTP\Exceptions\HTTPException: Failed to parse JSON string. Error: Syntax error
+in SYSTEMPATH\HTTP\IncomingRequest.php on line 588.
+ 1 SYSTEMPATH\HTTP\IncomingRequest.php(588): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidJSON('Syntax error')
+ 2 APPPATH\Controllers\Cliente.php(27): CodeIgniter\HTTP\IncomingRequest->getJSON()
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-02-18 23:55:56 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2025-02-18 23:55:56 --> 220 proxy.email-ssl.com.br ESMTP Postfix
+
+hello: 250-proxy.email-ssl.com.br
+250-PIPELINING
+250-SIZE 50000000
+250-VRFY
+250-ETRN
+250-STARTTLS
+250-AUTH PLAIN LOGIN
+250-ENHANCEDSTATUSCODES
+250-8BITMIME
+250-DSN
+250-SMTPUTF8
+250 CHUNKING
+
+starttls: 220 2.0.0 Ready to start TLS
+
+hello: 250-proxy.email-ssl.com.br
+250-PIPELINING
+250-SIZE 50000000
+250-VRFY
+250-ETRN
+250-AUTH PLAIN LOGIN
+250-ENHANCEDSTATUSCODES
+250-8BITMIME
+250-DSN
+250-SMTPUTF8
+250 CHUNKING
+
+Failed to authenticate password. Error: 535 5.7.8 Error: authentication failed: UGFzc3dvcmQ6
+
+CRITICAL - 2025-02-18 23:55:56 --> Error: Call to a member function setJSON() on null
+in APPPATH\Controllers\EmailController.php on line 94.
+ 1 APPPATH\Controllers\Cliente.php(47): App\Controllers\EmailController->verificaEmail([...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-02-18 23:58:30 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2025-02-18 23:58:30 --> 220 proxy.email-ssl.com.br ESMTP Postfix
+
+hello: 250-proxy.email-ssl.com.br
+250-PIPELINING
+250-SIZE 50000000
+250-VRFY
+250-ETRN
+250-STARTTLS
+250-AUTH PLAIN LOGIN
+250-ENHANCEDSTATUSCODES
+250-8BITMIME
+250-DSN
+250-SMTPUTF8
+250 CHUNKING
+
+starttls: 220 2.0.0 Ready to start TLS
+
+hello: 250-proxy.email-ssl.com.br
+250-PIPELINING
+250-SIZE 50000000
+250-VRFY
+250-ETRN
+250-AUTH PLAIN LOGIN
+250-ENHANCEDSTATUSCODES
+250-8BITMIME
+250-DSN
+250-SMTPUTF8
+250 CHUNKING
+
+Failed to authenticate password. Error: 535 5.7.8 Error: authentication failed: UGFzc3dvcmQ6
+
+CRITICAL - 2025-02-18 23:58:30 --> Error: Call to a member function setJSON() on null
+in APPPATH\Controllers\EmailController.php on line 91.
+ 1 APPPATH\Controllers\Cliente.php(47): App\Controllers\EmailController->verificaEmail([...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-02-18 23:59:00 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2025-02-18 23:59:00 --> 220 proxy.email-ssl.com.br ESMTP Postfix
+
+hello: 250-proxy.email-ssl.com.br
+250-PIPELINING
+250-SIZE 50000000
+250-VRFY
+250-ETRN
+250-STARTTLS
+250-AUTH PLAIN LOGIN
+250-ENHANCEDSTATUSCODES
+250-8BITMIME
+250-DSN
+250-SMTPUTF8
+250 CHUNKING
+
+starttls: 220 2.0.0 Ready to start TLS
+
+hello: 250-proxy.email-ssl.com.br
+250-PIPELINING
+250-SIZE 50000000
+250-VRFY
+250-ETRN
+250-AUTH PLAIN LOGIN
+250-ENHANCEDSTATUSCODES
+250-8BITMIME
+250-DSN
+250-SMTPUTF8
+250 CHUNKING
+
+Failed to authenticate password. Error: 535 5.7.8 Error: authentication failed: UGFzc3dvcmQ6
+
+CRITICAL - 2025-02-18 23:59:00 --> Error: Call to a member function setJSON() on null
+in APPPATH\Controllers\EmailController.php on line 91.
+ 1 APPPATH\Controllers\Cliente.php(47): App\Controllers\EmailController->verificaEmail([...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

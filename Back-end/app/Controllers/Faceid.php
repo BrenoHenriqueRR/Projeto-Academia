@@ -18,7 +18,7 @@ class Faceid extends BaseController
 
     public function create()
     {
-        $cliente_id = 70; // Id do cliente fixo para testes, altere conforme necessário
+        $cliente_id = 70; // Id do cliente fixo para testes
 
         // Diretório base onde as imagens serão salvas
         $base_dir = 'assets/selfies-clientes/' . $cliente_id;
@@ -61,9 +61,13 @@ class Faceid extends BaseController
         $selfies = $this->model->findAll();
         $imagem_cliente = $data->imagem;
 
-        foreach ($selfies as $selfie) {
+        foreach ($selfies as $selfie) { // testa com todas as fotos do banco para localizar se existe uma foto igual e libera o acesso
+
+            
             // Passar o caminho da imagem no disco
             $caminhoImagemCliente = $selfie['caminho_imagem'];
+
+            print_r($caminhoImagemCliente);
 
             if (!file_exists($caminhoImagemCliente)) {
                 continue;
@@ -72,7 +76,7 @@ class Faceid extends BaseController
             // $imagem_banco = base64_encode($imagem_banco);
             $comparar = $this->compararImagens($imagem_cliente, $caminhoImagemCliente);
 
-            echo $comparar;
+            //echo $comparar;
             if ($comparar) {
                 $msg = array("msg" => "Acesso liberado com sucesso!");
                 return $this->response->setJSON($msg)->setStatusCode(200);

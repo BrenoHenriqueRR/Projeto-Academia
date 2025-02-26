@@ -14,7 +14,7 @@ export class CadastroService {
 
   constructor(private http: HttpClient) {} 
 
-     sendData(dados: any)
+      sendData(dados: any)
      : Observable<formresponse> {
       const data = dados;
       // console.log(data);

@@ -1,0 +1,29 @@
+CRITICAL - 2025-02-11 00:47:20 --> CodeIgniter\HTTP\Exceptions\HTTPException: Failed to parse JSON string. Error: Syntax error
+in SYSTEMPATH\HTTP\IncomingRequest.php on line 588.
+ 1 SYSTEMPATH\HTTP\IncomingRequest.php(588): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidJSON('Syntax error')
+ 2 APPPATH\Controllers\Faceid.php(59): CodeIgniter\HTTP\IncomingRequest->getJSON()
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Faceid->verificarFaceId()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Faceid))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-02-11 00:48:16 --> ErrorException: Attempt to read property "imagem" on string
+in APPPATH\Controllers\Faceid.php on line 62.
+ 1 APPPATH\Controllers\Faceid.php(62): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "imagem" on string', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Faceid.php', 62)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Faceid->verificarFaceId()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Faceid))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-02-11 00:48:49 --> ErrorException: Attempt to read property "imagem" on string
+in APPPATH\Controllers\Faceid.php on line 62.
+ 1 APPPATH\Controllers\Faceid.php(62): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "imagem" on string', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Faceid.php', 62)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Faceid->verificarFaceId()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Faceid))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-02-11 22:31:03 --> ErrorException: Undefined array key "frequencia"
+in APPPATH\Controllers\Financeiro.php on line 34.
+ 1 APPPATH\Controllers\Financeiro.php(34): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "frequencia"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Financeiro.php', 34)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

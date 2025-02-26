@@ -1,0 +1,14 @@
+CRITICAL - 2025-02-19 00:01:50 --> Error: Call to a member function setJSON() on null
+in APPPATH\Controllers\EmailController.php on line 89.
+ 1 APPPATH\Controllers\Cliente.php(47): App\Controllers\EmailController->verificaEmail([...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-02-19 00:02:20 --> Error: Call to a member function setJSON() on null
+in APPPATH\Controllers\EmailController.php on line 89.
+ 1 APPPATH\Controllers\Cliente.php(47): App\Controllers\EmailController->verificaEmail([...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

@@ -121,15 +121,15 @@ edit(){
     });
   }
   personal(){
-    this.personalp.pesquisar().subscribe(
-      (dado) => {
+    this.personalp.pesquisar().subscribe({
+      next: (dado) => {
         // console.log('Dados recebidos:', dado);
         this.idnamepersonal = dado;
         
       },
-      (erro) => {
+      error : (erro) => {
         console.error('Erro ao buscar dados:', erro);
       }
-    );
+  });
   }
 }

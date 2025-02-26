@@ -1,30 +1,35 @@
 <div class="fundo">
     <div class="container">
         <div class="d-block">
-                <div class="h1-div">
+            <div class="h1-div">
                 <h1 class="t-h1">Treinos</h1>
-                </div>
-                <h2 class="t-h2">Cadastros de items no sistema:</h2>
-                    <div class="d-flex align-items-center">
-                        <div class= "exer"> 
-                            <h2 >Exercicios</h2>
-                            <form [formGroup]="exer">
-                                <label for="exercicio">Exercicio</label>
-                                <input type="text" formControlName="exercicio" id="exercicio">
-
-                                <input class="btn" type="submit" (click)="cadexer()" value="Enviar">
-                            </form>
-                        </div>
-                        <div class="grupo">
-                            <h2>Grupo Muscular</h2>
-                            <form [formGroup]="Grupo">
-                                <label for="grupo">Grupo Muscular</label>
-                                <input type="text" formControlName="grupo" id="grupo">
-
-                                <input class="btn" type="submit" (click)="cadgrupo()" value="Enviar">
-                            </form>
-                        </div>
-                    </div>
             </div>
+            <h2 class="t-h2">Cadastros de items no sistema:</h2>
+            <div class="d-flex align-items-center">
+                <div class="card-treino">
+                    <h2>Cadastro de Treinos</h2>
+                </div>
+            </div>
+            <div class="d-flex align-items-center">
+                <div class="card-treino">
+                    <h2>Exercicios</h2>
+                    <form [formGroup]="exer">
+                        <label for="exercicio">Exercicio</label>
+                        <input type="text" formControlName="exercicio" id="exercicio">
+
+                        <input class="btn" type="submit" (click)="cadexer()" value="Enviar">
+                    </form>
+                </div>
+                <div class="card-treino">
+                    <h2>Grupo Muscular</h2>
+                    <form [formGroup]="Grupo">
+                        <label for="grupo">Grupo Muscular</label>
+                        <input type="text" formControlName="grupo" id="grupo">
+
+                        <input class="btn" type="submit" (click)="cadgrupo()" value="Enviar">
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

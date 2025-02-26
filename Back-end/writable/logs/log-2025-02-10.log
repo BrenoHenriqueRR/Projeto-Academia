@@ -1,0 +1,21 @@
+CRITICAL - 2025-02-10 23:20:17 --> ErrorException: Array to string conversion
+in APPPATH\Controllers\Faceid.php on line 68.
+ 1 APPPATH\Controllers\Faceid.php(68): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Faceid.php', 68)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Faceid->verificarFaceId()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Faceid))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-02-10 23:20:28 --> ErrorException: Array to string conversion
+in APPPATH\Controllers\Faceid.php on line 68.
+ 1 APPPATH\Controllers\Faceid.php(68): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Faceid.php', 68)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Faceid->verificarFaceId()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Faceid))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-02-10 23:22:25 --> ErrorException: Undefined array key 1
+in APPPATH\Controllers\Faceid.php on line 66.
+ 1 APPPATH\Controllers\Faceid.php(66): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 1', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Faceid.php', 66)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Faceid->verificarFaceId()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Faceid))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

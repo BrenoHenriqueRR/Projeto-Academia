@@ -71,4 +71,23 @@ class EmailController extends BaseController
             return $this->response->setJSON('Erro ao enviar o email, Tente novamente!!')->setStatusCode(200);
         }
     }
+
+    public function verificaEmail($data){
+        $emailService = Services::email();
+
+        $subject = 'Codigo de verificação do seu email';
+        // $confirmationLink = site_url("confirm/{$token}");]
+
+
+        $message = view('verificar_email', $data);
+
+        $emailService->setTo($data['email']);
+        $emailService->setSubject($subject);
+        $emailService->setMessage($message);    
+
+        if(!$emailService->send()){
+            print_r("Erro ao enviar mensagem");
+        }
+    }
+       
 }

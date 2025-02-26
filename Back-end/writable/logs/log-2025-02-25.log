@@ -1,0 +1,49 @@
+CRITICAL - 2025-02-25 22:54:10 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 970.
+ 1 SYSTEMPATH\BaseModel.php(970): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(807): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\Controllers\Cliente.php(158): CodeIgniter\Model->update('92', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->verificarEmail('92')
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-02-25 22:56:10 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 970.
+ 1 SYSTEMPATH\BaseModel.php(970): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(807): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\Controllers\Cliente.php(158): CodeIgniter\Model->update('92', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->verificarEmail('92')
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-02-25 23:10:47 --> ErrorException: Trying to access array offset on value of type null
+in APPPATH\Controllers\Cliente.php on line 166.
+ 1 APPPATH\Controllers\Cliente.php(166): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Cliente.php', 166)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->criarSenha()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-02-25 23:11:23 --> Error: Cannot use object of type stdClass as array
+in APPPATH\Controllers\Cliente.php on line 166.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->criarSenha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-02-25 23:11:40 --> Error: Cannot use object of type stdClass as array
+in APPPATH\Controllers\Cliente.php on line 166.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->criarSenha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-02-25 23:11:41 --> Error: Cannot use object of type stdClass as array
+in APPPATH\Controllers\Cliente.php on line 166.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->criarSenha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-02-25 23:12:38 --> Error: Cannot use object of type stdClass as array
+in APPPATH\Controllers\Cliente.php on line 167.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->criarSenha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

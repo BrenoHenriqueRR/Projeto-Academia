@@ -46,7 +46,7 @@ export class ModalFaceidComponent implements AfterViewInit {
       "imagem": this.imagemCapturada
     };
 
-    console.log(data);
+    //console.log(data);
 
 
     // const json = JSON.stringify(data);

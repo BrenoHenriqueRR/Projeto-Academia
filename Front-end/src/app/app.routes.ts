@@ -28,6 +28,7 @@ import { adminGuard } from './guard/admin/admin.guard';
 import { PlanosComponent } from './components/planos/planos.component';
 import { PnPlanosComponent } from './components/admin/painel-admin/pn-planos/pn-planos.component';
 import { ModalEditarPlanosComponent } from './components/modais/modal-editar-planos/modal-editar-planos.component';
+import { EntradaComponent } from './components/entrada/entrada.component';
 
 
 export const routes: Routes = [
@@ -43,6 +44,10 @@ export const routes: Routes = [
     {
         path: 'planos',
         component: PlanosComponent
+    },
+    {
+        path: 'entrada',
+        component: EntradaComponent  
     },
 
     {

@@ -10,12 +10,15 @@ class Cliente extends BaseController
     protected $model;
     protected $ClientesPlanoModel;
     protected $ClientesPlanoExtraModel;
+    protected $email;
+
 
     public function __construct()
     {
         $this->model = new ClienteModel();
         $this->ClientesPlanoModel = new ClienteModel();
         $this->model = new ClienteModel();
+        $this->email = new EmailController();
     }
 
     public function create()
@@ -23,18 +26,25 @@ class Cliente extends BaseController
 
         $data = $this->request->getjSON();
 
-        var_dump( $data->extras[1] );
-        die();
+        // var_dump( $data->extras[1] );
+        // die();
         if (isset($data)) {
             $this->model->select('*');
             $this->model->where('email', $data->email);
             $validaremail = $this->model->countAllResults(); // traz a quantidade de resultados da consulta
 
-            if ($validaremail == 0) {
-                $senhahash = hash('sha256', $data->senha);
+            if ($validaremail != 0) {
+                // $senhahash = hash('sha256', $data->senha);
 
-                $data->senha = $senhahash;
+                // $data->senha = $senhahash;
                 $this->model->insert($data);
+
+                $id = $this->model->getInsertID();
+                $dados = array(
+                    'id' => $id,
+                    'email' => $data->email
+                );
+                $this->email->verificaEmail($dados);
 
                 $msg = array("msg" => "Cadastro Enviado");
                 return $this->response->setJSON($msg)->setStatusCode(200);
@@ -48,7 +58,9 @@ class Cliente extends BaseController
                 'CPF' => $this->request->getPost('CPF'),
                 'datanascimento' => $this->request->getPost('data_nascimento'),
                 'email' => $this->request->getPost('email'),
-                'senha' => hash('sha256', $this->request->getPost('senha')),
+                'nivel_experiencia	' => $this->request->getPost('nivel_experiencia	'),
+                'treino_com_personal' => $this->request->getPost('treino_com_personal'),
+                //'senha' => hash('sha256', $this->request->getPost('senha')),
             ];
             $foto = $this->request->getFile('foto');
 
@@ -64,7 +76,16 @@ class Cliente extends BaseController
             // Receber os outros dados do formulário
 
             $this->model->insert($dados);
+            $id = $this->model->getInsertID();
+
+            $verif_email = array(
+                'id' => $id,
+                'email' => $dados['email']
+            );
             $msg = array("msg" => "Cadastro Enviado");
+
+            $this->email->verificaEmail($verif_email);
+
             return $this->response->setJSON($msg)->setStatusCode(200);
         }
     }
@@ -99,7 +120,7 @@ class Cliente extends BaseController
 
             if ($query->getResult()) {
                 $result = $query->getRow();
-                if($result){
+                if ($result) {
                     $msg = array([
                         "msg" => "true",
                         "id" => $result->id
@@ -123,6 +144,32 @@ class Cliente extends BaseController
             //dados ausentes ou inválidos
             $msg = array("msg" => "Erro nos dados enviados");
             return $this->response->setJSON($msg)->setStatusCode(200);
+        }
+    }
+
+    public function verificarEmail($id)
+    {
+        $usuario = $this->model->where('id', $id)->first();
+        if (!$usuario) {
+            return $this->response->setJSON(['success' => false, 'message' => 'Token inválido.']);
+        }
+    
+        $this->model->update($id, ['email_verificado' => 1]);
+    
+        return $this->response->setJSON(['success' => true, 'msg' => 'E-mail verificado!']);
+    }
+
+    public function criarSenha(){
+
+        $dados = $this->request->getJSON();
+        
+
+        $result = $this->model->update($dados->id,['senha' => hash('sha256',$dados->senha)]);
+
+        if($result){
+            return $this->response->setJSON(['success' => true, 'msg' => 'Senha verificada com sucesso!']);
+        }else{
+            return $this->response->setJSON(['success' => false, 'msg' => 'Ocorreu um erro!! Tente novamente']);
         }
     }
 

@@ -73,15 +73,15 @@ export class PerfilComponent {
 
   Buscardados(){
     const jsonString  = '{"id": "' + this.identificador + '"}';
-    this.service.pesquisar(jsonString).subscribe(
-      (dados) => {
-        this.data = dados;
+    this.service.pesquisar(jsonString).subscribe({
+      next : (dados) => {
+        this.data = Array.isArray(dados) ? dados : [dados]; // tranforma o objeto json em array
         // console.log(dados);
         this.form();
-      },(erro) => {
+      },error: (erro) => {
         console.error('Erro ao buscar dados:', erro);
       }
-    );
+  });
   }
   
   form(){

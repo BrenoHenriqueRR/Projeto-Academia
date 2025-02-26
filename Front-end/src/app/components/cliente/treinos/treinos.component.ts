@@ -114,13 +114,13 @@ CreateArray(): void {
   }
 }  
 
-nameTreino(): string {
-  if (this.dados_cli) {
-    return this.dados_cli[0].tipo;
-  } else {
-    return ""; 
-  }
-}
+// nameTreino(): string {
+//   if (this.dados_cli) {
+//     return this.dados_cli[0].tipo;
+//   } else {
+//     return ""; 
+//   }
+// }
 
 pesquisar(){
   const jsonString: string = '{"cliente_id": "' + localStorage.getItem('idcliente') + '"}';

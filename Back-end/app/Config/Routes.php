@@ -128,6 +128,7 @@ $routes->group('Faceid', function ($routes) {
 // =====================
 $routes->group('Loja', function ($routes) {
     $routes->post('create', 'Loja::create');
+    $routes->post('createSale', 'Loja::createSale');
     $routes->get('read', 'Loja::read');
 });
 

@@ -1,0 +1,12 @@
+CRITICAL - 2025-03-11 01:12:22 --> ArgumentCountError: Too few arguments to function App\Controllers\Loja::__construct(), 0 passed in C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php on line 913 and exactly 3 expected
+in APPPATH\Controllers\Loja.php on line 17.
+ 1 SYSTEMPATH\CodeIgniter.php(913): App\Controllers\Loja->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-03-11 01:20:22 --> ArgumentCountError: Too few arguments to function App\Controllers\Loja::__construct(), 0 passed in C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php on line 913 and exactly 3 expected
+in APPPATH\Controllers\Loja.php on line 17.
+ 1 SYSTEMPATH\CodeIgniter.php(913): App\Controllers\Loja->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

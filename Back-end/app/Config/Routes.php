@@ -5,65 +5,141 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-// $routes->get('/', 'Home::index');
-// $routes->options((':any'), 'Cliente::options');
-// $routes->resource('Cliente');
-$routes->post('/Cliente/create', 'Cliente::create');
-$routes->post('/Cliente/delete', 'Cliente::delete');
-$routes->post('/Cliente/login', 'Cliente::login');
-$routes->get("/Cliente/pesquisar", 'Cliente::pesquisar');
-$routes->get("/Cliente/verificarEmail/(:num)", 'Cliente::verificarEmail/$1');
-$routes->post("/Cliente/pesquisarid", 'Cliente::pesquisarid');
-$routes->post("/Cliente/criarSenha", 'Cliente::criarSenha');
-$routes->post("/Cliente/pesquisarpid", 'Cliente::pesquisarpid');
-$routes->post("/Cliente/inserirFoto", 'Cliente::inserirFoto');
-$routes->post("/Cliente/pegarFoto", 'Cliente::pegarFoto');
-$routes->post("/Cliente/trocarSenha", 'Cliente::trocarSenha');
-$routes->get('/Funcionarios/pesquisar', 'Funcionarios::pesquisar');
-$routes->post('/Funcionarios/create', 'Funcionarios::create');
-$routes->post('/Admin/login', 'Admin::login');
-$routes->post('/Admin/funcao', 'Admin::funcao');
-$routes->post('/Admin/funcaoPncli', 'Admin::funcaoPncli');
-$routes->post('/Admin/buscar', 'Admin::buscar');
-$routes->post('/Admin/editar', 'Admin::editar');
-$routes->get('/Admin/buscarfun', 'Admin::buscarfun');
-$routes->post('/Admin/deletefun', 'Admin::deletefun');
-$routes->post('/Admin/buscarfuncionario', 'Admin::buscarfuncionario');
-$routes->post('/Admin/editfuncionario', 'Admin::editfuncionario');
-$routes->post('/Treino/create', 'Treino::create');
-$routes->post('/Treino/pesquisar', 'Treino::pesquisar');
-$routes->post('/Treino/cadgrupo', 'Treino::cadgrupo');
-$routes->post('/Treino/cadexer', 'Treino::cadexer');
-$routes->get('/Treino/ptipo', 'Treino::ptipo');
-$routes->get('/Treino/pgrupo', 'Treino::pgrupo');
-$routes->get('/Treino/pexer', 'Treino::pexer');
-$routes->post('/Ficha/create', 'Ficha::create');
-$routes->post('/Financeiro/create', 'Financeiro::create');
-$routes->post('/Financeiro/pesquisar', 'Financeiro::pesquisar');
-$routes->get('/Financeiro/pesquisarCliPendente', 'Financeiro::pesquisarCliPendente');
-$routes->post('/Financeiro/update', 'Financeiro::update');
-$routes->post('/EmailController/create', 'EmailController::create');
-$routes->post('/Relatorios/rEstatistica', 'Relatorios::rEstatistica');
-$routes->post('/Academia/create', 'Academia::create'); 
-$routes->post('/Academia/nextStep', 'Academia::nextStep'); 
-$routes->get('/Academia/read', 'Academia::read'); 
-$routes->get('/Academia/readAcademia', 'Academia::readAcademia'); 
-$routes->post('/Planos/create', 'Planos::create');
-$routes->get('/Planos/read', 'Planos::read');
-$routes->get('/Planos/readId/(:num)', 'Planos::readId/$1');
-$routes->post('/Planos/edit', 'Planos::edit');
-$routes->post('/Planos/delete', 'Planos::delete');
-$routes->post('/Extras/create', 'Extras::create');
-$routes->get('/Extras/read', 'Extras::read');
-$routes->post('/Extras/edit', 'Extras::edit');
-$routes->post('/Extras/delete', 'Extras::delete');
-$routes->post('/Faceid/create', 'Faceid::create');
-$routes->post('/Faceid/verificarFaceId', 'Faceid::verificarFaceId');
 
-$routes->get('/StripeController/getPagamentos', 'StripeController::getPagamentos');
-$routes->get('/StripeController/checkout', 'StripeController::checkout');
-$routes->post('/StripeController/gerarPagamento', 'StripeController::gerarPagamento');
-$routes->get('/StripeController/success', 'StripeController::success');
-$routes->get('/StripeController/cancel', 'StripeController::cancel');
+// =====================
+// CLIENTE
+// =====================
+$routes->group('Cliente', function ($routes) {
+    $routes->post('create', 'Cliente::create');
+    $routes->post('delete', 'Cliente::delete');
+    $routes->post('login', 'Cliente::login');
+    $routes->get('pesquisar', 'Cliente::pesquisar');
+    $routes->get('verificarEmail/(:num)', 'Cliente::verificarEmail/$1');
+    $routes->post('pesquisarid', 'Cliente::pesquisarid');
+    $routes->post('criarSenha', 'Cliente::criarSenha');
+    $routes->post('pesquisarpid', 'Cliente::pesquisarpid');
+    $routes->post('inserirFoto', 'Cliente::inserirFoto');
+    $routes->post('pegarFoto', 'Cliente::pegarFoto');
+    $routes->post('trocarSenha', 'Cliente::trocarSenha');
+});
+
+// =====================
+// FUNCIONÁRIOS
+// =====================
+$routes->group('Funcionarios', function ($routes) {
+    $routes->get('pesquisar', 'Funcionarios::pesquisar');
+    $routes->post('create', 'Funcionarios::create');
+});
+
+// =====================
+// ADMINISTRAÇÃO
+// =====================
+$routes->group('Admin', function ($routes) {
+    $routes->post('login', 'Admin::login');
+    $routes->post('funcao', 'Admin::funcao');
+    $routes->post('funcaoPncli', 'Admin::funcaoPncli');
+    $routes->post('buscar', 'Admin::buscar');
+    $routes->post('editar', 'Admin::editar');
+    $routes->get('buscarfun', 'Admin::buscarfun');
+    $routes->post('deletefun', 'Admin::deletefun');
+    $routes->post('buscarfuncionario', 'Admin::buscarfuncionario');
+    $routes->post('editfuncionario', 'Admin::editfuncionario');
+});
+
+// =====================
+// TREINO
+// =====================
+$routes->group('Treino', function ($routes) {
+    $routes->post('create', 'Treino::create');
+    $routes->post('pesquisar', 'Treino::pesquisar');
+    $routes->post('cadgrupo', 'Treino::cadgrupo');
+    $routes->post('cadexer', 'Treino::cadexer');
+    $routes->get('ptipo', 'Treino::ptipo');
+    $routes->get('pgrupo', 'Treino::pgrupo');
+    $routes->get('pexer', 'Treino::pexer');
+});
+
+// =====================
+// FICHA DE TREINO
+// =====================
+$routes->post('/Ficha/create', 'Ficha::create');
+
+// =====================
+// FINANCEIRO
+// =====================
+$routes->group('Financeiro', function ($routes) {
+    $routes->post('create', 'Financeiro::create');
+    $routes->post('pesquisar', 'Financeiro::pesquisar');
+    $routes->get('pesquisarCliPendente', 'Financeiro::pesquisarCliPendente');
+    $routes->post('update', 'Financeiro::update');
+});
+
+// =====================
+// EMAIL
+// =====================
+$routes->post('/EmailController/create', 'EmailController::create');
+
+// =====================
+// RELATÓRIOS
+// =====================
+$routes->post('/Relatorios/rEstatistica', 'Relatorios::rEstatistica');
+
+// =====================
+// ACADEMIA
+// =====================
+$routes->group('Academia', function ($routes) {
+    $routes->post('create', 'Academia::create');
+    $routes->post('nextStep', 'Academia::nextStep');
+    $routes->get('read', 'Academia::read');
+    $routes->get('readAcademia', 'Academia::readAcademia');
+});
+
+// =====================
+// PLANOS
+// =====================
+$routes->group('Planos', function ($routes) {
+    $routes->post('create', 'Planos::create');
+    $routes->get('read', 'Planos::read');
+    $routes->get('readId/(:num)', 'Planos::readId/$1');
+    $routes->post('edit', 'Planos::edit');
+    $routes->post('delete', 'Planos::delete');
+});
+
+// =====================
+// EXTRAS
+// =====================
+$routes->group('Extras', function ($routes) {
+    $routes->post('create', 'Extras::create');
+    $routes->get('read', 'Extras::read');
+    $routes->post('edit', 'Extras::edit');
+    $routes->post('delete', 'Extras::delete');
+});
+
+// =====================
+// RECONHECIMENTO FACIAL
+// =====================
+$routes->group('Faceid', function ($routes) {
+    $routes->post('create', 'Faceid::create');
+    $routes->post('verificarFaceId', 'Faceid::verificarFaceId');
+});
+
+// =====================
+// LOJA DE PRODUTOS
+// =====================
+$routes->group('Loja', function ($routes) {
+    $routes->post('create', 'Loja::create');
+    $routes->get('read', 'Loja::read');
+});
+
+// =====================
+// PAGAMENTOS (STRIPE)
+// =====================
+$routes->group('StripeController', function ($routes) {
+    $routes->get('getPagamentos', 'StripeController::getPagamentos');
+    $routes->get('checkout', 'StripeController::checkout');
+    $routes->post('gerarPagamento', 'StripeController::gerarPagamento');
+    $routes->get('success', 'StripeController::success');
+    $routes->get('cancel', 'StripeController::cancel');
+});
 
 

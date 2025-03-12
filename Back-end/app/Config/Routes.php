@@ -129,7 +129,10 @@ $routes->group('Faceid', function ($routes) {
 $routes->group('Loja', function ($routes) {
     $routes->post('create', 'Loja::create');
     $routes->post('createSale', 'Loja::createSale');
+    $routes->post('deleteProduto', 'Loja::deleteProduto');
     $routes->get('read', 'Loja::read');
+    $routes->get('getVendas', 'Loja::getVendas');
+    $routes->get('getVendasData', 'Loja::getVendasData');
 });
 
 // =====================

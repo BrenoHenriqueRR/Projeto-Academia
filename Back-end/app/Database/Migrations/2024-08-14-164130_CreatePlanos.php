@@ -6,8 +6,10 @@ use CodeIgniter\Database\Migration;
 
 class CreatePlanos extends Migration
 {
+    protected $dbb;
     public function up()
     {
+        $this->dbb = \Config\Database::connect();
         $this->forge->addField([
             'id' => [
                 'type' => 'INT',
@@ -52,7 +54,9 @@ class CreatePlanos extends Migration
         $this->forge->addKey('id', true);
 
         // Criando a tabela
-        $this->forge->createTable('planos');
+        if (!$this->dbb->tableExists('planos')) {
+            $this->forge->createTable('planos');
+        }
     }
 
     public function down()

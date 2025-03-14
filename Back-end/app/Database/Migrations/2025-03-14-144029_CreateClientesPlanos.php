@@ -6,8 +6,10 @@ use CodeIgniter\Database\Migration;
 
 class CreateClientesPlanos extends Migration
 {
+    protected $dbb;
     public function up()
     {
+        $this->dbb = \Config\Database::connect();
         $this->forge->addField([
             'id'            => ['type' => 'INT', 'auto_increment' => true],
             'cliente_id'    => ['type' => 'INT', 'null' => false],
@@ -21,7 +23,9 @@ class CreateClientesPlanos extends Migration
         $this->forge->addKey('id', true);
         $this->forge->addForeignKey('cliente_id', 'cliente', 'id', 'CASCADE', 'CASCADE');
         $this->forge->addForeignKey('plano_id', 'planos', 'id', 'CASCADE', 'CASCADE');
-        $this->forge->createTable('clientes_planos');
+        if (!$this->dbb->tableExists('clientes_planos')) {
+            $this->forge->createTable('clientes_planos', true);
+        }
     }
 
     public function down()

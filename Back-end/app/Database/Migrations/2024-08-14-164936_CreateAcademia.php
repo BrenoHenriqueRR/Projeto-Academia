@@ -6,8 +6,10 @@ use CodeIgniter\Database\Migration;
 
 class CreateAcademia extends Migration
 {
+    protected $dbb;
     public function up()
     {
+        $this->dbb = \Config\Database::connect();
         $this->forge->addField([
             'id' => [
                 'type' => 'INT',
@@ -60,7 +62,9 @@ class CreateAcademia extends Migration
         $this->forge->addKey('id', true);
 
         // Criando a tabela
-        $this->forge->createTable('academia');
+        if (!$this->dbb->tableExists('academia')) {
+            $this->forge->createTable('academia', true);
+        }
     }
 
     public function down()

@@ -6,8 +6,10 @@ use CodeIgniter\Database\Migration;
 
 class CreateClienteTable extends Migration
 {
+    protected $dbb;
     public function up()
     {
+        $this->dbb = \Config\Database::connect();
         $this->forge->addField([
             'id' => [
                 'type'           => 'INT',
@@ -98,19 +100,21 @@ class CreateClienteTable extends Migration
                 'null'       => true,
             ],
             'created_at' => [
-                'type'       => 'TIMESTAMP',
-                'default'    => 'CURRENT_TIMESTAMP',
+                'type' => 'TIMESTAMP',
+                'null' => false,
             ],
             'updated_at' => [
-                'type'       => 'DATETIME',
-                'null'       => true,
+                'type' => 'TIMESTAMP',
+                'null' => false,
             ],
         ]);
 
         $this->forge->addKey('id', true);
         $this->forge->addForeignKey('personal_id', 'funcionarios', 'id', 'CASCADE', 'SET NULL');
         $this->forge->addForeignKey('planos_id', 'planos', 'id', 'CASCADE', 'SET NULL');
-        $this->forge->createTable('cliente');
+        if (!$this->dbb->tableExists('cliente')) {
+            $this->forge->createTable('cliente', true);
+        }
     }
 
     public function down()

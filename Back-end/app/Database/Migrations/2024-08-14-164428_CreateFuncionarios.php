@@ -6,8 +6,10 @@ use CodeIgniter\Database\Migration;
 
 class CreateFuncionarios extends Migration
 {
+    protected $dbb;
     public function up()
     {
+        $this->dbb = \Config\Database::connect();
         $this->forge->addField([
             'id' => [
                 'type' => 'INT',
@@ -63,7 +65,9 @@ class CreateFuncionarios extends Migration
         $this->forge->addKey('id', true);
 
         // Criar tabela
-        $this->forge->createTable('funcionarios');
+        if (!$this->dbb->tableExists('funcionarios')) {
+            $this->forge->createTable('funcionarios', true);
+        }
     }
 
     public function down()

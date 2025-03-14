@@ -6,8 +6,10 @@ use CodeIgniter\Database\Migration;
 
 class Anamnese extends Migration
 {
+    protected $dbb;
     public function up()
     {
+        $this->dbb = \Config\Database::connect();
         $this->forge->addField([
             'id'                => ['type' => 'INT', 'auto_increment' => true],
             'cliente_id'        => ['type' => 'INT', 'null' => false],
@@ -22,7 +24,9 @@ class Anamnese extends Migration
 
         $this->forge->addKey('id', true);
         $this->forge->addForeignKey('cliente_id', 'cliente', 'id', 'CASCADE', 'CASCADE');
-        $this->forge->createTable('anamnese');
+        if (!$this->dbb->tableExists('anamnese')) {
+            $this->forge->createTable('anamnese', true);
+        }
     }
 
     public function down()

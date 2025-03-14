@@ -19,19 +19,39 @@ class CreateClienteTable extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '100',
             ],
+            'datanascimento' => [
+                'type'       => 'DATE',
+            ],
+            'genero' => [
+                'type'       => "ENUM('Masculino', 'Feminino', 'Outro')",
+                'null'       => false,
+            ],
             'CPF' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '14',
                 'unique'     => true,
             ],
+            'RG' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '20',
+                'unique'     => true,
+                'null'       => true,
+            ],
             'telefone' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '15',
+                'constraint' => '20',
+                'null'       => true,
             ],
             'email' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '100',
                 'unique'     => true,
+            ],
+            'usuario' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '50',
+                'unique'     => true,
+                'null'       => true,
             ],
             'senha' => [
                 'type'       => 'VARCHAR',
@@ -39,20 +59,28 @@ class CreateClienteTable extends Migration
             ],
             'endereco' => [
                 'type'       => 'TEXT',
-            ],
-            'datanascimento' => [
-                'type'       => 'DATE',
+                'null'       => true,
             ],
             'ultimo_login' => [
                 'type'       => 'DATETIME',
                 'null'       => true,
             ],
             'status' => [
-                'type' => 'ENUM',
+                'type'       => 'ENUM',
                 'constraint' => ['ativo', 'inativo'],
-                'default' => 'ativo',
+                'default'    => 'ativo',
             ],
             'foto_perfil' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
+                'null'       => true,
+            ],
+            'termo_responsabilidade' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
+                'null'       => true,
+            ],
+            'atestado_medico' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '255',
                 'null'       => true,
@@ -70,8 +98,8 @@ class CreateClienteTable extends Migration
                 'null'       => true,
             ],
             'created_at' => [
-                'type'       => 'DATETIME',
-                'null'       => true,
+                'type'       => 'TIMESTAMP',
+                'default'    => 'CURRENT_TIMESTAMP',
             ],
             'updated_at' => [
                 'type'       => 'DATETIME',

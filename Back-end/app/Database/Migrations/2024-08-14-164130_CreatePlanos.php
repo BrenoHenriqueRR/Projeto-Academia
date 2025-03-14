@@ -27,8 +27,8 @@ class CreatePlanos extends Migration
                 'type' => 'TEXT',
             ],
             'duracao' => [
-                'type' => 'INT',
-                'constraint' => 5,  // pode representar minutos ou outra unidade
+                'type' => "ENUM('Mensal', 'Trimestral', 'Semestral', 'Anual')", 
+                'null' => false
             ],
             'beneficios' => [
                 'type' => 'TEXT',

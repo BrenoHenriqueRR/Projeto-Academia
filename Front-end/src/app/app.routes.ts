@@ -29,6 +29,7 @@ import { PlanosComponent } from './components/planos/planos.component';
 import { PnPlanosComponent } from './components/admin/painel-admin/pn-planos/pn-planos.component';
 import { ModalEditarPlanosComponent } from './components/modais/modal-editar-planos/modal-editar-planos.component';
 import { EntradaComponent } from './components/entrada/entrada.component';
+import { PnLojaComponent } from './components/admin/painel-admin/pn-loja/pn-loja.component';
 
 
 export const routes: Routes = [
@@ -95,6 +96,7 @@ export const routes: Routes = [
             { path: 'financeiro', component: PnFinanceiroComponent,  canActivate: [adminGuard] },
             { path: 'funcionarios/editarf', component: ModalEditarFuncionarioComponent,  canActivate: [adminGuard] },
             { path: 'relatorios', component: PnRelatoriosComponent,  canActivate: [adminGuard] },
+            { path: 'loja', component: PnLojaComponent,  canActivate: [adminGuard] },
             { path: 'clientes/editar', component: ModalEditarComponent,  canActivate: [adminGuard] },
             { path: 'clientes/treinos', component: CadTreinoComponent,  canActivate: [adminGuard] },
         ],

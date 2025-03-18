@@ -36,7 +36,7 @@
                 @for (dados of dados_cli | paginate: { itemsPerPage: 5, currentPage: paginaAtual }; track dados) {
                 <tr>
                     <td>{{dados.id}}</td>
-                    <td>{{dados.cliente_nome}}</td>
+                    <td>{{dados.nome}}</td>
                     <td>{{dados.email}}</td>
                     <td>{{dados.CPF}}</td>
                     <td>{{dados.nome_personal}}</td>

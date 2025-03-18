@@ -23,55 +23,33 @@ class Cliente extends BaseController
 
     public function create()
     {
-
-        $data = $this->request->getjSON();
-
-        // var_dump( $data->extras[1] );
-        // die();
-        if (isset($data)) {
-            $this->model->select('*');
-            $this->model->where('email', $data->email);
-            $validaremail = $this->model->countAllResults(); // traz a quantidade de resultados da consulta
-
-            if ($validaremail != 0) {
-                // $senhahash = hash('sha256', $data->senha);
-
-                // $data->senha = $senhahash;
-                $this->model->insert($data);
-
-                $id = $this->model->getInsertID();
-                $dados = array(
-                    'id' => $id,
-                    'email' => $data->email
-                );
-                $this->email->verificaEmail($dados);
-
-                $msg = array("msg" => "Cadastro Enviado");
-                return $this->response->setJSON($msg)->setStatusCode(200);
-            } else
-                return $this->response->setJSON('Email ja existe')->setStatusCode(200);
-        } else {
             $dados = [
                 'nome' => $this->request->getPost('nome'),
-                'endereco' => $this->request->getPost('endereco'),
-                'telefone' => $this->request->getPost('telefone'),
                 'CPF' => $this->request->getPost('CPF'),
-                'datanascimento' => $this->request->getPost('data_nascimento'),
+                'RG' => $this->request->getPost('RG'),
+                'telefone' => $this->request->getPost('telefone'),
                 'email' => $this->request->getPost('email'),
+                'endereco' => $this->request->getPost('endereco'),
+                'datanascimento' => $this->request->getPost('data_nascimento'),
                 'nivel_experiencia	' => $this->request->getPost('nivel_experiencia	'),
                 'treino_com_personal' => $this->request->getPost('treino_com_personal'),
-                //'senha' => hash('sha256', $this->request->getPost('senha')),
             ];
+            $dados['personal_id'] = null !== $this->request->getPost('personal_id') ? $this->request->getPost('personal_id') : null;
             $foto = $this->request->getFile('foto');
+            $atestado = null !== $this->request->getFile('atestado_medico') ? $this->request->getFile('atestado_medico') : null;
+            $termo= null !== $this->request->getFile('termo_responsabilidade') ? $this->request->getFile('termo_responsabilidade') : null;
 
             if (isset($foto)) {
                 if ($foto->isValid() && !$foto->hasMoved()) {
                     $nomeimg = $foto->getRandomName();
-                    $foto->move('assets/fotos-perfil', $nomeimg);
+                    $foto->move('assets/fotos-perfil/', $nomeimg);
                     $caminhoImagem = 'assets/fotos-perfil/' . $nomeimg;
                     $dados['foto_perfil'] = $caminhoImagem;
                 }
             }
+
+            $dados['atestado_medico'] = $this->processarArquivo($atestado, 'atestado', $this->request->getPost('CPF'));
+            $dados['termo_responsabilidade'] = $this->processarArquivo($termo, 'termo',$this->request->getPost('CPF'));
 
             // Receber os outros dados do formulário
 
@@ -87,7 +65,6 @@ class Cliente extends BaseController
             $this->email->verificaEmail($verif_email);
 
             return $this->response->setJSON($msg)->setStatusCode(200);
-        }
     }
     public function delete()
     {
@@ -175,7 +152,7 @@ class Cliente extends BaseController
 
     public function pesquisar()
     {
-        $dados = $this->model->select('c.id, c.nome AS cliente_nome, c.CPF, c.email,c.ultimo_login,c.status, p.nome AS nome_personal, p.id as id_func')
+        $dados = $this->model->select('c.*, p.nome AS nome_personal, p.id as id_func')
             ->from('cliente AS c')
             ->join('funcionarios AS p', 'c.personal_id = p.id', 'LEFT')
             ->groupBy('c.id');
@@ -273,4 +250,15 @@ class Cliente extends BaseController
 
         return $this->response->setJSON($msg)->setStatusCode(200);
     }
+
+    public function processarArquivo($arquivo, $tipo, $cpf) {
+        if ($arquivo != null && $arquivo->isValid() && !$arquivo->hasMoved()) {
+            $nomearq = $arquivo->getRandomName();
+            $diretorio = 'assets/' . $tipo . '/' . $cpf;
+            $arquivo->move($diretorio, $nomearq);
+            return $diretorio . '/' . $nomearq;
+        }
+        return null;
+    }
+    
 }

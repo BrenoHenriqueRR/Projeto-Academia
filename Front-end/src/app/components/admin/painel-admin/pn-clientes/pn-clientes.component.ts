@@ -49,23 +49,23 @@ export class PnClientesComponent {
   }
 
   List() {
-    this.service.pesquisar().subscribe(
-      (dado) => {
+    this.service.pesquisar().subscribe({
+      next: (dado) => {
         console.log(dado);
         this.dados_cli = dado;
         this.loading = false;
       },
-      (erro) => {
+      error: (erro) => {
         console.error('Erro ao buscar dados:', erro);
       }
-    );
+    });
   }
 
   funcao() {
     const jsonString: string = '{"id": "' + localStorage.getItem('id') + '"}';
     this.loginservice.funcaoCliente(jsonString).subscribe(
       (dado) => {
-        this.func = dado[0].funcao;
+        this.func = dado.funcao;
       },
       (erro) => {
         console.error('Erro ao buscar dados:', erro);

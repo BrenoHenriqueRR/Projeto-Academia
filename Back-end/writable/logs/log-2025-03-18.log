@@ -1,0 +1,123 @@
+CRITICAL - 2025-03-18 04:10:33 --> CodeIgniter\HTTP\Exceptions\HTTPException: Failed to parse JSON string. Error: Syntax error
+in SYSTEMPATH\HTTP\IncomingRequest.php on line 588.
+ 1 SYSTEMPATH\HTTP\IncomingRequest.php(588): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidJSON('Syntax error')
+ 2 APPPATH\Controllers\Cliente.php(27): CodeIgniter\HTTP\IncomingRequest->getJSON()
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-03-18 04:16:06 --> CodeIgniter\HTTP\Exceptions\HTTPException: Failed to parse JSON string. Error: Syntax error
+in SYSTEMPATH\HTTP\IncomingRequest.php on line 588.
+ 1 SYSTEMPATH\HTTP\IncomingRequest.php(588): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidJSON('Syntax error')
+ 2 APPPATH\Controllers\Cliente.php(27): CodeIgniter\HTTP\IncomingRequest->getJSON()
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-03-18 04:17:55 --> ErrorException: Undefined array key "atestado_medico"
+in APPPATH\Controllers\Cliente.php on line 51.
+ 1 APPPATH\Controllers\Cliente.php(51): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "atestado_medico"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Cliente.php', 51)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-03-18 04:24:41 --> ErrorException: mkdir(): No such file or directory
+in SYSTEMPATH\HTTP\Files\UploadedFile.php on line 185.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mkdir(): No such file or directory', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\system\\HTTP\\Files\\UploadedFile.php', 185)
+ 2 SYSTEMPATH\HTTP\Files\UploadedFile.php(185): mkdir('assets/atestado/C:\\wamp64\\tmp\\phpD14B.tmp/', 511, true)
+ 3 SYSTEMPATH\HTTP\Files\UploadedFile.php(139): CodeIgniter\HTTP\Files\UploadedFile->setPath('assets/atestado/C:\\wamp64\\tmp\\phpD14B.tmp/')
+ 4 APPPATH\Controllers\Cliente.php(258): CodeIgniter\HTTP\Files\UploadedFile->move('assets/atestado/C:\\wamp64\\tmp\\phpD14B.tmp/', '1742271881_8faa18d29ae7dd0ffd65.pdf')
+ 5 APPPATH\Controllers\Cliente.php(51): App\Controllers\Cliente->processarArquivo(Object(CodeIgniter\HTTP\Files\UploadedFile), 'atestado', Object(CodeIgniter\HTTP\Files\UploadedFile))
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-03-18 04:26:33 --> mysqli_sql_exception: Duplicate entry '548.965.888-55' for key 'cliente.CPF' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `cl...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `cl...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `cl...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cl...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(802): CodeIgniter\Model->doInsert(Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(744): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Cliente.php(56): CodeIgniter\Model->insert(Array)
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Cliente->create()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2025-03-18 04:26:33 --> CodeIgniter\Database\Exceptions\DatabaseException: Duplicate entry '548.965.888-55' for key 'cliente.CPF'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cliente` (`nome`, `CPF`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `foto_perfil`, `atestado_medico`, `termo_responsabilidade`) VALUES (:nome:, :CPF:, :telefone:, :email:, :endereco:, :datanascimento:, :treino_com_personal:, :personal_id:, :foto_perfil:, :atestado_medico:, :termo_responsabilidade:)', [...], false)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Cliente.php(56): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-03-18 04:26:33 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Duplicate entry '548.965.888-55' for key 'cliente.CPF'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `cliente` (`nome`, `CPF`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `foto_perfil`, `atestado_medico`, `termo_responsabilidade`) VALUES (\'teste\', \'548.965.888-55\', \'99999999999\', \'teste@teste.com.br\', \'testeee\', NULL, \'sim\', \'1\', \'assets/fotos-perfil/1742271993_b70908d7618ccc890e51.jpeg\', \'assets/atestado/548.965.888-55/1742271993_bc0697ce81791774b475.pdf\', \'assets/termo/548.965.888-55/1742271993_b9552c9f8feb7298e89c.docx\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `cliente` (`nome`, `CPF`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `foto_perfil`, `atestado_medico`, `termo_responsabilidade`) VALUES (\'teste\', \'548.965.888-55\', \'99999999999\', \'teste@teste.com.br\', \'testeee\', NULL, \'sim\', \'1\', \'assets/fotos-perfil/1742271993_b70908d7618ccc890e51.jpeg\', \'assets/atestado/548.965.888-55/1742271993_bc0697ce81791774b475.pdf\', \'assets/termo/548.965.888-55/1742271993_b9552c9f8feb7298e89c.docx\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cliente` (`nome`, `CPF`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `foto_perfil`, `atestado_medico`, `termo_responsabilidade`) VALUES (:nome:, :CPF:, :telefone:, :email:, :endereco:, :datanascimento:, :treino_com_personal:, :personal_id:, :foto_perfil:, :atestado_medico:, :termo_responsabilidade:)', [...], false)
+ 4 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\Cliente.php(56): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-03-18 04:26:33 --> [Caused by] mysqli_sql_exception: Duplicate entry '548.965.888-55' for key 'cliente.CPF'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `cliente` (`nome`, `CPF`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `foto_perfil`, `atestado_medico`, `termo_responsabilidade`) VALUES (\'teste\', \'548.965.888-55\', \'99999999999\', \'teste@teste.com.br\', \'testeee\', NULL, \'sim\', \'1\', \'assets/fotos-perfil/1742271993_b70908d7618ccc890e51.jpeg\', \'assets/atestado/548.965.888-55/1742271993_bc0697ce81791774b475.pdf\', \'assets/termo/548.965.888-55/1742271993_b9552c9f8feb7298e89c.docx\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `cliente` (`nome`, `CPF`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `foto_perfil`, `atestado_medico`, `termo_responsabilidade`) VALUES (\'teste\', \'548.965.888-55\', \'99999999999\', \'teste@teste.com.br\', \'testeee\', NULL, \'sim\', \'1\', \'assets/fotos-perfil/1742271993_b70908d7618ccc890e51.jpeg\', \'assets/atestado/548.965.888-55/1742271993_bc0697ce81791774b475.pdf\', \'assets/termo/548.965.888-55/1742271993_b9552c9f8feb7298e89c.docx\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `cliente` (`nome`, `CPF`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `foto_perfil`, `atestado_medico`, `termo_responsabilidade`) VALUES (\'teste\', \'548.965.888-55\', \'99999999999\', \'teste@teste.com.br\', \'testeee\', NULL, \'sim\', \'1\', \'assets/fotos-perfil/1742271993_b70908d7618ccc890e51.jpeg\', \'assets/atestado/548.965.888-55/1742271993_bc0697ce81791774b475.pdf\', \'assets/termo/548.965.888-55/1742271993_b9552c9f8feb7298e89c.docx\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cliente` (`nome`, `CPF`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `foto_perfil`, `atestado_medico`, `termo_responsabilidade`) VALUES (:nome:, :CPF:, :telefone:, :email:, :endereco:, :datanascimento:, :treino_com_personal:, :personal_id:, :foto_perfil:, :atestado_medico:, :termo_responsabilidade:)', [...], false)
+ 5 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Cliente.php(56): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-03-18 05:05:32 --> Error: Class "App\Models\ClienteModel" not found
+in APPPATH\Controllers\Admin.php on line 19.
+ 1 SYSTEMPATH\CodeIgniter.php(913): App\Controllers\Admin->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-03-18 05:05:32 --> Error: Class "App\Models\ClienteModel" not found
+in APPPATH\Controllers\Admin.php on line 19.
+ 1 SYSTEMPATH\CodeIgniter.php(913): App\Controllers\Admin->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-03-18 05:06:15 --> Error: Class "App\Models\ClienteModel" not found
+in APPPATH\Controllers\Admin.php on line 19.
+ 1 SYSTEMPATH\CodeIgniter.php(913): App\Controllers\Admin->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-03-18 05:06:15 --> Error: Class "App\Models\ClienteModel" not found
+in APPPATH\Controllers\Admin.php on line 19.
+ 1 SYSTEMPATH\CodeIgniter.php(913): App\Controllers\Admin->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-03-18 05:08:23 --> Error: Class "App\Models\ClienteModel" not found
+in APPPATH\Controllers\Admin.php on line 19.
+ 1 SYSTEMPATH\CodeIgniter.php(913): App\Controllers\Admin->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-03-18 05:08:23 --> Error: Class "App\Models\ClienteModel" not found
+in APPPATH\Controllers\Admin.php on line 19.
+ 1 SYSTEMPATH\CodeIgniter.php(913): App\Controllers\Admin->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

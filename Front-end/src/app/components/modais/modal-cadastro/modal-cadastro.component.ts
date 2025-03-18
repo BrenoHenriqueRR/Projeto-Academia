@@ -66,10 +66,10 @@ export class ModalCadastroComponent {
       endereco: ['', Validators.required],
       telefone: ['', Validators.required],
       CPF: ['', Validators.required],
+      RG: ['', Validators.required],
       data_nascimento: ['', Validators.required],
       personal_id: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      senha: ['', Validators.required],
     });
     this.extraForm = this.fb.group({
       nome_extra: ['', Validators.required],

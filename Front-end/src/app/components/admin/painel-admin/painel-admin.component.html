@@ -9,7 +9,7 @@
                         {{funcionalidade}}
                     </span>
                     <span class="item-description">
-                        Sistema para academias   
+                        Sistema para academias
                     </span>
                 </p>
             </div>
@@ -74,6 +74,17 @@
                 }
                 @if (funcionalidade != 'personal') {
                 <li class="side-item" routerLinkActive="mat-accent">
+                    <a routerLink="loja">
+                        <i class="fa-solid fa-shop"></i>
+                        <span class="item-description">
+                            Loja
+                        </span>
+                    </a>
+                </li>
+                }
+
+                @if (funcionalidade != 'personal') {
+                <li class="side-item" routerLinkActive="mat-accent">
                     <a routerLink="financeiro">
                         <i class="fa-solid fa-coins"></i>
                         <span class="item-description">
@@ -83,14 +94,15 @@
                 </li>
                 }
 
-                <li class="side-item" routerLinkActive="mat-accent">
+                <!-- <li class="side-item" routerLinkActive="mat-accent">
                     <a routerLink="relatorios">
                         <i class="fa-regular fa-pen-to-square"></i>
                         <span class="item-description">
                             Relatórios
                         </span>
                     </a>
-                </li>
+                </li> -->
+
 
                 <!-- <li class="side-item" routerLinkActive="mat-accent">
                     <a href="#">
@@ -127,9 +139,8 @@
                     <!-- Utiliza o *ngFor para iterar sobre as opções de menu -->
                     <li *ngFor="let item of menuItems" class="li-pesq" routerLinkActive="mat-accent">
                         <!-- Aplica o filtro utilizando *ngIf -->
-                        <a *ngIf="correspondeBusca(item) && termoBusca" 
-                           [routerLink]="item.routerLink" 
-                           (click)="resetarBusca()">
+                        <a *ngIf="correspondeBusca(item) && termoBusca" [routerLink]="item.routerLink"
+                            (click)="resetarBusca()">
                             <i class="{{item.iconClass}}"></i>
                             <span class="item-description">
                                 {{item.description}}
@@ -139,7 +150,7 @@
                 </ul>
             </div>
         </div>
-        
+
         <router-outlet></router-outlet>
     </main>
 </div>

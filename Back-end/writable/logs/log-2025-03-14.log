@@ -1,0 +1,168 @@
+ERROR - 2025-03-14 18:27:46 --> mysqli_sql_exception: Table 'cliente' already exists in C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('CREATE TABLE `c...', 0)
+#1 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `c...')
+#2 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `c...')
+#3 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\Forge.php(555): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `c...')
+#4 C:\wamp64\www\sites\Projeto-Academia\Back-end\app\Database\Migrations\2024-08-13-170304_CreateUsuariosTable.php(113): CodeIgniter\Database\Forge->createTable('cliente')
+#5 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MigrationRunner.php(865): App\Database\Migrations\CreateClienteTable->up()
+#6 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MigrationRunner.php(181): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Commands\Database\Migrate.php(84): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\CLI\Console.php(46): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\wamp64\www\sites\Projeto-Academia\Back-end\spark(102): CodeIgniter\CLI\Console->run()
+#11 {main}
+ERROR - 2025-03-14 18:31:26 --> mysqli_sql_exception: Table 'cliente' already exists in C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('CREATE TABLE `c...', 0)
+#1 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `c...')
+#2 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `c...')
+#3 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\Forge.php(555): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `c...')
+#4 C:\wamp64\www\sites\Projeto-Academia\Back-end\app\Database\Migrations\2024-08-13-170304_CreateUsuariosTable.php(113): CodeIgniter\Database\Forge->createTable('cliente')
+#5 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MigrationRunner.php(865): App\Database\Migrations\CreateClienteTable->up()
+#6 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MigrationRunner.php(181): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Commands\Database\Migrate.php(84): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\CLI\Console.php(46): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\wamp64\www\sites\Projeto-Academia\Back-end\spark(102): CodeIgniter\CLI\Console->run()
+#11 {main}
+ERROR - 2025-03-14 18:34:39 --> mysqli_sql_exception: Table 'cliente' already exists in C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('CREATE TABLE `c...', 0)
+#1 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `c...')
+#2 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `c...')
+#3 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\Forge.php(555): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `c...')
+#4 C:\wamp64\www\sites\Projeto-Academia\Back-end\app\Database\Migrations\2024-08-13-170304_CreateUsuariosTable.php(113): CodeIgniter\Database\Forge->createTable('cliente')
+#5 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MigrationRunner.php(865): App\Database\Migrations\CreateClienteTable->up()
+#6 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MigrationRunner.php(181): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Commands\Database\Migrate.php(84): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\CLI\Console.php(46): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\wamp64\www\sites\Projeto-Academia\Back-end\spark(102): CodeIgniter\CLI\Console->run()
+#11 {main}
+ERROR - 2025-03-14 18:35:10 --> mysqli_sql_exception: Table 'cliente' already exists in C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('CREATE TABLE `c...', 0)
+#1 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `c...')
+#2 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `c...')
+#3 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\Forge.php(555): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `c...')
+#4 C:\wamp64\www\sites\Projeto-Academia\Back-end\app\Database\Migrations\2024-08-13-170304_CreateUsuariosTable.php(113): CodeIgniter\Database\Forge->createTable('cliente')
+#5 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MigrationRunner.php(865): App\Database\Migrations\CreateClienteTable->up()
+#6 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MigrationRunner.php(181): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Commands\Database\Migrate.php(84): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\CLI\Console.php(46): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\wamp64\www\sites\Projeto-Academia\Back-end\spark(102): CodeIgniter\CLI\Console->run()
+#11 {main}
+ERROR - 2025-03-14 18:35:27 --> mysqli_sql_exception: Table 'cliente' already exists in C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('CREATE TABLE `c...', 0)
+#1 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `c...')
+#2 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `c...')
+#3 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\Forge.php(555): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `c...')
+#4 C:\wamp64\www\sites\Projeto-Academia\Back-end\app\Database\Migrations\2024-08-13-170304_CreateUsuariosTable.php(113): CodeIgniter\Database\Forge->createTable('cliente')
+#5 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MigrationRunner.php(865): App\Database\Migrations\CreateClienteTable->up()
+#6 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MigrationRunner.php(181): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Commands\Database\Migrate.php(84): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\CLI\Console.php(46): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\wamp64\www\sites\Projeto-Academia\Back-end\spark(102): CodeIgniter\CLI\Console->run()
+#11 {main}
+ERROR - 2025-03-14 18:43:42 --> mysqli_sql_exception: Table 'cliente' already exists in C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('CREATE TABLE `c...', 0)
+#1 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `c...')
+#2 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `c...')
+#3 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\Forge.php(555): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `c...')
+#4 C:\wamp64\www\sites\Projeto-Academia\Back-end\app\Database\Migrations\2024-08-13-170304_CreateUsuariosTable.php(113): CodeIgniter\Database\Forge->createTable('cliente')
+#5 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MigrationRunner.php(865): App\Database\Migrations\CreateClienteTable->up()
+#6 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MigrationRunner.php(181): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Commands\Database\Migrate.php(84): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\CLI\Console.php(46): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\wamp64\www\sites\Projeto-Academia\Back-end\spark(102): CodeIgniter\CLI\Console->run()
+#11 {main}
+ERROR - 2025-03-14 18:51:08 --> mysqli_sql_exception: Invalid default value for 'created_at' in C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('CREATE TABLE `c...', 0)
+#1 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `c...')
+#2 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `c...')
+#3 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\Forge.php(555): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `c...')
+#4 C:\wamp64\www\sites\Projeto-Academia\Back-end\app\Database\Migrations\2024-08-13-170304_CreateUsuariosTable.php(116): CodeIgniter\Database\Forge->createTable('cliente', true)
+#5 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MigrationRunner.php(865): App\Database\Migrations\CreateClienteTable->up()
+#6 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MigrationRunner.php(181): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Commands\Database\Migrate.php(84): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\CLI\Console.php(46): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\wamp64\www\sites\Projeto-Academia\Back-end\spark(102): CodeIgniter\CLI\Console->run()
+#11 {main}
+ERROR - 2025-03-14 18:51:39 --> mysqli_sql_exception: Invalid default value for 'created_at' in C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('CREATE TABLE `c...', 0)
+#1 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `c...')
+#2 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `c...')
+#3 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\Forge.php(555): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `c...')
+#4 C:\wamp64\www\sites\Projeto-Academia\Back-end\app\Database\Migrations\2024-08-13-170304_CreateUsuariosTable.php(116): CodeIgniter\Database\Forge->createTable('cliente', true)
+#5 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MigrationRunner.php(865): App\Database\Migrations\CreateClienteTable->up()
+#6 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MigrationRunner.php(181): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Commands\Database\Migrate.php(84): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\CLI\Console.php(46): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\wamp64\www\sites\Projeto-Academia\Back-end\spark(102): CodeIgniter\CLI\Console->run()
+#11 {main}
+ERROR - 2025-03-14 18:52:31 --> mysqli_sql_exception: Invalid default value for 'created_at' in C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('CREATE TABLE `c...', 0)
+#1 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `c...')
+#2 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `c...')
+#3 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\Forge.php(555): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `c...')
+#4 C:\wamp64\www\sites\Projeto-Academia\Back-end\app\Database\Migrations\2024-08-13-170304_CreateUsuariosTable.php(117): CodeIgniter\Database\Forge->createTable('cliente', true)
+#5 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MigrationRunner.php(865): App\Database\Migrations\CreateClienteTable->up()
+#6 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MigrationRunner.php(181): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Commands\Database\Migrate.php(84): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\CLI\Console.php(46): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\wamp64\www\sites\Projeto-Academia\Back-end\spark(102): CodeIgniter\CLI\Console->run()
+#11 {main}
+ERROR - 2025-03-14 18:52:56 --> mysqli_sql_exception: Invalid default value for 'created_at' in C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('CREATE TABLE `c...', 0)
+#1 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `c...')
+#2 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `c...')
+#3 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\Forge.php(555): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `c...')
+#4 C:\wamp64\www\sites\Projeto-Academia\Back-end\app\Database\Migrations\2024-08-13-170304_CreateUsuariosTable.php(118): CodeIgniter\Database\Forge->createTable('cliente', true)
+#5 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MigrationRunner.php(865): App\Database\Migrations\CreateClienteTable->up()
+#6 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MigrationRunner.php(181): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Commands\Database\Migrate.php(84): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\CLI\Console.php(46): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\wamp64\www\sites\Projeto-Academia\Back-end\spark(102): CodeIgniter\CLI\Console->run()
+#11 {main}
+ERROR - 2025-03-14 18:53:22 --> mysqli_sql_exception: Invalid default value for 'created_at' in C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('CREATE TABLE `c...', 0)
+#1 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `c...')
+#2 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `c...')
+#3 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\Forge.php(555): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `c...')
+#4 C:\wamp64\www\sites\Projeto-Academia\Back-end\app\Database\Migrations\2024-08-13-170304_CreateUsuariosTable.php(118): CodeIgniter\Database\Forge->createTable('cliente', true)
+#5 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MigrationRunner.php(865): App\Database\Migrations\CreateClienteTable->up()
+#6 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MigrationRunner.php(181): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Commands\Database\Migrate.php(84): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\CLI\Console.php(46): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\wamp64\www\sites\Projeto-Academia\Back-end\spark(102): CodeIgniter\CLI\Console->run()
+#11 {main}
+ERROR - 2025-03-14 18:54:00 --> mysqli_sql_exception: Invalid default value for 'created_at' in C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('CREATE TABLE `c...', 0)
+#1 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `c...')
+#2 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `c...')
+#3 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\Forge.php(555): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `c...')
+#4 C:\wamp64\www\sites\Projeto-Academia\Back-end\app\Database\Migrations\2024-08-13-170304_CreateUsuariosTable.php(119): CodeIgniter\Database\Forge->createTable('cliente', true)
+#5 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MigrationRunner.php(865): App\Database\Migrations\CreateClienteTable->up()
+#6 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Database\MigrationRunner.php(181): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\Commands\Database\Migrate.php(84): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\wamp64\www\sites\Projeto-Academia\Back-end\system\CLI\Console.php(46): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\wamp64\www\sites\Projeto-Academia\Back-end\spark(102): CodeIgniter\CLI\Console->run()
+#11 {main}

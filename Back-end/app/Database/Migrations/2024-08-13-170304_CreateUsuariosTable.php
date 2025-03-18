@@ -82,7 +82,7 @@ class CreateClienteTable extends Migration
                 'constraint' => '255',
                 'null'       => true,
             ],
-            'atestado_medico' => [
+            '   ' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '255',
                 'null'       => true,

@@ -32,9 +32,6 @@ class CreatePlanos extends Migration
                 'type' => "ENUM('Mensal', 'Trimestral', 'Semestral', 'Anual')", 
                 'null' => false
             ],
-            'beneficios' => [
-                'type' => 'TEXT',
-            ],
             'disponibilidade' => [
                 'type' => 'ENUM',
                 'constraint' => ['ativo', 'inativo'],  // Definindo os valores permitidos

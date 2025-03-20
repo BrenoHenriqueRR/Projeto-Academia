@@ -33,24 +33,14 @@ export class ModalEditarPlanosComponent {
     });
   }
 
-  adicionarBeneficio() {
-    if (this.planosForm.value.beneficios.trim()) {
-      this.beneficios.push(this.planosForm.value.beneficios.trim());
-      this.planosForm.value.beneficios = ''; // Limpa o campo textarea
-
-      // Atualiza o campo 'beneficios' do formulário com todos os benefícios concatenados
-      this.planosForm.get('beneficios')?.setValue(this.beneficios.join(', '));
-    }
-  }
-
   form(){
     this.planosForm = new FormGroup({
       nome:  new FormControl(this.planos[0].nome, [Validators.required]),
       preco: new FormControl(this.planos[0].preco, [Validators.required]),
       // descontoPlano: ('', ([Validators.required], Validators.min(1)]],
+      // beneficios: new FormControl (this.planos[0].beneficios, [Validators.required]),
       descricao: new FormControl (this.planos[0].descricao, [Validators.required]),
       duracao: new FormControl (this.planos[0].duracao, [Validators.required]),
-      beneficios: new FormControl (this.planos[0].beneficios, [Validators.required]),
       disponibilidade: new FormControl (this.planos[0].disponibilidade, [Validators.required])
     });
     //  this.beneficios = this.planos[0].beneficios;
@@ -81,36 +71,46 @@ export class ModalEditarPlanosComponent {
     }
   }
 
-  adicionarOuEditarBeneficio() {
-    if (this.beneficioAtual.trim()) {
-      if (this.indiceEdicao === null) {
-        // Adicionando um novo benefício
-        this.beneficios.push(this.beneficioAtual.trim());
-      } else {
-        // Editando um benefício existente
-        this.beneficios[this.indiceEdicao] = this.beneficioAtual.trim();
-        this.indiceEdicao = null; // Resetar o índice de edição
-      }
+  // adicionarOuEditarBeneficio() {
+  //   if (this.beneficioAtual.trim()) {
+  //     if (this.indiceEdicao === null) {
+  //       // Adicionando um novo benefício
+  //       this.beneficios.push(this.beneficioAtual.trim());
+  //     } else {
+  //       // Editando um benefício existente
+  //       this.beneficios[this.indiceEdicao] = this.beneficioAtual.trim();
+  //       this.indiceEdicao = null; // Resetar o índice de edição
+  //     }
 
-      this.planosForm.get('beneficios')?.setValue(this.beneficios.join(', '));
+  //     this.planosForm.get('beneficios')?.setValue(this.beneficios.join(', '));
       
-      // Limpa o campo de texto e atualiza o formulário
-      this.beneficioAtual = '';
-      this.editar = false;
-    }
-  }
+  //     // Limpa o campo de texto e atualiza o formulário
+  //     this.beneficioAtual = '';
+  //     this.editar = false;
+  //   }
+  // }
 
-  editarBeneficio(index: number) {
-    this.editar = true;
-    this.beneficioAtual = this.beneficios[index]; // Carrega o benefício no textarea
-    this.indiceEdicao = index; // Define o índice do benefício que está sendo editado
-  }
+  // editarBeneficio(index: number) {
+  //   this.editar = true;
+  //   this.beneficioAtual = this.beneficios[index]; // Carrega o benefício no textarea
+  //   this.indiceEdicao = index; // Define o índice do benefício que está sendo editado
+  // }
 
-  removerBeneficio(index: number) {
-    this.beneficios.splice(index, 1); // Remove o benefício da lista
-    this.planosForm.get('beneficios')?.setValue(this.beneficios.join(', ')); // Atualiza o campo do formulário
-    console.log(this.planosForm.getRawValue());
-    this.beneficioAtual = '';
-  }
+  // removerBeneficio(index: number) {
+  //   this.beneficios.splice(index, 1); // Remove o benefício da lista
+  //   this.planosForm.get('beneficios')?.setValue(this.beneficios.join(', ')); // Atualiza o campo do formulário
+  //   console.log(this.planosForm.getRawValue());
+  //   this.beneficioAtual = '';
+  // }
+
+  // adicionarBeneficio() {
+  //   if (this.planosForm.value.beneficios.trim()) {
+  //     this.beneficios.push(this.planosForm.value.beneficios.trim());
+  //     this.planosForm.value.beneficios = ''; // Limpa o campo textarea
+
+  //     // Atualiza o campo 'beneficios' do formulário com todos os benefícios concatenados
+  //     this.planosForm.get('beneficios')?.setValue(this.beneficios.join(', '));
+  //   }
+  // }
 
 }

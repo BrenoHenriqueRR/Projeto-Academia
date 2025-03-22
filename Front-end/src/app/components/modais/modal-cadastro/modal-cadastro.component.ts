@@ -20,9 +20,9 @@ export class ModalCadastroComponent {
   @Input() tipo: string = ''; // tipo do cadastro 
   @Output() CloseModal = new EventEmitter<void>();
   CliForm!: FormGroup<any>;
-  funcForm: FormGroup;
-  planoForm: FormGroup<any>;
-  extraForm: FormGroup<any>;
+  funcForm!: FormGroup;
+  planoForm!: FormGroup<any>;
+  extraForm!: FormGroup<any>;
   fileName: string = 'Nenhum arquivo selecionado';
   foto: any;
   planos: any;
@@ -31,6 +31,8 @@ export class ModalCadastroComponent {
   beneficios: string[] = [];
 
   ngOnInit() {
+    this.inicializarForm();
+
     this.academiaservice.pesquisarPlanos().subscribe({
       next: (dado) => {
         this.planos = dado;
@@ -49,7 +51,9 @@ export class ModalCadastroComponent {
   }
 
   constructor(private fb: FormBuilder, private funcservice: PnFuncionarioService, private alertas: ToastrService,
-    private academiaservice: ConfigService, private cliservice: CadastroService) {
+    private academiaservice: ConfigService, private cliservice: CadastroService) {}
+
+  inicializarForm(){
     this.funcForm = this.fb.group({
       foto: ['', Validators.required],
       nome: ['', Validators.required],
@@ -88,8 +92,6 @@ export class ModalCadastroComponent {
       beneficios: ['', [Validators.required]],
       disponibilidade: ['', [Validators.required]]
     });
-
-
   }
 
   submitForm() {

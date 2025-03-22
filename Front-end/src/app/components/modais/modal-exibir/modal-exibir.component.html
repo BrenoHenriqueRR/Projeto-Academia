@@ -1,0 +1,62 @@
+<button type="button" class="pn-button" data-bs-toggle="modal" data-bs-target="#exibirModal">📜 Histórico</button>
+
+    <div class="modal modal-lg fade" id="exibirModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Detalhes do Cliente</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <!-- Foto do perfil -->
+                            <div class="col-md-4 text-center">
+                                <img [src]="backend + dados_cli?.foto_perfil" alt="Foto de Perfil" class="img-fluid rounded-circle border shadow-sm" width="150">
+                            </div>
+    
+                            <!-- Informações principais -->
+                            <div class="col-md-8">
+                                <h4>{{ dados_cli?.nome }}</h4>
+                                <p><strong>CPF:</strong> {{ dados_cli?.CPF }}</p>
+                                <p><strong>RG:</strong> {{ dados_cli?.RG }}</p>
+                                <p><strong>Email:</strong> {{ dados_cli?.email }}</p>
+                                <p><strong>Telefone:</strong> {{ dados_cli?.telefone }}</p>
+                                <p><strong>Endereço:</strong> {{ dados_cli?.endereco }}</p>
+                            </div>
+                        </div>
+    
+                        <hr>
+    
+                        <!-- Outras informações -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><strong>Data de Nascimento:</strong> {{ dados_cli?.datanascimento }}</p>
+                                <p><strong>Nível de Experiência:</strong> {{ dados_cli?.nivel_experiencia }}</p>
+                                <p><strong>Treina com Personal?</strong> {{ dados_cli?.treino_com_personal }}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Personal Trainer:</strong> {{ dados_cli?.nome_personal }}</p>
+                                <p><strong>Status:</strong> <span [class]="dados_cli?.status === 'ativo' ? 'text-success' : 'text-danger'">{{ dados_cli?.status }}</span></p>
+                                <p><strong>Último Login:</strong> {{ dados_cli?.ultimo_login }}</p>
+                            </div>
+                        </div>
+    
+                        <hr>
+    
+                        <!-- Atestado Médico e Termo de Responsabilidade -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p><strong>Atestado Médico:</strong> {{ dados_cli?.atestado_medico ? 'Sim' : 'Não' }}</p>
+                                <p><strong>Termo de Responsabilidade:</strong> {{ dados_cli?.termo_responsabilidade ? 'Assinado' : 'Não Assinado' }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    

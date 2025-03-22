@@ -1,0 +1,9 @@
+.pn-button {
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    padding: 0.3rem 1rem;
+    background-color: rgb(46, 56, 240);
+    color: white;
+    margin-left: 1rem;
+}

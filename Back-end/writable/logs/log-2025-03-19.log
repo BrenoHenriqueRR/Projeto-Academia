@@ -1,0 +1,16 @@
+CRITICAL - 2025-03-19 23:55:03 --> Stripe\Exception\ApiConnectionException: Could not connect to Stripe (https://api.stripe.com/v1/payment_intents?created[gte]=1740873303&created[lt]=1743465303).  Please check your internet connection and try again.  If this problem persists, you should check Stripe's service status at https://twitter.com/stripestatus, or let us know at support@stripe.com.
+
+(Network error [errno 6]: Could not resolve host: api.stripe.com)
+in VENDORPATH\stripe\stripe-php\lib\HttpClient\CurlClient.php on line 570.
+ 1 VENDORPATH\stripe\stripe-php\lib\HttpClient\CurlClient.php(522): Stripe\HttpClient\CurlClient->handleCurlError('https://api.stripe.com/v1/payment_intents?created[gte]=1740873303&created[lt]=1743465303', 6, 'Could not resolve host: api.stripe.com', 0)
+ 2 VENDORPATH\stripe\stripe-php\lib\HttpClient\CurlClient.php(281): Stripe\HttpClient\CurlClient->executeRequestWithRetries([...], 'https://api.stripe.com/v1/payment_intents?created[gte]=1740873303&created[lt]=1743465303')
+ 3 VENDORPATH\stripe\stripe-php\lib\ApiRequestor.php(465): Stripe\HttpClient\CurlClient->request('get', 'https://api.stripe.com/v1/payment_intents?created[gte]=1740873303&created[lt]=1743465303', [...], [...], false)
+ 4 VENDORPATH\stripe\stripe-php\lib\ApiRequestor.php(134): Stripe\ApiRequestor->_requestRaw('get', '/v1/payment_intents', [...], [], [])
+ 5 VENDORPATH\stripe\stripe-php\lib\ApiOperations\Request.php(109): Stripe\ApiRequestor->request('get', '/v1/payment_intents', [...], [], [])
+ 6 VENDORPATH\stripe\stripe-php\lib\ApiOperations\Request.php(64): Stripe\ApiResource::_staticRequest('get', '/v1/payment_intents', [...], null, [])
+ 7 VENDORPATH\stripe\stripe-php\lib\PaymentIntent.php(140): Stripe\ApiResource::_requestPage('/v1/payment_intents', 'Stripe\\Collection', [...], null)
+ 8 APPPATH\Controllers\StripeController.php(31): Stripe\PaymentIntent::all([...])
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\StripeController->getPagamentos()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StripeController))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

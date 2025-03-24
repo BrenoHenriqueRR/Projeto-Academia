@@ -13,7 +13,8 @@ import { PnClienteService } from '../../../services/admin/pn-cliente/pn-cliente.
 export class ModalExibirComponent {
   backend: string = 'http://localhost/sites/Projeto1/Back-end/public/' ;
   dados_cli: any;
-  @Input() id?:  string ;
+  cli_id!: number;
+  @Input() id!:  string ;
   @Output() CloseModal = new EventEmitter<void>();
 
   ngOnInit() {
@@ -22,9 +23,14 @@ export class ModalExibirComponent {
 
   constructor(private cli_service: PnClienteService ) { }
   pesquisar() {
-    this.cli_service.pesquisar().subscribe({
+    this.cli_id = parseInt(this.id);
+    const json = '{"id": ' + this.cli_id + ' }';
+
+    this.cli_service.pesquisarpid(json).subscribe({
       next: (dados: any) => {
-        this.dados_cli = dados[0];
+        // if(dados.id == this.cli_id){
+        //   this.dados_cli = dados[0];
+        // }
         console.log('Dados carregados:', this.dados_cli);
       }, error: (er) => {
         console.error('Erro ao buscar clientes:', er);

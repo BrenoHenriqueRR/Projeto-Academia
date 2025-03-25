@@ -30,10 +30,18 @@ export class AnamneseComponent {
       nivelEstresse: ['leve', Validators.required]
     });
     this.problemasSaude =[ 
-      { id : 1, pb :  'doença cardiaca coronariana' },
-      { id : 2, pb :  'doença cardiaca coronariana' },
-      { id : 3, pb :  'doença cardiaca coronariana' },
-      { id : 4, pb :  'doença cardiaca coronariana' }
+      { id : 1, pb :  'Doença cardiaca coronariana' },
+      { id : 2, pb :  'Doença cardiaca reumática' },
+      { id : 3, pb :  'Doença cardiaca congênica' },
+      { id : 4, pb :  'Batimentos cardíacos irregulares' },
+      { id : 5, pb :  'Problemas nas válvulas cardíacas' },
+      { id : 6, pb :  'Murmúrios cardíacos' },
+      { id : 7, pb :  'Hipertensão' },
+      { id : 8, pb :  'Ataque cardíaco' },
+      { id : 9, pb :  'Epilepsia' },
+      { id : 10, pb :  'Diabetes' },
+      { id : 11, pb :  'Anguba' },
+      { id : 12, pb :  'Câncer' },
     ];
   }
 

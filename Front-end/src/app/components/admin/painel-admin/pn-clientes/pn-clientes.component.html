@@ -13,8 +13,7 @@
                     <app-modal-cadastro (CloseModal)="Closemodal()" tipo="cliente"></app-modal-cadastro>
                 </div>
                 <div class="">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal">Anamnese</button>
+                    <button type="button" class="btn btn-primary" routerLink="anamnese">Anamnese</button>
                 </div>
                 <div class="">
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
@@ -62,7 +61,7 @@
                             Treinos</button>
                         }
                         <app-modal-confirmar (confirm)="validarmodal($event)"></app-modal-confirmar>
-                        <app-modal-exibir (CloseModal)="Closemodal()" id = {{dados.id}}></app-modal-exibir>
+                        <app-modal-exibir (click)="openmodalH(dados.id)" ></app-modal-exibir>
                         }
                     </td>
                 </tr>

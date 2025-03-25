@@ -13,12 +13,7 @@ import { NgFor, NgIf } from '@angular/common';
 export class AnamneseComponent {
   anamneseForm!: FormGroup;
   clientes: any;
-  problemasSaude =[ 
-    { pb :  'doença cardiaca coronariana' },
-    { pb :  'doença cardiaca coronariana' },
-    { pb :  'doença cardiaca coronariana' },
-    { pb :  'doença cardiaca coronariana' }
-  ];
+  problemasSaude: { id: number; pb: string }[] = []; 
   sintomasLista: any;
 
   constructor(private fb: FormBuilder, private cliservice:PnClienteService ) {}
@@ -27,13 +22,19 @@ export class AnamneseComponent {
     this.pesquisarCli();
     this.anamneseForm = this.fb.group({
       clienteSelecionado: [null, Validators.required],
-      problemasSaude: [''],
+      problemassaude: [''],
       sintomas: [''],
       medicamentos: [''],
       historicoFamiliarCardiaco: [false],
       restricaoMedica: [''],
       nivelEstresse: ['leve', Validators.required]
     });
+    this.problemasSaude =[ 
+      { id : 1, pb :  'doença cardiaca coronariana' },
+      { id : 2, pb :  'doença cardiaca coronariana' },
+      { id : 3, pb :  'doença cardiaca coronariana' },
+      { id : 4, pb :  'doença cardiaca coronariana' }
+    ];
   }
 
   salvarAnamnese(): void {

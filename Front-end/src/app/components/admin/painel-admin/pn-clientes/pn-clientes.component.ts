@@ -13,12 +13,13 @@ import { ModalExibirComponent } from '../../../modais/modal-exibir/modal-exibir.
 @Component({
   selector: 'app-pn-clientes',
   standalone: true,
-  imports: [NgxPaginationModule, NgFor, RouterLink, NgIf, ModalConfirmarComponent, ModalCadastroComponent, ModalFaceidComponent, ModalSpinnerComponent, ModalExibirComponent],
+  imports: [NgxPaginationModule, RouterLink, NgIf, ModalConfirmarComponent, ModalCadastroComponent, ModalFaceidComponent, ModalSpinnerComponent, ModalExibirComponent],
   templateUrl: './pn-clientes.component.html',
   styleUrl: './pn-clientes.component.css'
 })
 export class PnClientesComponent {
   @ViewChild(ModalConfirmarComponent) modal?: ModalConfirmarComponent
+  @ViewChild(ModalExibirComponent) modalH?: ModalExibirComponent
   public paginaAtual = 1;
   func!: string;
   dados_cli: any = '';
@@ -43,6 +44,10 @@ export class PnClientesComponent {
     this.modal?.openModal();
   }
 
+  openmodalH(id: any) {
+    this.modalH?.openModal(id);
+  }
+
   validarmodal(confirmed: boolean) {
     if (confirmed) {
       this.excluir(this.idDelete);
@@ -61,6 +66,7 @@ export class PnClientesComponent {
       }
     });
   }
+
 
   funcao() {
     const jsonString: string = '{"id": "' + localStorage.getItem('id') + '"}';

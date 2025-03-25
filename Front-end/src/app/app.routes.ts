@@ -30,6 +30,7 @@ import { PnPlanosComponent } from './components/admin/painel-admin/pn-planos/pn-
 import { ModalEditarPlanosComponent } from './components/modais/modal-editar-planos/modal-editar-planos.component';
 import { EntradaComponent } from './components/entrada/entrada.component';
 import { PnLojaComponent } from './components/admin/painel-admin/pn-loja/pn-loja.component';
+import { AnamneseComponent } from './components/admin/painel-admin/anamnese/anamnese.component';
 
 
 export const routes: Routes = [
@@ -98,6 +99,7 @@ export const routes: Routes = [
             { path: 'relatorios', component: PnRelatoriosComponent,  canActivate: [adminGuard] },
             { path: 'loja', component: PnLojaComponent,  canActivate: [adminGuard] },
             { path: 'clientes/editar', component: ModalEditarComponent,  canActivate: [adminGuard] },
+            { path: 'clientes/anamnese', component: AnamneseComponent,  canActivate: [adminGuard] },
             { path: 'clientes/treinos', component: CadTreinoComponent,  canActivate: [adminGuard] },
         ],
 

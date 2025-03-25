@@ -1,0 +1,121 @@
+<div class="container mt-4" [formGroup]="anamneseForm">
+    <h2>Formulário de Anamnese</h2>
+    
+    <!-- Seleção do Cliente -->
+    <div class="mb-3">
+        <label for="cliente" class="form-label">Selecione o Cliente</label>
+        <select class="form-select" formControlName="clienteSelecionado" required>
+            @for (cliente of clientes; track $index) {
+                <option [value]="cliente.id">{{ cliente.nome }}</option>
+            }
+        </select>
+    </div>
+
+    <!-- Formulário de Anamnese -->
+    <form *ngIf="anamneseForm.get('clienteSelecionado')!.value" (ngSubmit)="salvarAnamnese()">
+            
+        <div class="mb-3">
+            <label class="form-label">1. Um médico já lhe disse que você tinha alguns dos problemas abaixo?</label>
+            <div class="form-check" *ngFor="let problema of problemasSaude">
+                <input class="form-check-input" type="checkbox" [value]="problema.pb" formControlName="problemasSaude">
+                <label class="form-check-label">{{ problema.pb }}</label>
+            </div>
+        </div>
+        
+        <div class="mb-3">
+            <label class="form-label">2. Você tem algum dos sintomas abaixo?</label>
+            <div class="form-check" *ngFor="let sintoma of sintomasLista">
+                <input class="form-check-input" type="checkbox" [value]="sintoma" formControlName="sintomas">
+                <label class="form-check-label">{{ sintoma }}</label>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">3. Liste os medicamentos que você está tomando (nome e motivo)</label>
+            <textarea class="form-control" formControlName="medicamentos"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">4. Algum parente próximo teve ataque cardíaco antes dos 50 anos?</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" value="sim" formControlName="historicoFamiliarCardiaco">
+                <label class="form-check-label">Sim</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" value="nao" formControlName="historicoFamiliarCardiaco">
+                <label class="form-check-label">Não</label>
+            </div>
+        </div>
+        
+        <div class="mb-3">
+            <label class="form-label">5. Você está grávida?</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" value="sim" formControlName="gravida">
+                <label class="form-check-label">Sim</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" value="nao" formControlName="gravida">
+                <label class="form-check-label">Não</label>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">6. Você fuma?</label>
+            <input type="text" class="form-control" formControlName="fuma">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">7. Você ingere bebidas alcoólicas?</label>
+            <input type="text" class="form-control" formControlName="bebeAlcool">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">8. Atualmente você tem se exercitado pelo menos 2 vezes por semana?</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" value="sim" formControlName="exercicioFrequente">
+                <label class="form-check-label">Sim</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" value="nao" formControlName="exercicioFrequente">
+                <label class="form-check-label">Não</label>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">9. Total de minutos dispensados em atividades aeróbicas por semana:</label>
+            <input type="number" class="form-control" formControlName="qtdeAerobico">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">10. Você mediu sua taxa de colesterol no ano passado?</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" value="sim" formControlName="colesterolMedido">
+                <label class="form-check-label">Sim</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" value="nao" formControlName="colesterolMedido">
+                <label class="form-check-label">Não</label>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">11. Qual seu nível de estresse?</label>
+            <select class="form-select" formControlName="nivelEstresse">
+                <option value="leve">Leve</option>
+                <option value="moderado">Moderado</option>
+                <option value="elevado">Elevado</option>
+                <option value="constante">Constante</option>
+            </select>
+        </div>
+
+        <!-- <div class="mb-3">
+            <label class="form-label">12. Quais são seus objetivos ao ingressar em um grupo de promoção de saúde?</label>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" [value]="objetivo" formControlName="objetivosSaude">
+                <label class="form-check-label">{{ objetivo }}</label>
+            </div>
+        </div> -->
+        
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    </form>
+</div>

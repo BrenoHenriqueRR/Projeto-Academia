@@ -11,15 +11,18 @@
         </select>
     </div>
 
+    
     <!-- Formulário de Anamnese -->
     <form *ngIf="anamneseForm.get('clienteSelecionado')!.value" (ngSubmit)="salvarAnamnese()">
 
         <div class="mb-3">
             <label class="form-label">1. Um médico já lhe disse que você tinha alguns dos problemas abaixo?</label>
-            <div class="form-check">
-                @for (problema of problemasSaude;track $index){
-                    <input class="form-check-input" type="checkbox" [value]="problema.pb" formControlName="problemasSaude">
-                    <label class="form-check-label">{{ problema.pb }}</label>
+            <div class="form-check" *ngIf="problemasSaude.length > 0">
+                @for (problema of problemasSaude; track problema.id) {
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" [value]="problema.pb" formControlName="problemasSaude">
+                        <label class="form-check-label ms-2">{{ problema.pb }}</label>
+                    </div>
                 }
             </div>
         </div>

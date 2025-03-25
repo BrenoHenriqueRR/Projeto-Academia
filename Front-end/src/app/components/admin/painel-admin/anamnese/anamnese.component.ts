@@ -14,7 +14,11 @@ export class AnamneseComponent {
   anamneseForm!: FormGroup;
   clientes: any;
   problemasSaude =[ 
-    { 'pb' :  'doença cardiaca coronariana' }];
+    { pb :  'doença cardiaca coronariana' },
+    { pb :  'doença cardiaca coronariana' },
+    { pb :  'doença cardiaca coronariana' },
+    { pb :  'doença cardiaca coronariana' }
+  ];
   sintomasLista: any;
 
   constructor(private fb: FormBuilder, private cliservice:PnClienteService ) {}

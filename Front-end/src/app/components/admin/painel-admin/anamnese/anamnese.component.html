@@ -1,27 +1,29 @@
 <div class="container mt-4" [formGroup]="anamneseForm">
     <h2>Formulário de Anamnese</h2>
-    
+
     <!-- Seleção do Cliente -->
     <div class="mb-3">
         <label for="cliente" class="form-label">Selecione o Cliente</label>
         <select class="form-select" formControlName="clienteSelecionado" required>
             @for (cliente of clientes; track $index) {
-                <option [value]="cliente.id">{{ cliente.nome }}</option>
+            <option [value]="cliente.id">{{ cliente.nome }}</option>
             }
         </select>
     </div>
 
     <!-- Formulário de Anamnese -->
     <form *ngIf="anamneseForm.get('clienteSelecionado')!.value" (ngSubmit)="salvarAnamnese()">
-            
+
         <div class="mb-3">
             <label class="form-label">1. Um médico já lhe disse que você tinha alguns dos problemas abaixo?</label>
-            <div class="form-check" *ngFor="let problema of problemasSaude">
-                <input class="form-check-input" type="checkbox" [value]="problema.pb" formControlName="problemasSaude">
-                <label class="form-check-label">{{ problema.pb }}</label>
+            <div class="form-check">
+                @for (problema of problemasSaude;track $index){
+                    <input class="form-check-input" type="checkbox" [value]="problema.pb" formControlName="problemasSaude">
+                    <label class="form-check-label">{{ problema.pb }}</label>
+                }
             </div>
         </div>
-        
+
         <div class="mb-3">
             <label class="form-label">2. Você tem algum dos sintomas abaixo?</label>
             <div class="form-check" *ngFor="let sintoma of sintomasLista">
@@ -46,7 +48,7 @@
                 <label class="form-check-label">Não</label>
             </div>
         </div>
-        
+
         <div class="mb-3">
             <label class="form-label">5. Você está grávida?</label>
             <div class="form-check">
@@ -115,7 +117,7 @@
                 <label class="form-check-label">{{ objetivo }}</label>
             </div>
         </div> -->
-        
+
         <button type="submit" class="btn btn-primary">Salvar</button>
     </form>
 </div>

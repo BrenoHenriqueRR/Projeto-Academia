@@ -11,27 +11,36 @@
         </select>
     </div>
 
-    
+
     <!-- Formulário de Anamnese -->
-    <form *ngIf="anamneseForm.get('clienteSelecionado')!.value" (ngSubmit)="salvarAnamnese()">
+    <form [formGroup]="anamneseForm" *ngIf="anamneseForm.get('clienteSelecionado')!.value"
+        (ngSubmit)="salvarAnamnese()">
 
         <div class="mb-3">
             <label class="form-label">1. Um médico já lhe disse que você tinha alguns dos problemas abaixo?</label>
-            <div class="form-check" *ngIf="problemasSaude.length > 0">
-                @for (problema of problemasSaude; track problema.id) {
+            <div class="row">
+                <div class="col-md-4" *ngFor="let problema of problemasSaude">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" [value]="problema.pb" formControlName="problemasSaude">
-                        <label class="form-check-label ms-2">{{ problema.pb }}</label>
+                        <input class="form-check-input" type="checkbox" [value]="problema"
+                            (change)="onCheckboxChange($event,'problemassaude' )">
+                        <label class="form-check-label ms-2">{{ problema }}</label>
                     </div>
-                }
+                </div>
+                <label class="form-check-label my-2">Por favor explique: </label>
+                <input class="form-control" type="text" (change)="onTextChange($event,'problemassaude')">
             </div>
         </div>
 
         <div class="mb-3">
             <label class="form-label">2. Você tem algum dos sintomas abaixo?</label>
-            <div class="form-check" *ngFor="let sintoma of sintomasLista">
-                <input class="form-check-input" type="checkbox" [value]="sintoma" formControlName="sintomas">
-                <label class="form-check-label">{{ sintoma }}</label>
+            <div class="row">
+                <div class="col-md-4" *ngFor="let sintoma of sintomasLista">
+                    <input class="form-check-input" type="checkbox" [value]="sintoma"
+                        (change)="onCheckboxChange($event,'sintomas' )">
+                    <label class="form-check-label ms-2">{{ sintoma }}</label>
+                </div>
+                <label class="form-check-label my-2">Por favor explique: </label>
+                <input class="form-control" type="text" (change)="onTextChange($event,'sintomas')">
             </div>
         </div>
 
@@ -53,7 +62,13 @@
         </div>
 
         <div class="mb-3">
-            <label class="form-label">5. Você está grávida?</label>
+            <label class="form-label">5. Algum médico disse que você tinha alguma restrição á pratica de atividades
+                físicas (inclusive cirurgia)</label>
+            <input type="text" class="form-control" formControlName="restricao_medica">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">6. Você está grávida?</label>
             <div class="form-check">
                 <input class="form-check-input" type="radio" value="sim" formControlName="gravida">
                 <label class="form-check-label">Sim</label>
@@ -65,17 +80,17 @@
         </div>
 
         <div class="mb-3">
-            <label class="form-label">6. Você fuma?</label>
+            <label class="form-label">7. Você fuma?</label>
             <input type="text" class="form-control" formControlName="fuma">
         </div>
 
         <div class="mb-3">
-            <label class="form-label">7. Você ingere bebidas alcoólicas?</label>
+            <label class="form-label">8. Você ingere bebidas alcoólicas?</label>
             <input type="text" class="form-control" formControlName="bebeAlcool">
         </div>
 
         <div class="mb-3">
-            <label class="form-label">8. Atualmente você tem se exercitado pelo menos 2 vezes por semana?</label>
+            <label class="form-label">9. Atualmente você tem se exercitado pelo menos 2 vezes por semana?</label>
             <div class="form-check">
                 <input class="form-check-input" type="radio" value="sim" formControlName="exercicioFrequente">
                 <label class="form-check-label">Sim</label>
@@ -87,12 +102,12 @@
         </div>
 
         <div class="mb-3">
-            <label class="form-label">9. Total de minutos dispensados em atividades aeróbicas por semana:</label>
+            <label class="form-label">10. Total de minutos dispensados em atividades aeróbicas por semana:</label>
             <input type="number" class="form-control" formControlName="qtdeAerobico">
         </div>
 
         <div class="mb-3">
-            <label class="form-label">10. Você mediu sua taxa de colesterol no ano passado?</label>
+            <label class="form-label">11. Você mediu sua taxa de colesterol no ano passado?</label>
             <div class="form-check">
                 <input class="form-check-input" type="radio" value="sim" formControlName="colesterolMedido">
                 <label class="form-check-label">Sim</label>
@@ -104,7 +119,34 @@
         </div>
 
         <div class="mb-3">
-            <label class="form-label">11. Qual seu nível de estresse?</label>
+            <label class="form-label">12. Você come alimentos dos 4 maiores grupos alimentares (carne ou seus derivados,
+                vegetais, grãos ou leite e seus derivados)?</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" value="sim" formControlName="alimentacao_balanceada">
+                <label class="form-check-label">Sim</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" value="nao" formControlName="alimentacao_balanceada">
+                <label class="form-check-label">Não</label>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">13. Sua dieta tem alto teor de gordura saturada?</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" value="sim" formControlName="gordura_alta">
+                <label class="form-check-label">Sim</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" value="nao" formControlName="gordura_alta">
+                <label class="form-check-label">Não</label>
+            </div>
+        </div>
+
+
+
+        <div class="mb-3">
+            <label class="form-label">14. Qual seu nível de estresse?</label>
             <select class="form-select" formControlName="nivelEstresse">
                 <option value="leve">Leve</option>
                 <option value="moderado">Moderado</option>
@@ -113,13 +155,26 @@
             </select>
         </div>
 
-        <!-- <div class="mb-3">
-            <label class="form-label">12. Quais são seus objetivos ao ingressar em um grupo de promoção de saúde?</label>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" [value]="objetivo" formControlName="objetivosSaude">
-                <label class="form-check-label">{{ objetivo }}</label>
+
+        <div class="mb-3">
+            <label class="form-label">15. Quais são seus objetivos ao ingressar em um grupo de promoção de
+                saúde?</label>
+            <div class="row">
+                <div class="col-md-4" *ngFor="let objetivo of objetivos">
+                    <input class="form-check-input" type="checkbox" [value]="objetivo"
+                        (change)="onCheckboxChange($event,'objetivosSaude' )">
+                    <label class="form-check-label ms-2">{{ objetivo }}</label>
+                </div>
+                <label class="form-check-label mt-4 mb-2">Se outro(explique): </label>
+                <input class="form-control" type="text" (change)="onTextChange($event,'sintomas')">
             </div>
-        </div> -->
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Anotações:</label>
+            <textarea class="form-control" type="text" rows="3" formControlName="anotacoes"></textarea>
+
+        </div>
 
         <button type="submit" class="btn btn-primary">Salvar</button>
     </form>

@@ -136,6 +136,15 @@ $routes->group('Loja', function ($routes) {
 });
 
 // =====================
+// ANAMNESE
+// =====================
+$routes->group('Anamnese', function ($routes) {
+    $routes->post('create', 'Anamnese::create');
+    $routes->post('deleteProduto', 'Anamnese::deleteAnamnese');
+    $routes->get('read', 'Anamnese::read');
+});
+
+// =====================
 // PAGAMENTOS (STRIPE)
 // =====================
 $routes->group('StripeController', function ($routes) {

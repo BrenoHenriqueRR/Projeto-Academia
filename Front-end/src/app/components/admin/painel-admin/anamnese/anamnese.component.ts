@@ -98,6 +98,7 @@ export class AnamneseComponent {
   salvarAnamnese(): void {
     if (this.anamneseForm.valid) {
       let dados = JSON.stringify(this.anamneseForm.getRawValue());
+      console.log(dados);
       this.anamservice.create(dados).subscribe({
         next: (dados) => {
           this.alert.success(dados.msg);

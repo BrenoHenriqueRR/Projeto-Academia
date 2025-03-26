@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PnClienteService } from '../../../../services/admin/pn-cliente/pn-cliente.service';
 import { NgFor, NgIf } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
+import { AnamneseService } from '../../../../services/admin/anamnese/anamnese.service';
 
 @Component({
   selector: 'app-anamnese',
@@ -46,7 +48,7 @@ export class AnamneseComponent {
     'Outro (especifique)'
   ];
 
-  constructor(private fb: FormBuilder, private cliservice: PnClienteService) { }
+  constructor(private fb: FormBuilder, private cliservice: PnClienteService, private alert: ToastrService, private anamservice : AnamneseService) { }
 
   ngOnInit(): void {
     this.pesquisarCli();
@@ -95,12 +97,18 @@ export class AnamneseComponent {
 
   salvarAnamnese(): void {
     if (this.anamneseForm.valid) {
-      // console.log('Dados da anamnese:', this.anamneseForm.value);
-      alert('Anamnese salva com sucesso!');
       let dados = JSON.stringify(this.anamneseForm.getRawValue());
-      console.log(dados);
+      this.anamservice.create(dados).subscribe({
+        next: (dados) => {
+          this.alert.success(dados.msg);
+        }, error : (err) => {
+          console.log(err);
+          this.alert.error(err.msg);
+        }
+      })
+      
     } else {
-      alert('Preencha os campos obrigatórios!');
+      this.alert.error('Preencha os campos obrigatórios!');
     }
   }
 

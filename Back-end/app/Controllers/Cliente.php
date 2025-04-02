@@ -262,15 +262,14 @@ class Cliente extends BaseController
         return null;
     }
 
-    public function getClientesSemFicha()
+    public function getClientesSemAnamnese()
     {
-        $sql = "SELECT c.id, c.nome 
-            FROM cliente c
-            LEFT JOIN anamnese a ON c.id = a.cliente_id
-            WHERE a.id IS NULL"; // Apenas clientes sem ficha
 
-        $query = $this->db->query($sql);
+        $dados = $this->model->select('cliente.id, cliente.nome')
+        ->join('anamnese', 'cliente.id = anamnese.cliente_id', 'left')
+        ->where('anamnese.id', null)
+        ->findAll();
 
-        return $this->response->setJSON($query->getResult());
+        return $this->response->setJSON($dados)->setStatusCode(200);
     }
 }

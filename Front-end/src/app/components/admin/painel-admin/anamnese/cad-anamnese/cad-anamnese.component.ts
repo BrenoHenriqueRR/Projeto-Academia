@@ -119,7 +119,7 @@ export class CadAnamneseComponent {
   }
 
   pesquisarCli() {
-    this.cliservice.pesquisar().subscribe({
+    this.cliservice.pesquisarSAnam().subscribe({
       next: (dados) => {
         this.clientes = dados;
         console.log(dados);

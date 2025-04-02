@@ -23,48 +23,48 @@ class Cliente extends BaseController
 
     public function create()
     {
-            $dados = [
-                'nome' => $this->request->getPost('nome'),
-                'CPF' => $this->request->getPost('CPF'),
-                'RG' => $this->request->getPost('RG'),
-                'telefone' => $this->request->getPost('telefone'),
-                'email' => $this->request->getPost('email'),
-                'endereco' => $this->request->getPost('endereco'),
-                'datanascimento' => $this->request->getPost('data_nascimento'),
-                'nivel_experiencia	' => $this->request->getPost('nivel_experiencia	'),
-                'treino_com_personal' => $this->request->getPost('treino_com_personal'),
-            ];
-            $dados['personal_id'] = null !== $this->request->getPost('personal_id') ? $this->request->getPost('personal_id') : null;
-            $foto = $this->request->getFile('foto');
-            $atestado = null !== $this->request->getFile('atestado_medico') ? $this->request->getFile('atestado_medico') : null;
-            $termo= null !== $this->request->getFile('termo_responsabilidade') ? $this->request->getFile('termo_responsabilidade') : null;
+        $dados = [
+            'nome' => $this->request->getPost('nome'),
+            'CPF' => $this->request->getPost('CPF'),
+            'RG' => $this->request->getPost('RG'),
+            'telefone' => $this->request->getPost('telefone'),
+            'email' => $this->request->getPost('email'),
+            'endereco' => $this->request->getPost('endereco'),
+            'datanascimento' => $this->request->getPost('data_nascimento'),
+            'nivel_experiencia	' => $this->request->getPost('nivel_experiencia	'),
+            'treino_com_personal' => $this->request->getPost('treino_com_personal'),
+        ];
+        $dados['personal_id'] = null !== $this->request->getPost('personal_id') ? $this->request->getPost('personal_id') : null;
+        $foto = $this->request->getFile('foto');
+        $atestado = null !== $this->request->getFile('atestado_medico') ? $this->request->getFile('atestado_medico') : null;
+        $termo = null !== $this->request->getFile('termo_responsabilidade') ? $this->request->getFile('termo_responsabilidade') : null;
 
-            if (isset($foto)) {
-                if ($foto->isValid() && !$foto->hasMoved()) {
-                    $nomeimg = $foto->getRandomName();
-                    $foto->move('assets/fotos-perfil/', $nomeimg);
-                    $caminhoImagem = 'assets/fotos-perfil/' . $nomeimg;
-                    $dados['foto_perfil'] = $caminhoImagem;
-                }
+        if (isset($foto)) {
+            if ($foto->isValid() && !$foto->hasMoved()) {
+                $nomeimg = $foto->getRandomName();
+                $foto->move('assets/fotos-perfil/', $nomeimg);
+                $caminhoImagem = 'assets/fotos-perfil/' . $nomeimg;
+                $dados['foto_perfil'] = $caminhoImagem;
             }
+        }
 
-            $dados['atestado_medico'] = $this->processarArquivo($atestado, 'atestado', $this->request->getPost('CPF'));
-            $dados['termo_responsabilidade'] = $this->processarArquivo($termo, 'termo',$this->request->getPost('CPF'));
+        $dados['atestado_medico'] = $this->processarArquivo($atestado, 'atestado', $this->request->getPost('CPF'));
+        $dados['termo_responsabilidade'] = $this->processarArquivo($termo, 'termo', $this->request->getPost('CPF'));
 
-            // Receber os outros dados do formulário
+        // Receber os outros dados do formulário
 
-            $this->model->insert($dados);
-            $id = $this->model->getInsertID();
+        $this->model->insert($dados);
+        $id = $this->model->getInsertID();
 
-            $verif_email = array(
-                'id' => $id,
-                'email' => $dados['email']
-            );
-            $msg = array("msg" => "Cadastro Enviado");
+        $verif_email = array(
+            'id' => $id,
+            'email' => $dados['email']
+        );
+        $msg = array("msg" => "Cadastro Enviado");
 
-            $this->email->verificaEmail($verif_email);
+        $this->email->verificaEmail($verif_email);
 
-            return $this->response->setJSON($msg)->setStatusCode(200);
+        return $this->response->setJSON($msg)->setStatusCode(200);
     }
     public function delete()
     {
@@ -130,22 +130,23 @@ class Cliente extends BaseController
         if (!$usuario) {
             return $this->response->setJSON(['success' => false, 'message' => 'Token inválido.']);
         }
-    
+
         $this->model->update($id, ['email_verificado' => 1]);
-    
+
         return $this->response->setJSON(['success' => true, 'msg' => 'E-mail verificado!']);
     }
 
-    public function criarSenha(){
+    public function criarSenha()
+    {
 
         $dados = $this->request->getJSON();
-        
 
-        $result = $this->model->update($dados->id,['senha' => hash('sha256',$dados->senha)]);
 
-        if($result){
+        $result = $this->model->update($dados->id, ['senha' => hash('sha256', $dados->senha)]);
+
+        if ($result) {
             return $this->response->setJSON(['success' => true, 'msg' => 'Senha verificada com sucesso!']);
-        }else{
+        } else {
             return $this->response->setJSON(['success' => false, 'msg' => 'Ocorreu um erro!! Tente novamente']);
         }
     }
@@ -172,7 +173,7 @@ class Cliente extends BaseController
             ->groupBy('c.id');
 
         $data = $dados->get();
- 
+
 
         return $this->response->setJSON($data->getResult())->setStatusCode(200);
     }
@@ -250,7 +251,8 @@ class Cliente extends BaseController
         return $this->response->setJSON($msg)->setStatusCode(200);
     }
 
-    public function processarArquivo($arquivo, $tipo, $cpf) {
+    public function processarArquivo($arquivo, $tipo, $cpf)
+    {
         if ($arquivo != null && $arquivo->isValid() && !$arquivo->hasMoved()) {
             $nomearq = $arquivo->getRandomName();
             $diretorio = 'assets/' . $tipo . '/' . $cpf;
@@ -259,5 +261,16 @@ class Cliente extends BaseController
         }
         return null;
     }
-    
+
+    public function getClientesSemFicha()
+    {
+        $sql = "SELECT c.id, c.nome 
+            FROM cliente c
+            LEFT JOIN anamnese a ON c.id = a.cliente_id
+            WHERE a.id IS NULL"; // Apenas clientes sem ficha
+
+        $query = $this->db->query($sql);
+
+        return $this->response->setJSON($query->getResult());
+    }
 }

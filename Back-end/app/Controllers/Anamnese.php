@@ -9,7 +9,7 @@ use CodeIgniter\HTTP\ResponseInterface;
 class Anamnese extends BaseController
 {
     protected $model;
-    
+
     public function __construct()
     {
         $this->model = new AnamneseModel();
@@ -44,12 +44,15 @@ class Anamnese extends BaseController
     {
         try {
             // Inserção no banco de dados
-            $dados = $this->model->findAll();
+            $dados = $this->model
+                 ->select('cliente.nome, anamnese.*,') // Pegando apenas o nome do cliente
+                ->join('cliente', 'cliente.id = anamnese.cliente_id') // Ligação entre as tabelas
+                ->findAll();
             return $this->response
                 ->setStatusCode(ResponseInterface::HTTP_CREATED)
                 ->setJSON([
                     'success' => true,
-                    $dados
+                    'dados' => $dados
                 ]);
         } catch (\Exception $e) {
             return $this->response
@@ -62,17 +65,17 @@ class Anamnese extends BaseController
         }
     }
 
-    public function deleteAnamnese(){
+    public function deleteAnamnese()
+    {
         try {
             $id = $this->request->getJSON(true);
             $this->model->delete($id);
             return $this->response
-            ->setStatusCode(ResponseInterface::HTTP_OK)
-            ->setJSON([
-                'success' => true,
-                'msg' => 'Anamnese Excluida com sucesso!',
-            ]);
-
+                ->setStatusCode(ResponseInterface::HTTP_OK)
+                ->setJSON([
+                    'success' => true,
+                    'msg' => 'Anamnese Excluida com sucesso!',
+                ]);
         } catch (\Exception $e) {
             return $this->response
                 ->setStatusCode(ResponseInterface::HTTP_INTERNAL_SERVER_ERROR)

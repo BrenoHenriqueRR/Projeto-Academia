@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class PnClienteService {
   private url = 'http://localhost/sites/Projeto1/Back-end/public/Cliente/pesquisar';
+  private urlSAnam = 'http://localhost/sites/Projeto1/Back-end/public/Cliente/getClientesSemAnamnese';
   private urlpid = 'http://localhost/sites/Projeto1/Back-end/public/Cliente/pesquisarpid';
   private urldel = 'http://localhost/sites/Projeto1/Back-end/public/Cliente/delete';
   private urlFoto = 'http://localhost/sites/Projeto1/Back-end/public/Cliente/inserirFoto';
@@ -18,6 +19,10 @@ export class PnClienteService {
 
   pesquisar(): Observable<CliPesquisar> {
     return this.http.get<CliPesquisar>(this.url);
+  }
+
+  pesquisarSAnam(): Observable<CliPesquisar> {
+    return this.http.get<CliPesquisar>(this.urlSAnam);
   }
   pesquisarpid(id:any): Observable<any> {
     return this.http.post<any>(this.urlpid, id);

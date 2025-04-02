@@ -34,14 +34,18 @@
                 </li>
                 }
 
-                <li class="side-item" routerLinkActive="mat-accent">
-                    <a routerLink="clientes">
+                <li class="side-item dropdown" routerLinkActive="mat-accent">
+                    <a class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" routerLink="clientes">
                         <i class="fa-solid fa-user"></i>
-                        <span class="item-description">
-                            Clientes
-                        </span>
+                        <span class="item-description">Clientes</span>
                     </a>
+                
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" routerLink="clientes/anamnese">Anamnese</a></li>
+                        <li><a class="dropdown-item" routerLink="clientes/pagamentos">Pagamentos</a></li>
+                    </ul>
                 </li>
+                
                 @if (funcionalidade != 'personal') {
                 <li class="side-item" routerLinkActive="mat-accent">
                     <a routerLink="funcionarios">

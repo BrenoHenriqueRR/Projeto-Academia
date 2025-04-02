@@ -14,7 +14,7 @@ import { ConfigService } from '../../../services/admin/config/config.service';
 @Component({
   selector: 'app-painel-admin',
   standalone: true,
-  imports: [RouterOutlet, PnFuncionariosComponent, RouterLink, MatTabsModule, RouterLinkActive, FormsModule,CommonModule ],
+  imports: [RouterOutlet, RouterLink, MatTabsModule, RouterLinkActive, FormsModule, CommonModule],
   providers: [
     LoginAdminService,
   ],
@@ -49,6 +49,8 @@ export class PainelAdminComponent {
       },
     })
   }
+
+  
 
   constructor(private router: Router,private configservice: ConfigService ,private service: LoginAdminService, @Inject(ActivatedRoute) private route: ActivatedRoute,private guard: AuthserviceService) {
     this.route.queryParams.subscribe(params => {

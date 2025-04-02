@@ -31,6 +31,8 @@ import { ModalEditarPlanosComponent } from './components/modais/modal-editar-pla
 import { EntradaComponent } from './components/entrada/entrada.component';
 import { PnLojaComponent } from './components/admin/painel-admin/pn-loja/pn-loja.component';
 import { AnamneseComponent } from './components/admin/painel-admin/anamnese/anamnese.component';
+import { CadAnamneseComponent } from './components/admin/painel-admin/anamnese/cad-anamnese/cad-anamnese.component';
+import { EditarAnamneseComponent } from './components/admin/painel-admin/anamnese/editar-anamnese/editar-anamnese.component';
 
 
 export const routes: Routes = [
@@ -100,6 +102,8 @@ export const routes: Routes = [
             { path: 'loja', component: PnLojaComponent,  canActivate: [adminGuard] },
             { path: 'clientes/editar', component: ModalEditarComponent,  canActivate: [adminGuard] },
             { path: 'clientes/anamnese', component: AnamneseComponent,  canActivate: [adminGuard] },
+            { path: 'clientes/anamnese/cadastrar', component: CadAnamneseComponent,  canActivate: [adminGuard] },
+            { path: 'clientes/anamnese/editar', component: EditarAnamneseComponent,  canActivate: [adminGuard] },
             { path: 'clientes/treinos', component: CadTreinoComponent,  canActivate: [adminGuard] },
         ],
 

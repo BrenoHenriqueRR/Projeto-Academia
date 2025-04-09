@@ -23,6 +23,7 @@ import { ConfigService } from '../../../services/admin/config/config.service';
 })
 export class PainelAdminComponent {
   [x: string]: any;
+  abrirDrop: boolean = false
   private dados: any;
   funcionalidade!: any;
   termoBusca: string = '';
@@ -31,6 +32,8 @@ export class PainelAdminComponent {
     { description: 'Dashboard', routerLink: 'dashboard', iconClass: 'fa-solid fa-chart-line' },
     { description: 'Treinos', routerLink: 'treinos', iconClass: 'fa-solid fa-dumbbell' },
     { description: 'Clientes', routerLink: 'clientes', iconClass: 'fa-solid fa-user' },
+    { description: 'Anamnese', routerLink: 'clientes/anamnese', iconClass: 'fas fa-notes-medical' },
+    { description: 'Pagamentos', routerLink: 'clientes/pagamentos', iconClass: 'fa-solid fa-sack-dollar' },
     { description: 'Funcionários', routerLink: 'funcionarios', iconClass: 'fa-solid fa-user-tie' },
     { description: 'Financeiro', routerLink: 'financeiro', iconClass: 'fa-solid fa-coins' },
   ];
@@ -61,6 +64,11 @@ export class PainelAdminComponent {
       };
     });
     this.funcao();
+  }
+
+  openDrop(){
+    this.abrirDrop = !this.abrirDrop;
+
   }
 
   correspondeBusca(item: any): boolean {

@@ -1,4 +1,7 @@
 <div class="container">
+    <div *ngIf="loading">
+        <app-modal-spinner></app-modal-spinner>
+    </div>
     <h1 class="h1-anam mb-5">Listagem de Anamnese</h1>
     <button class="btn btn-primary mb-5" routerLink="cadastrar" ><i
         class="fa-solid fa-plus p-1"></i></button>

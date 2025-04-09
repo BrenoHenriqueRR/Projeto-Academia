@@ -234,3 +234,10 @@ main {
     padding-top: calc(10vh + 1.2rem); 
 }
 
+
+.open-drop{
+    position: absolute;
+    right: 20px;
+    color: white;
+}
+

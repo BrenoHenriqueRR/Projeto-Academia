@@ -1,0 +1,116 @@
+CRITICAL - 2025-04-07 23:54:10 --> CodeIgniter\HTTP\Exceptions\HTTPException: Failed to parse JSON string. Error: Syntax error
+in SYSTEMPATH\HTTP\IncomingRequest.php on line 588.
+ 1 SYSTEMPATH\HTTP\IncomingRequest.php(588): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidJSON('Syntax error')
+ 2 APPPATH\Controllers\Anamnese.php(70): CodeIgniter\HTTP\IncomingRequest->getJSON()
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Anamnese->readId()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Anamnese))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-04-07 23:55:09 --> ParseError: syntax error, unexpected identifier "Anamnese", expecting ")"
+in APPPATH\Config\Routes.php on line 146.
+ 1 SYSTEMPATH\CodeIgniter.php(810): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 2 SYSTEMPATH\CodeIgniter.php(450): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-04-07 23:55:09 --> ParseError: syntax error, unexpected identifier "Anamnese", expecting ")"
+in APPPATH\Config\Routes.php on line 146.
+ 1 SYSTEMPATH\CodeIgniter.php(810): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 2 SYSTEMPATH\CodeIgniter.php(450): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-04-07 23:55:12 --> ParseError: syntax error, unexpected identifier "Anamnese", expecting ")"
+in APPPATH\Config\Routes.php on line 146.
+ 1 SYSTEMPATH\CodeIgniter.php(810): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 2 SYSTEMPATH\CodeIgniter.php(450): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-04-07 23:55:12 --> ParseError: syntax error, unexpected identifier "Anamnese", expecting ")"
+in APPPATH\Config\Routes.php on line 146.
+ 1 SYSTEMPATH\CodeIgniter.php(810): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 2 SYSTEMPATH\CodeIgniter.php(450): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-04-07 23:55:12 --> ParseError: syntax error, unexpected identifier "Anamnese", expecting ")"
+in APPPATH\Config\Routes.php on line 146.
+ 1 SYSTEMPATH\CodeIgniter.php(810): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 2 SYSTEMPATH\CodeIgniter.php(450): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-04-07 23:55:12 --> ParseError: syntax error, unexpected identifier "Anamnese", expecting ")"
+in APPPATH\Config\Routes.php on line 146.
+ 1 SYSTEMPATH\CodeIgniter.php(810): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 2 SYSTEMPATH\CodeIgniter.php(450): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-04-07 23:55:23 --> Error: Call to undefined method CodeIgniter\Router\RouteCollection::pos()
+in APPPATH\Config\Routes.php on line 146.
+ 1 SYSTEMPATH\Router\RouteCollection.php(779): CodeIgniter\Router\RouteCollection->{closure}(Object(CodeIgniter\Router\RouteCollection))
+ 2 APPPATH\Config\Routes.php(147): CodeIgniter\Router\RouteCollection->group('Anamnese', Object(Closure))
+ 3 SYSTEMPATH\Router\RouteCollection.php(345): require('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Config\\Routes.php')
+ 4 SYSTEMPATH\CodeIgniter.php(810): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 5 SYSTEMPATH\CodeIgniter.php(450): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-04-07 23:55:23 --> Error: Call to undefined method CodeIgniter\Router\RouteCollection::pos()
+in APPPATH\Config\Routes.php on line 146.
+ 1 SYSTEMPATH\Router\RouteCollection.php(779): CodeIgniter\Router\RouteCollection->{closure}(Object(CodeIgniter\Router\RouteCollection))
+ 2 APPPATH\Config\Routes.php(147): CodeIgniter\Router\RouteCollection->group('Anamnese', Object(Closure))
+ 3 SYSTEMPATH\Router\RouteCollection.php(345): require('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Config\\Routes.php')
+ 4 SYSTEMPATH\CodeIgniter.php(810): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 5 SYSTEMPATH\CodeIgniter.php(450): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-04-07 23:55:23 --> Error: Call to undefined method CodeIgniter\Router\RouteCollection::pos()
+in APPPATH\Config\Routes.php on line 146.
+ 1 SYSTEMPATH\Router\RouteCollection.php(779): CodeIgniter\Router\RouteCollection->{closure}(Object(CodeIgniter\Router\RouteCollection))
+ 2 APPPATH\Config\Routes.php(147): CodeIgniter\Router\RouteCollection->group('Anamnese', Object(Closure))
+ 3 SYSTEMPATH\Router\RouteCollection.php(345): require('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Config\\Routes.php')
+ 4 SYSTEMPATH\CodeIgniter.php(810): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 5 SYSTEMPATH\CodeIgniter.php(450): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-04-07 23:55:23 --> Error: Call to undefined method CodeIgniter\Router\RouteCollection::pos()
+in APPPATH\Config\Routes.php on line 146.
+ 1 SYSTEMPATH\Router\RouteCollection.php(779): CodeIgniter\Router\RouteCollection->{closure}(Object(CodeIgniter\Router\RouteCollection))
+ 2 APPPATH\Config\Routes.php(147): CodeIgniter\Router\RouteCollection->group('Anamnese', Object(Closure))
+ 3 SYSTEMPATH\Router\RouteCollection.php(345): require('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Config\\Routes.php')
+ 4 SYSTEMPATH\CodeIgniter.php(810): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 5 SYSTEMPATH\CodeIgniter.php(450): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-04-07 23:55:26 --> Error: Call to undefined method CodeIgniter\Router\RouteCollection::pos()
+in APPPATH\Config\Routes.php on line 146.
+ 1 SYSTEMPATH\Router\RouteCollection.php(779): CodeIgniter\Router\RouteCollection->{closure}(Object(CodeIgniter\Router\RouteCollection))
+ 2 APPPATH\Config\Routes.php(147): CodeIgniter\Router\RouteCollection->group('Anamnese', Object(Closure))
+ 3 SYSTEMPATH\Router\RouteCollection.php(345): require('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Config\\Routes.php')
+ 4 SYSTEMPATH\CodeIgniter.php(810): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 5 SYSTEMPATH\CodeIgniter.php(450): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-04-07 23:55:26 --> Error: Call to undefined method CodeIgniter\Router\RouteCollection::pos()
+in APPPATH\Config\Routes.php on line 146.
+ 1 SYSTEMPATH\Router\RouteCollection.php(779): CodeIgniter\Router\RouteCollection->{closure}(Object(CodeIgniter\Router\RouteCollection))
+ 2 APPPATH\Config\Routes.php(147): CodeIgniter\Router\RouteCollection->group('Anamnese', Object(Closure))
+ 3 SYSTEMPATH\Router\RouteCollection.php(345): require('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Config\\Routes.php')
+ 4 SYSTEMPATH\CodeIgniter.php(810): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 5 SYSTEMPATH\CodeIgniter.php(450): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-04-07 23:55:26 --> Error: Call to undefined method CodeIgniter\Router\RouteCollection::pos()
+in APPPATH\Config\Routes.php on line 146.
+ 1 SYSTEMPATH\Router\RouteCollection.php(779): CodeIgniter\Router\RouteCollection->{closure}(Object(CodeIgniter\Router\RouteCollection))
+ 2 APPPATH\Config\Routes.php(147): CodeIgniter\Router\RouteCollection->group('Anamnese', Object(Closure))
+ 3 SYSTEMPATH\Router\RouteCollection.php(345): require('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Config\\Routes.php')
+ 4 SYSTEMPATH\CodeIgniter.php(810): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 5 SYSTEMPATH\CodeIgniter.php(450): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-04-07 23:55:26 --> Error: Call to undefined method CodeIgniter\Router\RouteCollection::pos()
+in APPPATH\Config\Routes.php on line 146.
+ 1 SYSTEMPATH\Router\RouteCollection.php(779): CodeIgniter\Router\RouteCollection->{closure}(Object(CodeIgniter\Router\RouteCollection))
+ 2 APPPATH\Config\Routes.php(147): CodeIgniter\Router\RouteCollection->group('Anamnese', Object(Closure))
+ 3 SYSTEMPATH\Router\RouteCollection.php(345): require('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Config\\Routes.php')
+ 4 SYSTEMPATH\CodeIgniter.php(810): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 5 SYSTEMPATH\CodeIgniter.php(450): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

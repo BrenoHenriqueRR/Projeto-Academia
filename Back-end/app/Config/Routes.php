@@ -141,8 +141,10 @@ $routes->group('Loja', function ($routes) {
 // =====================
 $routes->group('Anamnese', function ($routes) {
     $routes->post('create', 'Anamnese::create');
-    $routes->post('deleteProduto', 'Anamnese::deleteAnamnese');
+    $routes->post('delete', 'Anamnese::delete');
+    $routes->post('update', 'Anamnese::update');
     $routes->get('read', 'Anamnese::read');
+    $routes->post('readId', 'Anamnese::readId');
 });
 
 // =====================

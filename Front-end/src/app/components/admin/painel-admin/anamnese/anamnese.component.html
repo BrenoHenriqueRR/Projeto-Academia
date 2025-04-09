@@ -10,7 +10,6 @@
             <tr>
                 <th>ID</th>
                 <th>Nome</th>
-                <!-- <th>Frequência</th> -->
                 <th>Ações</th>
             </tr>
         </thead>
@@ -19,7 +18,6 @@
             <tr>
                 <td>{{dados.id}}</td>
                 <td>{{dados.nome}}</td>
-                <!-- <td>{{dados.frequencia}}</td> -->
                 <td>
                     <button class="pn-button" routerLink="editar" [queryParams]="{ id: dados.id}">Editar</button>
                     <button class="pn-button bg-red" (click)="openmodal(dados.id)">Excluir</button>

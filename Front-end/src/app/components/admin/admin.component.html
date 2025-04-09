@@ -5,7 +5,7 @@
                 <img src="assets/imgs/logo/logo.jpg" alt="" >
             </div>
             <div class="form">
-                <form [formGroup]="formlogin" method="post">
+                <form [formGroup]="formlogin" (ngSubmit)="submit()">
                     <div class="input">
                         <label for="email">Email:</label>
                         <input type="text" id="email" name="email" formControlName="email" >
@@ -15,7 +15,7 @@
                         <input type="password" id="senha" name="senha" formControlName="senha">
                     </div>
                     <div class="input-button">
-                        <input class="btn" *ngIf="!loading" type="submit" value="Logar" (click)="submit()">
+                        <button class="btn" *ngIf="!loading"><b>Entrar</b></button>
                         <div *ngIf="loading" class="spinner-container">
                             <button class="btn btn-primary" disabled>
                             <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>

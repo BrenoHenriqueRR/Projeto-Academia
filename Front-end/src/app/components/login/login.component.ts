@@ -46,9 +46,9 @@ export class LoginComponent {
       this.service.sendData(dados).subscribe({
         next: (resposta) => {
           this.mensagem = resposta[0].msg;
-          console.log(resposta);
+          // console.log(resposta);
           const id = resposta[0].id;
-          console.log(this.mensagem);
+          // console.log(this.mensagem);
           this.formlogin.reset();
           if (this.mensagem == 'true') {
             setTimeout(() => {

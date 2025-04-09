@@ -4,7 +4,7 @@
   <div class="container">
     <div class="cont-2">
       <div class="formulario">
-        <form [formGroup]="formlogin" method="post">
+        <form [formGroup]="formlogin" (ngSubmit)="submit()">
           <div class="mb-3">
               <h1 class="text-center">Faça o seu Login</h1><br>
               <label for="exampleFormControlInput1" class="form-label">Email:</label>
@@ -21,7 +21,7 @@
               </div>
             </div> 
             <div *ngIf="!loading" class="input-box mb-3 align-items-center d-flex justify-content-center">
-              <input type="submit" (click)="submit()" value="Entrar" class="button">
+              <button class="button">Entrar</button>
               </div>
             <div *ngIf="loading" class="spinner-container input-box mb-3 align-items-center d-flex justify-content-center">
               <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>

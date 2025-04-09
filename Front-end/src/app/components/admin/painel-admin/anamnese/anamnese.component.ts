@@ -7,11 +7,12 @@ import { AnamneseService } from '../../../../services/admin/anamnese/anamnese.se
 import { NgxPaginationModule } from 'ngx-pagination';
 import { RouterLink } from '@angular/router';
 import { ModalConfirmarComponent } from '../../../modais/modal-confirmar/modal-confirmar.component';
+import { ModalSpinnerComponent } from '../../../modais/modal-spinner/modal-spinner.component';
 
 @Component({
   selector: 'app-anamnese',
   standalone: true,
-  imports: [ReactiveFormsModule,NgxPaginationModule,RouterLink,ModalConfirmarComponent],
+  imports: [ReactiveFormsModule,NgxPaginationModule,RouterLink,ModalConfirmarComponent,ModalSpinnerComponent,NgIf],
   templateUrl: './anamnese.component.html',
   styleUrl: './anamnese.component.css'
 })
@@ -21,6 +22,7 @@ export class AnamneseComponent {
   anamneseForm!: FormGroup;
   clientes: any;
   anamnese: any = { dados: [] };
+  loading: boolean = true;
   idDelete: any = '';
 
   constructor(private fb: FormBuilder, private cliservice: PnClienteService, private alert: ToastrService, private anamservice : AnamneseService) { }
@@ -64,9 +66,10 @@ export class AnamneseComponent {
   excluir(idDelete: any) {
     this.anamservice.delete(idDelete).subscribe({
       next: (resp) =>  {
-        
+        this.alert.success(resp.msg);
+        this.ngOnInit();
       },error: (err) => {
-        
+        console.log(err);
       }
     })
   }
@@ -85,9 +88,10 @@ export class AnamneseComponent {
     this.anamservice.read().subscribe({
       next: (dados) => {
         this.anamnese = dados;
-        console.log(this.anamnese);
+        // console.log(this.anamnese);
+        this.loading = false;
       }, error: (err) => {
-        
+        console.log(err)
       },
     })
   }

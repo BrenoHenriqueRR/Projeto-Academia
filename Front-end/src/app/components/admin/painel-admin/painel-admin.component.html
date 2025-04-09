@@ -34,18 +34,34 @@
                 </li>
                 }
 
-                <li class="side-item dropdown" routerLinkActive="mat-accent">
-                    <a class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" routerLink="clientes">
+                <li class="side-item" routerLinkActive="mat-accent">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <a routerLink="clientes" class="d-flex align-items-center">
                         <i class="fa-solid fa-user"></i>
-                        <span class="item-description">Clientes</span>
+                        <span class="item-description ms-2">Clientes</span>
+                      </a>
+                      <i 
+                        (click)="openDrop()" 
+                        class="open-drop fa-solid" 
+                        [ngClass]="abrirDrop ? 'fa-chevron-up' : 'fa-chevron-down'"
+                        style="cursor: pointer;"
+                      ></i>
+                    </div>
+                  </li>
+                  
+                  <li *ngIf="abrirDrop" class="ms-5 p-2 rounded" routerLinkActive="mat-accent" > 
+                    <a class="text-decoration-none text-white" routerLink="clientes/anamnese">
+                        <i class="fas fa-notes-medical mx-2"></i>
+                      <span class="item-description">Anamnese</span>
                     </a>
-                
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" routerLink="clientes/anamnese">Anamnese</a></li>
-                        <li><a class="dropdown-item" routerLink="clientes/pagamentos">Pagamentos</a></li>
-                    </ul>
-                </li>
-                
+                  </li>
+                  <li *ngIf="abrirDrop" class="ms-5 p-2 rounded" routerLinkActive="mat-accent" > 
+                    <a class="text-decoration-none text-white" routerLink="clientes/pagamentos">
+                        <i class="fa-solid fa-sack-dollar mx-2"></i>
+                      <span class="item-description">Pagamentos</span>
+                    </a>
+                  </li>
+                  
                 @if (funcionalidade != 'personal') {
                 <li class="side-item" routerLinkActive="mat-accent">
                     <a routerLink="funcionarios">

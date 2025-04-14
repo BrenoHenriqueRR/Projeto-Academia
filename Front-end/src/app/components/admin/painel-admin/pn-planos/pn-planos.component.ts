@@ -11,12 +11,12 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-pn-planos',
   standalone: true,
-  imports: [ModalConfirmarComponent, ModalCadastroComponent, NgFor, ReactiveFormsModule, NgxMaskDirective, RouterLink],
+  imports: [ModalConfirmarComponent, ModalCadastroComponent, ReactiveFormsModule, NgxMaskDirective, RouterLink],
   providers: [provideNgxMask()],
   templateUrl: './pn-planos.component.html',
   styleUrl: './pn-planos.component.css'
 })
-export class PnPlanosComponent {
+export class PnPlanosComponent { 
   planos: any;
   extras: any;
   loading: boolean = false;

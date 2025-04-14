@@ -2,7 +2,7 @@ import { Component, EventEmitter, Output, Input, signal, ElementRef, HostListene
 import { MenuHomeComponent } from '../menu-home/menu-home.component';
 import { LoginComponent } from '../login/login.component';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CadastroService } from '../../services/cadastro.service';
 import { NgFor, NgIf } from '@angular/common';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
@@ -39,6 +39,40 @@ export class CadastroComponent {
   extrasnome: Array<{ nome: string; preco: string }> = [];
   select_extras: Array<{ id: number, nome: string }> = [];
   cadAdm: string = "";
+  anamneseForm!: FormGroup;
+
+  problemasSaude = [
+    'Doença cardiaca coronariana',
+    'Doença cardiaca reumática',
+    'Doença cardiaca congênica',
+    'Batimentos cardíacos irregulares',
+    'Problemas nas válvulas cardíacas',
+    'Murmúrios cardíacos',
+    'Hipertensão',
+    'Ataque cardíaco',
+    'Epilepsia',
+    'Diabetes',
+    'Anguba',
+    'Câncer'
+  ];
+  sintomasLista = [
+    'Dor nas costas',
+    'Dor nas articulações,tendões ou músculo',
+    'Doença pulmonar(asma, enfisema, outra)'
+  ];
+  objetivos = [
+    'Perder peso',
+    'Melhorar aptidão fisica',
+    'Melhorar flexibilidade',
+    'Melhorar a condição muscular',
+    'Reduzir as dores nas costas',
+    'Reduzir o estresse',
+    'Parar de fumar',
+    'Diminuir colesterol',
+    'Melhorar a nutruição',
+    'Sentir-se melhor',
+    'Outro (especifique)'
+  ];
 
 
 
@@ -71,19 +105,9 @@ export class CadastroComponent {
         this.loading = false;
       }
     })
-
-    this.formcadastro = new FormGroup({
-      nome: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      senha: new FormControl('', [Validators.required]),
-      endereco: new FormControl('', [Validators.required]),
-      datanascimento: new FormControl('', [Validators.required]),
-      CPF: new FormControl('', [Validators.required]),
-      personal_id: new FormControl('', [Validators.required]),
-    });
   }
 
-  constructor(private service: CadastroService, private router: Router, private planosService: ConfigService, private el: ElementRef, private route: ActivatedRoute) { }
+  constructor(private fb: FormBuilder,private service: CadastroService, private router: Router, private planosService: ConfigService, private el: ElementRef, private route: ActivatedRoute) { }
 
 
   @HostListener('window:scroll', [])
@@ -117,6 +141,38 @@ export class CadastroComponent {
         console.error('Erro ao buscar dados:', erro);
       }
 
+    });
+  }
+
+  inicializarForm(){
+    this.formcadastro = new FormGroup({
+      nome: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      senha: new FormControl('', [Validators.required]),
+      endereco: new FormControl('', [Validators.required]),
+      datanascimento: new FormControl('', [Validators.required]),
+      CPF: new FormControl('', [Validators.required]),
+      personal_id: new FormControl('', [Validators.required]),
+    });
+
+    this.anamneseForm = this.fb.group({
+      cliente_id: [null, Validators.required],
+      perg_problemas_saude: this.fb.array([]),
+      perg_sintomas: this.fb.array([]),
+      perg_medicamentos: [''],
+      perg_historico_familiar_cardiaco: [false],
+      perg_restricao_medica: [],
+      perg_gravida: [],
+      perg_fuma: [],
+      perg_bebe_alcool: [],
+      perg_exercicio_frequente: [],
+      perg_qtde_aerobico: [],
+      perg_colesterol_medido: [],
+      perg_alimentacao_balanceada: [],
+      perg_gordura_alta: [],
+      perg_nivel_estresse: ['leve', Validators.required],
+      perg_objetivos_saude: this.fb.array([]),
+      anotacoes: [],
     });
   }
 

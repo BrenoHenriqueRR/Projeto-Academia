@@ -30,27 +30,6 @@ export class AnamneseComponent {
   ngOnInit(): void {
     this.pesquisarCli();
     this.pesquisarAnam();
-
-    
-    // this.anamneseForm = this.fb.group({
-    //   cliente_id: [null, Validators.required],
-    //   perg_problemas_saude: this.fb.array([]),
-    //   perg_sintomas: this.fb.array([]),
-    //   perg_medicamentos: [''],
-    //   perg_historico_familiar_cardiaco: [false],
-    //   perg_restricao_medica: [],
-    //   perg_gravida: [],
-    //   perg_fuma: [],
-    //   perg_bebe_alcool: [],
-    //   perg_exercicio_frequente: [],
-    //   perg_qtde_aerobico: [],
-    //   perg_colesterol_medido: [],
-    //   perg_alimentacao_balanceada: [], 
-    //   perg_gordura_alta: [], 
-    //   perg_nivel_estresse: ['leve', Validators.required],
-    //   perg_objetivos_saude: this.fb.array([]),
-    //   anotacoes: [],
-    // });
   }
 
   openmodal(id: any) {

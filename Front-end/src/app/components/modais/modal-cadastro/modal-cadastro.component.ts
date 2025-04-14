@@ -6,6 +6,7 @@ import { PnFuncionarioService } from '../../../services/admin/pn-funcionario/pn-
 import { ToastrService } from 'ngx-toastr';
 import { ConfigService } from '../../../services/admin/config/config.service';
 import { CadastroService } from '../../../services/cadastro.service';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-modal-cadastro',
@@ -29,6 +30,7 @@ export class ModalCadastroComponent {
   novoBeneficio: string = '';
   Personal!: any;
   beneficios: string[] = [];
+  mostraSelectPersonal = false;
 
   ngOnInit() {
     this.inicializarForm();
@@ -51,7 +53,7 @@ export class ModalCadastroComponent {
   }
 
   constructor(private fb: FormBuilder, private funcservice: PnFuncionarioService, private alertas: ToastrService,
-    private academiaservice: ConfigService, private cliservice: CadastroService) {}
+    private academiaservice: ConfigService, private cliservice: CadastroService, private router: Router) {}
 
   inicializarForm(){
     this.funcForm = this.fb.group({
@@ -66,14 +68,16 @@ export class ModalCadastroComponent {
     });
     this.CliForm = this.fb.group({
       foto_perfil: [''],
-      nome: ['', Validators.required],
-      endereco: ['', Validators.required],
-      telefone: ['', Validators.required],
       CPF: ['', Validators.required],
       RG: ['', Validators.required],
-      data_nascimento: ['', Validators.required],
-      personal_id: ['', Validators.required],
+      nome: ['', Validators.required],
+      telefone: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
+      endereco: ['', Validators.required],
+      datanascimento: ['', Validators.required],
+      nivel_experiencia: ['iniciante', Validators.required],
+      treino_com_personal: [false,Validators.required],
+      personal_id: ['', Validators.required],
     });
     this.extraForm = this.fb.group({
       nome_extra: ['', Validators.required],
@@ -92,6 +96,13 @@ export class ModalCadastroComponent {
       beneficios: ['', [Validators.required]],
       disponibilidade: ['', [Validators.required]]
     });
+  }
+
+  onPersonalToggle(event: any) {
+    this.mostraSelectPersonal = event.target.checked;
+    if (!this.mostraSelectPersonal) {
+      this.CliForm.get('personal_id')?.setValue(null);
+    }
   }
 
   submitForm() {
@@ -141,6 +152,9 @@ export class ModalCadastroComponent {
               this.CliForm.reset();
               $('#exampleModal').modal('hide');
               this.CloseModal.emit();
+              this.router.navigate(['planos'],{
+                queryParams: { "cad" : "true"}
+              });
               this.tipo = '';
               this.fileName = '';
               this.foto = '';

@@ -83,9 +83,9 @@ export class CadastroComponent {
     });
   }
 
-  constructor(private service: CadastroService, private router: Router, private planosService: ConfigService, private el: ElementRef, private route: ActivatedRoute) {}
+  constructor(private service: CadastroService, private router: Router, private planosService: ConfigService, private el: ElementRef, private route: ActivatedRoute) { }
 
-  
+
   @HostListener('window:scroll', [])
   onWindowScroll() {
     // Verifica se o usuário rolou além da posição da div
@@ -99,10 +99,10 @@ export class CadastroComponent {
   submit() {
     if (this.formcadastro.valid) {
       let dados = this.formcadastro.getRawValue();
-      dados['extras'] = this.select_extras.map((extra: { id:number }) => extra.id);
-      dados['plano'] = this.planos.map((plano: {id: number}) => plano.id);
-  
-      console.log (JSON.stringify(dados));
+      dados['extras'] = this.select_extras.map((extra: { id: number }) => extra.id);
+      dados['plano'] = this.planos.map((plano: { id: number }) => plano.id);
+
+      console.log(JSON.stringify(dados));
     } else {
       alert("campos vazio!!")
     }
@@ -116,7 +116,7 @@ export class CadastroComponent {
       }, error: (erro) => {
         console.error('Erro ao buscar dados:', erro);
       }
-      
+
     });
   }
 
@@ -152,16 +152,27 @@ export class CadastroComponent {
       case "1":
         this.loading = true;
         setTimeout(() => {
-          this.etapa++;
-          this.router.navigate([], {
-            relativeTo: this.route,
-            queryParams: { etapa: this.etapa },
-            queryParamsHandling: 'merge'
-          });
-          this.loading = false;
+          if (this.cadAdm == "true") {
+            this.etapa = 3;
+            this.router.navigate([], {
+              relativeTo: this.route,
+              queryParams: { etapa: this.etapa },
+              queryParamsHandling: 'merge'
+            });
+            this.loading = false;
+          }else{
+            this.etapa++;
+            this.router.navigate([], {
+              relativeTo: this.route,
+              queryParams: { etapa: this.etapa },
+              queryParamsHandling: 'merge'
+            });
+            this.loading = false;
+          }
         }, 300);
         break;
       case "2":
+
         if (!this.formcadastro.valid) {
           alert("campos vazio!!");
           break;
@@ -174,8 +185,8 @@ export class CadastroComponent {
             queryParams: { etapa: this.etapa },
             queryParamsHandling: 'merge'
           });
-          break;
         }
+        break;
       default:
         break;
     }

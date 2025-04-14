@@ -69,6 +69,7 @@ Bucasdados(){
   const jsonString  = '{"id": "' + this.identificador + '"}';
   this.service.pesquisar(jsonString).subscribe({
     next: (dados) => {
+      console.log(dados);
       this.data = Array(dados);
       this.foto_perfil = environment.apiUrl + '/' +  this.data[0].foto_perfil;
       this.verifi_foto_perfil = this.data[0].verifi_img;

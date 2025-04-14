@@ -57,7 +57,7 @@ export class PnClientesComponent {
   List() {
     this.service.pesquisar().subscribe({
       next: (dado) => {
-        console.log(dado);
+        // console.log(dado);
         this.dados_cli = dado;
         this.loading = false;
       },

@@ -61,7 +61,9 @@
                             Treinos</button>
                         }
                         <app-modal-confirmar (confirm)="validarmodal($event)"></app-modal-confirmar>
-                        <app-modal-exibir (click)="openmodalH(dados.id)" ></app-modal-exibir>
+                        <button type="button" class="pn-button" (click)="openmodalH(dados.id)" data-bs-toggle="modal" data-bs-target="#exibirModal">📜 Histórico</button>
+
+                        <app-modal-exibir #modalH></app-modal-exibir>
                         }
                     </td>
                 </tr>

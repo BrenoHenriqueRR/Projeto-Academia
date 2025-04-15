@@ -9,11 +9,13 @@ import { ModalConfirmarComponent } from '../../../modais/modal-confirmar/modal-c
 import { ModalFaceidComponent } from '../../../modais/modal-faceid/modal-faceid.component';
 import { ModalSpinnerComponent } from "../../../modais/modal-spinner/modal-spinner.component";
 import { ModalExibirComponent } from '../../../modais/modal-exibir/modal-exibir.component';
+import { MatDialog } from '@angular/material/dialog';
+import { EscolhaCadastroComponent } from '../../../modais/escolha-cadastro/escolha-cadastro.component';
 
 @Component({
   selector: 'app-pn-clientes',
   standalone: true,
-  imports: [NgxPaginationModule, RouterLink, NgIf, ModalConfirmarComponent, ModalCadastroComponent, ModalFaceidComponent, ModalSpinnerComponent, ModalExibirComponent],
+  imports: [NgxPaginationModule, RouterLink, NgIf, ModalConfirmarComponent, ModalFaceidComponent, ModalSpinnerComponent, ModalExibirComponent],
   templateUrl: './pn-clientes.component.html',
   styleUrl: './pn-clientes.component.css'
 })
@@ -31,8 +33,14 @@ export class PnClientesComponent {
     this.List();
   }
 
-  constructor(private service: PnClienteService, private router: Router, private loginservice: LoginAdminService) { }
+  constructor(private service: PnClienteService, private router: Router, private loginservice: LoginAdminService,
+    private dialog: MatDialog) { }
 
+  abrirModalCadastro() {
+    this.dialog.open(EscolhaCadastroComponent, {
+      width: '350px'
+    });
+  }
 
   Closemodal() {
     this.ngOnInit();

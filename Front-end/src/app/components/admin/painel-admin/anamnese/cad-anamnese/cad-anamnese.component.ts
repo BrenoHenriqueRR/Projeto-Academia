@@ -48,7 +48,8 @@ export class CadAnamneseComponent {
     'Outro (especifique)'
   ];
 
-  constructor(private fb: FormBuilder, private cliservice: PnClienteService, private alert: ToastrService, private anamservice: AnamneseService) { }
+  constructor(private fb: FormBuilder, private cliservice: PnClienteService, private alert: ToastrService,
+  private anamservice: AnamneseService) { }
 
   ngOnInit(): void {
     this.pesquisarCli();

@@ -93,6 +93,7 @@ export const routes: Routes = [
             { path: 'dashboard', component: DashboardComponent,  canActivate: [adminGuard] },
             { path: 'funcionarios', component: PnFuncionariosComponent,  canActivate: [adminGuard] },
             { path: 'clientes', component: PnClientesComponent,  canActivate: [adminGuard] },
+            { path: 'planos', component: PlanosComponent, canActivate: [adminGuard] },
             { path: 'treinos', component: PnTreinoComponent,  canActivate: [adminGuard] },
             { path: 'planos', component: PnPlanosComponent,  canActivate: [adminGuard] },
             { path: 'planos/editar', component: ModalEditarPlanosComponent,  canActivate: [adminGuard] },

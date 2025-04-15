@@ -9,9 +9,14 @@
         <h1 class="h1-cli">Listagem de Clientes</h1>
         <div class="my-4 d-flex justify-content-between align-items-center">
             <div class="d-flex gap-5">
-                <div class="">
-                    <app-modal-cadastro (CloseModal)="Closemodal()" tipo="cliente"></app-modal-cadastro>
+                <div>
+                    <button mat-raised-button class="btn btn-primary" (click)="abrirModalCadastro()">
+                        + Adicionar
+                      </button>
                 </div>
+                <!-- <div class="">
+                    <app-modal-cadastro (CloseModal)="Closemodal()" tipo="cliente"></app-modal-cadastro>
+                </div> -->
                 <div class="">
                     <button type="button" class="btn btn-primary" routerLink="anamnese"><i class="fas fa-notes-medical mx-2"></i>Anamnese</button>
                 </div>

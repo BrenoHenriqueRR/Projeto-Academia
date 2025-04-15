@@ -10,11 +10,10 @@
 
 
 a,h1,h2,h3{
-    font-family: 'Anton' , serif;
+    font-family: 'Anton' , serif !important;
 
 }
 
 p{
-    font-family: "Poppins", sans-serif;
+    font-family: "Poppins", sans-serif !important;
 }
-

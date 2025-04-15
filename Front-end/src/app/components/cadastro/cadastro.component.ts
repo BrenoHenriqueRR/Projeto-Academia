@@ -2,13 +2,15 @@ import { Component, EventEmitter, Output, Input, signal, ElementRef, HostListene
 import { MenuHomeComponent } from '../menu-home/menu-home.component';
 import { LoginComponent } from '../login/login.component';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CadastroService } from '../../services/cadastro.service';
 import { NgFor, NgIf } from '@angular/common';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { ModalSpinnerComponent } from "../modais/modal-spinner/modal-spinner.component";
 import { ConfigService } from '../../services/admin/config/config.service';
 import { ButtonCheckedComponent } from "../button-checked/button-checked.component";
+import { ToastrService } from 'ngx-toastr';
+import { AnamneseService } from '../../services/admin/anamnese/anamnese.service';
 
 
 @Component({
@@ -40,6 +42,7 @@ export class CadastroComponent {
   select_extras: Array<{ id: number, nome: string }> = [];
   cadAdm: string = "";
   anamneseForm!: FormGroup;
+  IdCliAdm: string = "";
 
   problemasSaude = [
     'Doença cardiaca coronariana',
@@ -81,7 +84,11 @@ export class CadastroComponent {
       this.idPlano = params['id'];
       this.etapa = params['etapa'];
       this.cadAdm = params['cad'] || null;
+      this.IdCliAdm = params['idCli'] || null;
     });
+
+    this.adicionarCli();
+    this.inicializarForm();
     this.loading = true;
     setTimeout(() => {
       this.loading = false;
@@ -107,7 +114,61 @@ export class CadastroComponent {
     })
   }
 
-  constructor(private fb: FormBuilder,private service: CadastroService, private router: Router, private planosService: ConfigService, private el: ElementRef, private route: ActivatedRoute) { }
+  constructor(private fb: FormBuilder,private alert: ToastrService , private service: CadastroService, 
+    private router: Router, private planosService: ConfigService, private el: ElementRef, 
+    private route: ActivatedRoute, private anamservice: AnamneseService) { }
+
+  adicionarCli(){
+    if(this.IdCliAdm){
+      this.anamneseForm.get('cliente_id')?.setValue(this.IdCliAdm); 
+    }
+  }
+
+  onCheckboxChange(event: any, classe: string) {
+    const checkArray: FormArray = this.anamneseForm.get(classe) as FormArray;
+
+    if (event.target.checked) {
+      checkArray.push(this.fb.control(event.target.value));
+    } else {
+      const index = checkArray.controls.findIndex(x => x.value === event.target.value);
+      checkArray.removeAt(index);
+    }
+  }
+
+  onTextChange(event: any, classe: string) {
+    const checkText: FormArray = this.anamneseForm.get(classe) as FormArray;
+
+    if (event.target.value) {
+      checkText.push(this.fb.control("descricao:" + event.target.value));
+    } else {
+      const index = checkText.controls.findIndex(x => x.value === event.target.value);
+      checkText.removeAt(index);
+    }
+  }
+
+  salvarAnamnese(): void {
+    if (this.anamneseForm.valid) {
+      let dados = this.anamneseForm.getRawValue()
+      dados.perg_problemas_saude = dados.perg_problemas_saude.join(',');
+      dados.perg_sintomas = dados.perg_sintomas.join(',');
+      dados.perg_objetivos_saude = dados.perg_objetivos_saude.join(',');
+
+      dados = JSON.stringify(dados);
+      console.log(dados);
+      this.anamservice.create(dados).subscribe({
+        next: (dados) => {
+          this.alert.success(dados.msg);
+        }, error: (err) => {
+          console.log(err);
+          this.alert.error(err.msg);
+        }
+      })
+
+    } else {
+      this.alert.error('Preencha os campos obrigatórios!');
+    }
+  }
+
 
 
   @HostListener('window:scroll', [])
@@ -144,7 +205,7 @@ export class CadastroComponent {
     });
   }
 
-  inicializarForm(){
+  inicializarForm() {
     this.formcadastro = new FormGroup({
       nome: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -216,7 +277,11 @@ export class CadastroComponent {
               queryParamsHandling: 'merge'
             });
             this.loading = false;
-          }else{
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+            });
+          } else {
             this.etapa++;
             this.router.navigate([], {
               relativeTo: this.route,
@@ -224,6 +289,7 @@ export class CadastroComponent {
               queryParamsHandling: 'merge'
             });
             this.loading = false;
+            
           }
         }, 300);
         break;

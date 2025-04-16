@@ -1,5 +1,5 @@
 import { NgFor, NgIf } from '@angular/common';
-import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { PnFuncionarioService } from '../../../services/admin/pn-funcionario/pn-funcionario.service';
@@ -18,6 +18,7 @@ import { Route, Router } from '@angular/router';
 })
 export class ModalCadastroComponent {
 
+  @ViewChild('modal') modal?: ElementRef
   @Input() tipo: string = ''; // tipo do cadastro 
   @Output() CloseModal = new EventEmitter<void>();
   CliForm!: FormGroup<any>;
@@ -98,6 +99,10 @@ export class ModalCadastroComponent {
     });
   }
 
+  openModal(){
+    ($(this.modal?.nativeElement) as any).modal('show');
+  }
+
   onPersonalToggle(event: any) {
     this.mostraSelectPersonal = event.target.checked;
     if (!this.mostraSelectPersonal) {
@@ -123,7 +128,7 @@ export class ModalCadastroComponent {
             next: (dados) => {
               this.alertas.success(dados.msg);
               this.funcForm.reset();
-              $('#exampleModal').modal('hide');
+              $('#modal-cad').modal('hide');
               this.CloseModal.emit();
               this.tipo = '';
             }
@@ -150,14 +155,8 @@ export class ModalCadastroComponent {
             next: (dados) => {
               this.alertas.success(dados.msg);
               this.CliForm.reset();
-              $('#exampleModal').modal('hide');
+              $('#modal-cad').modal('hide');
               this.CloseModal.emit();
-              this.router.navigate(['planos'],{
-                queryParams: { "cad" : "true"}
-              });
-              this.tipo = '';
-              this.fileName = '';
-              this.foto = '';
             }
           })
         } else {
@@ -174,14 +173,14 @@ export class ModalCadastroComponent {
             next: (dado) => {
               this.alertas.success(dado.msg);
               this.planoForm.reset();
-              $('#exampleModal').modal('hide');
+              $('#modal-cad').modal('hide');
               this.CloseModal.emit();
               this.tipo = '';
               this.fileName = '';
               this.foto = '';
             }, error: (err) => {
               this.alertas.error(err.status);
-              $('#exampleModal').modal('hide');
+              $('#modal-cad').modal('hide');
               this.CloseModal.emit();
               this.tipo = '';
               this.fileName = '';

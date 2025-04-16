@@ -1,7 +1,10 @@
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
-        class="fa-solid fa-plus p-1"></i>Adicionar</button>
+@if (tipo != 'cliente') {
 
-<div class="modal modal-lg fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" id="btn-modal-cad" data-bs-target="#modal-cad"><i
+        class="fa-solid fa-plus p-1"></i>Adicionar</button>
+}
+
+<div class="modal modal-lg fade" id="modal-cad" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -178,25 +181,26 @@
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label d-block">Treina com personal?</label>
-                              <div class="form-check form-switch col-md-4">
-                                <input type="checkbox" class="form-check-input" id="checkPersonal" formControlName="treino_com_personal" (change)="onPersonalToggle($event)">
-                                <label class="form-check-label" for="checkPersonal">Sim</label>
-                              </div>
+                                <div class="form-check form-switch col-md-4">
+                                    <input type="checkbox" class="form-check-input" id="checkPersonal"
+                                        formControlName="treino_com_personal" (change)="onPersonalToggle($event)">
+                                    <label class="form-check-label" for="checkPersonal">Sim</label>
+                                </div>
                             </div>
                         </div>
                         <div class="row mb-3 ">
                             <div class="col-md-6 form-group">
-                              <label for="nomeFunc" class="form-label">Nome Completo</label>
-                              <input type="text" id="nomeFunc" name="nomeFunc" formControlName="nome">
-                            </div>
-                          
-                            <div class="col-md-6 form-group">
-                              <label for="endereco" class="form-label">Endereço</label>
-                              <input type="text" id="endereco" name="endereco" formControlName="endereco">
+                                <label for="nomeFunc" class="form-label">Nome Completo</label>
+                                <input type="text" id="nomeFunc" name="nomeFunc" formControlName="nome">
                             </div>
 
-                          </div>
-                          
+                            <div class="col-md-6 form-group">
+                                <label for="endereco" class="form-label">Endereço</label>
+                                <input type="text" id="endereco" name="endereco" formControlName="endereco">
+                            </div>
+
+                        </div>
+
                         <div class="row form-group">
                             <div class="col">
                                 <label for="telefone">Telefone</label>
@@ -210,17 +214,25 @@
                             </div>
                             <div class="col">
                                 <label for="rg">RG</label>
-                                <input type="text" id="rg" name="rg" mask="00.000.000-0"
-                                    placeholder="EX: xx.xxx.xxx-x" formControlName="RG">
+                                <input type="text" id="rg" name="rg" mask="00.000.000-0" placeholder="EX: xx.xxx.xxx-x"
+                                    formControlName="RG">
                             </div>
                         </div>
                         <div class="row form-group">
-                            <div class="col">
+                            <div class="col-3">
                                 <label for="datanascimento">Data de Nascimento</label>
                                 <input type="text" id="datanascimento" name="datanascimento" mask="00/00/0000"
                                     placeholder="EX: xx/xx/xxxx" formControlName="datanascimento">
                             </div>
-                            <div class="col">
+                            <div class="col-3">
+                                <label for="cliente" class="form-label">Nivel de Experiência</label>
+                                <select formControlName="nivel_experiencia" required>
+                                    <option value="iniciante">Iniciante</option>
+                                    <option value="intermetiario">intermetiário</option>
+                                    <option value="avancado">Avançado</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
                                 <label for="emailAcademia">E-mail</label>
                                 <input type="email" id="email" name="email" formControlName="email">
                             </div>
@@ -229,12 +241,12 @@
                             <div *ngIf="mostraSelectPersonal" class="mt-2 form-group">
                                 <label for="personal" class="form-label">Selecionar Personal</label>
                                 <select formControlName="personal_id">
-                                  <option value="" disabled selected>Escolha um personal</option>
-                                  @for (dado of Personal; track dado;) {
+                                    <option value="" disabled selected>Escolha um personal</option>
+                                    @for (dado of Personal; track dado;) {
                                     <option value="{{ dado['id'] }}">{{ dado['nome'] }}</option>
-                                  }
+                                    }
                                 </select>
-                              </div>
+                            </div>
                         </div>
                         <br>
                     </form>

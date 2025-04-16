@@ -198,18 +198,19 @@ class Cliente extends BaseController
         $dados = $this->model->select('foto_perfil')
             ->where('id', $id);
         $query = $dados->get();
-        if (!isset($query)) {
+        if (isset($query)) {
             foreach ($query->getResult() as $row) {
-                unlink($row->foto_perfil);
+                if (!empty($row->foto_perfil)) {
+                    unlink($row->foto_perfil);
+                }
             }
         }
-
 
         // inserir imagem de perfil do usuário
         if ($file->isValid() && !$file->hasMoved()) {
             $nomeimg = $file->getRandomName(); //gera um nome aleatorio a foto
-            $file->move('assets/fotos-perfil', $nomeimg); // move a imagem para a pasta
-            $caminhoImagem = 'assets/fotos-perfil/' . $nomeimg;
+            $file->move('assets/fotos-perfil/' . $id, $nomeimg); // move a imagem para a pasta
+            $caminhoImagem = 'assets/fotos-perfil/' . $id . '/' . $nomeimg;
             $this->model->where('id', $id)
                 ->set([
                     'foto_perfil' => $caminhoImagem
@@ -266,9 +267,9 @@ class Cliente extends BaseController
     {
 
         $dados = $this->model->select('cliente.id, cliente.nome')
-        ->join('anamnese', 'cliente.id = anamnese.cliente_id', 'left')
-        ->where('anamnese.id', null)
-        ->findAll();
+            ->join('anamnese', 'cliente.id = anamnese.cliente_id', 'left')
+            ->where('anamnese.id', null)
+            ->findAll();
 
         return $this->response->setJSON($dados)->setStatusCode(200);
     }

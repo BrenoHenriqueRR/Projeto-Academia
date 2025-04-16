@@ -11,15 +11,17 @@ import { ModalSpinnerComponent } from "../../../modais/modal-spinner/modal-spinn
 import { ModalExibirComponent } from '../../../modais/modal-exibir/modal-exibir.component';
 import { MatDialog } from '@angular/material/dialog';
 import { EscolhaCadastroComponent } from '../../../modais/escolha-cadastro/escolha-cadastro.component';
+import { Block } from '@angular/compiler';
 
 @Component({
   selector: 'app-pn-clientes',
   standalone: true,
-  imports: [NgxPaginationModule, RouterLink, NgIf, ModalConfirmarComponent, ModalFaceidComponent, ModalSpinnerComponent, ModalExibirComponent],
+  imports: [NgxPaginationModule, RouterLink, NgIf, ModalConfirmarComponent, ModalFaceidComponent, ModalSpinnerComponent, ModalExibirComponent, ModalCadastroComponent],
   templateUrl: './pn-clientes.component.html',
   styleUrl: './pn-clientes.component.css'
 })
 export class PnClientesComponent {
+
   @ViewChild(ModalConfirmarComponent) modal?: ModalConfirmarComponent
   @ViewChild(ModalExibirComponent) modalH?: ModalExibirComponent
   public paginaAtual = 1;
@@ -36,10 +38,18 @@ export class PnClientesComponent {
   constructor(private service: PnClienteService, private router: Router, private loginservice: LoginAdminService,
     private dialog: MatDialog) { }
 
-  abrirModalCadastro() {
-    this.dialog.open(EscolhaCadastroComponent, {
+  abrirModalExibir() {
+    const dialogRef = this.dialog.open(EscolhaCadastroComponent, {
       width: '350px'
     });
+
+    dialogRef.componentInstance.abrirModal.subscribe((valor) => {
+      this.abrirModalCadastro();
+    });
+  }
+
+  abrirModalCadastro() {
+    $('#modal-cad').modal('show');
   }
 
   Closemodal() {

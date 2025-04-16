@@ -47,8 +47,9 @@
 }
 
 .img-perfil img{
-    width: 9rem;
-    height: 9rem;
+    width: 10rem;
+    height: 10rem;
+    object-fit: cover;
 }
 
 .img-inserir{
@@ -61,8 +62,8 @@
 
 .meio-img{
     position: absolute;  
-    top: 5rem; 
-    left: 6rem;  
+    top: 5.8rem; 
+    left: 7rem;  
      z-index: 2;
     color: white;
     background-color: rgba(0, 0, 0, 0.87);

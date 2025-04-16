@@ -47,7 +47,8 @@ export const routes: Routes = [
     },
     {
         path: 'planos',
-        component: PlanosComponent
+        component: PlanosComponent,
+        canActivate: [adminGuard]
     },
     {
         path: 'entrada',
@@ -93,10 +94,10 @@ export const routes: Routes = [
             { path: 'dashboard', component: DashboardComponent,  canActivate: [adminGuard] },
             { path: 'funcionarios', component: PnFuncionariosComponent,  canActivate: [adminGuard] },
             { path: 'clientes', component: PnClientesComponent,  canActivate: [adminGuard] },
-            { path: 'planos', component: PlanosComponent, canActivate: [adminGuard] },
+            // { path: 'planos', component: PlanosComponent, canActivate: [adminGuard] },
             { path: 'treinos', component: PnTreinoComponent,  canActivate: [adminGuard] },
-            { path: 'planos', component: PnPlanosComponent,  canActivate: [adminGuard] },
-            { path: 'planos/editar', component: ModalEditarPlanosComponent,  canActivate: [adminGuard] },
+            { path: 'pn-planos', component: PnPlanosComponent,  canActivate: [adminGuard] },
+            { path: 'pn-planos/editar', component: ModalEditarPlanosComponent,  canActivate: [adminGuard] },
             { path: 'financeiro', component: PnFinanceiroComponent,  canActivate: [adminGuard] },
             { path: 'funcionarios/editarf', component: ModalEditarFuncionarioComponent,  canActivate: [adminGuard] },
             { path: 'relatorios', component: PnRelatoriosComponent,  canActivate: [adminGuard] },

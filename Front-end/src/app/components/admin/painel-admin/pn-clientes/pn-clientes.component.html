@@ -10,21 +10,20 @@
         <div class="my-4 d-flex justify-content-between align-items-center">
             <div class="d-flex gap-5">
                 <div>
-                    <button mat-raised-button class="btn btn-primary" (click)="abrirModalCadastro()">
+                    <button mat-raised-button class="btn btn-primary" (click)="abrirModalExibir()">
                         + Adicionar
-                      </button>
-                </div>
-                <!-- <div class="">
-                    <app-modal-cadastro (CloseModal)="Closemodal()" tipo="cliente"></app-modal-cadastro>
-                </div> -->
-                <div class="">
-                    <button type="button" class="btn btn-primary" routerLink="anamnese"><i class="fas fa-notes-medical mx-2"></i>Anamnese</button>
+                    </button>
                 </div>
                 <div class="">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    <button type="button" class="btn btn-primary" routerLink="anamnese"><i
+                        class="fas fa-notes-medical mx-2"></i>Anamnese</button>
+                    </div>
+                    <div class="">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                         data-bs-target="#exampleModal"><i class="fa-solid fa-sack-dollar mx-2"></i>Pagamentos</button>
+                    </div>
                 </div>
-            </div>
+                <app-modal-cadastro (CloseModal)="Closemodal()" tipo="cliente"></app-modal-cadastro>
             <div class="">
                 <!-- <span style="cursor: pointer;" class="d-flex justify-content-center align-items-center flex-column">
                     <i class="fa-solid fa-camera fa-2xl"></i>
@@ -57,7 +56,8 @@
                     <!-- <td>{{dados.frequencia}}</td> -->
                     <td>
                         @if(func == 'personal'){
-                        <button class="pn-button"routerLink="treinos" [queryParams]="{ id: dados.id}">Cadastrar Treinos</button>
+                        <button class="pn-button" routerLink="treinos" [queryParams]="{ id: dados.id}">Cadastrar
+                            Treinos</button>
                         }@else {
                         <button class="pn-button" routerLink="editar" [queryParams]="{ id: dados.id}">Editar</button>
                         <button class="pn-button btn-excluir" (click)="openmodal(dados.id)">Excluir</button>
@@ -66,7 +66,8 @@
                             Treinos</button>
                         }
                         <app-modal-confirmar (confirm)="validarmodal($event)"></app-modal-confirmar>
-                        <button type="button" class="pn-button" (click)="openmodalH(dados.id)" data-bs-toggle="modal" data-bs-target="#exibirModal">📜 Histórico</button>
+                        <button type="button" class="pn-button" (click)="openmodalH(dados.id)" data-bs-toggle="modal"
+                            data-bs-target="#exibirModal">📜 Histórico</button>
 
                         <app-modal-exibir #modalH></app-modal-exibir>
                         }

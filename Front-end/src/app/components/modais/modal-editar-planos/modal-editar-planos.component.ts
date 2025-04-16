@@ -7,7 +7,7 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 @Component({
   selector: 'app-modal-editar-planos',
   standalone: true,
-  imports: [NgIf,NgFor,RouterLink, ReactiveFormsModule],
+  imports: [NgIf, ReactiveFormsModule],
   templateUrl: './modal-editar-planos.component.html',
   styleUrl: './modal-editar-planos.component.css'
 })

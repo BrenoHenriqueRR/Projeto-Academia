@@ -1,17 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-
+import { ModalCadastroComponent } from '../modal-cadastro/modal-cadastro.component';
 @Component({
   selector: 'app-escolha-cadastro',
   standalone: true,
   imports: [MatDialogModule,
-    MatButtonModule,],
+    MatButtonModule],
   templateUrl: './escolha-cadastro.component.html',
   styleUrl: './escolha-cadastro.component.css'
 })
 export class EscolhaCadastroComponent {
+   @Output() abrirModal = new EventEmitter<void>();
   constructor(
     private dialogRef: MatDialogRef<EscolhaCadastroComponent>,
     private router: Router
@@ -23,10 +24,7 @@ export class EscolhaCadastroComponent {
   }
 
   irParaCadastroSimples() {
-    // this.router.navigate(['/cadastro-simples']);
-    const modalElement = document.getElementById('exampleModal');
-    // const bootstrapModal = new bootstrap.Modal(modalElement!);
-    // bootstrapModal.show();
     this.dialogRef.close();
+    this.abrirModal.emit();
   }
 }

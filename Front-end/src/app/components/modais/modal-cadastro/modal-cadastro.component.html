@@ -221,14 +221,25 @@
                         <div class="row form-group">
                             <div class="col-3">
                                 <label for="datanascimento">Data de Nascimento</label>
-                                <input type="text" id="datanascimento" name="datanascimento" mask="00/00/0000"
-                                    placeholder="EX: xx/xx/xxxx" formControlName="datanascimento">
+                                <input type="date" id="datanascimento" name="datanascimento"
+                                    placeholder="EX: xx/xx/xxxx" formControlName="datanascimento" (change)="verificarIdade()">
                             </div>
+                            <div *ngIf="menorDeIdade" class="alert alert-warning">
+                                Este cliente é menor de idade. É necessário o envio de autorização assinada por um responsável.
+                              </div>
+                              
+                              <div *ngIf="menorDeIdade" class="form-group mt-2">
+                                <label>Anexar Termo de Autorização</label>
+                                <input type="file" name="termoAutorizacao" />
+                                <small>
+                                  <a href="/modelos/termo-autorizacao.pdf" target="_blank">Baixar modelo do termo</a>
+                                </small>
+                              </div>
                             <div class="col-3">
                                 <label for="cliente" class="form-label">Nivel de Experiência</label>
                                 <select formControlName="nivel_experiencia" required>
                                     <option value="iniciante">Iniciante</option>
-                                    <option value="intermetiario">intermetiário</option>
+                                    <option value="intermediario">intermediário</option>
                                     <option value="avancado">Avançado</option>
                                 </select>
                             </div>

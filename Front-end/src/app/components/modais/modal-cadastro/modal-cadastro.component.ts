@@ -32,6 +32,7 @@ export class ModalCadastroComponent {
   Personal!: any;
   beneficios: string[] = [];
   mostraSelectPersonal = false;
+  menorDeIdade = false;
 
   ngOnInit() {
     this.inicializarForm();
@@ -108,6 +109,22 @@ export class ModalCadastroComponent {
     if (!this.mostraSelectPersonal) {
       this.CliForm.get('personal_id')?.setValue(null);
     }
+  }
+
+  verificarIdade(){
+    const hoje = new Date();
+    let datacli = this.CliForm.get("datanascimento")?.value;
+    const nascimento = new Date(datacli);
+
+    let idade = hoje.getFullYear() - nascimento.getFullYear();
+    const m = hoje.getMonth() - nascimento.getMonth();
+  
+    if (m < 0 || (m === 0 && hoje.getDate() < nascimento.getDate())) {
+      idade--;
+    }
+  
+    this.menorDeIdade = idade < 18;
+  
   }
 
   submitForm() {

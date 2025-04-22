@@ -1,0 +1,27 @@
+<h2 mat-dialog-title>Finalizar Venda</h2>
+
+<div mat-dialog-content>
+  <p><strong>Produto:</strong> {{ data.produto.nome }}</p>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Quantidade</mat-label>
+    <input matInput type="number" [(ngModel)]="quantidade" min="1" [max]="data.produto.quantidade" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Forma de pagamento</mat-label>
+    <mat-select [(value)]="formaPagamento">
+      <mat-option value="dinheiro">Dinheiro</mat-option>
+      <mat-option value="debito">Cartão Débito</mat-option>
+      <mat-option value="credito">Cartão Crédito</mat-option>
+      <mat-option value="pix">Pix</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <p><strong>Total:</strong> R$ {{ data.produto.preco * quantidade }}</p>
+</div>
+
+<div mat-dialog-actions class="text-end">
+  <button mat-button (click)="cancelar()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="confirmarVenda()">Confirmar Venda</button>
+</div>

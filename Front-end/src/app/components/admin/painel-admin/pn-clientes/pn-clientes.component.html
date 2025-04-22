@@ -59,7 +59,7 @@
                         <button class="pn-button" routerLink="treinos" [queryParams]="{ id: dados.id}">Cadastrar
                             Treinos</button>
                         }@else {
-                        <button class="pn-button" routerLink="editar" [queryParams]="{ id: dados.id}">Editar</button>
+                        <button class="btn btn-outline-primary" routerLink="editar" [queryParams]="{ id: dados.id}"><i class="fas fa-edit"></i> Editar</button>
                         <button class="pn-button btn-excluir" (click)="openmodal(dados.id)">Excluir</button>
                         @if(func == 'Administrador'){
                         <button class="btn-treino" routerLink="treinos" [queryParams]="{ id: dados.id}">Cad

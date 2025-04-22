@@ -79,6 +79,7 @@ export class ModalCadastroComponent {
       datanascimento: ['', Validators.required],
       nivel_experiencia: ['iniciante', Validators.required],
       treino_com_personal: [false,Validators.required],
+      termo_responsabilidade: [null,Validators.required],
       personal_id: ['', Validators.required],
     });
     this.extraForm = this.fb.group({
@@ -111,14 +112,16 @@ export class ModalCadastroComponent {
     }
   }
 
+  
   verificarIdade(){
     const hoje = new Date();
     let datacli = this.CliForm.get("datanascimento")?.value;
+    datacli = this.stringParaData(datacli);
     const nascimento = new Date(datacli);
 
     let idade = hoje.getFullYear() - nascimento.getFullYear();
     const m = hoje.getMonth() - nascimento.getMonth();
-  
+    
     if (m < 0 || (m === 0 && hoje.getDate() < nascimento.getDate())) {
       idade--;
     }
@@ -140,6 +143,7 @@ export class ModalCadastroComponent {
           formData.append('senha', this.funcForm.value.senha);
           formData.append('CPF', this.funcForm.value.cpf);
           formData.append('data_nascimento', this.funcForm.value.data_nascimento);
+          formData.append('termo_responsabilidade', this.funcForm.value.termo_responsabilidade);
           console.log(formData);
           this.funcservice.create(formData).subscribe({
             next: (dados) => {
@@ -164,9 +168,11 @@ export class ModalCadastroComponent {
           formData.append('endereco', this.CliForm.value.endereco);
           formData.append('telefone', this.CliForm.value.telefone);
           formData.append('CPF', this.CliForm.value.CPF);
-          formData.append('data_nascimento', this.CliForm.value.data_nascimento);
+          formData.append('datanascimento', this.CliForm.value.data_nascimento);
           formData.append('email', this.CliForm.value.email);
-          formData.append('senha', this.CliForm.value.senha);
+          formData.append('treino_com_personal', this.CliForm.value.treino_com_personal);
+          formData.append('nivel_experiencia', this.CliForm.value.nivel_experiencia);
+          formData.append('personal_id', this.CliForm.value.personal_id);
           console.log(formData);
           this.cliservice.sendData(formData).subscribe({
             next: (dados) => {
@@ -174,6 +180,8 @@ export class ModalCadastroComponent {
               this.CliForm.reset();
               $('#modal-cad').modal('hide');
               this.CloseModal.emit();
+            },error: (er) =>{
+              this.alertas.error("ocorreu um erro: " +  er);
             }
           })
         } else {
@@ -208,8 +216,8 @@ export class ModalCadastroComponent {
           this.alertas.error("Campos Vazios !!");
         }
         break;
-      default:
-        console.log("Tipo invalido !!");
+        default:
+          console.log("Tipo invalido !!");
     }
   }
 
@@ -222,7 +230,7 @@ export class ModalCadastroComponent {
       this.fileName = 'Nenhum arquivo selecionado';
     }
   }
-
+  
 
   adicionarBeneficio() {
     const beneficioAtual = this.planoForm.get('beneficios')?.value.trim();
@@ -233,5 +241,14 @@ export class ModalCadastroComponent {
       // Atualiza o campo 'beneficios' com todos os benefícios concatenados
       this.planoForm.get('beneficios')?.setValue('');  // Limpa o campo de entrada após adicionar
     }
+  }
+
+  // Função para converter text em hora //
+  stringParaData(valor: string): Date {
+    if (!valor || valor.length !== 8) return new Date('invalid');
+    const dia = valor.substring(0, 2);
+    const mes = valor.substring(2, 4);
+    const ano = valor.substring(4, 8);
+    return new Date(`${ano}-${mes}-${dia}`);
   }
 }

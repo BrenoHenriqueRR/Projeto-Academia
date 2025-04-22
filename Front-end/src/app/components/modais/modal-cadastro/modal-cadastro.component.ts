@@ -125,7 +125,7 @@ export class ModalCadastroComponent {
     if (m < 0 || (m === 0 && hoje.getDate() < nascimento.getDate())) {
       idade--;
     }
-  
+    
     this.menorDeIdade = idade < 18;
   
   }

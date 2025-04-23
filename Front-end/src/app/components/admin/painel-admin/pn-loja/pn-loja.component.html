@@ -1,60 +1,81 @@
 <div class="fundo">
-    <div *ngIf="loading">
-      <app-modal-spinner></app-modal-spinner>
+  <div *ngIf="loading">
+    <app-modal-spinner></app-modal-spinner>
+  </div>
+
+  <div class="container">
+    <div *ngIf="loading == true" class="spinner-container">
+      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
     </div>
-    <div class="container">
-      <div *ngIf="loading == true" class="spinner-container">
-        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-      </div>
-      <h1 class="h1-cli">Loja de Suplementos</h1>
-      <div class="my-4 d-flex justify-content-between align-items-center">
-        <div class="d-flex gap-5">
-          <div>
-            <button mat-raised-button class="btn btn-primary" (click)="abrirModalProduto()">
-              + Novo Produto
-            </button>
-          </div>
-          <div>
-            <!-- <input type="text" placeholder="Pesquisar produto..." class="form-control" [(ngModel)]="filtroProduto" /> -->
-          </div>
+
+    <h1 class="h1-cli">Loja de Suplementos</h1>
+
+    <div class="my-4 d-flex justify-content-between align-items-center">
+      <div class="d-flex gap-5">
+        <div>
+          <button mat-raised-button class="btn btn-primary" (click)="abrirModalProduto()">
+            + Novo Produto
+          </button>
         </div>
-        <!-- <app-modal-cadastro-produto (CloseModal)="fecharModalProduto()"></app-modal-cadastro-produto>
-        <app-modal-editar-produto [produto]="produtoSelecionado" (CloseModal)="fecharModalProduto()"></app-modal-editar-produto>
-        <app-modal-comprar-produto [produto]="produtoSelecionado" (CloseModal)="fecharModalProduto()"></app-modal-comprar-produto> -->
       </div>
-  
-      <table id="produtos-table">
-        <thead>
-          <tr>
-            <th>Produto</th>
-            <th>Quantidade em Estoque</th>
-            <th>Preço Unitário</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-        <tbody>
-          @for (produto of produtos | paginate: { itemsPerPage: 5, currentPage: paginaAtual }; track produto) {
-          <tr>
-            <td>{{produto.nome}}</td>
-            <td>{{produto.quantidade}} unidades</td>
-            <td>R$ {{produto.preco}}</td>
-            <td>
-              <button class="btn btn-outline-primary btn-sm" (click)="editarProduto(produto)">
-                <i class="fas fa-edit"></i> Editar
-              </button>
-              <button mat-raised-button class="btn btn-success btn-sm mx-4" (click)="abrirModal(produto)">
-                <i class="fas fa-shopping-cart"></i> Comprar
-              </button>
-              <button class="btn btn-danger btn-sm" (click)="removerProduto(produto.id)">
-                <i class="fas fa-trash"></i> Remover
-              </button>
-            </td>
-          </tr>
-          }
-        </tbody>
-      </table>
-  
-      <pagination-controls class="pagination" (pageChange)="paginaAtual = $event" previousLabel="Anterior" nextLabel="Próximo"></pagination-controls>
+    </div>
+
+    <!-- Tabela de Produtos com seleção de quantidade -->
+    <table id="produtos-table" class="table table-striped">
+      <thead>
+        <tr>
+          <th>Produto</th>
+          <th>Estoque</th>
+          <th>Preço</th>
+          <th>Qtd</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (produto of produtos | paginate: { itemsPerPage: 5, currentPage: paginaAtual }; track produto) {
+        <tr>
+          <td>{{ produto.nome }}</td>
+          <td>{{ produto.quantidade }} unidades</td>
+          <td>R$ {{ produto.preco }}</td>
+          <td>
+            <input type="number" min="1" max="{{produto.quantidade}}" [(ngModel)]="produto.qtdSelecionada" class="form-control form-control-sm" style="width: 70px;" />
+          </td>
+          <td>
+            <button class="btn btn-sm btn-success" (click)="adicionarAoCarrinho(produto)">
+              <i class="fas fa-plus"></i> Adicionar
+            </button>
+            <button class="btn btn-outline-primary btn-sm ms-2" (click)="editarProduto(produto)">
+              <i class="fas fa-edit"></i> Editar
+            </button>
+            <button class="btn btn-danger btn-sm ms-2" (click)="removerProduto(produto.id)">
+              <i class="fas fa-trash"></i> Excluir
+            </button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+
+    <pagination-controls class="pagination" (pageChange)="paginaAtual = $event" previousLabel="Anterior" nextLabel="Próximo"></pagination-controls>
+
+    <!-- Carrinho direto na tela -->
+    <div class="mt-5">
+      <h5>Itens na Venda</h5>
+      <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let item of carrinho">
+          {{ item.nome }} x{{ item.qtd }}
+          <span>R$ {{ item.preco * item.qtd }}</span>
+        </li>
+      </ul>
+
+      <div class="mt-3 d-flex justify-content-between">
+        <strong>Total:</strong>
+        <strong>R$ {{totalCarrinho }}</strong>
+      </div>
+
+      <button class="btn btn-primary mt-3" (click)="finalizarVenda()">
+        Finalizar Venda
+      </button>
     </div>
   </div>
-  
+</div>

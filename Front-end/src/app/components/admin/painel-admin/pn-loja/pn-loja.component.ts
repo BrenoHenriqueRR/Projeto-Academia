@@ -5,11 +5,12 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { PnLojaService } from '../../../../services/admin/pn-loja/pn-loja.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalVendaComponent } from './modal-venda/modal-venda.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-pn-loja',
   standalone: true,
-  imports: [ModalSpinnerComponent, CommonModule, NgxPaginationModule],
+  imports: [ModalSpinnerComponent, CommonModule, NgxPaginationModule, FormsModule],
   templateUrl: './pn-loja.component.html',
   styleUrl: './pn-loja.component.css'
 })
@@ -25,17 +26,51 @@ export class PnLojaComponent {
     this.loading = true;
     this.pesquisarProdutos();
   }
+  carrinho: any[] = [];
 
-  abrirModal(produto: any) {
+adicionarAoCarrinho(produto: any) {
+  const qtd = produto.qtdSelecionada || 1;
+
+  if (qtd > produto.quantidade) {
+    alert('Quantidade excede o estoque!');
+    return;
+  }
+
+  const existente = this.carrinho.find(p => p.id === produto.id);
+
+  if (existente) {
+    existente.qtd += qtd;
+  } else {
+    this.carrinho.push({
+      id: produto.id,
+      nome: produto.nome,
+      preco: produto.preco,
+      qtd: qtd
+    });
+  }
+
+  produto.qtdSelecionada = 1;
+}
+
+finalizarVenda() {
+  console.log('Venda finalizada:', this.carrinho);
+  alert('Venda finalizada com sucesso!');
+  this.carrinho = [];
+}
+
+get totalCarrinho(): number {
+  return this.carrinho.reduce((t, p) => t + p.preco * p.qtd, 0);
+}
+
+  abrirModal() {
     const dialogRef = this.dialog.open(ModalVendaComponent, {
       width: '400px',
-      data: { produto }
+      data: { produto:this.produtos }
     });
 
     dialogRef.afterClosed().subscribe((confirmou) => {
       if (confirmou) {
         // Atualizar estoque local
-        produto.quantidade -= 1;
       }
     });
   }

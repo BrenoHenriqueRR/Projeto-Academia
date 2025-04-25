@@ -2,21 +2,16 @@
 
 <mat-dialog-content>
   <div class="d-flex flex-column gap-3">
-
-    <div>
-      <p class="text-white"><strong>Produto:</strong> {{ data.produto.nome }}</p>
+    <div class="itens">
+      <p class="text-white"><strong>Produtos:</strong></p>
+      @for (item of carrinho_modal; track $index) {
+        <div class="d-flex gap-3">
+          <p>{{item.qtd}}</p>
+          <p>{{item.nome}}</p>
+          <p>{{item.preco | number:'1.2-2'}}</p>
+        </div>
+      }
     </div>
-
-    <mat-form-field appearance="fill">
-      <mat-label>Quantidade</mat-label>
-      <input
-        matInput
-        type="number"
-        [(ngModel)]="quantidade"
-        min="1"
-        [max]="data.produto.quantidade"
-      />
-    </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Forma de pagamento</mat-label>
@@ -29,7 +24,7 @@
     </mat-form-field>
 
     <div>
-      <p class="text-white"><strong>Total:</strong> R$ {{ (data.produto.preco * quantidade)  | number:'1.2-2' }}</p>
+      <p class="text-white"><strong>Total:</strong> R$ {{ (total_modal)  | number:'1.2-2' }}</p>
     </div>
 
   </div>

@@ -19,71 +19,82 @@ export class PnLojaComponent {
   produtos: any[] = [];
   filtroProduto: string = '';
   paginaAtual = 1;
+  carrinho: any[] = [];
 
   produtoSelecionado: any = null;
 
-  ngOnInit(){
+  ngOnInit() {
     this.loading = true;
     this.pesquisarProdutos();
   }
-  carrinho: any[] = [];
 
-adicionarAoCarrinho(produto: any) {
-  const qtd = produto.qtdSelecionada || 1;
+  adicionarAoCarrinho(produto: any) {
+    const qtd = produto.qtdSelecionada || 1;
 
-  if (qtd > produto.quantidade) {
-    alert('Quantidade excede o estoque!');
-    return;
+    if (qtd > produto.quantidade) {
+      alert('Quantidade excede o estoque!');
+      return;
+    }
+
+    const existente = this.carrinho.find(p => p.id === produto.id);
+
+    if (existente) {
+      existente.qtd += qtd;
+    } else {
+      this.carrinho.push({
+        id: produto.id,
+        nome: produto.nome,
+        preco: produto.preco,
+        qtd: qtd
+      });
+    }
+
+    produto.qtdSelecionada = 1;
   }
 
-  const existente = this.carrinho.find(p => p.id === produto.id);
-
-  if (existente) {
-    existente.qtd += qtd;
-  } else {
-    this.carrinho.push({
-      id: produto.id,
-      nome: produto.nome,
-      preco: produto.preco,
-      qtd: qtd
-    });
+  removerUnidade(index: number): void {
+    if (this.carrinho[index].qtd > 1) {
+      this.carrinho[index].qtd -= 1;
+    } else {
+      // Se só tem 1, remove o item
+      this.carrinho.splice(index, 1);
+    }
   }
 
-  produto.qtdSelecionada = 1;
-}
+  removerTudo(index: number): void {
+    this.carrinho.splice(index, 1);
+  }
 
-finalizarVenda() {
-  console.log('Venda finalizada:', this.carrinho);
-  alert('Venda finalizada com sucesso!');
-  this.carrinho = [];
-}
+  finalizarVenda() {
+    this.abrirModal();
+  }
 
-get totalCarrinho(): number {
-  return this.carrinho.reduce((t, p) => t + p.preco * p.qtd, 0);
-}
+  get totalCarrinho(): number {
+    return this.carrinho.reduce((t, p) => t + p.preco * p.qtd, 0);
+  }
 
   abrirModal() {
     const dialogRef = this.dialog.open(ModalVendaComponent, {
       width: '400px',
-      data: { produto:this.produtos }
+      data: { produtos: this.carrinho }
     });
 
     dialogRef.afterClosed().subscribe((confirmou) => {
       if (confirmou) {
-        // Atualizar estoque local
+        this.carrinho = [];
       }
     });
   }
 
-  constructor(private lojaService: PnLojaService, private dialog: MatDialog) {}
+  constructor(private lojaService: PnLojaService, private dialog: MatDialog) { }
 
-  pesquisarProdutos(){
+  pesquisarProdutos() {
     this.lojaService.read().subscribe({
-      next: (dados) =>{
+      next: (dados) => {
         this.produtos = dados[0];
         this.loading = false;
         console.log(this.produtos);
-      }, error: (er) =>{
+      }, error: (er) => {
         this.loading = false;
         console.log(er);
       }

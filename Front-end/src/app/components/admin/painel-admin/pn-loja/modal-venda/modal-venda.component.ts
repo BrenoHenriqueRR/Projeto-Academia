@@ -22,11 +22,20 @@ import { CommonModule } from '@angular/common';
   styleUrl: './modal-venda.component.css'
 })
 export class ModalVendaComponent {
-  quantidade = 1;
+  carrinho_modal: any[] = [];
   formaPagamento = 'dinheiro';
+  total_modal : number = 0;
 
-  ngOnInit(){
+  ngOnInit() {
     console.log(this.data);
+    this.carrinho_modal = this.data.produtos;
+  
+    setTimeout(() => {
+      this.carrinho_modal.forEach((itens) => {
+        itens.preco = parseFloat(itens.preco) * itens.qtd;
+        this.total_modal += itens.preco;
+      });
+    }, 0);
   }
 
   constructor(
@@ -35,15 +44,6 @@ export class ModalVendaComponent {
   ) { }
 
   confirmarVenda() {
-    const venda = {
-      produto_id: this.data.produto.id,
-      quantidade: this.quantidade,
-      valor_total: this.data.produto.preco * this.quantidade,
-      forma_pagamento: this.formaPagamento
-    };
-    console.log(venda);
-
-
     this.dialogRef.close(true);
   }
 

@@ -81,7 +81,7 @@
                 <i class="fas fa-trash-alt"></i>
               </button>
               <!-- Remover 1 unidade -->
-              <button class="btn btn-warning btn-sm " title="Remover 1 unidade" (click)="removerUnidade(i)">
+              <button class="btn btn-warning btn-sm " title="Remover 1 unidade" (click)="removerUnidade(i, item)">
                 <i class="fas fa-minus"></i>
               </button>
 
@@ -99,7 +99,7 @@
         <strong> R$ {{totalCarrinho | number:'1.2-2' }}</strong>
       </div>
 
-      <button class="btn btn-primary mt-3" (click)="finalizarVenda()">
+      <button class="btn btn-primary mt-3" (click)="abrirModal()">
         Finalizar Venda
       </button>
     </div>

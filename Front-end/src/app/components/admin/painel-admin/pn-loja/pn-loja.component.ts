@@ -22,12 +22,14 @@ export class PnLojaComponent {
   carrinho: any[] = [];
 
   produtoSelecionado: any = null;
-
+  
   ngOnInit() {
     this.loading = true;
     this.pesquisarProdutos();
   }
 
+  constructor(private lojaService: PnLojaService, private dialog: MatDialog) { }
+  
   adicionarAoCarrinho(produto: any) {
     const qtd = produto.qtdSelecionada || 1;
 
@@ -50,14 +52,26 @@ export class PnLojaComponent {
     }
 
     produto.qtdSelecionada = 1;
+    produto.quantidade--;
   }
 
-  removerUnidade(index: number): void {
+  removerUnidade(index: number, item: any): void {
+    console.log(item);
     if (this.carrinho[index].qtd > 1) {
       this.carrinho[index].qtd -= 1;
+      this.produtos.forEach((itens) =>{
+        if(itens.id == item.id){
+          itens.quantidade++;
+        }
+      });
     } else {
       // Se só tem 1, remove o item
       this.carrinho.splice(index, 1);
+      this.produtos.forEach((itens) =>{
+        if(itens.id == item.id){
+          itens.quantidade++;
+        }
+      });
     }
   }
 
@@ -65,8 +79,14 @@ export class PnLojaComponent {
     this.carrinho.splice(index, 1);
   }
 
-  finalizarVenda() {
-    this.abrirModal();
+  finalizarVenda(pagamento: string) {
+    const venda = {
+      produtos : this.carrinho,
+      total: this.totalCarrinho,
+      pagamento: pagamento,
+    }
+
+    console.log(JSON.stringify(venda));
   }
 
   get totalCarrinho(): number {
@@ -78,22 +98,19 @@ export class PnLojaComponent {
       width: '400px',
       data: { produtos: this.carrinho }
     });
-
-    dialogRef.afterClosed().subscribe((confirmou) => {
-      if (confirmou) {
-        this.carrinho = [];
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result.confirmado) {
+        this.finalizarVenda(result.pagamento);
       }
     });
   }
 
-  constructor(private lojaService: PnLojaService, private dialog: MatDialog) { }
 
   pesquisarProdutos() {
     this.lojaService.read().subscribe({
       next: (dados) => {
         this.produtos = dados[0];
         this.loading = false;
-        console.log(this.produtos);
       }, error: (er) => {
         this.loading = false;
         console.log(er);

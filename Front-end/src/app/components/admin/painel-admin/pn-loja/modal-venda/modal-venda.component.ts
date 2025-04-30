@@ -27,8 +27,7 @@ export class ModalVendaComponent {
   total_modal : number = 0;
 
   ngOnInit() {
-    console.log(this.data);
-    this.carrinho_modal = this.data.produtos;
+    this.carrinho_modal = this.data.produtos.map((item: any) => ({ ...item }));
   
     setTimeout(() => {
       this.carrinho_modal.forEach((itens) => {
@@ -44,7 +43,10 @@ export class ModalVendaComponent {
   ) { }
 
   confirmarVenda() {
-    this.dialogRef.close(true);
+    this.dialogRef.close({
+      confirmado: true,
+      pagamento: this.formaPagamento
+    });
   }
 
   cancelar() {

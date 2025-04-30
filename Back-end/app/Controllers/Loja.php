@@ -53,14 +53,14 @@ class Loja extends BaseController
         try {
             $data = $this->request->getJSON(true);
 
-            foreach ($data['itens'] as $item) {
-                $produto = $this->lojaProdutos->find($item['produto_id']);
+            foreach ($data['produtos'] as $item) {
+                $produto = $this->lojaProdutos->find($item['id']);
                 if (!$produto) {
-                    throw new \Exception("Produto ID {$item['produto_id']} não encontrado.");
+                    throw new \Exception("Produto ID {$item['id']} não encontrado.");
                 }
 
                 // Verificar estoque disponível
-                if ($produto['quantidade'] < $item['quantidade']) {
+                if ($produto['quantidade'] < $item['qtd']) {
                     throw new \Exception("Estoque insuficiente para o produto ID {$item['produto_id']}.");
                 }
             }
@@ -70,23 +70,24 @@ class Loja extends BaseController
             $vendaData = [
                 'data_venda' => date('Y-m-d H:i:s'),
                 'total' => $data['total'],
+                'forma_pagamento' => $data['pagamento'],
             ];
             $vendaId = $this->lojaVenda->insert($vendaData); // Inserir venda e pegar o ID gerado
 
             // Registrar os itens da venda
-            foreach ($data['itens'] as $item) {
+            foreach ($data['produtos'] as $item) {
                 $itemData = [
                     'venda_id' => $vendaId,
-                    'produto_id' => $item['produto_id'],
-                    'quantidade' => $item['quantidade'],
-                    'preco_unitario' => $item['preco_unitario'],
+                    'produto_id' => $item['id'],
+                    'quantidade' => $item['qtd'],
+                    'valor_unitario' => $item['preco'],
                 ];
                 $this->lojaItens->insert($itemData); // Inserir item vendido
 
                 // Atualizar o estoque
-                $produto = $this->lojaProdutos->find($item['produto_id']);
-                $novoEstoque = $produto['quantidade'] - $item['quantidade'];
-                $this->lojaProdutos->update($item['produto_id'], ['quantidade' => $novoEstoque]); // Atualizar quantidade em estoque
+                $produto = $this->lojaProdutos->find($item['id']);
+                $novoEstoque = $produto['quantidade'] - $item['qtd'];
+                $this->lojaProdutos->update($item['id'], ['quantidade' => $novoEstoque]); // Atualizar quantidade em estoque
             }
 
             return $this->response

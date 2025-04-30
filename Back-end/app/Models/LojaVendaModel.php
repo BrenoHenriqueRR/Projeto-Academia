@@ -8,5 +8,5 @@ class LojaVendaModel extends Model
 {
     protected $table            = 'loja_vendas';
     protected $primaryKey       = 'id';
-    protected $allowedFields    = ['data_venda','total'];
+    protected $allowedFields    = ['data_venda','total','forma_pagamento'];
 }

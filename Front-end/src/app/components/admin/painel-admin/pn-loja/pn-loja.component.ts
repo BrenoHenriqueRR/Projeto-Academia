@@ -6,11 +6,13 @@ import { PnLojaService } from '../../../../services/admin/pn-loja/pn-loja.servic
 import { MatDialog } from '@angular/material/dialog';
 import { ModalVendaComponent } from './modal-venda/modal-venda.component';
 import { FormsModule } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { ModalProdutoComponent } from './modal-produto/modal-produto.component';
 
 @Component({
   selector: 'app-pn-loja',
   standalone: true,
-  imports: [ModalSpinnerComponent, CommonModule, NgxPaginationModule, FormsModule],
+  imports: [ModalSpinnerComponent, CommonModule, NgxPaginationModule, FormsModule, ModalProdutoComponent],
   templateUrl: './pn-loja.component.html',
   styleUrl: './pn-loja.component.css'
 })
@@ -22,24 +24,24 @@ export class PnLojaComponent {
   carrinho: any[] = [];
 
   produtoSelecionado: any = null;
-  
+
   ngOnInit() {
     this.loading = true;
     this.pesquisarProdutos();
   }
 
-  constructor(private lojaService: PnLojaService, private dialog: MatDialog) { }
-  
+  constructor(private lojaService: PnLojaService, private dialog: MatDialog, private alertas: ToastrService) { }
+
   adicionarAoCarrinho(produto: any) {
     const qtd = produto.qtdSelecionada || 1;
-  
+
     if (qtd > produto.quantidade) {
       alert('Quantidade excede o estoque!');
       return;
     }
-  
+
     const existente = this.carrinho.find(p => p.id === produto.id);
-  
+
     if (existente) {
       existente.qtd += qtd;
     } else {
@@ -50,11 +52,11 @@ export class PnLojaComponent {
         qtd: qtd
       });
     }
-  
+
     produto.quantidade -= qtd;
     produto.qtdSelecionada = 1;
   }
-  
+
 
   removerUnidade(index: number, item: any): void {
     if (this.carrinho[index].qtd > 1) {
@@ -63,7 +65,7 @@ export class PnLojaComponent {
       // Remove do carrinho se for a última unidade
       this.carrinho.splice(index, 1);
     }
-  
+
     // Atualiza o estoque do produto
     this.produtos.forEach((produto) => {
       if (produto.id === item.id) {
@@ -71,31 +73,39 @@ export class PnLojaComponent {
       }
     });
   }
-  
+
 
   removerTudo(index: number): void {
     const itemRemovido = this.carrinho[index];
-  
+
     // Devolve a quantidade ao produto original
     this.produtos.forEach((produto) => {
       if (produto.id === itemRemovido.id) {
         produto.quantidade += itemRemovido.qtd;
       }
     });
-  
+
     // Remove o item do carrinho
     this.carrinho.splice(index, 1);
   }
-  
+
 
   finalizarVenda(pagamento: string) {
     const venda = {
-      produtos : this.carrinho,
+      produtos: this.carrinho,
       total: this.totalCarrinho,
       pagamento: pagamento,
     }
 
-    console.log(JSON.stringify(venda));
+    this.lojaService.createV(JSON.stringify(venda)).subscribe({
+      next: (dados) => {
+        console.log(dados);
+        this.alertas.success("Venda Finalizada com sucesso!");
+        this.carrinho = [];
+      }, error: (er) => {
+        this.alertas.error(er);
+      }
+    })
   }
 
   get totalCarrinho(): number {
@@ -103,15 +113,19 @@ export class PnLojaComponent {
   }
 
   abrirModal() {
-    const dialogRef = this.dialog.open(ModalVendaComponent, {
-      width: '400px',
-      data: { produtos: this.carrinho }
-    });
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result.confirmado) {
-        this.finalizarVenda(result.pagamento);
-      }
-    });
+    if (this.carrinho.length) {
+      const dialogRef = this.dialog.open(ModalVendaComponent, {
+        width: '400px',
+        data: { produtos: this.carrinho }
+      });
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result.confirmado) {
+          this.finalizarVenda(result.pagamento);
+        }
+      });
+    }else{
+      this.alertas.error("Carrinho Vazio !!")
+    }
   }
 
 

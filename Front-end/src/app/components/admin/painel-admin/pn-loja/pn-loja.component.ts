@@ -32,14 +32,14 @@ export class PnLojaComponent {
   
   adicionarAoCarrinho(produto: any) {
     const qtd = produto.qtdSelecionada || 1;
-
+  
     if (qtd > produto.quantidade) {
       alert('Quantidade excede o estoque!');
       return;
     }
-
+  
     const existente = this.carrinho.find(p => p.id === produto.id);
-
+  
     if (existente) {
       existente.qtd += qtd;
     } else {
@@ -50,34 +50,43 @@ export class PnLojaComponent {
         qtd: qtd
       });
     }
-
+  
+    produto.quantidade -= qtd;
     produto.qtdSelecionada = 1;
-    produto.quantidade--;
   }
+  
 
   removerUnidade(index: number, item: any): void {
-    console.log(item);
     if (this.carrinho[index].qtd > 1) {
       this.carrinho[index].qtd -= 1;
-      this.produtos.forEach((itens) =>{
-        if(itens.id == item.id){
-          itens.quantidade++;
-        }
-      });
     } else {
-      // Se só tem 1, remove o item
+      // Remove do carrinho se for a última unidade
       this.carrinho.splice(index, 1);
-      this.produtos.forEach((itens) =>{
-        if(itens.id == item.id){
-          itens.quantidade++;
-        }
-      });
     }
+  
+    // Atualiza o estoque do produto
+    this.produtos.forEach((produto) => {
+      if (produto.id === item.id) {
+        produto.quantidade += 1;
+      }
+    });
   }
+  
 
   removerTudo(index: number): void {
+    const itemRemovido = this.carrinho[index];
+  
+    // Devolve a quantidade ao produto original
+    this.produtos.forEach((produto) => {
+      if (produto.id === itemRemovido.id) {
+        produto.quantidade += itemRemovido.qtd;
+      }
+    });
+  
+    // Remove o item do carrinho
     this.carrinho.splice(index, 1);
   }
+  
 
   finalizarVenda(pagamento: string) {
     const venda = {

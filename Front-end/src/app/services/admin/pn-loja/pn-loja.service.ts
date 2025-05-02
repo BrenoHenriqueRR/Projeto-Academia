@@ -8,11 +8,17 @@ import { Observable } from 'rxjs';
 })
 export class PnLojaService {
   private urlR = environment.apiUrl + "/Loja/read";
+  private urlVenda = environment.apiUrl + "/Loja/createSale";
 
-  
+
   constructor(private http: HttpClient) { }
 
-  read(): Observable<any>{
-       return this.http.get<any>(this.urlR);
-    }
+  read(): Observable<any> {
+    return this.http.get<any>(this.urlR);
+  }
+
+  createV(dados: any): Observable<any> {
+    return this.http.post(this.urlVenda, dados);
+  }
+  
 }

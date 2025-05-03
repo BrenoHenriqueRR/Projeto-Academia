@@ -10,6 +10,8 @@ export class PnLojaService {
   private urlR = environment.apiUrl + "/Loja/read";
   private urlVenda = environment.apiUrl + "/Loja/createSale";
   private urlProduto = environment.apiUrl + "/Loja/create";
+  private urlProdutoE = environment.apiUrl + "/Loja/editProduto";
+  private urlProdutoD = environment.apiUrl + "/Loja/deleteProduto";
 
 
   constructor(private http: HttpClient) { }
@@ -26,5 +28,11 @@ export class PnLojaService {
     return this.http.post(this.urlProduto, dados);
   }
 
-  
+  editarP(dados: any): Observable<any> {
+    return this.http.post(this.urlProdutoE, dados);
+  }
+
+  deleteP(id: any): Observable<any> {
+    return this.http.post(this.urlProdutoD, id);
+  }
 }

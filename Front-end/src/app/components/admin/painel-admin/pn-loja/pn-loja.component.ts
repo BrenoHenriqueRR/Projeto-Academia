@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { ModalSpinnerComponent } from "../../../modais/modal-spinner/modal-spinner.component";
 import { CommonModule } from '@angular/common';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -9,15 +9,19 @@ import { FormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ModalProdutoComponent } from './modal-produto/modal-produto.component';
 import { ModalConfirmarComponent } from '../../../modais/modal-confirmar/modal-confirmar.component';
+import { ModalEditarComponent } from './modal-editar/modal-editar.component';
+
 
 @Component({
   selector: 'app-pn-loja',
   standalone: true,
-  imports: [ModalSpinnerComponent, CommonModule, NgxPaginationModule, FormsModule, ModalProdutoComponent],
+  imports: [ModalSpinnerComponent, CommonModule, NgxPaginationModule, FormsModule, ModalProdutoComponent, ModalEditarComponent, ModalConfirmarComponent],
   templateUrl: './pn-loja.component.html',
   styleUrl: './pn-loja.component.css'
 })
 export class PnLojaComponent {
+
+  @ViewChild(ModalEditarComponent) modalP?: ModalEditarComponent
   @ViewChild(ModalConfirmarComponent) modal?: ModalConfirmarComponent
   loading = false;
   produtos: any[] = [];
@@ -38,6 +42,12 @@ export class PnLojaComponent {
   openmodal(id: any) {
     this.idDelete = id;
     this.modal?.openModal();
+  }
+
+  validarmodal(confirmed: boolean) {
+    if (confirmed) {
+      this.removerProduto(this.idDelete);
+    }
   }
 
   adicionarAoCarrinho(produto: any) {
@@ -68,6 +78,7 @@ export class PnLojaComponent {
   Closemodal() {
     this.ngOnInit();
   }
+
 
 
   removerUnidade(index: number, item: any): void {
@@ -135,7 +146,7 @@ export class PnLojaComponent {
           this.finalizarVenda(result.pagamento);
         }
       });
-    }else{
+    } else {
       this.alertas.error("Carrinho Vazio !!")
     }
   }
@@ -158,18 +169,19 @@ export class PnLojaComponent {
     // abrir modal de novo produto (exemplo com @ViewChild ou serviço)
   }
 
-  fecharModalProduto() {
-    // fechar modal e recarregar lista, se necessário
-  }
-
   editarProduto(produto: any) {
-    this.produtoSelecionado = produto;
-    // abrir modal de edição
+    this.modalP?.openModal(produto);
   }
 
   removerProduto(id: number) {
-    if (confirm('Tem certeza que deseja remover este produto?')) {
-      // lógica para remover produto
-    }
+    const json = JSON.stringify({ id: id });
+    this.lojaService.deleteP(json).subscribe({
+      next: (dados) => {
+        this.alertas.success(dados.msg);
+        this.ngOnInit();
+      }, error: (err) => {
+        this.alertas.error(err.msg);
+      }
+    })
   }
 }

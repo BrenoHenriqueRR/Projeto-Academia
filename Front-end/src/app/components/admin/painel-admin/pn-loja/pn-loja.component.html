@@ -43,12 +43,15 @@
             <button class="btn btn-sm btn-success" (click)="adicionarAoCarrinho(produto)">
               <i class="fas fa-plus"></i> Adicionar
             </button>
-            <button class="btn btn-outline-primary btn-sm ms-2" (click)="editarProduto(produto)">
+            <button class="btn btn-outline-primary btn-sm ms-2" (click)="editarProduto(produto)" data-bs-toggle="modal"
+            data-bs-target="#modal-edit-p">
               <i class="fas fa-edit"></i> Editar
             </button>
-            <button class="btn btn-danger btn-sm ms-2" (click)="removerProduto(produto.id)">
+            <app-modal-editar-prod (CloseModal)="Closemodal()" #modalP></app-modal-editar-prod>
+            <button class="btn btn-danger btn-sm ms-2" (click)="openmodal(produto.id)">
               <i class="fas fa-trash"></i> Excluir
             </button>
+            <app-modal-confirmar (confirm)="validarmodal($event)"></app-modal-confirmar>
           </td>
         </tr>
         }

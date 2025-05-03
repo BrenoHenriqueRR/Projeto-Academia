@@ -250,8 +250,8 @@ class Loja extends BaseController
 
     public function deleteProduto(){
         try {
-            $id = $this->request->getJSON(true);
-            $this->lojaProdutos->delete($id);
+            $dados = $this->request->getJSON();
+            $this->lojaProdutos->delete($dados->id);
             return $this->response
             ->setStatusCode(ResponseInterface::HTTP_OK)
             ->setJSON([
@@ -265,6 +265,28 @@ class Loja extends BaseController
                 ->setJSON([
                     'success' => false,
                     'msg' => 'Ocorreu um erro ao excluir o Produto.',
+                    'error' => $e->getMessage(),
+                ]);
+        }
+    }
+
+    public function editProduto(){
+        try {
+            $dados = $this->request->getJSON();
+            $this->lojaProdutos->update($dados->id,$dados);
+            return $this->response
+            ->setStatusCode(ResponseInterface::HTTP_OK)
+            ->setJSON([
+                'success' => true,
+                'msg' => 'Produto Editado com sucesso!',
+            ]);
+
+        } catch (\Exception $e) {
+            return $this->response
+                ->setStatusCode(ResponseInterface::HTTP_INTERNAL_SERVER_ERROR)
+                ->setJSON([
+                    'success' => false,
+                    'msg' => 'Ocorreu um erro ao editar o Produto.',
                     'error' => $e->getMessage(),
                 ]);
         }

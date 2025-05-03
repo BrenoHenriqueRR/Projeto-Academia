@@ -11,7 +11,7 @@ import { ModalSpinnerComponent } from "../../../modais/modal-spinner/modal-spinn
 @Component({
   selector: 'app-pn-funcionarios',
   standalone: true,
-  imports: [NgxPaginationModule, NgFor, RouterLink, ModalConfirmarComponent, ModalCadastroComponent, ModalSpinnerComponent,NgIf],
+  imports: [NgxPaginationModule, RouterLink, ModalConfirmarComponent, ModalCadastroComponent, ModalSpinnerComponent, NgIf],
   templateUrl: './pn-funcionarios.component.html',
   styleUrl: './pn-funcionarios.component.css'
 })
@@ -28,9 +28,9 @@ export class PnFuncionariosComponent {
     this.service.pesquisar().subscribe({
       next: (dado) => {
         this.dados_funcionario = dado;
-        setTimeout(() =>{
+        setTimeout(() => {
           this.loading = false;
-        },100);
+        }, 100);
 
       },
       error: (erro) => {
@@ -43,11 +43,11 @@ export class PnFuncionariosComponent {
     this.List();
   }
 
-
   openmodal(id: any) {
     this.idDelete = id;
     this.modal?.openModal();
   }
+  
   validarmodal(confirmed: boolean) {
     if (confirmed) {
       this.excluir(this.idDelete);

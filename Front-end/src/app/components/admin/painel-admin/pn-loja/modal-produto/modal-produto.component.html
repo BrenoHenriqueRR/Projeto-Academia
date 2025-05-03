@@ -1,11 +1,14 @@
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" id="btn-modal-cad-p"
     data-bs-target="#modal-cad-p"><i class="fa-solid fa-plus p-1"></i>Adicionar</button>
 
-<div class="modal modal-lg fade" id="modal-cad-p" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal-cad-p" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-10" id="exampleModalLabel">Cadastro de Produto</h1>
+                <h2>
+                    <i class="fas fa-box-open" style="margin-right: 8px; color: #007bff;"></i>
+                    Cadastro de Produto
+                </h2>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -14,7 +17,8 @@
                         <div class="row form-group">
                             <div class="col">
                                 <label for="nome">Produto</label>
-                                <input type="text" id="nome" name="nome" formControlName="nome">
+                                <input type="text" id="nome" name="nome" placeholder="Ex: Whey Protein"
+                                    formControlName="nome">
                             </div>
                             <div class="col">
                                 <label for="preco">Preço</label>
@@ -34,7 +38,7 @@
                                 </select>
                             </div>
                             <div class="col">
-                                <label for="quantidade">quantidade</label>
+                                <label for="quantidade">Quantidade</label>
                                 <input type="number" id="quantidade" name="quantidade" formControlName="quantidade">
                             </div>
                         </div>
@@ -44,7 +48,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button class="btn btn-primary">Cadastrar</button>
+                <button class="btn btn-primary"  (click)="submit()">Cadastrar</button>
             </div>
         </div>
     </div>

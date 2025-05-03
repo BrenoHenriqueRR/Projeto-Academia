@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ModalSpinnerComponent } from "../../../modais/modal-spinner/modal-spinner.component";
 import { CommonModule } from '@angular/common';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -8,6 +8,7 @@ import { ModalVendaComponent } from './modal-venda/modal-venda.component';
 import { FormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ModalProdutoComponent } from './modal-produto/modal-produto.component';
+import { ModalConfirmarComponent } from '../../../modais/modal-confirmar/modal-confirmar.component';
 
 @Component({
   selector: 'app-pn-loja',
@@ -17,11 +18,13 @@ import { ModalProdutoComponent } from './modal-produto/modal-produto.component';
   styleUrl: './pn-loja.component.css'
 })
 export class PnLojaComponent {
+  @ViewChild(ModalConfirmarComponent) modal?: ModalConfirmarComponent
   loading = false;
   produtos: any[] = [];
   filtroProduto: string = '';
   paginaAtual = 1;
   carrinho: any[] = [];
+  idDelete: number = 0;
 
   produtoSelecionado: any = null;
 
@@ -31,6 +34,11 @@ export class PnLojaComponent {
   }
 
   constructor(private lojaService: PnLojaService, private dialog: MatDialog, private alertas: ToastrService) { }
+
+  openmodal(id: any) {
+    this.idDelete = id;
+    this.modal?.openModal();
+  }
 
   adicionarAoCarrinho(produto: any) {
     const qtd = produto.qtdSelecionada || 1;
@@ -55,6 +63,10 @@ export class PnLojaComponent {
 
     produto.quantidade -= qtd;
     produto.qtdSelecionada = 1;
+  }
+
+  Closemodal() {
+    this.ngOnInit();
   }
 
 

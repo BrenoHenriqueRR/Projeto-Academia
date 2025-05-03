@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 export class PnLojaService {
   private urlR = environment.apiUrl + "/Loja/read";
   private urlVenda = environment.apiUrl + "/Loja/createSale";
+  private urlProduto = environment.apiUrl + "/Loja/create";
 
 
   constructor(private http: HttpClient) { }
@@ -20,5 +21,10 @@ export class PnLojaService {
   createV(dados: any): Observable<any> {
     return this.http.post(this.urlVenda, dados);
   }
+
+  createP(dados: any): Observable<any> {
+    return this.http.post(this.urlProduto, dados);
+  }
+
   
 }

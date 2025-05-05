@@ -78,7 +78,7 @@ export class ModalCadastroComponent {
       endereco: ['', Validators.required],
       datanascimento: ['', Validators.required],
       nivel_experiencia: ['iniciante', Validators.required],
-      treino_com_personal: [false],
+      treino_com_personal: ['nao'],
       termo_responsabilidade: [null],
       personal_id: [null],
     });
@@ -159,6 +159,7 @@ export class ModalCadastroComponent {
         break;
       case 'cliente':
         if (this.CliForm.valid) {
+          console.log(this.CliForm.getRawValue());
           const formData = new FormData();
           if (this.foto) {
             formData.append('foto_perfil', this.foto, this.foto.name);
@@ -167,12 +168,12 @@ export class ModalCadastroComponent {
           formData.append('endereco', this.CliForm.value.endereco);
           formData.append('telefone', this.CliForm.value.telefone);
           formData.append('CPF', this.CliForm.value.CPF);
-          formData.append('datanascimento', this.CliForm.value.data_nascimento);
+          formData.append('RG', this.CliForm.value.RG);
+          formData.append('datanascimento', this.CliForm.value.datanascimento);
           formData.append('email', this.CliForm.value.email);
           formData.append('treino_com_personal', this.CliForm.value.treino_com_personal);
           formData.append('nivel_experiencia', this.CliForm.value.nivel_experiencia);
           formData.append('personal_id', this.CliForm.value.personal_id);
-          console.log(formData);
           this.cliservice.sendData(formData).subscribe({
             next: (dados) => {
               this.alertas.success(dados.msg);

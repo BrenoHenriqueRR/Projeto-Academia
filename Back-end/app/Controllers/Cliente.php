@@ -39,18 +39,9 @@ class Cliente extends BaseController
             'treino_com_personal' => $this->request->getPost('treino_com_personal'),
         ];
         $dados['personal_id'] = null !== $this->request->getPost('personal_id') ? $this->request->getPost('personal_id') : null;
-        $foto = $this->request->getFile('foto');
+        $foto = $this->request->getFile('foto_perfil');
         $atestado = null !== $this->request->getFile('atestado_medico') ? $this->request->getFile('atestado_medico') : null;
         $termo = null !== $this->request->getFile('termo_responsabilidade') ? $this->request->getFile('termo_responsabilidade') : null;
-
-        if (isset($foto)) {
-            if ($foto->isValid() && !$foto->hasMoved()) {
-                $nomeimg = $foto->getRandomName();
-                $foto->move('assets/fotos-perfil/', $nomeimg);
-                $caminhoImagem = 'assets/fotos-perfil/' . $nomeimg;
-                $dados['foto_perfil'] = $caminhoImagem;
-            }
-        }
 
         $dados['atestado_medico'] = $this->processarArquivo($atestado, 'atestado', $this->request->getPost('CPF'));
         $dados['termo_responsabilidade'] = $this->processarArquivo($termo, 'termo', $this->request->getPost('CPF'));
@@ -59,6 +50,23 @@ class Cliente extends BaseController
 
         $this->model->insert($dados);
         $id = $this->model->getInsertID();
+
+        if (isset($foto)) {
+            if ($foto->isValid() && !$foto->hasMoved()) {
+                $nomeimg = $foto->getRandomName();
+                
+                $caminhoPasta = 'assets/fotos-perfil/' . $id;
+                if (!is_dir($caminhoPasta)) {
+                    mkdir($caminhoPasta, 0755, true); // cria a pasta se não existir
+                }
+        
+                $foto->move($caminhoPasta, $nomeimg);
+                $caminhoImagem = $caminhoPasta . '/' . $nomeimg;
+        
+                // Atualiza o campo de imagem no banco
+                $this->model->update($id, ['foto_perfil' => $caminhoImagem]);
+            }
+        }
 
         $verif_email = array(
             'id' => $id,
@@ -76,7 +84,7 @@ class Cliente extends BaseController
         $clienteJson = $this->request->getPost('cliente');
         $anamneseJson = $this->request->getPost('anamnese');
         $foto = $this->request->getFile('foto_perfil');
-        
+
         $cliente = json_decode($clienteJson, true);
         $anamnese = json_decode($anamneseJson, true);
 
@@ -90,9 +98,9 @@ class Cliente extends BaseController
             }
         }
 
-        if($this->model->insert($cliente)){
+        if ($this->model->insert($cliente)) {
             echo "deu certo";
-        }else{
+        } else {
             print_r($cliente);
         }
         $id = $this->model->getInsertID();
@@ -102,14 +110,12 @@ class Cliente extends BaseController
             'id' => $id,
             'email' => $dados['email']
         );
-        
+
         $this->email->verificaEmail($verif_email);
-        
+
         $msg = array("msg" => "Cadastro Enviado");
 
         return $this->response->setJSON($msg)->setStatusCode(200);
-
-
     }
 
     public function delete()

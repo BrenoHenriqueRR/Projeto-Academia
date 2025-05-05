@@ -28,6 +28,8 @@ export class CadastroComponent {
   formcadastro!: FormGroup;
   loading: boolean = false;
   mensagemSucesso!: string;
+  mostraSelectPersonal = false;
+  menorDeIdade = false;
   Personal!: any;
   i = 0;
   etapa: number = 1;
@@ -43,6 +45,8 @@ export class CadastroComponent {
   cadAdm: string = "";
   anamneseForm!: FormGroup;
   IdCliAdm: string = "";
+  fileName: string = 'Nenhum arquivo selecionado';
+  foto: any;
 
   problemasSaude = [
     'Doença cardiaca coronariana',
@@ -112,6 +116,7 @@ export class CadastroComponent {
         this.loading = false;
       }
     })
+    this.personal();
   }
 
   constructor(private fb: FormBuilder,private alert: ToastrService , private service: CadastroService, 
@@ -207,13 +212,18 @@ export class CadastroComponent {
 
   inicializarForm() {
     this.formcadastro = new FormGroup({
+      foto_perfil: new FormControl(''),
+      CPF: new FormControl('', [Validators.required]),
+      RG: new FormControl('', [Validators.required]),
       nome: new FormControl('', [Validators.required]),
+      telefone: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
-      senha: new FormControl('', [Validators.required]),
       endereco: new FormControl('', [Validators.required]),
       datanascimento: new FormControl('', [Validators.required]),
-      CPF: new FormControl('', [Validators.required]),
-      personal_id: new FormControl('', [Validators.required]),
+      nivel_experiencia: new FormControl('iniciante', [Validators.required]),
+      treino_com_personal: new FormControl(false),
+      termo_responsabilidade: new FormControl(null),
+      personal_id: new FormControl(''),
     });
 
     this.anamneseForm = this.fb.group({
@@ -300,7 +310,6 @@ export class CadastroComponent {
           break;
         } else {
           this.submit();
-          break;
           this.etapa++;
           this.router.navigate([], {
             relativeTo: this.route,
@@ -312,6 +321,48 @@ export class CadastroComponent {
       default:
         break;
     }
+  }
+
+  verificarIdade() {
+    const hoje = new Date();
+    let datacli = this.formcadastro.get("datanascimento")?.value;
+    datacli = this.stringParaData(datacli);
+    const nascimento = new Date(datacli);
+
+    let idade = hoje.getFullYear() - nascimento.getFullYear();
+    const m = hoje.getMonth() - nascimento.getMonth();
+
+    if (m < 0 || (m === 0 && hoje.getDate() < nascimento.getDate())) {
+      idade--;
+    }
+
+    this.menorDeIdade = idade < 18;
+
+  }
+
+  onFileChange(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.fileName = input.files[0].name;
+      this.foto = input.files[0];
+    } else {
+      this.fileName = 'Nenhum arquivo selecionado';
+    }
+  }
+
+  onPersonalToggle(event: any) {
+    this.mostraSelectPersonal = event.target.checked;
+    if (!this.mostraSelectPersonal) {
+      this.formcadastro.get('personal_id')?.setValue(null);
+    }
+  }
+
+  stringParaData(valor: string): Date {
+    if (!valor || valor.length !== 8) return new Date('invalid');
+    const dia = valor.substring(0, 2);
+    const mes = valor.substring(2, 4);
+    const ano = valor.substring(4, 8);
+    return new Date(`${ano}-${mes}-${dia}`);
   }
 }
 

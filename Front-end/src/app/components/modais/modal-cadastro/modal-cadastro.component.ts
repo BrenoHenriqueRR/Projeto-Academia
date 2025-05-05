@@ -43,21 +43,21 @@ export class ModalCadastroComponent {
       }
     });
 
-      this.cliservice.pesquisar().subscribe({
-        next: (dado) => {
-          // console.log('Dados recebidos:', dado);
-          this.Personal = dado;
-  
-        }, error: (erro) => {
-          console.error('Erro ao buscar dados:', erro);
-        }
-      });
+    this.cliservice.pesquisar().subscribe({
+      next: (dado) => {
+        // console.log('Dados recebidos:', dado);
+        this.Personal = dado;
+
+      }, error: (erro) => {
+        console.error('Erro ao buscar dados:', erro);
+      }
+    });
   }
 
   constructor(private fb: FormBuilder, private funcservice: PnFuncionarioService, private alertas: ToastrService,
-    private academiaservice: ConfigService, private cliservice: CadastroService, private router: Router) {}
+    private academiaservice: ConfigService, private cliservice: CadastroService, private router: Router) { }
 
-  inicializarForm(){
+  inicializarForm() {
     this.funcForm = this.fb.group({
       foto: ['', Validators.required],
       nome: ['', Validators.required],
@@ -78,8 +78,8 @@ export class ModalCadastroComponent {
       endereco: ['', Validators.required],
       datanascimento: ['', Validators.required],
       nivel_experiencia: ['iniciante', Validators.required],
-      treino_com_personal: [false,Validators.required],
-      termo_responsabilidade: [null,Validators.required],
+      treino_com_personal: [false, Validators.required],
+      termo_responsabilidade: [null, Validators.required],
       personal_id: ['', Validators.required],
     });
     this.extraForm = this.fb.group({
@@ -101,7 +101,7 @@ export class ModalCadastroComponent {
     });
   }
 
-  openModal(){
+  openModal() {
     ($(this.modal?.nativeElement) as any).modal('show');
   }
 
@@ -112,8 +112,7 @@ export class ModalCadastroComponent {
     }
   }
 
-  
-  verificarIdade(){
+  verificarIdade() {
     const hoje = new Date();
     let datacli = this.CliForm.get("datanascimento")?.value;
     datacli = this.stringParaData(datacli);
@@ -121,13 +120,13 @@ export class ModalCadastroComponent {
 
     let idade = hoje.getFullYear() - nascimento.getFullYear();
     const m = hoje.getMonth() - nascimento.getMonth();
-    
+
     if (m < 0 || (m === 0 && hoje.getDate() < nascimento.getDate())) {
       idade--;
     }
-    
+
     this.menorDeIdade = idade < 18;
-  
+
   }
 
   submitForm() {
@@ -161,7 +160,7 @@ export class ModalCadastroComponent {
       case 'cliente':
         if (this.CliForm.valid) {
           const formData = new FormData();
-          if(this.foto){
+          if (this.foto) {
             formData.append('foto_perfil', this.foto, this.foto.name);
           }
           formData.append('nome', this.CliForm.value.nome);
@@ -180,8 +179,8 @@ export class ModalCadastroComponent {
               this.CliForm.reset();
               $('#modal-cad').modal('hide');
               this.CloseModal.emit();
-            },error: (er) =>{
-              this.alertas.error("ocorreu um erro: " +  er);
+            }, error: (er) => {
+              this.alertas.error("ocorreu um erro: " + er);
             }
           })
         } else {
@@ -216,8 +215,8 @@ export class ModalCadastroComponent {
           this.alertas.error("Campos Vazios !!");
         }
         break;
-        default:
-          console.log("Tipo invalido !!");
+      default:
+        console.log("Tipo invalido !!");
     }
   }
 
@@ -230,7 +229,7 @@ export class ModalCadastroComponent {
       this.fileName = 'Nenhum arquivo selecionado';
     }
   }
-  
+
 
   adicionarBeneficio() {
     const beneficioAtual = this.planoForm.get('beneficios')?.value.trim();

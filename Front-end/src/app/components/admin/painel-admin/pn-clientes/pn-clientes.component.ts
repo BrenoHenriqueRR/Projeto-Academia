@@ -56,7 +56,6 @@ export class PnClientesComponent {
     this.ngOnInit();
   }
 
-
   openmodal(id: any) {
     this.idDelete = id;
     this.modal?.openModal();

@@ -49,7 +49,7 @@ export class PnClientesComponent {
   }
 
   abrirModalCadastro() {
-    $('#modal-cad').modal('show');
+    ($('#modal-cad') as any).modal('show');
   }
 
   Closemodal() {
@@ -64,7 +64,7 @@ export class PnClientesComponent {
   openmodalH(id: any) {
     this.modalH?.openModal(id);
   }
-
+  
   validarmodal(confirmed: boolean) {
     if (confirmed) {
       this.excluir(this.idDelete);

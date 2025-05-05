@@ -9,6 +9,7 @@ import { environment } from '../../environments/environment';
 })
 export class CadastroService {
    private url_cliente = environment.apiUrl + '/Cliente/create';
+   private url_createC = environment.apiUrl + '/Cliente/createComplete';
    private url_pesquisar = environment.apiUrl + '/Funcionarios/pesquisar';
    
 
@@ -21,6 +22,11 @@ export class CadastroService {
 
       return this.http.post<formresponse>(this.url_cliente, data);
   }
+
+  createComplete(dados: FormData): Observable<any> {
+    return this.http.post<any>(this.url_createC,dados);
+  }
+
   pesquisar(): Observable<any> {
     return this.http.get<any>(this.url_pesquisar); // Substitua 'any' pelo tipo de dados esperado
   }

@@ -86,11 +86,11 @@ export class PnPlanosComponent {
         next: (dado) => {
           this.alertas.success(dado.msg);
           this.extraForm.reset();
-          $('#modalextra').modal('hide');
+          ($('#modalextra') as any).modal('hide');
           this.ngOnInit();
         }, error: (err) => {
           this.alertas.error(err.status);
-          $('#modalextra').modal('hide');
+          ($('#modalextra') as any).modal('hide');
           this.ngOnInit();
         },
       })

@@ -1,0 +1,142 @@
+CRITICAL - 2025-05-05 20:13:14 --> ParseError: syntax error, unexpected token "}", expecting "," or ";"
+in APPPATH\Controllers\Cliente.php on line 93.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(290): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Cliente.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Cliente')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Cliente')
+ 4 SYSTEMPATH\CodeIgniter.php(899): class_exists('\\App\\Controllers\\Cliente', true)
+ 5 SYSTEMPATH\CodeIgniter.php(489): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-05 20:13:20 --> mysqli_sql_exception: Duplicate entry '' for key 'cliente.CPF' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `cl...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `cl...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `cl...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cl...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(802): CodeIgniter\Model->doInsert(Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(744): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Cliente.php(91): CodeIgniter\Model->insert(Array)
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Cliente->createComplete()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2025-05-05 20:13:20 --> CodeIgniter\Database\Exceptions\DatabaseException: Duplicate entry '' for key 'cliente.CPF'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cliente` (`nome`, `email`, `telefone`, `foto_perfil`) VALUES (:nome:, :email:, :telefone:, :foto_perfil:)', [...], false)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Cliente.php(91): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->createComplete()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-05 20:13:20 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Duplicate entry '' for key 'cliente.CPF'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `cliente` (`nome`, `email`, `telefone`, `foto_perfil`) VALUES (\'João\', \'joao@email.com\', \'999999999\', \'assets/fotos-perfil/1746476000_a74ee1478b40a14227da.jpg\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `cliente` (`nome`, `email`, `telefone`, `foto_perfil`) VALUES (\'João\', \'joao@email.com\', \'999999999\', \'assets/fotos-perfil/1746476000_a74ee1478b40a14227da.jpg\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cliente` (`nome`, `email`, `telefone`, `foto_perfil`) VALUES (:nome:, :email:, :telefone:, :foto_perfil:)', [...], false)
+ 4 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\Cliente.php(91): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->createComplete()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-05 20:13:20 --> [Caused by] mysqli_sql_exception: Duplicate entry '' for key 'cliente.CPF'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `cliente` (`nome`, `email`, `telefone`, `foto_perfil`) VALUES (\'João\', \'joao@email.com\', \'999999999\', \'assets/fotos-perfil/1746476000_a74ee1478b40a14227da.jpg\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `cliente` (`nome`, `email`, `telefone`, `foto_perfil`) VALUES (\'João\', \'joao@email.com\', \'999999999\', \'assets/fotos-perfil/1746476000_a74ee1478b40a14227da.jpg\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `cliente` (`nome`, `email`, `telefone`, `foto_perfil`) VALUES (\'João\', \'joao@email.com\', \'999999999\', \'assets/fotos-perfil/1746476000_a74ee1478b40a14227da.jpg\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cliente` (`nome`, `email`, `telefone`, `foto_perfil`) VALUES (:nome:, :email:, :telefone:, :foto_perfil:)', [...], false)
+ 5 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Cliente.php(91): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->createComplete()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-05 20:14:50 --> mysqli_sql_exception: Duplicate entry '23222222222' for key 'cliente.CPF' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `cl...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `cl...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `cl...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cl...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(802): CodeIgniter\Model->doInsert(Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(744): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Cliente.php(91): CodeIgniter\Model->insert(Array)
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Cliente->createComplete()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2025-05-05 20:14:50 --> CodeIgniter\Database\Exceptions\DatabaseException: Duplicate entry '23222222222' for key 'cliente.CPF'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cliente` (`foto_perfil`, `CPF`, `RG`, `nome`, `telefone`, `email`, `endereco`, `datanascimento`, `nivel_experiencia`, `treino_com_personal`, `termo_responsabilidade`, `personal_id`) VALUES (:foto_perfil:, :CPF:, :RG:, :nome:, :telefone:, :email:, :endereco:, :datanascimento:, :nivel_experiencia:, :treino_com_personal:, :termo_responsabilidade:, :personal_id:)', [...], false)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Cliente.php(91): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->createComplete()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-05 20:14:50 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Duplicate entry '23222222222' for key 'cliente.CPF'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `cliente` (`foto_perfil`, `CPF`, `RG`, `nome`, `telefone`, `email`, `endereco`, `datanascimento`, `nivel_experiencia`, `treino_com_personal`, `termo_responsabilidade`, `personal_id`) VALUES (\'assets/fotos-perfil/1746476090_ee6b775052d544bc6393.jpg\', \'23222222222\', \'458474444\', \'breno sitenivel\', \'12999999999\', \'brenohenrique9@live.com\', \'Avenida Doutor Januário Miraglia, 2040\', \'07062004\', \'iniciante\', 0, NULL, \'\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `cliente` (`foto_perfil`, `CPF`, `RG`, `nome`, `telefone`, `email`, `endereco`, `datanascimento`, `nivel_experiencia`, `treino_com_personal`, `termo_responsabilidade`, `personal_id`) VALUES (\'assets/fotos-perfil/1746476090_ee6b775052d544bc6393.jpg\', \'23222222222\', \'458474444\', \'breno sitenivel\', \'12999999999\', \'brenohenrique9@live.com\', \'Avenida Doutor Januário Miraglia, 2040\', \'07062004\', \'iniciante\', 0, NULL, \'\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cliente` (`foto_perfil`, `CPF`, `RG`, `nome`, `telefone`, `email`, `endereco`, `datanascimento`, `nivel_experiencia`, `treino_com_personal`, `termo_responsabilidade`, `personal_id`) VALUES (:foto_perfil:, :CPF:, :RG:, :nome:, :telefone:, :email:, :endereco:, :datanascimento:, :nivel_experiencia:, :treino_com_personal:, :termo_responsabilidade:, :personal_id:)', [...], false)
+ 4 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\Cliente.php(91): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->createComplete()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-05 20:14:50 --> [Caused by] mysqli_sql_exception: Duplicate entry '23222222222' for key 'cliente.CPF'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `cliente` (`foto_perfil`, `CPF`, `RG`, `nome`, `telefone`, `email`, `endereco`, `datanascimento`, `nivel_experiencia`, `treino_com_personal`, `termo_responsabilidade`, `personal_id`) VALUES (\'assets/fotos-perfil/1746476090_ee6b775052d544bc6393.jpg\', \'23222222222\', \'458474444\', \'breno sitenivel\', \'12999999999\', \'brenohenrique9@live.com\', \'Avenida Doutor Januário Miraglia, 2040\', \'07062004\', \'iniciante\', 0, NULL, \'\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `cliente` (`foto_perfil`, `CPF`, `RG`, `nome`, `telefone`, `email`, `endereco`, `datanascimento`, `nivel_experiencia`, `treino_com_personal`, `termo_responsabilidade`, `personal_id`) VALUES (\'assets/fotos-perfil/1746476090_ee6b775052d544bc6393.jpg\', \'23222222222\', \'458474444\', \'breno sitenivel\', \'12999999999\', \'brenohenrique9@live.com\', \'Avenida Doutor Januário Miraglia, 2040\', \'07062004\', \'iniciante\', 0, NULL, \'\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `cliente` (`foto_perfil`, `CPF`, `RG`, `nome`, `telefone`, `email`, `endereco`, `datanascimento`, `nivel_experiencia`, `treino_com_personal`, `termo_responsabilidade`, `personal_id`) VALUES (\'assets/fotos-perfil/1746476090_ee6b775052d544bc6393.jpg\', \'23222222222\', \'458474444\', \'breno sitenivel\', \'12999999999\', \'brenohenrique9@live.com\', \'Avenida Doutor Januário Miraglia, 2040\', \'07062004\', \'iniciante\', 0, NULL, \'\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cliente` (`foto_perfil`, `CPF`, `RG`, `nome`, `telefone`, `email`, `endereco`, `datanascimento`, `nivel_experiencia`, `treino_com_personal`, `termo_responsabilidade`, `personal_id`) VALUES (:foto_perfil:, :CPF:, :RG:, :nome:, :telefone:, :email:, :endereco:, :datanascimento:, :nivel_experiencia:, :treino_com_personal:, :termo_responsabilidade:, :personal_id:)', [...], false)
+ 5 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Cliente.php(91): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->createComplete()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-05 20:16:27 --> TypeError: Cannot access offset of type string on string
+in APPPATH\Controllers\Cliente.php on line 87.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->createComplete()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-05 20:16:45 --> Error: Attempt to assign property "foto_perfil" on string
+in APPPATH\Controllers\Cliente.php on line 87.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->createComplete()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-05 20:17:06 --> TypeError: Cannot access offset of type string on string
+in APPPATH\Controllers\Cliente.php on line 87.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->createComplete()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-05 20:17:20 --> TypeError: CodeIgniter\BaseModel::transformDataToArray(): Return value must be of type array, string returned
+in SYSTEMPATH\BaseModel.php on line 1804.
+ 1 SYSTEMPATH\BaseModel.php(768): CodeIgniter\BaseModel->transformDataToArray('{"foto_perfil":"","CPF":"23222222222","RG":"458474444","nome":"breno sitenivel","telefone":"12999999999","email":"brenohenrique9@live.com","endereco":"Avenida Doutor Januário Miraglia, 2040","datanascimento":"07062004","nivel_experiencia":"iniciante","treino_com_personal":false,"termo_responsabilidade":null,"personal_id":""}', 'insert')
+ 2 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert('{"foto_perfil":"","CPF":"23222222222","RG":"458474444","nome":"breno sitenivel","telefone":"12999999999","email":"brenohenrique9@live.com","endereco":"Avenida Doutor Januário Miraglia, 2040","datanascimento":"07062004","nivel_experiencia":"iniciante","treino_com_personal":false,"termo_responsabilidade":null,"personal_id":""}', true)
+ 3 APPPATH\Controllers\Cliente.php(91): CodeIgniter\Model->insert('{"foto_perfil":"","CPF":"23222222222","RG":"458474444","nome":"breno sitenivel","telefone":"12999999999","email":"brenohenrique9@live.com","endereco":"Avenida Doutor Januário Miraglia, 2040","datanascimento":"07062004","nivel_experiencia":"iniciante","treino_com_personal":false,"termo_responsabilidade":null,"personal_id":""}')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->createComplete()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

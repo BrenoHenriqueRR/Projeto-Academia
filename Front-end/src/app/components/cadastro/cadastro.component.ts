@@ -178,12 +178,13 @@ export class CadastroComponent {
       let dadosCli = this.formcadastro.getRawValue();
       let dadosAnamnese = this.anamneseForm.getRawValue();
 
-      console.log(JSON.stringify(dadosAnamnese));
-      console.log(JSON.stringify(dadosCli));
-
+      
       dadosCli['extras'] = this.select_extras.map((extra: { id: number }) => extra.id);
       dadosCli['plano'] = this.planos.map((plano: { id: number }) => plano.id);
-
+      
+      console.log(JSON.stringify(dadosAnamnese));
+      console.log(JSON.stringify(dadosCli));
+      
       dadosAnamnese.perg_problemas_saude = dadosAnamnese.perg_problemas_saude.join(',');
       dadosAnamnese.perg_sintomas = dadosAnamnese.perg_sintomas.join(',');
       dadosAnamnese.perg_objetivos_saude = dadosAnamnese.perg_objetivos_saude.join(',');

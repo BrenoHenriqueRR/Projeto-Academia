@@ -78,9 +78,9 @@ export class ModalCadastroComponent {
       endereco: ['', Validators.required],
       datanascimento: ['', Validators.required],
       nivel_experiencia: ['iniciante', Validators.required],
-      treino_com_personal: [false, Validators.required],
-      termo_responsabilidade: [null, Validators.required],
-      personal_id: ['', Validators.required],
+      treino_com_personal: [false],
+      termo_responsabilidade: [null],
+      personal_id: [null],
     });
     this.extraForm = this.fb.group({
       nome_extra: ['', Validators.required],
@@ -181,6 +181,7 @@ export class ModalCadastroComponent {
               this.CloseModal.emit();
             }, error: (er) => {
               this.alertas.error("ocorreu um erro: " + er);
+              console.log(er);
             }
           })
         } else {

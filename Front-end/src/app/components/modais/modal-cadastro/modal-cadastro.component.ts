@@ -148,7 +148,7 @@ export class ModalCadastroComponent {
             next: (dados) => {
               this.alertas.success(dados.msg);
               this.funcForm.reset();
-              $('#modal-cad').modal('hide');
+              ($('#modal-cad') as any).modal('hide');
               this.CloseModal.emit();
               this.tipo = '';
             }
@@ -177,7 +177,7 @@ export class ModalCadastroComponent {
             next: (dados) => {
               this.alertas.success(dados.msg);
               this.CliForm.reset();
-              $('#modal-cad').modal('hide');
+              ($('#modal-cad') as any).modal('hide');
               this.CloseModal.emit();
             }, error: (er) => {
               this.alertas.error("ocorreu um erro: " + er);
@@ -197,14 +197,14 @@ export class ModalCadastroComponent {
             next: (dado) => {
               this.alertas.success(dado.msg);
               this.planoForm.reset();
-              $('#modal-cad').modal('hide');
+              ($('#modal-cad') as any).modal('hide');
               this.CloseModal.emit();
               this.tipo = '';
               this.fileName = '';
               this.foto = '';
             }, error: (err) => {
               this.alertas.error(err.status);
-              $('#modal-cad').modal('hide');
+              ($('#modal-cad') as any).modal('hide');
               this.CloseModal.emit();
               this.tipo = '';
               this.fileName = '';

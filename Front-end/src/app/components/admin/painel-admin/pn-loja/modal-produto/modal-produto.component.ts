@@ -37,7 +37,7 @@ export class ModalProdutoComponent {
           this.alertas.success("Cadastro enviado com sucesso !!");
           this.produtoForm.reset();
           this.CloseModal.emit();
-          $('#modal-cad-p').modal('hide');
+          ($('#modal-cad-p') as any).modal('hide');
         }, error: (er) => {
           this.alertas.error("Erro ao finalizar o cadastro");
           console.log(er);

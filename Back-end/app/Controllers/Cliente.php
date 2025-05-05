@@ -2,7 +2,9 @@
 
 namespace App\Controllers;
 
+use App\Models\AnamneseModel;
 use App\Models\ClienteModel;
+use CodeIgniter\CLI\Console;
 use CodeIgniter\Database\Query;
 
 class Cliente extends BaseController
@@ -11,6 +13,7 @@ class Cliente extends BaseController
     protected $ClientesPlanoModel;
     protected $ClientesPlanoExtraModel;
     protected $email;
+    protected $anamneseModel;
 
 
     public function __construct()
@@ -19,6 +22,7 @@ class Cliente extends BaseController
         $this->ClientesPlanoModel = new ClienteModel();
         $this->model = new ClienteModel();
         $this->email = new EmailController();
+        $this->anamneseModel = new AnamneseModel();
     }
 
     public function create()
@@ -66,6 +70,48 @@ class Cliente extends BaseController
 
         return $this->response->setJSON($msg)->setStatusCode(200);
     }
+
+    public function createComplete()
+    {
+        $clienteJson = $this->request->getPost('cliente');
+        $anamneseJson = $this->request->getPost('anamnese');
+        $foto = $this->request->getFile('foto_perfil');
+        
+        $cliente = json_decode($clienteJson, true);
+        $anamnese = json_decode($anamneseJson, true);
+
+
+        if (isset($foto)) {
+            if ($foto->isValid() && !$foto->hasMoved()) {
+                $nomeimg = $foto->getRandomName();
+                $foto->move('assets/fotos-perfil/', $nomeimg);
+                $caminhoImagem = 'assets/fotos-perfil/' . $nomeimg;
+                $cliente['foto_perfil'] = $caminhoImagem;
+            }
+        }
+
+        if($this->model->insert($cliente)){
+            echo "deu certo";
+        }else{
+            print_r($cliente);
+        }
+        $id = $this->model->getInsertID();
+        print_r($id);
+        die();
+        $verif_email = array(
+            'id' => $id,
+            'email' => $dados['email']
+        );
+        
+        $this->email->verificaEmail($verif_email);
+        
+        $msg = array("msg" => "Cadastro Enviado");
+
+        return $this->response->setJSON($msg)->setStatusCode(200);
+
+
+    }
+
     public function delete()
     {
 

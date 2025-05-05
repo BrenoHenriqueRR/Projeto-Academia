@@ -11,6 +11,7 @@ use CodeIgniter\Router\RouteCollection;
 // =====================
 $routes->group('Cliente', function ($routes) {
     $routes->post('create', 'Cliente::create');
+    $routes->post('createComplete', 'Cliente::createComplete');
     $routes->post('delete', 'Cliente::delete');
     $routes->post('login', 'Cliente::login');
     $routes->get('pesquisar', 'Cliente::pesquisar');

@@ -11,6 +11,7 @@ import { ConfigService } from '../../services/admin/config/config.service';
 import { ButtonCheckedComponent } from "../button-checked/button-checked.component";
 import { ToastrService } from 'ngx-toastr';
 import { AnamneseService } from '../../services/admin/anamnese/anamnese.service';
+import { error } from 'jquery';
 
 
 @Component({
@@ -86,12 +87,11 @@ export class CadastroComponent {
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.idPlano = params['id'];
-      this.etapa = params['etapa'];
       this.cadAdm = params['cad'] || null;
       this.IdCliAdm = params['idCli'] || null;
+      this.etapa = params['etapa'] || 1;
     });
 
-    this.adicionarCli();
     this.inicializarForm();
     this.loading = true;
     setTimeout(() => {
@@ -117,17 +117,21 @@ export class CadastroComponent {
       }
     })
     this.personal();
+
+    this.route.queryParamMap.subscribe(params => {
+      const etapaUrl = Number(params.get('etapa') || '1');
+      if (etapaUrl > 1 && !this.etapaConcluida(etapaUrl - 1)) {
+        this.alert.warning("Complete as etapas anteriores primeiro.");
+        this.router.navigate([], { queryParams: { etapa: 1 }, queryParamsHandling: 'merge' });
+      } else {
+        this.etapa = etapaUrl;
+      }
+    });
   }
 
-  constructor(private fb: FormBuilder,private alert: ToastrService , private service: CadastroService, 
-    private router: Router, private planosService: ConfigService, private el: ElementRef, 
+  constructor(private fb: FormBuilder, private alert: ToastrService, private service: CadastroService,
+    private router: Router, private planosService: ConfigService, private el: ElementRef,
     private route: ActivatedRoute, private anamservice: AnamneseService) { }
-
-  adicionarCli(){
-    if(this.IdCliAdm){
-      this.anamneseForm.get('cliente_id')?.setValue(this.IdCliAdm); 
-    }
-  }
 
   onCheckboxChange(event: any, classe: string) {
     const checkArray: FormArray = this.anamneseForm.get(classe) as FormArray;
@@ -151,30 +155,6 @@ export class CadastroComponent {
     }
   }
 
-  salvarAnamnese(): void {
-    if (this.anamneseForm.valid) {
-      let dados = this.anamneseForm.getRawValue()
-      dados.perg_problemas_saude = dados.perg_problemas_saude.join(',');
-      dados.perg_sintomas = dados.perg_sintomas.join(',');
-      dados.perg_objetivos_saude = dados.perg_objetivos_saude.join(',');
-
-      dados = JSON.stringify(dados);
-      console.log(dados);
-      this.anamservice.create(dados).subscribe({
-        next: (dados) => {
-          this.alert.success(dados.msg);
-        }, error: (err) => {
-          console.log(err);
-          this.alert.error(err.msg);
-        }
-      })
-
-    } else {
-      this.alert.error('Preencha os campos obrigatórios!');
-    }
-  }
-
-
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
@@ -186,17 +166,54 @@ export class CadastroComponent {
     }
   }
 
-  submit() {
-    if (this.formcadastro.valid) {
-      let dados = this.formcadastro.getRawValue();
-      dados['extras'] = this.select_extras.map((extra: { id: number }) => extra.id);
-      dados['plano'] = this.planos.map((plano: { id: number }) => plano.id);
+  @HostListener('window:beforeunload', ['$event'])
+  unloadNotification($event: any) {
+    $event.preventDefault();
+    $event.returnValue = 'Tem certeza que deseja sair? As alterações não salvas serão perdidas.';
+  }
 
-      console.log(JSON.stringify(dados));
+  submit() {
+    if (this.formcadastro.valid && this.anamneseForm.valid) {
+      // Dados do cliente
+      let dadosCli = this.formcadastro.getRawValue();
+      let dadosAnamnese = this.anamneseForm.getRawValue();
+
+      console.log(JSON.stringify(dadosAnamnese));
+      console.log(JSON.stringify(dadosCli));
+
+      dadosCli['extras'] = this.select_extras.map((extra: { id: number }) => extra.id);
+      dadosCli['plano'] = this.planos.map((plano: { id: number }) => plano.id);
+
+      dadosAnamnese.perg_problemas_saude = dadosAnamnese.perg_problemas_saude.join(',');
+      dadosAnamnese.perg_sintomas = dadosAnamnese.perg_sintomas.join(',');
+      dadosAnamnese.perg_objetivos_saude = dadosAnamnese.perg_objetivos_saude.join(',');
+
+
+      // Junta tudo
+      const formData = new FormData();
+      formData.append('cliente', JSON.stringify(dadosCli));
+      formData.append('anamnese', JSON.stringify(dadosAnamnese));
+      formData.append('foto_perfil', this.foto);
+
+      console.log(formData);
+
+
+
+      this.service.createComplete(formData).subscribe({
+        next: (resp) => {
+
+        }, error: (err) => {
+        }
+      })
+
+
+
     } else {
-      alert("campos vazio!!")
+      this.alert.error('Preencha todos os campos obrigatórios!');
     }
   }
+
+
   personal() {
     this.service.pesquisar().subscribe({
       next: (dado) => {
@@ -227,7 +244,6 @@ export class CadastroComponent {
     });
 
     this.anamneseForm = this.fb.group({
-      cliente_id: [null, Validators.required],
       perg_problemas_saude: this.fb.array([]),
       perg_sintomas: this.fb.array([]),
       perg_medicamentos: [''],
@@ -279,19 +295,23 @@ export class CadastroComponent {
       case "1":
         this.loading = true;
         setTimeout(() => {
-          if (this.cadAdm == "true") {
-            this.etapa = 3;
-            this.router.navigate([], {
-              relativeTo: this.route,
-              queryParams: { etapa: this.etapa },
-              queryParamsHandling: 'merge'
-            });
-            this.loading = false;
-            window.scrollTo({
-              top: 0,
-              behavior: 'smooth'
-            });
-          } else {
+          this.etapa++;
+          this.router.navigate([], {
+            relativeTo: this.route,
+            queryParams: { etapa: this.etapa },
+            queryParamsHandling: 'merge'
+          });
+          this.loading = false;
+        }, 300);
+        break;
+      case "2":
+        this.loading = true;
+        if (!this.formcadastro.valid) {
+          this.alert.warning("Preencha todos os campos obrigatórios do cadastro.");
+          this.loading = false;
+          break;
+        } else {
+          setTimeout(() => {
             this.etapa++;
             this.router.navigate([], {
               relativeTo: this.route,
@@ -299,24 +319,15 @@ export class CadastroComponent {
               queryParamsHandling: 'merge'
             });
             this.loading = false;
-            
-          }
-        }, 300);
-        break;
-      case "2":
-
-        if (!this.formcadastro.valid) {
-          alert("campos vazio!!");
-          break;
-        } else {
-          this.submit();
-          this.etapa++;
-          this.router.navigate([], {
-            relativeTo: this.route,
-            queryParams: { etapa: this.etapa },
-            queryParamsHandling: 'merge'
-          });
+          }, 300);
         }
+        break;
+      case "3": // Enviar anamnese
+        if (!this.anamneseForm.valid) {
+          this.alert.warning("Preencha a anamnese corretamente.");
+          break;
+        }
+        this.submit();
         break;
       default:
         break;
@@ -339,6 +350,18 @@ export class CadastroComponent {
     this.menorDeIdade = idade < 18;
 
   }
+
+  etapaConcluida(etapa: number): boolean {
+    switch (etapa) {
+      case 2:
+        return this.formcadastro?.valid;
+      case 3:
+        return this.anamneseForm?.valid;
+      default:
+        return true;
+    }
+  }
+
 
   onFileChange(event: Event) {
     const input = event.target as HTMLInputElement;

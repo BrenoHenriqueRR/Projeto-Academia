@@ -50,7 +50,7 @@ export class ModalEditarComponent {
           this.alertas.success("Produto editado com sucesso !!");
           this.produtoForm.reset();
           this.CloseModal.emit();
-          $('#modal-edit-p').modal('hide');
+         ( $('#modal-edit-p') as any).modal('hide');
         }, error: (er) => {
           this.alertas.error("Erro ao editar");
           console.log(er);

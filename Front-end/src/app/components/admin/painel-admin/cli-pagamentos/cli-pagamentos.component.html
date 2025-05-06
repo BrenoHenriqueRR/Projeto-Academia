@@ -1,0 +1,35 @@
+<h2>Gestão de Pagamentos</h2>
+
+<label>Status:
+  <select [(ngModel)]="filtroStatus" (change)="aplicarFiltro()">
+    <option value="todos">Todos</option>
+    <option value="pago">Pago</option>
+    <option value="pendente">Pendente</option>
+  </select>
+</label>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Cliente</th>
+      <th>Valor</th>
+      <th>Vencimento</th>
+      <th>Status</th>
+      <th>Ação</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pg of filtrado">
+      <td>{{ pg.nome_cliente }}</td>
+      <td>R$ {{ pg.valor | number:'1.2-2' }}</td>
+      <td>{{ pg.data_vencimento | date:'shortDate' }}</td>
+      <td>{{ pg.status }}</td>
+      <td>
+        <button *ngIf="pg.status === 'pendente'" (click)="realizarPagamento(pg.id)">
+          Marcar como Pago
+        </button>
+        <span *ngIf="pg.status === 'pago'">✔</span>
+      </td>
+    </tr>
+  </tbody>
+</table>

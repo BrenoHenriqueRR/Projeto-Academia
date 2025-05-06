@@ -20,7 +20,9 @@ import { error } from 'jquery';
   imports: [ReactiveFormsModule, NgIf, NgFor, NgxMaskDirective, ModalSpinnerComponent, ButtonCheckedComponent],
   providers: [
     CadastroService,
-    provideNgxMask(),
+    provideNgxMask({
+      dropSpecialCharacters: false
+    }),
   ],
   templateUrl: './cadastro.component.html',
   styleUrl: './cadastro.component.css'
@@ -172,47 +174,6 @@ export class CadastroComponent {
     $event.returnValue = 'Tem certeza que deseja sair? As alterações não salvas serão perdidas.';
   }
 
-  submit() {
-    if (this.formcadastro.valid && this.anamneseForm.valid) {
-      // Dados do cliente
-      let dadosCli = this.formcadastro.getRawValue();
-      let dadosAnamnese = this.anamneseForm.getRawValue();
-
-      
-      dadosCli['extras'] = this.select_extras.map((extra: { id: number }) => extra.id);
-      dadosCli['plano'] = this.planos.map((plano: { id: number }) => plano.id);
-      
-      console.log(JSON.stringify(dadosAnamnese));
-      console.log(JSON.stringify(dadosCli));
-      
-      dadosAnamnese.perg_problemas_saude = dadosAnamnese.perg_problemas_saude.join(',');
-      dadosAnamnese.perg_sintomas = dadosAnamnese.perg_sintomas.join(',');
-      dadosAnamnese.perg_objetivos_saude = dadosAnamnese.perg_objetivos_saude.join(',');
-
-
-      // Junta tudo
-      const formData = new FormData();
-      formData.append('cliente', JSON.stringify(dadosCli));
-      formData.append('anamnese', JSON.stringify(dadosAnamnese));
-      formData.append('foto_perfil', this.foto);
-
-      console.log(formData);
-
-
-
-      this.service.createComplete(formData).subscribe({
-        next: (resp) => {
-
-        }, error: (err) => {
-        }
-      })
-
-
-
-    } else {
-      this.alert.error('Preencha todos os campos obrigatórios!');
-    }
-  }
 
 
   personal() {
@@ -241,7 +202,7 @@ export class CadastroComponent {
       nivel_experiencia: new FormControl('iniciante', [Validators.required]),
       treino_com_personal: new FormControl(false),
       termo_responsabilidade: new FormControl(null),
-      personal_id: new FormControl(''),
+      personal_id: new FormControl(null),
     });
 
     this.anamneseForm = this.fb.group({
@@ -262,6 +223,51 @@ export class CadastroComponent {
       perg_objetivos_saude: this.fb.array([]),
       anotacoes: [],
     });
+  }
+
+  submit() {
+    if (this.formcadastro.valid && this.anamneseForm.valid) {
+      this.formcadastro.value.treino_com_personal = (this.formcadastro.value.treino_com_personal == false) ? 'nao' : 'sim';
+      const dataNascimento = this.formcadastro.value.datanascimento;
+      const partes = dataNascimento.split('/');
+      this.formcadastro.patchValue({datanascimento: `${partes[2]}-${partes[1]}-${partes[0]}`});
+
+      // Dados do cliente
+      let dadosCli = this.formcadastro.getRawValue();
+      let dadosAnamnese = this.anamneseForm.getRawValue();
+
+
+      dadosCli['extras'] = this.select_extras.map((extra: { id: number }) => extra.id);
+      dadosCli['plano'] = this.planos.map((plano: { id: number }) => plano.id);
+
+      console.log(JSON.stringify(dadosAnamnese));
+      console.log(JSON.stringify(dadosCli));
+
+      dadosAnamnese.perg_problemas_saude = dadosAnamnese.perg_problemas_saude.join(',');
+      dadosAnamnese.perg_sintomas = dadosAnamnese.perg_sintomas.join(',');
+      dadosAnamnese.perg_objetivos_saude = dadosAnamnese.perg_objetivos_saude.join(',');
+
+
+      // Junta tudo
+      const formData = new FormData();
+      formData.append('cliente', JSON.stringify(dadosCli));
+      formData.append('anamnese', JSON.stringify(dadosAnamnese));
+      formData.append('foto_perfil', this.foto);
+      
+
+
+      this.service.createComplete(formData).subscribe({
+        next: (resp) => {
+
+        }, error: (err) => {
+        }
+      })
+
+
+
+    } else {
+      this.alert.error('Preencha todos os campos obrigatórios!');
+    }
   }
 
   onCheckedChange(checked: boolean, extra: any): void {

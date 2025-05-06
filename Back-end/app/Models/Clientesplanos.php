@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class Clientesplanos extends Model
 {
-    protected $table            = 'clientesplanos';
+    protected $table            = 'clientes_planos';
     protected $primaryKey       = 'id';
-    protected $allowedFields    = ['data_inicio','data_vencimento','status','forma_pagamento','cliente_id','plano_id'];
+    protected $allowedFields    = ['data_inicio','data_vencimento','status','cliente_id','plano_id'];
 }

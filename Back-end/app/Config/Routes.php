@@ -15,6 +15,7 @@ $routes->group('Cliente', function ($routes) {
     $routes->post('delete', 'Cliente::delete');
     $routes->post('login', 'Cliente::login');
     $routes->get('pesquisar', 'Cliente::pesquisar');
+    $routes->get('pesquisarPag', 'Cliente::pesquisarPag');
     $routes->get('getClientesSemAnamnese', 'Cliente::getClientesSemAnamnese');
     $routes->get('verificarEmail/(:num)', 'Cliente::verificarEmail/$1');
     $routes->post('pesquisarid', 'Cliente::pesquisarid');

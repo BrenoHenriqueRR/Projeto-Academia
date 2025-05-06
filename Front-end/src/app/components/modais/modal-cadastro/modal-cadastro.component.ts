@@ -118,16 +118,17 @@ export class ModalCadastroComponent {
     const hoje = new Date();
     let datacli = this.CliForm.get("datanascimento")?.value;
     datacli = this.stringParaData(datacli);
+    console.log(datacli)
     const nascimento = new Date(datacli);
 
     let idade = hoje.getFullYear() - nascimento.getFullYear();
     const m = hoje.getMonth() - nascimento.getMonth();
-
     if (m < 0 || (m === 0 && hoje.getDate() < nascimento.getDate())) {
       idade--;
     }
 
     this.menorDeIdade = idade < 18;
+    console.log(this.menorDeIdade)
 
   }
 
@@ -167,9 +168,7 @@ export class ModalCadastroComponent {
             formData.append('foto_perfil', this.foto, this.foto.name);
           }
           let treino_com_personal = (this.CliForm.value.treino_com_personal == false) ? 'nao' : 'sim';
-          const dataNascimento = this.CliForm.value.datanascimento;
-          const partes = dataNascimento.split('/');
-          const dataConvertida = `${partes[2]}-${partes[1]}-${partes[0]}`;
+          const dataConvertida = this.stringParaData(this.CliForm.value.datanascimento);
           formData.append('nome', this.CliForm.value.nome);
           formData.append('endereco', this.CliForm.value.endereco);
           formData.append('telefone', this.CliForm.value.telefone);
@@ -252,11 +251,10 @@ export class ModalCadastroComponent {
   }
 
   // Função para converter text em hora //
-  stringParaData(valor: string): Date {
-    if (!valor || valor.length !== 8) return new Date('invalid');
-    const dia = valor.substring(0, 2);
-    const mes = valor.substring(2, 4);
-    const ano = valor.substring(4, 8);
-    return new Date(`${ano}-${mes}-${dia}`);
+  stringParaData(valor: string): string {
+    if (!valor || valor.length !== 10) return 'invalid';
+    const partes = valor.split('/');
+    const dataConvertida = `${partes[2]}-${partes[1]}-${partes[0]}`;
+    return dataConvertida;
   }
 }

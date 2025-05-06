@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\AnamneseModel;
 use App\Models\ClienteModel;
+use App\Models\Clientesplanos;
 use CodeIgniter\CLI\Console;
 use CodeIgniter\Database\Query;
 
@@ -11,6 +12,7 @@ class Cliente extends BaseController
 {
     protected $model;
     protected $ClientesPlanoModel;
+    protected $ClientePlanos;
     protected $ClientesPlanoExtraModel;
     protected $email;
     protected $anamneseModel;
@@ -19,7 +21,8 @@ class Cliente extends BaseController
     public function __construct()
     {
         $this->model = new ClienteModel();
-        $this->ClientesPlanoModel = new ClienteModel();
+        $this->ClientesPlanoModel = new Clientesplanos();
+        $this->ClientePlanos = new ClientePlanos();
         $this->model = new ClienteModel();
         $this->email = new EmailController();
         $this->anamneseModel = new AnamneseModel();
@@ -34,7 +37,7 @@ class Cliente extends BaseController
             'telefone' => $this->request->getPost('telefone'),
             'email' => $this->request->getPost('email'),
             'endereco' => $this->request->getPost('endereco'),
-            'datanascimento' => $this->request->getPost('data_nascimento'),
+            'datanascimento' => $this->request->getPost('datanascimento'),
             'nivel_experiencia	' => $this->request->getPost('nivel_experiencia	'),
             'treino_com_personal' => $this->request->getPost('treino_com_personal'),
         ];
@@ -54,15 +57,15 @@ class Cliente extends BaseController
         if (isset($foto)) {
             if ($foto->isValid() && !$foto->hasMoved()) {
                 $nomeimg = $foto->getRandomName();
-                
+
                 $caminhoPasta = 'assets/fotos-perfil/' . $id;
                 if (!is_dir($caminhoPasta)) {
                     mkdir($caminhoPasta, 0755, true); // cria a pasta se não existir
                 }
-        
+
                 $foto->move($caminhoPasta, $nomeimg);
                 $caminhoImagem = $caminhoPasta . '/' . $nomeimg;
-        
+
                 // Atualiza o campo de imagem no banco
                 $this->model->update($id, ['foto_perfil' => $caminhoImagem]);
             }
@@ -84,31 +87,46 @@ class Cliente extends BaseController
         $clienteJson = $this->request->getPost('cliente');
         $anamneseJson = $this->request->getPost('anamnese');
         $foto = $this->request->getFile('foto_perfil');
-
+        
         $cliente = json_decode($clienteJson, true);
         $anamnese = json_decode($anamneseJson, true);
 
+        // $this->ClientePlanos->create($cliente['plano'], 1);
+
+        // die();
+
+        
+        $this->model->insert($cliente);
+        $id = $this->model->getInsertID();
+
+        $anamnese['cliente_id'] = $id;
 
         if (isset($foto)) {
             if ($foto->isValid() && !$foto->hasMoved()) {
                 $nomeimg = $foto->getRandomName();
-                $foto->move('assets/fotos-perfil/', $nomeimg);
-                $caminhoImagem = 'assets/fotos-perfil/' . $nomeimg;
-                $cliente['foto_perfil'] = $caminhoImagem;
+
+                $caminhoPasta = 'assets/fotos-perfil/' . $id;
+                if (!is_dir($caminhoPasta)) {
+                    mkdir($caminhoPasta, 0755, true); // cria a pasta se não existir
+                }
+
+                $foto->move($caminhoPasta, $nomeimg);
+                $caminhoImagem = $caminhoPasta . '/' . $nomeimg;
+
+                // Atualiza o campo de imagem no banco
+                $this->model->update($id, ['foto_perfil' => $caminhoImagem]);
             }
         }
 
-        if ($this->model->insert($cliente)) {
-            echo "deu certo";
-        } else {
-            print_r($cliente);
+        $this->anamneseModel->insert($anamnese);
+
+        if (!empty($cliente['plano'])) {
+            $this->ClientePlanos->create($cliente, $id);
         }
-        $id = $this->model->getInsertID();
-        print_r($id);
-        die();
+
         $verif_email = array(
             'id' => $id,
-            'email' => $dados['email']
+            'email' => $cliente['email']
         );
 
         $this->email->verificaEmail($verif_email);
@@ -116,6 +134,10 @@ class Cliente extends BaseController
         $msg = array("msg" => "Cadastro Enviado");
 
         return $this->response->setJSON($msg)->setStatusCode(200);
+    }
+
+    public function pesquisarPag(){
+        
     }
 
     public function delete()
@@ -218,9 +240,11 @@ class Cliente extends BaseController
     public function pesquisarpid()
     {
         $data = $this->request->getJSON();
-        $dados = $this->model->select('c.*,p.id as funcionario_id, p.nome AS nome_personal')
+
+        $dados = $this->model
+            ->select('c.*, p.id as funcionario_id, p.nome AS nome_personal')
             ->from('cliente AS c')
-            ->join('funcionarios AS p', 'c.personal_id = p.id', 'INNER')
+            ->join('funcionarios AS p', 'c.personal_id = p.id', 'LEFT')
             ->where('c.id', $data->id)
             ->groupBy('c.id');
 

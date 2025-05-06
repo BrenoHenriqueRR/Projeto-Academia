@@ -33,6 +33,7 @@ import { PnLojaComponent } from './components/admin/painel-admin/pn-loja/pn-loja
 import { AnamneseComponent } from './components/admin/painel-admin/anamnese/anamnese.component';
 import { CadAnamneseComponent } from './components/admin/painel-admin/anamnese/cad-anamnese/cad-anamnese.component';
 import { EditarAnamneseComponent } from './components/admin/painel-admin/anamnese/editar-anamnese/editar-anamnese.component';
+import { CliPagamentosComponent } from './components/admin/painel-admin/cli-pagamentos/cli-pagamentos.component';
 
 
 export const routes: Routes = [
@@ -104,6 +105,7 @@ export const routes: Routes = [
             { path: 'loja', component: PnLojaComponent,  canActivate: [adminGuard] },
             { path: 'clientes/editar', component: ModalEditarComponent,  canActivate: [adminGuard] },
             { path: 'clientes/anamnese', component: AnamneseComponent,  canActivate: [adminGuard] },
+            { path: 'clientes/pagamentos', component: CliPagamentosComponent,  canActivate: [adminGuard] },
             { path: 'clientes/anamnese/cadastrar', component: CadAnamneseComponent,  canActivate: [adminGuard] },
             { path: 'clientes/anamnese/editar', component: EditarAnamneseComponent,  canActivate: [adminGuard] },
             { path: 'clientes/treinos', component: CadTreinoComponent,  canActivate: [adminGuard] },

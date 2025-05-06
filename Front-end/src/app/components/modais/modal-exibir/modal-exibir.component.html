@@ -34,8 +34,8 @@
                                 <p><strong>Treina com Personal?</strong> {{ dados_cli?.treino_com_personal }}</p>
                             </div>
                             <div class="col-md-6">
-                                <p><strong>Personal Trainer:</strong> {{ dados_cli?.nome_personal }}</p>
-                                <p><strong>Status:</strong> <span [class]="dados_cli?.status === 'ativo' ? 'text-success' : 'text-danger'">{{ dados_cli?.status }}</span></p>
+                                <p><strong>Personal Trainer:</strong> {{ dados_cli?.nome_personal|| 'Nao Contem' }}</p>
+                                <p><strong>Status:</strong> <span [class]="dados_cli?.status === 'ativo' ? 'text-success' : 'text-danger'">{{ dados_cli?.status || 'NULL' }}</span></p>
                                 <p><strong>Último Login:</strong> {{ dados_cli?.ultimo_login }}</p>
                             </div>
                         </div>

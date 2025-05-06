@@ -13,7 +13,9 @@ import { Route, Router } from '@angular/router';
   standalone: true,
   imports: [FormsModule, NgIf, ReactiveFormsModule, NgxMaskDirective, NgFor],
   templateUrl: './modal-cadastro.component.html',
-  providers: [provideNgxMask()],
+  providers: [provideNgxMask({
+    dropSpecialCharacters: false
+  })],
   styleUrl: './modal-cadastro.component.css'
 })
 export class ModalCadastroComponent {
@@ -78,7 +80,7 @@ export class ModalCadastroComponent {
       endereco: ['', Validators.required],
       datanascimento: ['', Validators.required],
       nivel_experiencia: ['iniciante', Validators.required],
-      treino_com_personal: ['nao'],
+      treino_com_personal: [false],
       termo_responsabilidade: [null],
       personal_id: [null],
     });
@@ -164,20 +166,25 @@ export class ModalCadastroComponent {
           if (this.foto) {
             formData.append('foto_perfil', this.foto, this.foto.name);
           }
+          let treino_com_personal = (this.CliForm.value.treino_com_personal == false) ? 'nao' : 'sim';
+          const dataNascimento = this.CliForm.value.datanascimento;
+          const partes = dataNascimento.split('/');
+          const dataConvertida = `${partes[2]}-${partes[1]}-${partes[0]}`;
           formData.append('nome', this.CliForm.value.nome);
           formData.append('endereco', this.CliForm.value.endereco);
           formData.append('telefone', this.CliForm.value.telefone);
           formData.append('CPF', this.CliForm.value.CPF);
           formData.append('RG', this.CliForm.value.RG);
-          formData.append('datanascimento', this.CliForm.value.datanascimento);
+          formData.append('datanascimento', dataConvertida);
           formData.append('email', this.CliForm.value.email);
-          formData.append('treino_com_personal', this.CliForm.value.treino_com_personal);
+          formData.append('treino_com_personal', treino_com_personal);
           formData.append('nivel_experiencia', this.CliForm.value.nivel_experiencia);
           formData.append('personal_id', this.CliForm.value.personal_id);
           this.cliservice.sendData(formData).subscribe({
             next: (dados) => {
               this.alertas.success(dados.msg);
               this.CliForm.reset();
+
               ($('#modal-cad') as any).modal('hide');
               this.CloseModal.emit();
             }, error: (er) => {

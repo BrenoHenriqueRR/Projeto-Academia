@@ -33,13 +33,13 @@
                 <div class="col">
                     <label class="form-label" for="personal">Personal</label>
                     <!-- <input class="form-control" type="text" formControlName = "personal_id" class="form-control" id="personal"  required> -->
-                    <select  (change)="cadFuncao($event)" class="form-control personal-options">
-                        @for (dado of idnamepersonal; track dado;) {
-                            <option *ngIf="dado['id'] == dados['personal_id']" value="{{ dado['id'] }}" disabled selected>{{ dado['nome'] }}</option>
-                            <!-- <option *ngIf="dado['id'] != dados['personal_id']" value="{{ dado['id'] }}" disabled selected>Escolha um Personal</option> -->
+                    <select (change)="cadFuncao($event)" class="form-control personal-options">
+                        @if (!dados['personal_id']) {
+                            <option value="" selected>Escolha um Personal</option>
                         }
                         @for (dado of idnamepersonal; track dado;) {
-                        <option value="{{ dado['id'] }}">{{ dado['nome'] }}</option>
+                            <option *ngIf="dado['id'] == dados['personal_id']" value="{{ dado['id'] }}" selected>{{ dado['nome'] }}</option>
+                            <option *ngIf="dado['id'] != dados['personal_id']" value="{{ dado['id'] }}">{{ dado['nome'] }}</option>
                         }
                     </select>
                 </div>

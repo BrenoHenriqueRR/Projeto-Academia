@@ -21,6 +21,8 @@ export class ModalProdutoComponent {
       nome: ['', Validators.required],
       preco: ['',Validators.required],
       quantidade: ['',Validators.required],
+      marca: ['',Validators.required],
+      unidade_medida: ['',Validators.required],
       status: ['ativo',Validators.required]
     });
   }

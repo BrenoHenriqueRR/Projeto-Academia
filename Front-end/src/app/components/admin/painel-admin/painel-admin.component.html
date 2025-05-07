@@ -23,7 +23,7 @@
                         </span>
                     </a>
                 </li>
-                @if (funcionalidade != 'secretario') {
+                @if (funcionalidade != 'Secretario') {
                 <li class="side-item" routerLinkActive="mat-accent">
                     <a routerLink="treinos">
                         <i class="fa-solid fa-dumbbell"></i>
@@ -36,32 +36,28 @@
 
                 <li class="side-item" routerLinkActive="mat-accent">
                     <div class="d-flex justify-content-between align-items-center">
-                      <a routerLink="clientes" class="d-flex align-items-center">
-                        <i class="fa-solid fa-user"></i>
-                        <span class="item-description ms-2">Clientes</span>
-                      </a>
-                      <i 
-                        (click)="openDrop()" 
-                        class="open-drop fa-solid" 
-                        [ngClass]="abrirDrop ? 'fa-chevron-up' : 'fa-chevron-down'"
-                        style="cursor: pointer;"
-                      ></i>
+                        <a routerLink="clientes" class="d-flex align-items-center">
+                            <i class="fa-solid fa-user"></i>
+                            <span class="item-description ms-2">Clientes</span>
+                        </a>
+                        <i (click)="openDrop()" class="open-drop fa-solid"
+                            [ngClass]="abrirDrop ? 'fa-chevron-up' : 'fa-chevron-down'" style="cursor: pointer;"></i>
                     </div>
-                  </li>
-                  
-                  <li *ngIf="abrirDrop" class="ms-5 p-2 rounded" routerLinkActive="mat-accent" > 
+                </li>
+
+                <li *ngIf="abrirDrop" class="ms-5 p-2 rounded" routerLinkActive="mat-accent">
                     <a class="text-decoration-none text-white" routerLink="clientes/anamnese">
                         <i class="fas fa-notes-medical mx-2"></i>
-                      <span class="item-description">Anamnese</span>
+                        <span class="item-description">Anamnese</span>
                     </a>
-                  </li>
-                  <li *ngIf="abrirDrop" class="ms-5 p-2 rounded" routerLinkActive="mat-accent" > 
+                </li>
+                <li *ngIf="abrirDrop" class="ms-5 p-2 rounded" routerLinkActive="mat-accent">
                     <a class="text-decoration-none text-white" routerLink="clientes/pagamentos">
                         <i class="fa-solid fa-sack-dollar mx-2"></i>
-                      <span class="item-description">Pagamentos</span>
+                        <span class="item-description">Pagamentos</span>
                     </a>
-                  </li>
-                  
+                </li>
+
                 @if (funcionalidade != 'personal') {
                 <li class="side-item" routerLinkActive="mat-accent">
                     <a routerLink="funcionarios">
@@ -72,7 +68,7 @@
                     </a>
                 </li>
                 }
-                @if (funcionalidade == 'personal') {
+                <!-- @if (funcionalidade == 'personal') {
                 <li class="side-item" routerLinkActive="mat-accent">
                     <a routerLink="chat">
                         <i class="fa-solid fa-comment"></i>
@@ -81,8 +77,8 @@
                         </span>
                     </a>
                 </li>
-                }
-                @if (funcionalidade != 'personal') {
+                } -->
+                @if (funcionalidade == 'Administrador') {
                 <li class="side-item" routerLinkActive="mat-accent">
                     <a routerLink="pn-planos">
                         <i class="fa-solid fa-cart-shopping"></i>
@@ -102,7 +98,7 @@
                     </a>
                 </li>
                 }
-<!-- 
+
                 @if (funcionalidade != 'personal') {
                 <li class="side-item" routerLinkActive="mat-accent">
                     <a routerLink="financeiro">
@@ -112,9 +108,9 @@
                         </span>
                     </a>
                 </li>
-                } -->
-
-                <!-- <li class="side-item" routerLinkActive="mat-accent">
+                }
+                <!-- 
+                <li class="side-item" routerLinkActive="mat-accent">
                     <a routerLink="relatorios">
                         <i class="fa-regular fa-pen-to-square"></i>
                         <span class="item-description">
@@ -123,15 +119,16 @@
                     </a>
                 </li> -->
 
-
-                <!-- <li class="side-item" routerLinkActive="mat-accent">
+                @if (funcionalidade == 'Administrador') {
+                <li class="side-item" routerLinkActive="mat-accent">
                     <a href="#">
                         <i class="fa-solid fa-gear"></i>
                         <span class="item-description">
                             Configurações
                         </span>
                     </a>
-                </li> -->
+                </li>
+                }
             </ul>
 
             <button (click)="AbrirSidebar()" id="open_btn">

@@ -64,47 +64,15 @@ export class AdminComponent {
       }
     });
   }
-  
-
-  // submit() {
-  //  
-  //   if (this.formlogin.valid) {
-  //     const dados = JSON.stringify(this.formlogin.getRawValue());
-  //     this.pesquisar(this.formlogin.value.email);
-  //     this.func = this.formlogin.getRawValue();
-  //     this.loading = true;
-  //     this.service.sendData(dados).subscribe({
-  //       next: (resposta) => {
-  //         this.mensagem = resposta.msg;
-  //         this.loading = false;
-  //     
-  //         if (this.mensagem == 'true') {
-  //           this.router.navigate(['/admin/painel'], {
-  //             queryParams: { user: this.func.email }
-  //           });
-  //         }else{
-  //           this.alertas.error("Dados Incorretos !");
-  //       
-  //         }
-  //       }, error: () => {
-  //         this.loading = false;
-  //     
-  //         this.alertas.error("Erro ao realizar login. Tente novamente.");
-  //       }
-  //     })
-  //   }else{
-  //     this.alertas.error("Preencha Todos os Campos!!");
-  // 
-  //   }
-  // };
-
   pesquisar(email: string): Promise<void> {
     const payload = { email };
   
     return new Promise((resolve, reject) => {
       this.service.funcao(JSON.stringify(payload)).subscribe({
         next: (dado) => {
+          console.log(dado);
           localStorage.setItem('idadmin', dado[0].id);
+          localStorage.setItem('tipoadmin', dado[0].funcao);
           resolve();
         },
         error: (err) => {

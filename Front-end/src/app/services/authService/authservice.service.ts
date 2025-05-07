@@ -24,6 +24,7 @@ export class AuthserviceService {
 
   logoutadm(): void {
     localStorage.removeItem('idadmin');
+    localStorage.removeItem('tipoadmin');
   }
 }
 

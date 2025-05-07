@@ -23,6 +23,8 @@
       <thead>
         <tr>
           <th>Produto</th>
+          <th>Marca</th>
+          <th>Unidade de Medida</th>
           <th>Estoque</th>
           <th>Preço</th>
           <th>Qtd</th>
@@ -33,7 +35,9 @@
         @for (produto of produtos | paginate: { itemsPerPage: 5, currentPage: paginaAtual }; track produto) {
         <tr>
           <td>{{ produto.nome }}</td>
-          <td>{{ produto.quantidade }} unidades</td>
+          <td>{{ produto.marca }}</td>
+          <td>{{ produto.unidade_medida }}</td>
+          <td>{{ produto.quantidade }}</td>
           <td>R$ {{ produto.preco }} </td>
           <td>
             <input type="number" min="1" max="{{produto.quantidade}}" [(ngModel)]="produto.qtdSelecionada"
@@ -43,8 +47,8 @@
             <button class="btn btn-sm btn-success" (click)="adicionarAoCarrinho(produto)">
               <i class="fas fa-plus"></i> Adicionar
             </button>
-            <button *ngIf="tipo == 'Administrador'" class="btn btn-outline-primary btn-sm ms-2" (click)="editarProduto(produto)" data-bs-toggle="modal"
-            data-bs-target="#modal-edit-p">
+            <button *ngIf="tipo == 'Administrador'" class="btn btn-outline-primary btn-sm ms-2"
+              (click)="editarProduto(produto)" data-bs-toggle="modal" data-bs-target="#modal-edit-p">
               <i class="fas fa-edit"></i> Editar
             </button>
             <app-modal-editar-prod (CloseModal)="Closemodal()" #modalP></app-modal-editar-prod>

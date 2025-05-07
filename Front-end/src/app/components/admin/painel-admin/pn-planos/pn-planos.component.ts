@@ -11,12 +11,13 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-pn-planos',
   standalone: true,
-  imports: [ModalConfirmarComponent, ModalCadastroComponent, ReactiveFormsModule, NgxMaskDirective, RouterLink],
+  imports: [ModalConfirmarComponent, ModalCadastroComponent, ReactiveFormsModule,
+    NgxMaskDirective, RouterLink],
   providers: [provideNgxMask()],
   templateUrl: './pn-planos.component.html',
   styleUrl: './pn-planos.component.css'
 })
-export class PnPlanosComponent { 
+export class PnPlanosComponent {
   planos: any;
   extras: any;
   loading: boolean = false;
@@ -40,7 +41,7 @@ export class PnPlanosComponent {
     })
   }
 
-  constructor(private academiaservice: ConfigService, private alertas: ToastrService,private fb: FormBuilder) { 
+  constructor(private academiaservice: ConfigService, private alertas: ToastrService, private fb: FormBuilder) {
     this.extraForm = this.fb.group({
       nome_extra: ['', Validators.required],
       descricao_extra: ['', Validators.required],

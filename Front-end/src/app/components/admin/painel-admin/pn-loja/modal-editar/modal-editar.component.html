@@ -21,9 +21,9 @@
                                     formControlName="nome">
                             </div>
                             <div class="col">
-                                <label for="preco">Preço</label>
-                                <input type="text" id="preco" name="preco" formControlName="preco" mask="separator,2"
-                                    thousandSeparator="," decimalMarker="," />
+                                <label for="preco">Preço em Real (R$)</label>
+                                <span></span>
+                                <input type="text" id="preco" name="preco"  formControlName="preco" (input)="onPrecoInput($event)"/>
                             </div>
 
                         </div>
@@ -44,11 +44,13 @@
                         <div class="row form-group">
                             <div class="col">
                                 <label for="marca">Marca</label>
-                                <input type="text" placeholder="Ex: Growth, Monster" id="marca" name="marca" formControlName="marca">
+                                <input type="text" placeholder="Ex: Growth, Monster" id="marca" name="marca"
+                                    formControlName="marca">
                             </div>
                             <div class="col">
                                 <label for="unidade_medida">Unidade de Medida</label>
-                                <input type="text" placeholder="Ex: 500g, 200ml, 1un" id="unidade_medida" name="unidade_medida" formControlName="unidade_medida">
+                                <input type="text" placeholder="Ex: 500g, 200ml, 1un" id="unidade_medida"
+                                    name="unidade_medida" formControlName="unidade_medida">
                             </div>
                         </div>
                         <br>

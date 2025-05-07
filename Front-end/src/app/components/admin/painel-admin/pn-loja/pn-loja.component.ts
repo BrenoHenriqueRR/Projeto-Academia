@@ -162,7 +162,13 @@ export class PnLojaComponent {
     this.lojaService.read().subscribe({
       next: (dados) => {
         this.produtos = dados[0];
-        this.produtos[0].preco = this.produtos[0].preco.replace('.', ',');
+        this.produtos.forEach((produto) => {
+          const precoNumerico = parseFloat(produto.preco); // transforma string em número
+          produto.preco = precoNumerico.toLocaleString('pt-BR', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          });
+        });
         this.loading = false;
       }, error: (er) => {
         this.loading = false;

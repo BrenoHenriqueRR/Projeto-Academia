@@ -12,7 +12,7 @@
 
     <div class="my-4 d-flex justify-content-between align-items-center">
       <div class="d-flex gap-5">
-        <div *ngIf="">
+        <div *ngIf="tipo == 'Administrador'">
           <app-modal-produto (CloseModal)="Closemodal()"></app-modal-produto>
         </div>
       </div>
@@ -34,7 +34,7 @@
         <tr>
           <td>{{ produto.nome }}</td>
           <td>{{ produto.quantidade }} unidades</td>
-          <td>R$ {{ produto.preco }}</td>
+          <td>R$ {{ produto.preco }} </td>
           <td>
             <input type="number" min="1" max="{{produto.quantidade}}" [(ngModel)]="produto.qtdSelecionada"
               class="form-control form-control-sm" style="width: 70px;" />
@@ -43,12 +43,12 @@
             <button class="btn btn-sm btn-success" (click)="adicionarAoCarrinho(produto)">
               <i class="fas fa-plus"></i> Adicionar
             </button>
-            <button *ngIf="" class="btn btn-outline-primary btn-sm ms-2" (click)="editarProduto(produto)" data-bs-toggle="modal"
+            <button *ngIf="tipo == 'Administrador'" class="btn btn-outline-primary btn-sm ms-2" (click)="editarProduto(produto)" data-bs-toggle="modal"
             data-bs-target="#modal-edit-p">
               <i class="fas fa-edit"></i> Editar
             </button>
             <app-modal-editar-prod (CloseModal)="Closemodal()" #modalP></app-modal-editar-prod>
-            <button *ngIf="" class="btn btn-danger btn-sm ms-2" (click)="openmodal(produto.id)">
+            <button *ngIf="tipo == 'Administrador'" class="btn btn-danger btn-sm ms-2" (click)="openmodal(produto.id)">
               <i class="fas fa-trash"></i> Excluir
             </button>
             <app-modal-confirmar (confirm)="validarmodal($event)"></app-modal-confirmar>

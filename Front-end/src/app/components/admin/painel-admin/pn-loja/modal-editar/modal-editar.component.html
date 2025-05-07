@@ -22,8 +22,8 @@
                             </div>
                             <div class="col">
                                 <label for="preco">Preço</label>
-                                <input type="text" id="preco" name="preco" formControlName="preco" mask="separator.2"
-                                    thousandSeparator="." decimalMarker="," />
+                                <input type="text" id="preco" name="preco" formControlName="preco" mask="separator,2"
+                                    thousandSeparator="," decimalMarker="," />
                             </div>
 
                         </div>
@@ -41,13 +41,23 @@
                                 <input type="number" id="quantidade" name="quantidade" formControlName="quantidade">
                             </div>
                         </div>
+                        <div class="row form-group">
+                            <div class="col">
+                                <label for="marca">Marca</label>
+                                <input type="text" placeholder="Ex: Growth, Monster" id="marca" name="marca" formControlName="marca">
+                            </div>
+                            <div class="col">
+                                <label for="unidade_medida">Unidade de Medida</label>
+                                <input type="text" placeholder="Ex: 500g, 200ml, 1un" id="unidade_medida" name="unidade_medida" formControlName="unidade_medida">
+                            </div>
+                        </div>
                         <br>
                     </form>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button class="btn btn-primary" (click)="submit()">Cadastrar</button>
+                <button class="btn btn-primary" (click)="submit()">Editar</button>
             </div>
         </div>
     </div>

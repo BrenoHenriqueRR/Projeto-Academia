@@ -60,7 +60,6 @@ export class PainelAdminComponent {
       if (params['user'] !== undefined) {
         this.dados = params['user'];
         localStorage.setItem('email', this.dados);
-
       };
     });
     this.funcao();

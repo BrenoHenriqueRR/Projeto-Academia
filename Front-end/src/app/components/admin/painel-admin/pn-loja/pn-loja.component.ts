@@ -10,12 +10,15 @@ import { ToastrService } from 'ngx-toastr';
 import { ModalProdutoComponent } from './modal-produto/modal-produto.component';
 import { ModalConfirmarComponent } from '../../../modais/modal-confirmar/modal-confirmar.component';
 import { ModalEditarComponent } from './modal-editar/modal-editar.component';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 
 
 @Component({
   selector: 'app-pn-loja',
   standalone: true,
-  imports: [ModalSpinnerComponent, CommonModule, NgxPaginationModule, FormsModule, ModalProdutoComponent, ModalEditarComponent, ModalConfirmarComponent],
+  imports: [ModalSpinnerComponent, CommonModule, NgxPaginationModule, FormsModule, ModalProdutoComponent,
+    ModalEditarComponent, ModalConfirmarComponent],
+  providers: [provideNgxMask()],
   templateUrl: './pn-loja.component.html',
   styleUrl: './pn-loja.component.css'
 })
@@ -29,12 +32,15 @@ export class PnLojaComponent {
   paginaAtual = 1;
   carrinho: any[] = [];
   idDelete: number = 0;
+  tipo: string = '';
 
   produtoSelecionado: any = null;
 
   ngOnInit() {
     this.loading = true;
     this.pesquisarProdutos();
+    this.tipo = localStorage.getItem('tipoadmin') || '';
+    console.log(this.tipo);
   }
 
   constructor(private lojaService: PnLojaService, private dialog: MatDialog, private alertas: ToastrService) { }
@@ -156,6 +162,7 @@ export class PnLojaComponent {
     this.lojaService.read().subscribe({
       next: (dados) => {
         this.produtos = dados[0];
+        this.produtos[0].preco = this.produtos[0].preco.replace('.', ',');
         this.loading = false;
       }, error: (er) => {
         this.loading = false;

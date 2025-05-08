@@ -53,13 +53,13 @@ export const routes: Routes = [
     // },
     {
         path: 'entrada',
-        component: EntradaComponent  
+        component: EntradaComponent
     },
 
-    {
-        path: 'cadastro',
-        component: CadastroComponent
-    },
+    // {
+    //     path: 'cadastro',
+    //     component: CadastroComponent
+    // },
     {
         path: 'recuperar-senha',
         component: RecuperarSenhaComponent
@@ -92,23 +92,28 @@ export const routes: Routes = [
         canActivate: [adminGuard],
         children: [
             { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-            { path: 'dashboard', component: DashboardComponent,  canActivate: [adminGuard] },
-            { path: 'funcionarios', component: PnFuncionariosComponent,  canActivate: [adminGuard] },
-            { path: 'clientes', component: PnClientesComponent,  canActivate: [adminGuard] },
-            { path: 'planos', component: PlanosComponent, canActivate: [adminGuard] },
-            { path: 'treinos', component: PnTreinoComponent,  canActivate: [adminGuard] },
-            { path: 'pn-planos', component: PnPlanosComponent,  canActivate: [adminGuard] },
-            { path: 'pn-planos/editar', component: ModalEditarPlanosComponent,  canActivate: [adminGuard] },
-            { path: 'financeiro', component: PnFinanceiroComponent,  canActivate: [adminGuard] },
-            { path: 'funcionarios/editarf', component: ModalEditarFuncionarioComponent,  canActivate: [adminGuard] },
-            { path: 'relatorios', component: PnRelatoriosComponent,  canActivate: [adminGuard] },
-            { path: 'loja', component: PnLojaComponent,  canActivate: [adminGuard] },
-            { path: 'clientes/editar', component: ModalEditarComponent,  canActivate: [adminGuard] },
-            { path: 'clientes/anamnese', component: AnamneseComponent,  canActivate: [adminGuard] },
-            { path: 'clientes/pagamentos', component: CliPagamentosComponent,  canActivate: [adminGuard] },
-            { path: 'clientes/anamnese/cadastrar', component: CadAnamneseComponent,  canActivate: [adminGuard] },
-            { path: 'clientes/anamnese/editar', component: EditarAnamneseComponent,  canActivate: [adminGuard] },
-            { path: 'clientes/treinos', component: CadTreinoComponent,  canActivate: [adminGuard] },
+            { path: 'dashboard', component: DashboardComponent, canActivate: [adminGuard] },
+            { path: 'funcionarios', component: PnFuncionariosComponent, canActivate: [adminGuard] },
+            { path: 'clientes', component: PnClientesComponent, canActivate: [adminGuard] },
+            { path: 'treinos', component: PnTreinoComponent, canActivate: [adminGuard] },
+            { path: 'pn-planos', component: PnPlanosComponent, canActivate: [adminGuard] },
+            { path: 'pn-planos/editar', component: ModalEditarPlanosComponent, canActivate: [adminGuard] },
+            { path: 'financeiro', component: PnFinanceiroComponent, canActivate: [adminGuard] },
+            { path: 'funcionarios/editarf', component: ModalEditarFuncionarioComponent, canActivate: [adminGuard] },
+            { path: 'relatorios', component: PnRelatoriosComponent, canActivate: [adminGuard] },
+            { path: 'loja', component: PnLojaComponent, canActivate: [adminGuard] },
+            { path: 'clientes/editar', component: ModalEditarComponent, canActivate: [adminGuard] },
+            { path: 'clientes/anamnese', component: AnamneseComponent, canActivate: [adminGuard] },
+            { path: 'clientes/pagamentos', component: CliPagamentosComponent, canActivate: [adminGuard] },
+            { path: 'clientes/anamnese/cadastrar', component: CadAnamneseComponent, canActivate: [adminGuard] },
+            { path: 'clientes/anamnese/editar', component: EditarAnamneseComponent, canActivate: [adminGuard] },
+            { path: 'clientes/treinos', component: CadTreinoComponent, canActivate: [adminGuard] },
+            { path: 'clientes/planos', component: PlanosComponent, canActivate: [adminGuard] },
+            {
+                path: 'clientes/planos/cadastro',
+                component: CadastroComponent,
+                canActivate: [adminGuard] 
+            },
         ],
 
     },

@@ -12,11 +12,14 @@ import { ModalExibirComponent } from '../../../modais/modal-exibir/modal-exibir.
 import { MatDialog } from '@angular/material/dialog';
 import { EscolhaCadastroComponent } from '../../../modais/escolha-cadastro/escolha-cadastro.component';
 import { Block } from '@angular/compiler';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-pn-clientes',
   standalone: true,
-  imports: [NgxPaginationModule, RouterLink, NgIf, ModalConfirmarComponent, ModalFaceidComponent, ModalSpinnerComponent, ModalExibirComponent, ModalCadastroComponent],
+  imports: [NgxPaginationModule, RouterLink, NgIf, ModalConfirmarComponent,
+     ModalFaceidComponent, ModalSpinnerComponent, ModalExibirComponent, 
+     ModalCadastroComponent,FormsModule],
   templateUrl: './pn-clientes.component.html',
   styleUrl: './pn-clientes.component.css'
 })
@@ -29,6 +32,8 @@ export class PnClientesComponent {
   dados_cli: any = '';
   loading: boolean = true;
   idDelete: any = '';
+  filtrado: any[] = [];
+  filtroStatus: string = 'ativo';
 
   ngOnInit() {
     this.funcao();
@@ -50,6 +55,14 @@ export class PnClientesComponent {
 
   abrirModalCadastro() {
     ($('#modal-cad') as any).modal('show');
+  }
+
+  aplicarFiltro() {
+    if (this.filtroStatus === 'ativo') {
+      this.filtrado = this.dados_cli.filter((p: { status: string; }) => p.status === this.filtroStatus);;
+    } else {
+      this.filtrado = this.dados_cli.filter((p: { status: string; }) => p.status === this.filtroStatus);
+    }
   }
 
   Closemodal() {
@@ -76,6 +89,7 @@ export class PnClientesComponent {
       next: (dado) => {
         // console.log(dado);
         this.dados_cli = dado;
+        this.aplicarFiltro();
         this.loading = false;
       },
       error: (erro) => {

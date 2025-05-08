@@ -48,6 +48,7 @@ class Cliente extends BaseController
 
         $dados['atestado_medico'] = $this->processarArquivo($atestado, 'atestado', $this->request->getPost('CPF'));
         $dados['termo_responsabilidade'] = $this->processarArquivo($termo, 'termo', $this->request->getPost('CPF'));
+        $dados['status'] = 'inativo';
 
         // Receber os outros dados do formulário
 
@@ -95,7 +96,7 @@ class Cliente extends BaseController
 
         // die();
 
-        
+        $cliente['status'] = 'inativo';
         $this->model->insert($cliente);
         $id = $this->model->getInsertID();
 
@@ -182,7 +183,6 @@ class Cliente extends BaseController
                     ->where('senha', $senhahash)
                     ->set([
                         'ultimo_login' => $logindate,
-                        'status' => 'ativo'
                     ])
                     ->update();
                 return $this->response->setJSON($msg)->setStatusCode(200);

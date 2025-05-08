@@ -19,7 +19,7 @@ export class EscolhaCadastroComponent {
   ) { }
 
   irParaCadastroCompleto() {
-    this.router.navigate(['/planos']);
+    this.router.navigate(['/admin/painel/clientes/planos']);
     this.dialogRef.close();
   }
 

@@ -3,6 +3,7 @@
         <app-modal-spinner></app-modal-spinner>
     </div>
     <div class="container">
+        
         <div *ngIf="loading == true" class="spinner-container">
             <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
         </div>
@@ -32,7 +33,13 @@
                 <!-- </span> -->
             </div>
         </div>
-        <table id="clientes-table">
+        <label>Filtro:
+            <select [(ngModel)]="filtroStatus" (change)="aplicarFiltro()">
+              <option value="ativo">Ativos</option>
+              <option value="inativo">Inativos</option>
+            </select>
+          </label>
+        <table class="mt-2" id="clientes-table">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -45,7 +52,7 @@
                 </tr>
             </thead>
             <tbody id="clientes-list">
-                @for (dados of dados_cli | paginate: { itemsPerPage: 5, currentPage: paginaAtual }; track dados) {
+                @for (dados of filtrado | paginate: { itemsPerPage: 5, currentPage: paginaAtual }; track dados) {
                 <tr>
                     <td>{{dados.id}}</td>
                     <td>{{dados.nome}}</td>

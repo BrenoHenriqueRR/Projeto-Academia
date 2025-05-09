@@ -18,8 +18,8 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-pn-clientes',
   standalone: true,
   imports: [NgxPaginationModule, RouterLink, NgIf, ModalConfirmarComponent,
-     ModalFaceidComponent, ModalSpinnerComponent, ModalExibirComponent, 
-     ModalCadastroComponent,FormsModule],
+    ModalFaceidComponent, ModalSpinnerComponent, ModalExibirComponent,
+    ModalCadastroComponent, FormsModule],
   templateUrl: './pn-clientes.component.html',
   styleUrl: './pn-clientes.component.css'
 })
@@ -34,6 +34,7 @@ export class PnClientesComponent {
   idDelete: any = '';
   filtrado: any[] = [];
   filtroStatus: string = 'ativo';
+filtroNome: string = '';
 
   ngOnInit() {
     this.funcao();
@@ -57,13 +58,14 @@ export class PnClientesComponent {
     ($('#modal-cad') as any).modal('show');
   }
 
-  aplicarFiltro() {
-    if (this.filtroStatus === 'ativo') {
-      this.filtrado = this.dados_cli.filter((p: { status: string; }) => p.status === this.filtroStatus);;
-    } else {
-      this.filtrado = this.dados_cli.filter((p: { status: string; }) => p.status === this.filtroStatus);
-    }
-  }
+ aplicarFiltros() {
+  this.filtrado = this.dados_cli.filter((cliente: { status: string; nome: string }) => {
+    const statusOk = this.filtroStatus ? cliente.status === this.filtroStatus : true;
+    const nomeOk = this.filtroNome ? cliente.nome.toLowerCase().includes(this.filtroNome.toLowerCase()) : true;
+    return statusOk && nomeOk;
+  });
+}
+
 
   Closemodal() {
     this.ngOnInit();
@@ -77,7 +79,7 @@ export class PnClientesComponent {
   openmodalH(id: any) {
     this.modalH?.openModal(id);
   }
-  
+
   validarmodal(confirmed: boolean) {
     if (confirmed) {
       this.excluir(this.idDelete);
@@ -89,7 +91,7 @@ export class PnClientesComponent {
       next: (dado) => {
         // console.log(dado);
         this.dados_cli = dado;
-        this.aplicarFiltro();
+        this.aplicarFiltros();
         this.loading = false;
       },
       error: (erro) => {

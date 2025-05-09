@@ -33,7 +33,7 @@ class Planos extends BaseController
     public function edit(){
         $data = $this->request->getJson();
         
-        $dados = $this->model->where('id', $data['id'])
+        $this->model->where('id', $data['id'])
         ->set($data)
         ->update();
 

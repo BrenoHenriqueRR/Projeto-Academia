@@ -38,6 +38,7 @@ export class ModalCadastroComponent {
 
   ngOnInit() {
     this.inicializarForm();
+    console.log(this.tipo);
 
     this.academiaservice.pesquisarPlanos().subscribe({
       next: (dado) => {
@@ -90,7 +91,6 @@ export class ModalCadastroComponent {
       valor_adicional: ['', Validators.required],
       status: ['', Validators.required],
       data_adicao: ['', Validators.required],
-      plano_id: ['', Validators.required],
     });
     this.planoForm = this.fb.group({
       nome: ['', Validators.required],

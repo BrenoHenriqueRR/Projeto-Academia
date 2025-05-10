@@ -11,8 +11,7 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-pn-planos',
   standalone: true,
-  imports: [ModalConfirmarComponent, ModalCadastroComponent, ReactiveFormsModule,
-    NgxMaskDirective, RouterLink],
+  imports: [ModalConfirmarComponent, ModalCadastroComponent, ReactiveFormsModule, RouterLink],
   providers: [provideNgxMask()],
   templateUrl: './pn-planos.component.html',
   styleUrl: './pn-planos.component.css'

@@ -1,4 +1,4 @@
-@if (tipo != 'cliente') {
+@if (tipo == 'funcionario') {
 
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" id="btn-modal-cad" data-bs-target="#modal-cad"><i
         class="fa-solid fa-plus p-1"></i>Adicionar</button>
@@ -133,15 +133,6 @@
                             <div class="col">
                                 <label for="nomeFunc">Nome Extra</label>
                                 <input type="text" id="nomeFunc" name="nomeFunc" formControlName="nome_extra">
-                            </div>
-                            <div class="col">
-                                <label for="plano_id">Plano</label>
-                                <select id="plano_id" formControlName="plano_id">
-                                    <option disabled selected>Escolha uma opção</option>
-                                    @for (item of planos; track $index) {
-                                    <option value="{{item.id}}">{{item.nome}}</option>
-                                    }
-                                </select>
                             </div>
                         </div>
                         <div class="row form-group">

@@ -1,7 +1,7 @@
 <div class="container mt-2">
     <h2>Planos Existentes :</h2>
     <div class="mt-4">
-        <app-modal-cadastro (CloseModal)="Closemodal()" [tipo]="'planos'"></app-modal-cadastro>
+        
     </div>
     <table class="table">
         <thead>
@@ -37,8 +37,12 @@
 <div class="container mt-4">
     <h2>Extras :</h2>
     <div class="mt-4">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalextra"><i
-            class="fa-solid fa-plus p-1"></i>Adicionar</button>
+        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalextra"><i
+            class="fa-solid fa-plus p-1"></i>Adicionar</button> -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" id="btn-modal-cad" data-bs-target="#modal-cad"><i
+        class="fa-solid fa-plus p-1"></i>Adicionar</button>
+
+            <app-modal-cadastro (CloseModal)="Closemodal()" [tipo]="'extras'"></app-modal-cadastro>
     </div>
     <table class="table">
         <thead>
@@ -70,8 +74,14 @@
     </table>
 </div>
 
+<app-modal-cadastro
+  *ngIf="tipoSelecionado"
+  [tipo]="tipoSelecionado"
+  (CloseModal)="Closemodal()">
+</app-modal-cadastro>
 
-<div class="modal modal-lg fade" id="modalextra" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+<!-- <div class="modal modal-lg fade" id="modalextra" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -127,3 +137,4 @@
             </div>
         </div>
     </div>
+</div> -->

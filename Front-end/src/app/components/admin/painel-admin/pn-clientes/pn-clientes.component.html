@@ -34,8 +34,8 @@
                 <!-- </span> -->
             </div>
         </div>
-        <div class="row align-items-end g-3 mb-3">
-            <div class="col-md-4">
+        <div class="row justify-content-between g-3 mb-3">
+            <div class="col-md-2">
                 <label for="statusFiltro" class="form-label">Filtrar por status:</label>
                 <select id="statusFiltro" class="form-select" [(ngModel)]="filtroStatus" (change)="aplicarFiltros()">
                     <option value="ativo">Ativos</option>
@@ -47,7 +47,7 @@
                 <input type="text" id="nomeFiltro" class="form-control" placeholder="Digite o nome do cliente"
                     [(ngModel)]="filtroNome" (input)="aplicarFiltros()" />
             </div>
-            <table class="mt-2" id="clientes-table">
+            <table class="mt-3" id="clientes-table">
                 <thead>
                     <tr>
                         <th>ID</th>

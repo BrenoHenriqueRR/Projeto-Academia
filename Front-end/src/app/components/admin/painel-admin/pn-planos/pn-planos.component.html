@@ -1,7 +1,9 @@
 <div class="container mt-2">
     <h2>Planos Existentes :</h2>
     <div class="mt-4">
-        
+         <button class="btn btn-primary" (click)="abrirCadastro('planos')">
+            <i class="fa-solid fa-plus p-1"></i>Adicionar
+        </button>
     </div>
     <table class="table">
         <thead>
@@ -25,9 +27,10 @@
                 <!-- <td>{{plano.beneficios}}</td> -->
                 <td>{{plano.disponibilidade}}</td>
                 <td>
-                    <button class="btn btn-primary" routerLink="editar" [queryParams]="{ id: plano.id, tipo: 'plano'}">Editar</button>
-                    <button class="btn btn-danger ms-4" (click)="openmodal(plano.id)">Excluir</button> 
-                    <app-modal-confirmar (confirm)="validarmodal($event)"></app-modal-confirmar>           
+                    <button class="btn btn-primary" routerLink="editar"
+                        [queryParams]="{ id: plano.id, tipo: 'plano'}">Editar</button>
+                    <button class="btn btn-danger ms-4" (click)="openmodal(plano.id)">Excluir</button>
+                    <app-modal-confirmar (confirm)="validarmodal($event)"></app-modal-confirmar>
                 </td>
             </tr>
             }
@@ -37,10 +40,9 @@
 <div class="container mt-4">
     <h2>Extras :</h2>
     <div class="mt-4">
-        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalextra"><i
-            class="fa-solid fa-plus p-1"></i>Adicionar</button> -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" id="btn-modal-cad" data-bs-target="#modal-cad"><i
-        class="fa-solid fa-plus p-1" (click)="abrirCadastro('extras')"></i>Adicionar</button>
+        <button class="btn btn-primary" (click)="abrirCadastro('extras')">
+            <i class="fa-solid fa-plus p-1"></i>Adicionar
+        </button>
     </div>
     <table class="table">
         <thead>
@@ -62,9 +64,10 @@
                 <!-- <td>{{extras.beneficios}}</td> -->
                 <td>{{extra.status}}</td>
                 <td>
-                    <button class="btn btn-primary" routerLink="editar" [queryParams]="{ id: extra.id, tipo: 'extra'}">Editar</button>
-                    <button class="btn btn-danger ms-4" (click)="openmodal(extra.id)">Excluir</button> 
-                    <app-modal-confirmar (confirm)="validarmodal($event)"></app-modal-confirmar>           
+                    <button class="btn btn-primary" routerLink="editar"
+                        [queryParams]="{ id: extra.id, tipo: 'extra'}">Editar</button>
+                    <button class="btn btn-danger ms-4" (click)="openmodal(extra.id)">Excluir</button>
+                    <app-modal-confirmar (confirm)="validarmodal($event)"></app-modal-confirmar>
                 </td>
             </tr>
             }
@@ -72,10 +75,7 @@
     </table>
 </div>
 
-<app-modal-cadastro
-  *ngIf="tipoSelecionado"
-  [tipo]="tipoSelecionado"
-  (CloseModal)="Closemodal()">
+<app-modal-cadastro *ngIf="tipoSelecionado" [tipo]="tipoSelecionado" (CloseModal)="Closemodal()">
 </app-modal-cadastro>
 
 

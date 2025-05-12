@@ -3,7 +3,7 @@ import { ConfigService } from '../../../../services/admin/config/config.service'
 import { ModalConfirmarComponent } from "../../../modais/modal-confirmar/modal-confirmar.component";
 import { ModalCadastroComponent } from "../../../modais/modal-cadastro/modal-cadastro.component";
 import { ToastContainerDirective, ToastNoAnimation, ToastPackage, ToastrService } from 'ngx-toastr';
-import { NgFor } from '@angular/common';
+import { CommonModule, NgFor } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { RouterLink } from '@angular/router';
@@ -11,7 +11,8 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-pn-planos',
   standalone: true,
-  imports: [ModalConfirmarComponent, ModalCadastroComponent, ReactiveFormsModule, RouterLink],
+  imports: [ModalConfirmarComponent, ModalCadastroComponent, 
+    ReactiveFormsModule, RouterLink, CommonModule],
   providers: [provideNgxMask()],
   templateUrl: './pn-planos.component.html',
   styleUrl: './pn-planos.component.css'
@@ -65,6 +66,14 @@ export class PnPlanosComponent {
 
   abrirCadastro(tipo: 'planos' | 'extras') {
     this.tipoSelecionado = tipo;
+
+    // Aguarde a mudança de `tipoSelecionado`, e depois abra o modal
+    setTimeout(() => {
+      const modalElement = document.getElementById('modal-cad');
+      const bsModal = new (bootstrap).Modal(modalElement);
+      bsModal.show();
+        modalElement?.setAttribute('aria-hidden', 'false');
+    },0);
   }
   
 

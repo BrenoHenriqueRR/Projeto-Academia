@@ -23,6 +23,7 @@ export class PnPlanosComponent {
   @ViewChild(ModalConfirmarComponent) modal?: ModalConfirmarComponent
   idDelete!: number;
   extraForm: FormGroup<any>;
+  tipoSelecionado!: 'planos' | 'extras';
 
   ngOnInit() {
     this.loading = true;
@@ -61,6 +62,11 @@ export class PnPlanosComponent {
     }
 
   }
+
+  abrirCadastro(tipo: 'planos' | 'extras') {
+    this.tipoSelecionado = tipo;
+  }
+  
 
   Closemodal() {
     this.ngOnInit();

@@ -21,7 +21,7 @@ import { Route, Router } from '@angular/router';
 export class ModalCadastroComponent {
 
   @ViewChild('modal') modal?: ElementRef
-  @Input() tipo: string = ''; // tipo do cadastro 
+  @Input() tipo: string = '' ; // tipo do cadastro 
   @Output() CloseModal = new EventEmitter<void>();
   CliForm!: FormGroup<any>;
   funcForm!: FormGroup;

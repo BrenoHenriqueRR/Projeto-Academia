@@ -88,9 +88,15 @@ class Cliente extends BaseController
         $clienteJson = $this->request->getPost('cliente');
         $anamneseJson = $this->request->getPost('anamnese');
         $foto = $this->request->getFile('foto_perfil');
-        
+
         $cliente = json_decode($clienteJson, true);
         $anamnese = json_decode($anamneseJson, true);
+
+        foreach ($anamnese as $key => $value) {
+            if (is_array($value)) {
+                $anamnese[$key] = implode(', ', $value);
+            }
+        }
 
         // $this->ClientePlanos->create($cliente['plano'], 1);
 
@@ -137,9 +143,7 @@ class Cliente extends BaseController
         return $this->response->setJSON($msg)->setStatusCode(200);
     }
 
-    public function pesquisarPag(){
-        
-    }
+    public function pesquisarPag() {}
 
     public function delete()
     {

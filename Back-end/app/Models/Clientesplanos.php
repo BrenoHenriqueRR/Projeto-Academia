@@ -8,5 +8,5 @@ class Clientesplanos extends Model
 {
     protected $table            = 'clientes_planos';
     protected $primaryKey       = 'id';
-    protected $allowedFields    = ['data_inicio','data_vencimento','status','cliente_id','plano_frequencia_id'];
+    protected $allowedFields    = ['data_inicio','data_vencimento','status','cliente_id','plano_id'];
 }

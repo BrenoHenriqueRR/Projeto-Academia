@@ -133,7 +133,7 @@ export class CadastroComponent {
 
   constructor(private fb: FormBuilder, private alert: ToastrService, private service: CadastroService,
     private router: Router, private planosService: ConfigService, private el: ElementRef,
-    private route: ActivatedRoute, private anamservice: AnamneseService) { }
+    private route: ActivatedRoute) { }
 
   onCheckboxChange(event: any, classe: string) {
     const checkArray: FormArray = this.anamneseForm.get(classe) as FormArray;
@@ -227,6 +227,7 @@ export class CadastroComponent {
 
   submit() {
     if (this.formcadastro.valid && this.anamneseForm.valid) {
+      this.loading = true;
       this.formcadastro.value.treino_com_personal = (this.formcadastro.value.treino_com_personal == false) ? 'nao' : 'sim';
       const dataNascimento = this.formcadastro.value.datanascimento;
       const partes = dataNascimento.split('/');
@@ -239,9 +240,6 @@ export class CadastroComponent {
 
       dadosCli['extras'] = this.select_extras.map((extra: { id: number }) => extra.id);
       dadosCli['plano'] = this.planos.map((plano: { id: number }) => plano.id);
-
-      console.log(JSON.stringify(dadosAnamnese));
-      console.log(JSON.stringify(dadosCli));
 
       dadosAnamnese.perg_problemas_saude = dadosAnamnese.perg_problemas_saude.join(',');
       dadosAnamnese.perg_sintomas = dadosAnamnese.perg_sintomas.join(',');
@@ -258,8 +256,14 @@ export class CadastroComponent {
 
       this.service.createComplete(formData).subscribe({
         next: (resp) => {
-            
+            this.alert.success("Cliente Cadastrado com sucesso !!");
+            setInterval(() => {
+              this.loading = false;
+              this.router.navigate(['/admin/painel/clientes']);
+            },100)
         }, error: (err) => {
+          this.alert.error("Erro ao cadastrar o cliente !!");
+          console.log(err);
         }
       })
 

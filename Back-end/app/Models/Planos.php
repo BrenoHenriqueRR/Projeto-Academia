@@ -14,6 +14,7 @@ class Planos extends Model
         'descricao',
         'duracao',
         'disponibilidade',
+        'dias_por_semana',
         'data_criacao',
         'data_modificacao'
     ];

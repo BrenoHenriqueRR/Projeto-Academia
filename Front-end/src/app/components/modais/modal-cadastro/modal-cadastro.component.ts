@@ -1,6 +1,6 @@
-import { NgFor, NgIf } from '@angular/common';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { Component, ElementRef, EventEmitter, Input, Output, SimpleChanges, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { PnFuncionarioService } from '../../../services/admin/pn-funcionario/pn-funcionario.service';
 import { ToastrService } from 'ngx-toastr';
@@ -11,7 +11,7 @@ import { Route, Router } from '@angular/router';
 @Component({
   selector: 'app-modal-cadastro',
   standalone: true,
-  imports: [FormsModule, NgIf, ReactiveFormsModule, NgxMaskDirective, NgFor],
+  imports: [FormsModule,ReactiveFormsModule, NgxMaskDirective, CommonModule],
   templateUrl: './modal-cadastro.component.html',
   providers: [provideNgxMask({
     dropSpecialCharacters: false
@@ -35,9 +35,11 @@ export class ModalCadastroComponent {
   beneficios: string[] = [];
   mostraSelectPersonal = false;
   menorDeIdade = false;
+  option_frequencia = [2,3,7];
 
   ngOnInit() {
     this.inicializarForm();
+    
     console.log(this.tipo);
 
     this.academiaservice.pesquisarPlanos().subscribe({
@@ -93,13 +95,13 @@ export class ModalCadastroComponent {
       data_adicao: ['', Validators.required],
     });
     this.planoForm = this.fb.group({
-      nome: ['', Validators.required],
-      preco: ['', Validators.required],
-      // descontoPlano: ['', [Validators.required, Validators.min(1)]],
-      descricao: ['', [Validators.required]],
-      duracao: ['', [Validators.required]],
-      beneficios: ['', [Validators.required]],
-      disponibilidade: ['', [Validators.required]]
+      nome: ['', ],
+      preco: ['', ],
+      // descontoPlano: ['', [, Validators.min(1)]],
+      descricao: ['', []],
+      duracao: ['', []],
+      disponibilidade: ['', []],
+      dias_por_semana: ['', []],
     });
   }
 
@@ -196,11 +198,12 @@ export class ModalCadastroComponent {
         }
         break;
       case 'planos':
-        for (let index = 0; index < this.beneficios.length; index++) {
-          this.planoForm.get('beneficios')?.setValue(this.beneficios.join(', '))
-        }
         if (this.planoForm.valid) {
+          this.planoForm.patchValue({
+            preco : this.planoForm.get('preco')?.value.replace(/[^\d,.-]/g, '')
+        });
           const dados = JSON.stringify(this.planoForm.getRawValue());
+          console.log(dados);
           this.academiaservice.createPlanos(dados).subscribe({
             next: (dado) => {
               this.alertas.success(dado.msg);

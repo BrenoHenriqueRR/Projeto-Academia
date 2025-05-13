@@ -8,7 +8,8 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 *ngIf="tipo == 'funcionario'" class="modal-title fs-10" id="exampleModalLabel">Cadastro de Funcionários</h1>
+                <h1 *ngIf="tipo == 'funcionario'" class="modal-title fs-10" id="exampleModalLabel">Cadastro de
+                    Funcionários</h1>
                 <h1 *ngIf="tipo == 'cliente'" class="modal-title fs-10" id="exampleModalLabel">Cadastro de Cliente</h1>
                 <h1 *ngIf="tipo == 'planos'" class="modal-title fs-10" id="exampleModalLabel">Cadastro de Plano</h1>
                 <h1 *ngIf="tipo == 'extras'" class="modal-title fs-10" id="exampleModalLabel">Cadastro de Extra</h1>
@@ -89,34 +90,30 @@
                             <label for="descricao">Descrição</label>
                             <textarea id="descricao" formControlName="descricao"></textarea>
                         </div>
-                        <div class="form-group">
-                            <label for="duracao">Duração</label>
-                            <select id="duracao" formControlName="duracao">
-                                <option disabled selected>Escolhe uma opção</option>
-                                <option value="1">1 Mês</option>
-                                <option value="3">3 Meses</option>
-                                <option value="6">6 Meses</option>
-                                <option value="12">12 Meses</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="beneficio" title="Clique no botao para adicionar o benefício">Adicionar
-                                Benefício:</label>
-                            <textarea id="beneficio" formControlName="beneficios" rows="2"></textarea>
-                            <button type="button" class="btn btn-secondary mt-2"
-                                (click)="adicionarBeneficio()">Adicionar
-                                Benefício</button>
-                            <small class="ms-2">Clique no botao para adicionar o benefício.</small>
-                        </div>
-
-                        <div *ngIf="beneficios.length > 0" class="mt-4">
-                            <h4>Benefícios Adicionados</h4>
-                            <ul>
-                                <li *ngFor="let beneficio of beneficios; let i = index">
-                                    {{ beneficio }}
-                                    <!-- <button type="button" (click)="removerBeneficio(i)" class="btn btn-danger btn-sm ml-2">Remover</button> -->
-                                </li>
-                            </ul>
+                        <div class="form-group row">
+                            <div class="col">
+                                <label for="duracao">Duração</label>
+                                <select id="duracao" formControlName="duracao">
+                                    <option value="" disabled selected>Escolhe uma opção</option>
+                                    <option value="mensal">1 Mês</option>
+                                    <option value="trimestral">3 Meses</option>
+                                    <option value="semestral">6 Meses</option>
+                                    <option value="anual">12 Meses</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="dias_por_semana">Frequencia</label>
+                                <select id="dias_por_semana" formControlName="dias_por_semana">
+                                    <option value="" disabled selected>Escolhe uma opção</option>
+                                    @for (item of option_frequencia; track $index) {
+                                        @if (item == 7) {
+                                            <option [value]="item">Todos os dias</option>
+                                        }@else {
+                                            <option [value]="item">{{item}}x semana</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="disponibilidade">Disponibilidade</label>
@@ -212,19 +209,21 @@
                             <div class="col-3">
                                 <label for="datanascimento">Data de Nascimento</label>
                                 <input type="text" id="datanascimento" name="datanascimento" mask="00/00/0000"
-                                    placeholder="EX: xx/xx/xxxx" formControlName="datanascimento" (change)="verificarIdade()">
+                                    placeholder="EX: xx/xx/xxxx" formControlName="datanascimento"
+                                    (change)="verificarIdade()">
                             </div>
                             <div *ngIf="menorDeIdade" class="alert alert-warning">
-                                Este cliente é menor de idade. É necessário o envio de autorização assinada por um responsável.
-                              </div>
-                              
-                              <div *ngIf="menorDeIdade" class="form-group mt-2">
+                                Este cliente é menor de idade. É necessário o envio de autorização assinada por um
+                                responsável.
+                            </div>
+
+                            <div *ngIf="menorDeIdade" class="form-group mt-2">
                                 <label>Anexar Termo de Autorização</label>
                                 <input type="file" formControlName="termo_responsabilidade" />
                                 <small>
-                                  <a href="/modelos/termo-autorizacao.pdf" target="_blank">Baixar modelo do termo</a>
+                                    <a href="/modelos/termo-autorizacao.pdf" target="_blank">Baixar modelo do termo</a>
                                 </small>
-                              </div>
+                            </div>
                             <div class="col-3">
                                 <label for="cliente" class="form-label">Nivel de Experiência</label>
                                 <select formControlName="nivel_experiencia" required>

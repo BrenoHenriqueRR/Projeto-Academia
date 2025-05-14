@@ -1,17 +1,20 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CadTreinoService } from '../../../../services/cad-treino/cad-treino.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-pn-treino',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule,CommonModule],
   templateUrl: './pn-treino.component.html',
   styleUrl: './pn-treino.component.css'
 })
 export class PnTreinoComponent {
   exer!: FormGroup;
   Grupo!: FormGroup;
+  fichas!: any;
+  clientes: any;
 
   constructor(private service: CadTreinoService){
     this.exer = new FormGroup({

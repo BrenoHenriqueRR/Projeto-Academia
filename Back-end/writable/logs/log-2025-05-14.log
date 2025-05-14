@@ -1,0 +1,82 @@
+CRITICAL - 2025-05-14 19:52:13 --> ErrorException: Attempt to read property "cliente_id" on null
+in APPPATH\Controllers\Ficha.php on line 27.
+ 1 APPPATH\Controllers\Ficha.php(27): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "cliente_id" on null', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Ficha.php', 27)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-14 19:57:08 --> mysqli_sql_exception: Table 'projeto-1.ficha' doesn't exist in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `fi...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `fi...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `fi...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `fi...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(802): CodeIgniter\Model->doInsert(Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(744): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Ficha.php(33): CodeIgniter\Model->insert(Array)
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Ficha->create()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2025-05-14 19:57:08 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'projeto-1.ficha' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ficha` (`cliente_id`) VALUES (:cliente_id:)', [...], false)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Ficha.php(33): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-14 19:57:08 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'projeto-1.ficha' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ficha` (`cliente_id`) VALUES (1)')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ficha` (`cliente_id`) VALUES (1)')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ficha` (`cliente_id`) VALUES (:cliente_id:)', [...], false)
+ 4 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\Ficha.php(33): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-14 19:57:08 --> [Caused by] mysqli_sql_exception: Table 'projeto-1.ficha' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `ficha` (`cliente_id`) VALUES (1)', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ficha` (`cliente_id`) VALUES (1)')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ficha` (`cliente_id`) VALUES (1)')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ficha` (`cliente_id`) VALUES (:cliente_id:)', [...], false)
+ 5 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Ficha.php(33): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-14 19:59:33 --> Error: Cannot use object of type stdClass as array
+in APPPATH\Controllers\Ficha.php on line 46.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-14 20:00:29 --> Error: Cannot use object of type stdClass as array
+in APPPATH\Controllers\Ficha.php on line 46.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-14 20:01:02 --> CodeIgniter\Database\Exceptions\DataException: Allowed fields must be specified for model: "App\Models\FichaExerciciosModel"
+in SYSTEMPATH\Model.php on line 766.
+ 1 SYSTEMPATH\Model.php(766): CodeIgniter\Database\Exceptions\DataException::forInvalidAllowedFields('App\\Models\\FichaExerciciosModel')
+ 2 SYSTEMPATH\BaseModel.php(783): CodeIgniter\Model->doProtectFieldsForInsert([...])
+ 3 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 4 APPPATH\Controllers\Ficha.php(44): CodeIgniter\Model->insert([...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

@@ -1,4 +1,108 @@
-<div class="fundo">
+<!-- treino.component.html -->
+<div class="container mt-4" [formGroup]="formFicha">
+  <div class="row">
+    <!-- Criar nova ficha -->
+    <div class="col-md-4">
+
+      <!-- Adicionar Exercício -->
+      <div class="card mb-4">
+        <div class="card-header bg-secondary text-white">
+          Adicionar Exercício
+        </div>
+        <div class="card-body" [formGroup]="formExercicio">
+          <div class="mb-2">
+            <label class="form-label">Grupo Muscular</label>
+            <select class="form-select" formControlName="grupoMuscular" (change)="filtrarExercicios()">
+              <option *ngFor="let grupo of gruposMusculares" [value]="grupo.id">{{ grupo.nome }}</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label class="form-label">Exercício</label>
+            <select class="form-select" formControlName="exercicio">
+              <option *ngFor="let ex of exerciciosFiltrados" [value]="ex.id">{{ ex.nome }}</option>
+            </select>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label class="form-label">Séries</label>
+              <input type="number" class="form-control" formControlName="series">
+            </div>
+            <div class="col">
+              <label class="form-label">Repetições</label>
+              <input type="number" class="form-control" formControlName="repeticoes">
+            </div>
+          </div>
+          <div class="mt-2">
+            <label class="form-label">Observações</label>
+            <input type="text" class="form-control" formControlName="observacoes">
+          </div>
+          <button class="btn btn-warning w-100 mt-3" (click)="adicionarExercicio()">Adicionar Exercício</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header bg-primary text-white">
+          Ficha
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label class="form-label">Tipo de Treino</label>
+            <input formControlName="tipo" type="text" class="form-control" placeholder="A, B, C...">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Ordem</label>
+            <input formControlName="ordem" type="number" class="form-control">
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-success w-100 mt-4" (click)="criarFicha()">Criar Ficha</button>
+    </div>
+
+    <!-- Visualização da ficha -->
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header bg-dark text-white">
+          Ficha de Treino Atual
+        </div>
+        <div class="card-body">
+          <table class="table table-bordered table-hover">
+            <thead class="table-light">
+              <tr>
+                <th>Exercício</th>
+                <th>Grupo</th>
+                <th>Séries</th>
+                <th>Repetições</th>
+                <th>Obs.</th>
+                <th>Ação</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of listaExercicios; let i = index">
+                <td>{{ item.exercicio_nome }}</td>
+                <td>{{ item.grupo_nome }}</td>
+                <td>{{ item.series }}</td>
+                <td>{{ item.repeticoes }}</td>
+                <td>{{ item.observacoes }}</td>
+                <td>
+                  <button class="btn btn-sm btn-danger" (click)="removerExercicio(i)">Remover</button>
+                </td>
+              </tr>
+              <tr *ngIf="listaExercicios.length === 0">
+                <td colspan="6" class="text-center">Nenhum exercício adicionado.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- <div class="fundo">
   <div class="container">
     <div class="formulario">
       <h2>Cadastro de Treinos</h2>
@@ -6,7 +110,7 @@
         <p>
 
           <label for="treino">Treino:</label>
-          <!-- <input type="text" id="treino" formControlName="treino" [readOnly]="isDisabled"/> -->
+          <input type="text" id="treino" formControlName="treino" [readOnly]="isDisabled"/>
           <select [attr.disabled]="isDisabled ? true : null" (change)="onTreinoChange($event)" (click)="ptreino()"
             formControlName="treino" class="form-control personal_options">
             <option value="0" disabled selected>Tipos</option>
@@ -17,7 +121,7 @@
         </p>
         <p>
           <label for="grupo">Grupo Muscular:</label>
-          <!-- <input type="text" id="grupo" formControlName="grupo"  [readOnly]="isDisabled"/> -->
+          <input type="text" id="grupo" formControlName="grupo"  [readOnly]="isDisabled"/>
           <select [attr.disabled]="isDisabled ? true : null" (change)="ongrupoChange($event)" (click)="pgrupo()"
             formControlName="grupo" class="form-control personal_options">
             <option value="0" disabled selected>Grupos</option>
@@ -28,7 +132,7 @@
         </p>
         <p>
           <label for="exer">Exercício:</label>
-          <!-- <input type="text" id="exer" formControlName="exer" /> -->
+          <input type="text" id="exer" formControlName="exer" />
           <select id="exerrr" (click)="pgexer()" formControlName="exer" class="form-control personal_options">
             <option value="0" disabled selected>Exercicios</option>
             @for (dado of etreino; track dado;) {
@@ -79,4 +183,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->

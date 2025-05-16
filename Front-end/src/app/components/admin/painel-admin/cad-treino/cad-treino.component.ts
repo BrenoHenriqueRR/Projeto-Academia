@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, NgModel, NgSelectOption, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, NgModel, NgSelectOption, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CadTreinoService } from '../../../../services/cad-treino/cad-treino.service';
 import { TreinoItem } from '../../../../interfaces/treino-item';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-cad-treino',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule,CommonModule],
   templateUrl: './cad-treino.component.html',
   styleUrl: './cad-treino.component.css'
 })
@@ -28,97 +29,75 @@ export class CadTreinoComponent {
   click: boolean = false;
   mensagemSucesso!: string;
 
-  constructor(private route: ActivatedRoute, private service: CadTreinoService) {
-    this.route.queryParams.subscribe(params => {
-      this.cliente = params['id'];
+  formFicha!: FormGroup;
+  formExercicio!: FormGroup;
+
+  gruposMusculares!: any[];
+  exercicios!: any[];
+
+  exerciciosFiltrados: any[] = [];
+  listaExercicios: any[] = [];
+
+  
+  ngOnInit(): void {
+    this.formFicha = this.fb.group({
+      tipo: ['', Validators.required],
+      ordem: ['', Validators.required]
     });
-    this.formcadastro = new FormGroup({
-      treino: new FormControl('', [Validators.required]),
-      grupo: new FormControl('', [Validators.required]),
-      exer: new FormControl('', [Validators.required]),
-      series: new FormControl('', [Validators.required]),
-      repeticoes: new FormControl('', [Validators.required]),
-      cliente_id: new FormControl(this.cliente),
-      funcionario_id: new FormControl(localStorage.getItem('id')),
+    
+    this.formExercicio = this.fb.group({
+      grupoMuscular: ['', Validators.required],
+      exercicio: ['', Validators.required],
+      series: ['', Validators.required],
+      repeticoes: ['', Validators.required],
+      observacoes: ['']
     });
+  }
+
+  constructor(private fb: FormBuilder, private service: CadTreinoService) {}
+  
+  filtrarExercicios(): void {
+    const grupoId = this.formExercicio.value.grupoMuscular;
+    this.exerciciosFiltrados = this.exercicios.filter(e => e.grupoMuscular == grupoId);
+    this.formExercicio.patchValue({ exercicio: '' });
+  }
+
+  adicionarExercicio(): void {
+    const exForm = this.formExercicio.value;
+    const exercicio = this.exercicios.find(e => e.id == exForm.exercicio);
+    const grupo = this.gruposMusculares.find(g => g.id == exForm.grupoMuscular);
+
+    const item = {
+      exercicio_id: exercicio!.id,
+      exercicio_nome: exercicio!.nome,
+      grupo_id: grupo!.id,
+      grupo_nome: grupo!.nome,
+      series: exForm.series,
+      repeticoes: exForm.repeticoes,
+      observacoes: exForm.observacoes
+    };
+
+    this.listaExercicios.push(item);
+    this.formExercicio.reset();
+  }
+
+  removerExercicio(index: number): void {
+    this.listaExercicios.splice(index, 1);
+  }
+
+  criarFicha(): void {
+    if (this.formFicha.invalid || this.listaExercicios.length === 0) {
+      alert('Preencha todos os dados e adicione pelo menos um exercício.');
+      return;
+    }
+
+    const ficha = {
+      ...this.formFicha.value,
+      exercicios: this.listaExercicios
+    };
+
+    console.log('Ficha final a ser enviada:', ficha);
+    // aqui você faz o POST para o backend (CodeIgniter 4)
   }
   
-
-  ptreino() {
-    this.service.ptipo().subscribe({
-      next: (dados) => {
-        this.ttreino = dados;
-      }
-    })
-  }
-
-  pgrupo() {
-    this.service.pgrupo().subscribe({
-      next: (dados) => {
-        this.gtreino = dados;
-      }
-    })
-  }
-
-  pgexer() {
-    this.service.pexer().subscribe({
-      next: (dados) => {
-        this.etreino = dados;
-      }
-    })
-  }
-
-  submit() {
-    // if (this.formcadastro.valid) {
-
-    this.isDisabled = false;
-    const dados = JSON.stringify(this.treinos);
-    this.service.enviar(dados).subscribe({
-      next: (resposta) => {
-        this.mensagemSucesso = resposta.msg;
-        console.log(this.mensagemSucesso);
-        this.formcadastro.reset();
-      }
-    })
-    location.reload();
-    // }
-  }
-
-  adicionarTreino() {
-    for (let i = 0; i < this.etreino.length; i++) {
-      if (this.formcadastro.value.exer == this.etreino[i].id)
-        this.exer.push(this.etreino[i].exercicio);
-    }
-
-
-    if (this.formcadastro.valid) {
-      const novoItem: TreinoItem = {
-        treino_id: this.formcadastro.value.treino,
-        grupo_id: this.formcadastro.value.grupo,
-        exer_id: this.formcadastro.value.exer,
-        series: this.formcadastro.value.series,
-        repeticoes: this.formcadastro.value.repeticoes,
-        cliente_id: this.formcadastro.value.cliente_id,
-        funcionario_id: this.formcadastro.value.funcionario_id
-      };
-      this.treinos.push(novoItem);
-
-      // this.formcadastro.reset();
-      this.click = true;
-      //Desabilita a edição do grupo e treinos
-      this.isDisabled = true;
-    }
-  }
-  onTreinoChange(event: Event): void {
-    const selectElement = event.target as HTMLSelectElement;
-    const selectedText = selectElement.options[selectElement.selectedIndex].text;
-    this.tipo = selectedText;
-
-  }
-  ongrupoChange(event: Event): void {
-    const selectElement = event.target as HTMLSelectElement;
-    const selectedText = selectElement.options[selectElement.selectedIndex].text;
-    this.grupo = selectedText;
-
-  }
 }

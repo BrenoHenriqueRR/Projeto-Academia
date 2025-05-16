@@ -53,4 +53,67 @@ class Ficha extends BaseController
 
         return $this->response->setJSON(['status' => 'Ficha cadastrada com sucesso']);
     }
+
+    public function pesquisar() {}
+
+    public function pesquisarCli()
+    {
+        $clienteId = $this->request->getJSON();
+
+        $fichas = $this->fichamodel
+            ->select('fichas.id AS ficha_id, fichas.tipo, fichas.ordem, fichas.concluida,
+                      ficha_exercicios.id AS ficha_exercicio_id, exercicios.nome AS exercicio,
+                      grupos_musculares.nome AS grupo_muscular,
+                      ficha_exercicios.repeticoes,
+                      ficha_exercicios.series, ficha_exercicios.observacoes')
+            ->join('ficha_exercicios', 'ficha_exercicios.ficha_id = fichas.id')
+            ->join('exercicios', 'exercicios.id = ficha_exercicios.exercicio_id')
+            ->join('grupos_musculares', 'grupos_musculares.id = exercicios.grupo_muscular_id')
+            ->where('fichas.cliente_id', $clienteId->id)
+            ->orderBy('fichas.ordem', 'ASC')
+            ->findAll();
+
+        return $this->response->setJSON($fichas);
+    }
+
+    // 🔹 2. Buscar a próxima ficha não concluída (ordem ASC)
+    public function fichaNaoConcluida()
+    {
+        $clienteId = $this->request->getJSON();
+
+        // 1. Buscar a primeira ficha não concluída do cliente
+        $ficha = $this->fichamodel
+            ->select('id, tipo, ordem, concluida')
+            ->where('cliente_id', $clienteId->id)
+            ->where('concluida', false)
+            ->orderBy('ordem', 'ASC')
+            ->limit(1)
+            ->get()
+            ->getRow();
+
+        if ($ficha) {
+            // 2. Buscar os exercícios dessa ficha
+            $exercicios = $this->fichamodel
+                ->select('ficha_exercicios.id AS ficha_exercicio_id, exercicios.nome AS exercicio,
+                  grupos_musculares.nome AS grupo_muscular,
+                  ficha_exercicios.repeticoes,
+                  ficha_exercicios.series, ficha_exercicios.observacoes')
+                ->join('ficha_exercicios', 'ficha_exercicios.ficha_id = fichas.id')
+                ->join('exercicios', 'exercicios.id = ficha_exercicios.exercicio_id')
+                ->join('grupos_musculares', 'grupos_musculares.id = exercicios.grupo_muscular_id')
+                ->where('fichas.id', $ficha->id)
+                ->orderBy('ficha_exercicios.id', 'ASC')
+                ->get()
+                ->getResult();
+
+            // Retornar os dados
+            return $this->response->setJSON([
+                'ficha' => $ficha,
+                'exercicios' => $exercicios,
+            ]);
+        } else {
+            // Nenhuma ficha encontrada
+           return $this->response->setJSON(["msg" => "Nenhuma ficha encontrada"]);
+        }
+    }
 }

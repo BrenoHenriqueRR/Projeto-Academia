@@ -15,32 +15,39 @@ export class CadTreinoService {
   private url_ptipo = apiurl + '/Treino/ptipo'
   private url_pgrupo = apiurl + '/Treino/pgrupo'
   private url_pexer = apiurl + '/Treino/pexer'
+  private url_pidficha = apiurl + '/Ficha/pesquisarCli'
 
-  constructor(private http: HttpClient) {} 
+  constructor(private http: HttpClient) { }
 
-     enviar(dados: any)
-     : Observable<formresponse> {
-      const data = dados;
-      console.log(data);
+  enviar(dados: any) : Observable<formresponse> {
+    const data = dados;
+    console.log(data);
 
-      return this.http.post<formresponse>(this.url_treino, data);
-
-      
+    return this.http.post<formresponse>(this.url_treino, data);
   }
+
+  pesquisarFichaId(id: any) : Observable<any>{
+     return this.http.post<any>(this.url_pidficha, id);
+  }
+
   cadgrupo(data: any): Observable<any> {
-    return this.http.post<any>(this.url_grupo,data); 
+    return this.http.post<any>(this.url_grupo, data);
   }
+
   cadexer(data: any): Observable<any> {
-    return this.http.post<any>(this.url_exer,data);
+    return this.http.post<any>(this.url_exer, data);
   }
+
   ptipo(): Observable<any> {
     return this.http.get<any>(this.url_ptipo);
   }
+
   pgrupo(): Observable<any> {
     return this.http.get<any>(this.url_pgrupo);
   }
+
   pexer(): Observable<any> {
     return this.http.get<any>(this.url_pexer);
   }
-  
+
 }

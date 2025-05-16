@@ -66,6 +66,8 @@ $routes->group('Treino', function ($routes) {
 // FICHA DE TREINO
 // =====================
 $routes->post('/Ficha/create', 'Ficha::create');
+$routes->post('/Ficha/pesquisarCli', 'Ficha::pesquisarCli');
+$routes->post('/Ficha/fichaNaoConcluida', 'Ficha::fichaNaoConcluida');
 
 // =====================
 // FINANCEIRO

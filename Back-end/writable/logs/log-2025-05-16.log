@@ -1,0 +1,774 @@
+ERROR - 2025-05-16 13:38:07 --> mysqli_sql_exception: Table 'projeto-1.grupo_muscular' doesn't exist in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `fichas`...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `fichas`...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `fichas`...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `fichas`...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Ficha.php(76): CodeIgniter\BaseModel->findAll()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarCli()
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2025-05-16 13:38:07 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'projeto-1.grupo_muscular' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupo_muscular`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupo_muscular` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = :fichas.cliente_id:
+ORDER BY `fichas`.`ordem` ASC', [...], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Ficha.php(76): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarCli()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-16 13:38:07 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'projeto-1.grupo_muscular' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupo_muscular`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupo_muscular` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = \'1\'
+ORDER BY `fichas`.`ordem` ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupo_muscular`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupo_muscular` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = \'1\'
+ORDER BY `fichas`.`ordem` ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupo_muscular`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupo_muscular` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = :fichas.cliente_id:
+ORDER BY `fichas`.`ordem` ASC', [...], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Ficha.php(76): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarCli()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-16 13:38:07 --> [Caused by] mysqli_sql_exception: Table 'projeto-1.grupo_muscular' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupo_muscular`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupo_muscular` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = \'1\'
+ORDER BY `fichas`.`ordem` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupo_muscular`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupo_muscular` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = \'1\'
+ORDER BY `fichas`.`ordem` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupo_muscular`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupo_muscular` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = \'1\'
+ORDER BY `fichas`.`ordem` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupo_muscular`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupo_muscular` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = :fichas.cliente_id:
+ORDER BY `fichas`.`ordem` ASC', [...], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Ficha.php(76): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarCli()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-16 13:38:38 --> mysqli_sql_exception: Table 'projeto-1.grupo_muscular' doesn't exist in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `fichas`...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `fichas`...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `fichas`...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `fichas`...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Ficha.php(76): CodeIgniter\BaseModel->findAll()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarCli()
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2025-05-16 13:38:38 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'projeto-1.grupo_muscular' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupo_muscular`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupo_muscular` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = :fichas.cliente_id:
+ORDER BY `fichas`.`ordem` ASC', [...], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Ficha.php(76): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarCli()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-16 13:38:38 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'projeto-1.grupo_muscular' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupo_muscular`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupo_muscular` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = \'1\'
+ORDER BY `fichas`.`ordem` ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupo_muscular`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupo_muscular` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = \'1\'
+ORDER BY `fichas`.`ordem` ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupo_muscular`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupo_muscular` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = :fichas.cliente_id:
+ORDER BY `fichas`.`ordem` ASC', [...], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Ficha.php(76): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarCli()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-16 13:38:38 --> [Caused by] mysqli_sql_exception: Table 'projeto-1.grupo_muscular' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupo_muscular`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupo_muscular` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = \'1\'
+ORDER BY `fichas`.`ordem` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupo_muscular`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupo_muscular` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = \'1\'
+ORDER BY `fichas`.`ordem` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupo_muscular`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupo_muscular` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = \'1\'
+ORDER BY `fichas`.`ordem` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupo_muscular`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupo_muscular` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = :fichas.cliente_id:
+ORDER BY `fichas`.`ordem` ASC', [...], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Ficha.php(76): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarCli()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-16 13:47:00 --> mysqli_sql_exception: Table 'projeto-1.grupo_muscular' doesn't exist in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `fichas`...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `fichas`...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `fichas`...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `fichas`...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Ficha.php(76): CodeIgniter\BaseModel->findAll()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarCli()
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2025-05-16 13:47:00 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'projeto-1.grupo_muscular' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupo_muscular`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupo_muscular` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = :fichas.cliente_id:
+ORDER BY `fichas`.`ordem` ASC', [...], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Ficha.php(76): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarCli()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-16 13:47:00 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'projeto-1.grupo_muscular' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupo_muscular`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupo_muscular` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = \'1\'
+ORDER BY `fichas`.`ordem` ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupo_muscular`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupo_muscular` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = \'1\'
+ORDER BY `fichas`.`ordem` ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupo_muscular`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupo_muscular` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = :fichas.cliente_id:
+ORDER BY `fichas`.`ordem` ASC', [...], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Ficha.php(76): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarCli()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-16 13:47:00 --> [Caused by] mysqli_sql_exception: Table 'projeto-1.grupo_muscular' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupo_muscular`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupo_muscular` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = \'1\'
+ORDER BY `fichas`.`ordem` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupo_muscular`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupo_muscular` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = \'1\'
+ORDER BY `fichas`.`ordem` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupo_muscular`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupo_muscular` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = \'1\'
+ORDER BY `fichas`.`ordem` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupo_muscular`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupo_muscular` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = :fichas.cliente_id:
+ORDER BY `fichas`.`ordem` ASC', [...], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Ficha.php(76): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarCli()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-16 13:47:43 --> mysqli_sql_exception: Unknown column 'grupo_muscular.nome' in 'field list' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `fichas`...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `fichas`...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `fichas`...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `fichas`...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Ficha.php(76): CodeIgniter\BaseModel->findAll()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarCli()
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2025-05-16 13:47:43 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'grupo_muscular.nome' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupo_muscular`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupos_musculares` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = :fichas.cliente_id:
+ORDER BY `fichas`.`ordem` ASC', [...], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Ficha.php(76): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarCli()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-16 13:47:43 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'grupo_muscular.nome' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupo_muscular`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupos_musculares` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = \'1\'
+ORDER BY `fichas`.`ordem` ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupo_muscular`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupos_musculares` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = \'1\'
+ORDER BY `fichas`.`ordem` ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupo_muscular`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupos_musculares` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = :fichas.cliente_id:
+ORDER BY `fichas`.`ordem` ASC', [...], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Ficha.php(76): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarCli()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-16 13:47:43 --> [Caused by] mysqli_sql_exception: Unknown column 'grupo_muscular.nome' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupo_muscular`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupos_musculares` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = \'1\'
+ORDER BY `fichas`.`ordem` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupo_muscular`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupos_musculares` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = \'1\'
+ORDER BY `fichas`.`ordem` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupo_muscular`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupos_musculares` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = \'1\'
+ORDER BY `fichas`.`ordem` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupo_muscular`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupos_musculares` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = :fichas.cliente_id:
+ORDER BY `fichas`.`ordem` ASC', [...], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Ficha.php(76): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarCli()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-16 13:47:48 --> mysqli_sql_exception: Unknown column 'grupo_muscular.nome' in 'field list' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `fichas`...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `fichas`...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `fichas`...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `fichas`...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Ficha.php(76): CodeIgniter\BaseModel->findAll()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarCli()
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2025-05-16 13:47:48 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'grupo_muscular.nome' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupo_muscular`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupos_musculares` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = :fichas.cliente_id:
+ORDER BY `fichas`.`ordem` ASC', [...], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Ficha.php(76): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarCli()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-16 13:47:48 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'grupo_muscular.nome' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupo_muscular`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupos_musculares` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = \'1\'
+ORDER BY `fichas`.`ordem` ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupo_muscular`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupos_musculares` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = \'1\'
+ORDER BY `fichas`.`ordem` ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupo_muscular`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupos_musculares` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = :fichas.cliente_id:
+ORDER BY `fichas`.`ordem` ASC', [...], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Ficha.php(76): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarCli()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-16 13:47:48 --> [Caused by] mysqli_sql_exception: Unknown column 'grupo_muscular.nome' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupo_muscular`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupos_musculares` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = \'1\'
+ORDER BY `fichas`.`ordem` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupo_muscular`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupos_musculares` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = \'1\'
+ORDER BY `fichas`.`ordem` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupo_muscular`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupos_musculares` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = \'1\'
+ORDER BY `fichas`.`ordem` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupo_muscular`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupos_musculares` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = :fichas.cliente_id:
+ORDER BY `fichas`.`ordem` ASC', [...], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Ficha.php(76): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarCli()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-16 13:48:10 --> mysqli_sql_exception: Unknown column 'ficha_exercicios.carga' in 'field list' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `fichas`...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `fichas`...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `fichas`...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `fichas`...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Ficha.php(76): CodeIgniter\BaseModel->findAll()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarCli()
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2025-05-16 13:48:10 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'ficha_exercicios.carga' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupos_musculares`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupos_musculares` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = :fichas.cliente_id:
+ORDER BY `fichas`.`ordem` ASC', [...], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Ficha.php(76): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarCli()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-16 13:48:10 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'ficha_exercicios.carga' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupos_musculares`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupos_musculares` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = \'1\'
+ORDER BY `fichas`.`ordem` ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupos_musculares`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupos_musculares` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = \'1\'
+ORDER BY `fichas`.`ordem` ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupos_musculares`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupos_musculares` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = :fichas.cliente_id:
+ORDER BY `fichas`.`ordem` ASC', [...], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Ficha.php(76): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarCli()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-16 13:48:10 --> [Caused by] mysqli_sql_exception: Unknown column 'ficha_exercicios.carga' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupos_musculares`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupos_musculares` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = \'1\'
+ORDER BY `fichas`.`ordem` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupos_musculares`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupos_musculares` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = \'1\'
+ORDER BY `fichas`.`ordem` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupos_musculares`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupos_musculares` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = \'1\'
+ORDER BY `fichas`.`ordem` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupos_musculares`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`carga`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupos_musculares` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = :fichas.cliente_id:
+ORDER BY `fichas`.`ordem` ASC', [...], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Ficha.php(76): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarCli()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-16 13:48:38 --> mysqli_sql_exception: Unknown column 'grupo_muscular.id' in 'on clause' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `fichas`...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `fichas`...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `fichas`...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `fichas`...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Ficha.php(76): CodeIgniter\BaseModel->findAll()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarCli()
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2025-05-16 13:48:38 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'grupo_muscular.id' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupos_musculares`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupos_musculares` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = :fichas.cliente_id:
+ORDER BY `fichas`.`ordem` ASC', [...], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Ficha.php(76): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarCli()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-16 13:48:38 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'grupo_muscular.id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupos_musculares`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupos_musculares` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = \'1\'
+ORDER BY `fichas`.`ordem` ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupos_musculares`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupos_musculares` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = \'1\'
+ORDER BY `fichas`.`ordem` ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupos_musculares`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupos_musculares` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = :fichas.cliente_id:
+ORDER BY `fichas`.`ordem` ASC', [...], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Ficha.php(76): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarCli()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-16 13:48:38 --> [Caused by] mysqli_sql_exception: Unknown column 'grupo_muscular.id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupos_musculares`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupos_musculares` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = \'1\'
+ORDER BY `fichas`.`ordem` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupos_musculares`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupos_musculares` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = \'1\'
+ORDER BY `fichas`.`ordem` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupos_musculares`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupos_musculares` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = \'1\'
+ORDER BY `fichas`.`ordem` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `fichas`.`id` AS `ficha_id`, `fichas`.`tipo`, `fichas`.`ordem`, `fichas`.`concluida`, `ficha_exercicios`.`id` AS `ficha_exercicio_id`, `exercicios`.`nome` AS `exercicio`, `grupos_musculares`.`nome` AS `grupo_muscular`, `ficha_exercicios`.`repeticoes`, `ficha_exercicios`.`series`, `ficha_exercicios`.`observacoes`
+FROM `fichas`
+JOIN `ficha_exercicios` ON `ficha_exercicios`.`ficha_id` = `fichas`.`id`
+JOIN `exercicios` ON `exercicios`.`id` = `ficha_exercicios`.`exercicio_id`
+JOIN `grupos_musculares` ON `grupo_muscular`.`id` = `exercicios`.`grupo_muscular_id`
+WHERE `fichas`.`cliente_id` = :fichas.cliente_id:
+ORDER BY `fichas`.`ordem` ASC', [...], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Ficha.php(76): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarCli()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-16 14:45:50 --> ErrorException: Undefined array key "cliente_id"
+in APPPATH\Controllers\Ficha.php on line 27.
+ 1 APPPATH\Controllers\Ficha.php(27): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "cliente_id"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Ficha.php', 27)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-16 14:46:55 --> ErrorException: Undefined array key "cliente_id"
+in APPPATH\Controllers\Ficha.php on line 27.
+ 1 APPPATH\Controllers\Ficha.php(27): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "cliente_id"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Ficha.php', 27)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-16 14:47:20 --> ErrorException: Undefined array key "cliente_id"
+in APPPATH\Controllers\Ficha.php on line 27.
+ 1 APPPATH\Controllers\Ficha.php(27): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "cliente_id"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Ficha.php', 27)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->create()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-16 14:52:57 --> mysqli_sql_exception: Duplicate entry '1' for key 'grupos_musculares.PRIMARY' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `gr...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `gr...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `gr...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1803): CodeIgniter\Database\BaseConnection->query('INSERT INTO `gr...', NULL, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(2192): CodeIgniter\Database\BaseBuilder->batchExecute('_insertBatch', 100)
+#5 C:\wamp64\www\sites\Projeto1\Back-end\app\Database\Seeds\ExerciciosSeeder.php(25): CodeIgniter\Database\BaseBuilder->insertBatch(Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\Seeder.php(145): App\Database\Seeds\ExerciciosSeeder->run()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\Commands\Database\Seed.php(77): CodeIgniter\Database\Seeder->call('App\\Database\\Se...')
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\Seed->run(Array)
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CLI\Console.php(46): CodeIgniter\CLI\Commands->run('db:seed', Array)
+#10 C:\wamp64\www\sites\Projeto1\Back-end\spark(102): CodeIgniter\CLI\Console->run()
+#11 {main}
+ERROR - 2025-05-16 14:59:11 --> mysqli_sql_exception: Duplicate entry '1' for key 'grupos_musculares.PRIMARY' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `gr...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `gr...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `gr...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1803): CodeIgniter\Database\BaseConnection->query('INSERT INTO `gr...', NULL, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(2192): CodeIgniter\Database\BaseBuilder->batchExecute('_insertBatch', 100)
+#5 C:\wamp64\www\sites\Projeto1\Back-end\app\Database\Seeds\ExerciciosSeeder.php(25): CodeIgniter\Database\BaseBuilder->insertBatch(Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\Seeder.php(145): App\Database\Seeds\ExerciciosSeeder->run()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\Commands\Database\Seed.php(77): CodeIgniter\Database\Seeder->call('App\\Database\\Se...')
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\Seed->run(Array)
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CLI\Console.php(46): CodeIgniter\CLI\Commands->run('db:seed', Array)
+#10 C:\wamp64\www\sites\Projeto1\Back-end\spark(102): CodeIgniter\CLI\Console->run()
+#11 {main}
+ERROR - 2025-05-16 14:59:24 --> mysqli_sql_exception: Duplicate entry '1' for key 'grupos_musculares.PRIMARY' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `gr...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `gr...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `gr...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1803): CodeIgniter\Database\BaseConnection->query('INSERT INTO `gr...', NULL, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(2192): CodeIgniter\Database\BaseBuilder->batchExecute('_insertBatch', 100)
+#5 C:\wamp64\www\sites\Projeto1\Back-end\app\Database\Seeds\ExerciciosSeeder.php(25): CodeIgniter\Database\BaseBuilder->insertBatch(Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\Seeder.php(145): App\Database\Seeds\ExerciciosSeeder->run()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Database\Seeds\ExecutarSeeders.php(13): CodeIgniter\Database\Seeder->call('App\\Database\\Se...')
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\Seeder.php(145): App\Database\Seeds\ExecutarSeeders->run()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\Commands\Database\Seed.php(77): CodeIgniter\Database\Seeder->call('App\\Database\\Se...')
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\Seed->run(Array)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\system\CLI\Console.php(46): CodeIgniter\CLI\Commands->run('db:seed', Array)
+#12 C:\wamp64\www\sites\Projeto1\Back-end\spark(102): CodeIgniter\CLI\Console->run()
+#13 {main}
+CRITICAL - 2025-05-16 19:23:48 --> Error: Class "App\Models\TreinoModel" not found
+in APPPATH\Controllers\Treino.php on line 24.
+ 1 SYSTEMPATH\CodeIgniter.php(913): App\Controllers\Treino->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-16 19:23:49 --> Error: Class "App\Models\TreinoModel" not found
+in APPPATH\Controllers\Treino.php on line 24.
+ 1 SYSTEMPATH\CodeIgniter.php(913): App\Controllers\Treino->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-16 19:23:49 --> Error: Class "App\Models\TreinoModel" not found
+in APPPATH\Controllers\Treino.php on line 24.
+ 1 SYSTEMPATH\CodeIgniter.php(913): App\Controllers\Treino->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-16 19:46:53 --> Error: Class "App\Models\TreinoModel" not found
+in APPPATH\Controllers\Treino.php on line 24.
+ 1 SYSTEMPATH\CodeIgniter.php(913): App\Controllers\Treino->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-16 19:46:53 --> Error: Class "App\Models\TreinoModel" not found
+in APPPATH\Controllers\Treino.php on line 24.
+ 1 SYSTEMPATH\CodeIgniter.php(913): App\Controllers\Treino->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(493): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

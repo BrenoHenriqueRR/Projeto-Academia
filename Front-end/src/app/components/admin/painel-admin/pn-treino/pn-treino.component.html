@@ -1,7 +1,7 @@
 <div class="p-4">
     <h1 class="hi-treino mb-5">Fichas de Treino</h1>
 
-    <button class="btn btn-primary">
+    <button class="btn btn-add btn-primary" routerLink="cad-ficha">
         + Nova Ficha
     </button>
 
@@ -19,14 +19,35 @@
 
 
     <div *ngFor="let ficha of fichas" class="border rounded p-4 mb-4 shadow-sm">
-        <h2 class="text-xl font-semibold mb-1">Ficha {{ ficha.nome }}</h2>
-        <p class="text-sm text-gray-600">Data de Criação: {{ ficha.dataCriacao }}</p>
-        <p class="text-sm text-gray-600 mb-3">Dias de treino: {{ ficha.dias.join(', ') }}</p>
+        <h2 class="text-xl font-semibold mb-1">Ficha {{ ficha.tipo }}</h2>
+        <p class="text-sm text-gray-600">
+            Grupos Musculares: {{ ficha.gruposMusculares.join(', ') }}
+        </p>
+        <p class="text-sm text-gray-600">Ordem: {{ ficha.ordem }}</p>
+        <p class="text-sm text-gray-600 mb-3">
+            Status:
+            <span [ngClass]="ficha.concluida == '1' ? 'text-green-600' : 'text-red-600'">
+                {{ ficha.concluida == '1' ? 'Concluída' : 'Pendente' }}
+            </span>
+        </p>
 
-        <div class="flex gap-2">
-            <button class="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700">Visualizar</button>
-            <button class="bg-yellow-400 text-black px-4 py-1 rounded hover:bg-yellow-500">Editar</button>
-            <button class="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600">Excluir</button>
+
+        <div class="mb-2">
+            <h3 class="font-semibold">Exercícios:</h3>
+            <ul class="list-disc pl-5">
+                <li *ngFor="let ex of ficha.exercicios">
+                    <strong>{{ ex.exercicio }}</strong> - {{ ex.grupo_muscular }} |
+                    {{ ex.series }}x{{ ex.repeticoes }}
+                    <span *ngIf="ex.observacoes"> - {{ ex.observacoes }}</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="flex gap-5 mt-3">
+            <button class="btn btn-primary text-white">Visualizar</button>
+            <button class="btn btn-warning mx-3 text-white">Editar</button>
+            <button class="btn btn-danger text-white">Excluir</button>
         </div>
     </div>
+
 </div>

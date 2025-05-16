@@ -8,7 +8,8 @@ class ExecutarSeeders extends Seeder
 {
     public function run()
     {
-        $this->call('AcademiaSeeder');
-        $this->call('FuncionarioSeeder');
+        // $this->call('AcademiaSeeder');
+        // $this->call('FuncionarioSeeder');
+        $this->call('ExerciciosSeeder');
     }
 }

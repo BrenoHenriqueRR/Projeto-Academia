@@ -1,59 +1,26 @@
-.fundo{
-    height: 70vh;
-    width: 100%;
-    /* display: flex; */
-}
 
-.container{
-    width: 100%;
-    /* display: flex;
-    justify-content: space-around;
-    align-items: center; */
-}
-.h1-div{
-    /* position: relative; */
-    margin-top: 2rem;
-    width: 100%;
-    border-bottom: 1px solid rgba(128, 128, 128, 0.082);
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
-}
-.t-h1{
-    /* background-color: #4f46e5; */
-    padding: 0.5rem;
-    border-radius: 20px;
-    /* text-align: center; */
-    color: #1a1d23;
-}
-.t-h2{
-    margin-top: 1rem;
-    color: #43484b;
-    font-size: 25px;
-}
-
-.card-treino{
-    background-color: white;
-    padding: 2rem;
-    border-radius: 20px;
-    box-shadow: 1px 1px 2px rgb(179, 178, 178);
-    margin: 3rem 5rem 0 0;
-}
-
-input{
-    margin: 0 0.4rem;
+.hi-treino::after{
+    content: '';
+    display: block;
+    width: 10rem;
+    height: 0.3rem;
+    background-color: #deed39;
+    margin: 0 auto;
+    position: absolute;
+    border-radius: 10px;
 }
 
 input[type ="text"]{
-    border: none;
     box-shadow: 1px 1px 2px rgb(179, 178, 178);
     border-radius: 10px;
-    padding: 0.5rem ;
+    padding: 0.6rem ;
 }
 
 .btn{
-    padding: 5px 10px;
+    padding: 5px 25px;
     border: none;
-    background-color: rgb(255, 255, 35);
+    /* background-color: rgb(255, 255, 35); */
     font-weight: 800;
+    font-size: 18px;
+    
 }

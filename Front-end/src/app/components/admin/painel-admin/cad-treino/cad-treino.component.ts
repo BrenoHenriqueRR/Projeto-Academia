@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, NgModel, NgSelectOption, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { CadTreinoService } from '../../../../services/cad-treino/cad-treino.service';
 import { TreinoItem } from '../../../../interfaces/treino-item';
 import { CommonModule } from '@angular/common';
@@ -8,43 +8,45 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-cad-treino',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule,CommonModule],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule],
   templateUrl: './cad-treino.component.html',
   styleUrl: './cad-treino.component.css'
 })
 export class CadTreinoComponent {
-  ttreino!: any;
-  gtreino!: any;
-  etreino!: any;
-  tipo: any;
-  grupo: any;
-  exer: any[] = [];
-  teste: any;
-
-  isDisabled: boolean = false;
-  inputData!: any;
-  treinos: TreinoItem[] = [];
-  formcadastro!: FormGroup;
-  cliente!: string;
-  click: boolean = false;
-  mensagemSucesso!: string;
-
   formFicha!: FormGroup;
   formExercicio!: FormGroup;
+  cliente_id!: any;
 
-  gruposMusculares!: any[];
-  exercicios!: any[];
-
+  gruposMusculares: any[] = [];
+  todosExercicios: any[] = [];
   exerciciosFiltrados: any[] = [];
   listaExercicios: any[] = [];
 
-  
+  mensagemSucesso!: string;
+
+  constructor(private fb: FormBuilder, private service: CadTreinoService, private route: ActivatedRoute) { }
+
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      const clienteId = params['id'];
+      if (clienteId) {
+        // pré-selecionar o cliente ou preencher campo oculto
+        this.cliente_id = clienteId;
+      }
+    });
+    this.service.pgrupo().subscribe(data => {
+      this.gruposMusculares = data;
+    });
+
+    this.service.pexer().subscribe(data => {
+      this.todosExercicios = data;
+    });
+
     this.formFicha = this.fb.group({
       tipo: ['', Validators.required],
       ordem: ['', Validators.required]
     });
-    
+
     this.formExercicio = this.fb.group({
       grupoMuscular: ['', Validators.required],
       exercicio: ['', Validators.required],
@@ -54,24 +56,26 @@ export class CadTreinoComponent {
     });
   }
 
-  constructor(private fb: FormBuilder, private service: CadTreinoService) {}
-  
   filtrarExercicios(): void {
     const grupoId = this.formExercicio.value.grupoMuscular;
-    this.exerciciosFiltrados = this.exercicios.filter(e => e.grupoMuscular == grupoId);
+    this.exerciciosFiltrados = this.todosExercicios.filter(e => e.grupo_muscular_id == grupoId);
     this.formExercicio.patchValue({ exercicio: '' });
   }
 
   adicionarExercicio(): void {
+    if (this.formExercicio.invalid) return;
+
     const exForm = this.formExercicio.value;
-    const exercicio = this.exercicios.find(e => e.id == exForm.exercicio);
+    const exercicio = this.todosExercicios.find(e => e.id == exForm.exercicio);
     const grupo = this.gruposMusculares.find(g => g.id == exForm.grupoMuscular);
 
+    if (!exercicio || !grupo) return;
+
     const item = {
-      exercicio_id: exercicio!.id,
-      exercicio_nome: exercicio!.nome,
-      grupo_id: grupo!.id,
-      grupo_nome: grupo!.nome,
+      exercicio_id: exercicio.id,
+      exercicio_nome: exercicio.nome,
+      grupo_id: grupo.id,
+      grupo_nome: grupo.nome,
       series: exForm.series,
       repeticoes: exForm.repeticoes,
       observacoes: exForm.observacoes
@@ -92,12 +96,20 @@ export class CadTreinoComponent {
     }
 
     const ficha = {
+      exercicios: this.listaExercicios,
       ...this.formFicha.value,
-      exercicios: this.listaExercicios
+      cliente_id: this.cliente_id
     };
 
-    console.log('Ficha final a ser enviada:', ficha);
-    // aqui você faz o POST para o backend (CodeIgniter 4)
+    this.service.createFicha(JSON.stringify(ficha)).subscribe({
+      next: (dados) => {
+        alert(dados);
+      },error: (er) =>{
+        alert('erro');
+      }
+    })
+
+    // Aqui você pode usar:
+    // this.service.salvarFicha(ficha).subscribe(...)
   }
-  
 }

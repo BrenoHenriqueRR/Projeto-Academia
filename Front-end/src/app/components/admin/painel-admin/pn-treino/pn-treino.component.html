@@ -1,53 +1,45 @@
 <div class="p-4">
-    <h1 class="hi-treino mb-5">Fichas de Treino</h1>
+  <h1 class="hi-treino mb-3">Fichas de Treino</h1>
 
-    <button class="btn btn-add btn-primary" routerLink="cad-ficha">
-        + Nova Ficha
-    </button>
+  <div class="alert alert-info mb-4">
+    Utilize a barra de busca para encontrar um cliente. Aqui você pode ver quem já possui ficha cadastrada ou criar uma
+    nova.
+  </div>
 
-    <div class="mt-4 d-flex align-items-center justify-content-between">
-        <mat-form-field appearance="outline" class="mb-6 w-25">
-            <mat-label class="text-black">Buscar Cliente</mat-label>
-            <input class="text-black" type="text" matInput [formControl]="clienteControl" [matAutocomplete]="auto" />
-            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selecionarCliente($event.option.value)">
-                <mat-option *ngFor="let cliente of clientesFiltrados" [value]="cliente.nome">
-                    {{ cliente.nome }}
-                </mat-option>
-            </mat-autocomplete>
-        </mat-form-field>
-    </div>
+  <mat-form-field appearance="outline" class="mb-3 w-50">
+    <mat-label class="text-black">Buscar Cliente</mat-label>
+    <input class="text-black" matInput type="text" [formControl]="clienteControl" placeholder="Digite o nome do cliente" />
+  </mat-form-field>
 
 
-    <div *ngFor="let ficha of fichas" class="border rounded p-4 mb-4 shadow-sm">
-        <h2 class="text-xl font-semibold mb-1">Ficha {{ ficha.tipo }}</h2>
-        <p class="text-sm text-gray-600">
-            Grupos Musculares: {{ ficha.gruposMusculares.join(', ') }}
-        </p>
-        <p class="text-sm text-gray-600">Ordem: {{ ficha.ordem }}</p>
-        <p class="text-sm text-gray-600 mb-3">
-            Status:
-            <span [ngClass]="ficha.concluida == '1' ? 'text-green-600' : 'text-red-600'">
-                {{ ficha.concluida == '1' ? 'Concluída' : 'Pendente' }}
-            </span>
-        </p>
-
-
-        <div class="mb-2">
-            <h3 class="font-semibold">Exercícios:</h3>
-            <ul class="list-disc pl-5">
-                <li *ngFor="let ex of ficha.exercicios">
-                    <strong>{{ ex.exercicio }}</strong> - {{ ex.grupo_muscular }} |
-                    {{ ex.series }}x{{ ex.repeticoes }}
-                    <span *ngIf="ex.observacoes"> - {{ ex.observacoes }}</span>
-                </li>
-            </ul>
-        </div>
-
-        <div class="flex gap-5 mt-3">
-            <button class="btn btn-primary text-white">Visualizar</button>
-            <button class="btn btn-warning mx-3 text-white">Editar</button>
-            <button class="btn btn-danger text-white">Excluir</button>
-        </div>
-    </div>
-
+  <table class="table table-bordered table-striped mt-2">
+    <thead class="thead-dark">
+      <tr>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Status da Ficha</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cliente of clientesFiltrados">
+        <td>{{ cliente.nome }}</td>
+        <td>{{ cliente.email }}</td>
+        <td>
+          <span [ngClass]="cliente.temFicha ? 'text-success' : 'text-danger'">
+            {{ cliente.temFicha ? '✅ Possui' : '❌ Não possui' }}
+          </span>
+        </td>
+        <td>
+          <button *ngIf="cliente.temFicha" class="btn btn-primary btn-sm me-2" (click)="verFicha(cliente.id)">
+            Ver Ficha
+          </button>
+          <button *ngIf="!cliente.temFicha" class="btn btn-success btn-sm" [routerLink]="['cad-ficha']"
+            [queryParams]="{ id: cliente.id }">
+            Cadastrar Ficha
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>

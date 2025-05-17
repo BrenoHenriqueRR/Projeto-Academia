@@ -6,99 +6,64 @@ import { PnClienteService } from '../../../../services/admin/pn-cliente/pn-clien
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-pn-treino',
   standalone: true,
   imports: [FormsModule, ReactiveFormsModule, CommonModule, ReactiveFormsModule,
-    MatFormFieldModule, MatInputModule, MatAutocompleteModule,RouterLink],
+    MatFormFieldModule, MatInputModule, MatAutocompleteModule, RouterLink],
   templateUrl: './pn-treino.component.html',
   styleUrl: './pn-treino.component.css'
 })
 export class PnTreinoComponent {
   clienteControl = new FormControl('');
-  exer!: FormGroup;
-  Grupo!: FormGroup;
-  fichas!: any;
-  clientes: any;
+  clientes: any[] = [];
   clientesFiltrados: any[] = [];
-  clienteSelecionado: any = null;
 
-  constructor(private service: CadTreinoService, private cliservice: PnClienteService) { }
+  constructor(private cliservice: PnClienteService, private treinoService: CadTreinoService, private router: Router) { }
 
   ngOnInit() {
-    this.pesquisarCli();
+    this.cliservice.pesquisar().subscribe((dados) => {
+      // Verifica quem tem ficha para exibir na tabela
+      this.verificarFichas(dados);
+    });
 
     this.clienteControl.valueChanges.subscribe(valor => {
-      this.clientesFiltrados = this.filtrarClientes(valor || '');
+      this.filtrarClientes(valor || '');
     });
   }
 
-  pesquisarCli() {
-    this.cliservice.pesquisar().subscribe({
-      next: (dados) => {
-        this.clientes = dados;
-      },
-      error: (err) => {
-        console.log('ocorreu um erro: ' + err);
-      },
+  async verificarFichas(clientes: any) {
+    const requests = clientes.map(async (cliente: { id: any; nome: any; }) => {
+      try {
+        const response = await firstValueFrom(
+          this.treinoService.pesquisarFichaId(JSON.stringify({ id: cliente.id }))
+        );
+        return { ...cliente, temFicha: response && response.length > 0 };
+      } catch (error) {
+        console.error('Erro ao buscar ficha do cliente:', cliente.nome, error);
+        return { ...cliente, temFicha: false };
+      }
     });
+
+    const clientesComStatus = await Promise.all(requests);
+    this.clientes = clientesComStatus;
+    this.clientesFiltrados = clientesComStatus;
   }
 
-  pesquisarFicha(id: any) {
-    const cliente_id = JSON.stringify({ id: id });
-    this.service.pesquisarFichaId(cliente_id).subscribe({
-      next: (dados) => {
-        const fichasAgrupadas: { [key: string]: any } = {};
 
-        dados.forEach((item: any) => {
-          if (!fichasAgrupadas[item.ficha_id]) {
-            fichasAgrupadas[item.ficha_id] = {
-              ficha_id: item.ficha_id,
-              tipo: item.tipo,
-              ordem: item.ordem,
-              concluida: item.concluida,
-              exercicios: []
-            };
-          }
 
-          fichasAgrupadas[item.ficha_id].exercicios.push({
-            ficha_exercicio_id: item.ficha_exercicio_id,
-            exercicio: item.exercicio,
-            grupo_muscular: item.grupo_muscular,
-            repeticoes: item.repeticoes,
-            series: item.series,
-            observacoes: item.observacoes
-          });
-        });
-
-        
-        this.fichas = Object.values(fichasAgrupadas).map((ficha: any) => {
-          const gruposUnicos = [...new Set(ficha.exercicios.map((e: any) => e.grupo_muscular))];
-          return { ...ficha, gruposMusculares: gruposUnicos };
-        });
-
-        // Converte de objeto para array
-        console.log(this.fichas);
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
-  }
-
-  filtrarClientes(valor: string) {
-    const filtro = valor.toLowerCase();
-    return this.clientes.filter((c: { nome: string }) =>
-      c.nome.toLowerCase().includes(filtro)
+  filtrarClientes(filtro: string) {
+    const filtroLower = filtro.toLowerCase();
+    this.clientesFiltrados = this.clientes.filter(c =>
+      c.nome.toLowerCase().includes(filtroLower)
     );
   }
 
-  selecionarCliente(nome: string) {
-    this.clienteSelecionado = this.clientes.find(
-      (c: { nome: string }) => c.nome === nome
-    );
-    this.pesquisarFicha(this.clienteSelecionado.id);
+  verFicha(id: number) {
+    // Redirecionar para um componente de visualização da ficha (ou modal)
+    this.router.navigate(['ver-ficha'], { queryParams: { id } });
   }
 }

@@ -44,7 +44,6 @@ class Ficha extends BaseController
             $this->fichaexermodel->insert([
                 'ficha_id' => $fichaId,
                 'exercicio_id' => $ex['exercicio_id'],
-                'carga' => $ex['carga'],
                 'repeticoes' => $ex['repeticoes'],
                 'series' => $ex['series'],
                 'observacoes' => $ex['observacoes'] ?? null

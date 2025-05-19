@@ -1,0 +1,147 @@
+CRITICAL - 2025-05-19 12:42:56 --> ErrorException: Undefined property: stdClass::$id
+in APPPATH\Controllers\Ficha.php on line 63.
+ 1 APPPATH\Controllers\Ficha.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$id', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Ficha.php', 63)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarCli()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-19 12:42:56 --> ErrorException: Undefined property: stdClass::$id
+in APPPATH\Controllers\ClientePlanos.php on line 91.
+ 1 APPPATH\Controllers\ClientePlanos.php(91): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$id', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\ClientePlanos.php', 91)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\ClientePlanos->pesquisarId()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientePlanos))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-19 13:46:30 --> mysqli_sql_exception: Table 'anamnese' already exists in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('CREATE TABLE `a...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `a...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `a...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\Forge.php(555): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `a...')
+#4 C:\wamp64\www\sites\Projeto1\Back-end\app\Database\Migrations\2025-03-14-143707_Anamnese.php(113): CodeIgniter\Database\Forge->createTable('anamnese')
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MigrationRunner.php(865): App\Database\Migrations\Anamnese->up()
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MigrationRunner.php(181): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\Commands\Database\Migrate.php(84): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CLI\Console.php(46): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\wamp64\www\sites\Projeto1\Back-end\spark(102): CodeIgniter\CLI\Console->run()
+#11 {main}
+ERROR - 2025-05-19 13:47:43 --> mysqli_sql_exception: Table 'anamnese' already exists in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('CREATE TABLE `a...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `a...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `a...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\Forge.php(555): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `a...')
+#4 C:\wamp64\www\sites\Projeto1\Back-end\app\Database\Migrations\2025-03-14-143707_Anamnese.php(113): CodeIgniter\Database\Forge->createTable('anamnese')
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MigrationRunner.php(865): App\Database\Migrations\Anamnese->up()
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MigrationRunner.php(181): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\Commands\Database\Migrate.php(84): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CLI\Console.php(46): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\wamp64\www\sites\Projeto1\Back-end\spark(102): CodeIgniter\CLI\Console->run()
+#11 {main}
+ERROR - 2025-05-19 13:49:12 --> mysqli_sql_exception: Table 'anamnese' already exists in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('CREATE TABLE `a...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `a...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `a...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\Forge.php(555): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `a...')
+#4 C:\wamp64\www\sites\Projeto1\Back-end\app\Database\Migrations\migration_backup\2025-03-14-143707_Anamnese.php(113): CodeIgniter\Database\Forge->createTable('anamnese')
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MigrationRunner.php(865): App\Database\Migrations\Anamnese->up()
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MigrationRunner.php(181): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\Commands\Database\Migrate.php(84): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CLI\Console.php(46): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\wamp64\www\sites\Projeto1\Back-end\spark(102): CodeIgniter\CLI\Console->run()
+#11 {main}
+ERROR - 2025-05-19 13:49:26 --> mysqli_sql_exception: Invalid default value for 'criado_em' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('CREATE TABLE `d...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `d...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `d...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\Forge.php(555): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `d...')
+#4 C:\wamp64\www\sites\Projeto1\Back-end\app\Database\Migrations\2025-05-19-133825_CreateDespesasTable.php(22): CodeIgniter\Database\Forge->createTable('despesas')
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MigrationRunner.php(865): App\Database\Migrations\CreateDespesasTable->up()
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MigrationRunner.php(181): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\Commands\Database\Migrate.php(84): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CLI\Console.php(46): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\wamp64\www\sites\Projeto1\Back-end\spark(102): CodeIgniter\CLI\Console->run()
+#11 {main}
+ERROR - 2025-05-19 13:50:50 --> mysqli_sql_exception: Invalid default value for 'data_criacao' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('CREATE TABLE `d...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `d...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `d...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\Forge.php(555): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `d...')
+#4 C:\wamp64\www\sites\Projeto1\Back-end\app\Database\Migrations\2025-05-19-133825_CreateDespesasTable.php(22): CodeIgniter\Database\Forge->createTable('despesas')
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MigrationRunner.php(865): App\Database\Migrations\CreateDespesasTable->up()
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MigrationRunner.php(181): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\Commands\Database\Migrate.php(84): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CLI\Console.php(46): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\wamp64\www\sites\Projeto1\Back-end\spark(102): CodeIgniter\CLI\Console->run()
+#11 {main}
+CRITICAL - 2025-05-19 18:05:43 --> ErrorException: Trying to access array offset on int
+in APPPATH\Controllers\Despesas.php on line 25.
+ 1 APPPATH\Controllers\Despesas.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on int', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Despesas.php', 25)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Despesas->readId()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Despesas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-19 18:06:46 --> ErrorException: Undefined array key "id"
+in APPPATH\Controllers\Despesas.php on line 40.
+ 1 APPPATH\Controllers\Despesas.php(40): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Despesas.php', 40)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Despesas->update()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Despesas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-19 18:07:40 --> ErrorException: Undefined array key "id"
+in APPPATH\Controllers\Despesas.php on line 40.
+ 1 APPPATH\Controllers\Despesas.php(40): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Despesas.php', 40)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Despesas->update()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Despesas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-19 18:07:45 --> ErrorException: Undefined array key "id"
+in APPPATH\Controllers\Despesas.php on line 40.
+ 1 APPPATH\Controllers\Despesas.php(40): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Despesas.php', 40)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Despesas->update()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Despesas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-19 18:07:48 --> ErrorException: Undefined array key "id"
+in APPPATH\Controllers\Despesas.php on line 40.
+ 1 APPPATH\Controllers\Despesas.php(40): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Despesas.php', 40)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Despesas->update()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Despesas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-19 18:07:49 --> ErrorException: Undefined array key "id"
+in APPPATH\Controllers\Despesas.php on line 40.
+ 1 APPPATH\Controllers\Despesas.php(40): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Despesas.php', 40)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Despesas->update()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Despesas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-19 18:44:20 --> ErrorException: Undefined array key "id"
+in APPPATH\Controllers\Despesas.php on line 40.
+ 1 APPPATH\Controllers\Despesas.php(40): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Despesas.php', 40)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Despesas->update()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Despesas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-19 18:50:46 --> ErrorException: Undefined property: stdClass::$id
+in APPPATH\Controllers\ClientePlanos.php on line 91.
+ 1 APPPATH\Controllers\ClientePlanos.php(91): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$id', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\ClientePlanos.php', 91)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\ClientePlanos->pesquisarId()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientePlanos))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-19 18:50:46 --> ErrorException: Undefined property: stdClass::$id
+in APPPATH\Controllers\Ficha.php on line 63.
+ 1 APPPATH\Controllers\Ficha.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$id', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Ficha.php', 63)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarCli()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

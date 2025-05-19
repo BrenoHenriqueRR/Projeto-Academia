@@ -38,7 +38,7 @@
           <td>{{ produto.marca }}</td>
           <td>{{ produto.unidade_medida }}</td>
           <td>{{ produto.quantidade }}</td>
-          <td>R$ {{ produto.preco }} </td>
+          <td>{{ produto.preco}} </td>
           <td>
             <input type="number" min="1" max="{{produto.quantidade}}" [(ngModel)]="produto.qtdSelecionada"
               class="form-control form-control-sm" style="width: 70px;" />
@@ -93,7 +93,7 @@
             </td>
             <td>{{ item.nome }}</td>
             <td>{{ item.qtd }}</td>
-            <td>R$ {{ item.preco * item.qtd | number:'1.2-2' }}</td>
+            <td>R${{ item.preco * item.qtd |number:'1.2-2':'pt-BR'}}</td>
           </tr>
         </tbody>
 
@@ -101,7 +101,7 @@
 
       <div class="mt-3 d-flex justify-content-end">
         <strong class="mx-1">Total: </strong>
-        <strong> R$ {{totalCarrinho | number:'1.2-2' }}</strong>
+        <strong> R$ {{totalCarrinho | number:'1.2-2':'pt-BR'}}</strong>
       </div>
 
       <button class="btn btn-primary mt-3" (click)="abrirModal()">

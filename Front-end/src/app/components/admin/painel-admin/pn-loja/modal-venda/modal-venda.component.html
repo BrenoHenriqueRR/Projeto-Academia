@@ -8,7 +8,7 @@
         <div class="d-flex gap-3">
           <p>{{item.qtd}}</p>
           <p>{{item.nome}}</p>
-          <p>{{item.preco | number:'1.2-2'}}</p>
+          <p>{{item.preco | number:'1.2-2':'pt-BR'}}</p>
         </div>
       }
     </div>
@@ -24,7 +24,7 @@
     </mat-form-field>
 
     <div>
-      <p class="text-white"><strong>Total:</strong> R$ {{ (total_modal)  | number:'1.2-2' }}</p>
+      <p class="text-white"><strong>Total:</strong> R$ {{ (total_modal)  | number:'1.2-2':'pt-BR' }}</p>
     </div>
 
   </div>

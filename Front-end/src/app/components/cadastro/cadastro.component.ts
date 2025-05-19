@@ -200,7 +200,7 @@ export class CadastroComponent {
       endereco: new FormControl('', [Validators.required]),
       datanascimento: new FormControl('', [Validators.required]),
       nivel_experiencia: new FormControl('iniciante', [Validators.required]),
-      treino_com_personal: new FormControl(false),
+      treino_com_personal: new FormControl(true),
       termo_responsabilidade: new FormControl(null),
       personal_id: new FormControl(null),
     });
@@ -391,12 +391,11 @@ export class CadastroComponent {
     }
   }
 
-  stringParaData(valor: string): Date {
-    if (!valor || valor.length !== 8) return new Date('invalid');
-    const dia = valor.substring(0, 2);
-    const mes = valor.substring(2, 4);
-    const ano = valor.substring(4, 8);
-    return new Date(`${ano}-${mes}-${dia}`);
+  stringParaData(valor: string): string {
+    if (!valor || valor.length !== 10) return 'invalid';
+    const partes = valor.split('/');
+    const dataConvertida = `${partes[2]}-${partes[1]}-${partes[0]}`;
+    return dataConvertida;
   }
 }
 

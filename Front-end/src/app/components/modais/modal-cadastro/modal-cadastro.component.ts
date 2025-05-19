@@ -85,6 +85,7 @@ export class ModalCadastroComponent {
       nivel_experiencia: ['iniciante', Validators.required],
       treino_com_personal: [false],
       termo_responsabilidade: [null],
+      termo_autorizacao: [null],
       personal_id: [null],
     });
     this.extraForm = this.fb.group({
@@ -147,7 +148,6 @@ export class ModalCadastroComponent {
           formData.append('senha', this.funcForm.value.senha);
           formData.append('CPF', this.funcForm.value.cpf);
           formData.append('data_nascimento', this.funcForm.value.data_nascimento);
-          formData.append('termo_responsabilidade', this.funcForm.value.termo_responsabilidade);
           console.log(formData);
           this.funcservice.create(formData).subscribe({
             next: (dados) => {
@@ -180,6 +180,8 @@ export class ModalCadastroComponent {
           formData.append('email', this.CliForm.value.email);
           formData.append('treino_com_personal', treino_com_personal);
           formData.append('nivel_experiencia', this.CliForm.value.nivel_experiencia);
+          formData.append('termo_responsabilidade', this.CliForm.value.termo_responsabilidade);
+          formData.append('termo_autorizacao', this.CliForm.value.termo_autorizacao);
           formData.append('personal_id', this.CliForm.value.personal_id);
           this.cliservice.sendData(formData).subscribe({
             next: (dados) => {

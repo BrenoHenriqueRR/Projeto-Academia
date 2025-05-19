@@ -47,10 +47,12 @@ class Cliente extends BaseController
         $dados['personal_id'] = null !== $this->request->getPost('personal_id') ? $this->request->getPost('personal_id') : null;
         $foto = $this->request->getFile('foto_perfil');
         $atestado = null !== $this->request->getFile('atestado_medico') ? $this->request->getFile('atestado_medico') : null;
-        $termo = null !== $this->request->getFile('termo_responsabilidade') ? $this->request->getFile('termo_responsabilidade') : null;
+        $termoaut = null !== $this->request->getFile('termo_autorizacao') ? $this->request->getFile('termo_autorizacao') : null;
+        $termores = null !== $this->request->getFile('termo_responsabilidade') ? $this->request->getFile('termo_responsabilidade') : null;
 
         $dados['atestado_medico'] = $this->processarArquivo($atestado, 'atestado', $this->request->getPost('CPF'));
-        $dados['termo_responsabilidade'] = $this->processarArquivo($termo, 'termo', $this->request->getPost('CPF'));
+        $dados['termo_autorizacao'] = $this->processarArquivo($termoaut, 'termo_autorizacao', $this->request->getPost('CPF'));
+        $dados['termo_responsabilidade'] = $this->processarArquivo($termores, 'termo_responsabilidade', $this->request->getPost('CPF'));
         $dados['status'] = 'inativo';
 
         // Receber os outros dados do formulário

@@ -98,6 +98,16 @@
                     </a>
                 </li>
                 }
+                @if (funcionalidade != 'personal') {
+                <li class="side-item" routerLinkActive="mat-accent">
+                    <a routerLink="despesas">
+                        <i class="fa-solid fa-landmark"></i>
+                        <span class="item-description">
+                            Despesas
+                        </span>
+                    </a>
+                </li>
+                }
 
                 @if (funcionalidade != 'personal') {
                 <li class="side-item" routerLinkActive="mat-accent">
@@ -119,7 +129,7 @@
                     </a>
                 </li> -->
 
-                @if (funcionalidade == 'Administrador') {
+                <!-- @if (funcionalidade == 'Administrador') {
                 <li class="side-item" routerLinkActive="mat-accent">
                     <a href="#">
                         <i class="fa-solid fa-gear"></i>
@@ -128,7 +138,7 @@
                         </span>
                     </a>
                 </li>
-                }
+                } -->
             </ul>
 
             <button (click)="AbrirSidebar()" id="open_btn">

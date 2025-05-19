@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\ClientePlanosExtra;
 use App\Models\Clientesplanos;
+use App\Models\PagamentosModel;
 use App\Models\Planos;
 use CodeIgniter\HTTP\ResponseInterface;
 
@@ -14,11 +15,13 @@ class ClientePlanos extends BaseController
     protected $clientesPlanosModel;
     protected $clientesPlanosExtraModel;
     protected $planosModel;
+    protected $pagamentosModel;
     
     public function __construct() {
         $this->clientesPlanosModel = new Clientesplanos();
         $this->clientesPlanosExtraModel = new ClientePlanosExtra();
         $this->planosModel = new Planos();
+        $this->pagamentosModel = new PagamentosModel();
     }
 
     public function create($dados,$id)
@@ -51,9 +54,21 @@ class ClientePlanos extends BaseController
         $this->clientesPlanosModel->insert([
             'data_inicio' => $dataInicio,
             'data_vencimento' => $dataVencimento,
-            'status' => 'ativo',
+            'status' => 'pendente',
             'cliente_id' => $id,
             'plano_id' => $dados['plano']
+        ]);
+
+        $id = $this->clientesPlanosModel->getInsertID();
+
+        $this->pagamentosModel->insert([
+            "valor" => $plano[0]['preco'],
+            "status_pagamento" => 'pendente',
+            "data_pagamento" => Null,
+            "forma_pagamento" => NULL,
+            "funcionario_id" => $id,
+            "cliente_planos_id" => $dados['personal_id'],
+
         ]);
 
         
@@ -67,5 +82,16 @@ class ClientePlanos extends BaseController
         }
 
         return true;
+    }
+
+    public function pesquisarId(){
+        $id = $this->request->getJSON();
+
+        $dados = $this->clientesPlanosModel->select()
+        ->where('cliente_id',$id->id)
+        ->join('planos', 'clientes_planos.plano_id = planos.id')
+        ->get();
+
+        return $this->response->setJSON($dados->getResult())->setStatusCode(200);
     }
 }

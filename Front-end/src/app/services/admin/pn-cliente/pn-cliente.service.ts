@@ -14,6 +14,7 @@ export class PnClienteService {
   private urldel = 'http://localhost/sites/Projeto1/Back-end/public/Cliente/delete';
   private urlFoto = 'http://localhost/sites/Projeto1/Back-end/public/Cliente/inserirFoto';
   private urlgetFoto = 'http://localhost/sites/Projeto1/Back-end/public/Cliente/pegarFoto';
+  private url_Planosid = 'http://localhost/sites/Projeto1/Back-end/public/ClientePlanos/pesquisarId';
   
 
   constructor(private http: HttpClient) {} 
@@ -25,6 +26,7 @@ export class PnClienteService {
   pesquisarSAnam(): Observable<CliPesquisar> {
     return this.http.get<CliPesquisar>(this.urlSAnam);
   }
+ 
   pesquisarpid(id:any): Observable<any> {
     return this.http.post<any>(this.urlpid, id);
   }
@@ -40,7 +42,12 @@ export class PnClienteService {
   pegarfoto(id: any): Observable<any>{
     return this.http.post<any>(this.urlgetFoto,id)
   }
-  listarTodosPag():Observable<CliPesquisar> {
-    return this.http.get<CliPesquisar>(this.urlpag);
+
+  listarTodosPag():Observable<any> {
+    return this.http.get<any>(this.urlpag);
+  }
+
+  pesquisarIdPlano(id: any): Observable<any>{
+    return this.http.post<any>(this.url_Planosid,id)
   }
 }

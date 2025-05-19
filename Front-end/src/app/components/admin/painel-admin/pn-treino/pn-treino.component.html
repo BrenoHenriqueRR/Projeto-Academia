@@ -1,45 +1,55 @@
 <div class="p-4">
-  <h1 class="hi-treino mb-3">Fichas de Treino</h1>
+    <h1 class="hi-treino mb-3">Fichas de Treino</h1>
 
-  <div class="alert alert-info mb-4">
-    Utilize a barra de busca para encontrar um cliente. Aqui você pode ver quem já possui ficha cadastrada ou criar uma
-    nova.
-  </div>
+    <div class="alert alert-info mb-4">
+        Utilize a barra de busca para encontrar um cliente. Aqui você pode ver quem já possui ficha cadastrada ou criar
+        uma
+        nova.
+    </div>
 
-  <mat-form-field appearance="outline" class="mb-3 w-50">
-    <mat-label class="text-black">Buscar Cliente</mat-label>
-    <input class="text-black" matInput type="text" [formControl]="clienteControl" placeholder="Digite o nome do cliente" />
-  </mat-form-field>
+    <mat-form-field appearance="outline" class="mb-3 w-50">
+        <mat-label class="text-black">Buscar Cliente</mat-label>
+        <input class="text-black" matInput type="text" [formControl]="clienteControl"
+            placeholder="Digite o nome do cliente" />
+    </mat-form-field>
 
 
-  <table class="table table-bordered table-striped mt-2">
-    <thead class="thead-dark">
-      <tr>
-        <th>Nome</th>
-        <th>Email</th>
-        <th>Status da Ficha</th>
-        <th>Ações</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let cliente of clientesFiltrados">
-        <td>{{ cliente.nome }}</td>
-        <td>{{ cliente.email }}</td>
-        <td>
-          <span [ngClass]="cliente.temFicha ? 'text-success' : 'text-danger'">
-            {{ cliente.temFicha ? '✅ Possui' : '❌ Não possui' }}
-          </span>
-        </td>
-        <td>
-          <button *ngIf="cliente.temFicha" class="btn btn-primary btn-sm me-2" (click)="verFicha(cliente.id)">
-            Ver Ficha
-          </button>
-          <button *ngIf="!cliente.temFicha" class="btn btn-success btn-sm" [routerLink]="['cad-ficha']"
-            [queryParams]="{ id: cliente.id }">
-            Cadastrar Ficha
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+    <table class="table table-bordered table-striped mt-2">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Status da Ficha</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cliente of clientesFiltrados">
+                <td>{{ cliente.nome }}</td>
+                <td>{{ cliente.email }}</td>
+                <td>
+                    <span [ngClass]="cliente.temFicha ? 'text-success' : 'text-danger'">
+                        {{ cliente.temFicha ? '✅ Possui' : '❌ Não possui' }}
+                    </span>
+                </td>
+                <td>
+                    @if (cliente.temFicha) {
+                    <button class="btn btn-primary btn-sm me-2" [routerLink]="['ver-fichas']" [queryParams]="{ id: cliente.id }">
+                        Ver Fichas
+                    </button>
+                    <button class="btn btn-success btn-sm me-2" [routerLink]="['cad-ficha']" [queryParams]="{ id: cliente.id }">
+                        Nova ficha
+                    </button>
+                    <button class="btn btn-warning btn-sm"  [routerLink]="['cad-ficha']">
+                        Editar fichas
+                    </button>
+                    }
+                    <button *ngIf="!cliente.temFicha" class="btn btn-success btn-sm" [routerLink]="['cad-ficha']"
+                        [queryParams]="{ id: cliente.id }">
+                        Cadastrar Ficha
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>

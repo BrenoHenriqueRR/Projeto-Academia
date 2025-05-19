@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { PnClienteService } from '../../../../services/admin/pn-cliente/pn-cliente.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatInputModule } from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';   
 import { Router, RouterLink } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 

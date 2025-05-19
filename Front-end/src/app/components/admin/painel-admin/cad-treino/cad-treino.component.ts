@@ -1,36 +1,44 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, NgModel, NgSelectOption, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ActivatedRoute, Route, Router, RouterLink } from '@angular/router';
 import { CadTreinoService } from '../../../../services/cad-treino/cad-treino.service';
 import { TreinoItem } from '../../../../interfaces/treino-item';
 import { CommonModule } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
+import { PnClienteService } from '../../../../services/admin/pn-cliente/pn-cliente.service';
+import { AnamneseService } from '../../../../services/admin/anamnese/anamnese.service';
 
 @Component({
   selector: 'app-cad-treino',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, CommonModule],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule,RouterLink],
   templateUrl: './cad-treino.component.html',
   styleUrl: './cad-treino.component.css'
 })
 export class CadTreinoComponent {
+
   formFicha!: FormGroup;
   formExercicio!: FormGroup;
-  cliente_id!: any;
-
+  cliente_id: any;
+  planoCliente: any;
+  fichasCliente!: any;
   gruposMusculares: any[] = [];
   todosExercicios: any[] = [];
   exerciciosFiltrados: any[] = [];
   listaExercicios: any[] = [];
+  anamneseCliente: any;
 
   mensagemSucesso!: string;
 
-  constructor(private fb: FormBuilder, private service: CadTreinoService, private route: ActivatedRoute) { }
+  constructor(private fb: FormBuilder, private service: CadTreinoService,
+    private route: ActivatedRoute, private alertas: ToastrService, 
+    private clienteservice: PnClienteService,private anamneseservice: AnamneseService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       const clienteId = params['id'];
       if (clienteId) {
-        // pré-selecionar o cliente ou preencher campo oculto
         this.cliente_id = clienteId;
       }
     });
@@ -54,6 +62,37 @@ export class CadTreinoComponent {
       repeticoes: ['', Validators.required],
       observacoes: ['']
     });
+
+    this.clienteservice.pesquisarIdPlano(JSON.stringify({ id: this.cliente_id })).subscribe({
+      next: (dados) => {
+        this.planoCliente = dados;
+        console.log(dados)
+      }, error: (err) => {
+        console.log("cliente sem planos")
+      }
+    })
+    this.anamneseservice.readIdCliente(JSON.stringify({ id: this.cliente_id })).subscribe({
+      next: (dados) => {
+        this.anamneseCliente = dados.dados;
+        console.log(this.anamneseCliente)
+      }, error: (err) => {
+        console.log("cliente sem planos")
+      }
+    })
+
+    this.service.pesquisarFichaId(JSON.stringify({ id: this.cliente_id, soficha: "sim" })).subscribe({
+      next: (dados) => {
+        if (dados.length != 0) {
+          this.fichasCliente = dados;
+        } else {
+          this.fichasCliente = null;
+
+        }
+        console.log(dados)
+      }, error: (err) => {
+        console.log("cliente sem ficha");
+      }
+    })
   }
 
   filtrarExercicios(): void {
@@ -89,6 +128,12 @@ export class CadTreinoComponent {
     this.listaExercicios.splice(index, 1);
   }
 
+  abrirModalAnamnese() {
+    const modal = new bootstrap.Modal(document.getElementById('modalAnamnese')!);
+    modal.show();
+  }
+
+
   criarFicha(): void {
     if (this.formFicha.invalid || this.listaExercicios.length === 0) {
       alert('Preencha todos os dados e adicione pelo menos um exercício.');
@@ -103,13 +148,11 @@ export class CadTreinoComponent {
 
     this.service.createFicha(JSON.stringify(ficha)).subscribe({
       next: (dados) => {
-        alert(dados);
-      },error: (er) =>{
-        alert('erro');
+        this.alertas.success(dados.msg);
+        this.router.navigate(['admin/painel/treinos'])
+      }, error: (er) => {
+        this.alertas.error('erro ao cadastrar cliente');
       }
     })
-
-    // Aqui você pode usar:
-    // this.service.salvarFicha(ficha).subscribe(...)
   }
 }

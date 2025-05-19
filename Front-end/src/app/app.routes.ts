@@ -34,6 +34,7 @@ import { AnamneseComponent } from './components/admin/painel-admin/anamnese/anam
 import { CadAnamneseComponent } from './components/admin/painel-admin/anamnese/cad-anamnese/cad-anamnese.component';
 import { EditarAnamneseComponent } from './components/admin/painel-admin/anamnese/editar-anamnese/editar-anamnese.component';
 import { CliPagamentosComponent } from './components/admin/painel-admin/cli-pagamentos/cli-pagamentos.component';
+import { VerFichaComponent } from './components/admin/painel-admin/pn-treino/ver-fihca/ver-ficha.component';
 
 
 export const routes: Routes = [
@@ -97,6 +98,7 @@ export const routes: Routes = [
             { path: 'clientes', component: PnClientesComponent, canActivate: [adminGuard] },
             { path: 'treinos', component: PnTreinoComponent, canActivate: [adminGuard] },
             { path: 'treinos/cad-ficha', component: CadTreinoComponent, canActivate: [adminGuard] },
+            { path: 'treinos/ver-fichas', component: VerFichaComponent, canActivate: [adminGuard] },
             { path: 'pn-planos', component: PnPlanosComponent, canActivate: [adminGuard] },
             { path: 'pn-planos/editar', component: ModalEditarPlanosComponent, canActivate: [adminGuard] },
             { path: 'financeiro', component: PnFinanceiroComponent, canActivate: [adminGuard] },

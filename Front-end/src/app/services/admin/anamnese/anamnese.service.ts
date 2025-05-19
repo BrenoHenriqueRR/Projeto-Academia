@@ -10,6 +10,7 @@ export class AnamneseService {
   private urlCreate = environment.apiUrl + '/Anamnese/create'
   private urlRead = environment.apiUrl + '/Anamnese/read'
   private urlReadId = environment.apiUrl + '/Anamnese/readId'
+  private urlreadIdCliente = environment.apiUrl + '/Anamnese/readIdCliente'
   private urlDelete = environment.apiUrl + '/Anamnese/delete'
   private urlUpdate = environment.apiUrl + '/Anamnese/update'
 
@@ -27,6 +28,10 @@ export class AnamneseService {
 
   readId(id : string): Observable<any> {
     return this.http.post<any>(this.urlReadId, id); 
+  }
+
+  readIdCliente(id : string): Observable<any> {
+    return this.http.post<any>(this.urlreadIdCliente, id); 
   }
 
   delete(id: any): Observable<any> {

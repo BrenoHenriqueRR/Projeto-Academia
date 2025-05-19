@@ -1,0 +1,29 @@
+<h1>Ficha Cliente: {{cliente_id}}</h1>
+<div *ngFor="let ficha of fichasComExercicios" class="card my-4 shadow-sm">
+  <div class="card-header bg-primary text-white">
+    Ficha {{ ficha.tipo_treino }} - Ordem {{ ficha.ordem }}
+  </div>
+
+  <div class="card-body p-0">
+    <table class="table table-striped mb-0">
+      <thead class="table-light">
+        <tr>
+          <th>Exercício</th>
+          <th>Grupo</th>
+          <th>Séries</th>
+          <th>Repetições</th>
+          <th>Observações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ex of ficha.exercicios">
+          <td>{{ ex.nome }}</td>
+          <td>{{ ex.grupo }}</td>
+          <td>{{ ex.series }}</td>
+          <td>{{ ex.repeticoes }}</td>
+          <td>{{ ex.obs || '-' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

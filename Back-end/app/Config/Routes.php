@@ -27,6 +27,12 @@ $routes->group('Cliente', function ($routes) {
 });
 
 // =====================
+// CLIENTE PLANOS
+// =====================
+$routes->group('ClientePlanos', function ($routes) {
+ $routes->post('pesquisarId', 'ClientePlanos::pesquisarId');
+});
+// =====================
 // FUNCIONÁRIOS
 // =====================
 $routes->group('Funcionarios', function ($routes) {
@@ -150,6 +156,7 @@ $routes->group('Anamnese', function ($routes) {
     $routes->post('update', 'Anamnese::update');
     $routes->get('read', 'Anamnese::read');
     $routes->post('readId', 'Anamnese::readId');
+    $routes->post('readIdCliente', 'Anamnese::readIdCliente');
 });
 
 // =====================

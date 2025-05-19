@@ -35,6 +35,8 @@ import { CadAnamneseComponent } from './components/admin/painel-admin/anamnese/c
 import { EditarAnamneseComponent } from './components/admin/painel-admin/anamnese/editar-anamnese/editar-anamnese.component';
 import { CliPagamentosComponent } from './components/admin/painel-admin/cli-pagamentos/cli-pagamentos.component';
 import { VerFichaComponent } from './components/admin/painel-admin/pn-treino/ver-fihca/ver-ficha.component';
+import { ListarComponent } from './components/admin/painel-admin/despesas/listar/listar.component';
+import { FormularioComponent } from './components/admin/painel-admin/despesas/formulario/formulario.component';
 
 
 export const routes: Routes = [
@@ -105,6 +107,8 @@ export const routes: Routes = [
             { path: 'funcionarios/editarf', component: ModalEditarFuncionarioComponent, canActivate: [adminGuard] },
             { path: 'relatorios', component: PnRelatoriosComponent, canActivate: [adminGuard] },
             { path: 'loja', component: PnLojaComponent, canActivate: [adminGuard] },
+            { path: 'despesas', component: ListarComponent, canActivate: [adminGuard] },
+            { path: 'despesas/novo', component: FormularioComponent, canActivate: [adminGuard] },
             { path: 'clientes/editar', component: ModalEditarComponent, canActivate: [adminGuard] },
             { path: 'clientes/anamnese', component: AnamneseComponent, canActivate: [adminGuard] },
             { path: 'clientes/pagamentos', component: CliPagamentosComponent, canActivate: [adminGuard] },
@@ -112,11 +116,7 @@ export const routes: Routes = [
             { path: 'clientes/anamnese/editar', component: EditarAnamneseComponent, canActivate: [adminGuard] },
             { path: 'clientes/treinos', component: CadTreinoComponent, canActivate: [adminGuard] },
             { path: 'clientes/planos', component: PlanosComponent, canActivate: [adminGuard] },
-            {
-                path: 'clientes/planos/cadastro',
-                component: CadastroComponent,
-                canActivate: [adminGuard]
-            },
+            { path: 'clientes/planos/cadastro', component: CadastroComponent, canActivate: [adminGuard]},
         ],
 
     },

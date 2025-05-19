@@ -89,20 +89,20 @@
 
       <form [formGroup]="formcadastro" class="container">
         <div class="row mb-3 align-items-center">
-          <div class="col-md-8">
+          <div class="col-md-12">
             <label for="foto_perfil" class="form-label">Adicionar foto</label>
             <input formControlName="foto_perfil" type="file" id="foto_perfil" class="form-control"
               (change)="onFileChange($event)">
             <div class="form-text">{{fileName}}</div>
           </div>
-          <div class="col-md-4">
+          <!-- <div class="col-md-4">
             <label class="form-label d-block">Treina com personal?</label>
             <div class="form-check form-switch">
               <input type="checkbox" class="form-check-input" id="checkPersonal" formControlName="treino_com_personal"
                 (change)="onPersonalToggle($event)">
               <label class="form-check-label" for="checkPersonal">Sim</label>
             </div>
-          </div>
+          </div> -->
         </div>
 
         <div class="row mb-3">
@@ -150,7 +150,7 @@
             <label class="form-label">Anexar Termo de Autorização</label>
             <input type="file" formControlName="termo_responsabilidade" class="form-control">
             <small class="form-text text-muted">
-              <a href="/modelos/termo-autorizacao.pdf" target="_blank">Baixar modelo do termo</a>
+              <a href="assets/termos/autorizacao-menor-de-idade.pdf" target="_blank">Baixar modelo do termo</a>
             </small>
           </div>
         </div>
@@ -171,7 +171,7 @@
           </div>
         </div>
 
-        <div class="row mb-3" *ngIf="mostraSelectPersonal">
+        <div class="row mb-3">
           <div class="col-md-12">
             <label for="personal" class="form-label">Selecionar Personal</label>
             <select formControlName="personal_id" class="form-select">

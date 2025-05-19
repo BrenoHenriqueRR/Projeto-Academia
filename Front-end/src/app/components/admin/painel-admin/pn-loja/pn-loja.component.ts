@@ -1,4 +1,5 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { LOCALE_ID } from '@angular/core';
 import { ModalSpinnerComponent } from "../../../modais/modal-spinner/modal-spinner.component";
 import { CommonModule } from '@angular/common';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -12,17 +13,17 @@ import { ModalConfirmarComponent } from '../../../modais/modal-confirmar/modal-c
 import { ModalEditarComponent } from './modal-editar/modal-editar.component';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 
-
 @Component({
   selector: 'app-pn-loja',
   standalone: true,
   imports: [ModalSpinnerComponent, CommonModule, NgxPaginationModule, FormsModule, ModalProdutoComponent,
     ModalEditarComponent, ModalConfirmarComponent],
-  providers: [provideNgxMask()],
+  providers: [provideNgxMask(), { provide: LOCALE_ID, useValue: 'pt-BR' }],
   templateUrl: './pn-loja.component.html',
   styleUrl: './pn-loja.component.css'
 })
 export class PnLojaComponent {
+
 
   @ViewChild(ModalEditarComponent) modalP?: ModalEditarComponent
   @ViewChild(ModalConfirmarComponent) modal?: ModalConfirmarComponent
@@ -72,7 +73,7 @@ export class PnLojaComponent {
       this.carrinho.push({
         id: produto.id,
         nome: produto.nome,
-        preco: produto.preco,
+        preco: produto.preco.replace(',', '.'),
         qtd: qtd
       });
     }
@@ -84,6 +85,11 @@ export class PnLojaComponent {
   Closemodal() {
     this.ngOnInit();
   }
+
+// valorCarrinho(preco: any, qtd: any) {
+//   const precoNum = Number(String(preco).replace(',', '.'));
+//   return precoNum * Number(qtd);
+// }
 
 
 

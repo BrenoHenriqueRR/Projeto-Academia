@@ -160,6 +160,17 @@ $routes->group('Anamnese', function ($routes) {
 });
 
 // =====================
+// DESPESAS
+// =====================
+$routes->group('Despesas', function ($routes) {
+    $routes->post('create', 'Despesas::create');
+    $routes->post('delete', 'Despesas::delete');
+    $routes->post('update', 'Despesas::update');
+    $routes->get('read', 'Despesas::read');
+    $routes->post('readId', 'Despesas::readId');
+});
+
+// =====================
 // PAGAMENTOS (STRIPE)
 // =====================
 $routes->group('StripeController', function ($routes) {

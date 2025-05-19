@@ -50,7 +50,7 @@ class Ficha extends BaseController
             ]);
         }
 
-        return $this->response->setJSON(['status' => 'Ficha cadastrada com sucesso']);
+        return $this->response->setJSON(['msg' => 'Ficha cadastrada com sucesso']);
     }
 
     public function pesquisar() {}
@@ -59,18 +59,22 @@ class Ficha extends BaseController
     {
         $clienteId = $this->request->getJSON();
 
-        $fichas = $this->fichamodel
-            ->select('fichas.id AS ficha_id, fichas.tipo, fichas.ordem, fichas.concluida,
+        if (isset($clienteId->soficha)) {
+            $fichas = $this->fichamodel->select()->where('cliente_id', $clienteId->id)->get()->getResult();
+        } else {
+            $fichas = $this->fichamodel
+                ->select('fichas.id AS ficha_id, fichas.tipo, fichas.ordem, fichas.concluida,
                       ficha_exercicios.id AS ficha_exercicio_id, exercicios.nome AS exercicio,
                       grupos_musculares.nome AS grupo_muscular,
                       ficha_exercicios.repeticoes,
                       ficha_exercicios.series, ficha_exercicios.observacoes')
-            ->join('ficha_exercicios', 'ficha_exercicios.ficha_id = fichas.id')
-            ->join('exercicios', 'exercicios.id = ficha_exercicios.exercicio_id')
-            ->join('grupos_musculares', 'grupos_musculares.id = exercicios.grupo_muscular_id')
-            ->where('fichas.cliente_id', $clienteId->id)
-            ->orderBy('fichas.ordem', 'ASC')
-            ->findAll();
+                ->join('ficha_exercicios', 'ficha_exercicios.ficha_id = fichas.id')
+                ->join('exercicios', 'exercicios.id = ficha_exercicios.exercicio_id')
+                ->join('grupos_musculares', 'grupos_musculares.id = exercicios.grupo_muscular_id')
+                ->where('fichas.cliente_id', $clienteId->id)
+                ->orderBy('fichas.ordem', 'ASC')
+                ->findAll();
+        }
 
         return $this->response->setJSON($fichas);
     }
@@ -112,7 +116,29 @@ class Ficha extends BaseController
             ]);
         } else {
             // Nenhuma ficha encontrada
-           return $this->response->setJSON(["msg" => "Nenhuma ficha encontrada"]);
+            return $this->response->setJSON(["msg" => "Nenhuma ficha encontrada"]);
         }
+    }
+
+    public function concluirFicha($ficha_id)
+    {
+        $this->fichamodel->table('fichas')
+            ->where('id', $ficha_id)
+            ->update(['concluida' => 1]);
+
+        return $this->response->setJSON(['status' => 'ok', 'ficha_concluida' => $ficha_id]);
+    }
+
+    public function resetarFichasSeTodasConcluidas($cliente_id)
+    {
+        $total = $this->fichamodel->where('cliente_id', $cliente_id)->countAllResults();
+        $concluidas = $this->fichamodel->where(['cliente_id' => $cliente_id, 'concluida' => 1])->countAllResults();
+
+        if ($total > 0 && $total === $concluidas) {
+            $this->fichamodel->where('cliente_id', $cliente_id)->update(['concluida' => 0]);
+            return $this->response->setJSON(['status' => 'resetado']);
+        }
+
+        return $this->response->setJSON(['status' => 'ainda_restam']);
     }
 }

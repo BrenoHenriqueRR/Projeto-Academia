@@ -28,7 +28,7 @@ export class CliPagamentosComponent {
     if (this.filtroStatus === 'todos') {
       this.filtrado = this.pagamentos;
     } else {
-      this.filtrado = this.pagamentos.filter((p: { status: string; }) => p.status === this.filtroStatus);
+      this.filtrado = this.pagamentos.filter((p: { status_pagamento: string; }) => p.status_pagamento === this.filtroStatus);
     }
   }
 

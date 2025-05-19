@@ -90,6 +90,31 @@ class Anamnese extends BaseController
         }
     }
 
+     public function readIdCliente()
+    {
+        $data = $this->request->getJSON();
+        try {
+            // Inserção no banco de dados
+            $dados = $this->model
+                ->where('cliente_id', $data->id)
+                ->findAll();
+            return $this->response
+                ->setStatusCode(ResponseInterface::HTTP_CREATED)
+                ->setJSON([
+                    'success' => true,
+                    'dados' => $dados
+                ]);
+        } catch (\Exception $e) {
+            return $this->response
+                ->setStatusCode(ResponseInterface::HTTP_INTERNAL_SERVER_ERROR)
+                ->setJSON([
+                    'success' => false,
+                    'msg' => 'Ocorreu um erro! Tente novamente.',
+                    'error' => $e->getMessage()
+                ]);
+        }
+    }
+
     public function update()
     {
         try {

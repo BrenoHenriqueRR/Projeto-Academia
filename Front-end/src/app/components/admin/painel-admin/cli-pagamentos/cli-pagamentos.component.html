@@ -20,10 +20,10 @@
   </thead>
   <tbody>
     <tr *ngFor="let pg of filtrado">
-      <td>{{ pg.nome_cliente }}</td>
+      <td>{{ pg.cliente_planos_id }}</td>
       <td>R$ {{ pg.valor | number:'1.2-2' }}</td>
       <td>{{ pg.data_vencimento | date:'shortDate' }}</td>
-      <td>{{ pg.status }}</td>
+      <td>{{ pg.status_pagamento }}</td>
       <td>
         <button *ngIf="pg.status === 'pendente'" (click)="realizarPagamento(pg.id)">
           Marcar como Pago

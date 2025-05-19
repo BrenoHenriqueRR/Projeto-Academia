@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\AnamneseModel;
 use App\Models\ClienteModel;
 use App\Models\Clientesplanos;
+use App\Models\PagamentosModel;
 use CodeIgniter\CLI\Console;
 use CodeIgniter\Database\Query;
 
@@ -16,6 +17,7 @@ class Cliente extends BaseController
     protected $ClientesPlanoExtraModel;
     protected $email;
     protected $anamneseModel;
+    protected $pagamentosModel;
 
 
     public function __construct()
@@ -26,6 +28,7 @@ class Cliente extends BaseController
         $this->model = new ClienteModel();
         $this->email = new EmailController();
         $this->anamneseModel = new AnamneseModel();
+        $this->pagamentosModel = new PagamentosModel();
     }
 
     public function create()
@@ -98,10 +101,6 @@ class Cliente extends BaseController
             }
         }
 
-        // $this->ClientePlanos->create($cliente['plano'], 1);
-
-        // die();
-
         $cliente['status'] = 'inativo';
         $this->model->insert($cliente);
         $id = $this->model->getInsertID();
@@ -143,7 +142,12 @@ class Cliente extends BaseController
         return $this->response->setJSON($msg)->setStatusCode(200);
     }
 
-    public function pesquisarPag() {}
+    public function pesquisarPag() {
+        $dados = $this->pagamentosModel->find();
+
+        return $this->response->setJSON($dados)->setStatusCode(200);
+
+    }
 
     public function delete()
     {

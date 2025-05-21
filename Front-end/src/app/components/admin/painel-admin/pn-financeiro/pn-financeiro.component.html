@@ -1,55 +1,50 @@
-<div class="fundo">
-    <div class="container">
-        <h1>Controle Financeiro</h1>
-        <div class="financeiro">
-            <div class="card">
-                <h3>Total de pagamentos nesse mês:</h3>
-                <div class="total-pagamentos">
-                    <p>R${{total}}</p>
-                </div>
-            </div>
-            <div class="card">
-                <h3>Cadastrar pagamento do cliente</h3>
-                <div  class="cad-pagamentos">
-                    <select (click)="Clientes()"  [(ngModel)]="selectedOption"  class="form-control">
-                        <option value="0" disabled selected>Escolha um cliente</option>
-                        @for (dado of clientes; track dado;) {
-                            <option value="{{ dado['id'] }}">{{ dado['cliente_nome'] }}</option>
-                        }
-                        </select>
-                    <button [disabled]="!selectedOption" class="cad-btn" (click)="openModal();">Cadastrar</button>
-                    <app-modal-cadpagamentos [idcli]="selectedOption" (confirm)="validarmodal($event)"></app-modal-cadpagamentos>
-                </div>
-            </div>
-            <div class="card card-table">
-                <h3>Clientes com pagamento pendente:</h3>
-                <div class="cli-pendentes">
-                    <table id="clientes-table">
-                        <thead>
-                            <tr>
-                                <th>Nome</th>
-                                <th>Email</th>
-                                <th>CPF</th>
-                                <th>Valor</th>
-                                <th>Data Criação</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody id="clientes-list">
-                            @for (dado of cliPendente; track dado;) {
-                            <tr>
-                                <td>{{dado['nome']}}</td>
-                                <td>{{dado['email']}}</td>
-                                <td>{{dado['cpf']}}</td>
-                                <td>{{dado['valor']}}</td>
-                                <td>{{dado['data_criacao']}}</td>
-                                <td>{{dado['status_pagamento']}}</td>
-                            </tr>
-                        }
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+<div class="container my-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold">💼 Resumo Financeiro</h2>
+    <div class="d-flex gap-2">
+      <input type="number" class="form-control" [(ngModel)]="mes" (change)="carregarResumo()" placeholder="Mês (1-12)" min="1" max="12">
+      <input type="number" class="form-control" [(ngModel)]="ano" (change)="carregarResumo()" placeholder="Ano">
     </div>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card shadow-sm border-start border-4 border-success bg-light h-100">
+        <div class="card-body d-flex flex-column">
+          <div class="d-flex align-items-center mb-2">
+            <i class="bi bi-cash-coin fs-3 text-success me-2"></i>
+            <h5 class="mb-0">Receitas Totais</h5>
+          </div>
+          <h3 class="text-success">R$ {{ resumo?.total_pagamentos + resumo?.total_vendas | number:'1.2-2' }}</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card shadow-sm border-start border-4 border-danger bg-light h-100">
+        <div class="card-body d-flex flex-column">
+          <div class="d-flex align-items-center mb-2">
+            <i class="bi bi-credit-card-2-front fs-3 text-danger me-2"></i>
+            <h5 class="mb-0">Despesas Totais</h5>
+          </div>
+          <h3 class="text-danger">R$ {{ resumo?.total_despesas | number:'1.2-2' }}</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card shadow-sm border-start border-4 border-primary bg-light h-100">
+        <div class="card-body d-flex flex-column">
+          <div class="d-flex align-items-center mb-2">
+            <i class="bi bi-bar-chart-line fs-3 text-primary me-2"></i>
+            <h5 class="mb-0">Lucro Líquido</h5>
+          </div>
+          <h3 class="text-primary">R$ {{ resumo?.lucro_liquido | number:'1.2-2' }}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+<button class="btn btn-outline-dark mt-5" (click)="gerarPDF()">
+<i class="bi bi-file-earmark-pdf me-1"></i> Gerar PDF
+</button>

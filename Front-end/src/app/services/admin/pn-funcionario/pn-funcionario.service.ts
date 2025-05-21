@@ -2,12 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FuncionarioPesquisar } from '../../../interfaces/funcionario-pesquisar';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PnFuncionarioService {
-
+  apiurl = environment.apiUrl;
 
   private url = 'http://localhost/sites/Projeto1/Back-end/public/Admin/buscarfun';
   private urldel = 'http://localhost/sites/Projeto1/Back-end/public/Admin/deletefun';
@@ -25,4 +26,5 @@ export class PnFuncionarioService {
   delete(id: any): Observable<any> {
     return this.http.post<any>(this.urldel, id);
   }
+
 }

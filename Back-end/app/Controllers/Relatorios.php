@@ -3,7 +3,10 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\DespesaModel;
 use App\Models\FichaModel;
+use App\Models\LojaVendaModel;
+use App\Models\PagamentosModel;
 use App\Models\TipoGrupo;
 use Dompdf\Dompdf;
 use CodeIgniter\HTTP\ResponseInterface;
@@ -14,9 +17,57 @@ class Relatorios extends BaseController
     protected $ficha;
     public function __construct()
     {
-        $this->Tipogrupo = new TipoGrupo();
+        // $this->Tipogrupo = new TipoGrupo();
         $this->ficha = new FichaModel();
     }
+
+    public function relatorioPdf()
+    {
+        $mes = $this->request->getGet('mes') ?? date('m');
+        $ano = $this->request->getGet('ano') ?? date('Y');
+
+        $pagamentoModel = new PagamentosModel();
+        $despesaModel = new DespesaModel();
+        $vendaModel = new LojaVendaModel();
+
+        // Totais
+        $totalPagamentos = $pagamentoModel
+            ->selectSum('valor')
+            ->like('data_pagamento', "$ano-$mes")
+            ->where('status_pagamento', 'pago')
+            ->first()['valor'] ?? 0;
+
+        $totalVendas = $vendaModel
+            ->selectSum('total')
+            ->like('data_venda', "$ano-$mes")
+            ->first()['total'] ?? 0;
+
+        $totalDespesas = $despesaModel
+            ->selectSum('valor')
+            ->like('data', "$ano-$mes")
+            ->first()['valor'] ?? 0;
+
+        $lucro = floatval($totalPagamentos) + floatval($totalVendas) - floatval($totalDespesas);
+
+        // HTML do relatório
+        $html = view('relatorios/financeiro', [
+            'mes' => $mes,
+            'ano' => $ano,
+            'pagamentos' => $totalPagamentos,
+            'vendas' => $totalVendas,
+            'despesas' => $totalDespesas,
+            'lucro' => $lucro,
+            'data_geracao' => date('d/m/Y H:i:s')
+        ]);
+
+        // Gerar PDF com DomPDF
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+        $dompdf->stream("Relatorio_Financeiro_{$mes}_{$ano}.pdf", ["Attachment" => 0]);
+    }
+
 
     public function rEstatistica()
     {
@@ -37,13 +88,13 @@ class Relatorios extends BaseController
             ->where('f.exer_concluido !=', 'false')
             ->groupBy('tipo_grupo.cliente_id')
             ->get();
-            
-            $dadoscli = $dados->getRowArray();
-            // $dadoscli = $dados->getResult();
 
-            $view = view('Relatorios/relatorio-estatistica', $dadoscli);
+        $dadoscli = $dados->getRowArray();
+        // $dadoscli = $dados->getResult();
 
-            $this->createPdf($view);
+        $view = view('Relatorios/relatorio-estatistica', $dadoscli);
+
+        $this->createPdf($view);
 
         // return $this->response->setJSON($dados->getResult())->setStatusCode(200);
     }

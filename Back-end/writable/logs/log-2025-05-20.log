@@ -1,0 +1,181 @@
+ERROR - 2025-05-20 00:02:02 --> mysqli_sql_exception: Unknown column 'pag.Tipo_id' in 'field list' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `pag`.`i...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pag`.`i...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pag`.`i...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pag`.`i...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(136): CodeIgniter\Model->__call('get', Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Financeiro->pesquisar()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2025-05-20 00:02:02 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pag.Tipo_id' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pag`.`id`, `pag`.`valor`, `pag`.`data_pagamento`, `pag`.`data_criacao`, `pag`.`status_pagamento`, `pag`.`Tipo_id`, `pag`.`funcionario_id`, `c`.`nome`, `c`.`cpf`
+FROM (`pagamentos`, `pagamentos` `pag`)
+JOIN `cliente` `c` ON `pag`.`cliente_id` = `c`.`id`
+WHERE `pag`.`cliente_id` = :pag.cliente_id:
+GROUP BY `c`.`id`', [...], false)
+ 2 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Financeiro.php(136): CodeIgniter\Model->__call('get', [])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->pesquisar()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-20 00:02:02 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pag.Tipo_id' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pag`.`id`, `pag`.`valor`, `pag`.`data_pagamento`, `pag`.`data_criacao`, `pag`.`status_pagamento`, `pag`.`Tipo_id`, `pag`.`funcionario_id`, `c`.`nome`, `c`.`cpf`
+FROM (`pagamentos`, `pagamentos` `pag`)
+JOIN `cliente` `c` ON `pag`.`cliente_id` = `c`.`id`
+WHERE `pag`.`cliente_id` = \'124\'
+GROUP BY `c`.`id`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pag`.`id`, `pag`.`valor`, `pag`.`data_pagamento`, `pag`.`data_criacao`, `pag`.`status_pagamento`, `pag`.`Tipo_id`, `pag`.`funcionario_id`, `c`.`nome`, `c`.`cpf`
+FROM (`pagamentos`, `pagamentos` `pag`)
+JOIN `cliente` `c` ON `pag`.`cliente_id` = `c`.`id`
+WHERE `pag`.`cliente_id` = \'124\'
+GROUP BY `c`.`id`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pag`.`id`, `pag`.`valor`, `pag`.`data_pagamento`, `pag`.`data_criacao`, `pag`.`status_pagamento`, `pag`.`Tipo_id`, `pag`.`funcionario_id`, `c`.`nome`, `c`.`cpf`
+FROM (`pagamentos`, `pagamentos` `pag`)
+JOIN `cliente` `c` ON `pag`.`cliente_id` = `c`.`id`
+WHERE `pag`.`cliente_id` = :pag.cliente_id:
+GROUP BY `c`.`id`', [...], false)
+ 4 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Financeiro.php(136): CodeIgniter\Model->__call('get', [])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->pesquisar()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-20 00:02:02 --> [Caused by] mysqli_sql_exception: Unknown column 'pag.Tipo_id' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `pag`.`id`, `pag`.`valor`, `pag`.`data_pagamento`, `pag`.`data_criacao`, `pag`.`status_pagamento`, `pag`.`Tipo_id`, `pag`.`funcionario_id`, `c`.`nome`, `c`.`cpf`
+FROM (`pagamentos`, `pagamentos` `pag`)
+JOIN `cliente` `c` ON `pag`.`cliente_id` = `c`.`id`
+WHERE `pag`.`cliente_id` = \'124\'
+GROUP BY `c`.`id`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pag`.`id`, `pag`.`valor`, `pag`.`data_pagamento`, `pag`.`data_criacao`, `pag`.`status_pagamento`, `pag`.`Tipo_id`, `pag`.`funcionario_id`, `c`.`nome`, `c`.`cpf`
+FROM (`pagamentos`, `pagamentos` `pag`)
+JOIN `cliente` `c` ON `pag`.`cliente_id` = `c`.`id`
+WHERE `pag`.`cliente_id` = \'124\'
+GROUP BY `c`.`id`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pag`.`id`, `pag`.`valor`, `pag`.`data_pagamento`, `pag`.`data_criacao`, `pag`.`status_pagamento`, `pag`.`Tipo_id`, `pag`.`funcionario_id`, `c`.`nome`, `c`.`cpf`
+FROM (`pagamentos`, `pagamentos` `pag`)
+JOIN `cliente` `c` ON `pag`.`cliente_id` = `c`.`id`
+WHERE `pag`.`cliente_id` = \'124\'
+GROUP BY `c`.`id`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pag`.`id`, `pag`.`valor`, `pag`.`data_pagamento`, `pag`.`data_criacao`, `pag`.`status_pagamento`, `pag`.`Tipo_id`, `pag`.`funcionario_id`, `c`.`nome`, `c`.`cpf`
+FROM (`pagamentos`, `pagamentos` `pag`)
+JOIN `cliente` `c` ON `pag`.`cliente_id` = `c`.`id`
+WHERE `pag`.`cliente_id` = :pag.cliente_id:
+GROUP BY `c`.`id`', [...], false)
+ 5 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Financeiro.php(136): CodeIgniter\Model->__call('get', [])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->pesquisar()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-20 01:19:13 --> ErrorException: Undefined property: stdClass::$id
+in APPPATH\Controllers\Ficha.php on line 90.
+ 1 APPPATH\Controllers\Ficha.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$id', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Ficha.php', 90)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->fichaNaoConcluida()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-20 01:19:39 --> ErrorException: Undefined property: stdClass::$id
+in APPPATH\Controllers\Ficha.php on line 90.
+ 1 APPPATH\Controllers\Ficha.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$id', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Ficha.php', 90)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->fichaNaoConcluida()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-20 01:19:40 --> ErrorException: Undefined property: stdClass::$id
+in APPPATH\Controllers\Ficha.php on line 90.
+ 1 APPPATH\Controllers\Ficha.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$id', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Ficha.php', 90)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->fichaNaoConcluida()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-20 01:20:03 --> ErrorException: Undefined property: stdClass::$id
+in APPPATH\Controllers\Ficha.php on line 90.
+ 1 APPPATH\Controllers\Ficha.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$id', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Ficha.php', 90)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->fichaNaoConcluida()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-20 01:20:11 --> ErrorException: Undefined property: stdClass::$id
+in APPPATH\Controllers\Ficha.php on line 90.
+ 1 APPPATH\Controllers\Ficha.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$id', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Ficha.php', 90)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->fichaNaoConcluida()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-20 01:20:20 --> ErrorException: Undefined property: stdClass::$id
+in APPPATH\Controllers\Ficha.php on line 90.
+ 1 APPPATH\Controllers\Ficha.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$id', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Ficha.php', 90)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->fichaNaoConcluida()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-20 01:20:27 --> ErrorException: Undefined property: stdClass::$id
+in APPPATH\Controllers\Ficha.php on line 90.
+ 1 APPPATH\Controllers\Ficha.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$id', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Ficha.php', 90)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->fichaNaoConcluida()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-20 01:20:54 --> ErrorException: Undefined property: stdClass::$id
+in APPPATH\Controllers\Ficha.php on line 90.
+ 1 APPPATH\Controllers\Ficha.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$id', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Ficha.php', 90)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->fichaNaoConcluida()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-20 01:20:56 --> ErrorException: Undefined property: stdClass::$id
+in APPPATH\Controllers\Ficha.php on line 90.
+ 1 APPPATH\Controllers\Ficha.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$id', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Ficha.php', 90)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->fichaNaoConcluida()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-20 01:21:49 --> ErrorException: Undefined property: stdClass::$id
+in APPPATH\Controllers\Ficha.php on line 90.
+ 1 APPPATH\Controllers\Ficha.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$id', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Ficha.php', 90)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->fichaNaoConcluida()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-20 01:22:40 --> ErrorException: Undefined property: stdClass::$id
+in APPPATH\Controllers\Ficha.php on line 90.
+ 1 APPPATH\Controllers\Ficha.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$id', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Ficha.php', 90)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->fichaNaoConcluida()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-20 01:23:11 --> ErrorException: Undefined property: stdClass::$id
+in APPPATH\Controllers\Ficha.php on line 90.
+ 1 APPPATH\Controllers\Ficha.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$id', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Ficha.php', 90)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->fichaNaoConcluida()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-20 01:24:28 --> ErrorException: Undefined property: stdClass::$id
+in APPPATH\Controllers\Ficha.php on line 90.
+ 1 APPPATH\Controllers\Ficha.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$id', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Ficha.php', 90)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->fichaNaoConcluida()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-20 01:26:49 --> Error: Cannot use object of type stdClass as array
+in APPPATH\Controllers\Ficha.php on line 107.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->fichaNaoConcluida()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-20 01:28:55 --> ErrorException: Undefined property: stdClass::$id
+in APPPATH\Controllers\Ficha.php on line 90.
+ 1 APPPATH\Controllers\Ficha.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$id', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Ficha.php', 90)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->fichaNaoConcluida()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

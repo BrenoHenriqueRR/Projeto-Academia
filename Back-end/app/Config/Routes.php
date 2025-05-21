@@ -83,6 +83,10 @@ $routes->group('Financeiro', function ($routes) {
     $routes->post('pesquisar', 'Financeiro::pesquisar');
     $routes->get('pesquisarCliPendente', 'Financeiro::pesquisarCliPendente');
     $routes->post('update', 'Financeiro::update');
+    $routes->get('resumo', 'Financeiro::resumo');
+    $routes->get('pagamentos', 'Financeiro::listaPagamentos');
+    $routes->get('despesas', 'Financeiro::listaDespesas');
+    $routes->get('vendas', 'Financeiro::listaVendas');
 });
 
 // =====================
@@ -94,6 +98,7 @@ $routes->post('/EmailController/create', 'EmailController::create');
 // RELATÓRIOS
 // =====================
 $routes->post('/Relatorios/rEstatistica', 'Relatorios::rEstatistica');
+$routes->get('/Relatorios/financeiro', 'Relatorios::relatorioPdf');
 
 // =====================
 // ACADEMIA

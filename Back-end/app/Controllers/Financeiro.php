@@ -3,7 +3,10 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\DespesaModel;
 use App\Models\FinanceiroModel;
+use App\Models\LojaVendaModel;
+use App\Models\PagamentosModel;
 use CodeIgniter\HTTP\ResponseInterface;
 
 class Financeiro extends BaseController
@@ -14,6 +17,65 @@ class Financeiro extends BaseController
     {
         $this->model = new FinanceiroModel();
     }
+
+     public function resumo()
+    {
+        $mes = $this->request->getGet('mes');
+        $ano = $this->request->getGet('ano');
+
+        $pagamentoModel = new PagamentosModel();
+        $despesaModel = new DespesaModel();
+        $vendaModel = new LojaVendaModel();
+
+        // Total de pagamentos
+        $pagamentos = $pagamentoModel
+            ->selectSum('valor')
+            ->like('data_pagamento', "$ano-$mes")
+            ->where('status_pagamento', 'pago')
+            ->first()['valor'] ?? 0;
+
+        // Total de vendas
+        $vendas = $vendaModel
+            ->selectSum('total')
+            ->like('data_venda', "$ano-$mes")
+            ->first()['total'] ?? 0;
+
+        // Total de despesas
+        $despesas = $despesaModel
+            ->selectSum('valor')
+            ->like('data', "$ano-$mes")
+            ->first()['valor'] ?? 0;
+
+        $lucro = floatval($pagamentos) + floatval($vendas) - floatval($despesas);
+
+        return $this->response->setJSON([
+            'total_pagamentos' => floatval($pagamentos),
+            'total_vendas' => floatval($vendas),
+            'total_despesas' => floatval($despesas),
+            'lucro_liquido' => $lucro
+        ]);
+    }
+
+    public function listaPagamentos()
+    {
+        $model = new PagamentosModel();
+        $data = $model->orderBy('data_pagamento', 'DESC')->findAll();
+        return $this->response->setJSON($data);
+    }
+
+    public function listaDespesas()
+    {
+        $model = new DespesaModel();
+        $data = $model->orderBy('data', 'DESC')->findAll();
+        return $this->response->setJSON($data);
+    }
+
+    public function listaVendas()
+    {
+        $model = new LojaVendaModel();
+        $data = $model->orderBy('data_venda', 'DESC')->findAll();
+        return $this->response->setJSON($data);
+    }   
 
     public function create()
     {

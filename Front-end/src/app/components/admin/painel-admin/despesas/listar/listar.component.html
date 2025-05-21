@@ -18,7 +18,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let despesa of despesas | paginate: { itemsPerPage: 10, currentPage: paginaAtual }">
+      <tr *ngFor="let despesa of despesas | paginate: { itemsPerPage: 8, currentPage: paginaAtual }">
         <td>{{ despesa.id }}</td>
         <td>{{ despesa.descricao }}</td>
         <td>{{ despesa.valor | currency:'BRL' }}</td>

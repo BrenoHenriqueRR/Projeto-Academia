@@ -16,6 +16,7 @@ export class CadTreinoService {
   private url_pgrupo = apiurl + '/Treino/pgrupo'
   private url_pexer = apiurl + '/Treino/pexer'
   private url_pidficha = apiurl + '/Ficha/pesquisarCli'
+  private url_fichaNC = apiurl + '/Ficha/fichaNaoConcluida'
   private url_cficha = apiurl + '/Ficha/create'
 
   constructor(private http: HttpClient) { }
@@ -29,6 +30,10 @@ export class CadTreinoService {
 
   pesquisarFichaId(id: any) : Observable<any>{
      return this.http.post<any>(this.url_pidficha, id);
+  }
+  
+  pesquisarFichaNaoConcluida(id: any) : Observable<any>{
+     return this.http.post<any>(this.url_fichaNC, id);
   }
 
   createFicha(dados: any) : Observable<any>{

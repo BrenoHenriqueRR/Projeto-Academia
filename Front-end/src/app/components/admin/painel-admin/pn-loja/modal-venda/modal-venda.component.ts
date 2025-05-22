@@ -17,7 +17,8 @@ import { CommonModule } from '@angular/common';
       MatInputModule,
       MatSelectModule,
       MatOptionModule, 
-      FormsModule,CommonModule],
+      FormsModule,
+      CommonModule],
   templateUrl: './modal-venda.component.html',
   styleUrl: './modal-venda.component.css'
 })

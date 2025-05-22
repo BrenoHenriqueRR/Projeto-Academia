@@ -185,16 +185,16 @@ export class PnRelatoriosComponent {
   }
 
   pesquisarCliPendente() {
-    this.cadservice.pesquisarCliPendente().subscribe(
-      (dado) => {
-        // console.log('Dados recebidos:', dado);
-        this.cliPendente = dado;
+    // this.cadservice.pesquisarCliPendente().subscribe(
+    //   (dado) => {
+    //     // console.log('Dados recebidos:', dado);
+    //     this.cliPendente = dado;
 
-      },
-      (erro) => {
-        console.error('Erro ao buscar dados:', erro);
-      }
-    );
+    //   },
+    //   (erro) => {
+    //     console.error('Erro ao buscar dados:', erro);
+    //   }
+    // );
   }
 
   funcao() {

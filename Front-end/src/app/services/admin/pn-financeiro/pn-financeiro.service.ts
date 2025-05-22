@@ -8,51 +8,70 @@ import { Router } from '@angular/router';
    providedIn: 'root'
 })
 export class PnFinanceiroService {
-   private apiurl = environment.apiUrl + '/Financeiro';
-   private urlR = environment.apiUrl + '/Relatorios/financeiro';
-   private url = 'http://localhost/sites/Projeto1/Back-end/public/Financeiro/create'
-   private urlP = 'http://localhost/sites/Projeto1/Back-end/public/Financeiro/pesquisar'
-   private urlResumo = 'http://localhost/sites/Projeto1/Back-end/public/Financeiro/resumo'
-   private urlPendente = 'http://localhost/sites/Projeto1/Back-end/public/Financeiro/pesquisarCliPendente'
-   private urlUP = 'http://localhost/sites/Projeto1/Back-end/public/Financeiro/update'
-   private urlGP = 'http://localhost/sites/Projeto1/Back-end/public/StripeController/getPagamentos'
+   private apiUrl = `${environment.apiUrl}/Financeiro`;
 
-   constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient) { }
 
-   cadastrar(dados: any): Observable<any> {
-      return this.http.post<any>(this.url, dados);
-   }
-   pesquisar(dados: any): Observable<any> {
-      return this.http.post<any>(this.urlP, dados);
-   }
-   pesquisarCliPendente(): Observable<any> {
-      return this.http.get<any>(this.urlPendente);
-   }
-   update(dados: any): Observable<any> {
-      return this.http.post<any>(this.urlUP, dados);
-   }
-   //   getPagamentos(): Observable<any>{
-   //    return this.http.get<any>(this.urlGP);
-   // }
+  // Método existente
+  getResumo(mes: string, ano: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/resumo?mes=${mes}&ano=${ano}`);
+  }
 
-   gerarPdf(mes: string, ano: string) {
-      window.open(`http://localhost/sites/Projeto1/Back-end/public/Relatorios/financeiro?mes=${mes}&ano=${ano}`, '_blank');
+  // Novos métodos para as funcionalidades melhoradas
+  listaPagamentos(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/listaPagamentos`);
+  }
 
-   }
+  listaDespesas(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/listaDespesas`);
+  }
 
-   getResumo(mes: string, ano: string): Observable<any> {
-      return this.http.get<any>(this.urlResumo + `?mes=${mes}&ano=${ano}`);
-   }
+  listaVendas(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/listaVendas`);
+  }
 
-   getPagamentos() {
-      return this.http.get(`${this.apiurl}/pagamentos`);
-   }
+  // Método para buscar pagamentos pendentes
+  getPagamentosPendentes(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/pesquisarCliPendente`);
+  }
 
-   getDespesas() {
-      return this.http.get(`${this.apiurl}/despesas`);
-   }
+  // Método para atualizar status de pagamento
+  updatePagamento(dados: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/update`, dados);
+  }
 
-   getVendas() {
-      return this.http.get(`${this.apiurl}/vendas`);
-   }
+  // Método para buscar dados de um cliente específico
+  pesquisarPagamentosCliente(clienteId: number): Observable<any> {
+    return this.http.post(`${this.apiUrl}/pesquisar`, { cliente_id: clienteId });
+  }
+
+  // Método existente
+  gerarPdf(mes: string, ano: string): void {
+    const url = `${this.apiUrl}/relatorioPdf?mes=${mes}&ano=${ano}`;
+    window.open(url, '_blank');
+  }
+
+  // Novos métodos para relatórios
+  gerarRelatorioCompleto(mes: string, ano: string): Observable<Blob> {
+    return this.http.get(`${this.apiUrl}/relatorioCompleto?mes=${mes}&ano=${ano}`, {
+      responseType: 'blob'
+    });
+  }
+
+  exportarExcel(dados: any): Observable<Blob> {
+    return this.http.post(`${this.apiUrl}/exportarExcel`, dados, {
+      responseType: 'blob'
+    });
+  }
+
+  // Método para obter estatísticas mensais comparativas
+  getEstatisticasComparativas(ano: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/estatisticasComparativas?ano=${ano}`);
+  }
+
+  // Método para obter previsões (se implementado no backend)
+  getPrevisoes(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/previsoes`);
+  }
+
 }

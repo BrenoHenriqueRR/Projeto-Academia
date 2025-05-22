@@ -22,15 +22,15 @@ export class DashboardCliComponent {
 
   pesquisarpag() {
     const idjson: string = '{"cliente_id": "' + localStorage.getItem('idcliente') + '"}';
-    this.sPagamento.pesquisar(idjson).subscribe({
-      next:(dados ) =>{
-        this.pagamentos = dados;
+    // this.sPagamento.pesquisar(idjson).subscribe({
+    //   next:(dados ) =>{
+    //     this.pagamentos = dados;
 
-        for (let index = 0; index < dados.length; index++) {
-          this.pagamentos[index].data_criacao = this.pagamentos[index].data_criacao.split(" ")[0];
-        }
-      },
-    })
+    //     for (let index = 0; index < dados.length; index++) {
+    //       this.pagamentos[index].data_criacao = this.pagamentos[index].data_criacao.split(" ")[0];
+    //     }
+    //   },
+    // })
   }
   pesquisarTreino(){
     const idjson: string = '{"cliente_id": "' + localStorage.getItem('idcliente') + '"}';

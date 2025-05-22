@@ -8,7 +8,7 @@ import html2canvas from 'html2canvas';
 @Component({
   selector: 'app-modal-comprovante',
   standalone: true,
-  imports: [NgFor,NgIf,KeyValuePipe],
+  imports: [],
   templateUrl: './modal-comprovante.component.html',
   styleUrl: './modal-comprovante.component.css'
 })
@@ -57,11 +57,11 @@ export class ModalComprovanteComponent {
 
  pesquisarcli(){
   const jsonString: string = '{"cliente_id": "' + this.idcli + '"}';
-  this.service.pesquisar(jsonString).subscribe({
-    next: (dados: any) =>{
-      this.cliente = dados;
-    },
-  })
+  // this.service.pesquisar(jsonString).subscribe({
+  //   next: (dados: any) =>{
+  //     this.cliente = dados;
+  //   },
+  // })
 }
 
 }

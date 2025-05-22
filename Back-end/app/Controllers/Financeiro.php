@@ -6,7 +6,12 @@ use App\Controllers\BaseController;
 use App\Models\DespesaModel;
 use App\Models\FinanceiroModel;
 use App\Models\LojaVendaModel;
+use App\Models\LojaVendaItemModel;
 use App\Models\PagamentosModel;
+use App\Models\ClienteModel;
+use App\Models\FuncionariosModel;
+use App\Models\LojaItensModel;
+use App\Models\LojaVendaItensModel;
 use CodeIgniter\HTTP\ResponseInterface;
 
 class Financeiro extends BaseController
@@ -18,7 +23,7 @@ class Financeiro extends BaseController
         $this->model = new FinanceiroModel();
     }
 
-     public function resumo()
+    public function resumo()
     {
         $mes = $this->request->getGet('mes');
         $ano = $this->request->getGet('ano');
@@ -27,61 +32,306 @@ class Financeiro extends BaseController
         $despesaModel = new DespesaModel();
         $vendaModel = new LojaVendaModel();
 
-        // Total de pagamentos
+        // Total de pagamentos com status 'pago' ou 'success'
         $pagamentos = $pagamentoModel
-            ->selectSum('valor')
+            ->select('SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ",", ".") AS DECIMAL(10,2)))', 'total_valor')
             ->like('data_pagamento', "$ano-$mes")
+            ->groupStart()
             ->where('status_pagamento', 'pago')
-            ->first()['valor'] ?? 0;
+            ->orWhere('status_pagamento', 'success')
+            ->groupEnd()
+            ->first()['total_valor'] ?? 0;
 
         // Total de vendas
         $vendas = $vendaModel
-            ->selectSum('total')
-            ->like('data_venda', "$ano-$mes")
+            ->select('SUM(total) AS total')
+            ->like('data_venda', "$ano-$mes", 'after')
             ->first()['total'] ?? 0;
 
         // Total de despesas
         $despesas = $despesaModel
-            ->selectSum('valor')
-            ->like('data', "$ano-$mes")
+            ->select('SUM(valor) as valor')
+            ->like('data', "$ano-$mes", 'after')
             ->first()['valor'] ?? 0;
 
         $lucro = floatval($pagamentos) + floatval($vendas) - floatval($despesas);
+
+        // Dados adicionais para análise
+        $totalClientes = (new ClienteModel())
+            ->where('status', 'ativo')
+            ->countAllResults();
+
+        $pagamentosPendentes = $pagamentoModel
+            ->where('status_pagamento', 'pendente')
+            ->countAllResults();
 
         return $this->response->setJSON([
             'total_pagamentos' => floatval($pagamentos),
             'total_vendas' => floatval($vendas),
             'total_despesas' => floatval($despesas),
-            'lucro_liquido' => $lucro
+            'lucro_liquido' => $lucro,
+            'total_clientes_ativos' => $totalClientes,
+            'pagamentos_pendentes' => $pagamentosPendentes,
+            'periodo' => [
+                'mes' => $mes,
+                'ano' => $ano,
+                'nome_mes' => $this->getNomeMes($mes)
+            ]
         ]);
     }
 
     public function listaPagamentos()
     {
-        $model = new PagamentosModel();
-        $data = $model->orderBy('data_pagamento', 'DESC')->findAll();
+        $pagamentoModel = new PagamentosModel();
+        $clienteModel = new ClienteModel();
+        $funcionarioModel = new FuncionariosModel();
+
+        $data = $pagamentoModel
+            ->select('
+                pagamentos.id,
+                pagamentos.valor,
+                pagamentos.data_pagamento,
+                pagamentos.data_criacao,
+                pagamentos.status_pagamento,
+                cliente.nome,
+                cliente.CPF as cpf,
+                cliente.email,
+                funcionarios.nome as funcionario_nome
+            ')
+            ->join('cliente', 'pagamentos.cliente_id = cliente.id', 'left')
+            ->join('funcionarios', 'pagamentos.funcionario_id = funcionarios.id', 'left')
+            ->orderBy('pagamentos.data_criacao', 'DESC')
+            ->findAll();
+
         return $this->response->setJSON($data);
     }
 
     public function listaDespesas()
     {
         $model = new DespesaModel();
-        $data = $model->orderBy('data', 'DESC')->findAll();
+        $data = $model
+            ->orderBy('data', 'DESC')
+            ->findAll();
+
         return $this->response->setJSON($data);
     }
 
     public function listaVendas()
     {
-        $model = new LojaVendaModel();
-        $data = $model->orderBy('data_venda', 'DESC')->findAll();
-        return $this->response->setJSON($data);
-    }   
+        $vendaModel = new LojaVendaModel();
+        $itemModel = new LojaItensModel();
 
+        $vendas = $vendaModel
+            ->orderBy('data_venda', 'DESC')
+            ->findAll();
+
+        // Adicionar itens para cada venda (opcional, pode ser pesado)
+        foreach ($vendas as &$venda) {
+            $itens = $itemModel
+                ->select('
+                    loja_vendas_itens.*,
+                    loja_produtos.nome as produto_nome
+                ')
+                ->join('loja_produtos', 'loja_vendas_itens.produto_id = loja_produtos.id', 'left')
+                ->where('venda_id', $venda['id'])
+                ->findAll();
+
+            $venda['itens'] = $itens;
+            $venda['total_itens'] = count($itens);
+        }
+
+        return $this->response->setJSON($vendas);
+    }
+
+    public function estatisticasComparativas()
+    {
+        $ano = $this->request->getGet('ano') ?? date('Y');
+
+        $pagamentoModel = new PagamentosModel();
+        $despesaModel = new DespesaModel();
+        $vendaModel = new LojaVendaModel();
+
+        $estatisticas = [];
+
+        for ($mes = 1; $mes <= 12; $mes++) {
+            $mesFormatado = str_pad($mes, 2, '0', STR_PAD_LEFT);
+
+            // Pagamentos do mês
+            $pagamentos = $pagamentoModel
+                ->select('SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ",", ".")) AS DECIMAL(10,2))', 'total_valor')
+                ->like('data_pagamento', "$ano-$mesFormatado")
+                ->groupStart()
+                ->where('status_pagamento', 'pago')
+                ->orWhere('status_pagamento', 'success')
+                ->groupEnd()
+                ->first()['total_valor'] ?? 0;
+
+            // Vendas do mês
+            $vendas = $vendaModel
+                ->select('SUM(total)')
+                ->like('data_venda', "$ano-$mesFormatado")
+                ->first()['total'] ?? 0;
+
+            // Despesas do mês
+            $despesas = $despesaModel
+                ->select('SUM(valor)')
+                ->like('data', "$ano-$mesFormatado")
+                ->first()['valor'] ?? 0;
+
+            $estatisticas[] = [
+                'mes' => $mes,
+                'nome_mes' => $this->getNomeMes($mes),
+                'receitas' => floatval($pagamentos) + floatval($vendas),
+                'pagamentos' => floatval($pagamentos),
+                'vendas' => floatval($vendas),
+                'despesas' => floatval($despesas),
+                'lucro' => floatval($pagamentos) + floatval($vendas) - floatval($despesas)
+            ];
+        }
+
+        return $this->response->setJSON($estatisticas);
+    }
+
+    public function relatorioCompleto()
+    {
+        $mes = $this->request->getGet('mes');
+        $ano = $this->request->getGet('ano');
+
+        // Buscar todos os dados para o relatório
+        $resumo = $this->getResumoData($mes, $ano);
+        $pagamentos = $this->getPagamentosData($mes, $ano);
+        $despesas = $this->getDespesasData($mes, $ano);
+        $vendas = $this->getVendasData($mes, $ano);
+
+        $relatorio = [
+            'periodo' => [
+                'mes' => $mes,
+                'ano' => $ano,
+                'nome_mes' => $this->getNomeMes($mes)
+            ],
+            'resumo' => $resumo,
+            'detalhes' => [
+                'pagamentos' => $pagamentos,
+                'despesas' => $despesas,
+                'vendas' => $vendas
+            ],
+            'gerado_em' => date('Y-m-d H:i:s')
+        ];
+
+        return $this->response->setJSON($relatorio);
+    }
+
+    public function exportarExcel()
+    {
+        // Este método seria implementado para gerar arquivo Excel
+        // Por enquanto, retorna os dados em JSON
+        $json = file_get_contents('php://input');
+        $dados = json_decode($json, true);
+
+        // Aqui você implementaria a geração do arquivo Excel
+        // usando uma biblioteca como PhpSpreadsheet
+
+        return $this->response->setJSON([
+            'status' => 'success',
+            'message' => 'Dados preparados para exportação',
+            'dados' => $dados
+        ]);
+    }
+
+    // Métodos auxiliares privados
+    private function getNomeMes($numeroMes)
+    {
+        $meses = [
+            1 => 'Janeiro',
+            2 => 'Fevereiro',
+            3 => 'Março',
+            4 => 'Abril',
+            5 => 'Maio',
+            6 => 'Junho',
+            7 => 'Julho',
+            8 => 'Agosto',
+            9 => 'Setembro',
+            10 => 'Outubro',
+            11 => 'Novembro',
+            12 => 'Dezembro'
+        ];
+
+        return $meses[(int)$numeroMes] ?? 'Mês Inválido';
+    }
+
+    private function getResumoData($mes, $ano)
+    {
+        $pagamentoModel = new PagamentosModel();
+        $despesaModel = new DespesaModel();
+        $vendaModel = new LojaVendaModel();
+
+        $pagamentos = $pagamentoModel
+            ->select('SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ",", ".")) AS DECIMAL(10,2))', 'total_valor')
+            ->like('data_pagamento', "$ano-$mes")
+            ->groupStart()
+            ->where('status_pagamento', 'pago')
+            ->orWhere('status_pagamento', 'success')
+            ->groupEnd()
+            ->first()['total_valor'] ?? 0;
+
+        $vendas = $vendaModel
+            ->select('SUM(total)')
+            ->like('data_venda', "$ano-$mes")
+            ->first()['total'] ?? 0;
+
+        $despesas = $despesaModel
+            ->select('SUM(valor)')
+            ->like('data', "$ano-$mes")
+            ->first()['valor'] ?? 0;
+
+        return [
+            'total_pagamentos' => floatval($pagamentos),
+            'total_vendas' => floatval($vendas),
+            'total_despesas' => floatval($despesas),
+            'lucro_liquido' => floatval($pagamentos) + floatval($vendas) - floatval($despesas)
+        ];
+    }
+
+    private function getPagamentosData($mes, $ano)
+    {
+        $pagamentoModel = new PagamentosModel();
+
+        return $pagamentoModel
+            ->select('
+                pagamentos.*,
+                cliente.nome,
+                cliente.CPF as cpf
+            ')
+            ->join('cliente', 'pagamentos.cliente_id = cliente.id', 'left')
+            ->like('data_pagamento', "$ano-$mes")
+            ->orderBy('data_pagamento', 'DESC')
+            ->findAll();
+    }
+
+    private function getDespesasData($mes, $ano)
+    {
+        $despesaModel = new DespesaModel();
+
+        return $despesaModel
+            ->like('data', "$ano-$mes")
+            ->orderBy('data', 'DESC')
+            ->findAll();
+    }
+
+    private function getVendasData($mes, $ano)
+    {
+        $vendaModel = new LojaVendaModel();
+
+        return $vendaModel
+            ->like('data_venda', "$ano-$mes")
+            ->orderBy('data_venda', 'DESC')
+            ->findAll();
+    }
+
+    // Métodos existentes mantidos
     public function create()
     {
-
         $json = file_get_contents('php://input');
-
         $data = json_decode($json, true);
 
         $valores = [
@@ -91,7 +341,6 @@ class Financeiro extends BaseController
         ];
 
         $valor = '';
-
         foreach ($valores as $frequencia => $preco) {
             if ($frequencia == $data['frequencia']) {
                 $valor = $preco;
@@ -105,59 +354,58 @@ class Financeiro extends BaseController
             'funcionario_id' => $data['funcionario_id'],
             'status_pagamento' => 'pendente',
         ];
-        $query = $this->model->where('cliente_id', $data['id'])
-            ->insert($dados);
 
-        $msg = array("msg" => "Cadastro de Pagamento concluído com sucesso!!");
-        return $this->response->setJSON($msg)->setStatusCode(200);
+        $this->model->insert($dados);
+
+        return $this->response->setJSON([
+            "msg" => "Cadastro de Pagamento concluído com sucesso!!"
+        ])->setStatusCode(200);
     }
 
     public function pesquisar()
     {
         $json = file_get_contents('php://input');
-
         $data = json_decode($json, true);
 
-        $dados = $this->model->select('
-        pag.id,
-        pag.valor,
-         pag.data_pagamento, 
-         pag.data_criacao,
-         pag.status_pagamento,
-         pag.Tipo_id,
-         pag.funcionario_id,
-         c.nome,
-         c.cpf'
-         )
+        $dados = $this->model->select(
+            '
+            pag.id,
+            pag.valor,
+            pag.data_pagamento, 
+            pag.data_criacao,
+            pag.status_pagamento,
+            pag.Tipo_id,
+            pag.funcionario_id,
+            c.nome,
+            c.cpf'
+        )
             ->from('pagamentos pag')
-            ->join('cliente c','pag.cliente_id = c.id')
+            ->join('cliente c', 'pag.cliente_id = c.id')
             ->where('pag.cliente_id', $data['cliente_id'])
             ->groupBy('c.id')
             ->get();
 
         return $this->response->setJSON($dados->getResult())->setStatusCode(200);
     }
+
     public function pesquisarCliPendente()
     {
-        $json = file_get_contents('php://input');
-
-        $data = json_decode($json, true);
-
-        $dados = $this->model->select('
-        pag.id,
-        pag.valor,
-         pag.data_pagamento, 
-         pag.data_criacao,
-         pag.status_pagamento,
-         pag.funcionario_id,
-         c.nome,
-         p.nome,
-         c.cpf,
-         c.email'
-         )
+        $dados = $this->model->select(
+            '
+            pag.id,
+            pag.valor,
+            pag.data_pagamento, 
+            pag.data_criacao,
+            pag.status_pagamento,
+            pag.funcionario_id,
+            c.nome,
+            p.nome as funcionario_nome,
+            c.cpf,
+            c.email'
+        )
             ->from('pagamentos pag')
-            ->join('cliente c','pag.cliente_id = c.id')
-            ->join('funcionarios p','pag.funcionario_id = p.id')
+            ->join('cliente c', 'pag.cliente_id = c.id')
+            ->join('funcionarios p', 'pag.funcionario_id = p.id')
             ->where('pag.status_pagamento', 'pendente')
             ->groupBy('c.id')
             ->get();
@@ -168,25 +416,25 @@ class Financeiro extends BaseController
     public function update()
     {
         date_default_timezone_set('America/Sao_Paulo');
-        
-        $json = file_get_contents('php://input');
 
+        $json = file_get_contents('php://input');
         $data = json_decode($json, true);
 
         if ($data['status_pagamento'] == 'success') {
             $this->model->where('cliente_id', $data['cliente_id'])
                 ->set([
-                    'status_pagamento' => $data['status_pagamento'],
+                    'status_pagamento' => 'pago', // Padronizar para 'pago'
                     'data_pagamento' =>  date('Y-m-d H:i:s'),
                 ])
                 ->update();
         } else if ($data['status_pagamento'] == 'cancel') {
             $this->model->where('id', $data['cliente_id'])
                 ->set([
-                    'status_pagamento' => $data['status_pagamento']
+                    'status_pagamento' => 'cancelado' // Padronizar para 'cancelado'
                 ])
                 ->update();
         }
-        return $this->response->setJSON("Concluido com sucesso !")->setStatusCode(200);
+
+        return $this->response->setJSON("Concluído com sucesso!")->setStatusCode(200);
     }
 }

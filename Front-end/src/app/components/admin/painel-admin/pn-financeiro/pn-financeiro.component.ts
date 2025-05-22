@@ -105,12 +105,12 @@ export class PnFinanceiroComponent {
     // Se não tiver, você pode adicionar no backend
     this.clienteService.pesquisar?.()?.subscribe({
       next: (data) => {
-        this.clientesAtivos = data.length || 0;
+        console.log(data);
+        this.clientesAtivos = data.filter((cliente: { status: string; }) => cliente.status === 'ativo').length;
       },
       error: (error) => {
         console.error('Erro ao carregar clientes ativos:', error);
-        // Valor padrão baseado nos dados do banco
-        this.clientesAtivos = 3;
+
       }
     });
   }

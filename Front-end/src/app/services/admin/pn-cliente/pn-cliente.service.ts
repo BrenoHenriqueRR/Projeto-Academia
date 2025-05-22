@@ -19,8 +19,8 @@ export class PnClienteService {
 
   constructor(private http: HttpClient) {} 
 
-  pesquisar(): Observable<CliPesquisar> {
-    return this.http.get<CliPesquisar>(this.url);
+  pesquisar(): Observable<any> {
+    return this.http.get<any>(this.url);
   }
 
   pesquisarSAnam(): Observable<CliPesquisar> {

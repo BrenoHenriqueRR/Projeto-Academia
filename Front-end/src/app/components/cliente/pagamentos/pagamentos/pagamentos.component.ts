@@ -88,15 +88,15 @@ export class PagamentosComponent {
 
   pesquisarpag() {
     const idjson: string = '{"cliente_id": "' + localStorage.getItem('idcliente') + '"}';
-    this.service.pesquisar(idjson).subscribe({
-      next: (dados) => {
-        this.pagamentos = dados;
+    // this.service.pesquisar(idjson).subscribe({
+    //   next: (dados) => {
+    //     this.pagamentos = dados;
 
-        for (let index = 0; index < dados.length; index++) {
-          this.pagamentos[index].data_criacao = this.pagamentos[index].data_criacao.split(" ")[0];
-        }
-      },
-    })
+    //     for (let index = 0; index < dados.length; index++) {
+    //       this.pagamentos[index].data_criacao = this.pagamentos[index].data_criacao.split(" ")[0];
+    //     }
+    //   },
+    // })
   }
 
   
@@ -108,10 +108,10 @@ export class PagamentosComponent {
     };
     
     const pagjson: string = JSON.stringify(pagamento);
-    this.service.update(pagjson).subscribe({
-      next: (dados) => {
-        console.log(dados.msg);
-      },
-    })
+    // this.service.update(pagjson).subscribe({
+    //   next: (dados) => {
+    //     console.log(dados.msg);
+    //   },
+    // })
   }
 }

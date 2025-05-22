@@ -1,0 +1,40 @@
+CRITICAL - 2025-05-22 13:49:18 --> CodeIgniter\Database\Exceptions\DataException: You must provide a valid "column name not separated by comma".
+in SYSTEMPATH\Database\BaseBuilder.php on line 515.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(515): CodeIgniter\Database\Exceptions\DataException::forInvalidArgument('column name not separated by comma')
+ 2 SYSTEMPATH\Database\BaseBuilder.php(472): CodeIgniter\Database\BaseBuilder->maxMinAvgSum('CAST(REPLACE(REPLACE(valor, "R$", ""), ",", ".") AS DECIMAL(10,2))', 'total_valor', 'SUM')
+ 3 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->selectSum('CAST(REPLACE(REPLACE(valor, "R$", ""), ",", ".") AS DECIMAL(10,2))', 'total_valor')
+ 4 APPPATH\Controllers\Financeiro.php(37): CodeIgniter\Model->__call('selectSum', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->resumo()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-22 13:49:25 --> CodeIgniter\Database\Exceptions\DataException: You must provide a valid "column name not separated by comma".
+in SYSTEMPATH\Database\BaseBuilder.php on line 515.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(515): CodeIgniter\Database\Exceptions\DataException::forInvalidArgument('column name not separated by comma')
+ 2 SYSTEMPATH\Database\BaseBuilder.php(472): CodeIgniter\Database\BaseBuilder->maxMinAvgSum('CAST(REPLACE(REPLACE(valor, "R$", ""), ",", ".") AS DECIMAL(10,2))', 'total_valor', 'SUM')
+ 3 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->selectSum('CAST(REPLACE(REPLACE(valor, "R$", ""), ",", ".") AS DECIMAL(10,2))', 'total_valor')
+ 4 APPPATH\Controllers\Financeiro.php(37): CodeIgniter\Model->__call('selectSum', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->resumo()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-22 13:52:21 --> CodeIgniter\Database\Exceptions\DataException: You must provide a valid "column name not separated by comma".
+in SYSTEMPATH\Database\BaseBuilder.php on line 515.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(515): CodeIgniter\Database\Exceptions\DataException::forInvalidArgument('column name not separated by comma')
+ 2 SYSTEMPATH\Database\BaseBuilder.php(472): CodeIgniter\Database\BaseBuilder->maxMinAvgSum('CAST(REPLACE(REPLACE(valor, "R$", ""), ",", ".") AS DECIMAL(10,2))', 'total_valor', 'SUM')
+ 3 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->selectSum('CAST(REPLACE(REPLACE(valor, "R$", ""), ",", ".") AS DECIMAL(10,2))', 'total_valor')
+ 4 APPPATH\Controllers\Financeiro.php(37): CodeIgniter\Model->__call('selectSum', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->resumo()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-22 13:53:02 --> CodeIgniter\Database\Exceptions\DataException: You must provide a valid "column name not separated by comma".
+in SYSTEMPATH\Database\BaseBuilder.php on line 515.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(515): CodeIgniter\Database\Exceptions\DataException::forInvalidArgument('column name not separated by comma')
+ 2 SYSTEMPATH\Database\BaseBuilder.php(472): CodeIgniter\Database\BaseBuilder->maxMinAvgSum('CAST(REPLACE(REPLACE(valor, "R$", ""), ",", ".") AS DECIMAL(10,2))', 'total_valor', 'SUM')
+ 3 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->selectSum('CAST(REPLACE(REPLACE(valor, "R$", ""), ",", ".") AS DECIMAL(10,2))', 'total_valor')
+ 4 APPPATH\Controllers\Financeiro.php(37): CodeIgniter\Model->__call('selectSum', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->resumo()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

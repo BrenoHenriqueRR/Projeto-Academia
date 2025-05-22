@@ -84,9 +84,12 @@ $routes->group('Financeiro', function ($routes) {
     $routes->get('pesquisarCliPendente', 'Financeiro::pesquisarCliPendente');
     $routes->post('update', 'Financeiro::update');
     $routes->get('resumo', 'Financeiro::resumo');
-    $routes->get('pagamentos', 'Financeiro::listaPagamentos');
-    $routes->get('despesas', 'Financeiro::listaDespesas');
-    $routes->get('vendas', 'Financeiro::listaVendas');
+    $routes->get('listaPagamentos', 'Financeiro::listaPagamentos');
+    $routes->get('listaDespesas', 'Financeiro::listaDespesas');
+    $routes->get('listaVendas', 'Financeiro::listaVendas');
+    $routes->get('pesquisarCliPendente', 'Financeiro::pesquisarCliPendente');
+    $routes->get('getEstatisticasComparativas', 'Financeiro::getEstatisticasComparativas');
+    $routes->post('pesquisarPagamentosCliente', 'Financeiro::pesquisarCliPendente');
 });
 
 // =====================

@@ -1,79 +1,463 @@
-.fundo{
-    height: 100vh;
-    width: 100%;
-    overflow-y: hidden;
+/* CSS para o componente financeiro melhorado */
+
+.dashboard-card {
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: none;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Animações para os cards de KPI */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card {
+  animation: slideInUp 0.6s ease-out;
+}
+
+/* Gradientes personalizados */
+.bg-gradient-success {
+  background: linear-gradient(135deg, #28a745, #20c997);
+}
+
+.bg-gradient-danger {
+  background: linear-gradient(135deg, #dc3545, #fd7e14);
+}
+
+.bg-gradient-primary {
+  background: linear-gradient(135deg, #007bff, #6610f2);
+}
+
+.bg-gradient-warning {
+  background: linear-gradient(135deg, #ffc107, #fd7e14);
+}
+
+.bg-gradient-purple {
+  background: linear-gradient(135deg, #6f42c1, #e83e8c);
+}
+
+/* Estilo para ícones grandes */
+.fs-1 {
+  font-size: 4rem !important;
+}
+
+.opacity-25 {
+  opacity: 0.25 !important;
+}
+
+/* Estilo para tabelas */
+.table-responsive {
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.table thead th {
+  background-color: #f8f9fa;
+  border-bottom: 2px solid #dee2e6;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.table tbody tr {
+  transition: all 0.2s ease;
+}
+
+.table tbody tr:hover {
+  background-color: #f8f9fa;
+  transform: scale(1.01);
+}
+
+/* Badges personalizados */
+.badge {
+  font-size: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 20px;
+}
+
+/* Avatar circulares */
+.avatar {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+/* Estilo para alertas */
+.alert {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.alert-warning {
+  background-color: #fff3cd;
+  color: #856404;
+  border-left: 4px solid #ffc107;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+  border-left: 4px solid #dc3545;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+  border-left: 4px solid #28a745;
+}
+
+.alert-info {
+  background-color: #d1ecf1;
+  color: #0c5460;
+  border-left: 4px solid #17a2b8;
+}
+
+/* Estilo para tabs */
+.nav-tabs .nav-link {
+  border: none;
+  border-radius: 10px 10px 0 0;
+  color: #6c757d;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-right: 5px;
+}
+
+.nav-tabs .nav-link:hover {
+  background-color: #f8f9fa;
+  color: #495057;
+}
+
+.nav-tabs .nav-link.active {
+  background-color: #fff;
+  color: #495057;
+  font-weight: 600;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Loading states */
+.loading-overlay {
+  position: relative;
+}
+
+.loading-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+.loading-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 999;
+}
+
+/* Botões personalizados */
+.btn {
+  border-radius: 8px;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-outline-dark:hover {
+  background-color: #343a40;
+  border-color: #343a40;
+}
+
+.btn-outline-success:hover {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.btn-outline-primary:hover {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+/* Estilo para números/valores */
+.metric-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+  margin: 0.5rem 0;
+}
+
+.text-success {
+  color: #28a745 !important;
+}
+
+.text-danger {
+  color: #dc3545 !important;
+}
+
+.text-primary {
+  color: #007bff !important;
+}
+
+.text-warning {
+  color: #ffc107 !important;
+}
+
+.text-info {
+  color: #17a2b8 !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .metric-value {
+    font-size: 2rem;
   }
   
-  .container {
-    max-width: 100%;
+  .fs-1 {
+    font-size: 3rem !important;
   }
-
-.container > h1{ 
-    font-size: 2.5rem;
-    text-align: center;
+  
+  .dashboard-card:hover {
+    transform: none;
+  }
+  
+  .table-responsive {
+    font-size: 0.9rem;
+  }
 }
 
-h3{
-    color: rgb(59, 59, 59);
-    font-weight: 100;
+@media (max-width: 576px) {
+  .metric-value {
+    font-size: 1.5rem;
+  }
+  
+  .fs-1 {
+    font-size: 2.5rem !important;
+  }
+  
+  .card-body {
+    padding: 1rem;
+  }
 }
 
-.financeiro{
-    display: flex;
-    /* grid-template-columns: 51rem  40rem; */
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
+/* Estilo para filtros */
+.filter-section {
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
-.card{
-    margin-top: 3rem;
-    height: 15rem;
-    border: none;
-    box-shadow: 0 3px 17px rgba(0, 0, 0, .1);
-    padding: 3rem;
+/* Estilo para formulários */
+.form-control, .form-select {
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  transition: all 0.3s ease;
 }
 
-.card p{
-    font-size: 5rem;
+.form-control:focus, .form-select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
-.cad-btn{
-    margin-top: 1rem;
-    padding: 5px 1.5rem;
-    border-radius: 10px;
-    border: none;
-    color: black;
-    background-color: yellow;
-    box-shadow: 1px 1px 2px black;
-    font-weight: 200;
-    font-family: 'Anton' , serif;
-    cursor: pointer;
+/* Estilo para empty states */
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #6c757d;
 }
 
-
-.cad-btn:hover{
-    background-color: rgb(248, 248, 0);
+.empty-state i {
+  font-size: 4rem;
+  opacity: 0.3;
+  margin-bottom: 1rem;
 }
 
-.cad-pagamentos select{
-    width: 12rem;
-    margin: 1rem 0;
+/* Animações sutis */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-tr th, tr td{
-    padding: 0rem 0.6rem;
-    font-size: 17px;
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-.cli-pendentes{
-    overflow-y: scroll;
-    height: 50rem;
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
 }
 
-.card-table{
-    width: 60rem;
-    height: 35vh;
+.slide-in-right {
+  animation: slideInRight 0.6s ease-out;
 }
 
+/* Estilo para cards de estatísticas */
+.stat-card {
+  background: white;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #007bff, #28a745, #ffc107, #dc3545);
+}
+
+/* Estilo para indicadores de tendência */
+.trend-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.25rem 0.5rem;
+  border-radius: 20px;
+}
+
+.trend-up {
+  background-color: rgba(40, 167, 69, 0.1);
+  color: #28a745;
+}
+
+.trend-down {
+  background-color: rgba(220, 53, 69, 0.1);
+  color: #dc3545;
+}
+
+.trend-neutral {
+  background-color: rgba(108, 117, 125, 0.1);
+  color: #6c757d;
+}
+
+/* Estilo para progress bars */
+.progress {
+  height: 8px;
+  border-radius: 4px;
+  background-color: #e9ecef;
+  overflow: hidden;
+}
+
+.progress-bar {
+  border-radius: 4px;
+  transition: width 0.6s ease;
+}
+
+/* Estilo para tooltip customizado */
+.custom-tooltip {
+  position: relative;
+  cursor: help;
+}
+
+.custom-tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.custom-tooltip:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Estilo para grid de métricas */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Estilo para seções colapsáveis */
+.collapsible-section {
+  border: 1px solid #dee2e6;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.collapsible-header {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.collapsible-header:hover {
+  background-color: #e9ecef;
+}
+
+.collapsible-content {
+  padding: 1rem;
+  border-top: 1px solid #dee2e6;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .dashboard-card {
+    box-shadow: none;
+    border: 1px solid #dee2e6;
+  }
+  
+  .card {
+    break-inside: avoid;
+  }
+}

@@ -1,8 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PnClienteService } from '../../../../services/admin/pn-cliente/pn-cliente.service';
-import { ModalCadpagamentosComponent } from '../../../modais/modal-cadpagamentos/modal-cadpagamentos.component';
-import { ModalConfirmarComponent } from '../../../modais/modal-confirmar/modal-confirmar.component';
 import { PnFinanceiroService } from '../../../../services/admin/pn-financeiro/pn-financeiro.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
@@ -22,6 +20,7 @@ export class PnFinanceiroComponent {
 
   // Novas propriedades para funcionalidades avançadas
   listaPagamentos: any[] = [];
+  alertasFinanceiros: Array<{tipo: 'warning' | 'danger' | 'info', mensagem: string}> = [];
   listaDespesas: any[] = [];
   listaVendas: any[] = [];
   pagamentosPendentes: any[] = [];
@@ -53,6 +52,7 @@ export class PnFinanceiroComponent {
         next: (data) => {
           this.resumo = data;
           this.calcularMargemLucro();
+           this.getAlertasFinanceiros();
           this.loading = false;
           console.log('Resumo carregado:', data);
         },
@@ -233,38 +233,37 @@ export class PnFinanceiroComponent {
   }
 
   // Método para destacar alertas importantes
-  getAlertasFinanceiros(): Array<{tipo: 'warning' | 'danger' | 'info', mensagem: string}> {
-    const alertas = [];
+  getAlertasFinanceiros(){
+    // const alertas = [];
 
     if (this.resumo?.lucro_liquido < 0) {
-      alertas.push({
+      this.alertasFinanceiros.push({
         tipo: 'danger' as const,
         mensagem: 'Resultado negativo. Revise as despesas urgentemente.'
       });
     }
 
     if (this.pagamentosPendentes.length > 0) {
-      alertas.push({
+      this.alertasFinanceiros.push({
         tipo: 'warning' as const,
         mensagem: `${this.pagamentosPendentes.length} pagamento(s) pendente(s).`
       });
     }
 
     if (this.resumo?.total_despesas > (this.resumo?.total_pagamentos + this.resumo?.total_vendas) * 0.8) {
-      alertas.push({
+      this.alertasFinanceiros.push({
         tipo: 'warning' as const,
         mensagem: 'Despesas muito altas em relação às receitas.'
       });
     }
 
     if (this.clientesAtivos < 5) {
-      alertas.push({
+      this.alertasFinanceiros.push({
         tipo: 'info' as const,
         mensagem: 'Poucos clientes ativos. Considere campanhas de marketing.'
       });
     }
-
-    return alertas;
+    console
   }
 
   // Método para resetar filtros

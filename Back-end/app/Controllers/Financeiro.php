@@ -17,10 +17,16 @@ use CodeIgniter\HTTP\ResponseInterface;
 class Financeiro extends BaseController
 {
     protected $model;
+    protected $pagamentoModel;
+    protected $despesaModel;
+    protected $vendaModel;
 
     public function __construct()
     {
         $this->model = new FinanceiroModel();
+        $this->pagamentoModel = new PagamentosModel();
+        $this->vendaModel = new LojaVendaModel();
+        $this->despesaModel = new DespesaModel();
     }
 
     public function resumo()
@@ -28,12 +34,9 @@ class Financeiro extends BaseController
         $mes = $this->request->getGet('mes');
         $ano = $this->request->getGet('ano');
 
-        $pagamentoModel = new PagamentosModel();
-        $despesaModel = new DespesaModel();
-        $vendaModel = new LojaVendaModel();
 
         // Total de pagamentos com status 'pago' ou 'success'
-        $pagamentos = $pagamentoModel
+        $pagamentos = $this->pagamentoModel
             ->select('SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ",", ".") AS DECIMAL(10,2)))', 'total_valor')
             ->like('data_pagamento', "$ano-$mes")
             ->groupStart()
@@ -43,13 +46,13 @@ class Financeiro extends BaseController
             ->first()['total_valor'] ?? 0;
 
         // Total de vendas
-        $vendas = $vendaModel
+        $vendas = $this->vendaModel
             ->select('SUM(total) AS total')
             ->like('data_venda', "$ano-$mes", 'after')
             ->first()['total'] ?? 0;
 
         // Total de despesas
-        $despesas = $despesaModel
+        $despesas = $this->despesaModel
             ->select('SUM(valor) as valor')
             ->like('data', "$ano-$mes", 'after')
             ->first()['valor'] ?? 0;
@@ -61,7 +64,7 @@ class Financeiro extends BaseController
             ->where('status', 'ativo')
             ->countAllResults();
 
-        $pagamentosPendentes = $pagamentoModel
+        $pagamentosPendentes = $this->pagamentoModel
             ->where('status_pagamento', 'pendente')
             ->countAllResults();
 
@@ -82,11 +85,8 @@ class Financeiro extends BaseController
 
     public function listaPagamentos()
     {
-        $pagamentoModel = new PagamentosModel();
-        $clienteModel = new ClienteModel();
-        $funcionarioModel = new FuncionariosModel();
 
-        $data = $pagamentoModel
+        $data = $this->pagamentoModel
             ->select('
                 pagamentos.id,
                 pagamentos.valor,
@@ -108,8 +108,7 @@ class Financeiro extends BaseController
 
     public function listaDespesas()
     {
-        $model = new DespesaModel();
-        $data = $model
+        $data = $this->despesaModel
             ->orderBy('data', 'DESC')
             ->findAll();
 
@@ -118,10 +117,9 @@ class Financeiro extends BaseController
 
     public function listaVendas()
     {
-        $vendaModel = new LojaVendaModel();
         $itemModel = new LojaItensModel();
 
-        $vendas = $vendaModel
+        $vendas = $this->vendaModel
             ->orderBy('data_venda', 'DESC')
             ->findAll();
 
@@ -147,9 +145,6 @@ class Financeiro extends BaseController
     {
         $ano = $this->request->getGet('ano') ?? date('Y');
 
-        $pagamentoModel = new PagamentosModel();
-        $despesaModel = new DespesaModel();
-        $vendaModel = new LojaVendaModel();
 
         $estatisticas = [];
 
@@ -157,7 +152,7 @@ class Financeiro extends BaseController
             $mesFormatado = str_pad($mes, 2, '0', STR_PAD_LEFT);
 
             // Pagamentos do mês
-            $pagamentos = $pagamentoModel
+            $pagamentos = $this->pagamentoModel
                 ->select('SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ",", ".")) AS DECIMAL(10,2))', 'total_valor')
                 ->like('data_pagamento', "$ano-$mesFormatado")
                 ->groupStart()
@@ -167,13 +162,13 @@ class Financeiro extends BaseController
                 ->first()['total_valor'] ?? 0;
 
             // Vendas do mês
-            $vendas = $vendaModel
+            $vendas = $this->vendaModel
                 ->select('SUM(total)')
                 ->like('data_venda', "$ano-$mesFormatado")
                 ->first()['total'] ?? 0;
 
             // Despesas do mês
-            $despesas = $despesaModel
+            $despesas = $this->despesaModel
                 ->select('SUM(valor)')
                 ->like('data', "$ano-$mesFormatado")
                 ->first()['valor'] ?? 0;
@@ -261,11 +256,8 @@ class Financeiro extends BaseController
 
     private function getResumoData($mes, $ano)
     {
-        $pagamentoModel = new PagamentosModel();
-        $despesaModel = new DespesaModel();
-        $vendaModel = new LojaVendaModel();
 
-        $pagamentos = $pagamentoModel
+        $pagamentos = $this->pagamentoModel
             ->select('SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ",", ".")) AS DECIMAL(10,2))', 'total_valor')
             ->like('data_pagamento', "$ano-$mes")
             ->groupStart()
@@ -274,12 +266,12 @@ class Financeiro extends BaseController
             ->groupEnd()
             ->first()['total_valor'] ?? 0;
 
-        $vendas = $vendaModel
+        $vendas = $this->vendaModel
             ->select('SUM(total)')
             ->like('data_venda', "$ano-$mes")
             ->first()['total'] ?? 0;
 
-        $despesas = $despesaModel
+        $despesas = $this->despesaModel
             ->select('SUM(valor)')
             ->like('data', "$ano-$mes")
             ->first()['valor'] ?? 0;
@@ -294,9 +286,8 @@ class Financeiro extends BaseController
 
     private function getPagamentosData($mes, $ano)
     {
-        $pagamentoModel = new PagamentosModel();
 
-        return $pagamentoModel
+        return $this->pagamentoModel
             ->select('
                 pagamentos.*,
                 cliente.nome,
@@ -310,9 +301,9 @@ class Financeiro extends BaseController
 
     private function getDespesasData($mes, $ano)
     {
-        $despesaModel = new DespesaModel();
+        $this->despesaModel = new DespesaModel();
 
-        return $despesaModel
+        return $this->despesaModel
             ->like('data', "$ano-$mes")
             ->orderBy('data', 'DESC')
             ->findAll();
@@ -320,9 +311,8 @@ class Financeiro extends BaseController
 
     private function getVendasData($mes, $ano)
     {
-        $vendaModel = new LojaVendaModel();
 
-        return $vendaModel
+        return $this->vendaModel
             ->like('data_venda', "$ano-$mes")
             ->orderBy('data_venda', 'DESC')
             ->findAll();

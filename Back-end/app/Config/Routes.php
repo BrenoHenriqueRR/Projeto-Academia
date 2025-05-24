@@ -82,6 +82,7 @@ $routes->group('Financeiro', function ($routes) {
     $routes->post('create', 'Financeiro::create');
     $routes->post('pesquisar', 'Financeiro::pesquisar');
     $routes->get('pesquisarCliPendente', 'Financeiro::pesquisarCliPendente');
+    $routes->get('gerarRelatorioMensalPdf', 'Financeiro::gerarRelatorioMensalPdf');
     $routes->post('update', 'Financeiro::update');
     $routes->get('resumo', 'Financeiro::resumo');
     $routes->get('listaPagamentos', 'Financeiro::listaPagamentos');

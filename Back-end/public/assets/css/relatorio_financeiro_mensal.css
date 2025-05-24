@@ -1,0 +1,480 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@page {
+    margin: 15mm;
+    size: A4;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size: 10px;
+    line-height: 1.3;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.pdf-content {
+    width: 100%;
+    max-width: 90%;
+    margin: 0 auto;
+    background: white;
+    overflow: hidden;
+    /* Evita overflow horizontal */
+}
+
+.header-empresa {
+    border-bottom: 3px solid #007bff;
+    padding-bottom: 20px;
+    margin-bottom: 25px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.header-row {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    /* Força distribuição fixa */
+}
+
+.header-col {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.logo-empresa {
+    width: 60px;
+    /* Reduzido de 70px */
+    height: 60px;
+    /* Reduzido de 70px */
+    background: #007bff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 18px;
+    /* Reduzido de 20px */
+    font-weight: bold;
+    float: left;
+    margin-right: 15px;
+    /* Reduzido de 20px */
+}
+
+.empresa-info {
+    float: left;
+    width: 55%;
+    /* Reduzido de 60% */
+    overflow: hidden;
+    word-wrap: break-word;
+}
+
+.empresa-info h3 {
+    margin-bottom: 5px;
+    font-size: 16px;
+    /* Reduzido de 18px */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.empresa-info p {
+    margin: 2px 0;
+    color: #666;
+    font-size: 10px;
+    /* Reduzido de 11px */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.relatorio-titulo {
+    float: right;
+    text-align: right;
+    width: 30%;
+    /* Aumentado de 25% */
+    overflow: hidden;
+}
+
+.relatorio-titulo h2 {
+    color: #007bff;
+    font-size: 14px;
+    /* Reduzido de 16px */
+    margin-bottom: 0;
+}
+
+.relatorio-titulo h4 {
+    color: #666;
+    font-size: 12px;
+    /* Reduzido de 14px */
+}
+
+.periodo-info {
+    background: #f8f9fa;
+    border-left: 4px solid #007bff;
+    padding: 12px;
+    /* Reduzido de 15px */
+    margin: 15px 0;
+    /* Reduzido de 20px */
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.periodo-left {
+    float: left;
+    width: 48%;
+    /* Reduzido de 50% */
+}
+
+.periodo-right {
+    float: right;
+    width: 48%;
+    /* Reduzido de 50% */
+    text-align: right;
+}
+
+.resumo-cards {
+    margin: 15px 0;
+    /* Reduzido de 20px */
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.card-resumo {
+    float: left;
+    width: 18.5%;
+    /* Reduzido de 23% */
+    margin-right: 4%;
+    /* Aumentado de 2.66% */
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 10px;
+    /* Reduzido de 12px */
+    text-align: center;
+    background: white;
+    min-height: 60px;
+    /* Altura mínima */
+    overflow: hidden;
+}
+
+.card-resumo:last-child {
+    margin-right: 0;
+}
+
+.card-resumo .label {
+    color: #666;
+    font-size: 9px;
+    /* Reduzido de 10px */
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    line-height: 1.2;
+}
+
+.card-resumo .valor {
+    font-size: 12px;
+    /* Reduzido de 14px */
+    font-weight: bold;
+    word-wrap: break-word;
+}
+
+.valor-positivo {
+    color: #28a745;
+}
+
+.valor-negativo {
+    color: #dc3545;
+}
+
+.valor-neutro {
+    color: #007bff;
+}
+
+.analise-detalhada {
+    margin: 20px 0;
+    /* Reduzido de 25px */
+    overflow: hidden;
+    width: 100%;
+}
+
+.analise-col {
+    float: left;
+    width: 47%;
+    /* Reduzido de 48% */
+    background: #f8f9fa;
+    padding: 12px;
+    /* Reduzido de 15px */
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.analise-col:first-child {
+    margin-right: 6%;
+    /* Aumentado de 4% */
+}
+
+.analise-col ul {
+    margin: 8px 0 0 15px;
+    /* Reduzido margin-left de 20px */
+}
+
+.analise-col li {
+    margin: 3px 0;
+    font-size: 11px;
+    /* Adicionado para reduzir tamanho */
+}
+
+.secao-tabela {
+    margin: 20px 0;
+    /* Reduzido de 25px */
+    page-break-inside: avoid;
+    width: 100%;
+    overflow: hidden;
+}
+
+.secao-titulo {
+    font-size: 13px;
+    /* Reduzido de 14px */
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.tabela-pdf {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9px;
+    /* Reduzido de 10px */
+    margin-bottom: 15px;
+    /* Reduzido de 20px */
+    table-layout: fixed;
+    /* IMPORTANTE: Força distribuição fixa das colunas */
+}
+
+.tabela-pdf th {
+    background: #f8f9fa;
+    font-weight: 600;
+    padding: 6px 4px;
+    /* Reduzido padding */
+    border: 1px solid #dee2e6;
+    text-align: left;
+    font-size: 8px;
+    /* Reduzido para cabeçalhos */
+    word-wrap: break-word;
+    overflow: hidden;
+}
+
+.tabela-pdf td {
+    padding: 5px 4px;
+    /* Reduzido padding */
+    border: 1px solid #dee2e6;
+    vertical-align: top;
+    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tabela-pdf tbody tr:nth-child(even) {
+    background: #fafafa;
+}
+
+/* Larguras específicas para tabela de vendas */
+.tabela-vendas th:nth-child(1),
+.tabela-vendas td:nth-child(1) {
+    width: 15%;
+}
+
+/* ID Venda */
+
+.tabela-vendas th:nth-child(2),
+.tabela-vendas td:nth-child(2) {
+    width: 20%;
+}
+
+/* Data */
+
+.tabela-vendas th:nth-child(3),
+.tabela-vendas td:nth-child(3) {
+    width: 25%;
+}
+
+/* Valor Total */
+
+.tabela-vendas th:nth-child(4),
+.tabela-vendas td:nth-child(4) {
+    width: 40%;
+}
+
+/* Observações */
+
+/* Larguras específicas para tabela de despesas */
+.tabela-despesas th:nth-child(1),
+.tabela-despesas td:nth-child(1) {
+    width: 40%;
+}
+
+/* Descrição */
+
+.tabela-despesas th:nth-child(2),
+.tabela-despesas td:nth-child(2) {
+    width: 20%;
+}
+
+/* Valor */
+
+.tabela-despesas th:nth-child(3),
+.tabela-despesas td:nth-child(3) {
+    width: 20%;
+}
+
+/* Data */
+
+.tabela-despesas th:nth-child(4),
+.tabela-despesas td:nth-child(4) {
+    width: 20%;
+}
+
+/* Categoria */
+
+.status-badge {
+    display: inline-block;
+    padding: 2px 4px;
+    /* Reduzido padding */
+    border-radius: 8px;
+    /* Reduzido de 10px */
+    font-size: 8px;
+    /* Reduzido de 9px */
+    font-weight: 500;
+}
+
+.status-pago {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status-pendente {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.status-cancelado {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.observacoes {
+    margin: 20px 0;
+    /* Reduzido de 25px */
+    width: 100%;
+}
+
+.observacoes-conteudo {
+    background: #f8f9fa;
+    padding: 12px;
+    /* Reduzido de 15px */
+    border-radius: 6px;
+    font-size: 10px;
+    /* Reduzido de 11px */
+    overflow: hidden;
+}
+
+.observacoes-conteudo ul {
+    margin: 5px 0 0 15px;
+    /* Reduzido margin-left */
+}
+
+.observacoes-conteudo li {
+    margin: 5px 0;
+}
+
+.assinatura-box {
+    border: 1px solid #dee2e6;
+    height: 60px;
+    /* Reduzido de 70px */
+    margin: 20px 0;
+    /* Reduzido de 25px */
+    padding: 10px;
+    text-align: center;
+    position: relative;
+    width: 100%;
+}
+
+.assinatura-linha {
+    position: absolute;
+    bottom: 12px;
+    /* Reduzido de 15px */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.assinatura-linha div {
+    border-top: 1px solid #666;
+    width: 200px;
+    /* Reduzido de 250px */
+    margin-bottom: 3px;
+}
+
+.rodape-relatorio {
+    margin-top: 25px;
+    /* Reduzido de 30px */
+    padding-top: 12px;
+    /* Reduzido de 15px */
+    border-top: 1px solid #dee2e6;
+    font-size: 9px;
+    /* Reduzido de 10px */
+    color: #666;
+    overflow: hidden;
+    width: 100%;
+}
+
+.rodape-left {
+    float: left;
+    width: 48%;
+    /* Reduzido de 50% */
+}
+
+.rodape-right {
+    float: right;
+    width: 48%;
+    /* Reduzido de 50% */
+    text-align: right;
+}
+
+/* Quebras de página */
+.page-break {
+    page-break-before: always;
+}
+
+/* Evitar quebras em lugares indesejados */
+.no-break {
+    page-break-inside: avoid;
+}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* ADIÇÕES IMPORTANTES PARA EVITAR CORTES */
+
+/* Força quebra de texto longo */
+.texto-longo {
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+/* Container para evitar overflow */
+.container-seguro {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+}

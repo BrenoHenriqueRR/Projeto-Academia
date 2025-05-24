@@ -1,0 +1,1655 @@
+ERROR - 2025-05-24 13:29:10 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE '%2025-05%' E' at line 1 in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT SUM(CAST...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(676): CodeIgniter\Model->doFirst()
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(269): CodeIgniter\BaseModel->first()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2025-05-24 13:29:10 --> CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE '%2025-05%' E' at line 1
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\Financeiro.php(269): CodeIgniter\BaseModel->first()
+ 5 APPPATH\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-24 13:29:10 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE '%2025-05%' E' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 4 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 6 APPPATH\Controllers\Financeiro.php(269): CodeIgniter\BaseModel->first()
+ 7 APPPATH\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-24 13:29:10 --> [Caused by] mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE '%2025-05%' E' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\Financeiro.php(269): CodeIgniter\BaseModel->first()
+ 8 APPPATH\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-24 13:30:50 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE '%2025-05%' E' at line 1 in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT SUM(CAST...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(676): CodeIgniter\Model->doFirst()
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(269): CodeIgniter\BaseModel->first()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2025-05-24 13:30:50 --> CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE '%2025-05%' E' at line 1
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\Financeiro.php(269): CodeIgniter\BaseModel->first()
+ 5 APPPATH\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-24 13:30:50 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE '%2025-05%' E' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 4 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 6 APPPATH\Controllers\Financeiro.php(269): CodeIgniter\BaseModel->first()
+ 7 APPPATH\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-24 13:30:50 --> [Caused by] mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE '%2025-05%' E' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\Financeiro.php(269): CodeIgniter\BaseModel->first()
+ 8 APPPATH\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-24 13:31:12 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE '%2025-05%' E' at line 1 in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT SUM(CAST...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(676): CodeIgniter\Model->doFirst()
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(269): CodeIgniter\BaseModel->first()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2025-05-24 13:31:12 --> CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE '%2025-05%' E' at line 1
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\Financeiro.php(269): CodeIgniter\BaseModel->first()
+ 5 APPPATH\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-24 13:31:12 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE '%2025-05%' E' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 4 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 6 APPPATH\Controllers\Financeiro.php(269): CodeIgniter\BaseModel->first()
+ 7 APPPATH\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-24 13:31:12 --> [Caused by] mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE '%2025-05%' E' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\Financeiro.php(269): CodeIgniter\BaseModel->first()
+ 8 APPPATH\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-24 13:31:16 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE '%2025-05%' E' at line 1 in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT SUM(CAST...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(676): CodeIgniter\Model->doFirst()
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(269): CodeIgniter\BaseModel->first()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2025-05-24 13:31:16 --> CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE '%2025-05%' E' at line 1
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\Financeiro.php(269): CodeIgniter\BaseModel->first()
+ 5 APPPATH\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-24 13:31:16 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE '%2025-05%' E' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 4 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 6 APPPATH\Controllers\Financeiro.php(269): CodeIgniter\BaseModel->first()
+ 7 APPPATH\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-24 13:31:16 --> [Caused by] mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE '%2025-05%' E' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\Financeiro.php(269): CodeIgniter\BaseModel->first()
+ 8 APPPATH\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-24 13:31:18 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE '%2025-05%' E' at line 1 in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT SUM(CAST...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(676): CodeIgniter\Model->doFirst()
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(269): CodeIgniter\BaseModel->first()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2025-05-24 13:31:18 --> CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE '%2025-05%' E' at line 1
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\Financeiro.php(269): CodeIgniter\BaseModel->first()
+ 5 APPPATH\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-24 13:31:18 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE '%2025-05%' E' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 4 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 6 APPPATH\Controllers\Financeiro.php(269): CodeIgniter\BaseModel->first()
+ 7 APPPATH\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-24 13:31:18 --> [Caused by] mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE '%2025-05%' E' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\Financeiro.php(269): CodeIgniter\BaseModel->first()
+ 8 APPPATH\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-24 13:31:27 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE '%2025-05%' E' at line 1 in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT SUM(CAST...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(676): CodeIgniter\Model->doFirst()
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(269): CodeIgniter\BaseModel->first()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2025-05-24 13:31:27 --> CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE '%2025-05%' E' at line 1
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\Financeiro.php(269): CodeIgniter\BaseModel->first()
+ 5 APPPATH\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-24 13:31:27 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE '%2025-05%' E' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 4 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 6 APPPATH\Controllers\Financeiro.php(269): CodeIgniter\BaseModel->first()
+ 7 APPPATH\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-24 13:31:27 --> [Caused by] mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE '%2025-05%' E' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\Financeiro.php(269): CodeIgniter\BaseModel->first()
+ 8 APPPATH\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-24 13:32:01 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE '%2025-05%' E' at line 1 in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT SUM(CAST...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(676): CodeIgniter\Model->doFirst()
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(270): CodeIgniter\BaseModel->first()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(330): App\Controllers\Financeiro->getResumoData('05', '2025')
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2025-05-24 13:32:01 --> CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE '%2025-05%' E' at line 1
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\Financeiro.php(270): CodeIgniter\BaseModel->first()
+ 5 APPPATH\Controllers\Financeiro.php(330): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-24 13:32:01 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE '%2025-05%' E' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 4 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 6 APPPATH\Controllers\Financeiro.php(270): CodeIgniter\BaseModel->first()
+ 7 APPPATH\Controllers\Financeiro.php(330): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-24 13:32:01 --> [Caused by] mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE '%2025-05%' E' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\Financeiro.php(270): CodeIgniter\BaseModel->first()
+ 8 APPPATH\Controllers\Financeiro.php(330): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-24 13:32:15 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE '%2025-05%' E' at line 1 in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT SUM(CAST...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(676): CodeIgniter\Model->doFirst()
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(269): CodeIgniter\BaseModel->first()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2025-05-24 13:32:15 --> CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE '%2025-05%' E' at line 1
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\Financeiro.php(269): CodeIgniter\BaseModel->first()
+ 5 APPPATH\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-24 13:32:15 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE '%2025-05%' E' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 4 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 6 APPPATH\Controllers\Financeiro.php(269): CodeIgniter\BaseModel->first()
+ 7 APPPATH\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-24 13:32:15 --> [Caused by] mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE '%2025-05%' E' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\Financeiro.php(269): CodeIgniter\BaseModel->first()
+ 8 APPPATH\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-24 13:32:17 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE '%2025-05%' E' at line 1 in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT SUM(CAST...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(676): CodeIgniter\Model->doFirst()
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(269): CodeIgniter\BaseModel->first()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2025-05-24 13:32:17 --> CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE '%2025-05%' E' at line 1
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\Financeiro.php(269): CodeIgniter\BaseModel->first()
+ 5 APPPATH\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-24 13:32:17 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE '%2025-05%' E' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 4 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 6 APPPATH\Controllers\Financeiro.php(269): CodeIgniter\BaseModel->first()
+ 7 APPPATH\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-24 13:32:17 --> [Caused by] mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE '%2025-05%' E' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2))
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\Financeiro.php(269): CodeIgniter\BaseModel->first()
+ 8 APPPATH\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-24 13:34:42 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIK' at line 1 in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT SUM(CAST...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(676): CodeIgniter\Model->doFirst()
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(269): CodeIgniter\BaseModel->first()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2025-05-24 13:34:42 --> CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIK' at line 1
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\Financeiro.php(269): CodeIgniter\BaseModel->first()
+ 5 APPPATH\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-24 13:34:42 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIK' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 4 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 6 APPPATH\Controllers\Financeiro.php(269): CodeIgniter\BaseModel->first()
+ 7 APPPATH\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-24 13:34:42 --> [Caused by] mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIK' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\Financeiro.php(269): CodeIgniter\BaseModel->first()
+ 8 APPPATH\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-24 13:36:22 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIK' at line 1 in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT SUM(CAST...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(676): CodeIgniter\Model->doFirst()
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(268): CodeIgniter\BaseModel->first()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2025-05-24 13:36:22 --> CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIK' at line 1
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\Financeiro.php(268): CodeIgniter\BaseModel->first()
+ 5 APPPATH\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-24 13:36:22 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIK' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 4 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 6 APPPATH\Controllers\Financeiro.php(268): CodeIgniter\BaseModel->first()
+ 7 APPPATH\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-24 13:36:22 --> [Caused by] mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIK' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\Financeiro.php(268): CodeIgniter\BaseModel->first()
+ 8 APPPATH\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-24 13:36:33 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIK' at line 1 in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT SUM(CAST...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(676): CodeIgniter\Model->doFirst()
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(268): CodeIgniter\BaseModel->first()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2025-05-24 13:36:33 --> CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIK' at line 1
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\Financeiro.php(268): CodeIgniter\BaseModel->first()
+ 5 APPPATH\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-24 13:36:33 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIK' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 4 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 6 APPPATH\Controllers\Financeiro.php(268): CodeIgniter\BaseModel->first()
+ 7 APPPATH\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-24 13:36:33 --> [Caused by] mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIK' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\Financeiro.php(268): CodeIgniter\BaseModel->first()
+ 8 APPPATH\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-24 13:36:34 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIK' at line 1 in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT SUM(CAST...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(676): CodeIgniter\Model->doFirst()
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(268): CodeIgniter\BaseModel->first()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2025-05-24 13:36:34 --> CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIK' at line 1
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\Financeiro.php(268): CodeIgniter\BaseModel->first()
+ 5 APPPATH\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-24 13:36:34 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIK' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 4 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 6 APPPATH\Controllers\Financeiro.php(268): CodeIgniter\BaseModel->first()
+ 7 APPPATH\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-24 13:36:34 --> [Caused by] mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIK' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\Financeiro.php(268): CodeIgniter\BaseModel->first()
+ 8 APPPATH\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-24 13:36:36 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIK' at line 1 in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT SUM(CAST...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(676): CodeIgniter\Model->doFirst()
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(268): CodeIgniter\BaseModel->first()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2025-05-24 13:36:36 --> CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIK' at line 1
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\Financeiro.php(268): CodeIgniter\BaseModel->first()
+ 5 APPPATH\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-24 13:36:36 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIK' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 4 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 6 APPPATH\Controllers\Financeiro.php(268): CodeIgniter\BaseModel->first()
+ 7 APPPATH\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-24 13:36:36 --> [Caused by] mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIK' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+AND   (
+`status_pagamento` = \'pago\'
+OR `status_pagamento` = \'success\'
+ )
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ", ", ".")) AS DECIMAL(10, 2)) AS total_valor
+FROM `pagamentos`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+AND   (
+`status_pagamento` = :status_pagamento:
+OR `status_pagamento` = :status_pagamento.1:
+ )
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\Financeiro.php(268): CodeIgniter\BaseModel->first()
+ 8 APPPATH\Controllers\Financeiro.php(329): App\Controllers\Financeiro->getResumoData('05', '2025')
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-24 14:34:30 --> Dompdf\Exception: Parent table not found for table cell
+in VENDORPATH\dompdf\dompdf\src\FrameReflower\TableCell.php on line 40.
+ 1 VENDORPATH\dompdf\dompdf\src\FrameDecorator\AbstractFrameDecorator.php(905): Dompdf\FrameReflower\TableCell->reflow(Object(Dompdf\FrameDecorator\Block))
+ 2 VENDORPATH\dompdf\dompdf\src\FrameReflower\Block.php(865): Dompdf\FrameDecorator\AbstractFrameDecorator->reflow(Object(Dompdf\FrameDecorator\Block))
+ 3 VENDORPATH\dompdf\dompdf\src\FrameDecorator\AbstractFrameDecorator.php(905): Dompdf\FrameReflower\Block->reflow(Object(Dompdf\FrameDecorator\Block))
+ 4 VENDORPATH\dompdf\dompdf\src\FrameReflower\Block.php(865): Dompdf\FrameDecorator\AbstractFrameDecorator->reflow(Object(Dompdf\FrameDecorator\Block))
+ 5 VENDORPATH\dompdf\dompdf\src\FrameDecorator\AbstractFrameDecorator.php(905): Dompdf\FrameReflower\Block->reflow(Object(Dompdf\FrameDecorator\Block))
+ 6 VENDORPATH\dompdf\dompdf\src\FrameReflower\Block.php(865): Dompdf\FrameDecorator\AbstractFrameDecorator->reflow(Object(Dompdf\FrameDecorator\Block))
+ 7 VENDORPATH\dompdf\dompdf\src\FrameDecorator\AbstractFrameDecorator.php(905): Dompdf\FrameReflower\Block->reflow(null)
+ 8 VENDORPATH\dompdf\dompdf\src\FrameReflower\Page.php(142): Dompdf\FrameDecorator\AbstractFrameDecorator->reflow()
+ 9 VENDORPATH\dompdf\dompdf\src\FrameDecorator\AbstractFrameDecorator.php(905): Dompdf\FrameReflower\Page->reflow(null)
+10 VENDORPATH\dompdf\dompdf\src\Dompdf.php(808): Dompdf\FrameDecorator\AbstractFrameDecorator->reflow()
+11 APPPATH\Controllers\Financeiro.php(366): Dompdf\Dompdf->render()
+12 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+13 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+14 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+15 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\AcademiaModel;
 use App\Models\DespesaModel;
 use App\Models\FinanceiroModel;
 use App\Models\LojaVendaModel;
@@ -22,6 +23,7 @@ class Financeiro extends BaseController
     protected $pagamentoModel;
     protected $despesaModel;
     protected $vendaModel;
+    protected $academiaModel;
 
     public function __construct()
     {
@@ -29,6 +31,7 @@ class Financeiro extends BaseController
         $this->pagamentoModel = new PagamentosModel();
         $this->vendaModel = new LojaVendaModel();
         $this->despesaModel = new DespesaModel();
+        $this->academiaModel = new AcademiaModel();
     }
 
     public function resumo()
@@ -329,6 +332,8 @@ class Financeiro extends BaseController
         $mes = $this->request->getGet('mes');
         $ano = $this->request->getGet('ano');
 
+        $academia = $this->academiaModel->first();
+
         // Buscar os dados para o relatório
         $resumo = $this->getResumoData($mes, $ano);
         $pagamentos = $this->getPagamentosData($mes, $ano);
@@ -348,12 +353,18 @@ class Financeiro extends BaseController
             'mes' => $mes,
             'ano' => $ano,
             'nome_mes' => $nomeMes,
-            'gerado_em' => date('d/m/Y H:i:s')
+            'gerado_em' => date('d/m/Y H:i:s'),
+            'nome_academia' => $academia['nome'],
+            'cnpj_academia' => $academia['cnpj'],
+            'email_academia' => $academia['email'],
+            'logo_academia' => $academia['logo'],
+            'telefone_academia' => $academia['telefone'],
+
         ]);
 
         $options = new Options();
         // $options->set('defaultFont', 'DejaVu Sans');
-        $options->set('isRemoteEnabled', false); // Mudei para false
+        $options->set('isRemoteEnabled', true); // Mudei para false
         $options->set('isHtml5ParserEnabled', true);
         $options->set('enable_font_subsetting', true);
         $options->set('debugKeepTemp', false);
@@ -378,113 +389,5 @@ class Financeiro extends BaseController
             ->setBody($dompdf->output());
     }
 
-    // // Métodos existentes mantidos
-    // public function create()
-    // {
-    //     $json = file_get_contents('php://input');
-    //     $data = json_decode($json, true);
-
-    //     $valores = [
-    //         "5" => "R$120,00",
-    //         "3" => "R$90,00",
-    //         "2" => "R$80,00"
-    //     ];
-
-    //     $valor = '';
-    //     foreach ($valores as $frequencia => $preco) {
-    //         if ($frequencia == $data['frequencia']) {
-    //             $valor = $preco;
-    //             break;
-    //         }
-    //     }
-
-    //     $dados = [
-    //         'valor' => $valor,
-    //         'cliente_id' => $data['id'],
-    //         'funcionario_id' => $data['funcionario_id'],
-    //         'status_pagamento' => 'pendente',
-    //     ];
-
-    //     $this->model->insert($dados);
-
-    //     return $this->response->setJSON([
-    //         "msg" => "Cadastro de Pagamento concluído com sucesso!!"
-    //     ])->setStatusCode(200);
-    // }
-
-    // public function pesquisar()
-    // {
-    //     $json = file_get_contents('php://input');
-    //     $data = json_decode($json, true);
-
-    //     $dados = $this->model->select(
-    //         '
-    //         pag.id,
-    //         pag.valor,
-    //         pag.data_pagamento, 
-    //         pag.data_criacao,
-    //         pag.status_pagamento,
-    //         pag.Tipo_id,
-    //         pag.funcionario_id,
-    //         c.nome,
-    //         c.cpf'
-    //     )
-    //         ->from('pagamentos pag')
-    //         ->join('cliente c', 'pag.cliente_id = c.id')
-    //         ->where('pag.cliente_id', $data['cliente_id'])
-    //         ->groupBy('c.id')
-    //         ->get();
-
-    //     return $this->response->setJSON($dados->getResult())->setStatusCode(200);
-    // }
-
-    // public function pesquisarCliPendente()
-    // {
-    //     $dados = $this->model->select(
-    //         '
-    //         pag.id,
-    //         pag.valor,
-    //         pag.data_pagamento, 
-    //         pag.data_criacao,
-    //         pag.status_pagamento,
-    //         pag.funcionario_id,
-    //         c.nome,
-    //         p.nome as funcionario_nome,
-    //         c.cpf,
-    //         c.email'
-    //     )
-    //         ->from('pagamentos pag')
-    //         ->join('cliente c', 'pag.cliente_id = c.id')
-    //         ->join('funcionarios p', 'pag.funcionario_id = p.id')
-    //         ->where('pag.status_pagamento', 'pendente')
-    //         ->groupBy('c.id')
-    //         ->get();
-
-    //     return $this->response->setJSON($dados->getResult())->setStatusCode(200);
-    // }
-
-    // public function update()
-    // {
-    //     date_default_timezone_set('America/Sao_Paulo');
-
-    //     $json = file_get_contents('php://input');
-    //     $data = json_decode($json, true);
-
-    //     if ($data['status_pagamento'] == 'success') {
-    //         $this->model->where('cliente_id', $data['cliente_id'])
-    //             ->set([
-    //                 'status_pagamento' => 'pago', // Padronizar para 'pago'
-    //                 'data_pagamento' =>  date('Y-m-d H:i:s'),
-    //             ])
-    //             ->update();
-    //     } else if ($data['status_pagamento'] == 'cancel') {
-    //         $this->model->where('id', $data['cliente_id'])
-    //             ->set([
-    //                 'status_pagamento' => 'cancelado' // Padronizar para 'cancelado'
-    //             ])
-    //             ->update();
-    //     }
-
-    //     return $this->response->setJSON("Concluído com sucesso!")->setStatusCode(200);
-    // }
+    
 }

@@ -17,27 +17,52 @@ import { CadTreinoService } from '../../../services/cad-treino/cad-treino.servic
 })
 export class TreinosComponent {
   ficha!: any;
-  exercicios!:any
+  exercicios!: any;
 
-  constructor(private service: UserTreinoService, private fichaservice: CadTreinoService) {
-
+  ngOnInit() {
     this.pesquisar();
   }
 
+  constructor(
+    private service: UserTreinoService,
+    private fichaservice: CadTreinoService
+  ) { }
 
   enviar() {
+    const idFicha = this.ficha?.id;
 
+    if (!idFicha) return;
+
+    console.log(JSON.stringify({ fichas: idFicha, cliente_id: localStorage.getItem('idcliente') }));
+
+    this.fichaservice.concluirFicha(JSON.stringify({ fichas: idFicha, cliente_id: localStorage.getItem('idcliente') })).subscribe({
+      next: () => {
+        alert('Ficha concluida com sucesso');
+        location.reload();
+      },
+      error: () => {
+        alert('Erro ao concluir ficha.');
+      }
+    });
   }
 
-
   pesquisar() {
-    this.fichaservice.pesquisarFichaNaoConcluida(JSON.stringify({ id: localStorage.getItem('idcliente') })).subscribe({
+    const idCliente = localStorage.getItem('idcliente');
+
+    this.fichaservice.pesquisarFichaNaoConcluida(JSON.stringify({ id: idCliente })).subscribe({
       next: (dados) => {
-        if (dados) {
-          this.ficha  = Array(dados.ficha);
-          this.exercicios = dados.exercicios
-          // console.log(dados);
+        console.log(dados);
+        if (dados?.ficha) {
+          this.ficha = dados.ficha;
+          this.exercicios = dados.exercicios;
+        } else {
+          this.ficha = null;
+          this.exercicios = [];
         }
+      },
+      error: () => {
+        console.error('Erro ao buscar ficha');
+        this.ficha = null;
       }
     });
   }

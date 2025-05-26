@@ -143,23 +143,23 @@ export class PnFinanceiroComponent {
   }
 
   gerarPDF() {
-    this.service.gerarPdf(this.mes.toString().padStart(2, '0'), this.ano.toString());
+    this.service.gerarPdfMensal(this.mes.toString().padStart(2, '0'), this.ano.toString());
   }
 
-  exportarExcel() {
-    // Implementar exportação para Excel
-    const dadosExportacao = {
-      resumo: this.resumo,
-      pagamentos: this.listaPagamentos,
-      despesas: this.listaDespesas,
-      vendas: this.listaVendas,
-      periodo: `${this.mes}/${this.ano}`
-    };
+  // exportarExcel() {
+  //   // Implementar exportação para Excel
+  //   const dadosExportacao = {
+  //     resumo: this.resumo,
+  //     pagamentos: this.listaPagamentos,
+  //     despesas: this.listaDespesas,
+  //     vendas: this.listaVendas,
+  //     periodo: `${this.mes}/${this.ano}`
+  //   };
     
-    console.log('Exportando dados para Excel:', dadosExportacao);
-    // Aqui você pode implementar a lógica de exportação
-    // Por exemplo, usando uma biblioteca como xlsx
-  }
+  //   console.log('Exportando dados para Excel:', dadosExportacao);
+  //   // Aqui você pode implementar a lógica de exportação
+  //   // Por exemplo, usando uma biblioteca como xlsx
+  // }
 
   // Métodos para atualização de status dos pagamentos
   aprovarPagamento(pagamentoId: number) {

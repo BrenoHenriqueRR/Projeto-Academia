@@ -43,12 +43,17 @@ class Cliente extends BaseController
             'datanascimento' => $this->request->getPost('datanascimento'),
             'nivel_experiencia	' => $this->request->getPost('nivel_experiencia	'),
             'treino_com_personal' => $this->request->getPost('treino_com_personal'),
+            'plano' => $this->request->getPost('plano'),
         ];
         $dados['personal_id'] = null !== $this->request->getPost('personal_id') ? $this->request->getPost('personal_id') : null;
         $foto = $this->request->getFile('foto_perfil');
         $atestado = null !== $this->request->getFile('atestado_medico') ? $this->request->getFile('atestado_medico') : null;
         $termoaut = null !== $this->request->getFile('termo_autorizacao') ? $this->request->getFile('termo_autorizacao') : null;
         $termores = null !== $this->request->getFile('termo_responsabilidade') ? $this->request->getFile('termo_responsabilidade') : null;
+        $plano = [
+            'plano' => $this->request->getPost('plano'),
+            'funcionario_id' => $this->request->getPost('funcionario_id'),
+        ];
 
         $dados['atestado_medico'] = $this->processarArquivo($atestado, 'atestado', $this->request->getPost('CPF'));
         $dados['termo_autorizacao'] = $this->processarArquivo($termoaut, 'termo_autorizacao', $this->request->getPost('CPF'));
@@ -59,6 +64,10 @@ class Cliente extends BaseController
 
         $this->model->insert($dados);
         $id = $this->model->getInsertID();
+
+        if (!empty($plano)) {
+            $this->ClientePlanos->create($plano, $id);
+        }
 
         if (isset($foto)) {
             if ($foto->isValid() && !$foto->hasMoved()) {
@@ -144,11 +153,14 @@ class Cliente extends BaseController
         return $this->response->setJSON($msg)->setStatusCode(200);
     }
 
-    public function pesquisarPag() {
-        $dados = $this->pagamentosModel->find();
+    public function pesquisarPag()
+    {
+        $dados = $this->pagamentosModel
+            ->select('*')
+            ->join('clientes_planos', 'clientes_planos.id = pagamentos.cliente_planos_id')
+            ->findAll(); // usa findAll() e não get() aqui
 
         return $this->response->setJSON($dados)->setStatusCode(200);
-
     }
 
     public function delete()

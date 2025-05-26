@@ -90,20 +90,23 @@ class Financeiro extends BaseController
 
         $data = $this->pagamentoModel
             ->select('
-                pagamentos.id,
-                pagamentos.valor,
-                pagamentos.data_pagamento,
-                pagamentos.data_criacao,
-                pagamentos.status_pagamento,
-                cliente.nome,
-                cliente.CPF as cpf,
-                cliente.email,
-                funcionarios.nome as funcionario_nome
-            ')
-            ->join('cliente', 'pagamentos.cliente_id = cliente.id', 'left')
+        pagamentos.id,
+        pagamentos.valor,
+        pagamentos.data_pagamento,
+        pagamentos.data_criacao,
+        pagamentos.status_pagamento,
+        cliente.nome,
+        cliente.CPF as cpf,
+        cliente.email,
+        clientes_planos.data_vencimento,
+        funcionarios.nome as funcionario_nome
+    ')
+            ->join('clientes_planos', 'pagamentos.cliente_planos_id = clientes_planos.id', 'left')
+            ->join('cliente', 'clientes_planos.cliente_id = cliente.id', 'left')
             ->join('funcionarios', 'pagamentos.funcionario_id = funcionarios.id', 'left')
             ->orderBy('pagamentos.data_criacao', 'DESC')
             ->findAll();
+
 
         return $this->response->setJSON($data);
     }
@@ -295,7 +298,8 @@ class Financeiro extends BaseController
                 cliente.nome,
                 cliente.CPF as cpf
             ')
-            ->join('cliente', 'pagamentos.cliente_id = cliente.id', 'left')
+            ->join('clientes_planos', 'pagamentos.cliente_planos_id = clientes_planos.id', 'left')
+            ->join('cliente', 'clientes_planos.cliente_id = cliente.id', 'left')
             ->like('data_pagamento', "$ano-$mes")
             ->orderBy('data_pagamento', 'DESC')
             ->findAll();

@@ -46,7 +46,9 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <p><strong>Atestado Médico:</strong> {{ dados_cli?.atestado_medico ? 'Sim' : 'Não' }}</p>
-                                <p><strong>Termo de Responsabilidade:</strong> {{ dados_cli?.termo_responsabilidade ? 'Assinado' : 'Não Assinado' }}</p>
+                                <p><strong>Termo de Responsabilidade:</strong> {{ dados_cli?.termo_responsabilidade ?  dados_cli?.termo_responsabilidade : 'Não Assinado' }}</p>
+                                <p><strong>Termo de Responsabilidade:</strong> {{ dados_cli?.termo_autorizacao ? 'Assinado' : 'Não Assinado' }}</p>
+                                <p><strong>Termo de Responsabilidade:</strong> {{ dados_cli?.atestado_medico ? 'Assinado' : 'Não Assinado' }}</p>
                             </div>
                         </div>
                     </div>

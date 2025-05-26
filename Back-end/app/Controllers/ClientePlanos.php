@@ -26,9 +26,8 @@ class ClientePlanos extends BaseController
 
     public function create($dados,$id)
     {
-    
         $plano = $this->planosModel->find($dados['plano']);
-        $duracao = $plano[0]['duracao']; // mensal, trimestral, semestral, anual
+        $duracao = $plano['duracao']; // mensal, trimestral, semestral, anual
 
 
         $dataInicio = date('Y-m-d');
@@ -62,12 +61,12 @@ class ClientePlanos extends BaseController
         $id = $this->clientesPlanosModel->getInsertID();
 
         $this->pagamentosModel->insert([
-            "valor" => $plano[0]['preco'],
+            "valor" => $plano['preco'],
             "status_pagamento" => 'pendente',
             "data_pagamento" => Null,
             "forma_pagamento" => NULL,
-            "funcionario_id" => $id,
-            "cliente_planos_id" => $dados['personal_id'],
+            "funcionario_id" => $dados['funcionario_id'],
+            "cliente_planos_id" => $id,
 
         ]);
 

@@ -43,7 +43,7 @@ export class PainelAdminComponent {
     this.configservice.pesquisar().subscribe({
       next: (value) => {
         etapa = parseInt(value[0].etapa_atual);
-        console.log(etapa);
+        // console.log(etapa);
     if (etapa < 4) {
       this.router.navigate(['/admin/configuracoes']);
       }

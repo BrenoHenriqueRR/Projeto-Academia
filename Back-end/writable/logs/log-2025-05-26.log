@@ -1,0 +1,389 @@
+CRITICAL - 2025-05-26 05:23:41 --> ErrorException: Undefined array key 0
+in APPPATH\Controllers\ClientePlanos.php on line 31.
+ 1 APPPATH\Controllers\ClientePlanos.php(31): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\ClientePlanos.php', 31)
+ 2 APPPATH\Controllers\Cliente.php(65): App\Controllers\ClientePlanos->create([...], 129)
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 05:28:21 --> ErrorException: Undefined array key 0
+in APPPATH\Controllers\ClientePlanos.php on line 31.
+ 1 APPPATH\Controllers\ClientePlanos.php(31): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\ClientePlanos.php', 31)
+ 2 APPPATH\Controllers\Cliente.php(68): App\Controllers\ClientePlanos->create([...], 130)
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 05:30:30 --> ErrorException: Undefined array key 0
+in APPPATH\Controllers\ClientePlanos.php on line 32.
+ 1 APPPATH\Controllers\ClientePlanos.php(32): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\ClientePlanos.php', 32)
+ 2 APPPATH\Controllers\Cliente.php(68): App\Controllers\ClientePlanos->create([...], 131)
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 05:33:00 --> ErrorException: Undefined array key 0
+in APPPATH\Controllers\ClientePlanos.php on line 31.
+ 1 APPPATH\Controllers\ClientePlanos.php(31): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\ClientePlanos.php', 31)
+ 2 APPPATH\Controllers\Cliente.php(68): App\Controllers\ClientePlanos->create([...], 133)
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 05:35:43 --> ErrorException: Undefined array key "personal_id"
+in APPPATH\Controllers\ClientePlanos.php on line 69.
+ 1 APPPATH\Controllers\ClientePlanos.php(69): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "personal_id"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\ClientePlanos.php', 69)
+ 2 APPPATH\Controllers\Cliente.php(68): App\Controllers\ClientePlanos->create([...], 13)
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 05:49:17 --> ErrorException: Undefined array key "funcionario_id"
+in APPPATH\Controllers\ClientePlanos.php on line 68.
+ 1 APPPATH\Controllers\ClientePlanos.php(68): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "funcionario_id"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\ClientePlanos.php', 68)
+ 2 APPPATH\Controllers\Cliente.php(68): App\Controllers\ClientePlanos->create([...], 14)
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 05:50:14 --> ErrorException: Undefined array key "funcionario_id"
+in APPPATH\Controllers\ClientePlanos.php on line 68.
+ 1 APPPATH\Controllers\ClientePlanos.php(68): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "funcionario_id"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\ClientePlanos.php', 68)
+ 2 APPPATH\Controllers\Cliente.php(68): App\Controllers\ClientePlanos->create([...], 15)
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-26 05:58:52 --> mysqli_sql_exception: Table 'projeto-1.cliente_planos' doesn't exist in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Cliente.php(159): CodeIgniter\Model->__call('get', Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Cliente->pesquisarPag()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2025-05-26 05:58:52 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'projeto-1.cliente_planos' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `pagamentos`
+JOIN `cliente_planos` `cp` ON `cp`.`id` = `p`.`cliente_planos_id`', [], false)
+ 2 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Cliente.php(159): CodeIgniter\Model->__call('get', [])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->pesquisarPag()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 05:58:52 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'projeto-1.cliente_planos' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `pagamentos`
+JOIN `cliente_planos` `cp` ON `cp`.`id` = `p`.`cliente_planos_id`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `pagamentos`
+JOIN `cliente_planos` `cp` ON `cp`.`id` = `p`.`cliente_planos_id`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `pagamentos`
+JOIN `cliente_planos` `cp` ON `cp`.`id` = `p`.`cliente_planos_id`', [], false)
+ 4 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Cliente.php(159): CodeIgniter\Model->__call('get', [])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->pesquisarPag()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 05:58:52 --> [Caused by] mysqli_sql_exception: Table 'projeto-1.cliente_planos' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *
+FROM `pagamentos`
+JOIN `cliente_planos` `cp` ON `cp`.`id` = `p`.`cliente_planos_id`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `pagamentos`
+JOIN `cliente_planos` `cp` ON `cp`.`id` = `p`.`cliente_planos_id`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `pagamentos`
+JOIN `cliente_planos` `cp` ON `cp`.`id` = `p`.`cliente_planos_id`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `pagamentos`
+JOIN `cliente_planos` `cp` ON `cp`.`id` = `p`.`cliente_planos_id`', [], false)
+ 5 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Cliente.php(159): CodeIgniter\Model->__call('get', [])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->pesquisarPag()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-26 05:59:15 --> mysqli_sql_exception: Unknown column 'p.cliente_planos_id' in 'on clause' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Cliente.php(159): CodeIgniter\Model->__call('get', Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Cliente->pesquisarPag()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2025-05-26 05:59:15 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'p.cliente_planos_id' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `pagamentos`
+JOIN `clientes_planos` `cp` ON `cp`.`id` = `p`.`cliente_planos_id`', [], false)
+ 2 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Cliente.php(159): CodeIgniter\Model->__call('get', [])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->pesquisarPag()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 05:59:15 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'p.cliente_planos_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `pagamentos`
+JOIN `clientes_planos` `cp` ON `cp`.`id` = `p`.`cliente_planos_id`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `pagamentos`
+JOIN `clientes_planos` `cp` ON `cp`.`id` = `p`.`cliente_planos_id`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `pagamentos`
+JOIN `clientes_planos` `cp` ON `cp`.`id` = `p`.`cliente_planos_id`', [], false)
+ 4 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Cliente.php(159): CodeIgniter\Model->__call('get', [])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->pesquisarPag()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 05:59:15 --> [Caused by] mysqli_sql_exception: Unknown column 'p.cliente_planos_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *
+FROM `pagamentos`
+JOIN `clientes_planos` `cp` ON `cp`.`id` = `p`.`cliente_planos_id`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `pagamentos`
+JOIN `clientes_planos` `cp` ON `cp`.`id` = `p`.`cliente_planos_id`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `pagamentos`
+JOIN `clientes_planos` `cp` ON `cp`.`id` = `p`.`cliente_planos_id`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `pagamentos`
+JOIN `clientes_planos` `cp` ON `cp`.`id` = `p`.`cliente_planos_id`', [], false)
+ 5 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Cliente.php(159): CodeIgniter\Model->__call('get', [])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->pesquisarPag()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-26 05:59:21 --> mysqli_sql_exception: Unknown column 'p.clientes_planos_id' in 'on clause' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Cliente.php(159): CodeIgniter\Model->__call('get', Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Cliente->pesquisarPag()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2025-05-26 05:59:21 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'p.clientes_planos_id' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `pagamentos`
+JOIN `clientes_planos` `cp` ON `cp`.`id` = `p`.`clientes_planos_id`', [], false)
+ 2 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Cliente.php(159): CodeIgniter\Model->__call('get', [])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->pesquisarPag()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 05:59:21 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'p.clientes_planos_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `pagamentos`
+JOIN `clientes_planos` `cp` ON `cp`.`id` = `p`.`clientes_planos_id`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `pagamentos`
+JOIN `clientes_planos` `cp` ON `cp`.`id` = `p`.`clientes_planos_id`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `pagamentos`
+JOIN `clientes_planos` `cp` ON `cp`.`id` = `p`.`clientes_planos_id`', [], false)
+ 4 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Cliente.php(159): CodeIgniter\Model->__call('get', [])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->pesquisarPag()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 05:59:21 --> [Caused by] mysqli_sql_exception: Unknown column 'p.clientes_planos_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *
+FROM `pagamentos`
+JOIN `clientes_planos` `cp` ON `cp`.`id` = `p`.`clientes_planos_id`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `pagamentos`
+JOIN `clientes_planos` `cp` ON `cp`.`id` = `p`.`clientes_planos_id`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `pagamentos`
+JOIN `clientes_planos` `cp` ON `cp`.`id` = `p`.`clientes_planos_id`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `pagamentos`
+JOIN `clientes_planos` `cp` ON `cp`.`id` = `p`.`clientes_planos_id`', [], false)
+ 5 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Cliente.php(159): CodeIgniter\Model->__call('get', [])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->pesquisarPag()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-26 05:59:43 --> mysqli_sql_exception: Unknown column 'p.cliente_planos_id' in 'on clause' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Cliente.php(159): CodeIgniter\Model->__call('get', Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Cliente->pesquisarPag()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2025-05-26 05:59:43 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'p.cliente_planos_id' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `pagamentos`
+JOIN `clientes_planos` `cp` ON `cp`.`id` = `p`.`cliente_planos_id`', [], false)
+ 2 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Cliente.php(159): CodeIgniter\Model->__call('get', [])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->pesquisarPag()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 05:59:43 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'p.cliente_planos_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `pagamentos`
+JOIN `clientes_planos` `cp` ON `cp`.`id` = `p`.`cliente_planos_id`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `pagamentos`
+JOIN `clientes_planos` `cp` ON `cp`.`id` = `p`.`cliente_planos_id`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `pagamentos`
+JOIN `clientes_planos` `cp` ON `cp`.`id` = `p`.`cliente_planos_id`', [], false)
+ 4 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Cliente.php(159): CodeIgniter\Model->__call('get', [])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->pesquisarPag()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 05:59:43 --> [Caused by] mysqli_sql_exception: Unknown column 'p.cliente_planos_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *
+FROM `pagamentos`
+JOIN `clientes_planos` `cp` ON `cp`.`id` = `p`.`cliente_planos_id`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `pagamentos`
+JOIN `clientes_planos` `cp` ON `cp`.`id` = `p`.`cliente_planos_id`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `pagamentos`
+JOIN `clientes_planos` `cp` ON `cp`.`id` = `p`.`cliente_planos_id`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `pagamentos`
+JOIN `clientes_planos` `cp` ON `cp`.`id` = `p`.`cliente_planos_id`', [], false)
+ 5 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Cliente.php(159): CodeIgniter\Model->__call('get', [])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->pesquisarPag()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-26 06:08:30 --> mysqli_sql_exception: Unknown column 'cliente_planos.data_vencimento' in 'field list' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `pagamen...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pagamen...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pagamen...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pagamen...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(108): CodeIgniter\BaseModel->findAll()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Financeiro->listaPagamentos()
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2025-05-26 06:08:30 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'cliente_planos.data_vencimento' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pagamentos`.`id`, `pagamentos`.`valor`, `pagamentos`.`data_pagamento`, `pagamentos`.`data_criacao`, `pagamentos`.`status_pagamento`, `cliente`.`nome`, `cliente`.`CPF` as `cpf`, `cliente`.`email`, `cliente_planos`.`data_vencimento`, `funcionarios`.`nome` as `funcionario_nome`
+FROM `pagamentos`
+LEFT JOIN `clientes_planos` ON `pagamentos`.`cliente_planos_id` = `clientes_planos`.`id`
+LEFT JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+LEFT JOIN `funcionarios` ON `pagamentos`.`funcionario_id` = `funcionarios`.`id`
+ORDER BY `pagamentos`.`data_criacao` DESC', [], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Financeiro.php(108): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->listaPagamentos()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 06:08:30 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'cliente_planos.data_vencimento' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pagamentos`.`id`, `pagamentos`.`valor`, `pagamentos`.`data_pagamento`, `pagamentos`.`data_criacao`, `pagamentos`.`status_pagamento`, `cliente`.`nome`, `cliente`.`CPF` as `cpf`, `cliente`.`email`, `cliente_planos`.`data_vencimento`, `funcionarios`.`nome` as `funcionario_nome`
+FROM `pagamentos`
+LEFT JOIN `clientes_planos` ON `pagamentos`.`cliente_planos_id` = `clientes_planos`.`id`
+LEFT JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+LEFT JOIN `funcionarios` ON `pagamentos`.`funcionario_id` = `funcionarios`.`id`
+ORDER BY `pagamentos`.`data_criacao` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pagamentos`.`id`, `pagamentos`.`valor`, `pagamentos`.`data_pagamento`, `pagamentos`.`data_criacao`, `pagamentos`.`status_pagamento`, `cliente`.`nome`, `cliente`.`CPF` as `cpf`, `cliente`.`email`, `cliente_planos`.`data_vencimento`, `funcionarios`.`nome` as `funcionario_nome`
+FROM `pagamentos`
+LEFT JOIN `clientes_planos` ON `pagamentos`.`cliente_planos_id` = `clientes_planos`.`id`
+LEFT JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+LEFT JOIN `funcionarios` ON `pagamentos`.`funcionario_id` = `funcionarios`.`id`
+ORDER BY `pagamentos`.`data_criacao` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pagamentos`.`id`, `pagamentos`.`valor`, `pagamentos`.`data_pagamento`, `pagamentos`.`data_criacao`, `pagamentos`.`status_pagamento`, `cliente`.`nome`, `cliente`.`CPF` as `cpf`, `cliente`.`email`, `cliente_planos`.`data_vencimento`, `funcionarios`.`nome` as `funcionario_nome`
+FROM `pagamentos`
+LEFT JOIN `clientes_planos` ON `pagamentos`.`cliente_planos_id` = `clientes_planos`.`id`
+LEFT JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+LEFT JOIN `funcionarios` ON `pagamentos`.`funcionario_id` = `funcionarios`.`id`
+ORDER BY `pagamentos`.`data_criacao` DESC', [], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Financeiro.php(108): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->listaPagamentos()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 06:08:30 --> [Caused by] mysqli_sql_exception: Unknown column 'cliente_planos.data_vencimento' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `pagamentos`.`id`, `pagamentos`.`valor`, `pagamentos`.`data_pagamento`, `pagamentos`.`data_criacao`, `pagamentos`.`status_pagamento`, `cliente`.`nome`, `cliente`.`CPF` as `cpf`, `cliente`.`email`, `cliente_planos`.`data_vencimento`, `funcionarios`.`nome` as `funcionario_nome`
+FROM `pagamentos`
+LEFT JOIN `clientes_planos` ON `pagamentos`.`cliente_planos_id` = `clientes_planos`.`id`
+LEFT JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+LEFT JOIN `funcionarios` ON `pagamentos`.`funcionario_id` = `funcionarios`.`id`
+ORDER BY `pagamentos`.`data_criacao` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pagamentos`.`id`, `pagamentos`.`valor`, `pagamentos`.`data_pagamento`, `pagamentos`.`data_criacao`, `pagamentos`.`status_pagamento`, `cliente`.`nome`, `cliente`.`CPF` as `cpf`, `cliente`.`email`, `cliente_planos`.`data_vencimento`, `funcionarios`.`nome` as `funcionario_nome`
+FROM `pagamentos`
+LEFT JOIN `clientes_planos` ON `pagamentos`.`cliente_planos_id` = `clientes_planos`.`id`
+LEFT JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+LEFT JOIN `funcionarios` ON `pagamentos`.`funcionario_id` = `funcionarios`.`id`
+ORDER BY `pagamentos`.`data_criacao` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pagamentos`.`id`, `pagamentos`.`valor`, `pagamentos`.`data_pagamento`, `pagamentos`.`data_criacao`, `pagamentos`.`status_pagamento`, `cliente`.`nome`, `cliente`.`CPF` as `cpf`, `cliente`.`email`, `cliente_planos`.`data_vencimento`, `funcionarios`.`nome` as `funcionario_nome`
+FROM `pagamentos`
+LEFT JOIN `clientes_planos` ON `pagamentos`.`cliente_planos_id` = `clientes_planos`.`id`
+LEFT JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+LEFT JOIN `funcionarios` ON `pagamentos`.`funcionario_id` = `funcionarios`.`id`
+ORDER BY `pagamentos`.`data_criacao` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pagamentos`.`id`, `pagamentos`.`valor`, `pagamentos`.`data_pagamento`, `pagamentos`.`data_criacao`, `pagamentos`.`status_pagamento`, `cliente`.`nome`, `cliente`.`CPF` as `cpf`, `cliente`.`email`, `cliente_planos`.`data_vencimento`, `funcionarios`.`nome` as `funcionario_nome`
+FROM `pagamentos`
+LEFT JOIN `clientes_planos` ON `pagamentos`.`cliente_planos_id` = `clientes_planos`.`id`
+LEFT JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+LEFT JOIN `funcionarios` ON `pagamentos`.`funcionario_id` = `funcionarios`.`id`
+ORDER BY `pagamentos`.`data_criacao` DESC', [], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Financeiro.php(108): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->listaPagamentos()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

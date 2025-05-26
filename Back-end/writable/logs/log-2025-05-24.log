@@ -1653,3 +1653,246 @@ in VENDORPATH\dompdf\dompdf\src\FrameReflower\TableCell.php on line 40.
 13 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
 14 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
 15 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-24 20:52:06 --> mysqli_sql_exception: Unknown column 'pagamentos.cliente_id' in 'on clause' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `pagamen...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pagamen...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pagamen...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pagamen...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(106): CodeIgniter\BaseModel->findAll()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Financeiro->listaPagamentos()
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2025-05-24 20:52:06 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pagamentos.cliente_id' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pagamentos`.`id`, `pagamentos`.`valor`, `pagamentos`.`data_pagamento`, `pagamentos`.`data_criacao`, `pagamentos`.`status_pagamento`, `cliente`.`nome`, `cliente`.`CPF` as `cpf`, `cliente`.`email`, `funcionarios`.`nome` as `funcionario_nome`
+FROM `pagamentos`
+LEFT JOIN `cliente` ON `pagamentos`.`cliente_id` = `cliente`.`id`
+LEFT JOIN `funcionarios` ON `pagamentos`.`funcionario_id` = `funcionarios`.`id`
+ORDER BY `pagamentos`.`data_criacao` DESC', [], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Financeiro.php(106): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->listaPagamentos()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-24 20:52:06 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pagamentos.cliente_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pagamentos`.`id`, `pagamentos`.`valor`, `pagamentos`.`data_pagamento`, `pagamentos`.`data_criacao`, `pagamentos`.`status_pagamento`, `cliente`.`nome`, `cliente`.`CPF` as `cpf`, `cliente`.`email`, `funcionarios`.`nome` as `funcionario_nome`
+FROM `pagamentos`
+LEFT JOIN `cliente` ON `pagamentos`.`cliente_id` = `cliente`.`id`
+LEFT JOIN `funcionarios` ON `pagamentos`.`funcionario_id` = `funcionarios`.`id`
+ORDER BY `pagamentos`.`data_criacao` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pagamentos`.`id`, `pagamentos`.`valor`, `pagamentos`.`data_pagamento`, `pagamentos`.`data_criacao`, `pagamentos`.`status_pagamento`, `cliente`.`nome`, `cliente`.`CPF` as `cpf`, `cliente`.`email`, `funcionarios`.`nome` as `funcionario_nome`
+FROM `pagamentos`
+LEFT JOIN `cliente` ON `pagamentos`.`cliente_id` = `cliente`.`id`
+LEFT JOIN `funcionarios` ON `pagamentos`.`funcionario_id` = `funcionarios`.`id`
+ORDER BY `pagamentos`.`data_criacao` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pagamentos`.`id`, `pagamentos`.`valor`, `pagamentos`.`data_pagamento`, `pagamentos`.`data_criacao`, `pagamentos`.`status_pagamento`, `cliente`.`nome`, `cliente`.`CPF` as `cpf`, `cliente`.`email`, `funcionarios`.`nome` as `funcionario_nome`
+FROM `pagamentos`
+LEFT JOIN `cliente` ON `pagamentos`.`cliente_id` = `cliente`.`id`
+LEFT JOIN `funcionarios` ON `pagamentos`.`funcionario_id` = `funcionarios`.`id`
+ORDER BY `pagamentos`.`data_criacao` DESC', [], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Financeiro.php(106): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->listaPagamentos()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-24 20:52:06 --> [Caused by] mysqli_sql_exception: Unknown column 'pagamentos.cliente_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `pagamentos`.`id`, `pagamentos`.`valor`, `pagamentos`.`data_pagamento`, `pagamentos`.`data_criacao`, `pagamentos`.`status_pagamento`, `cliente`.`nome`, `cliente`.`CPF` as `cpf`, `cliente`.`email`, `funcionarios`.`nome` as `funcionario_nome`
+FROM `pagamentos`
+LEFT JOIN `cliente` ON `pagamentos`.`cliente_id` = `cliente`.`id`
+LEFT JOIN `funcionarios` ON `pagamentos`.`funcionario_id` = `funcionarios`.`id`
+ORDER BY `pagamentos`.`data_criacao` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pagamentos`.`id`, `pagamentos`.`valor`, `pagamentos`.`data_pagamento`, `pagamentos`.`data_criacao`, `pagamentos`.`status_pagamento`, `cliente`.`nome`, `cliente`.`CPF` as `cpf`, `cliente`.`email`, `funcionarios`.`nome` as `funcionario_nome`
+FROM `pagamentos`
+LEFT JOIN `cliente` ON `pagamentos`.`cliente_id` = `cliente`.`id`
+LEFT JOIN `funcionarios` ON `pagamentos`.`funcionario_id` = `funcionarios`.`id`
+ORDER BY `pagamentos`.`data_criacao` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pagamentos`.`id`, `pagamentos`.`valor`, `pagamentos`.`data_pagamento`, `pagamentos`.`data_criacao`, `pagamentos`.`status_pagamento`, `cliente`.`nome`, `cliente`.`CPF` as `cpf`, `cliente`.`email`, `funcionarios`.`nome` as `funcionario_nome`
+FROM `pagamentos`
+LEFT JOIN `cliente` ON `pagamentos`.`cliente_id` = `cliente`.`id`
+LEFT JOIN `funcionarios` ON `pagamentos`.`funcionario_id` = `funcionarios`.`id`
+ORDER BY `pagamentos`.`data_criacao` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pagamentos`.`id`, `pagamentos`.`valor`, `pagamentos`.`data_pagamento`, `pagamentos`.`data_criacao`, `pagamentos`.`status_pagamento`, `cliente`.`nome`, `cliente`.`CPF` as `cpf`, `cliente`.`email`, `funcionarios`.`nome` as `funcionario_nome`
+FROM `pagamentos`
+LEFT JOIN `cliente` ON `pagamentos`.`cliente_id` = `cliente`.`id`
+LEFT JOIN `funcionarios` ON `pagamentos`.`funcionario_id` = `funcionarios`.`id`
+ORDER BY `pagamentos`.`data_criacao` DESC', [], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Financeiro.php(106): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->listaPagamentos()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-24 20:52:11 --> mysqli_sql_exception: Unknown column 'pagamentos.cliente_id' in 'on clause' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `pagamen...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pagamen...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pagamen...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pagamen...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(106): CodeIgniter\BaseModel->findAll()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Financeiro->listaPagamentos()
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2025-05-24 20:52:11 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pagamentos.cliente_id' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pagamentos`.`id`, `pagamentos`.`valor`, `pagamentos`.`data_pagamento`, `pagamentos`.`data_criacao`, `pagamentos`.`status_pagamento`, `cliente`.`nome`, `cliente`.`CPF` as `cpf`, `cliente`.`email`, `funcionarios`.`nome` as `funcionario_nome`
+FROM `pagamentos`
+LEFT JOIN `cliente` ON `pagamentos`.`cliente_id` = `cliente`.`id`
+LEFT JOIN `funcionarios` ON `pagamentos`.`funcionario_id` = `funcionarios`.`id`
+ORDER BY `pagamentos`.`data_criacao` DESC', [], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Financeiro.php(106): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->listaPagamentos()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-24 20:52:11 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pagamentos.cliente_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pagamentos`.`id`, `pagamentos`.`valor`, `pagamentos`.`data_pagamento`, `pagamentos`.`data_criacao`, `pagamentos`.`status_pagamento`, `cliente`.`nome`, `cliente`.`CPF` as `cpf`, `cliente`.`email`, `funcionarios`.`nome` as `funcionario_nome`
+FROM `pagamentos`
+LEFT JOIN `cliente` ON `pagamentos`.`cliente_id` = `cliente`.`id`
+LEFT JOIN `funcionarios` ON `pagamentos`.`funcionario_id` = `funcionarios`.`id`
+ORDER BY `pagamentos`.`data_criacao` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pagamentos`.`id`, `pagamentos`.`valor`, `pagamentos`.`data_pagamento`, `pagamentos`.`data_criacao`, `pagamentos`.`status_pagamento`, `cliente`.`nome`, `cliente`.`CPF` as `cpf`, `cliente`.`email`, `funcionarios`.`nome` as `funcionario_nome`
+FROM `pagamentos`
+LEFT JOIN `cliente` ON `pagamentos`.`cliente_id` = `cliente`.`id`
+LEFT JOIN `funcionarios` ON `pagamentos`.`funcionario_id` = `funcionarios`.`id`
+ORDER BY `pagamentos`.`data_criacao` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pagamentos`.`id`, `pagamentos`.`valor`, `pagamentos`.`data_pagamento`, `pagamentos`.`data_criacao`, `pagamentos`.`status_pagamento`, `cliente`.`nome`, `cliente`.`CPF` as `cpf`, `cliente`.`email`, `funcionarios`.`nome` as `funcionario_nome`
+FROM `pagamentos`
+LEFT JOIN `cliente` ON `pagamentos`.`cliente_id` = `cliente`.`id`
+LEFT JOIN `funcionarios` ON `pagamentos`.`funcionario_id` = `funcionarios`.`id`
+ORDER BY `pagamentos`.`data_criacao` DESC', [], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Financeiro.php(106): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->listaPagamentos()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-24 20:52:11 --> [Caused by] mysqli_sql_exception: Unknown column 'pagamentos.cliente_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `pagamentos`.`id`, `pagamentos`.`valor`, `pagamentos`.`data_pagamento`, `pagamentos`.`data_criacao`, `pagamentos`.`status_pagamento`, `cliente`.`nome`, `cliente`.`CPF` as `cpf`, `cliente`.`email`, `funcionarios`.`nome` as `funcionario_nome`
+FROM `pagamentos`
+LEFT JOIN `cliente` ON `pagamentos`.`cliente_id` = `cliente`.`id`
+LEFT JOIN `funcionarios` ON `pagamentos`.`funcionario_id` = `funcionarios`.`id`
+ORDER BY `pagamentos`.`data_criacao` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pagamentos`.`id`, `pagamentos`.`valor`, `pagamentos`.`data_pagamento`, `pagamentos`.`data_criacao`, `pagamentos`.`status_pagamento`, `cliente`.`nome`, `cliente`.`CPF` as `cpf`, `cliente`.`email`, `funcionarios`.`nome` as `funcionario_nome`
+FROM `pagamentos`
+LEFT JOIN `cliente` ON `pagamentos`.`cliente_id` = `cliente`.`id`
+LEFT JOIN `funcionarios` ON `pagamentos`.`funcionario_id` = `funcionarios`.`id`
+ORDER BY `pagamentos`.`data_criacao` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pagamentos`.`id`, `pagamentos`.`valor`, `pagamentos`.`data_pagamento`, `pagamentos`.`data_criacao`, `pagamentos`.`status_pagamento`, `cliente`.`nome`, `cliente`.`CPF` as `cpf`, `cliente`.`email`, `funcionarios`.`nome` as `funcionario_nome`
+FROM `pagamentos`
+LEFT JOIN `cliente` ON `pagamentos`.`cliente_id` = `cliente`.`id`
+LEFT JOIN `funcionarios` ON `pagamentos`.`funcionario_id` = `funcionarios`.`id`
+ORDER BY `pagamentos`.`data_criacao` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pagamentos`.`id`, `pagamentos`.`valor`, `pagamentos`.`data_pagamento`, `pagamentos`.`data_criacao`, `pagamentos`.`status_pagamento`, `cliente`.`nome`, `cliente`.`CPF` as `cpf`, `cliente`.`email`, `funcionarios`.`nome` as `funcionario_nome`
+FROM `pagamentos`
+LEFT JOIN `cliente` ON `pagamentos`.`cliente_id` = `cliente`.`id`
+LEFT JOIN `funcionarios` ON `pagamentos`.`funcionario_id` = `funcionarios`.`id`
+ORDER BY `pagamentos`.`data_criacao` DESC', [], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Financeiro.php(106): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->listaPagamentos()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-24 20:52:40 --> mysqli_sql_exception: Unknown column 'pagamentos.cliente_id' in 'on clause' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `pagamen...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pagamen...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pagamen...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pagamen...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(106): CodeIgniter\BaseModel->findAll()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Financeiro->listaPagamentos()
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2025-05-24 20:52:40 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pagamentos.cliente_id' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pagamentos`.`id`, `pagamentos`.`valor`, `pagamentos`.`data_pagamento`, `pagamentos`.`data_criacao`, `pagamentos`.`status_pagamento`, `cliente`.`nome`, `cliente`.`CPF` as `cpf`, `cliente`.`email`, `funcionarios`.`nome` as `funcionario_nome`
+FROM `pagamentos`
+LEFT JOIN `cliente` ON `pagamentos`.`cliente_id` = `cliente`.`id`
+LEFT JOIN `funcionarios` ON `pagamentos`.`funcionario_id` = `funcionarios`.`id`
+ORDER BY `pagamentos`.`data_criacao` DESC', [], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Financeiro.php(106): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->listaPagamentos()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-24 20:52:40 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pagamentos.cliente_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pagamentos`.`id`, `pagamentos`.`valor`, `pagamentos`.`data_pagamento`, `pagamentos`.`data_criacao`, `pagamentos`.`status_pagamento`, `cliente`.`nome`, `cliente`.`CPF` as `cpf`, `cliente`.`email`, `funcionarios`.`nome` as `funcionario_nome`
+FROM `pagamentos`
+LEFT JOIN `cliente` ON `pagamentos`.`cliente_id` = `cliente`.`id`
+LEFT JOIN `funcionarios` ON `pagamentos`.`funcionario_id` = `funcionarios`.`id`
+ORDER BY `pagamentos`.`data_criacao` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pagamentos`.`id`, `pagamentos`.`valor`, `pagamentos`.`data_pagamento`, `pagamentos`.`data_criacao`, `pagamentos`.`status_pagamento`, `cliente`.`nome`, `cliente`.`CPF` as `cpf`, `cliente`.`email`, `funcionarios`.`nome` as `funcionario_nome`
+FROM `pagamentos`
+LEFT JOIN `cliente` ON `pagamentos`.`cliente_id` = `cliente`.`id`
+LEFT JOIN `funcionarios` ON `pagamentos`.`funcionario_id` = `funcionarios`.`id`
+ORDER BY `pagamentos`.`data_criacao` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pagamentos`.`id`, `pagamentos`.`valor`, `pagamentos`.`data_pagamento`, `pagamentos`.`data_criacao`, `pagamentos`.`status_pagamento`, `cliente`.`nome`, `cliente`.`CPF` as `cpf`, `cliente`.`email`, `funcionarios`.`nome` as `funcionario_nome`
+FROM `pagamentos`
+LEFT JOIN `cliente` ON `pagamentos`.`cliente_id` = `cliente`.`id`
+LEFT JOIN `funcionarios` ON `pagamentos`.`funcionario_id` = `funcionarios`.`id`
+ORDER BY `pagamentos`.`data_criacao` DESC', [], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Financeiro.php(106): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->listaPagamentos()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-24 20:52:40 --> [Caused by] mysqli_sql_exception: Unknown column 'pagamentos.cliente_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `pagamentos`.`id`, `pagamentos`.`valor`, `pagamentos`.`data_pagamento`, `pagamentos`.`data_criacao`, `pagamentos`.`status_pagamento`, `cliente`.`nome`, `cliente`.`CPF` as `cpf`, `cliente`.`email`, `funcionarios`.`nome` as `funcionario_nome`
+FROM `pagamentos`
+LEFT JOIN `cliente` ON `pagamentos`.`cliente_id` = `cliente`.`id`
+LEFT JOIN `funcionarios` ON `pagamentos`.`funcionario_id` = `funcionarios`.`id`
+ORDER BY `pagamentos`.`data_criacao` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pagamentos`.`id`, `pagamentos`.`valor`, `pagamentos`.`data_pagamento`, `pagamentos`.`data_criacao`, `pagamentos`.`status_pagamento`, `cliente`.`nome`, `cliente`.`CPF` as `cpf`, `cliente`.`email`, `funcionarios`.`nome` as `funcionario_nome`
+FROM `pagamentos`
+LEFT JOIN `cliente` ON `pagamentos`.`cliente_id` = `cliente`.`id`
+LEFT JOIN `funcionarios` ON `pagamentos`.`funcionario_id` = `funcionarios`.`id`
+ORDER BY `pagamentos`.`data_criacao` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pagamentos`.`id`, `pagamentos`.`valor`, `pagamentos`.`data_pagamento`, `pagamentos`.`data_criacao`, `pagamentos`.`status_pagamento`, `cliente`.`nome`, `cliente`.`CPF` as `cpf`, `cliente`.`email`, `funcionarios`.`nome` as `funcionario_nome`
+FROM `pagamentos`
+LEFT JOIN `cliente` ON `pagamentos`.`cliente_id` = `cliente`.`id`
+LEFT JOIN `funcionarios` ON `pagamentos`.`funcionario_id` = `funcionarios`.`id`
+ORDER BY `pagamentos`.`data_criacao` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pagamentos`.`id`, `pagamentos`.`valor`, `pagamentos`.`data_pagamento`, `pagamentos`.`data_criacao`, `pagamentos`.`status_pagamento`, `cliente`.`nome`, `cliente`.`CPF` as `cpf`, `cliente`.`email`, `funcionarios`.`nome` as `funcionario_nome`
+FROM `pagamentos`
+LEFT JOIN `cliente` ON `pagamentos`.`cliente_id` = `cliente`.`id`
+LEFT JOIN `funcionarios` ON `pagamentos`.`funcionario_id` = `funcionarios`.`id`
+ORDER BY `pagamentos`.`data_criacao` DESC', [], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Financeiro.php(106): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->listaPagamentos()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

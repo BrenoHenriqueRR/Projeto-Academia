@@ -106,11 +106,11 @@
                                 <select id="dias_por_semana" formControlName="dias_por_semana">
                                     <option value="" disabled selected>Escolhe uma opção</option>
                                     @for (item of option_frequencia; track $index) {
-                                        @if (item == 7) {
-                                            <option [value]="item">Todos os dias</option>
-                                        }@else {
-                                            <option [value]="item">{{item}}x semana</option>
-                                        }
+                                    @if (item == 7) {
+                                    <option [value]="item">Todos os dias</option>
+                                    }@else {
+                                    <option [value]="item">{{item}}x semana</option>
+                                    }
                                     }
                                 </select>
                             </div>
@@ -166,14 +166,6 @@
                                 <label for="foto_perfil" class="file-input-label">Escolha um arquivo</label>
                                 <div class="file-name">{{fileName}}</div>
                             </div>
-                            <!-- <div class="col-md-4">
-                                <label class="form-label d-block">Treina com personal?</label>
-                                <div class="form-check form-switch col-md-4">
-                                    <input type="checkbox" class="form-check-input" id="checkPersonal"
-                                        formControlName="treino_com_personal" (change)="onPersonalToggle($event)">
-                                    <label class="form-check-label" for="checkPersonal">Sim</label>
-                                </div>
-                            </div> -->
                         </div>
                         <div class="row mb-3 ">
                             <div class="col-md-6 form-group">
@@ -221,7 +213,8 @@
                                 <label>Anexar Termo de Autorização</label>
                                 <input type="file" formControlName="termo_autorizacao" />
                                 <small>
-                                    <a href="assets/termos/autorizacao-menor-de-idade.pdf" target="_blank">Baixar modelo do termo</a>
+                                    <a href="assets/termos/autorizacao-menor-de-idade.pdf" target="_blank">Baixar modelo
+                                        do termo</a>
                                 </small>
                             </div>
                             <div class="col-3">
@@ -238,7 +231,20 @@
                             </div>
                         </div>
                         <div class="row form-group">
-                            <div *ngIf="mostraSelectPersonal" class="mt-2 form-group">
+                            <div class="mt-2 form-group">
+                                <label for="plano" class="form-label">Selecionar Plano</label>
+                                <select id="plano" formControlName="plano">
+                                    <option value="" disabled selected>Selecionar opções</option>
+                                    @for (dado of planos; track dado;) {
+                                    <option value="{{ dado['id'] }}">Plano {{ dado['nome'] }} - R$
+                                        {{ dado.preco | number:'1.2-2':'pt-br' }} / {{ dado.duracao }}
+                                        - {{ dado.dias_por_semana }}x por semana </option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <!-- <div class="row form-group">
+                            <div class="mt-2 form-group">
                                 <label for="personal" class="form-label">Selecionar Personal</label>
                                 <select formControlName="personal_id">
                                     <option value="" disabled selected>Escolha um personal</option>
@@ -247,14 +253,22 @@
                                     }
                                 </select>
                             </div>
-                        </div>
-                        <div  class="form-group mt-2">
+                        </div> -->
+                        <div class="row">
+                            <h4>Doucumentos:</h4>
+                            <div class="col-6">
                                 <label>Anexar Termo de Responsabilidade</label>
                                 <input type="file" formControlName="termo_responsabilidade" />
-                                <small>
-                                    <a href="assets/termos/autorizacao-treinar-sem-personal-e-anamnese.pdf" target="_blank">Baixar modelo do termo</a>
+                                <small >
+                                    <a href="assets/termos/autorizacao-treinar-sem-personal-e-anamnese.pdf"
+                                        target="_blank">Baixar modelo do termo</a>
                                 </small>
                             </div>
+                            <div class="col-6">
+                                <label>Anexar Atestado Médico</label>
+                                <input type="file" formControlName="atestado_medico" />
+                            </div>
+                        </div>
                         <br>
                     </form>
                 </div>

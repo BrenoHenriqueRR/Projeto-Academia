@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ConfigService } from '../../../services/admin/config/config.service';
 import { CadastroService } from '../../../services/cadastro.service';
 import { Route, Router } from '@angular/router';
+import { error } from 'jquery';
 
 @Component({
   selector: 'app-modal-cadastro',
@@ -83,9 +84,11 @@ export class ModalCadastroComponent {
       endereco: ['', Validators.required],
       datanascimento: ['', Validators.required],
       nivel_experiencia: ['iniciante', Validators.required],
-      treino_com_personal: [false],
-      termo_responsabilidade: [null],
-      termo_autorizacao: [null],
+      plano: ['', Validators.required],
+      atestado_medico: [''],
+      treino_com_personal: ['nao'],
+      termo_responsabilidade: [''],
+      termo_autorizacao: [''],
       personal_id: [null],
     });
     this.extraForm = this.fb.group({
@@ -169,6 +172,7 @@ export class ModalCadastroComponent {
           if (this.foto) {
             formData.append('foto_perfil', this.foto, this.foto.name);
           }
+          let funcionario_id = String(localStorage.getItem('idadmin'));
           let treino_com_personal = (this.CliForm.value.treino_com_personal == false) ? 'nao' : 'sim';
           const dataConvertida = this.stringParaData(this.CliForm.value.datanascimento);
           formData.append('nome', this.CliForm.value.nome);
@@ -181,8 +185,10 @@ export class ModalCadastroComponent {
           formData.append('treino_com_personal', treino_com_personal);
           formData.append('nivel_experiencia', this.CliForm.value.nivel_experiencia);
           formData.append('termo_responsabilidade', this.CliForm.value.termo_responsabilidade);
+          formData.append('atestado_medico', this.CliForm.value.atestado_medico);
           formData.append('termo_autorizacao', this.CliForm.value.termo_autorizacao);
           formData.append('personal_id', this.CliForm.value.personal_id);
+          formData.append('funcionario_id', funcionario_id);
           this.cliservice.sendData(formData).subscribe({
             next: (dados) => {
               this.alertas.success(dados.msg);

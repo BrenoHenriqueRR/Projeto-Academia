@@ -48,7 +48,14 @@ export class CadastroComponent {
   cadAdm: string = "";
   anamneseForm!: FormGroup;
   IdCliAdm: string = "";
-  fileName: string = 'Nenhum arquivo selecionado';
+  atestadoMedico!: File;
+  termoAutorizacao!: File;
+  fileNames: { [key: string]: string } = {
+    foto: 'Nenhum arquivo selecionado',
+    atestado_medico: 'Nenhum arquivo selecionado',
+    termo_autorizacao: 'Nenhum arquivo selecionado',
+  };
+
   foto: any;
 
   problemasSaude = [
@@ -200,9 +207,10 @@ export class CadastroComponent {
       endereco: new FormControl('', [Validators.required]),
       datanascimento: new FormControl('', [Validators.required]),
       nivel_experiencia: new FormControl('iniciante', [Validators.required]),
-      treino_com_personal: new FormControl(true),
-      termo_responsabilidade: new FormControl(null),
-      personal_id: new FormControl(null),
+      treino_com_personal: new FormControl('sim'),
+      atestado_medico: new FormControl(''),
+      termo_autorizacao: new FormControl(null),
+      personal_id: new FormControl(null, Validators.required),
     });
 
     this.anamneseForm = this.fb.group({
@@ -231,11 +239,12 @@ export class CadastroComponent {
       this.formcadastro.value.treino_com_personal = (this.formcadastro.value.treino_com_personal == false) ? 'nao' : 'sim';
       const dataNascimento = this.formcadastro.value.datanascimento;
       const partes = dataNascimento.split('/');
-      this.formcadastro.patchValue({datanascimento: `${partes[2]}-${partes[1]}-${partes[0]}`});
+      this.formcadastro.patchValue({ datanascimento: `${partes[2]}-${partes[1]}-${partes[0]}` });
 
       // Dados do cliente
       let dadosCli = this.formcadastro.getRawValue();
       let dadosAnamnese = this.anamneseForm.getRawValue();
+
 
 
       dadosCli['extras'] = this.select_extras.map((extra: { id: number }) => extra.id);
@@ -251,16 +260,21 @@ export class CadastroComponent {
       formData.append('cliente', JSON.stringify(dadosCli));
       formData.append('anamnese', JSON.stringify(dadosAnamnese));
       formData.append('foto_perfil', this.foto);
-      
+      formData.append('termo_autorizacao', this.termoAutorizacao);
+      formData.append('atestado_medico', this.atestadoMedico);
+      formData.append('funcionario_id', String(localStorage.getItem('idadmin')));
 
+      // console.log(this.foto); 
+      // console.log(this.formcadastro.value.termo_autorizacao); 
+      // console.log(this.formcadastro.value.atestado_medico); 
 
       this.service.createComplete(formData).subscribe({
         next: (resp) => {
-            this.alert.success("Cliente Cadastrado com sucesso !!");
-            setInterval(() => {
-              this.loading = false;
-              this.router.navigate(['/admin/painel/clientes']);
-            },100)
+          this.alert.success("Cliente Cadastrado com sucesso !!");
+          setInterval(() => {
+            this.loading = false;
+            this.router.navigate(['/admin/painel/clientes']);
+          }, 100)
         }, error: (err) => {
           this.alert.error("Erro ao cadastrar o cliente !!");
           console.log(err);
@@ -323,6 +337,7 @@ export class CadastroComponent {
           break;
         } else {
           setTimeout(() => {
+            console.log(this.formcadastro);
             this.etapa++;
             this.router.navigate([], {
               relativeTo: this.route,
@@ -374,13 +389,21 @@ export class CadastroComponent {
   }
 
 
-  onFileChange(event: Event) {
+  onFileChange(event: Event, tipo: string) {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
-      this.fileName = input.files[0].name;
-      this.foto = input.files[0];
+      const file = input.files[0];
+      this.fileNames[tipo] = file.name;
+
+      if (tipo === 'foto') {
+        this.foto = file;
+      } else if (tipo === 'atestado_medico') {
+        this.atestadoMedico = file;
+      } else if (tipo === 'termo_autorizacao') {
+        this.termoAutorizacao = file;
+      }
     } else {
-      this.fileName = 'Nenhum arquivo selecionado';
+      this.fileNames[tipo] = 'Nenhum arquivo selecionado';
     }
   }
 

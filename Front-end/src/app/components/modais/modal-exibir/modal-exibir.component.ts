@@ -1,12 +1,13 @@
 import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PnClienteService } from '../../../services/admin/pn-cliente/pn-cliente.service';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-modal-exibir',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule,CommonModule],
   templateUrl: './modal-exibir.component.html',
   styleUrl: './modal-exibir.component.css'
 })

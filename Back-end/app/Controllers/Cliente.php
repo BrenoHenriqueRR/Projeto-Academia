@@ -103,8 +103,10 @@ class Cliente extends BaseController
         $anamneseJson = $this->request->getPost('anamnese');
         $foto = $this->request->getFile('foto_perfil');
 
+        
         $cliente = json_decode($clienteJson, true);
         $anamnese = json_decode($anamneseJson, true);
+
 
         foreach ($anamnese as $key => $value) {
             if (is_array($value)) {
@@ -113,8 +115,16 @@ class Cliente extends BaseController
         }
 
         $cliente['status'] = 'inativo';
+        $atestado = null !== $this->request->getFile('atestado_medico') ? $this->request->getFile('atestado_medico') : null;
+        $termoaut = null !== $this->request->getFile('termo_autorizacao') ? $this->request->getFile('termo_autorizacao') : null;
+        $cliente['atestado_medico'] = $this->processarArquivo($atestado, 'atestado', $cliente['CPF']);
+        $cliente['termo_autorizacao'] = $this->processarArquivo($termoaut, 'termo_autorizacao', $cliente['CPF']);
+
         $this->model->insert($cliente);
         $id = $this->model->getInsertID();
+
+        $cliente['funcionario_id'] = $this->request->getPost('funcionario_id');
+      
 
         $anamnese['cliente_id'] = $id;
 
@@ -137,8 +147,13 @@ class Cliente extends BaseController
 
         $this->anamneseModel->insert($anamnese);
 
+        $planos = [
+            'plano' => $cliente['plano'][0],
+            'funcionario_id' => $cliente['funcionario_id'] 
+        ];
+
         if (!empty($cliente['plano'])) {
-            $this->ClientePlanos->create($cliente, $id);
+            $this->ClientePlanos->create($planos, $id);
         }
 
         $verif_email = array(

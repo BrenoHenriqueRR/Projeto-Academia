@@ -74,6 +74,7 @@ $routes->group('Treino', function ($routes) {
 $routes->post('/Ficha/create', 'Ficha::create');
 $routes->post('/Ficha/pesquisarCli', 'Ficha::pesquisarCli');
 $routes->post('/Ficha/fichaNaoConcluida', 'Ficha::fichaNaoConcluida');
+$routes->post('/Ficha/concluirFicha', 'Ficha::concluirFicha');
 
 // =====================
 // FINANCEIRO

@@ -46,8 +46,8 @@ export class PnFinanceiroService {
   }
 
   // Método existente
-  gerarPdf(mes: string, ano: string): void {
-    const url = `${this.apiUrl}/relatorioPdf?mes=${mes}&ano=${ano}`;
+  gerarPdfMensal(mes: string, ano: string): void {
+    const url = `${this.apiUrl}/gerarRelatorioMensalPdf?mes=${mes}&ano=${ano}`;
     window.open(url, '_blank');
   }
 

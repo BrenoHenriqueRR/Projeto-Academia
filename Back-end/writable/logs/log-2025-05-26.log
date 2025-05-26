@@ -387,3 +387,1049 @@ ORDER BY `pagamentos`.`data_criacao` DESC', [], false)
  9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
 10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
 11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-26 12:25:28 --> mysqli_sql_exception: Unknown column 'pagamentos.cliente_planos_id' in 'on clause' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Cliente.php(161): CodeIgniter\BaseModel->findAll()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Cliente->pesquisarPag()
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2025-05-26 12:25:28 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pagamentos.cliente_planos_id' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `pagamentos`
+JOIN `clientes_planos` ON `clientes_planos`.`id` = `pagamentos`.`cliente_planos_id`', [], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Cliente.php(161): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->pesquisarPag()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 12:25:28 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pagamentos.cliente_planos_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `pagamentos`
+JOIN `clientes_planos` ON `clientes_planos`.`id` = `pagamentos`.`cliente_planos_id`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `pagamentos`
+JOIN `clientes_planos` ON `clientes_planos`.`id` = `pagamentos`.`cliente_planos_id`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `pagamentos`
+JOIN `clientes_planos` ON `clientes_planos`.`id` = `pagamentos`.`cliente_planos_id`', [], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Cliente.php(161): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->pesquisarPag()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 12:25:28 --> [Caused by] mysqli_sql_exception: Unknown column 'pagamentos.cliente_planos_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *
+FROM `pagamentos`
+JOIN `clientes_planos` ON `clientes_planos`.`id` = `pagamentos`.`cliente_planos_id`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `pagamentos`
+JOIN `clientes_planos` ON `clientes_planos`.`id` = `pagamentos`.`cliente_planos_id`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `pagamentos`
+JOIN `clientes_planos` ON `clientes_planos`.`id` = `pagamentos`.`cliente_planos_id`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `pagamentos`
+JOIN `clientes_planos` ON `clientes_planos`.`id` = `pagamentos`.`cliente_planos_id`', [], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Cliente.php(161): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->pesquisarPag()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-26 12:25:31 --> mysqli_sql_exception: Unknown column 'pagamentos.cliente_planos_id' in 'on clause' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `pagamen...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pagamen...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pagamen...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pagamen...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(108): CodeIgniter\BaseModel->findAll()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Financeiro->listaPagamentos()
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2025-05-26 12:25:31 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pagamentos.cliente_planos_id' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pagamentos`.`id`, `pagamentos`.`valor`, `pagamentos`.`data_pagamento`, `pagamentos`.`data_criacao`, `pagamentos`.`status_pagamento`, `cliente`.`nome`, `cliente`.`CPF` as `cpf`, `cliente`.`email`, `clientes_planos`.`data_vencimento`, `funcionarios`.`nome` as `funcionario_nome`
+FROM `pagamentos`
+LEFT JOIN `clientes_planos` ON `pagamentos`.`cliente_planos_id` = `clientes_planos`.`id`
+LEFT JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+LEFT JOIN `funcionarios` ON `pagamentos`.`funcionario_id` = `funcionarios`.`id`
+ORDER BY `pagamentos`.`data_criacao` DESC', [], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Financeiro.php(108): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->listaPagamentos()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 12:25:31 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pagamentos.cliente_planos_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pagamentos`.`id`, `pagamentos`.`valor`, `pagamentos`.`data_pagamento`, `pagamentos`.`data_criacao`, `pagamentos`.`status_pagamento`, `cliente`.`nome`, `cliente`.`CPF` as `cpf`, `cliente`.`email`, `clientes_planos`.`data_vencimento`, `funcionarios`.`nome` as `funcionario_nome`
+FROM `pagamentos`
+LEFT JOIN `clientes_planos` ON `pagamentos`.`cliente_planos_id` = `clientes_planos`.`id`
+LEFT JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+LEFT JOIN `funcionarios` ON `pagamentos`.`funcionario_id` = `funcionarios`.`id`
+ORDER BY `pagamentos`.`data_criacao` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pagamentos`.`id`, `pagamentos`.`valor`, `pagamentos`.`data_pagamento`, `pagamentos`.`data_criacao`, `pagamentos`.`status_pagamento`, `cliente`.`nome`, `cliente`.`CPF` as `cpf`, `cliente`.`email`, `clientes_planos`.`data_vencimento`, `funcionarios`.`nome` as `funcionario_nome`
+FROM `pagamentos`
+LEFT JOIN `clientes_planos` ON `pagamentos`.`cliente_planos_id` = `clientes_planos`.`id`
+LEFT JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+LEFT JOIN `funcionarios` ON `pagamentos`.`funcionario_id` = `funcionarios`.`id`
+ORDER BY `pagamentos`.`data_criacao` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pagamentos`.`id`, `pagamentos`.`valor`, `pagamentos`.`data_pagamento`, `pagamentos`.`data_criacao`, `pagamentos`.`status_pagamento`, `cliente`.`nome`, `cliente`.`CPF` as `cpf`, `cliente`.`email`, `clientes_planos`.`data_vencimento`, `funcionarios`.`nome` as `funcionario_nome`
+FROM `pagamentos`
+LEFT JOIN `clientes_planos` ON `pagamentos`.`cliente_planos_id` = `clientes_planos`.`id`
+LEFT JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+LEFT JOIN `funcionarios` ON `pagamentos`.`funcionario_id` = `funcionarios`.`id`
+ORDER BY `pagamentos`.`data_criacao` DESC', [], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Financeiro.php(108): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->listaPagamentos()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 12:25:31 --> [Caused by] mysqli_sql_exception: Unknown column 'pagamentos.cliente_planos_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `pagamentos`.`id`, `pagamentos`.`valor`, `pagamentos`.`data_pagamento`, `pagamentos`.`data_criacao`, `pagamentos`.`status_pagamento`, `cliente`.`nome`, `cliente`.`CPF` as `cpf`, `cliente`.`email`, `clientes_planos`.`data_vencimento`, `funcionarios`.`nome` as `funcionario_nome`
+FROM `pagamentos`
+LEFT JOIN `clientes_planos` ON `pagamentos`.`cliente_planos_id` = `clientes_planos`.`id`
+LEFT JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+LEFT JOIN `funcionarios` ON `pagamentos`.`funcionario_id` = `funcionarios`.`id`
+ORDER BY `pagamentos`.`data_criacao` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pagamentos`.`id`, `pagamentos`.`valor`, `pagamentos`.`data_pagamento`, `pagamentos`.`data_criacao`, `pagamentos`.`status_pagamento`, `cliente`.`nome`, `cliente`.`CPF` as `cpf`, `cliente`.`email`, `clientes_planos`.`data_vencimento`, `funcionarios`.`nome` as `funcionario_nome`
+FROM `pagamentos`
+LEFT JOIN `clientes_planos` ON `pagamentos`.`cliente_planos_id` = `clientes_planos`.`id`
+LEFT JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+LEFT JOIN `funcionarios` ON `pagamentos`.`funcionario_id` = `funcionarios`.`id`
+ORDER BY `pagamentos`.`data_criacao` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pagamentos`.`id`, `pagamentos`.`valor`, `pagamentos`.`data_pagamento`, `pagamentos`.`data_criacao`, `pagamentos`.`status_pagamento`, `cliente`.`nome`, `cliente`.`CPF` as `cpf`, `cliente`.`email`, `clientes_planos`.`data_vencimento`, `funcionarios`.`nome` as `funcionario_nome`
+FROM `pagamentos`
+LEFT JOIN `clientes_planos` ON `pagamentos`.`cliente_planos_id` = `clientes_planos`.`id`
+LEFT JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+LEFT JOIN `funcionarios` ON `pagamentos`.`funcionario_id` = `funcionarios`.`id`
+ORDER BY `pagamentos`.`data_criacao` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pagamentos`.`id`, `pagamentos`.`valor`, `pagamentos`.`data_pagamento`, `pagamentos`.`data_criacao`, `pagamentos`.`status_pagamento`, `cliente`.`nome`, `cliente`.`CPF` as `cpf`, `cliente`.`email`, `clientes_planos`.`data_vencimento`, `funcionarios`.`nome` as `funcionario_nome`
+FROM `pagamentos`
+LEFT JOIN `clientes_planos` ON `pagamentos`.`cliente_planos_id` = `clientes_planos`.`id`
+LEFT JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+LEFT JOIN `funcionarios` ON `pagamentos`.`funcionario_id` = `funcionarios`.`id`
+ORDER BY `pagamentos`.`data_criacao` DESC', [], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Financeiro.php(108): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->listaPagamentos()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-26 12:25:44 --> mysqli_sql_exception: Unknown column 'pagamentos.cliente_planos_id' in 'on clause' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Cliente.php(161): CodeIgniter\BaseModel->findAll()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Cliente->pesquisarPag()
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2025-05-26 12:25:44 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pagamentos.cliente_planos_id' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `pagamentos`
+JOIN `clientes_planos` ON `clientes_planos`.`id` = `pagamentos`.`cliente_planos_id`', [], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Cliente.php(161): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->pesquisarPag()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 12:25:44 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pagamentos.cliente_planos_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `pagamentos`
+JOIN `clientes_planos` ON `clientes_planos`.`id` = `pagamentos`.`cliente_planos_id`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `pagamentos`
+JOIN `clientes_planos` ON `clientes_planos`.`id` = `pagamentos`.`cliente_planos_id`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `pagamentos`
+JOIN `clientes_planos` ON `clientes_planos`.`id` = `pagamentos`.`cliente_planos_id`', [], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Cliente.php(161): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->pesquisarPag()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 12:25:44 --> [Caused by] mysqli_sql_exception: Unknown column 'pagamentos.cliente_planos_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *
+FROM `pagamentos`
+JOIN `clientes_planos` ON `clientes_planos`.`id` = `pagamentos`.`cliente_planos_id`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `pagamentos`
+JOIN `clientes_planos` ON `clientes_planos`.`id` = `pagamentos`.`cliente_planos_id`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `pagamentos`
+JOIN `clientes_planos` ON `clientes_planos`.`id` = `pagamentos`.`cliente_planos_id`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `pagamentos`
+JOIN `clientes_planos` ON `clientes_planos`.`id` = `pagamentos`.`cliente_planos_id`', [], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Cliente.php(161): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->pesquisarPag()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-26 13:10:13 --> mysqli_sql_exception: Unknown column 'pagamentos.cliente_planos_id' in 'on clause' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `pagamen...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pagamen...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pagamen...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pagamen...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(305): CodeIgniter\BaseModel->findAll()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(334): App\Controllers\Financeiro->getPagamentosData('05', '2025')
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2025-05-26 13:10:13 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pagamentos.cliente_planos_id' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pagamentos`.*, `cliente`.`nome`, `cliente`.`CPF` as `cpf`
+FROM `pagamentos`
+LEFT JOIN `clientes_planos` ON `pagamentos`.`cliente_planos_id` = `clientes_planos`.`id`
+LEFT JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+ORDER BY `data_pagamento` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Financeiro.php(305): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Financeiro.php(334): App\Controllers\Financeiro->getPagamentosData('05', '2025')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 13:10:13 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pagamentos.cliente_planos_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pagamentos`.*, `cliente`.`nome`, `cliente`.`CPF` as `cpf`
+FROM `pagamentos`
+LEFT JOIN `clientes_planos` ON `pagamentos`.`cliente_planos_id` = `clientes_planos`.`id`
+LEFT JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+ORDER BY `data_pagamento` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pagamentos`.*, `cliente`.`nome`, `cliente`.`CPF` as `cpf`
+FROM `pagamentos`
+LEFT JOIN `clientes_planos` ON `pagamentos`.`cliente_planos_id` = `clientes_planos`.`id`
+LEFT JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+ORDER BY `data_pagamento` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pagamentos`.*, `cliente`.`nome`, `cliente`.`CPF` as `cpf`
+FROM `pagamentos`
+LEFT JOIN `clientes_planos` ON `pagamentos`.`cliente_planos_id` = `clientes_planos`.`id`
+LEFT JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+ORDER BY `data_pagamento` DESC', [...], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Financeiro.php(305): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Financeiro.php(334): App\Controllers\Financeiro->getPagamentosData('05', '2025')
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 13:10:13 --> [Caused by] mysqli_sql_exception: Unknown column 'pagamentos.cliente_planos_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `pagamentos`.*, `cliente`.`nome`, `cliente`.`CPF` as `cpf`
+FROM `pagamentos`
+LEFT JOIN `clientes_planos` ON `pagamentos`.`cliente_planos_id` = `clientes_planos`.`id`
+LEFT JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+ORDER BY `data_pagamento` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pagamentos`.*, `cliente`.`nome`, `cliente`.`CPF` as `cpf`
+FROM `pagamentos`
+LEFT JOIN `clientes_planos` ON `pagamentos`.`cliente_planos_id` = `clientes_planos`.`id`
+LEFT JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+ORDER BY `data_pagamento` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pagamentos`.*, `cliente`.`nome`, `cliente`.`CPF` as `cpf`
+FROM `pagamentos`
+LEFT JOIN `clientes_planos` ON `pagamentos`.`cliente_planos_id` = `clientes_planos`.`id`
+LEFT JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+ORDER BY `data_pagamento` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pagamentos`.*, `cliente`.`nome`, `cliente`.`CPF` as `cpf`
+FROM `pagamentos`
+LEFT JOIN `clientes_planos` ON `pagamentos`.`cliente_planos_id` = `clientes_planos`.`id`
+LEFT JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+ORDER BY `data_pagamento` DESC', [...], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Financeiro.php(305): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Financeiro.php(334): App\Controllers\Financeiro->getPagamentosData('05', '2025')
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-26 13:12:50 --> mysqli_sql_exception: Unknown column 'pagamentos.cliente_planos_id' in 'on clause' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `pagamen...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pagamen...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pagamen...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pagamen...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(305): CodeIgniter\BaseModel->findAll()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(334): App\Controllers\Financeiro->getPagamentosData('05', '2025')
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2025-05-26 13:12:50 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pagamentos.cliente_planos_id' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pagamentos`.*, `cliente`.`nome`, `cliente`.`CPF` as `cpf`
+FROM `pagamentos`
+LEFT JOIN `clientes_planos` ON `pagamentos`.`cliente_planos_id` = `clientes_planos`.`id`
+LEFT JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+ORDER BY `data_pagamento` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Financeiro.php(305): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Financeiro.php(334): App\Controllers\Financeiro->getPagamentosData('05', '2025')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 13:12:50 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pagamentos.cliente_planos_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pagamentos`.*, `cliente`.`nome`, `cliente`.`CPF` as `cpf`
+FROM `pagamentos`
+LEFT JOIN `clientes_planos` ON `pagamentos`.`cliente_planos_id` = `clientes_planos`.`id`
+LEFT JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+ORDER BY `data_pagamento` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pagamentos`.*, `cliente`.`nome`, `cliente`.`CPF` as `cpf`
+FROM `pagamentos`
+LEFT JOIN `clientes_planos` ON `pagamentos`.`cliente_planos_id` = `clientes_planos`.`id`
+LEFT JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+ORDER BY `data_pagamento` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pagamentos`.*, `cliente`.`nome`, `cliente`.`CPF` as `cpf`
+FROM `pagamentos`
+LEFT JOIN `clientes_planos` ON `pagamentos`.`cliente_planos_id` = `clientes_planos`.`id`
+LEFT JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+ORDER BY `data_pagamento` DESC', [...], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Financeiro.php(305): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Financeiro.php(334): App\Controllers\Financeiro->getPagamentosData('05', '2025')
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 13:12:50 --> [Caused by] mysqli_sql_exception: Unknown column 'pagamentos.cliente_planos_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `pagamentos`.*, `cliente`.`nome`, `cliente`.`CPF` as `cpf`
+FROM `pagamentos`
+LEFT JOIN `clientes_planos` ON `pagamentos`.`cliente_planos_id` = `clientes_planos`.`id`
+LEFT JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+ORDER BY `data_pagamento` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pagamentos`.*, `cliente`.`nome`, `cliente`.`CPF` as `cpf`
+FROM `pagamentos`
+LEFT JOIN `clientes_planos` ON `pagamentos`.`cliente_planos_id` = `clientes_planos`.`id`
+LEFT JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+ORDER BY `data_pagamento` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pagamentos`.*, `cliente`.`nome`, `cliente`.`CPF` as `cpf`
+FROM `pagamentos`
+LEFT JOIN `clientes_planos` ON `pagamentos`.`cliente_planos_id` = `clientes_planos`.`id`
+LEFT JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+WHERE `data_pagamento` LIKE \'%2025-05%\' ESCAPE \'!\'
+ORDER BY `data_pagamento` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pagamentos`.*, `cliente`.`nome`, `cliente`.`CPF` as `cpf`
+FROM `pagamentos`
+LEFT JOIN `clientes_planos` ON `pagamentos`.`cliente_planos_id` = `clientes_planos`.`id`
+LEFT JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+WHERE `data_pagamento` LIKE :data_pagamento: ESCAPE \'!\'
+ORDER BY `data_pagamento` DESC', [...], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Financeiro.php(305): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Financeiro.php(334): App\Controllers\Financeiro->getPagamentosData('05', '2025')
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-26 13:23:36 --> mysqli_sql_exception: Column 'perg_fuma' cannot be null in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `an...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `an...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `an...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `an...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(802): CodeIgniter\Model->doInsert(Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(744): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Cliente.php(146): CodeIgniter\Model->insert(Array)
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Cliente->createComplete()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2025-05-26 13:23:36 --> CodeIgniter\Database\Exceptions\DatabaseException: Column 'perg_fuma' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `anamnese` (`perg_problemas_saude`, `perg_sintomas`, `perg_medicamentos`, `perg_historico_familiar_cardiaco`, `perg_restricao_medica`, `perg_gravida`, `perg_fuma`, `perg_bebe_alcool`, `perg_exercicio_frequente`, `perg_qtde_aerobico`, `perg_colesterol_medido`, `perg_alimentacao_balanceada`, `perg_gordura_alta`, `perg_nivel_estresse`, `perg_objetivos_saude`, `anotacoes`, `cliente_id`) VALUES (:perg_problemas_saude:, :perg_sintomas:, :perg_medicamentos:, :perg_historico_familiar_cardiaco:, :perg_restricao_medica:, :perg_gravida:, :perg_fuma:, :perg_bebe_alcool:, :perg_exercicio_frequente:, :perg_qtde_aerobico:, :perg_colesterol_medido:, :perg_alimentacao_balanceada:, :perg_gordura_alta:, :perg_nivel_estresse:, :perg_objetivos_saude:, :anotacoes:, :cliente_id:)', [...], false)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Cliente.php(146): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->createComplete()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 13:23:36 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Column 'perg_fuma' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `anamnese` (`perg_problemas_saude`, `perg_sintomas`, `perg_medicamentos`, `perg_historico_familiar_cardiaco`, `perg_restricao_medica`, `perg_gravida`, `perg_fuma`, `perg_bebe_alcool`, `perg_exercicio_frequente`, `perg_qtde_aerobico`, `perg_colesterol_medido`, `perg_alimentacao_balanceada`, `perg_gordura_alta`, `perg_nivel_estresse`, `perg_objetivos_saude`, `anotacoes`, `cliente_id`) VALUES (\'Doença cardiaca coronariana,Doença cardiaca reumática\', \'Dor nas articulações,tendões ou músculo\', \'\', \'1\', NULL, \'0\', NULL, NULL, \'0\', NULL, \'1\', \'1\', \'0\', \'moderado\', \'Perder peso,Diminuir colesterol,Reduzir as dores nas costas,Sentir-se melhor\', NULL, 107)')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `anamnese` (`perg_problemas_saude`, `perg_sintomas`, `perg_medicamentos`, `perg_historico_familiar_cardiaco`, `perg_restricao_medica`, `perg_gravida`, `perg_fuma`, `perg_bebe_alcool`, `perg_exercicio_frequente`, `perg_qtde_aerobico`, `perg_colesterol_medido`, `perg_alimentacao_balanceada`, `perg_gordura_alta`, `perg_nivel_estresse`, `perg_objetivos_saude`, `anotacoes`, `cliente_id`) VALUES (\'Doença cardiaca coronariana,Doença cardiaca reumática\', \'Dor nas articulações,tendões ou músculo\', \'\', \'1\', NULL, \'0\', NULL, NULL, \'0\', NULL, \'1\', \'1\', \'0\', \'moderado\', \'Perder peso,Diminuir colesterol,Reduzir as dores nas costas,Sentir-se melhor\', NULL, 107)')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `anamnese` (`perg_problemas_saude`, `perg_sintomas`, `perg_medicamentos`, `perg_historico_familiar_cardiaco`, `perg_restricao_medica`, `perg_gravida`, `perg_fuma`, `perg_bebe_alcool`, `perg_exercicio_frequente`, `perg_qtde_aerobico`, `perg_colesterol_medido`, `perg_alimentacao_balanceada`, `perg_gordura_alta`, `perg_nivel_estresse`, `perg_objetivos_saude`, `anotacoes`, `cliente_id`) VALUES (:perg_problemas_saude:, :perg_sintomas:, :perg_medicamentos:, :perg_historico_familiar_cardiaco:, :perg_restricao_medica:, :perg_gravida:, :perg_fuma:, :perg_bebe_alcool:, :perg_exercicio_frequente:, :perg_qtde_aerobico:, :perg_colesterol_medido:, :perg_alimentacao_balanceada:, :perg_gordura_alta:, :perg_nivel_estresse:, :perg_objetivos_saude:, :anotacoes:, :cliente_id:)', [...], false)
+ 4 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\Cliente.php(146): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->createComplete()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 13:23:36 --> [Caused by] mysqli_sql_exception: Column 'perg_fuma' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `anamnese` (`perg_problemas_saude`, `perg_sintomas`, `perg_medicamentos`, `perg_historico_familiar_cardiaco`, `perg_restricao_medica`, `perg_gravida`, `perg_fuma`, `perg_bebe_alcool`, `perg_exercicio_frequente`, `perg_qtde_aerobico`, `perg_colesterol_medido`, `perg_alimentacao_balanceada`, `perg_gordura_alta`, `perg_nivel_estresse`, `perg_objetivos_saude`, `anotacoes`, `cliente_id`) VALUES (\'Doença cardiaca coronariana,Doença cardiaca reumática\', \'Dor nas articulações,tendões ou músculo\', \'\', \'1\', NULL, \'0\', NULL, NULL, \'0\', NULL, \'1\', \'1\', \'0\', \'moderado\', \'Perder peso,Diminuir colesterol,Reduzir as dores nas costas,Sentir-se melhor\', NULL, 107)', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `anamnese` (`perg_problemas_saude`, `perg_sintomas`, `perg_medicamentos`, `perg_historico_familiar_cardiaco`, `perg_restricao_medica`, `perg_gravida`, `perg_fuma`, `perg_bebe_alcool`, `perg_exercicio_frequente`, `perg_qtde_aerobico`, `perg_colesterol_medido`, `perg_alimentacao_balanceada`, `perg_gordura_alta`, `perg_nivel_estresse`, `perg_objetivos_saude`, `anotacoes`, `cliente_id`) VALUES (\'Doença cardiaca coronariana,Doença cardiaca reumática\', \'Dor nas articulações,tendões ou músculo\', \'\', \'1\', NULL, \'0\', NULL, NULL, \'0\', NULL, \'1\', \'1\', \'0\', \'moderado\', \'Perder peso,Diminuir colesterol,Reduzir as dores nas costas,Sentir-se melhor\', NULL, 107)')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `anamnese` (`perg_problemas_saude`, `perg_sintomas`, `perg_medicamentos`, `perg_historico_familiar_cardiaco`, `perg_restricao_medica`, `perg_gravida`, `perg_fuma`, `perg_bebe_alcool`, `perg_exercicio_frequente`, `perg_qtde_aerobico`, `perg_colesterol_medido`, `perg_alimentacao_balanceada`, `perg_gordura_alta`, `perg_nivel_estresse`, `perg_objetivos_saude`, `anotacoes`, `cliente_id`) VALUES (\'Doença cardiaca coronariana,Doença cardiaca reumática\', \'Dor nas articulações,tendões ou músculo\', \'\', \'1\', NULL, \'0\', NULL, NULL, \'0\', NULL, \'1\', \'1\', \'0\', \'moderado\', \'Perder peso,Diminuir colesterol,Reduzir as dores nas costas,Sentir-se melhor\', NULL, 107)')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `anamnese` (`perg_problemas_saude`, `perg_sintomas`, `perg_medicamentos`, `perg_historico_familiar_cardiaco`, `perg_restricao_medica`, `perg_gravida`, `perg_fuma`, `perg_bebe_alcool`, `perg_exercicio_frequente`, `perg_qtde_aerobico`, `perg_colesterol_medido`, `perg_alimentacao_balanceada`, `perg_gordura_alta`, `perg_nivel_estresse`, `perg_objetivos_saude`, `anotacoes`, `cliente_id`) VALUES (:perg_problemas_saude:, :perg_sintomas:, :perg_medicamentos:, :perg_historico_familiar_cardiaco:, :perg_restricao_medica:, :perg_gravida:, :perg_fuma:, :perg_bebe_alcool:, :perg_exercicio_frequente:, :perg_qtde_aerobico:, :perg_colesterol_medido:, :perg_alimentacao_balanceada:, :perg_gordura_alta:, :perg_nivel_estresse:, :perg_objetivos_saude:, :anotacoes:, :cliente_id:)', [...], false)
+ 5 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Cliente.php(146): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->createComplete()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 13:28:26 --> ErrorException: Undefined array key "duracao"
+in APPPATH\Controllers\ClientePlanos.php on line 30.
+ 1 APPPATH\Controllers\ClientePlanos.php(30): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "duracao"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\ClientePlanos.php', 30)
+ 2 APPPATH\Controllers\Cliente.php(149): App\Controllers\ClientePlanos->create([...], 108)
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->createComplete()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 13:32:31 --> ErrorException: Undefined array key 0
+in APPPATH\Controllers\Cliente.php on line 149.
+ 1 APPPATH\Controllers\Cliente.php(149): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Cliente.php', 149)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->createComplete()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 13:34:37 --> ErrorException: Undefined array key "duracao"
+in APPPATH\Controllers\ClientePlanos.php on line 30.
+ 1 APPPATH\Controllers\ClientePlanos.php(30): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "duracao"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\ClientePlanos.php', 30)
+ 2 APPPATH\Controllers\Cliente.php(154): App\Controllers\ClientePlanos->create([...], 110)
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->createComplete()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-26 13:36:56 --> mysqli_sql_exception: Unknown column 'forma_pagamento' in 'field list' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `pa...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `pa...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `pa...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `pa...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(802): CodeIgniter\Model->doInsert(Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(744): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\ClientePlanos.php(63): CodeIgniter\Model->insert(Array)
+#8 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Cliente.php(156): App\Controllers\ClientePlanos->create(Array, 1)
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Cliente->createComplete()
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#11 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2025-05-26 13:36:56 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'forma_pagamento' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `pagamentos` (`valor`, `status_pagamento`, `data_pagamento`, `forma_pagamento`, `funcionario_id`, `cliente_planos_id`) VALUES (:valor:, :status_pagamento:, :data_pagamento:, :forma_pagamento:, :funcionario_id:, :cliente_planos_id:)', [...], false)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\ClientePlanos.php(63): CodeIgniter\Model->insert([...])
+ 6 APPPATH\Controllers\Cliente.php(156): App\Controllers\ClientePlanos->create([...], 1)
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->createComplete()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 13:36:56 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'forma_pagamento' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `pagamentos` (`valor`, `status_pagamento`, `data_pagamento`, `forma_pagamento`, `funcionario_id`, `cliente_planos_id`) VALUES (\'100.00\', \'pendente\', NULL, NULL, NULL, 1)')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `pagamentos` (`valor`, `status_pagamento`, `data_pagamento`, `forma_pagamento`, `funcionario_id`, `cliente_planos_id`) VALUES (\'100.00\', \'pendente\', NULL, NULL, NULL, 1)')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `pagamentos` (`valor`, `status_pagamento`, `data_pagamento`, `forma_pagamento`, `funcionario_id`, `cliente_planos_id`) VALUES (:valor:, :status_pagamento:, :data_pagamento:, :forma_pagamento:, :funcionario_id:, :cliente_planos_id:)', [...], false)
+ 4 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\ClientePlanos.php(63): CodeIgniter\Model->insert([...])
+ 8 APPPATH\Controllers\Cliente.php(156): App\Controllers\ClientePlanos->create([...], 1)
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->createComplete()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 13:36:56 --> [Caused by] mysqli_sql_exception: Unknown column 'forma_pagamento' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `pagamentos` (`valor`, `status_pagamento`, `data_pagamento`, `forma_pagamento`, `funcionario_id`, `cliente_planos_id`) VALUES (\'100.00\', \'pendente\', NULL, NULL, NULL, 1)', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `pagamentos` (`valor`, `status_pagamento`, `data_pagamento`, `forma_pagamento`, `funcionario_id`, `cliente_planos_id`) VALUES (\'100.00\', \'pendente\', NULL, NULL, NULL, 1)')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `pagamentos` (`valor`, `status_pagamento`, `data_pagamento`, `forma_pagamento`, `funcionario_id`, `cliente_planos_id`) VALUES (\'100.00\', \'pendente\', NULL, NULL, NULL, 1)')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `pagamentos` (`valor`, `status_pagamento`, `data_pagamento`, `forma_pagamento`, `funcionario_id`, `cliente_planos_id`) VALUES (:valor:, :status_pagamento:, :data_pagamento:, :forma_pagamento:, :funcionario_id:, :cliente_planos_id:)', [...], false)
+ 5 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\ClientePlanos.php(63): CodeIgniter\Model->insert([...])
+ 9 APPPATH\Controllers\Cliente.php(156): App\Controllers\ClientePlanos->create([...], 1)
+10 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->createComplete()
+11 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+12 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+WARNING - 2025-05-26 13:44:29 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\Cliente.php on line 107.
+ 1 APPPATH\Controllers\Cliente.php(107): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->createComplete()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+WARNING - 2025-05-26 13:44:29 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\Cliente.php on line 108.
+ 1 APPPATH\Controllers\Cliente.php(108): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->createComplete()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 13:44:29 --> ErrorException: foreach() argument must be of type array|object, null given
+in APPPATH\Controllers\Cliente.php on line 111.
+ 1 APPPATH\Controllers\Cliente.php(111): CodeIgniter\Debug\Exceptions->errorHandler(2, 'foreach() argument must be of type array|object, null given', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Cliente.php', 111)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->createComplete()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 14:33:39 --> ErrorException: Undefined property: stdClass::$id
+in APPPATH\Controllers\ClientePlanos.php on line 90.
+ 1 APPPATH\Controllers\ClientePlanos.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$id', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\ClientePlanos.php', 90)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\ClientePlanos->pesquisarId()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientePlanos))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 14:33:50 --> ErrorException: Undefined property: stdClass::$id
+in APPPATH\Controllers\ClientePlanos.php on line 90.
+ 1 APPPATH\Controllers\ClientePlanos.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$id', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\ClientePlanos.php', 90)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\ClientePlanos->pesquisarId()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientePlanos))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 14:33:52 --> ErrorException: Undefined property: stdClass::$id
+in APPPATH\Controllers\ClientePlanos.php on line 90.
+ 1 APPPATH\Controllers\ClientePlanos.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$id', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\ClientePlanos.php', 90)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\ClientePlanos->pesquisarId()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientePlanos))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 15:09:12 --> Error: Cannot use object of type stdClass as array
+in APPPATH\Controllers\Ficha.php on line 143.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->concluirFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-26 15:26:00 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ':8:
+AND `cliente_id` = :cliente_id:' at line 3 in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT COUNT(*)...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*)...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*)...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1700): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(624): CodeIgniter\Database\BaseBuilder->countAllResults(true)
+#5 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Ficha.php(154): CodeIgniter\Model->countAllResults()
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Ficha.php(144): App\Controllers\Ficha->resetarFichasSeTodasConcluidas('1')
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Ficha->concluirFicha()
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2025-05-26 15:26:00 --> CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ':8:
+AND `cliente_id` = :cliente_id:' at line 3
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1700): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `fichas`
+WHERE 8 = :8:
+AND `cliente_id` = :cliente_id:', [...], false)
+ 2 SYSTEMPATH\Model.php(624): CodeIgniter\Database\BaseBuilder->countAllResults(true)
+ 3 APPPATH\Controllers\Ficha.php(154): CodeIgniter\Model->countAllResults()
+ 4 APPPATH\Controllers\Ficha.php(144): App\Controllers\Ficha->resetarFichasSeTodasConcluidas('1')
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->concluirFicha()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 15:26:00 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ':8:
+AND `cliente_id` = :cliente_id:' at line 3
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM `fichas`
+WHERE 8 = :8:
+AND `cliente_id` = :cliente_id:')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM `fichas`
+WHERE 8 = :8:
+AND `cliente_id` = :cliente_id:')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1700): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `fichas`
+WHERE 8 = :8:
+AND `cliente_id` = :cliente_id:', [...], false)
+ 4 SYSTEMPATH\Model.php(624): CodeIgniter\Database\BaseBuilder->countAllResults(true)
+ 5 APPPATH\Controllers\Ficha.php(154): CodeIgniter\Model->countAllResults()
+ 6 APPPATH\Controllers\Ficha.php(144): App\Controllers\Ficha->resetarFichasSeTodasConcluidas('1')
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->concluirFicha()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 15:26:00 --> [Caused by] mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ':8:
+AND `cliente_id` = :cliente_id:' at line 3
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT COUNT(*) AS `numrows`
+FROM `fichas`
+WHERE 8 = :8:
+AND `cliente_id` = :cliente_id:', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM `fichas`
+WHERE 8 = :8:
+AND `cliente_id` = :cliente_id:')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM `fichas`
+WHERE 8 = :8:
+AND `cliente_id` = :cliente_id:')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1700): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `fichas`
+WHERE 8 = :8:
+AND `cliente_id` = :cliente_id:', [...], false)
+ 5 SYSTEMPATH\Model.php(624): CodeIgniter\Database\BaseBuilder->countAllResults(true)
+ 6 APPPATH\Controllers\Ficha.php(154): CodeIgniter\Model->countAllResults()
+ 7 APPPATH\Controllers\Ficha.php(144): App\Controllers\Ficha->resetarFichasSeTodasConcluidas('1')
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->concluirFicha()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-26 15:36:46 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ':8:
+AND `cliente_id` = :cliente_id:' at line 3 in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT COUNT(*)...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*)...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*)...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1700): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(624): CodeIgniter\Database\BaseBuilder->countAllResults(true)
+#5 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Ficha.php(155): CodeIgniter\Model->countAllResults()
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Ficha.php(145): App\Controllers\Ficha->resetarFichasSeTodasConcluidas('1')
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Ficha->concluirFicha()
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2025-05-26 15:36:46 --> CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ':8:
+AND `cliente_id` = :cliente_id:' at line 3
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1700): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `fichas`
+WHERE 8 = :8:
+AND `cliente_id` = :cliente_id:', [...], false)
+ 2 SYSTEMPATH\Model.php(624): CodeIgniter\Database\BaseBuilder->countAllResults(true)
+ 3 APPPATH\Controllers\Ficha.php(155): CodeIgniter\Model->countAllResults()
+ 4 APPPATH\Controllers\Ficha.php(145): App\Controllers\Ficha->resetarFichasSeTodasConcluidas('1')
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->concluirFicha()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 15:36:46 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ':8:
+AND `cliente_id` = :cliente_id:' at line 3
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM `fichas`
+WHERE 8 = :8:
+AND `cliente_id` = :cliente_id:')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM `fichas`
+WHERE 8 = :8:
+AND `cliente_id` = :cliente_id:')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1700): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `fichas`
+WHERE 8 = :8:
+AND `cliente_id` = :cliente_id:', [...], false)
+ 4 SYSTEMPATH\Model.php(624): CodeIgniter\Database\BaseBuilder->countAllResults(true)
+ 5 APPPATH\Controllers\Ficha.php(155): CodeIgniter\Model->countAllResults()
+ 6 APPPATH\Controllers\Ficha.php(145): App\Controllers\Ficha->resetarFichasSeTodasConcluidas('1')
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->concluirFicha()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 15:36:46 --> [Caused by] mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ':8:
+AND `cliente_id` = :cliente_id:' at line 3
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT COUNT(*) AS `numrows`
+FROM `fichas`
+WHERE 8 = :8:
+AND `cliente_id` = :cliente_id:', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM `fichas`
+WHERE 8 = :8:
+AND `cliente_id` = :cliente_id:')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM `fichas`
+WHERE 8 = :8:
+AND `cliente_id` = :cliente_id:')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1700): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `fichas`
+WHERE 8 = :8:
+AND `cliente_id` = :cliente_id:', [...], false)
+ 5 SYSTEMPATH\Model.php(624): CodeIgniter\Database\BaseBuilder->countAllResults(true)
+ 6 APPPATH\Controllers\Ficha.php(155): CodeIgniter\Model->countAllResults()
+ 7 APPPATH\Controllers\Ficha.php(145): App\Controllers\Ficha->resetarFichasSeTodasConcluidas('1')
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->concluirFicha()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-26 18:04:51 --> mysqli_sql_exception: Table 'projeto-1.historicofichas' doesn't exist in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `hi...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `hi...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `hi...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `hi...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(802): CodeIgniter\Model->doInsert(Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(744): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Ficha.php(165): CodeIgniter\Model->insert(Array)
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Ficha->concluirFicha()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2025-05-26 18:04:51 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'projeto-1.historicofichas' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `historicofichas` (`ficha_id`, `cliente_id`, `tipo`, `ordem`, `data_conclusao`) VALUES (:ficha_id:, :cliente_id:, :tipo:, :ordem:, :data_conclusao:)', [...], false)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Ficha.php(165): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->concluirFicha()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 18:04:51 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'projeto-1.historicofichas' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `historicofichas` (`ficha_id`, `cliente_id`, `tipo`, `ordem`, `data_conclusao`) VALUES (\'9\', \'1\', \'B\', \'2\', \'2025-05-26\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `historicofichas` (`ficha_id`, `cliente_id`, `tipo`, `ordem`, `data_conclusao`) VALUES (\'9\', \'1\', \'B\', \'2\', \'2025-05-26\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `historicofichas` (`ficha_id`, `cliente_id`, `tipo`, `ordem`, `data_conclusao`) VALUES (:ficha_id:, :cliente_id:, :tipo:, :ordem:, :data_conclusao:)', [...], false)
+ 4 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\Ficha.php(165): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->concluirFicha()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 18:04:51 --> [Caused by] mysqli_sql_exception: Table 'projeto-1.historicofichas' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `historicofichas` (`ficha_id`, `cliente_id`, `tipo`, `ordem`, `data_conclusao`) VALUES (\'9\', \'1\', \'B\', \'2\', \'2025-05-26\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `historicofichas` (`ficha_id`, `cliente_id`, `tipo`, `ordem`, `data_conclusao`) VALUES (\'9\', \'1\', \'B\', \'2\', \'2025-05-26\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `historicofichas` (`ficha_id`, `cliente_id`, `tipo`, `ordem`, `data_conclusao`) VALUES (\'9\', \'1\', \'B\', \'2\', \'2025-05-26\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `historicofichas` (`ficha_id`, `cliente_id`, `tipo`, `ordem`, `data_conclusao`) VALUES (:ficha_id:, :cliente_id:, :tipo:, :ordem:, :data_conclusao:)', [...], false)
+ 5 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Ficha.php(165): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->concluirFicha()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-26 18:04:57 --> mysqli_sql_exception: Table 'projeto-1.historicofichas' doesn't exist in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `hi...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `hi...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `hi...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `hi...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(802): CodeIgniter\Model->doInsert(Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(744): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Ficha.php(165): CodeIgniter\Model->insert(Array)
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Ficha->concluirFicha()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2025-05-26 18:04:57 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'projeto-1.historicofichas' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `historicofichas` (`ficha_id`, `cliente_id`, `tipo`, `ordem`, `data_conclusao`) VALUES (:ficha_id:, :cliente_id:, :tipo:, :ordem:, :data_conclusao:)', [...], false)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Ficha.php(165): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->concluirFicha()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 18:04:57 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'projeto-1.historicofichas' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `historicofichas` (`ficha_id`, `cliente_id`, `tipo`, `ordem`, `data_conclusao`) VALUES (\'10\', \'1\', \'C\', \'3\', \'2025-05-26\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `historicofichas` (`ficha_id`, `cliente_id`, `tipo`, `ordem`, `data_conclusao`) VALUES (\'10\', \'1\', \'C\', \'3\', \'2025-05-26\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `historicofichas` (`ficha_id`, `cliente_id`, `tipo`, `ordem`, `data_conclusao`) VALUES (:ficha_id:, :cliente_id:, :tipo:, :ordem:, :data_conclusao:)', [...], false)
+ 4 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\Ficha.php(165): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->concluirFicha()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 18:04:57 --> [Caused by] mysqli_sql_exception: Table 'projeto-1.historicofichas' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `historicofichas` (`ficha_id`, `cliente_id`, `tipo`, `ordem`, `data_conclusao`) VALUES (\'10\', \'1\', \'C\', \'3\', \'2025-05-26\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `historicofichas` (`ficha_id`, `cliente_id`, `tipo`, `ordem`, `data_conclusao`) VALUES (\'10\', \'1\', \'C\', \'3\', \'2025-05-26\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `historicofichas` (`ficha_id`, `cliente_id`, `tipo`, `ordem`, `data_conclusao`) VALUES (\'10\', \'1\', \'C\', \'3\', \'2025-05-26\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `historicofichas` (`ficha_id`, `cliente_id`, `tipo`, `ordem`, `data_conclusao`) VALUES (:ficha_id:, :cliente_id:, :tipo:, :ordem:, :data_conclusao:)', [...], false)
+ 5 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Ficha.php(165): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->concluirFicha()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-26 18:04:59 --> mysqli_sql_exception: Table 'projeto-1.historicofichas' doesn't exist in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `hi...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `hi...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `hi...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `hi...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(802): CodeIgniter\Model->doInsert(Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(744): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Ficha.php(165): CodeIgniter\Model->insert(Array)
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Ficha->concluirFicha()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2025-05-26 18:04:59 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'projeto-1.historicofichas' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `historicofichas` (`ficha_id`, `cliente_id`, `tipo`, `ordem`, `data_conclusao`) VALUES (:ficha_id:, :cliente_id:, :tipo:, :ordem:, :data_conclusao:)', [...], false)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Ficha.php(165): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->concluirFicha()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 18:04:59 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'projeto-1.historicofichas' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `historicofichas` (`ficha_id`, `cliente_id`, `tipo`, `ordem`, `data_conclusao`) VALUES (\'10\', \'1\', \'C\', \'3\', \'2025-05-26\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `historicofichas` (`ficha_id`, `cliente_id`, `tipo`, `ordem`, `data_conclusao`) VALUES (\'10\', \'1\', \'C\', \'3\', \'2025-05-26\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `historicofichas` (`ficha_id`, `cliente_id`, `tipo`, `ordem`, `data_conclusao`) VALUES (:ficha_id:, :cliente_id:, :tipo:, :ordem:, :data_conclusao:)', [...], false)
+ 4 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\Ficha.php(165): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->concluirFicha()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 18:04:59 --> [Caused by] mysqli_sql_exception: Table 'projeto-1.historicofichas' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `historicofichas` (`ficha_id`, `cliente_id`, `tipo`, `ordem`, `data_conclusao`) VALUES (\'10\', \'1\', \'C\', \'3\', \'2025-05-26\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `historicofichas` (`ficha_id`, `cliente_id`, `tipo`, `ordem`, `data_conclusao`) VALUES (\'10\', \'1\', \'C\', \'3\', \'2025-05-26\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `historicofichas` (`ficha_id`, `cliente_id`, `tipo`, `ordem`, `data_conclusao`) VALUES (\'10\', \'1\', \'C\', \'3\', \'2025-05-26\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `historicofichas` (`ficha_id`, `cliente_id`, `tipo`, `ordem`, `data_conclusao`) VALUES (:ficha_id:, :cliente_id:, :tipo:, :ordem:, :data_conclusao:)', [...], false)
+ 5 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Ficha.php(165): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->concluirFicha()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-26 18:05:29 --> mysqli_sql_exception: Table 'projeto-1.historicofichas' doesn't exist in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `hi...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `hi...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `hi...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `hi...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(802): CodeIgniter\Model->doInsert(Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(744): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Ficha.php(165): CodeIgniter\Model->insert(Array)
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Ficha->concluirFicha()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2025-05-26 18:05:29 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'projeto-1.historicofichas' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `historicofichas` (`ficha_id`, `cliente_id`, `tipo`, `ordem`, `data_conclusao`) VALUES (:ficha_id:, :cliente_id:, :tipo:, :ordem:, :data_conclusao:)', [...], false)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Ficha.php(165): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->concluirFicha()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 18:05:29 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'projeto-1.historicofichas' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `historicofichas` (`ficha_id`, `cliente_id`, `tipo`, `ordem`, `data_conclusao`) VALUES (\'11\', \'1\', \'D\', \'4\', \'2025-05-26\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `historicofichas` (`ficha_id`, `cliente_id`, `tipo`, `ordem`, `data_conclusao`) VALUES (\'11\', \'1\', \'D\', \'4\', \'2025-05-26\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `historicofichas` (`ficha_id`, `cliente_id`, `tipo`, `ordem`, `data_conclusao`) VALUES (:ficha_id:, :cliente_id:, :tipo:, :ordem:, :data_conclusao:)', [...], false)
+ 4 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\Ficha.php(165): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->concluirFicha()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 18:05:29 --> [Caused by] mysqli_sql_exception: Table 'projeto-1.historicofichas' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `historicofichas` (`ficha_id`, `cliente_id`, `tipo`, `ordem`, `data_conclusao`) VALUES (\'11\', \'1\', \'D\', \'4\', \'2025-05-26\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `historicofichas` (`ficha_id`, `cliente_id`, `tipo`, `ordem`, `data_conclusao`) VALUES (\'11\', \'1\', \'D\', \'4\', \'2025-05-26\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `historicofichas` (`ficha_id`, `cliente_id`, `tipo`, `ordem`, `data_conclusao`) VALUES (\'11\', \'1\', \'D\', \'4\', \'2025-05-26\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `historicofichas` (`ficha_id`, `cliente_id`, `tipo`, `ordem`, `data_conclusao`) VALUES (:ficha_id:, :cliente_id:, :tipo:, :ordem:, :data_conclusao:)', [...], false)
+ 5 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Ficha.php(165): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->concluirFicha()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-26 18:07:07 --> mysqli_sql_exception: Table 'projeto-1.historicofichas' doesn't exist in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `hi...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `hi...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `hi...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `hi...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(802): CodeIgniter\Model->doInsert(Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(744): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Ficha.php(165): CodeIgniter\Model->insert(Array)
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Ficha->concluirFicha()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2025-05-26 18:07:07 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'projeto-1.historicofichas' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `historicofichas` (`ficha_id`, `cliente_id`, `tipo`, `ordem`, `data_conclusao`) VALUES (:ficha_id:, :cliente_id:, :tipo:, :ordem:, :data_conclusao:)', [...], false)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Ficha.php(165): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->concluirFicha()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 18:07:07 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'projeto-1.historicofichas' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `historicofichas` (`ficha_id`, `cliente_id`, `tipo`, `ordem`, `data_conclusao`) VALUES (\'11\', \'1\', \'D\', \'4\', \'2025-05-26\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `historicofichas` (`ficha_id`, `cliente_id`, `tipo`, `ordem`, `data_conclusao`) VALUES (\'11\', \'1\', \'D\', \'4\', \'2025-05-26\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `historicofichas` (`ficha_id`, `cliente_id`, `tipo`, `ordem`, `data_conclusao`) VALUES (:ficha_id:, :cliente_id:, :tipo:, :ordem:, :data_conclusao:)', [...], false)
+ 4 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\Ficha.php(165): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->concluirFicha()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 18:07:07 --> [Caused by] mysqli_sql_exception: Table 'projeto-1.historicofichas' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `historicofichas` (`ficha_id`, `cliente_id`, `tipo`, `ordem`, `data_conclusao`) VALUES (\'11\', \'1\', \'D\', \'4\', \'2025-05-26\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `historicofichas` (`ficha_id`, `cliente_id`, `tipo`, `ordem`, `data_conclusao`) VALUES (\'11\', \'1\', \'D\', \'4\', \'2025-05-26\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `historicofichas` (`ficha_id`, `cliente_id`, `tipo`, `ordem`, `data_conclusao`) VALUES (\'11\', \'1\', \'D\', \'4\', \'2025-05-26\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `historicofichas` (`ficha_id`, `cliente_id`, `tipo`, `ordem`, `data_conclusao`) VALUES (:ficha_id:, :cliente_id:, :tipo:, :ordem:, :data_conclusao:)', [...], false)
+ 5 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Ficha.php(165): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->concluirFicha()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 18:48:45 --> ErrorException: Undefined variable $_PATH
+in APPPATH\Views\Relatorios\relatorio_financeiro_mensal.php on line 13.
+ 1 APPPATH\Views\Relatorios\relatorio_financeiro_mensal.php(13): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $_PATH', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio_financeiro_mensal.php', 13)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio_financeiro_mensal.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('Relatorios/relatorio_financeiro_mensal', [], true)
+ 5 APPPATH\Controllers\Financeiro.php(348): view('Relatorios/relatorio_financeiro_mensal', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 18:50:55 --> ErrorException: Undefined array key "DOCUMEN_ROOT"
+in APPPATH\Views\Relatorios\relatorio_financeiro_mensal.php on line 13.
+ 1 APPPATH\Views\Relatorios\relatorio_financeiro_mensal.php(13): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "DOCUMEN_ROOT"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio_financeiro_mensal.php', 13)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio_financeiro_mensal.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('Relatorios/relatorio_financeiro_mensal', [], true)
+ 5 APPPATH\Controllers\Financeiro.php(348): view('Relatorios/relatorio_financeiro_mensal', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->gerarRelatorioMensalPdf()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 20:35:32 --> ErrorException: Undefined property: stdClass::$id
+in APPPATH\Controllers\ClientePlanos.php on line 90.
+ 1 APPPATH\Controllers\ClientePlanos.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$id', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\ClientePlanos.php', 90)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\ClientePlanos->pesquisarId()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientePlanos))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 20:51:52 --> ErrorException: Undefined property: stdClass::$id
+in APPPATH\Controllers\ClientePlanos.php on line 90.
+ 1 APPPATH\Controllers\ClientePlanos.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$id', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\ClientePlanos.php', 90)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\ClientePlanos->pesquisarId()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientePlanos))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-26 20:52:04 --> ErrorException: Undefined property: stdClass::$id
+in APPPATH\Controllers\ClientePlanos.php on line 90.
+ 1 APPPATH\Controllers\ClientePlanos.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$id', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\ClientePlanos.php', 90)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\ClientePlanos->pesquisarId()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientePlanos))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

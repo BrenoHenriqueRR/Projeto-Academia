@@ -92,17 +92,9 @@
           <div class="col-md-12">
             <label for="foto_perfil" class="form-label">Adicionar foto</label>
             <input formControlName="foto_perfil" type="file" id="foto_perfil" class="form-control"
-              (change)="onFileChange($event)">
-            <div class="form-text">{{fileName}}</div>
+              (change)="onFileChange($event,'foto')">
+            <div class="form-text">{{fileNames['foto']}}</div>
           </div>
-          <!-- <div class="col-md-4">
-            <label class="form-label d-block">Treina com personal?</label>
-            <div class="form-check form-switch">
-              <input type="checkbox" class="form-check-input" id="checkPersonal" formControlName="treino_com_personal"
-                (change)="onPersonalToggle($event)">
-              <label class="form-check-label" for="checkPersonal">Sim</label>
-            </div>
-          </div> -->
         </div>
 
         <div class="row mb-3">
@@ -148,7 +140,9 @@
 
           <div class="col-12 mt-2" *ngIf="menorDeIdade">
             <label class="form-label">Anexar Termo de Autorização</label>
-            <input type="file" formControlName="termo_responsabilidade" class="form-control">
+            <input type="file" id="termo_autorizacao" class="form-control"
+              (change)="onFileChange($event, 'termo_autorizacao')">
+            <div class="form-text">{{ fileNames['termo_autorizacao'] }}</div>
             <small class="form-text text-muted">
               <a href="assets/termos/autorizacao-menor-de-idade.pdf" target="_blank">Baixar modelo do termo</a>
             </small>
@@ -180,6 +174,14 @@
               <option value="{{ dado['id'] }}">{{ dado['nome'] }}</option>
               }
             </select>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-12">
+            <label>Anexar Atestado Médico</label>
+            <input type="file" id="atestado_medico" class="form-control"
+              (change)="onFileChange($event, 'atestado_medico')">
+            <div class="form-text">{{ fileNames['atestado_medico'] }}</div>
           </div>
         </div>
 

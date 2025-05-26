@@ -10,12 +10,13 @@
         <!-- Cabeçalho -->
         <div class="header-empresa clearfix">
             <div class="logo-empresa">
-                SYS
+                <img src="<?= 'http://localhost/sites/Projeto1/Back-end/public/' . $logo_academia ?>" alt="Logo" style="max-width: 100%;">
             </div>
+            
             <div class="empresa-info">
-                <h3>Nome da Sua Empresa</h3>
-                <p>CNPJ: 00.000.000/0001-00</p>
-                <p>endereco@empresa.com | (11) 9999-9999</p>
+                <h3><?=$nome_academia?></h3>
+                <p>CNPJ: <?=$cnpj_academia?></p>
+                <p><?=$email_academia?> | <?=$telefone_academia?></p>
             </div>
             <div class="relatorio-titulo">
                 <h2>RELATÓRIO</h2>
@@ -37,7 +38,7 @@
 
         <!-- Resumo Executivo -->
         <div class="no-break">
-            <h5 style="margin-bottom: 15px; font-size: 14px;">📈 Resumo Executivo</h5>
+            <h5 style="margin-bottom: 15px; font-size: 14px;">Resumo Executivo</h5>
             <div class="resumo-cards clearfix">
                 <div class="card-resumo">
                     <div class="label">RECEITAS TOTAIS</div>
@@ -86,7 +87,7 @@
 
         <!-- Análise Detalhada -->
         <div class="analise-detalhada clearfix no-break">
-            <h5 style="margin-bottom: 15px; font-size: 14px;">📊 Análise Detalhada</h5>
+            <h5 style="margin-bottom: 15px; font-size: 14px;">Análise Detalhada</h5>
             <div class="analise-col">
                 <strong>Composição da Receita:</strong>
                 <ul>
@@ -130,7 +131,7 @@
         <!-- Tabela de Pagamentos -->
         <?php if (!empty($pagamentos)): ?>
         <div class="secao-tabela">
-            <div class="secao-titulo">💳 Pagamentos do Período</div>
+            <div class="secao-titulo">Pagamentos do Período</div>
             <table class="tabela-pdf">
                 <thead>
                     <tr>
@@ -167,7 +168,7 @@
         <!-- Tabela de Vendas -->
         <?php if (!empty($vendas)): ?>
         <div class="secao-tabela">
-            <div class="secao-titulo">🛍️ Vendas do Período</div>
+            <div class="secao-titulo">Vendas do Período</div>
             <table class="tabela-pdf">
                 <thead>
                     <tr>
@@ -194,7 +195,7 @@
         <!-- Tabela de Despesas -->
         <?php if (!empty($despesas)): ?>
         <div class="secao-tabela">
-            <div class="secao-titulo">💸 Despesas do Período</div>
+            <div class="secao-titulo">Despesas do Período</div>
             <table class="tabela-pdf">
                 <thead>
                     <tr>
@@ -220,7 +221,7 @@
 
         <!-- Observações -->
         <div class="observacoes no-break">
-            <div class="secao-titulo">📝 Observações e Recomendações</div>
+            <div class="secao-titulo">Observações e Recomendações</div>
             <div class="observacoes-conteudo">
                 <ul>
                     <li>Relatório gerado automaticamente pelo sistema de gestão financeira.</li>

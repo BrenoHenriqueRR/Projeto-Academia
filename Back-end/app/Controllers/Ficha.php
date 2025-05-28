@@ -151,17 +151,6 @@ class Ficha extends BaseController
 
             $ficha = $this->fichamodel->find($dados->fichas);
 
-            //     CREATE TABLE historico_fichas (
-            //     id INT AUTO_INCREMENT PRIMARY KEY,
-            //     ficha_id INT NOT NULL,
-            //     cliente_id INT NOT NULL,
-            //     data_conclusao DATETIME NOT NULL,
-            //     tipo VARCHAR(100),
-            //     ordem INT,
-            //     observacoes TEXT,
-            //     FOREIGN KEY (ficha_id) REFERENCES fichas(id) ON DELETE CASCADE
-            // );
-
             $this->historicofichamodel->insert([
                 'ficha_id' => $ficha['id'],
                 'cliente_id' => $ficha['cliente_id'],

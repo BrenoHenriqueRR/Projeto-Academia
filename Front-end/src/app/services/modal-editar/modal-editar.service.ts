@@ -22,15 +22,16 @@ export class ModalEditarService {
     return this.http.post<formresponse>(this.url_cliente, data);
   }
 
-  editarfun(dados: any) : Observable<any> {
+  editarfun(dados: any): Observable<any> {
     const data = dados;
     return this.http.post<any>(this.url_editfuncionario, data);
-    }
-
-    pesquisar(identificador: any): Observable < any > {
-      return this.http.post<any>(this.url_pesquisar, identificador);
-    }
-    pesquisarP(identificador: any): Observable < any > {
-      return this.http.post<any>(this.url_funcionario, identificador);
-    }
   }
+
+  pesquisar(identificador: any): Observable<any> {
+    return this.http.post<any>(this.url_pesquisar, identificador);
+  }
+  
+  pesquisarP(identificador: any): Observable<any> {
+    return this.http.post<any>(this.url_funcionario, identificador);
+  }
+}

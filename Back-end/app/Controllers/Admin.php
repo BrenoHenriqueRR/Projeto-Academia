@@ -7,17 +7,20 @@ use App\Models\ClienteModel;
 
 
 use App\Controllers\BaseController;
+use App\Models\Clientesplanos;
 use CodeIgniter\HTTP\ResponseInterface;
 
 class Admin extends BaseController
 {
     protected $model;
     protected $modelcli;
+    protected $modelcliPlanos;
 
     public function __construct()
     {
         $this->model = new FuncionariosModel();
         $this->modelcli = new ClienteModel();
+        $this->modelcliPlanos = new Clientesplanos();
     }
 
 
@@ -77,11 +80,13 @@ class Admin extends BaseController
         $json = file_get_contents('php://input');
         $datajson = json_decode($json, true);
 
-        $dados = $this->modelcli->select('c.*, p.nome AS nome_personal')
+        $dados = $this->modelcli
+            ->select('c.*, pl.id AS plano_id, p.nome AS nome_personal')
             ->from('cliente AS c')
+            ->join('clientes_planos AS cp', 'cp.cliente_id = c.id', 'LEFT')
+            ->join('planos AS pl', 'cp.plano_id = pl.id', 'LEFT')
             ->join('funcionarios AS p', 'c.personal_id = p.id', 'LEFT')
-            ->where('c.id', $datajson['id'])
-            ->groupBy('c.id');
+            ->where('c.id', $datajson['id']);
 
         $data = $dados->get();
 

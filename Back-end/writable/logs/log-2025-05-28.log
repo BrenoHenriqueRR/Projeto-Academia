@@ -1,0 +1,493 @@
+CRITICAL - 2025-05-28 16:36:01 --> ErrorException: Attempt to read property "id" on int
+in APPPATH\Controllers\ClientePlanos.php on line 90.
+ 1 APPPATH\Controllers\ClientePlanos.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "id" on int', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\ClientePlanos.php', 90)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\ClientePlanos->pesquisarId()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientePlanos))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-28 16:36:17 --> ErrorException: Attempt to read property "id" on int
+in APPPATH\Controllers\ClientePlanos.php on line 90.
+ 1 APPPATH\Controllers\ClientePlanos.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "id" on int', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\ClientePlanos.php', 90)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\ClientePlanos->pesquisarId()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientePlanos))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-28 16:36:47 --> ErrorException: Attempt to read property "id" on int
+in APPPATH\Controllers\ClientePlanos.php on line 90.
+ 1 APPPATH\Controllers\ClientePlanos.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "id" on int', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\ClientePlanos.php', 90)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\ClientePlanos->pesquisarId()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientePlanos))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-28 16:36:48 --> ErrorException: Attempt to read property "id" on int
+in APPPATH\Controllers\ClientePlanos.php on line 90.
+ 1 APPPATH\Controllers\ClientePlanos.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "id" on int', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\ClientePlanos.php', 90)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\ClientePlanos->pesquisarId()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientePlanos))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-28 17:04:35 --> mysqli_sql_exception: Unknown column 'cliente_planos.planos_id' in 'on clause' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `c`.*, `...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `c`.*, `...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `c`.*, `...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `c`.*, `...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Admin.php(91): CodeIgniter\Model->__call('get', Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Admin->buscar()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2025-05-28 17:04:35 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'cliente_planos.planos_id' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `c`.*, `pl`.`id`, `p`.`nome` AS `nome_personal`
+FROM `clientes_planos`
+LEFT JOIN `funcionarios` AS `p` ON `cliente_planos`.`personal_id` = `p`.`id`
+LEFT JOIN `cliente` AS `c` ON `cliente_planos`.`cliente_id` = `c`.`id`
+LEFT JOIN `planos` AS `pl` ON `cliente_planos`.`planos_id` = `pl`.`id`
+WHERE `c`.`id` = :c.id:
+GROUP BY `c`.`id`', [...], false)
+ 2 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Admin.php(91): CodeIgniter\Model->__call('get', [])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Admin->buscar()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-28 17:04:35 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'cliente_planos.planos_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `c`.*, `pl`.`id`, `p`.`nome` AS `nome_personal`
+FROM `clientes_planos`
+LEFT JOIN `funcionarios` AS `p` ON `cliente_planos`.`personal_id` = `p`.`id`
+LEFT JOIN `cliente` AS `c` ON `cliente_planos`.`cliente_id` = `c`.`id`
+LEFT JOIN `planos` AS `pl` ON `cliente_planos`.`planos_id` = `pl`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `c`.`id`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `c`.*, `pl`.`id`, `p`.`nome` AS `nome_personal`
+FROM `clientes_planos`
+LEFT JOIN `funcionarios` AS `p` ON `cliente_planos`.`personal_id` = `p`.`id`
+LEFT JOIN `cliente` AS `c` ON `cliente_planos`.`cliente_id` = `c`.`id`
+LEFT JOIN `planos` AS `pl` ON `cliente_planos`.`planos_id` = `pl`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `c`.`id`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `c`.*, `pl`.`id`, `p`.`nome` AS `nome_personal`
+FROM `clientes_planos`
+LEFT JOIN `funcionarios` AS `p` ON `cliente_planos`.`personal_id` = `p`.`id`
+LEFT JOIN `cliente` AS `c` ON `cliente_planos`.`cliente_id` = `c`.`id`
+LEFT JOIN `planos` AS `pl` ON `cliente_planos`.`planos_id` = `pl`.`id`
+WHERE `c`.`id` = :c.id:
+GROUP BY `c`.`id`', [...], false)
+ 4 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Admin.php(91): CodeIgniter\Model->__call('get', [])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Admin->buscar()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-28 17:04:35 --> [Caused by] mysqli_sql_exception: Unknown column 'cliente_planos.planos_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `c`.*, `pl`.`id`, `p`.`nome` AS `nome_personal`
+FROM `clientes_planos`
+LEFT JOIN `funcionarios` AS `p` ON `cliente_planos`.`personal_id` = `p`.`id`
+LEFT JOIN `cliente` AS `c` ON `cliente_planos`.`cliente_id` = `c`.`id`
+LEFT JOIN `planos` AS `pl` ON `cliente_planos`.`planos_id` = `pl`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `c`.`id`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `c`.*, `pl`.`id`, `p`.`nome` AS `nome_personal`
+FROM `clientes_planos`
+LEFT JOIN `funcionarios` AS `p` ON `cliente_planos`.`personal_id` = `p`.`id`
+LEFT JOIN `cliente` AS `c` ON `cliente_planos`.`cliente_id` = `c`.`id`
+LEFT JOIN `planos` AS `pl` ON `cliente_planos`.`planos_id` = `pl`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `c`.`id`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `c`.*, `pl`.`id`, `p`.`nome` AS `nome_personal`
+FROM `clientes_planos`
+LEFT JOIN `funcionarios` AS `p` ON `cliente_planos`.`personal_id` = `p`.`id`
+LEFT JOIN `cliente` AS `c` ON `cliente_planos`.`cliente_id` = `c`.`id`
+LEFT JOIN `planos` AS `pl` ON `cliente_planos`.`planos_id` = `pl`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `c`.`id`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `c`.*, `pl`.`id`, `p`.`nome` AS `nome_personal`
+FROM `clientes_planos`
+LEFT JOIN `funcionarios` AS `p` ON `cliente_planos`.`personal_id` = `p`.`id`
+LEFT JOIN `cliente` AS `c` ON `cliente_planos`.`cliente_id` = `c`.`id`
+LEFT JOIN `planos` AS `pl` ON `cliente_planos`.`planos_id` = `pl`.`id`
+WHERE `c`.`id` = :c.id:
+GROUP BY `c`.`id`', [...], false)
+ 5 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Admin.php(91): CodeIgniter\Model->__call('get', [])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Admin->buscar()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-28 17:04:53 --> mysqli_sql_exception: Unknown column 'cliente_planos.planos_id' in 'on clause' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `c`.*, `...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `c`.*, `...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `c`.*, `...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `c`.*, `...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Admin.php(91): CodeIgniter\Model->__call('get', Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Admin->buscar()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2025-05-28 17:04:53 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'cliente_planos.planos_id' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `c`.*, `pl`.`id`, `p`.`nome` AS `nome_personal`
+FROM `clientes_planos`
+LEFT JOIN `funcionarios` AS `p` ON `cliente_planos`.`personal_id` = `p`.`id`
+LEFT JOIN `cliente` AS `c` ON `cliente_planos`.`cliente_id` = `c`.`id`
+LEFT JOIN `planos` AS `pl` ON `cliente_planos`.`planos_id` = `pl`.`id`
+WHERE `c`.`id` = :c.id:
+GROUP BY `c`.`id`', [...], false)
+ 2 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Admin.php(91): CodeIgniter\Model->__call('get', [])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Admin->buscar()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-28 17:04:53 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'cliente_planos.planos_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `c`.*, `pl`.`id`, `p`.`nome` AS `nome_personal`
+FROM `clientes_planos`
+LEFT JOIN `funcionarios` AS `p` ON `cliente_planos`.`personal_id` = `p`.`id`
+LEFT JOIN `cliente` AS `c` ON `cliente_planos`.`cliente_id` = `c`.`id`
+LEFT JOIN `planos` AS `pl` ON `cliente_planos`.`planos_id` = `pl`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `c`.`id`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `c`.*, `pl`.`id`, `p`.`nome` AS `nome_personal`
+FROM `clientes_planos`
+LEFT JOIN `funcionarios` AS `p` ON `cliente_planos`.`personal_id` = `p`.`id`
+LEFT JOIN `cliente` AS `c` ON `cliente_planos`.`cliente_id` = `c`.`id`
+LEFT JOIN `planos` AS `pl` ON `cliente_planos`.`planos_id` = `pl`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `c`.`id`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `c`.*, `pl`.`id`, `p`.`nome` AS `nome_personal`
+FROM `clientes_planos`
+LEFT JOIN `funcionarios` AS `p` ON `cliente_planos`.`personal_id` = `p`.`id`
+LEFT JOIN `cliente` AS `c` ON `cliente_planos`.`cliente_id` = `c`.`id`
+LEFT JOIN `planos` AS `pl` ON `cliente_planos`.`planos_id` = `pl`.`id`
+WHERE `c`.`id` = :c.id:
+GROUP BY `c`.`id`', [...], false)
+ 4 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Admin.php(91): CodeIgniter\Model->__call('get', [])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Admin->buscar()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-28 17:04:53 --> [Caused by] mysqli_sql_exception: Unknown column 'cliente_planos.planos_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `c`.*, `pl`.`id`, `p`.`nome` AS `nome_personal`
+FROM `clientes_planos`
+LEFT JOIN `funcionarios` AS `p` ON `cliente_planos`.`personal_id` = `p`.`id`
+LEFT JOIN `cliente` AS `c` ON `cliente_planos`.`cliente_id` = `c`.`id`
+LEFT JOIN `planos` AS `pl` ON `cliente_planos`.`planos_id` = `pl`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `c`.`id`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `c`.*, `pl`.`id`, `p`.`nome` AS `nome_personal`
+FROM `clientes_planos`
+LEFT JOIN `funcionarios` AS `p` ON `cliente_planos`.`personal_id` = `p`.`id`
+LEFT JOIN `cliente` AS `c` ON `cliente_planos`.`cliente_id` = `c`.`id`
+LEFT JOIN `planos` AS `pl` ON `cliente_planos`.`planos_id` = `pl`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `c`.`id`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `c`.*, `pl`.`id`, `p`.`nome` AS `nome_personal`
+FROM `clientes_planos`
+LEFT JOIN `funcionarios` AS `p` ON `cliente_planos`.`personal_id` = `p`.`id`
+LEFT JOIN `cliente` AS `c` ON `cliente_planos`.`cliente_id` = `c`.`id`
+LEFT JOIN `planos` AS `pl` ON `cliente_planos`.`planos_id` = `pl`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `c`.`id`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `c`.*, `pl`.`id`, `p`.`nome` AS `nome_personal`
+FROM `clientes_planos`
+LEFT JOIN `funcionarios` AS `p` ON `cliente_planos`.`personal_id` = `p`.`id`
+LEFT JOIN `cliente` AS `c` ON `cliente_planos`.`cliente_id` = `c`.`id`
+LEFT JOIN `planos` AS `pl` ON `cliente_planos`.`planos_id` = `pl`.`id`
+WHERE `c`.`id` = :c.id:
+GROUP BY `c`.`id`', [...], false)
+ 5 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Admin.php(91): CodeIgniter\Model->__call('get', [])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Admin->buscar()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-28 17:05:24 --> mysqli_sql_exception: Unknown column 'clientes_planos.planos_id' in 'on clause' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `c`.*, `...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `c`.*, `...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `c`.*, `...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `c`.*, `...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Admin.php(91): CodeIgniter\Model->__call('get', Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Admin->buscar()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2025-05-28 17:05:24 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'clientes_planos.planos_id' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `c`.*, `pl`.`id`, `p`.`nome` AS `nome_personal`
+FROM `clientes_planos`
+LEFT JOIN `funcionarios` AS `p` ON `cliente_planos`.`personal_id` = `p`.`id`
+LEFT JOIN `cliente` AS `c` ON `clientes_planos`.`cliente_id` = `c`.`id`
+LEFT JOIN `planos` AS `pl` ON `clientes_planos`.`planos_id` = `pl`.`id`
+WHERE `c`.`id` = :c.id:
+GROUP BY `c`.`id`', [...], false)
+ 2 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Admin.php(91): CodeIgniter\Model->__call('get', [])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Admin->buscar()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-28 17:05:24 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'clientes_planos.planos_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `c`.*, `pl`.`id`, `p`.`nome` AS `nome_personal`
+FROM `clientes_planos`
+LEFT JOIN `funcionarios` AS `p` ON `cliente_planos`.`personal_id` = `p`.`id`
+LEFT JOIN `cliente` AS `c` ON `clientes_planos`.`cliente_id` = `c`.`id`
+LEFT JOIN `planos` AS `pl` ON `clientes_planos`.`planos_id` = `pl`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `c`.`id`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `c`.*, `pl`.`id`, `p`.`nome` AS `nome_personal`
+FROM `clientes_planos`
+LEFT JOIN `funcionarios` AS `p` ON `cliente_planos`.`personal_id` = `p`.`id`
+LEFT JOIN `cliente` AS `c` ON `clientes_planos`.`cliente_id` = `c`.`id`
+LEFT JOIN `planos` AS `pl` ON `clientes_planos`.`planos_id` = `pl`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `c`.`id`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `c`.*, `pl`.`id`, `p`.`nome` AS `nome_personal`
+FROM `clientes_planos`
+LEFT JOIN `funcionarios` AS `p` ON `cliente_planos`.`personal_id` = `p`.`id`
+LEFT JOIN `cliente` AS `c` ON `clientes_planos`.`cliente_id` = `c`.`id`
+LEFT JOIN `planos` AS `pl` ON `clientes_planos`.`planos_id` = `pl`.`id`
+WHERE `c`.`id` = :c.id:
+GROUP BY `c`.`id`', [...], false)
+ 4 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Admin.php(91): CodeIgniter\Model->__call('get', [])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Admin->buscar()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-28 17:05:24 --> [Caused by] mysqli_sql_exception: Unknown column 'clientes_planos.planos_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `c`.*, `pl`.`id`, `p`.`nome` AS `nome_personal`
+FROM `clientes_planos`
+LEFT JOIN `funcionarios` AS `p` ON `cliente_planos`.`personal_id` = `p`.`id`
+LEFT JOIN `cliente` AS `c` ON `clientes_planos`.`cliente_id` = `c`.`id`
+LEFT JOIN `planos` AS `pl` ON `clientes_planos`.`planos_id` = `pl`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `c`.`id`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `c`.*, `pl`.`id`, `p`.`nome` AS `nome_personal`
+FROM `clientes_planos`
+LEFT JOIN `funcionarios` AS `p` ON `cliente_planos`.`personal_id` = `p`.`id`
+LEFT JOIN `cliente` AS `c` ON `clientes_planos`.`cliente_id` = `c`.`id`
+LEFT JOIN `planos` AS `pl` ON `clientes_planos`.`planos_id` = `pl`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `c`.`id`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `c`.*, `pl`.`id`, `p`.`nome` AS `nome_personal`
+FROM `clientes_planos`
+LEFT JOIN `funcionarios` AS `p` ON `cliente_planos`.`personal_id` = `p`.`id`
+LEFT JOIN `cliente` AS `c` ON `clientes_planos`.`cliente_id` = `c`.`id`
+LEFT JOIN `planos` AS `pl` ON `clientes_planos`.`planos_id` = `pl`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `c`.`id`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `c`.*, `pl`.`id`, `p`.`nome` AS `nome_personal`
+FROM `clientes_planos`
+LEFT JOIN `funcionarios` AS `p` ON `cliente_planos`.`personal_id` = `p`.`id`
+LEFT JOIN `cliente` AS `c` ON `clientes_planos`.`cliente_id` = `c`.`id`
+LEFT JOIN `planos` AS `pl` ON `clientes_planos`.`planos_id` = `pl`.`id`
+WHERE `c`.`id` = :c.id:
+GROUP BY `c`.`id`', [...], false)
+ 5 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Admin.php(91): CodeIgniter\Model->__call('get', [])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Admin->buscar()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-28 17:05:51 --> mysqli_sql_exception: Unknown column 'cliente_planos.personal_id' in 'on clause' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `c`.*, `...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `c`.*, `...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `c`.*, `...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `c`.*, `...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Admin.php(91): CodeIgniter\Model->__call('get', Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Admin->buscar()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2025-05-28 17:05:51 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'cliente_planos.personal_id' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `c`.*, `pl`.`id`, `p`.`nome` AS `nome_personal`
+FROM `clientes_planos`
+LEFT JOIN `funcionarios` AS `p` ON `cliente_planos`.`personal_id` = `p`.`id`
+LEFT JOIN `cliente` AS `c` ON `clientes_planos`.`cliente_id` = `c`.`id`
+LEFT JOIN `planos` AS `pl` ON `clientes_planos`.`plano_id` = `pl`.`id`
+WHERE `c`.`id` = :c.id:
+GROUP BY `c`.`id`', [...], false)
+ 2 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Admin.php(91): CodeIgniter\Model->__call('get', [])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Admin->buscar()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-28 17:05:51 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'cliente_planos.personal_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `c`.*, `pl`.`id`, `p`.`nome` AS `nome_personal`
+FROM `clientes_planos`
+LEFT JOIN `funcionarios` AS `p` ON `cliente_planos`.`personal_id` = `p`.`id`
+LEFT JOIN `cliente` AS `c` ON `clientes_planos`.`cliente_id` = `c`.`id`
+LEFT JOIN `planos` AS `pl` ON `clientes_planos`.`plano_id` = `pl`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `c`.`id`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `c`.*, `pl`.`id`, `p`.`nome` AS `nome_personal`
+FROM `clientes_planos`
+LEFT JOIN `funcionarios` AS `p` ON `cliente_planos`.`personal_id` = `p`.`id`
+LEFT JOIN `cliente` AS `c` ON `clientes_planos`.`cliente_id` = `c`.`id`
+LEFT JOIN `planos` AS `pl` ON `clientes_planos`.`plano_id` = `pl`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `c`.`id`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `c`.*, `pl`.`id`, `p`.`nome` AS `nome_personal`
+FROM `clientes_planos`
+LEFT JOIN `funcionarios` AS `p` ON `cliente_planos`.`personal_id` = `p`.`id`
+LEFT JOIN `cliente` AS `c` ON `clientes_planos`.`cliente_id` = `c`.`id`
+LEFT JOIN `planos` AS `pl` ON `clientes_planos`.`plano_id` = `pl`.`id`
+WHERE `c`.`id` = :c.id:
+GROUP BY `c`.`id`', [...], false)
+ 4 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Admin.php(91): CodeIgniter\Model->__call('get', [])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Admin->buscar()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-28 17:05:51 --> [Caused by] mysqli_sql_exception: Unknown column 'cliente_planos.personal_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `c`.*, `pl`.`id`, `p`.`nome` AS `nome_personal`
+FROM `clientes_planos`
+LEFT JOIN `funcionarios` AS `p` ON `cliente_planos`.`personal_id` = `p`.`id`
+LEFT JOIN `cliente` AS `c` ON `clientes_planos`.`cliente_id` = `c`.`id`
+LEFT JOIN `planos` AS `pl` ON `clientes_planos`.`plano_id` = `pl`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `c`.`id`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `c`.*, `pl`.`id`, `p`.`nome` AS `nome_personal`
+FROM `clientes_planos`
+LEFT JOIN `funcionarios` AS `p` ON `cliente_planos`.`personal_id` = `p`.`id`
+LEFT JOIN `cliente` AS `c` ON `clientes_planos`.`cliente_id` = `c`.`id`
+LEFT JOIN `planos` AS `pl` ON `clientes_planos`.`plano_id` = `pl`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `c`.`id`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `c`.*, `pl`.`id`, `p`.`nome` AS `nome_personal`
+FROM `clientes_planos`
+LEFT JOIN `funcionarios` AS `p` ON `cliente_planos`.`personal_id` = `p`.`id`
+LEFT JOIN `cliente` AS `c` ON `clientes_planos`.`cliente_id` = `c`.`id`
+LEFT JOIN `planos` AS `pl` ON `clientes_planos`.`plano_id` = `pl`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `c`.`id`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `c`.*, `pl`.`id`, `p`.`nome` AS `nome_personal`
+FROM `clientes_planos`
+LEFT JOIN `funcionarios` AS `p` ON `cliente_planos`.`personal_id` = `p`.`id`
+LEFT JOIN `cliente` AS `c` ON `clientes_planos`.`cliente_id` = `c`.`id`
+LEFT JOIN `planos` AS `pl` ON `clientes_planos`.`plano_id` = `pl`.`id`
+WHERE `c`.`id` = :c.id:
+GROUP BY `c`.`id`', [...], false)
+ 5 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Admin.php(91): CodeIgniter\Model->__call('get', [])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Admin->buscar()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-05-28 17:06:17 --> mysqli_sql_exception: Unknown column 'clientes_planos.personal_id' in 'on clause' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `c`.*, `...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `c`.*, `...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `c`.*, `...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `c`.*, `...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Admin.php(91): CodeIgniter\Model->__call('get', Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Admin->buscar()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2025-05-28 17:06:17 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'clientes_planos.personal_id' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `c`.*, `pl`.`id`, `p`.`nome` AS `nome_personal`
+FROM `clientes_planos`
+LEFT JOIN `funcionarios` AS `p` ON `clientes_planos`.`personal_id` = `p`.`id`
+LEFT JOIN `cliente` AS `c` ON `clientes_planos`.`cliente_id` = `c`.`id`
+LEFT JOIN `planos` AS `pl` ON `clientes_planos`.`plano_id` = `pl`.`id`
+WHERE `c`.`id` = :c.id:
+GROUP BY `c`.`id`', [...], false)
+ 2 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Admin.php(91): CodeIgniter\Model->__call('get', [])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Admin->buscar()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-28 17:06:17 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'clientes_planos.personal_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `c`.*, `pl`.`id`, `p`.`nome` AS `nome_personal`
+FROM `clientes_planos`
+LEFT JOIN `funcionarios` AS `p` ON `clientes_planos`.`personal_id` = `p`.`id`
+LEFT JOIN `cliente` AS `c` ON `clientes_planos`.`cliente_id` = `c`.`id`
+LEFT JOIN `planos` AS `pl` ON `clientes_planos`.`plano_id` = `pl`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `c`.`id`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `c`.*, `pl`.`id`, `p`.`nome` AS `nome_personal`
+FROM `clientes_planos`
+LEFT JOIN `funcionarios` AS `p` ON `clientes_planos`.`personal_id` = `p`.`id`
+LEFT JOIN `cliente` AS `c` ON `clientes_planos`.`cliente_id` = `c`.`id`
+LEFT JOIN `planos` AS `pl` ON `clientes_planos`.`plano_id` = `pl`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `c`.`id`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `c`.*, `pl`.`id`, `p`.`nome` AS `nome_personal`
+FROM `clientes_planos`
+LEFT JOIN `funcionarios` AS `p` ON `clientes_planos`.`personal_id` = `p`.`id`
+LEFT JOIN `cliente` AS `c` ON `clientes_planos`.`cliente_id` = `c`.`id`
+LEFT JOIN `planos` AS `pl` ON `clientes_planos`.`plano_id` = `pl`.`id`
+WHERE `c`.`id` = :c.id:
+GROUP BY `c`.`id`', [...], false)
+ 4 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Admin.php(91): CodeIgniter\Model->__call('get', [])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Admin->buscar()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-28 17:06:17 --> [Caused by] mysqli_sql_exception: Unknown column 'clientes_planos.personal_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `c`.*, `pl`.`id`, `p`.`nome` AS `nome_personal`
+FROM `clientes_planos`
+LEFT JOIN `funcionarios` AS `p` ON `clientes_planos`.`personal_id` = `p`.`id`
+LEFT JOIN `cliente` AS `c` ON `clientes_planos`.`cliente_id` = `c`.`id`
+LEFT JOIN `planos` AS `pl` ON `clientes_planos`.`plano_id` = `pl`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `c`.`id`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `c`.*, `pl`.`id`, `p`.`nome` AS `nome_personal`
+FROM `clientes_planos`
+LEFT JOIN `funcionarios` AS `p` ON `clientes_planos`.`personal_id` = `p`.`id`
+LEFT JOIN `cliente` AS `c` ON `clientes_planos`.`cliente_id` = `c`.`id`
+LEFT JOIN `planos` AS `pl` ON `clientes_planos`.`plano_id` = `pl`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `c`.`id`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `c`.*, `pl`.`id`, `p`.`nome` AS `nome_personal`
+FROM `clientes_planos`
+LEFT JOIN `funcionarios` AS `p` ON `clientes_planos`.`personal_id` = `p`.`id`
+LEFT JOIN `cliente` AS `c` ON `clientes_planos`.`cliente_id` = `c`.`id`
+LEFT JOIN `planos` AS `pl` ON `clientes_planos`.`plano_id` = `pl`.`id`
+WHERE `c`.`id` = \'1\'
+GROUP BY `c`.`id`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `c`.*, `pl`.`id`, `p`.`nome` AS `nome_personal`
+FROM `clientes_planos`
+LEFT JOIN `funcionarios` AS `p` ON `clientes_planos`.`personal_id` = `p`.`id`
+LEFT JOIN `cliente` AS `c` ON `clientes_planos`.`cliente_id` = `c`.`id`
+LEFT JOIN `planos` AS `pl` ON `clientes_planos`.`plano_id` = `pl`.`id`
+WHERE `c`.`id` = :c.id:
+GROUP BY `c`.`id`', [...], false)
+ 5 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Admin.php(91): CodeIgniter\Model->__call('get', [])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Admin->buscar()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

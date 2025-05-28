@@ -87,6 +87,7 @@
             <div class="col-md-6">
                 <label for="personal_id">Personal</label>
                 <select formControlName="personal_id" class="form-select">
+                    <option value="" disabled selected>Escolha um Personal</option>
                     <option *ngFor="let dado of idnamepersonal" value="{{dado.id}}">
                         {{ dado.nome }}
                     </option>
@@ -98,16 +99,13 @@
         <!-- Plano -->
         <div class="row form-group mt-2">
             <div class="col-md-12">
-                <label for="plano">Plano</label>
-                <select formControlName="plano" class="form-select">
-                    @if (!dados['personal_id']) {
-                    <option value="" selected>Escolha um Personal</option>
-                    }
-                    @for (dado of idnamepersonal; track dado;) {
-                    <option *ngIf="dado['id'] == dados['personal_id']" value="{{ dado['id'] }}" selected>{{ dado['nome']
-                        }}</option>
-                    <option *ngIf="dado['id'] != dados['personal_id']" value="{{ dado['id'] }}">{{ dado['nome'] }}
-                    </option>
+                <label for="plano" class="form-label">Selecionar Plano</label>
+                <select id="plano" class="form-select" formControlName="plano">
+                    <option value="" disabled selected>Selecionar opções</option>
+                    @for (dado of planos; track dado;) {
+                    <option value="{{ dado['id'] }}">Plano {{ dado['nome'] }} - R$
+                        {{ dado.preco | number:'1.2-2':'pt-br' }} / {{ dado.duracao }}
+                        - {{ dado.dias_por_semana }}x por semana </option>
                     }
                 </select>
             </div>

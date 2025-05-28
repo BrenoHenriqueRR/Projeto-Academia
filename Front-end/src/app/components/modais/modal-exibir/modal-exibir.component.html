@@ -51,7 +51,7 @@
                             <p>
                                 <strong>Atestado Médico:</strong>
                                 <ng-container *ngIf="dados_cli?.atestado_medico; else semAtestado">
-                                    <a [href]="'/uploads/arquivos/' + dados_cli.atestado_medico"
+                                    <a [href]="backend + dados_cli.atestado_medico"
                                         target="_blank">Visualizar Atestado</a>
                                 </ng-container>
                                 <ng-template #semAtestado>Não</ng-template>
@@ -60,7 +60,7 @@
                             <p>
                                 <strong>Termo de Responsabilidade:</strong>
                                 <ng-container *ngIf="dados_cli?.termo_responsabilidade; else semResponsabilidade">
-                                    <a [href]="'/uploads/arquivos/' + dados_cli.termo_responsabilidade"
+                                    <a [href]="backend + dados_cli.termo_responsabilidade"
                                         target="_blank">Visualizar Termo</a>
                                 </ng-container>
                                 <ng-template #semResponsabilidade>Não Assinado</ng-template>
@@ -69,7 +69,7 @@
                             <p>
                                 <strong>Termo de Autorização:</strong>
                                 <ng-container *ngIf="dados_cli?.termo_autorizacao; else semAutorizacao">
-                                    <a [href]="'/uploads/arquivos/' + dados_cli.termo_autorizacao"
+                                    <a [href]="backend + dados_cli.termo_autorizacao"
                                         target="_blank">Visualizar Termo</a>
                                 </ng-container>
                                 <ng-template #semAutorizacao>Não Assinado</ng-template>

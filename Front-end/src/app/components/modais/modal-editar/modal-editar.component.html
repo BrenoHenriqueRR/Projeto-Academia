@@ -1,15 +1,18 @@
-<div class="container">
-    <div class="img-perfil">
-        <div *ngIf="loading"><app-modal-spinner></app-modal-spinner></div>
-        @for (dados of data; track dados){
-        <h2>Cliente: {{dados.cliente_nome}}</h2>
-        }
+<div *ngIf="loading"><app-modal-spinner></app-modal-spinner></div>
+<div class="container" *ngIf="data && data.length">
+
+    @for (dados of data; track dados) {
+    <h2>Editar Cliente: {{ dados.nome }}</h2>
+
+    <form [formGroup]="formcadastro" (ngSubmit)="edit()" enctype="multipart/form-data">
+        <!-- Foto de perfil -->
         <div class="d-flex align-items-center justify-content-between">
             <div class="img-perfil d-block">
                 <div class="img-inserir">
                     <label class="form-label" for="fileInput">
                         <i class="fa-solid fa-plus meio-img"></i>
-                        <img *ngIf="verifi_foto_perfil == 'true'" class="fotoperfil" [src]="foto_perfil" [alt]="foto_perfil">
+                        <img *ngIf="verifi_foto_perfil == 'true'" class="fotoperfil" [src]="foto_perfil"
+                            [alt]="foto_perfil">
                         <img *ngIf="verifi_foto_perfil == 'false'" class="fotoperfil" src="assets/imgs/user.png" alt="">
                     </label>
                 </div>
@@ -19,55 +22,122 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="formulario">
-        <form [formGroup]="formcadastro" method="post">
-            @for (dados of data; track dados){
-            <div class="mt-3 row">
-                <div class="col">
-                    <label class="form-label" for="nome">Nome</label>
-                    <input class="form-control" style="color: black;" type="text" id="nome" formControlName="nome"
-                        class="form-control" required>
-                </div>
 
-                <div class="col">
-                    <label class="form-label" for="personal">Personal</label>
-                    <!-- <input class="form-control" type="text" formControlName = "personal_id" class="form-control" id="personal"  required> -->
-                    <select (change)="cadFuncao($event)" class="form-control personal-options">
-                        @if (!dados['personal_id']) {
-                            <option value="" selected>Escolha um Personal</option>
-                        }
-                        @for (dado of idnamepersonal; track dado;) {
-                            <option *ngIf="dado['id'] == dados['personal_id']" value="{{ dado['id'] }}" selected>{{ dado['nome'] }}</option>
-                            <option *ngIf="dado['id'] != dados['personal_id']" value="{{ dado['id'] }}">{{ dado['nome'] }}</option>
-                        }
-                    </select>
-                </div>
+        <!-- Nome e Endereço -->
+        <div class="row mb-3">
+            <div class="col-md-6 form-group">
+                <label for="nome">Nome Completo</label>
+                <input type="text" id="nome" class="form-control" formControlName="nome" />
             </div>
-            <div class="mt-2 row">
-                <div class="col">
-                    <label class="form-label" for="CPF">CPF</label>
-                    <input class="form-control" type="text" formControlName="CPF" mask = "000.000.000-00" class="form-control" id="CPF">
-                </div>
+            <div class="col-md-6 form-group">
+                <label for="endereco">Endereço</label>
+                <input type="text" id="endereco" class="form-control" formControlName="endereco" />
+            </div>
+        </div>
 
-                <div class="col">
-                    <label class="form-label" for="email">Email</label>
-                    <input class="form-control" type="email" formControlName="email" class="form-control" id="email"
-                        required>
-                </div>
+        <!-- CPF, Telefone, RG -->
+        <div class="row form-group">
+            <div class="col-md-4">
+                <label for="telefone">Telefone</label>
+                <input type="text" id="telefone" class="form-control" formControlName="telefone"
+                    mask="(00) 00000-0000" />
             </div>
-            }
-            <div class="mt-4 continue-button">
-                <button *ngIf="!loading" type="submit" (click)="edit()" class="btn btn-primary">
-                    Enviar
+            <div class="col-md-4">
+                <label for="CPF">CPF</label>
+                <input type="text" id="CPF" class="form-control" formControlName="CPF" mask="000.000.000-00" />
+            </div>
+            <div class="col-md-4">
+                <label for="RG">RG</label>
+                <input type="text" id="RG" class="form-control" formControlName="RG" mask="00.000.000-0" />
+            </div>
+        </div>
+
+        <!-- Data de Nascimento e Nível -->
+        <div class="row form-group mt-3">
+            <div class="col-md-6">
+                <label for="datanascimento">Data de Nascimento</label>
+                <input type="text" id="datanascimento" class="form-control" formControlName="datanascimento"
+                    mask="00/00/0000" (change)="verificarIdade()" />
+            </div>
+
+            <div class="col-md-12" *ngIf="menorDeIdade">
+                <label>Anexar Termo de Autorização</label>
+                <input type="file" class="form-control" formControlName="termo_autorizacao" />
+                <small>
+                    <a href="assets/termos/autorizacao-menor-de-idade.pdf" target="_blank">Baixar modelo do termo</a>
+                </small>
+            </div>
+
+            <div class="col-md-6">
+                <label for="nivel_experiencia">Nível de Experiência</label>
+                <select formControlName="nivel_experiencia" class="form-select">
+                    <option value="iniciante">Iniciante</option>
+                    <option value="intermediario">Intermediário</option>
+                    <option value="avancado">Avançado</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Email e Personal -->
+        <div class="row form-group mt-3">
+            <div class="col-md-6">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" class="form-control" formControlName="email" />
+            </div>
+            <div class="col-md-6">
+                <label for="personal_id">Personal</label>
+                <select formControlName="personal_id" class="form-select">
+                    <option *ngFor="let dado of idnamepersonal" value="{{dado.id}}">
+                        {{ dado.nome }}
+                    </option>
+                </select>
+
+            </div>
+        </div>
+
+        <!-- Plano -->
+        <div class="row form-group mt-2">
+            <div class="col-md-12">
+                <label for="plano">Plano</label>
+                <select formControlName="plano" class="form-select">
+                    @if (!dados['personal_id']) {
+                    <option value="" selected>Escolha um Personal</option>
+                    }
+                    @for (dado of idnamepersonal; track dado;) {
+                    <option *ngIf="dado['id'] == dados['personal_id']" value="{{ dado['id'] }}" selected>{{ dado['nome']
+                        }}</option>
+                    <option *ngIf="dado['id'] != dados['personal_id']" value="{{ dado['id'] }}">{{ dado['nome'] }}
+                    </option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <!-- Documentos -->
+        <div class="row form-group mt-4">
+            <div class="col-md-6">
+                <label>Anexar Termo de Responsabilidade</label>
+                <input type="file" class="form-control" formControlName="termo_responsabilidade" />
+                <small>
+                    <a href="assets/termos/autorizacao-treinar-sem-personal-e-anamnese.pdf" target="_blank">Baixar
+                        modelo do termo</a>
+                </small>
+            </div>
+            <div class="col-md-6">
+                <label>Anexar Atestado Médico</label>
+                <input type="file" class="form-control" formControlName="atestado_medico" />
+            </div>
+        </div>
+
+        <!-- Botão -->
+        <div class="row mt-4">
+            <div class="col text-end">
+                <button type="submit" class="btn btn-primary" [disabled]="loading">
+                    <span *ngIf="!loading">Salvar Alterações</span>
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
                 </button>
-                <div *ngIf="loading" class="spinner-container">
-                    <button class="btn btn-primary" disabled>
-                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                    </button>
-                </div>
             </div>
-        </form>
-    </div>
-
+        </div>
+    </form>
+    }
 </div>

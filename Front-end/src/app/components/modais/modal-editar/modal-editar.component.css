@@ -1,16 +1,4 @@
-.container{
-    width:100%;
-    /* display: flex;
-    justify-content: space-around;
-    align-items: center; */
-}
 
-.formulario{
-    width: 100%;
-    /* display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around; */
-}
 
 .input-box {
     display: flex;

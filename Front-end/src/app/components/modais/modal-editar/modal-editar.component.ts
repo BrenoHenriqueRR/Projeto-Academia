@@ -11,6 +11,7 @@ import { PnClienteService } from '../../../services/admin/pn-cliente/pn-cliente.
 import { ModalSpinnerComponent } from "../modal-spinner/modal-spinner.component";
 import { ToastrService } from 'ngx-toastr';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
+import { ConfigService } from '../../../services/admin/config/config.service';
 
 @Component({
   selector: 'app-modal-editar',
@@ -39,14 +40,15 @@ export class ModalEditarComponent {
     this.loading = true;
     setTimeout(async () => {
       await this.personal();
+      await this.pesquisarPlanos();
       await this.Bucasdados();
-      this.form();
       this.loading = false;
-    }, 200  )
+    }, 200)
   }
 
   constructor(private service: ModalEditarService, private route: ActivatedRoute,
-    private personalp: CadastroService, private cliservice: PnClienteService, private alertas: ToastrService) {
+    private personalp: CadastroService, private cliservice: PnClienteService,
+    private planoService: ConfigService, private alertas: ToastrService) {
     this.route.queryParams.subscribe(params => {
       this.identificador = params['id'];
     });
@@ -97,10 +99,11 @@ export class ModalEditarComponent {
           this.foto_perfil = environment.apiUrl + '/' + this.data[0].foto_perfil;
           this.verifi_foto_perfil = this.data[0].verifi_img;
           // console.log(this.verifi_foto_perfil)
+          this.form();
           resolve();
         }, error: (erro) => {
           console.error('Erro ao buscar dados:', erro);
-          reject(erro); 
+          reject(erro);
         }
       });
     });
@@ -110,21 +113,21 @@ export class ModalEditarComponent {
     if (this.data && this.data.length > 0) {
       this.formcadastro = new FormGroup({
         id: new FormControl(this.identificador),
-        nome: new FormControl(this.data[0].nome, [Validators.required]),
+        nome: new FormControl(this.data[0].nome, Validators.required),
         email: new FormControl(this.data[0].email, [Validators.required, Validators.email]),
-        CPF: new FormControl(this.data[0].CPF, [Validators.required]),
+        CPF: new FormControl(this.data[0].CPF, Validators.required),
         personal_id: new FormControl(this.data[0].personal_id, Validators.required),
-        foto_perfil: new FormControl(['']),
+        foto_perfil: new FormControl(null),
         RG: new FormControl(this.data[0].RG, Validators.required),
         telefone: new FormControl(this.data[0].telefone, Validators.required),
         endereco: new FormControl(this.data[0].endereco, Validators.required),
         datanascimento: new FormControl(this.data[0].datanascimento, Validators.required),
         nivel_experiencia: new FormControl(this.data[0].nivel_experiencia, Validators.required),
-        plano: new FormControl('', Validators.required),
+        plano: new FormControl(this.data[0].plano_id, Validators.required),
         atestado_medico: new FormControl(this.data[0].atestado_medico),
         // treino_com_personal: new FormControl(['nao']),
         termo_responsabilidade: new FormControl(this.data[0].termo_responsabilidade),
-        termo_autorizacao: new FormControl(this.data[0].termo_autorizacao ),
+        termo_autorizacao: new FormControl(this.data[0].termo_autorizacao),
       });
     } else {
       // Trate o caso em que nenhum dado foi retornado ou os dados estão vazios
@@ -159,6 +162,7 @@ export class ModalEditarComponent {
       personal_id: selectedText,
     });
   }
+
   personal(): Promise<void> {
     return new Promise((resolve, reject) => {
 
@@ -174,6 +178,21 @@ export class ModalEditarComponent {
           reject(erro);
         }
       });
+    });
+  }
+
+  pesquisarPlanos(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      this.planoService.pesquisarPlanos().subscribe({
+        next: (dados) => {
+          this.planos = dados;
+          console.log(dados);
+          resolve();
+        }, error: (err) => {
+          console.log(err);
+          reject(err);
+        }
+      })
     });
   }
 

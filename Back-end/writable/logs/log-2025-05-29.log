@@ -1,0 +1,9 @@
+CRITICAL - 2025-05-29 19:08:59 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "Relatorios/Templates/vendas_loja_detalhado_pdf.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(216): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('Relatorios/Templates/vendas_loja_detalhado_pdf.php')
+ 2 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('Relatorios/Templates/vendas_loja_detalhado_pdf', [], true)
+ 3 APPPATH\Controllers\Financeiro.php(472): view('Relatorios/Templates/vendas_loja_detalhado_pdf', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->vendasLojaDetalhadoPdf()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

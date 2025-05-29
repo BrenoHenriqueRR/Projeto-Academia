@@ -389,5 +389,111 @@ class Financeiro extends BaseController
             ->setBody($dompdf->output());
     }
 
-    
+    // No seu RelatoriosController.php
+
+    // Adicione estes Models no __construct se ainda não estiverem lá,
+    // ou instancie-os diretamente no método.
+    // use App\Models\LojaVendaModel;
+    // use App\Models\LojaVendaItensModel;
+    // use App\Models\LojaProdutosModel;
+
+    public function vendasLojaDetalhadoPdf()
+    {
+        $mes = $this->request->getGet('mes');
+        $ano = $this->request->getGet('ano');
+
+        $lojaVendaItensModel = new LojaItensModel();
+
+
+        $queryVendas = $this->vendaModel->orderBy('data_venda', 'DESC');
+
+        $periodoDesc = "Todas as Vendas";
+        if ($mes && $ano) {
+            $queryVendas->like('data_venda', "$ano-$mes-", 'after'); // Formato YYYY-MM-DD
+
+            // Obter o nome do mês com IntlDateFormatter
+            $dateObj = \DateTime::createFromFormat('!m', $mes);
+            $formatter = new \IntlDateFormatter(
+                'pt_BR',
+                \IntlDateFormatter::NONE,
+                \IntlDateFormatter::NONE,
+                'America/Sao_Paulo',
+                \IntlDateFormatter::GREGORIAN,
+                "LLLL" // Nome do mês por extenso com locale
+            );
+            $nomeMes = $formatter->format($dateObj);
+
+            $periodoDesc = ucfirst($nomeMes) . " de $ano";
+        } elseif ($ano) {
+            $queryVendas->like('data_venda', "$ano-", 'after');
+            $periodoDesc = "Ano de $ano";
+        }
+
+        $vendas = $queryVendas->findAll();
+        $vendasComItens = [];
+        $totalGeralVendas = 0;
+
+        foreach ($vendas as $venda) {
+            $itens = $lojaVendaItensModel
+                ->select('
+                loja_vendas_itens.quantidade,
+                loja_vendas_itens.valor_unitario,
+                loja_produtos.nome as produto_nome
+            ')
+                ->join('loja_produtos', 'loja_produtos.id = loja_vendas_itens.produto_id', 'left')
+                ->where('loja_vendas_itens.venda_id', $venda['id'])
+                ->findAll();
+
+            $venda['itens'] = $itens;
+            $vendasComItens[] = $venda;
+            $totalGeralVendas += (float)$venda['total'];
+        }
+
+        // Buscar dados da academia
+        $academiaInfo = $this->academiaModel->first() ?? [
+            'nome' => 'Nome da Academia Padrão',
+            'cnpj' => '00.000.000/0000-00',
+            'email' => 'contato@academia.com',
+            'logo' => 'assets/img/logo_padrao.png',
+            'telefone' => '(00) 00000-0000'
+        ];
+
+        // Preparar dados para a view
+        $dataView = [
+            'report_title' => 'Relatório Detalhado de Vendas da Loja',
+            'data_geracao' => date('d/m/Y H:i:s'),
+            'academia_info' => $academiaInfo,
+            'vendas_data' => $vendasComItens,
+            'periodo_analise_label' => 'Período de Análise',
+            'periodo_analise_valor' => $periodoDesc,
+            'total_geral_vendas' => $totalGeralVendas,
+        ];
+
+        $html = view('Relatorios/relatorio_vendas_detalhado', $dataView);
+
+        $cssPath = FCPATH . 'assets/css/relatorio_vendas_detalhado.css';
+        $css = '';
+        if (file_exists($cssPath)) {
+            $css = file_get_contents($cssPath);
+        } else {
+            log_message('error', 'Arquivo CSS do relatório não encontrado: ' . $cssPath);
+        }
+
+        $options = new Options();
+        $options->set('isRemoteEnabled', true);
+        $options->set('isHtml5ParserEnabled', true);
+        $options->set('defaultFont', 'Arial');
+        $options->set('chroot', FCPATH . 'public');
+
+        $dompdf = new Dompdf($options);
+        $dompdf->loadHtml('<meta charset="UTF-8"><style>' . $css . '</style>' . $html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+
+        $nomeArquivo = 'relatorio-vendas-loja-detalhado-' . date('Ymd-His') . '.pdf';
+        return $this->response
+            ->setHeader('Content-Type', 'application/pdf')
+            ->setHeader('Content-Disposition', 'inline; filename="' . $nomeArquivo . '"')
+            ->setBody($dompdf->output());
+    }
 }

@@ -173,7 +173,7 @@ class Cliente extends BaseController
         $dados = $this->pagamentosModel
             ->select('*')
             ->join('clientes_planos', 'clientes_planos.id = pagamentos.cliente_planos_id')
-            ->findAll(); // usa findAll() e não get() aqui
+            ->findAll(); 
 
         return $this->response->setJSON($dados)->setStatusCode(200);
     }

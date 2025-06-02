@@ -189,7 +189,7 @@
         </li>
         <li class="nav-item" role="presentation">
           <button class="nav-link" id="pagamentos-tab" data-bs-toggle="tab" data-bs-target="#pagamentos" type="button"
-            role="tab" (click)="carregarPagamentos()">
+            role="tab">
             <i class="bi bi-credit-card me-2"></i>Pagamentos
           </button>
         </li>
@@ -269,7 +269,7 @@
                   </div>
                 </div>
               </div>
-                <!-- <div class="alert alert-warning" *ngIf="(resumo?.lucro_liquido || 0) < 0">
+                <div class="alert alert-warning" *ngIf="(resumo?.lucro_liquido || 0) < 0">
                 <div class="d-flex align-items-center">
                   <i class="bi bi-exclamation-triangle me-2"></i>
                   <div>
@@ -277,7 +277,7 @@
                     <br><small>Revise as despesas para melhorar a rentabilidade.</small>
                   </div>
                 </div>
-              </div> -->
+              </div>
 
                 <div class="alert alert-info" *ngIf="pagamentosPendentes.length > 0">
                   <div class="d-flex align-items-center">

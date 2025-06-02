@@ -91,6 +91,9 @@ class Financeiro extends BaseController
     public function listaPagamentos()
     {
 
+        $mes = $this->request->getGet('mes');
+        $ano = $this->request->getGet('ano');
+
         $data = $this->pagamentoModel
             ->select('
         pagamentos.id,
@@ -107,6 +110,16 @@ class Financeiro extends BaseController
             ->join('clientes_planos', 'pagamentos.cliente_planos_id = clientes_planos.id', 'left')
             ->join('cliente', 'clientes_planos.cliente_id = cliente.id', 'left')
             ->join('funcionarios', 'pagamentos.funcionario_id = funcionarios.id', 'left')
+            ->groupStart() // Inicia um grupo de condições: (CONDIÇÃO_A OR CONDIÇÃO_B)
+            // CONDIÇÃO_A: Pagamentos pagos no mês e ano especificados
+            ->groupStart() // Subgrupo para (status = 'pago' E data_pagamento corresponde ao ano e mês)
+            ->where('pagamentos.status_pagamento', 'pago')
+            ->like('pagamentos.data_pagamento', "$ano-$mes-", 'after') // Busca por "$ano-$mes-" no início do campo data_pagamento (ex: '2024-06-%')
+            ->groupEnd()
+            ->orGroupStart() // OU CONDIÇÃO_B: Pagamentos pendentes (independente da data)
+            ->where('pagamentos.status_pagamento', 'pendente')
+            ->groupEnd()
+            ->groupEnd() // Fecha o grupo principal de condições
             ->orderBy('pagamentos.data_criacao', 'DESC')
             ->findAll();
 

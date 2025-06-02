@@ -43,6 +43,7 @@ export class PnFinanceiroComponent {
   ngOnInit(): void {
     this.carregarResumo();
     this.carregarClientesAtivos();
+    this.carregarPagamentos();
   }
 
   carregarResumo() {

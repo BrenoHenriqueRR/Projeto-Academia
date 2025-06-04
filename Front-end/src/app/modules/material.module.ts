@@ -12,12 +12,13 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatPaginatorModule } from '@angular/material/paginator';
-
+// Importe o MatNativeDateModule (ou outro adaptador de data)
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
   declarations: [],
-  imports: [
+  exports: [
     MatButtonModule,
     MatInputModule,
     MatTooltipModule,
@@ -30,7 +31,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatTableModule,
     MatProgressSpinnerModule,
     MatDatepickerModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatNativeDateModule
   ]
 })
 export class MaterialModule { }

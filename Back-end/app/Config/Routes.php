@@ -31,6 +31,7 @@ $routes->group('Cliente', function ($routes) {
 // =====================
 $routes->group('ClientePlanos', function ($routes) {
  $routes->post('pesquisarId', 'ClientePlanos::pesquisarId');
+ $routes->post('concluirPagamento', 'ClientePlanos::concluirPagamento');
 });
 // =====================
 // FUNCIONÁRIOS

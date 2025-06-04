@@ -136,8 +136,8 @@ class ClientePlanos extends BaseController
                 ]);
 
             // Cria novo plano
-            $dataInicio = date('Y-m-d');
-            $dataVencimento = date('Y-m-d', strtotime('+30 days'));
+            $dataInicio = $cliPlanos['data_vencimento'];
+            $dataVencimento = date('Y-m-d', strtotime($dataInicio . ' +30 days'));
 
             $novoPlanoId = $this->clientesPlanosModel->insert([
                 'cliente_id' => $cliPlanos['cliente_id'],

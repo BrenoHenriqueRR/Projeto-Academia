@@ -4,11 +4,15 @@ import { PnClienteService } from '../../../../services/admin/pn-cliente/pn-clien
 import { PnFinanceiroService } from '../../../../services/admin/pn-financeiro/pn-financeiro.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { ModalVendaComponent } from '../pn-loja/modal-venda/modal-venda.component';
+import { MatDialog } from '@angular/material/dialog';
+import { MaterialModule } from '../../../../modules/material.module';
+
 
 @Component({
   selector: 'app-pn-financeiro',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, CommonModule, RouterLink],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule, RouterLink, MaterialModule],
   templateUrl: './pn-financeiro.component.html',
   styleUrl: './pn-financeiro.component.css'
 })
@@ -37,7 +41,8 @@ export class PnFinanceiroComponent {
 
   constructor(
     private service: PnFinanceiroService,
-    private clienteService: PnClienteService
+    private clienteService: PnClienteService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -68,8 +73,8 @@ export class PnFinanceiroComponent {
     this.service.listaPagamentos().subscribe({
       next: (data) => {
         this.listaPagamentos = data;
-        this.pagamentosPendentes = data.filter((p: any) => p.status_pagamento === 'pendente');
         console.log('Pagamentos carregados:', data);
+        this.pagamentosPendentes = data.filter((p: any) => p.status_pagamento === 'pendente');
       },
       error: (error) => {
         console.error('Erro ao carregar pagamentos:', error);
@@ -127,6 +132,18 @@ export class PnFinanceiroComponent {
     }
   }
 
+   abrirModal(id: number) {
+        const dialogRef = this.dialog.open(ModalVendaComponent, {
+          width: '400px',
+          data: { pagamento: this.listaPagamentos.filter(p => p.id == id), tipo: 'pagplano' },
+        });
+        dialogRef.afterClosed().subscribe((result) => {
+          if (result.confirmado) {
+            this.aprovarPagamento(id, result.pagamento);
+          }
+        });
+    }
+
   calcularPercentual(valor: number, total: number): string {
     if (!total || total === 0) return '0';
     return ((valor / total) * 100).toFixed(1);
@@ -147,29 +164,14 @@ export class PnFinanceiroComponent {
     this.service.gerarPdfMensal(this.mes.toString().padStart(2, '0'), this.ano.toString());
   }
 
-  // exportarExcel() {
-  //   // Implementar exportação para Excel
-  //   const dadosExportacao = {
-  //     resumo: this.resumo,
-  //     pagamentos: this.listaPagamentos,
-  //     despesas: this.listaDespesas,
-  //     vendas: this.listaVendas,
-  //     periodo: `${this.mes}/${this.ano}`
-  //   };
-    
-  //   console.log('Exportando dados para Excel:', dadosExportacao);
-  //   // Aqui você pode implementar a lógica de exportação
-  //   // Por exemplo, usando uma biblioteca como xlsx
-  // }
-
   // Métodos para atualização de status dos pagamentos
-  aprovarPagamento(pagamentoId: number) {
+  aprovarPagamento(pagamentoId: number, formaPag: string) {
     const dados = {
-      cliente_id: pagamentoId,
-      status_pagamento: 'success'
+      id: pagamentoId,
+      forma_pagamento: formaPag
     };
 
-    this.service.updatePagamento(dados).subscribe({
+    this.service.updatePagamento(JSON.stringify(dados)).subscribe({
       next: (response) => {
         console.log('Pagamento aprovado:', response);
         this.carregarPagamentos();

@@ -2,13 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment';
-import { Router } from '@angular/router';
 
 @Injectable({
    providedIn: 'root'
 })
 export class PnFinanceiroService {
    private apiUrl = `${environment.apiUrl}/Financeiro`;
+   private apiUrlCli = `${environment.apiUrl}/ClientePlanos`;
 
   constructor(private http: HttpClient) { }
 
@@ -37,7 +37,7 @@ export class PnFinanceiroService {
 
   // Método para atualizar status de pagamento
   updatePagamento(dados: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/update`, dados);
+    return this.http.post(`${this.apiUrlCli}/concluirPagamento`, dados);
   }
 
   // Método para buscar dados de um cliente específico

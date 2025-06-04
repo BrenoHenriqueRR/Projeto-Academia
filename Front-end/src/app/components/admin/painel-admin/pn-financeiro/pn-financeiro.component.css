@@ -1,5 +1,18 @@
 /* CSS para o componente financeiro melhorado */
 
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: rgb(248 249 250) !important; 
+  border-radius: 4px;
+}
+
+::ng-deep .mat-date-range-input-inner{
+  color: black !important;
+}
+
+::ng-deep .mat-datepicker-toggle-default-icon{
+  color: black !important;
+}
+
 .dashboard-card {
   border-radius: 15px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -164,7 +177,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1000;
+  z-index: 900;
 }
 
 .loading-backdrop {
@@ -174,7 +187,7 @@
   right: 0;
   bottom: 0;
   background-color: rgba(255, 255, 255, 0.8);
-  z-index: 999;
+  z-index: 899;
 }
 
 /* Botões personalizados */
@@ -406,7 +419,7 @@
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s ease;
-  z-index: 1000;
+  z-index: 900
 }
 
 .custom-tooltip:hover::after {

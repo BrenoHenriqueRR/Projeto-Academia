@@ -151,7 +151,7 @@ export class PnLojaComponent {
     if (this.carrinho.length) {
       const dialogRef = this.dialog.open(ModalVendaComponent, {
         width: '400px',
-        data: { produtos: this.carrinho }
+        data: { produtos: this.carrinho, tipo: 'loja' },
       });
       dialogRef.afterClosed().subscribe((result) => {
         if (result.confirmado) {

@@ -2,17 +2,18 @@ import { Component, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PnClienteService } from '../../../../services/admin/pn-cliente/pn-cliente.service';
 import { PnFinanceiroService } from '../../../../services/admin/pn-financeiro/pn-financeiro.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { ModalVendaComponent } from '../pn-loja/modal-venda/modal-venda.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MaterialModule } from '../../../../modules/material.module';
+import { ModalSpinnerComponent } from '../../../modais/modal-spinner/modal-spinner.component';
 
 
 @Component({
   selector: 'app-pn-financeiro',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, CommonModule, RouterLink, MaterialModule],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule, RouterLink, MaterialModule, ModalSpinnerComponent],
   templateUrl: './pn-financeiro.component.html',
   styleUrl: './pn-financeiro.component.css'
 })
@@ -20,11 +21,12 @@ export class PnFinanceiroComponent {
   // Propriedades existentes
   mes = new Date().getMonth() + 1;
   ano = new Date().getFullYear();
+  data_group !: FormGroup;
   resumo: any;
 
   // Novas propriedades para funcionalidades avançadas
   listaPagamentos: any[] = [];
-  alertasFinanceiros: Array<{tipo: 'warning' | 'danger' | 'info', mensagem: string}> = [];
+  alertasFinanceiros: Array<{ tipo: 'warning' | 'danger' | 'info', mensagem: string }> = [];
   listaDespesas: any[] = [];
   listaVendas: any[] = [];
   pagamentosPendentes: any[] = [];
@@ -42,10 +44,17 @@ export class PnFinanceiroComponent {
   constructor(
     private service: PnFinanceiroService,
     private clienteService: PnClienteService,
-    private dialog: MatDialog
-  ) {}
+    private dialog: MatDialog,
+    private datePipe: DatePipe
+  ) { }
 
   ngOnInit(): void {
+    this.data_group = new FormGroup({
+      start: new FormControl(null, [Validators.required]),
+      end: new FormControl(null, [Validators.required]),
+      Sstart: new FormControl(null), //string
+      Send: new FormControl(null), //string
+    })
     this.carregarResumo();
     this.carregarClientesAtivos();
     this.carregarPagamentos();
@@ -53,20 +62,42 @@ export class PnFinanceiroComponent {
 
   carregarResumo() {
     this.loading = true;
-    this.service.getResumo(this.mes.toString().padStart(2, '0'), this.ano.toString())
-      .subscribe({
-        next: (data) => {
-          this.resumo = data;
-          this.calcularMargemLucro();
-           this.getAlertasFinanceiros();
-          this.loading = false;
-          console.log('Resumo carregado:', data);
-        },
-        error: (error) => {
-          console.error('Erro ao carregar resumo:', error);
-          this.loading = false;
-        }
-      });
+    // this.data_group.value.start == null && this.data_group.value.end == null
+    if (!this.data_group.valid) {
+      this.service.getResumo(this.mes.toString().padStart(2, '0'), this.ano.toString())
+        .subscribe({
+          next: (data) => {
+            this.resumo = data;
+            this.calcularMargemLucro();
+            this.getAlertasFinanceiros();
+            this.loading = false;
+            console.log('Resumo carregado:', data);
+          },
+          error: (error) => {
+            console.error('Erro ao carregar resumo:', error);
+            this.loading = false;
+          }
+        });
+    } else {
+      this.service.getResumoPeriodo(this.data_group.value.Sstart, this.data_group.value.Send)
+        .subscribe({
+          next: (data) => {
+            this.resumo = data;
+            this.calcularMargemLucro();
+            this.getAlertasFinanceiros();
+            this.loading = false;
+            console.log('Resumo carregado:', data);
+            this.data_group.patchValue({
+              start: null,
+              end: null
+            })
+          },
+          error: (error) => {
+            console.error('Erro ao carregar resumo:', error);
+            this.loading = false;
+          }
+        });
+    }
   }
 
   carregarPagamentos() {
@@ -132,17 +163,17 @@ export class PnFinanceiroComponent {
     }
   }
 
-   abrirModal(id: number) {
-        const dialogRef = this.dialog.open(ModalVendaComponent, {
-          width: '400px',
-          data: { pagamento: this.listaPagamentos.filter(p => p.id == id), tipo: 'pagplano' },
-        });
-        dialogRef.afterClosed().subscribe((result) => {
-          if (result.confirmado) {
-            this.aprovarPagamento(id, result.pagamento);
-          }
-        });
-    }
+  abrirModal(id: number) {
+    const dialogRef = this.dialog.open(ModalVendaComponent, {
+      width: '400px',
+      data: { pagamento: this.listaPagamentos.filter(p => p.id == id), tipo: 'pagplano' },
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result.confirmado) {
+        this.aprovarPagamento(id, result.pagamento);
+      }
+    });
+  }
 
   calcularPercentual(valor: number, total: number): string {
     if (!total || total === 0) return '0';
@@ -236,7 +267,7 @@ export class PnFinanceiroComponent {
   }
 
   // Método para destacar alertas importantes
-  getAlertasFinanceiros(){
+  getAlertasFinanceiros() {
     // const alertas = [];
 
     if (this.resumo?.lucro_liquido < 0) {
@@ -267,6 +298,21 @@ export class PnFinanceiroComponent {
       });
     }
     console
+  }
+
+  selectPeriodo() {
+    if (this.data_group.valid) {
+      this.data_group.patchValue({
+        Sstart: this.datePipe.transform(this.data_group.value.start, 'yyyy-MM-dd'),
+        Send: this.datePipe.transform(this.data_group.value.end, 'yyyy-MM-dd')
+      })
+
+      console.log('Período completo selecionado!');
+      console.log('Data de Início:', this.data_group.value.Sstart);
+      console.log('Data de Fim:', this.data_group.value.Send);
+
+      this.atualizarTodosDados();
+    }
   }
 
   // Método para resetar filtros

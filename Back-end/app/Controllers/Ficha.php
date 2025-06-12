@@ -9,6 +9,8 @@ use App\Models\HistoricoFichaModel;
 use App\Models\TipoGrupo;
 use CodeIgniter\HTTP\ResponseInterface;
 use Exception;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 class Ficha extends BaseController
 {
@@ -190,5 +192,81 @@ class Ficha extends BaseController
             print_r($e);
             return false;
         }
+    }
+
+    public function imprimirFichaId()
+    {
+
+        // Pega o ID do cliente da requisição
+        $json = $this->request->getJSON();
+        $cliente_id = $json->id;
+
+        // 1. Nova consulta usando o Query Builder completo
+        // Note que agora ela busca também o objetivo e o nome do personal.
+        $exerciciosRaw = $this->fichamodel
+            ->select('
+            fichas.id AS ficha_id, fichas.tipo, fichas.ordem,
+            ficha_exercicios.id AS ficha_exercicio_id,
+            exercicios.nome AS exercicio,
+            grupos_musculares.nome AS grupo_muscular,
+            ficha_exercicios.repeticoes,
+            ficha_exercicios.series,
+            ficha_exercicios.observacoes,
+            cliente.nome AS cliente_nome,
+            anamnese.perg_objetivos_saude AS objetivo,
+            funcionarios.nome AS personal_nome
+        ')
+            ->join('ficha_exercicios', 'ficha_exercicios.ficha_id = fichas.id')
+            ->join('exercicios', 'exercicios.id = ficha_exercicios.exercicio_id')
+            ->join('grupos_musculares', 'grupos_musculares.id = exercicios.grupo_muscular_id')
+            ->join('cliente', 'cliente.id = fichas.cliente_id')
+            ->join('anamnese', 'anamnese.cliente_id = cliente.id')
+            ->join('funcionarios', 'funcionarios.id = cliente.personal_id')
+            ->where('fichas.cliente_id', $cliente_id)
+            ->orderBy('fichas.ordem', 'ASC')
+            ->orderBy('ficha_exercicios.id', 'ASC')
+            ->get()
+            ->getResult();
+
+        // Verificação para caso o cliente não tenha fichas
+        if (empty($exerciciosRaw)) {
+            // Você pode retornar um erro ou um PDF de "erro"
+            return redirect()->back()->with('error', 'Nenhuma ficha encontrada para este cliente.');
+        }
+
+        // 2. Organizando os dados para a View
+        // Os dados do cliente (nome, objetivo, personal) são os mesmos em todas as linhas,
+        // então pegamos do primeiro resultado.
+        $dados_para_pdf = [
+            'cliente_nome'  => $exerciciosRaw[0]->cliente_nome,
+            'personal_nome' => $exerciciosRaw[0]->personal_nome,
+            'objetivo'      => $exerciciosRaw[0]->objetivo,
+            'fichas_agrupadas' => []
+        ];
+
+        // Agora agrupamos os exercícios por tipo de série (A, B, C...)
+        foreach ($exerciciosRaw as $exercicio) {
+            $dados_para_pdf['fichas_agrupadas'][$exercicio->tipo][] = $exercicio;
+        }
+
+        // 3. Geração do PDF (sem alterações nesta parte)
+        $html = view('fichas_pdf', $dados_para_pdf);
+
+        $options = new Options();
+        $options->set('isRemoteEnabled', true);
+        $options->set('chroot', FCPATH . 'img'); // Ajuste se seu logo estiver em outro local
+
+        $dompdf = new Dompdf($options);
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+
+        $nomeSeguro = url_title($dados_para_pdf['cliente_nome'], '-', true);
+        $nomeArquivo = 'Ficha-de-treino-' . $nomeSeguro . '.pdf';
+
+        return $this->response
+            ->setHeader('Content-Type', 'application/pdf')
+            ->setHeader('Content-Disposition', 'inline; filename="' . $nomeArquivo . '"')
+            ->setBody($dompdf->output());
     }
 }

@@ -22,6 +22,7 @@ export class FormularioComponent {
     private router: Router
   ) {
     this.form = this.fb.group({
+      id: ['', [Validators.required]],
       descricao: ['', [Validators.required]],
       valor: [null, [Validators.required]],
       tipo: ['fixa', Validators.required],
@@ -45,6 +46,7 @@ export class FormularioComponent {
   }
 
   salvar() {
+    this.form.patchValue({id : this.id});
     const dados: Despesa = this.form.value;
     if (this.editando && this.id) {
       this.service.update(JSON.stringify(dados)).subscribe(() => {

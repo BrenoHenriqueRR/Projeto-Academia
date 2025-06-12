@@ -17,6 +17,10 @@ export class PnFinanceiroService {
     return this.http.get(`${this.apiUrl}/resumo?mes=${mes}&ano=${ano}`);
   }
 
+  getResumoPeriodo(mes: string, ano: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/resumo?data_inicio=${mes}&data_fim=${ano}`);
+  }
+
   // Novos métodos para as funcionalidades melhoradas
   listaPagamentos(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/listaPagamentos`);

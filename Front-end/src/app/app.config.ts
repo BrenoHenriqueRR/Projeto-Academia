@@ -1,6 +1,6 @@
-import { ApplicationConfig } from '@angular/core';
+import { ApplicationConfig, LOCALE_ID } from '@angular/core';
 import { provideRouter } from '@angular/router';
-import { registerLocaleData } from '@angular/common';
+import { DatePipe, registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 
 
@@ -17,5 +17,6 @@ export const appConfig: ApplicationConfig = {
     provideNgxMask(),
   provideToastr(),
   provideAnimations(),
-  provideHttpClient(withFetch()), provideAnimationsAsync()],
+  provideHttpClient(withFetch()), provideAnimationsAsync(),DatePipe,
+{ provide: LOCALE_ID, useValue: 'pt-BR' }],
 };

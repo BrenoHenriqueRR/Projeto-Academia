@@ -24,66 +24,77 @@ class Financeiro extends BaseController
     protected $despesaModel;
     protected $vendaModel;
     protected $academiaModel;
+    protected $clientemodel;
 
-    public function __construct()
+    public function __construct()   
     {
         $this->model = new FinanceiroModel();
         $this->pagamentoModel = new PagamentosModel();
         $this->vendaModel = new LojaVendaModel();
         $this->despesaModel = new DespesaModel();
         $this->academiaModel = new AcademiaModel();
+        $this->clientemodel = new ClienteModel();
     }
 
     public function resumo()
     {
-        $mes = $this->request->getGet('mes');
-        $ano = $this->request->getGet('ano');
+        $dataInicioParam = $this->request->getGet('data_inicio');
+        $dataFimParam = $this->request->getGet('data_fim');
+
+        if ($dataInicioParam && $dataFimParam) {
+            $dataInicio = date('Y-m-d', strtotime($dataInicioParam));
+            $dataFim = date('Y-m-d', strtotime($dataFimParam));
+        } else {
+        
+            $mes = $this->request->getGet('mes') ?? date('m');
+            $ano = $this->request->getGet('ano') ?? date('Y');
+            $dataInicio = "$ano-$mes-01";
+            $dataFim = date('Y-m-t', strtotime($dataInicio)); // 't' retorna o último dia do mês
+        }
 
 
-        // Total de pagamentos com status 'pago' ou 'success'
         $pagamentos = $this->pagamentoModel
-            ->select('SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ",", ".") AS DECIMAL(10,2)))', 'total_valor')
-            ->like('data_pagamento', "$ano-$mes")
+            ->select('SUM(CAST(REPLACE(REPLACE(valor, "R$", ""), ",", ".") AS DECIMAL(10,2))) AS total_valor')
+            ->where('data_pagamento >=', $dataInicio)
+            ->where('data_pagamento <=', $dataFim)
             ->groupStart()
             ->where('status_pagamento', 'pago')
             ->orWhere('status_pagamento', 'success')
             ->groupEnd()
-            ->first()['total_valor'] ?? 0;
+            ->first();
+        $totalPagamentos = $pagamentos['total_valor'] ?? 0;
 
         // Total de vendas
         $vendas = $this->vendaModel
             ->select('SUM(total) AS total')
-            ->like('data_venda', "$ano-$mes", 'after')
-            ->first()['total'] ?? 0;
+            ->where('data_venda >=', $dataInicio)
+            ->where('data_venda <=', $dataFim)
+            ->first();
+        $totalVendas = $vendas['total'] ?? 0;
 
         // Total de despesas
         $despesas = $this->despesaModel
             ->select('SUM(valor) as valor')
-            ->like('data', "$ano-$mes", 'after')
-            ->first()['valor'] ?? 0;
+            ->where('data >=', $dataInicio)
+            ->where('data <=', $dataFim)
+            ->first();
+        $totalDespesas = $despesas['valor'] ?? 0;
 
-        $lucro = floatval($pagamentos) + floatval($vendas) - floatval($despesas);
+        $lucro = floatval($totalPagamentos) + floatval($totalVendas) - floatval($totalDespesas);
 
-        // Dados adicionais para análise
-        $totalClientes = (new ClienteModel())
-            ->where('status', 'ativo')
-            ->countAllResults();
-
-        $pagamentosPendentes = $this->pagamentoModel
-            ->where('status_pagamento', 'pendente')
-            ->countAllResults();
+        $totalClientes = $this->clientemodel->where('status', 'ativo')->countAllResults();
+        $pagamentosPendentes = $this->pagamentoModel->where('status_pagamento', 'pendente')->countAllResults();
 
         return $this->response->setJSON([
-            'total_pagamentos' => floatval($pagamentos),
-            'total_vendas' => floatval($vendas),
-            'total_despesas' => floatval($despesas),
+            'total_pagamentos' => floatval($totalPagamentos),
+            'total_vendas' => floatval($totalVendas),
+            'total_despesas' => floatval($totalDespesas),
             'lucro_liquido' => $lucro,
             'total_clientes_ativos' => $totalClientes,
             'pagamentos_pendentes' => $pagamentosPendentes,
             'periodo' => [
-                'mes' => $mes,
-                'ano' => $ano,
-                'nome_mes' => $this->getNomeMes($mes)
+                'data_inicio' => $dataInicio,
+                'data_fim' => $dataFim,
             ]
         ]);
     }

@@ -17,7 +17,7 @@
         }
 
         .ficha-container {
-            width: 100%;
+            max-width: 100%;
             border: 2px solid #000;
             padding: 15px;
         }
@@ -139,7 +139,9 @@
             <table class="series-table">
                 <tr><?php foreach ($fichas_pagina1 as $tipo_serie => $exercicios) : ?><td class="serie-cell">
                             <div class="serie-header">Série <?= esc($tipo_serie) ?></div>
-                            <div class="exercise-list"><?php foreach ($exercicios as $ex) : ?><div class="exercise-item"><span><?= esc($ex->exercicio) ?></span></div><?php if (!empty($ex->observacoes)): ?><div class="exercise-obs"><i>Obs: <?= esc($ex->observacoes) ?></i></div><?php endif; ?><?php endforeach; ?></div>
+                            <div class="exercise-list"><?php foreach ($exercicios as $ex) : ?><div class="exercise-item"><span><?php echo esc($ex->exercicio) . ' ' . esc($ex->series) . 'x' . esc($ex->repeticoes) ?></span></div><?php if (!empty($ex->observacoes)): ?>
+                                        <div class="exercise-obs"><i>Obs: <?= esc($ex->observacoes) ?></i></div><?php endif; ?><?php endforeach; ?>
+                            </div>
                         </td><?php endforeach; ?></tr>
             </table>
         </div>
@@ -150,7 +152,7 @@
             <table class="series-table">
                 <tr><?php foreach ($fichas_pagina2 as $tipo_serie => $exercicios) : ?><td class="serie-cell">
                             <div class="serie-header">Série <?= esc($tipo_serie) ?></div>
-                            <div class="exercise-list"><?php foreach ($exercicios as $ex) : ?><div class="exercise-item"><span><?= esc($ex->exercicio) ?></span></div><?php if (!empty($ex->observacoes)): ?><div class="exercise-obs"><i>Obs: <?= esc($ex->observacoes) ?></i></div><?php endif; ?><?php endforeach; ?></div>
+                            <div class="exercise-list"><?php foreach ($exercicios as $ex) : ?><div class="exercise-item"><span><?php echo esc($ex->exercicio) . ' ' . esc($ex->series) . 'x' . esc($ex->repeticoes) ?></span></div><?php if (!empty($ex->observacoes)): ?><div class="exercise-obs"><i>Obs: <?= esc($ex->observacoes) ?></i></div><?php endif; ?><?php endforeach; ?></div>
                         </td><?php endforeach; ?></tr>
             </table>
         </div>
@@ -187,7 +189,7 @@
                             <div class="serie-header">Série <?= esc($tipo_serie) ?></div>
                             <div class="exercise-list">
                                 <?php foreach ($exercicios as $ex) : ?>
-                                    <div class="exercise-item"><span><?= esc($ex->exercicio) ?></span></div>
+                                    <div class="exercise-item"><span><?php echo esc($ex->exercicio) . ' ' . esc($ex->series) . 'x' . esc($ex->repeticoes) ?></span></div>
                                     <?php if (!empty($ex->observacoes)): ?>
                                         <div class="exercise-obs"><i>Obs: <?= esc($ex->observacoes) ?></i></div>
                                     <?php endif; ?>

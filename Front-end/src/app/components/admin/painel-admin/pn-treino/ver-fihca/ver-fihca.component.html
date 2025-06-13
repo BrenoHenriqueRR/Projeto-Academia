@@ -1,4 +1,11 @@
-<h1>Ficha Cliente: {{cliente_id}}</h1>
+@if (isLoading) {
+  <app-modal-spinner></app-modal-spinner>
+}
+
+<div class="d-flex align-content-center justify-content-between">
+  <h1>Ficha Cliente: {{cliente_id}}</h1>
+  <button class="btn btn-danger" (click)="gerarPdf()">Gerar pdf</button>
+</div>
 <div *ngFor="let ficha of fichasComExercicios" class="card my-4 shadow-sm">
   <div class="card-header bg-primary text-white">
     Ficha {{ ficha.tipo_treino }} - Ordem {{ ficha.ordem }}

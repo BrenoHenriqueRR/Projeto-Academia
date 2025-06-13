@@ -2,17 +2,20 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CadTreinoService } from '../../../../../services/cad-treino/cad-treino.service';
+import { finalize } from 'rxjs';
+import { ModalSpinnerComponent } from '../../../../modais/modal-spinner/modal-spinner.component';
 
 @Component({
   selector: 'app-ver-fihca',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ModalSpinnerComponent],
   templateUrl: './ver-fihca.component.html',
   styleUrl: './ver-fihca.component.css'
 })
 export class VerFichaComponent {
   fichasComExercicios: any[] = [];
   cliente_id: any;
+  isLoading = false;
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
@@ -56,6 +59,29 @@ export class VerFichaComponent {
 
       this.fichasComExercicios = Array.from(fichasMap.values());
     });
+  }
+
+  gerarPdf(){
+    if (this.isLoading) return;
+    this.isLoading = true; 
+    this.service.getFichaPdf(this.cliente_id).pipe(
+        // 5. O finalize garante que o loading será desativado ao final
+        finalize(() => this.isLoading = false)
+      )
+      .subscribe({
+        next: (blob) => {
+          const a = document.createElement('a');
+          const objectUrl = URL.createObjectURL(blob);
+          a.href = objectUrl;
+          a.download = `Ficha-de-treino-cliente-${this.cliente_id}.pdf`; 
+          a.click();
+          URL.revokeObjectURL(objectUrl);
+        },
+        error: (err) => {
+          console.error('Erro ao baixar o PDF:', err);
+          alert('Não foi possível baixar o PDF. Tente novamente.');
+        }
+      });
   }
 
 }

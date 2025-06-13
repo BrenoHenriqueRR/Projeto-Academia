@@ -76,6 +76,7 @@ $routes->post('/Ficha/create', 'Ficha::create');
 $routes->post('/Ficha/pesquisarCli', 'Ficha::pesquisarCli');
 $routes->post('/Ficha/fichaNaoConcluida', 'Ficha::fichaNaoConcluida');
 $routes->post('/Ficha/concluirFicha', 'Ficha::concluirFicha');
+$routes->post('/Ficha/imprimirFichaId', 'Ficha::imprimirFichaId');
 
 // =====================
 // FINANCEIRO

@@ -19,6 +19,7 @@ export class CadTreinoService {
   private url_concluirficha = apiurl + '/Ficha/concluirFicha'
   private url_fichaNC = apiurl + '/Ficha/fichaNaoConcluida'
   private url_cficha = apiurl + '/Ficha/create'
+  private url_IFI = apiurl + '/Ficha/imprimirFichaId'
 
   constructor(private http: HttpClient) { }
 
@@ -63,6 +64,14 @@ export class CadTreinoService {
 
   pexer(): Observable<any> {
     return this.http.get<any>(this.url_pexer);
+  }
+
+  getFichaPdf(clienteId: number): Observable<Blob> {
+    const body = JSON.stringify({ id: clienteId });
+
+    return this.http.post(this.url_IFI, body, {
+      responseType: 'blob'
+    });
   }
 
 }

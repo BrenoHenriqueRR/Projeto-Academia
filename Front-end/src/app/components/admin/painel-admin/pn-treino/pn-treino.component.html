@@ -1,3 +1,8 @@
+@if (isLoading) {
+<app-modal-spinner></app-modal-spinner>
+}
+
+
 <div class="p-4">
     <h1 class="hi-treino mb-3">Fichas de Treino</h1>
 
@@ -34,13 +39,15 @@
                 </td>
                 <td>
                     @if (cliente.temFicha) {
-                    <button class="btn btn-primary btn-sm me-2" [routerLink]="['ver-fichas']" [queryParams]="{ id: cliente.id }">
+                    <button class="btn btn-primary btn-sm me-2" [routerLink]="['ver-fichas']"
+                        [queryParams]="{ id: cliente.id }">
                         Ver Fichas
                     </button>
-                    <button class="btn btn-success btn-sm me-2" [routerLink]="['cad-ficha']" [queryParams]="{ id: cliente.id }">
+                    <button class="btn btn-success btn-sm me-2" [routerLink]="['cad-ficha']"
+                        [queryParams]="{ id: cliente.id }">
                         Nova ficha
                     </button>
-                    <button class="btn btn-warning btn-sm"  [routerLink]="['cad-ficha']">
+                    <button class="btn btn-warning btn-sm" [routerLink]="['cad-ficha']">
                         Editar fichas
                     </button>
                     }

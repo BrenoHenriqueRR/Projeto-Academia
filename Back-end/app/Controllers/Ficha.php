@@ -197,12 +197,10 @@ class Ficha extends BaseController
     public function imprimirFichaId()
     {
 
-        // Pega o ID do cliente da requisição
         $json = $this->request->getJSON();
         $cliente_id = $json->id;
 
-        // 1. Nova consulta usando o Query Builder completo
-        // Note que agora ela busca também o objetivo e o nome do personal.
+
         $exerciciosRaw = $this->fichamodel
             ->select('
             fichas.id AS ficha_id, fichas.tipo, fichas.ordem,
@@ -212,6 +210,8 @@ class Ficha extends BaseController
             ficha_exercicios.repeticoes,
             ficha_exercicios.series,
             ficha_exercicios.observacoes,
+            ficha_exercicios.repeticoes,
+            ficha_exercicios.series,
             cliente.nome AS cliente_nome,
             anamnese.perg_objetivos_saude AS objetivo,
             funcionarios.nome AS personal_nome
@@ -230,13 +230,11 @@ class Ficha extends BaseController
 
         // Verificação para caso o cliente não tenha fichas
         if (empty($exerciciosRaw)) {
-            // Você pode retornar um erro ou um PDF de "erro"
+
             return redirect()->back()->with('error', 'Nenhuma ficha encontrada para este cliente.');
         }
 
-        // 2. Organizando os dados para a View
-        // Os dados do cliente (nome, objetivo, personal) são os mesmos em todas as linhas,
-        // então pegamos do primeiro resultado.
+
         $dados_para_pdf = [
             'cliente_nome'  => $exerciciosRaw[0]->cliente_nome,
             'personal_nome' => $exerciciosRaw[0]->personal_nome,
@@ -244,17 +242,15 @@ class Ficha extends BaseController
             'fichas_agrupadas' => []
         ];
 
-        // Agora agrupamos os exercícios por tipo de série (A, B, C...)
+        // agrupar os exercícios por tipo de série (A, B, C...)
         foreach ($exerciciosRaw as $exercicio) {
             $dados_para_pdf['fichas_agrupadas'][$exercicio->tipo][] = $exercicio;
         }
-
-        // 3. Geração do PDF (sem alterações nesta parte)
         $html = view('fichas_pdf', $dados_para_pdf);
 
         $options = new Options();
         $options->set('isRemoteEnabled', true);
-        $options->set('chroot', FCPATH . 'img'); // Ajuste se seu logo estiver em outro local
+        $options->set('chroot', FCPATH . 'img');
 
         $dompdf = new Dompdf($options);
         $dompdf->loadHtml($html);

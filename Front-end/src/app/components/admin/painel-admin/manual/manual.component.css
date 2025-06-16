@@ -1,0 +1,40 @@
+ .body-manual {
+     position: relative;
+ }
+
+ .sidebar {
+     position: sticky;
+     top: 0;
+     height: 100vh;
+     overflow-y: auto;
+     background-color: #f8f9fa;
+ }
+
+ section {
+     padding-top: 5rem;
+     margin-top: -5rem;
+ }
+
+ .step {
+     display: flex;
+     align-items: flex-start;
+     margin-bottom: 1.2rem;
+ }
+
+ .step-number {
+     background-color: #0d6efd;
+     color: white;
+     font-weight: bold;
+     border-radius: 50%;
+     width: 35px;
+     height: 35px;
+     display: inline-flex;
+     align-items: center;
+     justify-content: center;
+     margin-right: 15px;
+     flex-shrink: 0;
+ }
+
+ .step-content {
+     flex-grow: 1;
+ }

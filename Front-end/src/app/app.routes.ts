@@ -37,6 +37,7 @@ import { CliPagamentosComponent } from './components/admin/painel-admin/cli-paga
 import { VerFichaComponent } from './components/admin/painel-admin/pn-treino/ver-fihca/ver-ficha.component';
 import { ListarComponent } from './components/admin/painel-admin/despesas/listar/listar.component';
 import { FormularioComponent } from './components/admin/painel-admin/despesas/formulario/formulario.component';
+import { ManualComponent } from './components/admin/painel-admin/manual/manual.component';
 
 
 export const routes: Routes = [
@@ -105,6 +106,7 @@ export const routes: Routes = [
             { path: 'pn-planos', component: PnPlanosComponent, canActivate: [adminGuard] },
             { path: 'pn-planos/editar', component: ModalEditarPlanosComponent, canActivate: [adminGuard] },
             { path: 'financeiro', component: PnFinanceiroComponent, canActivate: [adminGuard] },
+            { path: 'manual', component: ManualComponent, canActivate: [adminGuard] },
             { path: 'relatorios', component: PnRelatoriosComponent, canActivate: [adminGuard] },
             { path: 'loja', component: PnLojaComponent, canActivate: [adminGuard] },
             { path: 'despesas', component: ListarComponent, canActivate: [adminGuard] },

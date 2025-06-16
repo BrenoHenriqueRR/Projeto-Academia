@@ -1,4 +1,4 @@
-import { NgClass, NgFor, NgIf } from '@angular/common';
+import { CommonModule, NgClass, NgFor, NgIf } from '@angular/common';
 import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, FormsModule, NgModel, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-confighome',
   standalone: true,
-  imports: [FormsModule, NgIf, NgClass, ReactiveFormsModule, NgxMaskDirective, ModalSpinnerComponent, NgFor ],
+  imports: [FormsModule, NgIf,CommonModule, ReactiveFormsModule, NgxMaskDirective, ModalSpinnerComponent, NgFor ],
   templateUrl: './confighome.component.html',
   providers: [provideNgxMask()],
   styleUrl: './confighome.component.css'

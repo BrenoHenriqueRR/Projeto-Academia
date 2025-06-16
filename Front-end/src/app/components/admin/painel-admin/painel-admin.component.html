@@ -68,7 +68,7 @@
                     </a>
                 </li>
                 }
-                <!-- @if (funcionalidade == 'personal') {
+                @if (funcionalidade == 'personal') {
                 <li class="side-item" routerLinkActive="mat-accent">
                     <a routerLink="chat">
                         <i class="fa-solid fa-comment"></i>
@@ -77,7 +77,8 @@
                         </span>
                     </a>
                 </li>
-                } -->
+                }
+                
                 @if (funcionalidade == 'Administrador') {
                 <li class="side-item" routerLinkActive="mat-accent">
                     <a routerLink="pn-planos">
@@ -119,6 +120,15 @@
                     </a>
                 </li>
                 }
+
+                <li class="side-item" routerLinkActive="mat-accent">
+                    <a routerLink="manual">
+                        <i class="fa-solid fa-book"></i>
+                        <span class="item-description">
+                            Manual
+                        </span>
+                    </a>
+                </li>
                 <!-- 
                 <li class="side-item" routerLinkActive="mat-accent">
                     <a routerLink="relatorios">

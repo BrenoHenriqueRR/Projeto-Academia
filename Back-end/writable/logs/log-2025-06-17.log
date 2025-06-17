@@ -1,0 +1,1034 @@
+CRITICAL - 2025-06-17 17:11:54 --> ErrorException: Undefined property: stdClass::$id
+in APPPATH\Controllers\ClientePlanos.php on line 92.
+ 1 APPPATH\Controllers\ClientePlanos.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$id', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\ClientePlanos.php', 92)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\ClientePlanos->pesquisarId()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientePlanos))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:04 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:04 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:04 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:04 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:04 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:04 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:04 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:04 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:11 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:11 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:11 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:11 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:11 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:11 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:11 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:11 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:13 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:13 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:13 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:13 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:13 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:13 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:13 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:13 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:16 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:16 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:16 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:16 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:16 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:16 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:16 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:16 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:23 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:23 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:23 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:23 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:23 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:23 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:23 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:23 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:27 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:27 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:27 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:27 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:27 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:27 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:28 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:39:28 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:40:13 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:40:13 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:40:13 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:40:13 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:40:13 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:40:13 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:40:14 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:40:14 --> Error: Call to a member function get() on null
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 17:40:54 --> Error: Call to a member function get() on array
+in APPPATH\Controllers\Ficha.php on line 127.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->pesquisarFicha()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 18:54:25 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "relatorios/relatorio_pagamentos_status.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(216): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('relatorios/relatorio_pagamentos_status.php')
+ 2 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('relatorios/relatorio_pagamentos_status', [], true)
+ 3 APPPATH\Controllers\Financeiro.php(567): view('relatorios/relatorio_pagamentos_status', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->relatorioPagamentosStatus()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 18:56:27 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "relatorio_relatorio_pagamentos_status.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(216): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('relatorio_relatorio_pagamentos_status.php')
+ 2 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('relatorio_relatorio_pagamentos_status', [], true)
+ 3 APPPATH\Controllers\Financeiro.php(567): view('relatorio_relatorio_pagamentos_status', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->relatorioPagamentosStatus()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 18:56:36 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "relatorio_pagamentos_status.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(216): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('relatorio_pagamentos_status.php')
+ 2 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('relatorio_pagamentos_status', [], true)
+ 3 APPPATH\Controllers\Financeiro.php(567): view('relatorio_pagamentos_status', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->relatorioPagamentosStatus()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 18:56:45 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "relatorio/relatorio_pagamentos_status.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(216): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('relatorio/relatorio_pagamentos_status.php')
+ 2 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('relatorio/relatorio_pagamentos_status', [], true)
+ 3 APPPATH\Controllers\Financeiro.php(567): view('relatorio/relatorio_pagamentos_status', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->relatorioPagamentosStatus()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 18:56:55 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "Relatorios/relatorio_pagamentos_status.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(216): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('Relatorios/relatorio_pagamentos_status.php')
+ 2 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('Relatorios/relatorio_pagamentos_status', [], true)
+ 3 APPPATH\Controllers\Financeiro.php(567): view('Relatorios/relatorio_pagamentos_status', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->relatorioPagamentosStatus()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 18:56:56 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "Relatorios/relatorio_pagamentos_status.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(216): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('Relatorios/relatorio_pagamentos_status.php')
+ 2 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('Relatorios/relatorio_pagamentos_status', [], true)
+ 3 APPPATH\Controllers\Financeiro.php(567): view('Relatorios/relatorio_pagamentos_status', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->relatorioPagamentosStatus()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 18:57:14 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "Relatorios/relatorio_pagamentos_status.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(216): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('Relatorios/relatorio_pagamentos_status.php')
+ 2 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('Relatorios/relatorio_pagamentos_status', [], true)
+ 3 APPPATH\Controllers\Financeiro.php(567): view('Relatorios/relatorio_pagamentos_status', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->relatorioPagamentosStatus()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 18:57:26 --> ErrorException: Undefined array key "cliente_nome"
+in APPPATH\Views\Relatorios\relatorio_pagamentos_status.php on line 133.
+ 1 APPPATH\Views\Relatorios\relatorio_pagamentos_status.php(133): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "cliente_nome"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio_pagamentos_status.php', 133)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio_pagamentos_status.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('Relatorios/relatorio_pagamentos_status', [], true)
+ 5 APPPATH\Controllers\Financeiro.php(567): view('Relatorios/relatorio_pagamentos_status', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->relatorioPagamentosStatus()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 18:59:03 --> ErrorException: Undefined array key "cliente_nome"
+in APPPATH\Views\Relatorios\relatorio_pagamentos_status.php on line 133.
+ 1 APPPATH\Views\Relatorios\relatorio_pagamentos_status.php(133): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "cliente_nome"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio_pagamentos_status.php', 133)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio_pagamentos_status.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('Relatorios/relatorio_pagamentos_status', [], true)
+ 5 APPPATH\Controllers\Financeiro.php(567): view('Relatorios/relatorio_pagamentos_status', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->relatorioPagamentosStatus()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 18:59:16 --> ErrorException: Undefined array key "cliente_nome"
+in APPPATH\Views\Relatorios\relatorio_pagamentos_status.php on line 133.
+ 1 APPPATH\Views\Relatorios\relatorio_pagamentos_status.php(133): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "cliente_nome"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio_pagamentos_status.php', 133)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio_pagamentos_status.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('Relatorios/relatorio_pagamentos_status', [], true)
+ 5 APPPATH\Controllers\Financeiro.php(567): view('Relatorios/relatorio_pagamentos_status', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->relatorioPagamentosStatus()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 18:59:30 --> ErrorException: Undefined array key "cliente_nome"
+in APPPATH\Views\Relatorios\relatorio_pagamentos_status.php on line 133.
+ 1 APPPATH\Views\Relatorios\relatorio_pagamentos_status.php(133): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "cliente_nome"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio_pagamentos_status.php', 133)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio_pagamentos_status.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('Relatorios/relatorio_pagamentos_status', [], true)
+ 5 APPPATH\Controllers\Financeiro.php(567): view('Relatorios/relatorio_pagamentos_status', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->relatorioPagamentosStatus()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+WARNING - 2025-06-17 19:01:16 --> [DEPRECATED] strtotime(): Passing null to parameter #1 ($datetime) of type string is deprecated in APPPATH\Views\Relatorios\relatorio_pagamentos_status.php on line 134.
+ 1 APPPATH\Views\Relatorios\relatorio_pagamentos_status.php(134): strtotime(null)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio_pagamentos_status.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('Relatorios/relatorio_pagamentos_status', [], true)
+ 5 APPPATH\Controllers\Financeiro.php(567): view('Relatorios/relatorio_pagamentos_status', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->relatorioPagamentosStatus()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+WARNING - 2025-06-17 19:01:40 --> [DEPRECATED] strtotime(): Passing null to parameter #1 ($datetime) of type string is deprecated in APPPATH\Views\Relatorios\relatorio_pagamentos_status.php on line 134.
+ 1 APPPATH\Views\Relatorios\relatorio_pagamentos_status.php(134): strtotime(null)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio_pagamentos_status.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('Relatorios/relatorio_pagamentos_status', [], true)
+ 5 APPPATH\Controllers\Financeiro.php(567): view('Relatorios/relatorio_pagamentos_status', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->relatorioPagamentosStatus()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 19:11:29 --> ErrorException: Undefined array key "duracao"
+in APPPATH\Controllers\ClientePlanos.php on line 31.
+ 1 APPPATH\Controllers\ClientePlanos.php(31): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "duracao"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\ClientePlanos.php', 31)
+ 2 APPPATH\Controllers\Cliente.php(72): App\Controllers\ClientePlanos->create([...], 114)
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-06-17 19:11:29 --> mysqli_sql_exception: Duplicate entry '058.197.620-70' for key 'cliente.CPF' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `cl...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `cl...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `cl...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cl...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(802): CodeIgniter\Model->doInsert(Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(744): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Cliente.php(68): CodeIgniter\Model->insert(Array)
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Cliente->create()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2025-06-17 19:11:29 --> CodeIgniter\Database\Exceptions\DatabaseException: Duplicate entry '058.197.620-70' for key 'cliente.CPF'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (:nome:, :CPF:, :RG:, :telefone:, :email:, :endereco:, :datanascimento:, :treino_com_personal:, :personal_id:, :atestado_medico:, :termo_responsabilidade:, :status:)', [...], false)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Cliente.php(68): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 19:11:29 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Duplicate entry '058.197.620-70' for key 'cliente.CPF'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (\'jubileu\', \'058.197.620-70\', \'45.847.444-4\', \'(12) 99615-4847\', \'jubileu@gmail.com\', \'Av. Pedro Paulo,Campos do Jordão\', \'2005-06-07\', \'sim\', \'null\', NULL, NULL, \'inativo\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (\'jubileu\', \'058.197.620-70\', \'45.847.444-4\', \'(12) 99615-4847\', \'jubileu@gmail.com\', \'Av. Pedro Paulo,Campos do Jordão\', \'2005-06-07\', \'sim\', \'null\', NULL, NULL, \'inativo\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (:nome:, :CPF:, :RG:, :telefone:, :email:, :endereco:, :datanascimento:, :treino_com_personal:, :personal_id:, :atestado_medico:, :termo_responsabilidade:, :status:)', [...], false)
+ 4 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\Cliente.php(68): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 19:11:29 --> [Caused by] mysqli_sql_exception: Duplicate entry '058.197.620-70' for key 'cliente.CPF'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (\'jubileu\', \'058.197.620-70\', \'45.847.444-4\', \'(12) 99615-4847\', \'jubileu@gmail.com\', \'Av. Pedro Paulo,Campos do Jordão\', \'2005-06-07\', \'sim\', \'null\', NULL, NULL, \'inativo\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (\'jubileu\', \'058.197.620-70\', \'45.847.444-4\', \'(12) 99615-4847\', \'jubileu@gmail.com\', \'Av. Pedro Paulo,Campos do Jordão\', \'2005-06-07\', \'sim\', \'null\', NULL, NULL, \'inativo\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (\'jubileu\', \'058.197.620-70\', \'45.847.444-4\', \'(12) 99615-4847\', \'jubileu@gmail.com\', \'Av. Pedro Paulo,Campos do Jordão\', \'2005-06-07\', \'sim\', \'null\', NULL, NULL, \'inativo\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (:nome:, :CPF:, :RG:, :telefone:, :email:, :endereco:, :datanascimento:, :treino_com_personal:, :personal_id:, :atestado_medico:, :termo_responsabilidade:, :status:)', [...], false)
+ 5 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Cliente.php(68): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-06-17 19:11:50 --> mysqli_sql_exception: Duplicate entry '45.847.444-4' for key 'cliente.RG' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `cl...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `cl...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `cl...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cl...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(802): CodeIgniter\Model->doInsert(Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(744): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Cliente.php(68): CodeIgniter\Model->insert(Array)
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Cliente->create()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2025-06-17 19:11:50 --> CodeIgniter\Database\Exceptions\DatabaseException: Duplicate entry '45.847.444-4' for key 'cliente.RG'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (:nome:, :CPF:, :RG:, :telefone:, :email:, :endereco:, :datanascimento:, :treino_com_personal:, :personal_id:, :atestado_medico:, :termo_responsabilidade:, :status:)', [...], false)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Cliente.php(68): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 19:11:50 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Duplicate entry '45.847.444-4' for key 'cliente.RG'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (\'jubileu\', \'151.584.854-54\', \'45.847.444-4\', \'(12) 99615-4847\', \'jubileu@gmail.com\', \'Av. Pedro Paulo,Campos do Jordão\', \'2005-06-07\', \'sim\', \'null\', NULL, NULL, \'inativo\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (\'jubileu\', \'151.584.854-54\', \'45.847.444-4\', \'(12) 99615-4847\', \'jubileu@gmail.com\', \'Av. Pedro Paulo,Campos do Jordão\', \'2005-06-07\', \'sim\', \'null\', NULL, NULL, \'inativo\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (:nome:, :CPF:, :RG:, :telefone:, :email:, :endereco:, :datanascimento:, :treino_com_personal:, :personal_id:, :atestado_medico:, :termo_responsabilidade:, :status:)', [...], false)
+ 4 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\Cliente.php(68): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 19:11:50 --> [Caused by] mysqli_sql_exception: Duplicate entry '45.847.444-4' for key 'cliente.RG'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (\'jubileu\', \'151.584.854-54\', \'45.847.444-4\', \'(12) 99615-4847\', \'jubileu@gmail.com\', \'Av. Pedro Paulo,Campos do Jordão\', \'2005-06-07\', \'sim\', \'null\', NULL, NULL, \'inativo\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (\'jubileu\', \'151.584.854-54\', \'45.847.444-4\', \'(12) 99615-4847\', \'jubileu@gmail.com\', \'Av. Pedro Paulo,Campos do Jordão\', \'2005-06-07\', \'sim\', \'null\', NULL, NULL, \'inativo\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (\'jubileu\', \'151.584.854-54\', \'45.847.444-4\', \'(12) 99615-4847\', \'jubileu@gmail.com\', \'Av. Pedro Paulo,Campos do Jordão\', \'2005-06-07\', \'sim\', \'null\', NULL, NULL, \'inativo\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (:nome:, :CPF:, :RG:, :telefone:, :email:, :endereco:, :datanascimento:, :treino_com_personal:, :personal_id:, :atestado_medico:, :termo_responsabilidade:, :status:)', [...], false)
+ 5 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Cliente.php(68): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 19:11:54 --> ErrorException: Undefined array key "duracao"
+in APPPATH\Controllers\ClientePlanos.php on line 31.
+ 1 APPPATH\Controllers\ClientePlanos.php(31): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "duracao"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\ClientePlanos.php', 31)
+ 2 APPPATH\Controllers\Cliente.php(72): App\Controllers\ClientePlanos->create([...], 115)
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-06-17 19:12:09 --> mysqli_sql_exception: Duplicate entry '151.584.854-54' for key 'cliente.CPF' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `cl...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `cl...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `cl...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cl...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(802): CodeIgniter\Model->doInsert(Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(744): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Cliente.php(68): CodeIgniter\Model->insert(Array)
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Cliente->create()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2025-06-17 19:12:09 --> CodeIgniter\Database\Exceptions\DatabaseException: Duplicate entry '151.584.854-54' for key 'cliente.CPF'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (:nome:, :CPF:, :RG:, :telefone:, :email:, :endereco:, :datanascimento:, :treino_com_personal:, :personal_id:, :atestado_medico:, :termo_responsabilidade:, :status:)', [...], false)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Cliente.php(68): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 19:12:09 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Duplicate entry '151.584.854-54' for key 'cliente.CPF'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (\'jubileu\', \'151.584.854-54\', \'66.455.515-1\', \'(12) 99615-4847\', \'jubileu@gmail.com\', \'Av. Pedro Paulo,Campos do Jordão\', \'2005-06-07\', \'sim\', \'null\', NULL, NULL, \'inativo\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (\'jubileu\', \'151.584.854-54\', \'66.455.515-1\', \'(12) 99615-4847\', \'jubileu@gmail.com\', \'Av. Pedro Paulo,Campos do Jordão\', \'2005-06-07\', \'sim\', \'null\', NULL, NULL, \'inativo\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (:nome:, :CPF:, :RG:, :telefone:, :email:, :endereco:, :datanascimento:, :treino_com_personal:, :personal_id:, :atestado_medico:, :termo_responsabilidade:, :status:)', [...], false)
+ 4 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\Cliente.php(68): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 19:12:09 --> [Caused by] mysqli_sql_exception: Duplicate entry '151.584.854-54' for key 'cliente.CPF'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (\'jubileu\', \'151.584.854-54\', \'66.455.515-1\', \'(12) 99615-4847\', \'jubileu@gmail.com\', \'Av. Pedro Paulo,Campos do Jordão\', \'2005-06-07\', \'sim\', \'null\', NULL, NULL, \'inativo\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (\'jubileu\', \'151.584.854-54\', \'66.455.515-1\', \'(12) 99615-4847\', \'jubileu@gmail.com\', \'Av. Pedro Paulo,Campos do Jordão\', \'2005-06-07\', \'sim\', \'null\', NULL, NULL, \'inativo\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (\'jubileu\', \'151.584.854-54\', \'66.455.515-1\', \'(12) 99615-4847\', \'jubileu@gmail.com\', \'Av. Pedro Paulo,Campos do Jordão\', \'2005-06-07\', \'sim\', \'null\', NULL, NULL, \'inativo\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (:nome:, :CPF:, :RG:, :telefone:, :email:, :endereco:, :datanascimento:, :treino_com_personal:, :personal_id:, :atestado_medico:, :termo_responsabilidade:, :status:)', [...], false)
+ 5 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Cliente.php(68): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-06-17 19:15:09 --> mysqli_sql_exception: Duplicate entry '151.584.854-54' for key 'cliente.CPF' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `cl...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `cl...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `cl...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cl...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(802): CodeIgniter\Model->doInsert(Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(744): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Cliente.php(68): CodeIgniter\Model->insert(Array)
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Cliente->create()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2025-06-17 19:15:09 --> CodeIgniter\Database\Exceptions\DatabaseException: Duplicate entry '151.584.854-54' for key 'cliente.CPF'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (:nome:, :CPF:, :RG:, :telefone:, :email:, :endereco:, :datanascimento:, :treino_com_personal:, :personal_id:, :atestado_medico:, :termo_responsabilidade:, :status:)', [...], false)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Cliente.php(68): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 19:15:09 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Duplicate entry '151.584.854-54' for key 'cliente.CPF'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (\'jubileu\', \'151.584.854-54\', \'66.455.515-1\', \'(12) 99615-4847\', \'jubileu@gmail.com\', \'Av. Pedro Paulo,Campos do Jordão\', \'2005-06-07\', \'sim\', \'null\', NULL, NULL, \'inativo\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (\'jubileu\', \'151.584.854-54\', \'66.455.515-1\', \'(12) 99615-4847\', \'jubileu@gmail.com\', \'Av. Pedro Paulo,Campos do Jordão\', \'2005-06-07\', \'sim\', \'null\', NULL, NULL, \'inativo\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (:nome:, :CPF:, :RG:, :telefone:, :email:, :endereco:, :datanascimento:, :treino_com_personal:, :personal_id:, :atestado_medico:, :termo_responsabilidade:, :status:)', [...], false)
+ 4 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\Cliente.php(68): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 19:15:09 --> [Caused by] mysqli_sql_exception: Duplicate entry '151.584.854-54' for key 'cliente.CPF'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (\'jubileu\', \'151.584.854-54\', \'66.455.515-1\', \'(12) 99615-4847\', \'jubileu@gmail.com\', \'Av. Pedro Paulo,Campos do Jordão\', \'2005-06-07\', \'sim\', \'null\', NULL, NULL, \'inativo\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (\'jubileu\', \'151.584.854-54\', \'66.455.515-1\', \'(12) 99615-4847\', \'jubileu@gmail.com\', \'Av. Pedro Paulo,Campos do Jordão\', \'2005-06-07\', \'sim\', \'null\', NULL, NULL, \'inativo\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (\'jubileu\', \'151.584.854-54\', \'66.455.515-1\', \'(12) 99615-4847\', \'jubileu@gmail.com\', \'Av. Pedro Paulo,Campos do Jordão\', \'2005-06-07\', \'sim\', \'null\', NULL, NULL, \'inativo\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (:nome:, :CPF:, :RG:, :telefone:, :email:, :endereco:, :datanascimento:, :treino_com_personal:, :personal_id:, :atestado_medico:, :termo_responsabilidade:, :status:)', [...], false)
+ 5 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Cliente.php(68): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-06-17 19:15:26 --> mysqli_sql_exception: Duplicate entry '66.455.515-1' for key 'cliente.RG' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `cl...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `cl...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `cl...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cl...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(802): CodeIgniter\Model->doInsert(Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(744): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Cliente.php(68): CodeIgniter\Model->insert(Array)
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Cliente->create()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2025-06-17 19:15:26 --> CodeIgniter\Database\Exceptions\DatabaseException: Duplicate entry '66.455.515-1' for key 'cliente.RG'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (:nome:, :CPF:, :RG:, :telefone:, :email:, :endereco:, :datanascimento:, :treino_com_personal:, :personal_id:, :atestado_medico:, :termo_responsabilidade:, :status:)', [...], false)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Cliente.php(68): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 19:15:26 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Duplicate entry '66.455.515-1' for key 'cliente.RG'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (\'jubileu\', \'151.584.854-11\', \'66.455.515-1\', \'(12) 99615-4847\', \'jubileu@gmail.com\', \'Av. Pedro Paulo,Campos do Jordão\', \'2005-06-07\', \'sim\', \'null\', NULL, NULL, \'inativo\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (\'jubileu\', \'151.584.854-11\', \'66.455.515-1\', \'(12) 99615-4847\', \'jubileu@gmail.com\', \'Av. Pedro Paulo,Campos do Jordão\', \'2005-06-07\', \'sim\', \'null\', NULL, NULL, \'inativo\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (:nome:, :CPF:, :RG:, :telefone:, :email:, :endereco:, :datanascimento:, :treino_com_personal:, :personal_id:, :atestado_medico:, :termo_responsabilidade:, :status:)', [...], false)
+ 4 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\Cliente.php(68): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 19:15:26 --> [Caused by] mysqli_sql_exception: Duplicate entry '66.455.515-1' for key 'cliente.RG'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (\'jubileu\', \'151.584.854-11\', \'66.455.515-1\', \'(12) 99615-4847\', \'jubileu@gmail.com\', \'Av. Pedro Paulo,Campos do Jordão\', \'2005-06-07\', \'sim\', \'null\', NULL, NULL, \'inativo\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (\'jubileu\', \'151.584.854-11\', \'66.455.515-1\', \'(12) 99615-4847\', \'jubileu@gmail.com\', \'Av. Pedro Paulo,Campos do Jordão\', \'2005-06-07\', \'sim\', \'null\', NULL, NULL, \'inativo\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (\'jubileu\', \'151.584.854-11\', \'66.455.515-1\', \'(12) 99615-4847\', \'jubileu@gmail.com\', \'Av. Pedro Paulo,Campos do Jordão\', \'2005-06-07\', \'sim\', \'null\', NULL, NULL, \'inativo\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (:nome:, :CPF:, :RG:, :telefone:, :email:, :endereco:, :datanascimento:, :treino_com_personal:, :personal_id:, :atestado_medico:, :termo_responsabilidade:, :status:)', [...], false)
+ 5 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Cliente.php(68): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 19:15:43 --> ErrorException: Undefined array key "duracao"
+in APPPATH\Controllers\ClientePlanos.php on line 31.
+ 1 APPPATH\Controllers\ClientePlanos.php(31): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "duracao"', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\ClientePlanos.php', 31)
+ 2 APPPATH\Controllers\Cliente.php(72): App\Controllers\ClientePlanos->create([...], 116)
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-06-17 19:21:54 --> mysqli_sql_exception: Duplicate entry '588.845.888-88' for key 'cliente.CPF' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `cl...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `cl...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `cl...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cl...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(802): CodeIgniter\Model->doInsert(Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(744): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Cliente.php(126): CodeIgniter\Model->insert(Array)
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Cliente->createComplete()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2025-06-17 19:21:54 --> CodeIgniter\Database\Exceptions\DatabaseException: Duplicate entry '588.845.888-88' for key 'cliente.CPF'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cliente` (`CPF`, `RG`, `atestado_medico`, `datanascimento`, `email`, `endereco`, `foto_perfil`, `nivel_experiencia`, `nome`, `personal_id`, `telefone`, `treino_com_personal`, `status`) VALUES (:CPF:, :RG:, :atestado_medico:, :datanascimento:, :email:, :endereco:, :foto_perfil:, :nivel_experiencia:, :nome:, :personal_id:, :telefone:, :treino_com_personal:, :status:)', [...], false)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Cliente.php(126): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->createComplete()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 19:21:54 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Duplicate entry '588.845.888-88' for key 'cliente.CPF'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `cliente` (`CPF`, `RG`, `atestado_medico`, `datanascimento`, `email`, `endereco`, `foto_perfil`, `nivel_experiencia`, `nome`, `personal_id`, `telefone`, `treino_com_personal`, `status`) VALUES (\'588.845.888-88\', \'51.515.215-5\', \'assets/atestado/588.845.888-88/1750188114_2859321db0fdd4330ebf.webp\', \'2005-06-07\', \'breno@sitenivel.com\', \'Av. Macedo Soares, Campos do Jordão\', \'C:\\\\fakepath\\\\AventuraNoGelo_Iceland-14-1.jpg\', \'intermediario\', \'jose carlos\', \'13\', \'(12) 99656-9274\', \'sim\', \'inativo\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `cliente` (`CPF`, `RG`, `atestado_medico`, `datanascimento`, `email`, `endereco`, `foto_perfil`, `nivel_experiencia`, `nome`, `personal_id`, `telefone`, `treino_com_personal`, `status`) VALUES (\'588.845.888-88\', \'51.515.215-5\', \'assets/atestado/588.845.888-88/1750188114_2859321db0fdd4330ebf.webp\', \'2005-06-07\', \'breno@sitenivel.com\', \'Av. Macedo Soares, Campos do Jordão\', \'C:\\\\fakepath\\\\AventuraNoGelo_Iceland-14-1.jpg\', \'intermediario\', \'jose carlos\', \'13\', \'(12) 99656-9274\', \'sim\', \'inativo\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cliente` (`CPF`, `RG`, `atestado_medico`, `datanascimento`, `email`, `endereco`, `foto_perfil`, `nivel_experiencia`, `nome`, `personal_id`, `telefone`, `treino_com_personal`, `status`) VALUES (:CPF:, :RG:, :atestado_medico:, :datanascimento:, :email:, :endereco:, :foto_perfil:, :nivel_experiencia:, :nome:, :personal_id:, :telefone:, :treino_com_personal:, :status:)', [...], false)
+ 4 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\Cliente.php(126): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->createComplete()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 19:21:54 --> [Caused by] mysqli_sql_exception: Duplicate entry '588.845.888-88' for key 'cliente.CPF'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `cliente` (`CPF`, `RG`, `atestado_medico`, `datanascimento`, `email`, `endereco`, `foto_perfil`, `nivel_experiencia`, `nome`, `personal_id`, `telefone`, `treino_com_personal`, `status`) VALUES (\'588.845.888-88\', \'51.515.215-5\', \'assets/atestado/588.845.888-88/1750188114_2859321db0fdd4330ebf.webp\', \'2005-06-07\', \'breno@sitenivel.com\', \'Av. Macedo Soares, Campos do Jordão\', \'C:\\\\fakepath\\\\AventuraNoGelo_Iceland-14-1.jpg\', \'intermediario\', \'jose carlos\', \'13\', \'(12) 99656-9274\', \'sim\', \'inativo\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `cliente` (`CPF`, `RG`, `atestado_medico`, `datanascimento`, `email`, `endereco`, `foto_perfil`, `nivel_experiencia`, `nome`, `personal_id`, `telefone`, `treino_com_personal`, `status`) VALUES (\'588.845.888-88\', \'51.515.215-5\', \'assets/atestado/588.845.888-88/1750188114_2859321db0fdd4330ebf.webp\', \'2005-06-07\', \'breno@sitenivel.com\', \'Av. Macedo Soares, Campos do Jordão\', \'C:\\\\fakepath\\\\AventuraNoGelo_Iceland-14-1.jpg\', \'intermediario\', \'jose carlos\', \'13\', \'(12) 99656-9274\', \'sim\', \'inativo\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `cliente` (`CPF`, `RG`, `atestado_medico`, `datanascimento`, `email`, `endereco`, `foto_perfil`, `nivel_experiencia`, `nome`, `personal_id`, `telefone`, `treino_com_personal`, `status`) VALUES (\'588.845.888-88\', \'51.515.215-5\', \'assets/atestado/588.845.888-88/1750188114_2859321db0fdd4330ebf.webp\', \'2005-06-07\', \'breno@sitenivel.com\', \'Av. Macedo Soares, Campos do Jordão\', \'C:\\\\fakepath\\\\AventuraNoGelo_Iceland-14-1.jpg\', \'intermediario\', \'jose carlos\', \'13\', \'(12) 99656-9274\', \'sim\', \'inativo\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cliente` (`CPF`, `RG`, `atestado_medico`, `datanascimento`, `email`, `endereco`, `foto_perfil`, `nivel_experiencia`, `nome`, `personal_id`, `telefone`, `treino_com_personal`, `status`) VALUES (:CPF:, :RG:, :atestado_medico:, :datanascimento:, :email:, :endereco:, :foto_perfil:, :nivel_experiencia:, :nome:, :personal_id:, :telefone:, :treino_com_personal:, :status:)', [...], false)
+ 5 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Cliente.php(126): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->createComplete()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-06-17 19:25:57 --> mysqli_sql_exception: Column 'telefone' cannot be null in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `cl...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `cl...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `cl...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cl...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(802): CodeIgniter\Model->doInsert(Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(744): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Cliente.php(68): CodeIgniter\Model->insert(Array)
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Cliente->create()
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#10 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2025-06-17 19:25:57 --> CodeIgniter\Database\Exceptions\DatabaseException: Column 'telefone' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (:nome:, :CPF:, :RG:, :telefone:, :email:, :endereco:, :datanascimento:, :treino_com_personal:, :personal_id:, :atestado_medico:, :termo_responsabilidade:, :status:)', [...], false)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Cliente.php(68): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 19:25:57 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Column 'telefone' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (\'jubileu\', \'154.845.745-78\', \'85.484.848-4\', NULL, \'jubileu@gmail.com\', \'rua jubileu\', \'07/06/2005\', \'nao\', NULL, \'assets/atestado/154.845.745-78/1750188357_fe035eac194c5f80d230.webp\', NULL, \'inativo\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (\'jubileu\', \'154.845.745-78\', \'85.484.848-4\', NULL, \'jubileu@gmail.com\', \'rua jubileu\', \'07/06/2005\', \'nao\', NULL, \'assets/atestado/154.845.745-78/1750188357_fe035eac194c5f80d230.webp\', NULL, \'inativo\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (:nome:, :CPF:, :RG:, :telefone:, :email:, :endereco:, :datanascimento:, :treino_com_personal:, :personal_id:, :atestado_medico:, :termo_responsabilidade:, :status:)', [...], false)
+ 4 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\Cliente.php(68): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-17 19:25:57 --> [Caused by] mysqli_sql_exception: Column 'telefone' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (\'jubileu\', \'154.845.745-78\', \'85.484.848-4\', NULL, \'jubileu@gmail.com\', \'rua jubileu\', \'07/06/2005\', \'nao\', NULL, \'assets/atestado/154.845.745-78/1750188357_fe035eac194c5f80d230.webp\', NULL, \'inativo\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (\'jubileu\', \'154.845.745-78\', \'85.484.848-4\', NULL, \'jubileu@gmail.com\', \'rua jubileu\', \'07/06/2005\', \'nao\', NULL, \'assets/atestado/154.845.745-78/1750188357_fe035eac194c5f80d230.webp\', NULL, \'inativo\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (\'jubileu\', \'154.845.745-78\', \'85.484.848-4\', NULL, \'jubileu@gmail.com\', \'rua jubileu\', \'07/06/2005\', \'nao\', NULL, \'assets/atestado/154.845.745-78/1750188357_fe035eac194c5f80d230.webp\', NULL, \'inativo\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cliente` (`nome`, `CPF`, `RG`, `telefone`, `email`, `endereco`, `datanascimento`, `treino_com_personal`, `personal_id`, `atestado_medico`, `termo_responsabilidade`, `status`) VALUES (:nome:, :CPF:, :RG:, :telefone:, :email:, :endereco:, :datanascimento:, :treino_com_personal:, :personal_id:, :atestado_medico:, :termo_responsabilidade:, :status:)', [...], false)
+ 5 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Cliente.php(68): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->create()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-06-17 19:26:24 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2025-06-17 19:26:24 --> 220 proxy.email-ssl.com.br ESMTP Postfix
+
+hello: 250-proxy.email-ssl.com.br
+250-PIPELINING
+250-SIZE 50000000
+250-VRFY
+250-ETRN
+250-STARTTLS
+250-AUTH PLAIN LOGIN
+250-ENHANCEDSTATUSCODES
+250-8BITMIME
+250-DSN
+250-SMTPUTF8
+250 CHUNKING
+
+starttls: 220 2.0.0 Ready to start TLS
+
+hello: 250-proxy.email-ssl.com.br
+250-PIPELINING
+250-SIZE 50000000
+250-VRFY
+250-ETRN
+250-AUTH PLAIN LOGIN
+250-ENHANCEDSTATUSCODES
+250-8BITMIME
+250-DSN
+250-SMTPUTF8
+250 CHUNKING
+
+from: 250 2.1.0 Ok
+
+to: 250 2.1.5 Ok
+
+data: 354 End data with <CR><LF>.<CR><LF>
+
+451 4.3.0 Error: queue file write error
+
+quit: 221 2.0.0 Bye
+
+The following SMTP error was encountered: 451 4.3.0 Error: queue file write error
+
+WARNING - 2025-06-17 19:33:36 --> [DEPRECATED] strtotime(): Passing null to parameter #1 ($datetime) of type string is deprecated in APPPATH\Views\Relatorios\relatorio_pagamentos_status.php on line 134.
+ 1 APPPATH\Views\Relatorios\relatorio_pagamentos_status.php(134): strtotime(null)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio_pagamentos_status.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('Relatorios/relatorio_pagamentos_status', [], true)
+ 5 APPPATH\Controllers\Financeiro.php(567): view('Relatorios/relatorio_pagamentos_status', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->relatorioPagamentosStatus()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+WARNING - 2025-06-17 19:33:36 --> [DEPRECATED] strtotime(): Passing null to parameter #1 ($datetime) of type string is deprecated in APPPATH\Views\Relatorios\relatorio_pagamentos_status.php on line 134.
+ 1 APPPATH\Views\Relatorios\relatorio_pagamentos_status.php(134): strtotime(null)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio_pagamentos_status.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('Relatorios/relatorio_pagamentos_status', [], true)
+ 5 APPPATH\Controllers\Financeiro.php(567): view('Relatorios/relatorio_pagamentos_status', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->relatorioPagamentosStatus()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+WARNING - 2025-06-17 19:34:38 --> [DEPRECATED] strtotime(): Passing null to parameter #1 ($datetime) of type string is deprecated in APPPATH\Views\Relatorios\relatorio_pagamentos_status.php on line 134.
+ 1 APPPATH\Views\Relatorios\relatorio_pagamentos_status.php(134): strtotime(null)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio_pagamentos_status.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('Relatorios/relatorio_pagamentos_status', [], true)
+ 5 APPPATH\Controllers\Financeiro.php(567): view('Relatorios/relatorio_pagamentos_status', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->relatorioPagamentosStatus()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-06-17 20:03:48 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2025-06-17 20:03:48 --> 220 proxy.email-ssl.com.br ESMTP Postfix
+
+hello: 250-proxy.email-ssl.com.br
+250-PIPELINING
+250-SIZE 50000000
+250-VRFY
+250-ETRN
+250-STARTTLS
+250-AUTH PLAIN LOGIN
+250-ENHANCEDSTATUSCODES
+250-8BITMIME
+250-DSN
+250-SMTPUTF8
+250 CHUNKING
+
+starttls: 220 2.0.0 Ready to start TLS
+
+hello: 250-proxy.email-ssl.com.br
+250-PIPELINING
+250-SIZE 50000000
+250-VRFY
+250-ETRN
+250-AUTH PLAIN LOGIN
+250-ENHANCEDSTATUSCODES
+250-8BITMIME
+250-DSN
+250-SMTPUTF8
+250 CHUNKING
+
+from: 250 2.1.0 Ok
+
+to: 250 2.1.5 Ok
+
+data: 354 End data with <CR><LF>.<CR><LF>
+
+451 4.3.0 Error: queue file write error
+
+quit: 221 2.0.0 Bye
+
+The following SMTP error was encountered: 451 4.3.0 Error: queue file write error
+
+ERROR - 2025-06-17 20:07:24 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2025-06-17 20:07:24 --> 220 proxy.email-ssl.com.br ESMTP Postfix
+
+hello: 250-proxy.email-ssl.com.br
+250-PIPELINING
+250-SIZE 50000000
+250-VRFY
+250-ETRN
+250-STARTTLS
+250-AUTH PLAIN LOGIN
+250-ENHANCEDSTATUSCODES
+250-8BITMIME
+250-DSN
+250-SMTPUTF8
+250 CHUNKING
+
+starttls: 220 2.0.0 Ready to start TLS
+
+hello: 250-proxy.email-ssl.com.br
+250-PIPELINING
+250-SIZE 50000000
+250-VRFY
+250-ETRN
+250-AUTH PLAIN LOGIN
+250-ENHANCEDSTATUSCODES
+250-8BITMIME
+250-DSN
+250-SMTPUTF8
+250 CHUNKING
+
+from: 250 2.1.0 Ok
+
+to: 250 2.1.5 Ok
+
+data: 354 End data with <CR><LF>.<CR><LF>
+
+451 4.3.0 Error: queue file write error
+
+quit: 221 2.0.0 Bye
+
+The following SMTP error was encountered: 451 4.3.0 Error: queue file write error
+
+CRITICAL - 2025-06-17 20:59:19 --> ErrorException: Undefined property: stdClass::$id
+in APPPATH\Controllers\ClientePlanos.php on line 95.
+ 1 APPPATH\Controllers\ClientePlanos.php(95): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$id', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\ClientePlanos.php', 95)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\ClientePlanos->pesquisarId()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientePlanos))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

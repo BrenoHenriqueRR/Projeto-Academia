@@ -29,11 +29,16 @@ export class ModalCadastroComponent {
   planoForm!: FormGroup<any>;
   extraForm!: FormGroup<any>;
   fileName: string = 'Nenhum arquivo selecionado';
+  fileNames: { [key: string]: string } = {};
+  atestadoMedico!: File;
+  termoAutorizacao!: File;
+  termoResponsabilidade!: File
   foto: any;
   planos: any;
   novoBeneficio: string = '';
   Personal!: any;
   beneficios: string[] = [];
+  foto_cli!: File
   mostraSelectPersonal = false;
   menorDeIdade = false;
   option_frequencia = [2,3,7];
@@ -170,7 +175,7 @@ export class ModalCadastroComponent {
           console.log(this.CliForm.getRawValue());
           const formData = new FormData();
           if (this.foto) {
-            formData.append('foto_perfil', this.foto, this.foto.name);
+            formData.append('foto_perfil', this.foto_cli);
           }
           let funcionario_id = String(localStorage.getItem('idadmin'));
           let treino_com_personal = (this.CliForm.value.treino_com_personal == false) ? 'nao' : 'sim';
@@ -184,10 +189,11 @@ export class ModalCadastroComponent {
           formData.append('email', this.CliForm.value.email);
           formData.append('treino_com_personal', treino_com_personal);
           formData.append('nivel_experiencia', this.CliForm.value.nivel_experiencia);
-          formData.append('termo_responsabilidade', this.CliForm.value.termo_responsabilidade);
-          formData.append('atestado_medico', this.CliForm.value.atestado_medico);
-          formData.append('termo_autorizacao', this.CliForm.value.termo_autorizacao);
+          formData.append('termo_responsabilidade', this.termoResponsabilidade);
+          formData.append('atestado_medico', this.atestadoMedico);
+          formData.append('termo_autorizacao', this.termoAutorizacao);
           formData.append('personal_id', this.CliForm.value.personal_id);
+          formData.append('plano', this.CliForm.value.plano);
           formData.append('funcionario_id', funcionario_id);
           this.cliservice.sendData(formData).subscribe({
             next: (dados) => {
@@ -248,6 +254,37 @@ export class ModalCadastroComponent {
       this.fileName = 'Nenhum arquivo selecionado';
     }
   }
+
+   onFileChangeCli(event: Event, tipo: string) {
+    const input = event.target as HTMLInputElement;
+
+    if (input.files && input.files.length > 0) {
+      const file = input.files[0];
+      
+      // Armazena o nome do arquivo para exibição
+      this.fileNames[tipo] = file.name;
+
+      // Atribui o arquivo à propriedade correta com base no tipo
+      switch (tipo) {
+        case 'foto':
+          this.foto = file;
+          break;
+        case 'atestado_medico':
+          this.atestadoMedico = file;
+          break;
+        case 'termo_autorizacao':
+          this.termoAutorizacao = file;
+          break;
+        case 'termo_responsabilidade':
+          this.termoResponsabilidade = file;
+          break;
+      }
+    } else {
+      // Limpa o nome do arquivo se nenhum for selecionado
+      this.fileNames[tipo] = '';
+    }
+  }
+  
 
 
   adicionarBeneficio() {

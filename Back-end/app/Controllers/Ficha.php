@@ -63,10 +63,79 @@ class Ficha extends BaseController
         }
     }
 
-    public function pesquisar()
+    public function update()
     {
         try {
-            // Função vazia no seu código original
+            $data = $this->request->getJSON(true);
+
+            if (!isset($data['ficha_id'])) {
+                return $this->response
+                    ->setStatusCode(400) // Bad Request
+                    ->setJSON(['error' => 'O ID da ficha é obrigatório para a atualização.']);
+            }
+
+            $fichaId = $data['ficha_id'];
+            $tipo = $data['tipo'];
+            $ordem = $data['ordem'];
+            $exercicios = $data['exercicios'];
+
+            $this->fichamodel->db->transStart();
+
+            // 1. Atualiza os dados da ficha principal (tabela 'fichas')
+            $this->fichamodel->update($fichaId, [
+                'tipo'  => $tipo,
+                'ordem' => $ordem,
+            ]);
+
+            // apaga todos os exercícios antigos associados a esta ficha para simplificar a ação
+            $this->fichaexermodel->where('ficha_id', $fichaId)->delete();
+
+            // 3. Insere a nova lista de exercícios (tabela 'ficha_exercicios')
+            foreach ($exercicios as $ex) {
+                $this->fichaexermodel->insert([
+                    'ficha_id'     => $fichaId,
+                    'exercicio_id' => $ex['exercicio_id'],
+                    'repeticoes'   => $ex['repeticoes'],
+                    'series'       => $ex['series'],
+                    'observacoes'  => $ex['observacoes'] ?? null
+                ]);
+            }
+
+            $this->fichamodel->db->transComplete();
+
+            if ($this->fichamodel->db->transStatus() === false) {
+                return $this->response
+                    ->setStatusCode(500)
+                    ->setJSON(['error' => 'Não foi possível atualizar a ficha. Ocorreu um erro no banco de dados.']);
+            }
+
+            // Se a transação foi bem-sucedida
+            return $this->response->setJSON(['msg' => 'Ficha atualizada com sucesso']);
+        } catch (Exception $e) {
+            return $this->response
+                ->setStatusCode(500)
+                ->setJSON(['error' => 'Erro ao atualizar a ficha: ' . $e->getMessage()]);
+        }
+    }
+
+    public function pesquisarFicha()
+    {
+        try {
+            $id = $this->request->getJSON();
+            $dados = $this->fichamodel
+                    ->select('fichas.id AS ficha_id,fichas.cliente_id, fichas.tipo, fichas.ordem, fichas.concluida,
+                          ficha_exercicios.id AS ficha_exercicio_id, exercicios.nome AS exercicio,
+                          grupos_musculares.nome AS grupo_muscular,
+                          ficha_exercicios.repeticoes,
+                          ficha_exercicios.series, ficha_exercicios.observacoes')
+                    ->join('ficha_exercicios', 'ficha_exercicios.ficha_id = fichas.id')
+                    ->join('exercicios', 'exercicios.id = ficha_exercicios.exercicio_id')
+                    ->join('grupos_musculares', 'grupos_musculares.id = exercicios.grupo_muscular_id')
+                    ->where('fichas.id', $id->id)
+                    ->orderBy('fichas.ordem', 'ASC')
+                    ->findAll();
+
+            return $this->response->setJSON($dados)->setStatusCode(200);
         } catch (Exception $e) {
             return $this->response->setJSON(['error' => 'Erro ao pesquisar: ' . $e->getMessage()]);
         }
@@ -146,7 +215,7 @@ class Ficha extends BaseController
             $dados = $this->request->getJSON();
 
 
-            $this->fichamodel->update($dados->fichas,[
+            $this->fichamodel->update($dados->fichas, [
                 'concluida' => 1,
                 'data_conclusao' => date('Y-m-d')
             ]);

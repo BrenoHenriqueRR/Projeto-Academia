@@ -128,7 +128,7 @@ export class PnClientesComponent {
     this.service.delete(jsonString).subscribe({
       next: (msg) => {
         this.ngOnInit();
-        this.alerts.success(msg)
+        this.alerts.success(msg.msg)
         // location.reload();
       }
     })

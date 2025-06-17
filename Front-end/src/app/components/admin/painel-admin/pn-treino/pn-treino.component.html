@@ -47,14 +47,12 @@
                         [queryParams]="{ id: cliente.id }">
                         Nova ficha
                     </button>
-                    <button class="btn btn-warning btn-sm" [routerLink]="['cad-ficha']">
-                        Editar fichas
-                    </button>
                     }
                     <button *ngIf="!cliente.temFicha" class="btn btn-success btn-sm" [routerLink]="['cad-ficha']"
                         [queryParams]="{ id: cliente.id }">
                         Cadastrar Ficha
                     </button>
+
                 </td>
             </tr>
         </tbody>

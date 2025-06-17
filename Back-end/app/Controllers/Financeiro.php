@@ -26,7 +26,7 @@ class Financeiro extends BaseController
     protected $academiaModel;
     protected $clientemodel;
 
-    public function __construct()   
+    public function __construct()
     {
         $this->model = new FinanceiroModel();
         $this->pagamentoModel = new PagamentosModel();
@@ -45,7 +45,7 @@ class Financeiro extends BaseController
             $dataInicio = date('Y-m-d', strtotime($dataInicioParam));
             $dataFim = date('Y-m-d', strtotime($dataFimParam));
         } else {
-        
+
             $mes = $this->request->getGet('mes') ?? date('m');
             $ano = $this->request->getGet('ano') ?? date('Y');
             $dataInicio = "$ano-$mes-01";
@@ -238,22 +238,18 @@ class Financeiro extends BaseController
         return $this->response->setJSON($relatorio);
     }
 
-    public function exportarExcel()
-    {
-        // Este método seria implementado para gerar arquivo Excel
-        // Por enquanto, retorna os dados em JSON
-        $json = file_get_contents('php://input');
-        $dados = json_decode($json, true);
+    // public function exportarExcel()
+    // {
+    //     $json = file_get_contents('php://input');
+    //     $dados = json_decode($json, true);
 
-        // Aqui você implementaria a geração do arquivo Excel
-        // usando uma biblioteca como PhpSpreadsheet
 
-        return $this->response->setJSON([
-            'status' => 'success',
-            'message' => 'Dados preparados para exportação',
-            'dados' => $dados
-        ]);
-    }
+    //     return $this->response->setJSON([
+    //         'status' => 'success',
+    //         'message' => 'Dados preparados para exportação',
+    //         'dados' => $dados
+    //     ]);
+    // }
 
     // Métodos auxiliares privados
     private function getNomeMes($numeroMes)
@@ -403,14 +399,6 @@ class Financeiro extends BaseController
             ->setBody($dompdf->output());
     }
 
-    // No seu RelatoriosController.php
-
-    // Adicione estes Models no __construct se ainda não estiverem lá,
-    // ou instancie-os diretamente no método.
-    // use App\Models\LojaVendaModel;
-    // use App\Models\LojaVendaItensModel;
-    // use App\Models\LojaProdutosModel;
-
     public function vendasLojaDetalhadoPdf()
     {
         $mes = $this->request->getGet('mes');
@@ -505,6 +493,91 @@ class Financeiro extends BaseController
         $dompdf->render();
 
         $nomeArquivo = 'relatorio-vendas-loja-detalhado-' . date('Ymd-His') . '.pdf';
+        return $this->response
+            ->setHeader('Content-Type', 'application/pdf')
+            ->setHeader('Content-Disposition', 'inline; filename="' . $nomeArquivo . '"')
+            ->setBody($dompdf->output());
+    }
+
+    public function relatorioPagamentosStatus()
+    {
+
+        // 1. Obter o período do request (data de início e fim)
+        $dataInicio = $this->request->getGet('data_inicio');
+        $dataFim = $this->request->getGet('data_fim');
+
+        // Validação básica das datas
+        if (empty($dataInicio) || empty($dataFim)) {
+            // Define um período padrão (mês atual) se não for fornecido
+            $dataInicio = date('Y-m-01');
+            $dataFim = date('Y-m-t');
+        }
+
+        // 2. Instanciar os Models
+        $pagamentoModel = new PagamentosModel();
+        $academiaModel = new AcademiaModel();
+
+        // 3. Buscar os dados da academia para o cabeçalho
+        $academia = $academiaModel->first();
+        if (!$academia) {
+            die('Erro: Dados da academia não foram encontrados.');
+        }
+
+        $logoPath = FCPATH . $academia['logo'];
+
+        // 4. Buscar os pagamentos no período, separando por status
+        $baseQuery = $pagamentoModel
+            ->select('pagamentos.id, pagamentos.valor, pagamentos.data_pagamento, pagamentos.status_pagamento, cliente.nome as cliente_nome')
+            ->join('clientes_planos', 'pagamentos.cliente_planos_id = clientes_planos.id', 'left')
+            ->join('cliente', 'clientes_planos.cliente_id = cliente.id', 'left')
+            ->where('pagamentos.data_pagamento >=', $dataInicio)
+            ->where('pagamentos.data_pagamento <=', $dataFim)
+            ->orderBy('pagamentos.data_pagamento', 'ASC');
+
+        // Clona a query base para cada status
+        $queryPagos = clone $baseQuery;
+        $queryPendentes = clone $baseQuery;
+
+        $pagamentosPagos = $queryPagos
+            ->groupStart()
+            ->where('pagamentos.status_pagamento', 'pago')
+            ->orWhere('pagamentos.status_pagamento', 'success')
+            ->groupEnd()
+            ->findAll();
+
+        $pagamentosPendentes = $queryPendentes
+            ->where('pagamentos.status_pagamento', 'pendente')
+            ->findAll();
+
+        // 5. Preparar os dados para a View
+        $dadosView = [
+            'pagamentos_pagos' => $pagamentosPagos,
+            'pagamentos_pendentes' => $pagamentosPendentes,
+            'periodo_inicio' => date('d/m/Y', strtotime($dataInicio)),
+            'periodo_fim' => date('d/m/Y', strtotime($dataFim)),
+            'gerado_em' => date('d/m/Y H:i:s'),
+            'nome_academia' => $academia['nome'],
+            'cnpj_academia' => $academia['cnpj'],
+            'email_academia' => $academia['email'],
+            'logo_path' => $logoPath,
+            'telefone_academia' => $academia['telefone'],
+        ];
+
+        // 6. Renderizar o PDF
+        $html = view('Relatorios/relatorio_pagamentos_status', $dadosView);
+
+        $options = new Options();
+        $options->set('isRemoteEnabled', true);
+        $options->set('isHtml5ParserEnabled', true);
+        $options->set('defaultFont', 'Arial');
+        $options->set('chroot', FCPATH . 'public');
+
+        $dompdf = new Dompdf($options);
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+
+        $nomeArquivo = 'relatorio-Pagamentos-' . date('Ymd-His') . '.pdf';
         return $this->response
             ->setHeader('Content-Type', 'application/pdf')
             ->setHeader('Content-Disposition', 'inline; filename="' . $nomeArquivo . '"')

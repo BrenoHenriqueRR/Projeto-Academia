@@ -104,7 +104,7 @@ class Faceid extends BaseController
         ]);
 
         // Decodifica a imagem base64 enviada pelo cliente
-        // Verifica se a imagem é JPEG ou PNG e remove o cabeçalho correspondente
+        // remove o cabeçalho correspondente
         if (strpos($imagemBase64, 'data:image/jpeg;base64,') === 0) {
             $imagemBase64Cliente = str_replace('data:image/jpeg;base64,', '', $imagemBase64);
         } elseif (strpos($imagemBase64, 'data:image/png;base64,') === 0) {

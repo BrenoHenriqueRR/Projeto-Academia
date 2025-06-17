@@ -125,7 +125,6 @@ export class ModalEditarComponent {
         nivel_experiencia: new FormControl(this.data[0].nivel_experiencia, Validators.required),
         plano: new FormControl(this.data[0].plano_id, Validators.required),
         atestado_medico: new FormControl(this.data[0].atestado_medico),
-        // treino_com_personal: new FormControl(['nao']),
         termo_responsabilidade: new FormControl(this.data[0].termo_responsabilidade),
         termo_autorizacao: new FormControl(this.data[0].termo_autorizacao),
       });

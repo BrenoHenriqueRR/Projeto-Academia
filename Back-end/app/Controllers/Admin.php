@@ -131,8 +131,11 @@ class Admin extends BaseController
         // Decodificar o JSON em um array PHP
         $data = json_decode($json, true);
 
-        $this->model->where('id', $data['id'])
-            ->delete();
+        $this->model->set([
+            'status' => 'anulado'
+        ])
+                ->where('id', $data['id'])
+                ->update();
 
         $msg = array("msg" => "Funcionario deletado");
 

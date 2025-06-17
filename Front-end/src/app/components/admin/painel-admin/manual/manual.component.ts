@@ -4,7 +4,7 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-manual',
   standalone: true,
-  imports: [RouterLink],
+  imports: [],
   templateUrl: './manual.component.html',
   styleUrl: './manual.component.css'
 })

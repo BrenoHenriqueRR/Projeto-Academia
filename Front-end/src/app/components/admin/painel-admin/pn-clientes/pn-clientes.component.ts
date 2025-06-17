@@ -13,6 +13,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { EscolhaCadastroComponent } from '../../../modais/escolha-cadastro/escolha-cadastro.component';
 import { Block } from '@angular/compiler';
 import { FormsModule } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-pn-clientes',
@@ -34,14 +35,17 @@ export class PnClientesComponent {
   idDelete: any = '';
   filtrado: any[] = [];
   filtroStatus: string = 'ativo';
-filtroNome: string = '';
+  filtroNome: string = '';
 
   ngOnInit() {
-    this.funcao();
-    this.List();
+    setTimeout(() => {
+      this.funcao();
+      this.List();
+    }, 300)
   }
 
-  constructor(private service: PnClienteService, private router: Router, private loginservice: LoginAdminService,
+  constructor(private service: PnClienteService, private router: Router,
+    private loginservice: LoginAdminService, private alerts: ToastrService,
     private dialog: MatDialog) { }
 
   abrirModalExibir() {
@@ -58,13 +62,13 @@ filtroNome: string = '';
     ($('#modal-cad') as any).modal('show');
   }
 
- aplicarFiltros() {
-  this.filtrado = this.dados_cli.filter((cliente: { status: string; nome: string }) => {
-    const statusOk = this.filtroStatus ? cliente.status === this.filtroStatus : true;
-    const nomeOk = this.filtroNome ? cliente.nome.toLowerCase().includes(this.filtroNome.toLowerCase()) : true;
-    return statusOk && nomeOk;
-  });
-}
+  aplicarFiltros() {
+    this.filtrado = this.dados_cli.filter((cliente: { status: string; nome: string }) => {
+      const statusOk = this.filtroStatus ? cliente.status === this.filtroStatus : true;
+      const nomeOk = this.filtroNome ? cliente.nome.toLowerCase().includes(this.filtroNome.toLowerCase()) : true;
+      return statusOk && nomeOk;
+    });
+  }
 
 
   Closemodal() {
@@ -123,7 +127,9 @@ filtroNome: string = '';
     const jsonString: string = '{"id": "' + id + '"}';
     this.service.delete(jsonString).subscribe({
       next: (msg) => {
-        location.reload();
+        this.ngOnInit();
+        this.alerts.success(msg)
+        // location.reload();
       }
     })
   }

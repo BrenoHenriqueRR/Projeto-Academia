@@ -162,9 +162,9 @@
                             <div class="col-md-12">
                                 <label for="foto_perfil">Adicionar foto</label>
                                 <input formControlName="foto_perfil" type="file" id="foto_perfil" class="file-input"
-                                    (change)="onFileChange($event)">
+                                    (change)="onFileChangeCli($event, 'foto')">
                                 <label for="foto_perfil" class="file-input-label">Escolha um arquivo</label>
-                                <div class="file-name">{{fileName}}</div>
+                                <div class="file-name">{{ fileNames['foto'] }}</div>
                             </div>
                         </div>
                         <div class="row mb-3 ">
@@ -211,10 +211,13 @@
 
                             <div *ngIf="menorDeIdade" class="form-group mt-2">
                                 <label>Anexar Termo de Autorização</label>
-                                <input type="file" formControlName="termo_autorizacao" />
+                                <input type="file" formControlName="termo_autorizacao"
+                                    (change)="onFileChangeCli($event, 'termo_autorizacao')" />
+                                <span class="file-name">{{ fileNames['termo_autorizacao'] }}</span>
                                 <small>
-                                    <a href="assets/termos/autorizacao-menor-de-idade.pdf" target="_blank">Baixar modelo
-                                        do termo</a>
+                                    <a href="assets/termos/autorizacao-menor-de-idade.pdf" target="_blank">
+                                        Baixar modelo do termo
+                                    </a>
                                 </small>
                             </div>
                             <div class="col-3">
@@ -255,18 +258,26 @@
                             </div>
                         </div> -->
                         <div class="row">
-                            <h4>Doucumentos:</h4>
+                            <h4>Documentos:</h4>
+
                             <div class="col-6">
                                 <label>Anexar Termo de Responsabilidade</label>
-                                <input type="file" formControlName="termo_responsabilidade" />
-                                <small >
+                                <input type="file" formControlName="termo_responsabilidade"
+                                    (change)="onFileChangeCli($event, 'termo_responsabilidade')" />
+                                <span class="file-name">{{ fileNames['termo_responsabilidade'] }}</span>
+                                <small>
                                     <a href="assets/termos/autorizacao-treinar-sem-personal-e-anamnese.pdf"
-                                        target="_blank">Baixar modelo do termo</a>
+                                        target="_blank">
+                                        Baixar modelo do termo
+                                    </a>
                                 </small>
                             </div>
+
                             <div class="col-6">
                                 <label>Anexar Atestado Médico</label>
-                                <input type="file" formControlName="atestado_medico" />
+                                <input type="file" formControlName="atestado_medico"
+                                    (change)="onFileChangeCli($event, 'atestado_medico')" />
+                                <span class="file-name">{{ fileNames['atestado_medico'] }}</span>
                             </div>
                         </div>
                         <br>

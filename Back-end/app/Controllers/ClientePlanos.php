@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\ClienteModel;
 use App\Models\ClientePlanosExtra;
 use App\Models\Clientesplanos;
 use App\Models\PagamentosModel;
@@ -16,10 +17,12 @@ class ClientePlanos extends BaseController
     protected $clientesPlanosExtraModel;
     protected $planosModel;
     protected $pagamentosModel;
+    protected $clienteModel;
 
     public function __construct()
     {
         $this->clientesPlanosModel = new Clientesplanos();
+        $this->clienteModel = new ClienteModel();
         $this->clientesPlanosExtraModel = new ClientePlanosExtra();
         $this->planosModel = new Planos();
         $this->pagamentosModel = new PagamentosModel();
@@ -154,6 +157,10 @@ class ClientePlanos extends BaseController
                 'valor' => $pagamento['valor'], // ou o valor atual do plano
                 'funcionario_id' => $pagamento['funcionario_id']
             ]);
+
+            $this->clienteModel->set(['status' => 'ativo'])
+            ->where('id' , $cliPlanos['cliente_id'] )
+            ->update();
 
             return $this->response->setJSON(['msg' => 'Pagamento concluído com sucesso'])->setStatusCode(200);
         } catch (\Throwable $th) {

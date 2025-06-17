@@ -3,11 +3,14 @@
 namespace App\Controllers;
 
 use App\Models\AnamneseModel;
+use App\Models\AcademiaModel;
 use App\Models\ClienteModel;
 use App\Models\Clientesplanos;
 use App\Models\PagamentosModel;
 use CodeIgniter\CLI\Console;
 use CodeIgniter\Database\Query;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 class Cliente extends BaseController
 {
@@ -388,5 +391,58 @@ class Cliente extends BaseController
             ->findAll();
 
         return $this->response->setJSON($dados)->setStatusCode(200);
+    }
+
+     public function relatorioClientesStatus()
+    {
+        // Instancia os models necessários
+        $clienteModel = new ClienteModel();
+        $academiaModel = new AcademiaModel();
+
+        $academia = $academiaModel->first();
+        if (!$academia) {
+            die('Erro: Dados da academia não encontrados.');
+        }
+
+        $dadosView = [
+            'clientes_ativos'   => $clienteModel->where('status', 'ativo')->findAll(),
+            'clientes_inativos' => $clienteModel->where('status', 'inativo')->findAll(),
+            'clientes_anulados' => $clienteModel->where('status', 'anulado')->findAll(),
+            
+            'nome_academia'     => $academia['nome'],
+            'cnpj_academia'     => $academia['cnpj'],
+            'email_academia'    => $academia['email'],
+            'logo_academia'     => $academia['logo'],
+            'telefone_academia' => $academia['telefone'],
+            'gerado_em'         => date('d/m/Y H:i:s')
+        ];
+
+        $html = view('relatorios/relatorio_clientes_status', $dadosView);
+
+           $options = new Options();
+        // $options->set('defaultFont', 'DejaVu Sans');
+        $options->set('isRemoteEnabled', true); // Mudei para false
+        $options->set('isHtml5ParserEnabled', true);
+        $options->set('enable_font_subsetting', true);
+        $options->set('debugKeepTemp', false);
+        $options->set('debugCss', false);
+        $options->set('debugLayout', false);
+        $options->set('debugLayoutLines', false);
+        $options->set('debugLayoutBlocks', false);
+        $options->set('debugLayoutInline', false);
+        $options->set('debugLayoutPaddingBox', false);
+
+        $dompdf = new Dompdf($options);
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+
+        // Baixar o PDF diretamente
+        $nomeArquivo = 'relatorio-financeiro-' .'relatorio_clientes_status' . '.pdf';
+
+        return $this->response
+            ->setHeader('Content-Type', 'application/pdf')
+            ->setHeader('Content-Disposition', 'inline; filename="' . $nomeArquivo . '"')
+            ->setBody($dompdf->output());
     }
 }

@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CadTreinoService } from '../../../../../services/cad-treino/cad-treino.service';
 import { finalize } from 'rxjs';
 import { ModalSpinnerComponent } from '../../../../modais/modal-spinner/modal-spinner.component';
@@ -8,7 +8,7 @@ import { ModalSpinnerComponent } from '../../../../modais/modal-spinner/modal-sp
 @Component({
   selector: 'app-ver-fihca',
   standalone: true,
-  imports: [CommonModule, ModalSpinnerComponent],
+  imports: [CommonModule, ModalSpinnerComponent, RouterLink],
   templateUrl: './ver-fihca.component.html',
   styleUrl: './ver-fihca.component.css'
 })
@@ -42,6 +42,7 @@ export class VerFichaComponent {
 
         if (!fichasMap.has(chave)) {
           fichasMap.set(chave, {
+             ficha_id : item.ficha_id,
             tipo_treino: item.tipo,
             ordem: item.ordem,
             exercicios: []

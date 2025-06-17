@@ -1,5 +1,5 @@
 @if (isLoading) {
-  <app-modal-spinner></app-modal-spinner>
+<app-modal-spinner></app-modal-spinner>
 }
 
 <div class="d-flex align-content-center justify-content-between">
@@ -7,8 +7,20 @@
   <button class="btn btn-danger" (click)="gerarPdf()">Gerar pdf</button>
 </div>
 <div *ngFor="let ficha of fichasComExercicios" class="card my-4 shadow-sm">
-  <div class="card-header bg-primary text-white">
-    Ficha {{ ficha.tipo_treino }} - Ordem {{ ficha.ordem }}
+  <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+
+    <span> Ficha {{ ficha.tipo_treino }} - Ordem {{ ficha.ordem }}
+    </span>
+
+    <div> <a [routerLink]="['/admin/painel/treinos/editar-fichas']"  [queryParams]="{ id: ficha.ficha_id }" class="btn btn-sm btn-warning me-2">
+        <i class="bi bi-pencil-fill"></i> Editar
+      </a>
+
+      <!-- <button class="btn btn-sm btn-danger" (click)="excluirFicha(ficha.id)">
+        <i class="bi bi-trash-fill"></i> Excluir
+      </button> -->
+    </div>
+
   </div>
 
   <div class="card-body p-0">

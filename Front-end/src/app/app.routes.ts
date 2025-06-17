@@ -38,6 +38,7 @@ import { VerFichaComponent } from './components/admin/painel-admin/pn-treino/ver
 import { ListarComponent } from './components/admin/painel-admin/despesas/listar/listar.component';
 import { FormularioComponent } from './components/admin/painel-admin/despesas/formulario/formulario.component';
 import { ManualComponent } from './components/admin/painel-admin/manual/manual.component';
+import { EditarFichaComponent } from './components/admin/painel-admin/pn-treino/editar-ficha/editar-ficha.component';
 
 
 export const routes: Routes = [
@@ -103,6 +104,7 @@ export const routes: Routes = [
             { path: 'treinos', component: PnTreinoComponent, canActivate: [adminGuard] },
             { path: 'treinos/cad-ficha', component: CadTreinoComponent, canActivate: [adminGuard] },
             { path: 'treinos/ver-fichas', component: VerFichaComponent, canActivate: [adminGuard] },
+            { path: 'treinos/editar-fichas', component: EditarFichaComponent, canActivate: [adminGuard] },
             { path: 'pn-planos', component: PnPlanosComponent, canActivate: [adminGuard] },
             { path: 'pn-planos/editar', component: ModalEditarPlanosComponent, canActivate: [adminGuard] },
             { path: 'financeiro', component: PnFinanceiroComponent, canActivate: [adminGuard] },

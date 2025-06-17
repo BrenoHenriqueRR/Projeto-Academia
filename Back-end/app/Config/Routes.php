@@ -24,6 +24,7 @@ $routes->group('Cliente', function ($routes) {
     $routes->post('inserirFoto', 'Cliente::inserirFoto');
     $routes->post('pegarFoto', 'Cliente::pegarFoto');
     $routes->post('trocarSenha', 'Cliente::trocarSenha');
+    $routes->get('relatorioClientesStatus', 'Cliente::relatorioClientesStatus');
 });
 
 // =====================
@@ -73,7 +74,9 @@ $routes->group('Treino', function ($routes) {
 // FICHA DE TREINO
 // =====================
 $routes->post('/Ficha/create', 'Ficha::create');
+$routes->post('/Ficha/create', 'Ficha::update');
 $routes->post('/Ficha/pesquisarCli', 'Ficha::pesquisarCli');
+$routes->post('/Ficha/pesquisarFicha', 'Ficha::pesquisarFicha');
 $routes->post('/Ficha/fichaNaoConcluida', 'Ficha::fichaNaoConcluida');
 $routes->post('/Ficha/concluirFicha', 'Ficha::concluirFicha');
 $routes->post('/Ficha/imprimirFichaId', 'Ficha::imprimirFichaId');
@@ -85,8 +88,6 @@ $routes->group('Financeiro', function ($routes) {
     $routes->post('create', 'Financeiro::create');
     $routes->post('pesquisar', 'Financeiro::pesquisar');
     $routes->get('pesquisarCliPendente', 'Financeiro::pesquisarCliPendente');
-    $routes->get('gerarRelatorioMensalPdf', 'Financeiro::gerarRelatorioMensalPdf');
-    $routes->get('vendasLojaDetalhadoPdf', 'Financeiro::vendasLojaDetalhadoPdf');
     $routes->post('update', 'Financeiro::update');
     $routes->get('resumo', 'Financeiro::resumo');
     $routes->get('listaPagamentos', 'Financeiro::listaPagamentos');
@@ -95,6 +96,9 @@ $routes->group('Financeiro', function ($routes) {
     $routes->get('pesquisarCliPendente', 'Financeiro::pesquisarCliPendente');
     $routes->get('getEstatisticasComparativas', 'Financeiro::getEstatisticasComparativas');
     $routes->post('pesquisarPagamentosCliente', 'Financeiro::pesquisarCliPendente');
+    $routes->get('gerarRelatorioMensalPdf', 'Financeiro::gerarRelatorioMensalPdf');
+    $routes->get('vendasLojaDetalhadoPdf', 'Financeiro::vendasLojaDetalhadoPdf');
+    $routes->get('relatorioPagamentosStatus', 'Financeiro::relatorioPagamentosStatus');
 });
 
 // =====================

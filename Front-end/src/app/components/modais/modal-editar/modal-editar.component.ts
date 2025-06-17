@@ -114,7 +114,7 @@ export class ModalEditarComponent {
       this.formcadastro = new FormGroup({
         id: new FormControl(this.identificador),
         nome: new FormControl(this.data[0].nome, Validators.required),
-        email: new FormControl(this.data[0].email, [Validators.required, Validators.email]),
+        email: new FormControl(this.data[0].email, [Validators.required]),
         CPF: new FormControl(this.data[0].CPF, Validators.required),
         personal_id: new FormControl(this.data[0].personal_id, Validators.required),
         foto_perfil: new FormControl(null),

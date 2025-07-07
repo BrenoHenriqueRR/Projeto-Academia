@@ -77,27 +77,44 @@ export class EditarFichaComponent {
   }
 
   carregarDadosFicha(): void {
-    // Você precisará de um método no serviço para buscar uma ficha completa pelo ID
     this.service.pesquisarFicha(JSON.stringify({ id: this.ficha_id })).subscribe({
-      next: (dadosFicha) => {
-        console.log(dadosFicha);
-        if (dadosFicha && dadosFicha.length > 0) {
-          const ficha = dadosFicha[0]; // Assumindo que o serviço retorna um array
+      next: (dadosDaApi) => {
+        // 'dadosDaApi' é a lista de exercícios com dados da ficha repetidos
+        if (dadosDaApi && dadosDaApi.length > 0) {
 
-          // Preenche os campos do formFicha (tipo e ordem)
+          // 1. Pegamos os dados da Ficha do primeiro registro
+          const primeiroItem = dadosDaApi[0];
           this.formFicha.patchValue({
-            tipo: ficha.tipo,
-            ordem: ficha.ordem
+            tipo: primeiroItem.tipo,
+            ordem: primeiroItem.ordem
+          });
+          this.cliente_id = primeiroItem.cliente_id;
+
+          // 2. Transformamos a lista "plana" na lista de exercícios que o componente precisa
+          this.listaExercicios = dadosDaApi.map((item: any) => {
+            // ATENÇÃO: Verifique se sua API retorna os IDs do exercício e do grupo.
+            // Eles são ESSENCIAIS para a função de EDITAR funcionar.
+            // Se os nomes das chaves forem diferentes, ajuste-os aqui.
+            return {
+              exercicio_id: item.exercicio_id, // Ex: 25. PRECISA VIR DA API
+              exercicio_nome: item.exercicio,
+              grupo_id: item.grupo_id,       // Ex: 3. PRECISA VIR DA API
+              grupo_nome: item.grupo_muscular,
+              series: item.series,
+              repeticoes: item.repeticoes,
+              observacoes: item.observacoes
+            };
           });
 
-          this.listaExercicios = ficha.exercicios || [];
-          
-
-          this.cliente_id = ficha.cliente_id;
+          // 3. Carregamos os dados complementares do cliente
           this.carregarDadosCliente();
+
         } else {
-          this.alertas.error('Ficha não encontrada.');
-          this.router.navigate(['admin/painel/treinos']);
+          // Se a API não retornar nada, pode ser uma ficha nova ou um erro.
+          // Como estamos na tela de edição, tratamos como erro.
+          this.alertas.error('Ficha não encontrada ou não possui exercícios.');
+          // Opcional: redirecionar se a ficha não existir
+          // this.router.navigate(['admin/painel/treinos']);
         }
       },
       error: (err) => {
@@ -154,6 +171,8 @@ export class EditarFichaComponent {
       observacoes: exForm.observacoes
     };
 
+    console.log(item);
+
     this.listaExercicios.push(item);
     this.formExercicio.reset();
   }
@@ -178,6 +197,8 @@ export class EditarFichaComponent {
       ...this.formFicha.value,
       cliente_id: this.cliente_id
     };
+
+    console.log(JSON.stringify(fichaAtualizada));
 
     // NOVO: Chamar o método de update no serviço
     this.service.updateFicha(JSON.stringify(fichaAtualizada)).subscribe({

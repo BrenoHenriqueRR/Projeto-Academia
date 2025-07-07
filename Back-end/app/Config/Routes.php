@@ -74,7 +74,7 @@ $routes->group('Treino', function ($routes) {
 // FICHA DE TREINO
 // =====================
 $routes->post('/Ficha/create', 'Ficha::create');
-$routes->post('/Ficha/create', 'Ficha::update');
+$routes->post('/Ficha/update', 'Ficha::update');
 $routes->post('/Ficha/pesquisarCli', 'Ficha::pesquisarCli');
 $routes->post('/Ficha/pesquisarFicha', 'Ficha::pesquisarFicha');
 $routes->post('/Ficha/fichaNaoConcluida', 'Ficha::fichaNaoConcluida');

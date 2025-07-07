@@ -97,7 +97,7 @@ export const routes: Routes = [
         component: PainelAdminComponent,
         canActivate: [adminGuard],
         children: [
-            { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+            { path: '', redirectTo: 'financeiro', pathMatch: 'full' },
             { path: 'dashboard', component: DashboardComponent, canActivate: [adminGuard] },
             { path: 'funcionarios', component: PnFuncionariosComponent, canActivate: [adminGuard] },
             { path: 'funcionarios/editarf', component: ModalEditarFuncionarioComponent, canActivate: [adminGuard] },

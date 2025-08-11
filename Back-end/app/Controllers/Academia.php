@@ -39,6 +39,9 @@ class Academia extends BaseController
                 'cnpj' => $this->request->getPost('cnpj'),
                 'logo' => $caminhoImagem,
                 'email' => $this->request->getPost('emailAcademia'),
+                'horario_funcionamento' => $this->request->getPost('horarioAcademia'),
+                'nome_dono' => $this->request->getPost('nome_dono'),
+                'cpf_dono' => $this->request->getPost('cpf_dono'),
                 'descricao' => $this->request->getPost('descricaoAcad'),
                 'data_modificacao' => date("Y-m-d"),
             ];

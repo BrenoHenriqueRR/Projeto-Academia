@@ -43,9 +43,9 @@
                         [queryParams]="{ id: cliente.id }">
                         Ver Fichas
                     </button>
-                    <button class="btn btn-success btn-sm me-2" [routerLink]="['cad-ficha']"
+                    <button class="btn btn-secondary btn-sm me-2" [routerLink]="['cad-ficha']"
                         [queryParams]="{ id: cliente.id }">
-                        Nova ficha
+                        Editar ficha
                     </button>
                     }
                     <button *ngIf="!cliente.temFicha" class="btn btn-success btn-sm" [routerLink]="['cad-ficha']"

@@ -1,42 +1,208 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <title>Relatório de Pagamentos</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        @page { margin: 15mm; size: A4; }
-        body { font-family: Arial, sans-serif; font-size: 10px; line-height: 1.3; }
-        .pdf-content { width: 100%; max-width: 90%; margin: 0 auto; }
-        .header-empresa { border-bottom: 3px solid #007bff; padding-bottom: 20px; margin-bottom: 25px; overflow: hidden; width: 100%; }
-        .logo-empresa { width: 60px; height: 60px; float: left; margin-right: 15px; }
-        .empresa-info { float: left; width: 55%; }
-        .empresa-info h3 { margin-bottom: 5px; font-size: 16px; }
-        .empresa-info p { margin: 2px 0; color: #666; font-size: 10px; }
-        .relatorio-titulo { float: right; text-align: right; width: 30%; }
-        .relatorio-titulo h2 { color: #007bff; font-size: 14px; margin-bottom: 0; }
-        .relatorio-titulo h4 { color: #666; font-size: 12px; }
-        .periodo-info { background: #f8f9fa; border-left: 4px solid #007bff; padding: 12px; margin: 15px 0; overflow: hidden; }
-        .periodo-left { float: left; width: 48%; }
-        .periodo-right { float: right; width: 48%; text-align: right; }
-        .secao-tabela { margin: 25px 0; page-break-inside: avoid; width: 100%; }
-        .secao-titulo { font-size: 13px; font-weight: bold; margin-bottom: 10px; color: #333; border-bottom: 1px solid #ccc; padding-bottom: 5px; }
-        .tabela-pdf { width: 100%; border-collapse: collapse; font-size: 9px; margin-bottom: 10px; table-layout: fixed; }
-        .tabela-pdf th { background: #f8f9fa; font-weight: 600; padding: 6px 4px; border: 1px solid #dee2e6; text-align: left; }
-        .tabela-pdf td { padding: 5px 4px; border: 1px solid #dee2e6; vertical-align: top; word-wrap: break-word; }
-        .tabela-pdf tbody tr:nth-child(even) { background: #fafafa; }
-        .tabela-pdf tfoot td { background: #f0f0f0; font-weight: bold; }
-        .text-right { text-align: right; }
-        .status-badge { display: inline-block; padding: 3px 6px; border-radius: 8px; font-size: 8px; font-weight: bold; text-transform: uppercase; color: white; }
-        .status-pago { background-color: #28a745; }
-        .status-pendente { background-color: #ffc107; color: #333; }
-        .rodape-relatorio { margin-top: 25px; padding-top: 12px; border-top: 1px solid #dee2e6; font-size: 9px; color: #666; position: fixed; bottom: -30px; left: 0; right: 0; width: 100%; }
-        .rodape-left { float: left; width: 48%; }
-        .rodape-right { float: right; width: 48%; text-align: right; }
-        .clearfix::after { content: ""; display: table; clear: both; }
-        .no-data { text-align: center; padding: 20px; color: #888; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @page {
+            margin: 15mm;
+            size: A4;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 10px;
+            line-height: 1.3;
+        }
+
+        .pdf-content {
+            width: 100%;
+            max-width: 90%;
+            margin: 0 auto;
+        }
+
+        .header-empresa {
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .logo-empresa {
+            width: 60px;
+            height: 60px;
+            float: left;
+            margin-right: 15px;
+        }
+
+        .empresa-info {
+            float: left;
+            width: 55%;
+        }
+
+        .empresa-info h3 {
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+
+        .empresa-info p {
+            margin: 2px 0;
+            color: #666;
+            font-size: 10px;
+        }
+
+        .relatorio-titulo {
+            float: right;
+            text-align: right;
+            width: 30%;
+        }
+
+        .relatorio-titulo h2 {
+            color: #007bff;
+            font-size: 14px;
+            margin-bottom: 0;
+        }
+
+        .relatorio-titulo h4 {
+            color: #666;
+            font-size: 12px;
+        }
+
+        .periodo-info {
+            background: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 12px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+
+        .periodo-left {
+            float: left;
+            width: 48%;
+        }
+
+        .periodo-right {
+            float: right;
+            width: 48%;
+            text-align: right;
+        }
+
+        .secao-tabela {
+            margin: 25px 0;
+            page-break-inside: avoid;
+            width: 100%;
+        }
+
+        .secao-titulo {
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+        }
+
+        .tabela-pdf {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 9px;
+            margin-bottom: 10px;
+            table-layout: fixed;
+        }
+
+        .tabela-pdf th {
+            background: #f8f9fa;
+            font-weight: 600;
+            padding: 6px 4px;
+            border: 1px solid #dee2e6;
+            text-align: left;
+        }
+
+        .tabela-pdf td {
+            padding: 5px 4px;
+            border: 1px solid #dee2e6;
+            vertical-align: top;
+            word-wrap: break-word;
+        }
+
+        .tabela-pdf tbody tr:nth-child(even) {
+            background: #fafafa;
+        }
+
+        .tabela-pdf tfoot td {
+            background: #f0f0f0;
+            font-weight: bold;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 3px 6px;
+            border-radius: 8px;
+            font-size: 8px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: white;
+        }
+
+        .status-pago {
+            background-color: #28a745;
+        }
+
+        .status-pendente {
+            background-color: #ffc107;
+            color: #333;
+        }
+
+        .rodape-relatorio {
+            margin-top: 25px;
+            padding-top: 12px;
+            border-top: 1px solid #dee2e6;
+            font-size: 9px;
+            color: #666;
+            position: fixed;
+            bottom: -30px;
+            left: 0;
+            right: 0;
+            width: 100%;
+        }
+
+        .rodape-left {
+            float: left;
+            width: 48%;
+        }
+
+        .rodape-right {
+            float: right;
+            width: 48%;
+            text-align: right;
+        }
+
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .no-data {
+            text-align: center;
+            padding: 20px;
+            color: #888;
+        }
     </style>
 </head>
+
 <body>
     <div class="pdf-content">
         <!-- Cabeçalho -->
@@ -83,17 +249,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach($pagamentos_pagos as $p): ?>
-                            <?php 
+                            <?php foreach ($pagamentos_pagos as $p): ?>
+                                <?php
                                 $valorLimpo = floatval(str_replace(['R$', '.', ','], ['', '', '.'], $p['valor']));
                                 $totalPagos += $valorLimpo;
-                            ?>
-                            <tr>
-                                <td><?= htmlspecialchars($p['cliente_nome'] ?? 'Cliente não encontrado') ?></td>
-                                <td><?= date('d/m/Y', strtotime($p['data_pagamento'])) ?></td>
-                                <td class="text-right">R$ <?= number_format($valorLimpo, 2, ',', '.') ?></td>
-                                <td><span class="status-badge status-pago">PAGO</span></td>
-                            </tr>
+                                ?>
+                                <tr>
+                                    <td><?= htmlspecialchars($p['cliente_nome'] ?? 'Cliente não encontrado') ?></td>
+                                    <td><?= date('d/m/Y', strtotime($p['data_pagamento'])) ?></td>
+                                    <td class="text-right">R$ <?= number_format($valorLimpo, 2, ',', '.') ?></td>
+                                    <td><span class="status-badge status-pago">PAGO</span></td>
+                                </tr>
                             <?php endforeach; ?>
                         </tbody>
                         <tfoot>
@@ -112,7 +278,7 @@
             <!-- Tabela de Pagamentos Pendentes -->
             <section class="secao-tabela">
                 <div class="secao-titulo">PAGAMENTOS PENDENTES</div>
-                 <?php if (!empty($pagamentos_pendentes)): ?>
+                <?php if (!empty($pagamentos_pendentes)): ?>
                     <?php $totalPendentes = 0; ?>
                     <table class="tabela-pdf">
                         <thead>
@@ -124,21 +290,21 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach($pagamentos_pendentes as $p): ?>
-                             <?php 
+                            <?php foreach ($pagamentos_pendentes as $p): ?>
+                                <?php
                                 $valorLimpo = floatval(str_replace(['R$', '.', ','], ['', '', '.'], $p['valor']));
                                 $totalPendentes += $valorLimpo;
-                            ?>
-                            <tr>
-                                <td><?= htmlspecialchars($p['cliente_nome'] ?? 'Cliente não encontrado') ?></td>
-                                <td><?= date('d/m/Y', strtotime($p['data_pagamento'])) ?></td>
-                                <td class="text-right">R$ <?= number_format($valorLimpo, 2, ',', '.') ?></td>
-                                <td><span class="status-badge status-pendente">PENDENTE</span></td>
-                            </tr>
+                                ?>
+                                <tr>
+                                    <td><?= htmlspecialchars($p['cliente_nome'] ?? 'Cliente não encontrado') ?></td>
+                                    <td><?= date('d/m/Y', strtotime($p['data_pagamento'])) ?></td>
+                                    <td class="text-right">R$ <?= number_format($valorLimpo, 2, ',', '.') ?></td>
+                                    <td><span class="status-badge status-pendente">PENDENTE</span></td>
+                                </tr>
                             <?php endforeach; ?>
                         </tbody>
                         <tfoot>
-                             <tr>
+                            <tr>
                                 <td colspan="2"><strong>Total (<?= count($pagamentos_pendentes) ?>)</strong></td>
                                 <td class="text-right"><strong>R$ <?= number_format($totalPendentes, 2, ',', '.') ?></strong></td>
                                 <td></td>
@@ -162,4 +328,5 @@
         </footer>
     </div>
 </body>
+
 </html>

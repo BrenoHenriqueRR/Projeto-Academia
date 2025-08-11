@@ -30,14 +30,14 @@
                         </div>
                         <div class="col">
                             <label for="horarioFuncionamento">Horário de Funcionamento</label>
-                            <input list=hfunc type="text" id="horarioFuncionamento"
-                                formControlName="horarioFuncionamento"
+                            <input list=hfunc type="text" id="horarioAcademia"
+                                formControlName="horarioAcademia"
                                 placeholder="Ex: Seg-Sex: 6h-22h, Sáb-Dom: 8h-18h">
                             <datalist id="hfunc">
                                 <option value="Seg-Sex: 6h-22h, Sáb-Dom: 8h-18h"></option>
                                 <option value="Seg-Sex: 6h-23h, Sáb-Dom: 7h-13h"></option>
                                 <option value="Seg-Sex: 00h-00h, Sáb-Dom: 8h-23h"></option>
-                            </datalist>
+                            </datalist> 
                         </div>
                     </div>
                     <div class="row form-group">
@@ -64,6 +64,16 @@
                             <input type="text" mask="00.000.000/0000-00" id="cnpj" formControlName="cnpj">
                         </div>
                     </div>
+                    <div class="row form-group">
+                        <div class="col">
+                            <label for="nome_dono">Nome Responsável</label>
+                            <input id="nome_dono" formControlName="nome_dono">
+                        </div>
+                        <div class="col">
+                            <label for="cpf_dono">Cpf Responsável</label>
+                            <input type="text" mask="00.000.000/0000-00" id="cpf_dono" formControlName="cpf_dono">
+                        </div>
+                    </div>
                     <div class="d-flex justify-content-between">
                         <button class="btn-anterior" type="button" (click)="Anterior()">Voltar</button>
                         <button class="btn-proximo" (click)="salvarConfiguracoes()">Salvar Configurações</button>
@@ -84,10 +94,6 @@
                             <label for="preco">Preço</label>
                             <input type="number" id="preco" formControlName="preco" min="0">
                         </div>
-                        <!-- <div class="col">
-                            <label for="descontoPlano">Desconto (%)</label>
-                            <input type="number" id="descontoPlano" formControlName="descontoPlano" min="0" (input)="calcularValorFinal()">
-                        </div> -->
                     </div>
                     <div class="form-group">
                         <label for="descricao">Descrição</label>

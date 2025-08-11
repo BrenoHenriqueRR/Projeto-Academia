@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-confighome',
   standalone: true,
-  imports: [FormsModule, NgIf,CommonModule, ReactiveFormsModule, NgxMaskDirective, ModalSpinnerComponent, NgFor ],
+  imports: [FormsModule, NgIf, CommonModule, ReactiveFormsModule, NgxMaskDirective, ModalSpinnerComponent, NgFor],
   templateUrl: './confighome.component.html',
   providers: [provideNgxMask()],
   styleUrl: './confighome.component.css'
@@ -33,11 +33,12 @@ export class ConfighomeComponent implements OnInit {
   novoBeneficio: string = ''; // Benefício atual que será adicionado
   beneficios: string[] = []; // Array para armazenar os benefícios
   index: number = 0;
+  dias_semana = ['segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado', 'domingo'];
 
-  @HostListener('window:beforeunload', ['$event'])
-  unloadNotification($event: any): void {
-    $event.returnValue = 'Você tem alterações não salvas! Tem certeza que deseja sair?';
-  }
+  // @HostListener('window:beforeunload', ['$event'])
+  // unloadNotification($event: any): void {
+  //   $event.returnValue = 'Você tem alterações não salvas! Tem certeza que deseja sair?';
+  // }
 
   ngOnInit() {
     this.loading = true;
@@ -91,12 +92,14 @@ export class ConfighomeComponent implements OnInit {
     this.cadForm = this.fb.group({
       logo: ['', Validators.required],
       nomeAcad: ['', Validators.required],
-      horarioFuncionamento: ['', Validators.required],
+      horarioAcademia: ['', Validators.required],
       telefoneAcademia: ['', Validators.required],
       emailAcademia: ['', [Validators.required, Validators.email]],
       descricaoAcad: ['', Validators.required],
       endereco: ['', Validators.required],
       cnpj: ['', Validators.required],
+      nome_dono: ['', Validators.required],
+      cpf_dono: ['', Validators.required],
     });
     this.funcForm = this.fb.group({
       foto: ['', Validators.required],
@@ -111,13 +114,13 @@ export class ConfighomeComponent implements OnInit {
   }
 
   adicionarBeneficio(beneficio: string) {
-    if(beneficio == ''){
+    if (beneficio == '') {
       return;
     }
     this.beneficios[this.index] = beneficio;
     this.index++;
     (document.getElementById('beneficio') as HTMLInputElement).value = '';
-    
+
   }
 
   onFileChange(event: Event) {
@@ -136,12 +139,14 @@ export class ConfighomeComponent implements OnInit {
       const formData = new FormData();
       formData.append('logo', this.logofile, this.logofile.name);
       formData.append('nomeAcad', this.cadForm.value.nomeAcad);
-      // formData.append('horarioFuncionamento', this.cadForm.value.horarioFuncionamento);
+      formData.append('horarioFuncionamento', this.cadForm.value.horarioFuncionamento);
       formData.append('telefoneAcademia', this.cadForm.value.telefoneAcademia);
       formData.append('emailAcademia', this.cadForm.value.emailAcademia);
       formData.append('descricaoAcad', this.cadForm.value.descricaoAcad);
       formData.append('endereco', this.cadForm.value.endereco);
       formData.append('cnpj', this.cadForm.value.cnpj);
+      formData.append('nome_dono', this.cadForm.value.nome_dono);
+      formData.append('cpf_dono', this.cadForm.value.cpf_dono);
       this.academiaservice.create(formData).subscribe({
         next: (dado) => {
           this.alertas.success(dado.msg);
@@ -176,9 +181,9 @@ export class ConfighomeComponent implements OnInit {
       this.beneficios.forEach(beneficio => {
         this.beneficiosArray.push(this.fb.control(beneficio));
       });
-      
+
       const dados = JSON.stringify(this.planForm.getRawValue());
-      
+
       console.log(dados);
       // this.academiaservice.createPlanos(dados).subscribe({
       //   next: (data) => {

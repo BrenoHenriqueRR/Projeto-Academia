@@ -92,13 +92,11 @@ export class EditarFichaComponent {
 
           // 2. Transformamos a lista "plana" na lista de exercícios que o componente precisa
           this.listaExercicios = dadosDaApi.map((item: any) => {
-            // ATENÇÃO: Verifique se sua API retorna os IDs do exercício e do grupo.
-            // Eles são ESSENCIAIS para a função de EDITAR funcionar.
-            // Se os nomes das chaves forem diferentes, ajuste-os aqui.
+         
             return {
-              exercicio_id: item.exercicio_id, // Ex: 25. PRECISA VIR DA API
+              exercicio_id: item.exercicio_id, 
               exercicio_nome: item.exercicio,
-              grupo_id: item.grupo_id,       // Ex: 3. PRECISA VIR DA API
+              grupo_id: item.grupo_id,       
               grupo_nome: item.grupo_muscular,
               series: item.series,
               repeticoes: item.repeticoes,

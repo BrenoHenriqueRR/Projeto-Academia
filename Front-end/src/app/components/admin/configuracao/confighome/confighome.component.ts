@@ -8,11 +8,12 @@ import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { ModalSpinnerComponent } from '../../../modais/modal-spinner/modal-spinner.component';
 import { PnFuncionarioService } from '../../../../services/admin/pn-funcionario/pn-funcionario.service';
 import { Router } from '@angular/router';
+import { PlanosServiceService } from '../../../../services/planosService/planos-service.service';
 
 @Component({
   selector: 'app-confighome',
   standalone: true,
-  imports: [FormsModule, NgIf, CommonModule, ReactiveFormsModule, NgxMaskDirective, ModalSpinnerComponent, NgFor],
+  imports: [FormsModule, NgIf, CommonModule, ReactiveFormsModule, NgxMaskDirective, ModalSpinnerComponent],
   templateUrl: './confighome.component.html',
   providers: [provideNgxMask()],
   styleUrl: './confighome.component.css'
@@ -30,8 +31,6 @@ export class ConfighomeComponent implements OnInit {
   loading: boolean = false;
   planos: any;
   funcionarios: any;
-  novoBeneficio: string = ''; // Benefício atual que será adicionado
-  beneficios: string[] = []; // Array para armazenar os benefícios
   index: number = 0;
   dias_semana = ['segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado', 'domingo'];
 
@@ -85,7 +84,6 @@ export class ConfighomeComponent implements OnInit {
       preco: ['', Validators.required],
       // descontoPlano: ['', [Validators.required, Validators.min(1)]],
       descricao: ['', [Validators.required]],
-      beneficios: this.fb.array([]),
       duracao: ['', [Validators.required]],
       disponibilidade: ['', [Validators.required]]
     });
@@ -113,15 +111,7 @@ export class ConfighomeComponent implements OnInit {
     });
   }
 
-  adicionarBeneficio(beneficio: string) {
-    if (beneficio == '') {
-      return;
-    }
-    this.beneficios[this.index] = beneficio;
-    this.index++;
-    (document.getElementById('beneficio') as HTMLInputElement).value = '';
 
-  }
 
   onFileChange(event: Event) {
     const input = event.target as HTMLInputElement;
@@ -139,7 +129,7 @@ export class ConfighomeComponent implements OnInit {
       const formData = new FormData();
       formData.append('logo', this.logofile, this.logofile.name);
       formData.append('nomeAcad', this.cadForm.value.nomeAcad);
-      formData.append('horarioFuncionamento', this.cadForm.value.horarioFuncionamento);
+      formData.append('horarioAcademia', this.cadForm.value.horarioAcademia);
       formData.append('telefoneAcademia', this.cadForm.value.telefoneAcademia);
       formData.append('emailAcademia', this.cadForm.value.emailAcademia);
       formData.append('descricaoAcad', this.cadForm.value.descricaoAcad);
@@ -172,29 +162,51 @@ export class ConfighomeComponent implements OnInit {
     })
   }
 
-  get beneficiosArray(): FormArray {
-    return this.planForm.get('beneficios') as FormArray;
-  }
 
   salvarPlano() {
     if (this.planForm.valid) {
-      this.beneficios.forEach(beneficio => {
-        this.beneficiosArray.push(this.fb.control(beneficio));
-      });
+
 
       const dados = JSON.stringify(this.planForm.getRawValue());
 
       console.log(dados);
-      // this.academiaservice.createPlanos(dados).subscribe({
-      //   next: (data) => {
-      //     this.ngOnInit();
-      //     this.planForm.reset();
-      //     this.alertas.success("Plano inserido");
-      //   }
-      // })
+      this.academiaservice.createPlanos(dados).subscribe({
+        next: (data) => {
+          this.ngOnInit();
+          this.planForm.reset();
+          this.alertas.success("Plano inserido");
+        }
+      })
 
     } else {
       this.alertas.error("Campos Vazios !!");
+    }
+  }
+
+  //Excluir planos criados
+  excluirPlano(id: number){
+    if(confirm("Deseja mesmo fazer a exlusão?")){
+      this.academiaservice.deletePlano(JSON.stringify({"id": id})).subscribe({
+        next: (resp) =>{
+          this. alertas.success("Plano excluido com sucesso !");
+          this.ngOnInit();
+        }, error: (err) => {
+          this.alertas.error("Ocorreu um erro ao excluir um Plano");        
+        }
+      })
+    }
+  }
+  
+ excluirFunc(id : number){
+    if(confirm("Deseja mesmo fazer a exlusão?")){
+      this.funcservice.delete(JSON.stringify({"id": id})).subscribe({
+        next: (resp) =>{
+          this. alertas.success("Funcionario excluido com sucesso !");
+          this.ngOnInit();
+        }, error: (err) => {
+          this.alertas.error("Ocorreu um erro ao excluir um funcionário");        
+        }
+      })
     }
   }
 

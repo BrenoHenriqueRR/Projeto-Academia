@@ -24,17 +24,35 @@ class Academia extends BaseController
         try {
             $logo = $this->request->getFile('logo');
 
-            if ($logo->isValid() && !$logo->hasMoved()) {
-                $nomeimg = $logo->getRandomName();
-                $logo->move('assets/Logo-academia', $nomeimg);
-                $caminhoImagem = 'assets/Logo-academia/' . $nomeimg;
-            } else {
-                $caminhoImagem = null;
+            if (isset($logo)) {
+                if ($logo->isValid() && !$logo->hasMoved()) {
+                    $nomeimg = $logo->getRandomName();
+
+                    $caminhoPasta = 'assets/Logo-academia/';
+                    if (!is_dir($caminhoPasta)) {
+                        mkdir($caminhoPasta, 0755, true); // cria a pasta se não existir
+                    }
+
+                    $logo->move($caminhoPasta, $nomeimg);
+                    $caminhoImagem = $caminhoPasta . '/' . $nomeimg;    
+                }else{
+                    $caminhoImagem = null;
+                }
             }
+
+
+
+            // if ($logo->isValid() && !$logo->hasMoved()) {
+            //     $nomeimg = $logo->getRandomName();
+            //     $logo->move('assets/Logo-academia', $nomeimg);
+            //     $caminhoImagem = 'assets/Logo-academia/' . $nomeimg;
+            // } else {
+            //     $caminhoImagem = null;
+            // }
 
             $dados = [
                 'nome' => $this->request->getPost('nomeAcad'),
-                'endereco' => $this->request->getPost('endereco'),
+                'endereco' => $this->request->getPost('endereco'),  
                 'telefone' => $this->request->getPost('telefoneAcademia'),
                 'cnpj' => $this->request->getPost('cnpj'),
                 'logo' => $caminhoImagem,

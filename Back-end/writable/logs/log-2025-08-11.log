@@ -1,0 +1,21 @@
+CRITICAL - 2025-08-11 23:31:47 --> ErrorException: Attempt to read property "id" on int
+in APPPATH\Controllers\Planos.php on line 66.
+ 1 APPPATH\Controllers\Planos.php(66): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "id" on int', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Planos.php', 66)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Planos->delete()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Planos))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-08-11 23:31:48 --> ErrorException: Attempt to read property "id" on int
+in APPPATH\Controllers\Planos.php on line 66.
+ 1 APPPATH\Controllers\Planos.php(66): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "id" on int', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Planos.php', 66)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Planos->delete()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Planos))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-08-11 23:37:23 --> ErrorException: Attempt to read property "id" on int
+in APPPATH\Controllers\Planos.php on line 66.
+ 1 APPPATH\Controllers\Planos.php(66): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "id" on int', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Planos.php', 66)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Planos->delete()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Planos))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

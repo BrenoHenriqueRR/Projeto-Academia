@@ -19,7 +19,9 @@
                     <div class="form-group">
                         <label for="logo">Adicione a sua logo</label>
                         <input formControlName="logo" type="file" id="logo" class="file-input"
-                            (change)="onFileChange($event)">
+                            (change)="onFileChange($event)"
+                            capture="environment"
+                            accept="image/*">
                         <label for="logo" class="file-input-label">Escolha um arquivo</label>
                         <div class="file-name">{{fileName}}</div>
                     </div>
@@ -43,11 +45,11 @@
                     <div class="row form-group">
                         <div class="col">
                             <label for="telefoneAcademia">Telefone</label>
-                            <input type="text" id="telefoneFunc" formControlName="telefoneFunc">
+                            <input type="text" id="telefoneAcademia" formControlName="telefoneAcademia">
                         </div>
                         <div class="col">
-                            <label for="emailFunc">E-mail</label>
-                            <input type="email" id="emailFunc" formControlName="emailFunc">
+                            <label for="emailAcademia">E-mail</label>
+                            <input type="email" id="emailAcademia" formControlName="emailAcademia">
                         </div>
                     </div>
                     <div class="form-group">
@@ -92,7 +94,8 @@
                         </div>
                         <div class="col">
                             <label for="preco">Preço</label>
-                            <input type="number" id="preco" formControlName="preco" min="0">
+                            <input type="text" id="preco" formControlName="preco" mask="separator.2"
+                                    prefix="R$ "min="0">
                         </div>
                     </div>
                     <div class="form-group">
@@ -109,24 +112,24 @@
                             <option value="12">12 Meses</option>
                         </select>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="beneficio" title="Clique no botao para adicionar o benefício">Adicionar
                             Benefício:</label>
                         <textarea id="beneficio" #beneficio rows="2"></textarea>
                         <button type="button" class="button mt-2" (click)="adicionarBeneficio(beneficio.value)">Adicionar
                             Benefício</button>
                         <small class="ms-2">Clique no botao para adicionar o benefício.</small>
-                    </div>
+                    </div> -->
 
-                    <div *ngIf="beneficios.length > 0" class="mt-4">
+                    <!-- <div *ngIf="beneficios.length > 0" class="mt-4">
                         <h4>Benefícios Adicionados</h4>
                         <ul>
                             <li *ngFor="let beneficio of beneficios; let i = index">
                                 {{ beneficio }}
-                                <!-- <button type="button" (click)="removerBeneficio(i)" class="btn btn-danger btn-sm ml-2">Remover</button> -->
+                                 <button type="button" (click)="removerBeneficio(i)" class="btn btn-danger btn-sm ml-2">Remover</button>
                             </li>
                         </ul>
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label for="disponibilidade">Disponibilidade</label>
                         <select id="disponibilidade" formControlName="disponibilidade">
@@ -147,9 +150,8 @@
                                 <th>Descrição</th>
                                 <th>Preço</th>
                                 <th>Duração</th>
-                                <th>Benefícios</th>
                                 <th>Disponibilidade</th>
-                                <!-- <th>Ações</th> -->
+                                <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody id="planosTableBody">
@@ -159,8 +161,8 @@
                                 <td>{{plano.descricao}}</td>
                                 <td>{{plano.preco}}</td>
                                 <td>{{plano.duracao}}</td>
-                                <td>{{plano.beneficios}}</td>
                                 <td>{{plano.disponibilidade}}</td>
+                                <td><button (click)="excluirPlano(plano.id)" class="btn btn-danger">Excluir</button></td>
                             </tr>
                             }
                         </tbody>
@@ -178,7 +180,8 @@
                 <div class="form-group">
                     <label for="foto">Adicionar foto</label>
                     <input formControlName="foto" type="file" id="foto" class="file-input"
-                        (change)="onFileChange($event)">
+                        (change)="onFileChange($event)"
+                         accept=".png,.jpg,.jpeg">
                     <label for="foto" class="file-input-label">Escolha um arquivo</label>
                     <div class="file-name">{{fileName}}</div>
                 </div>
@@ -238,7 +241,7 @@
                         <th>Profissão</th>
                         <th>CPF</th>
                         <th>Email</th>
-                        <!-- <th>Ações</th> -->
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody id="planosTableBody">
@@ -248,6 +251,7 @@
                         <td>{{func.funcao}}</td>
                         <td>{{func.CPF}}</td>
                         <td>{{func.email}}</td>
+                        <td><button (click)="excluirFunc(func.id)" class="btn btn-danger">Excluir</button></td>
                     </tr>
                     }
                 </tbody>

@@ -116,7 +116,8 @@ class Admin extends BaseController
 
         $data = json_decode($json, true);
 
-        $dados = $this->model->select('*');
+        $dados = $this->model->select('*')
+        ->where('status','ativo');
 
         $data = $dados->get();
 
@@ -126,15 +127,13 @@ class Admin extends BaseController
     public function deletefun()
     {
 
-        $json = file_get_contents('php://input');
 
-        // Decodificar o JSON em um array PHP
-        $data = json_decode($json, true);
+        $data = $this->request->getJSON();
 
         $this->model->set([
             'status' => 'anulado'
         ])
-                ->where('id', $data['id'])
+                ->where('id', $data->id)
                 ->update();
 
         $msg = array("msg" => "Funcionario deletado");

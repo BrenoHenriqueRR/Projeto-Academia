@@ -43,8 +43,9 @@ class Funcionarios extends BaseController
     }
 
     public function pesquisar(){
-        $this->model->select('*');
-        $this->model->where('funcao','personal');
+        $this->model->select('*')
+        ->where('funcao','personal')
+        ->where('status','ativo');
         $data = $this->model->get();
 
         

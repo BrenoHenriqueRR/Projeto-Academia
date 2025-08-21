@@ -19,4 +19,5 @@ export const appConfig: ApplicationConfig = {
   provideAnimations(),
   provideHttpClient(withFetch()), provideAnimationsAsync(),DatePipe,
 { provide: LOCALE_ID, useValue: 'pt-BR' }],
+
 };

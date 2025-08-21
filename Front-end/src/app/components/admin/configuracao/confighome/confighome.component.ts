@@ -9,11 +9,14 @@ import { ModalSpinnerComponent } from '../../../modais/modal-spinner/modal-spinn
 import { PnFuncionarioService } from '../../../../services/admin/pn-funcionario/pn-funcionario.service';
 import { Router } from '@angular/router';
 import { PlanosServiceService } from '../../../../services/planosService/planos-service.service';
+import { data, error } from 'jquery';
+import { FormatarService } from '../../../../services/helpers/formatar/formatar.service';
 
 @Component({
   selector: 'app-confighome',
   standalone: true,
-  imports: [FormsModule, NgIf, CommonModule, ReactiveFormsModule, NgxMaskDirective, ModalSpinnerComponent],
+  imports: [FormsModule, NgIf, CommonModule, ReactiveFormsModule, NgxMaskDirective,
+     ModalSpinnerComponent],
   templateUrl: './confighome.component.html',
   providers: [provideNgxMask()],
   styleUrl: './confighome.component.css'
@@ -78,7 +81,7 @@ export class ConfighomeComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private academiaservice: ConfigService,
     private alertas: ToastrService, private funcservice: PnFuncionarioService,
-    private route: Router) {
+    private route: Router, private formatar: FormatarService) {
     this.planForm = this.fb.group({
       nome: ['', Validators.required],
       preco: ['', Validators.required],
@@ -197,7 +200,8 @@ export class ConfighomeComponent implements OnInit {
     }
   }
   
- excluirFunc(id : number){
+ excluirFunc(id : number){  
+  
     if(confirm("Deseja mesmo fazer a exlusão?")){
       this.funcservice.delete(JSON.stringify({"id": id})).subscribe({
         next: (resp) =>{
@@ -242,7 +246,9 @@ export class ConfighomeComponent implements OnInit {
       formData.append('email', this.funcForm.value.email);
       formData.append('senha', this.funcForm.value.senha);
       formData.append('CPF', this.funcForm.value.cpf);
-      formData.append('data_nascimento', this.funcForm.value.data_nascimento);
+      let data_formatada = this.formatar.formatarData(this.funcForm.value.data_nascimento);
+      formData.append('data_nascimento', data_formatada);
+      
       this.funcservice.create(formData).subscribe({
         next: (dados) => {
           this.alertas.success(dados.msg);

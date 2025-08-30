@@ -2,6 +2,1292 @@
 <app-modal-spinner></app-modal-spinner>
 }
 
+<!-- // Event listener para o botão "Nova Ficha"
+        document.querySelector('.add-btn').addEventListener('click', openModal);
+
+        // Filtros no modal
+        document.querySelectorAll('.modal-filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove ativo de todos
+                document.querySelectorAll('.modal-filter-btn').forEach(b => b.classList.remove('active'));
+                // Adiciona ativo ao clicado
+                btn.classList.add('active');
+                
+                currentFilter = btn.dataset.filter;
+                applyFiltersAndSort();
+            });
+        });
+
+        // Ordenação no modal
+        document.getElementById('sortSelect').addEventListener('change', (e) => {
+            currentSort = e.target.value;
+            applyFiltersAndSort();
+        });
+
+        // Seleção de cliente no modal
+        document.querySelectorAll('.client-option').forEach(option => {
+            option.addEventListener('click', () => {
+                // Não selecionar se estiver oculto
+                if (option.classList.contains('hidden')) return;
+                
+                // Remove seleção anterior
+                document.querySelectorAll('.client-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                
+                // Adiciona seleção atual
+                option.classList.add('selected');
+                
+                // Extrai dados do cliente
+                const clientData = option.querySelector('.client-details');
+                selectedClient = {
+                    id: option.dataset.client,
+                    name: clientData.querySelector('h3').textContent,
+                    email: clientData.querySelector('p').textContent,
+                    hasWorkout: option.dataset.hasWorkout === 'true'
+                };
+                
+                updateCreateButton();
+            });
+        });
+
+        // Busca no modal (com filtros e ordenação)
+        document.getElementById('modalSearch').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const clientOptions = document.querySelectorAll('.client-option');
+            
+            clientOptions.forEach(option => {
+                const name = option.querySelector('h3').textContent.toLowerCase();
+                const email = option.querySelector('p').textContent.toLowerCase();
+                const matchesSearch = name.includes(searchTerm) || email.includes(searchTerm);
+                
+                // Aplicar busca junto com filtros existentes
+                const hasWorkout = option.dataset.hasWorkout === 'true';
+                let matchesFilter = false;
+                
+                switch(currentFilter) {
+                    case 'all':
+                        matchesFilter = true;
+                        break;
+                    case 'with-workout':
+                        matchesFilter = hasWorkout;
+                        break;
+                    case 'without-workout':
+                        matchesFilter = !hasWorkout;
+                        break;
+                }
+                
+                const shouldShow = matchesSearch && matchesFilter;
+                option.classList.toggle('hidden', !shouldShow);
+            });
+        });
+
+        // Fechar modal ao clicar fora
+        document.getElementById('clientModal').addEventListener('click', (e) => {
+            if (e.target.id === 'clientModal') {
+                closeModal();
+            }
+        });
+
+        // Fechar modal com ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Funcionalidade de busca
+        const searchInput = document.querySelector('.search-input');
+        const recordRows = document.querySelectorAll('.record-row');
+
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            recordRows.forEach(row => {
+                const clientName = row.querySelector('.client-details h3').textContent.toLowerCase();
+                const clientEmail = row.children[1].textContent.toLowerCase();
+                const status = row.querySelector('.status-badge').textContent.toLowerCase();
+                
+                if (clientName.includes(searchTerm) || clientEmail.includes(searchTerm) || status.includes(searchTerm)) {
+                    row.style.display = 'grid';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+
+        // Funcionalidade dos filtros
+        const filterTags = document.querySelectorAll('.filter-tag');
+        
+        filterTags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                // Remove active class from all tags
+                filterTags.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tag
+                tag.classList.add('active');
+                
+                const filterType = tag.textContent;
+                
+                recordRows.forEach(row => {
+                    const statusBadge = row.querySelector('.status-badge');
+                    const isActive = statusBadge.classList.contains('status-active');
+                    
+                    row.style.display = 'grid';
+                    
+                    if (filterType === 'Fichas Ativas' && !isActive) {
+                        row.style.display = 'none';
+                    } else if (filterType === 'Fichas Pendentes' && isActive) {
+                        row.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Animação suave para hover nos botões
+        document.querySelectorAll('.action-btn, .filter-btn, .add-btn').forEach(btn => {
+            btn.addEventListener('mouseenter', () => {
+                btn.style.transform = 'translateY(-2px)';
+            });
+            
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'translateY(0)';
+            });
+        });<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fichas de Treino - Dashboard</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #1a202c;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: #64748b;
+            font-size: 1.1rem;
+        }
+
+        .controls {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .search-filter-row {
+            display: grid;
+            grid-template-columns: 1fr auto auto auto;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .search-container {
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #f8fafc;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #64748b;
+        }
+
+        .filter-btn, .add-btn {
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .filter-btn {
+            background: #f1f5f9;
+            color: #475569;
+        }
+
+        .filter-btn:hover {
+            background: #e2e8f0;
+            transform: translateY(-1px);
+        }
+
+        .filter-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .add-btn {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+        }
+
+        .add-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+        }
+
+        .filter-tags {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-tag {
+            padding: 0.5rem 1rem;
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-tag:hover {
+            background: #e2e8f0;
+        }
+
+        .filter-tag.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a202c;
+        }
+
+        .stat-label {
+            color: #64748b;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+
+        .records-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .table-header {
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #e2e8f0;
+            display: grid;
+            grid-template-columns: 2fr 2fr 1fr 1fr;
+            gap: 1rem;
+            font-weight: 600;
+            color: #374151;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .record-row {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #f1f5f9;
+            display: grid;
+            grid-template-columns: 2fr 2fr 1fr 1fr;
+            gap: 1rem;
+            align-items: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .record-row:hover {
+            background: #f8fafc;
+            transform: translateX(4px);
+        }
+
+        .record-row:last-child {
+            border-bottom: none;
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .client-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .client-details h3 {
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 0.25rem;
+        }
+
+        .client-details p {
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+
+        .status-badge {
+            padding: 0.5rem 1rem;
+            border-radius: 12px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .status-active {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .status-inactive {
+            background: #fef2f2;
+            color: #991b1b;
+        }
+
+        .actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .action-btn {
+            padding: 0.5rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .view-btn {
+            background: #dbeafe;
+            color: #1d4ed8;
+        }
+
+        .edit-btn {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        .create-btn {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .pagination {
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .pagination-btn {
+            padding: 0.75rem 1rem;
+            border: 1px solid #e2e8f0;
+            background: white;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .pagination-btn:hover {
+            background: #f8fafc;
+        }
+
+        .pagination-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 24px;
+            padding: 2rem;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a202c;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #64748b;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: #f1f5f9;
+            color: #1a202c;
+        }
+
+        .client-list {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .client-option {
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .client-option:hover {
+            border-color: #667eea;
+            background: #f8fafc;
+            transform: translateY(-1px);
+        }
+
+        .client-option.selected {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .client-option-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .client-status-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ef4444;
+        }
+
+        .client-status-indicator.active {
+            background: #10b981;
+        }
+
+        .modal-actions {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+        }
+
+        .btn-secondary {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid #e2e8f0;
+            background: white;
+            color: #64748b;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: #cbd5e1;
+            background: #f8fafc;
+        }
+
+        .btn-primary {
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .modal-filter-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid #e2e8f0;
+            background: white;
+            color: #64748b;
+            border-radius: 10px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .modal-filter-btn:hover {
+            border-color: #cbd5e1;
+            background: #f8fafc;
+        }
+
+        .modal-filter-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .client-option.hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .search-filter-row {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .table-header, .record-row {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+            
+            .client-info {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="header">
+            <h1>Fichas de Treino</h1>
+            <p>Gerencie todas as fichas de treino dos seus clientes de forma profissional</p>
+        </div>
+
+
+        <div class="stats-row">
+            <div class="stat-card">
+                <div class="stat-number">8</div>
+                <div class="stat-label">Total de Clientes</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">2</div>
+                <div class="stat-label">Fichas Ativas</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">6</div>
+                <div class="stat-label">Fichas Pendentes</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">75%</div>
+                <div class="stat-label">Taxa de Conclusão</div>
+            </div>
+        </div>
+
+
+        <div class="controls">
+            <div class="search-filter-row">
+                <div class="search-container">
+                    <i data-lucide="search" class="search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Buscar por nome, email ou status...">
+                </div>
+                <button class="filter-btn">
+                    <i data-lucide="filter"></i>
+                    Filtros
+                </button>
+                <button class="filter-btn">
+                    <i data-lucide="download"></i>
+                    Exportar
+                </button>
+                <button class="add-btn" onclick="openModal()">
+                    <i data-lucide="plus"></i>
+                    Nova Ficha
+                </button>
+            </div>
+            
+            <div class="filter-tags">
+                <div class="filter-tag active">Todos</div>
+                <div class="filter-tag">Fichas Ativas</div>
+                <div class="filter-tag">Fichas Pendentes</div>
+                <div class="filter-tag">Cadastrados Hoje</div>
+                <div class="filter-tag">Vencimento Próximo</div>
+            </div>
+        </div>
+
+
+        <div class="records-container">
+            <div class="table-header">
+                <div>Cliente</div>
+                <div>Email</div>
+                <div>Status</div>
+                <div>Ações</div>
+            </div>
+
+            <div class="record-row">
+                <div class="client-info">
+                    <div class="client-avatar">BH</div>
+                    <div class="client-details">
+                        <h3>Breno Henrique</h3>
+                        <p>Cliente desde 2024</p>
+                    </div>
+                </div>
+                <div>admin@email.com</div>
+                <div>
+                    <div class="status-badge status-active">Ficha Ativa</div>
+                </div>
+                <div class="actions">
+                    <button class="action-btn view-btn" title="Ver Ficha">
+                        <i data-lucide="eye"></i>
+                    </button>
+                    <button class="action-btn edit-btn" title="Editar">
+                        <i data-lucide="edit-2"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="record-row">
+                <div class="client-info">
+                    <div class="client-avatar">JS</div>
+                    <div class="client-details">
+                        <h3>João Silva</h3>
+                        <p>Cliente desde 2024</p>
+                    </div>
+                </div>
+                <div>joao.silva@email.com</div>
+                <div>
+                    <div class="status-badge status-active">Ficha Ativa</div>
+                </div>
+                <div class="actions">
+                    <button class="action-btn view-btn" title="Ver Ficha">
+                        <i data-lucide="eye"></i>
+                    </button>
+                    <button class="action-btn edit-btn" title="Editar">
+                        <i data-lucide="edit-2"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="record-row">
+                <div class="client-info">
+                    <div class="client-avatar">WA</div>
+                    <div class="client-details">
+                        <h3>Willian Akamine</h3>
+                        <p>Cliente desde 2024</p>
+                    </div>
+                </div>
+                <div>willian@gmail.com</div>
+                <div>
+                    <div class="status-badge status-inactive">Ficha Pendente</div>
+                </div>
+                <div class="actions">
+                    <button class="action-btn create-btn" title="Criar Ficha">
+                        <i data-lucide="plus"></i>
+                    </button>
+                    <button class="action-btn edit-btn" title="Editar">
+                        <i data-lucide="edit-2"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="record-row">
+                <div class="client-info">
+                    <div class="client-avatar">CS</div>
+                    <div class="client-details">
+                        <h3>Carlos Souza</h3>
+                        <p>Cliente desde 2024</p>
+                    </div>
+                </div>
+                <div>carlos.souza@email.com</div>
+                <div>
+                    <div class="status-badge status-inactive">Ficha Pendente</div>
+                </div>
+                <div class="actions">
+                    <button class="action-btn create-btn" title="Criar Ficha">
+                        <i data-lucide="plus"></i>
+                    </button>
+                    <button class="action-btn edit-btn" title="Editar">
+                        <i data-lucide="edit-2"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="record-row">
+                <div class="client-info">
+                    <div class="client-avatar">PL</div>
+                    <div class="client-details">
+                        <h3>Pedro Lima</h3>
+                        <p>Cliente desde 2024</p>
+                    </div>
+                </div>
+                <div>pedro.lima@email.com</div>
+                <div>
+                    <div class="status-badge status-inactive">Ficha Pendente</div>
+                </div>
+                <div class="actions">
+                    <button class="action-btn create-btn" title="Criar Ficha">
+                        <i data-lucide="plus"></i>
+                    </button>
+                    <button class="action-btn edit-btn" title="Editar">
+                        <i data-lucide="edit-2"></i>
+                    </button>
+                </div>
+            </div>
+
+     
+            <div class="pagination">
+                <button class="pagination-btn">
+                    <i data-lucide="chevron-left"></i>
+                </button>
+                <button class="pagination-btn active">1</button>
+                <button class="pagination-btn">2</button>
+                <button class="pagination-btn">3</button>
+                <button class="pagination-btn">
+                    <i data-lucide="chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="clientModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Selecionar Cliente para Nova Ficha</h2>
+                <button class="close-btn" onclick="closeModal()">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+
+            <div class="search-container" style="margin-bottom: 1rem;">
+                <i data-lucide="search" class="search-icon"></i>
+                <input type="text" id="modalSearch" class="search-input" placeholder="Buscar cliente...">
+            </div>
+
+            <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; align-items: center;">
+                <div style="display: flex; gap: 0.5rem;">
+                    <button class="modal-filter-btn active" data-filter="all">
+                        <i data-lucide="users"></i>
+                        Todos (7)
+                    </button>
+                    <button class="modal-filter-btn" data-filter="without-workout">
+                        <i data-lucide="user-plus"></i>
+                        Sem Ficha (5)
+                    </button>
+                    <button class="modal-filter-btn" data-filter="with-workout">
+                        <i data-lucide="user-check"></i>
+                        Com Ficha (2)
+                    </button>
+                </div>
+                
+                <div style="display: flex; gap: 0.5rem; align-items: center; margin-left: auto;">
+                    <span style="color: #64748b; font-size: 0.875rem;">Ordenar:</span>
+                    <select id="sortSelect" style="padding: 0.5rem; border: 1px solid #e2e8f0; border-radius: 8px; background: white; color: #1a202c; font-size: 0.875rem;">
+                        <option value="name-asc">Nome A-Z</option>
+                        <option value="name-desc">Nome Z-A</option>
+                        <option value="status-desc">Sem ficha primeiro</option>
+                        <option value="status-asc">Com ficha primeiro</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="client-list" id="clientList">
+                <div class="client-option" data-client="breno" data-has-workout="true">
+                    <div class="client-option-info">
+                        <div class="client-avatar">BH</div>
+                        <div class="client-details">
+                            <h3>Breno Henrique</h3>
+                            <p>admin@email.com</p>
+                        </div>
+                    </div>
+                    <div class="client-status-indicator active" title="Já possui ficha ativa"></div>
+                </div>
+
+                <div class="client-option" data-client="joao" data-has-workout="true">
+                    <div class="client-option-info">
+                        <div class="client-avatar">JS</div>
+                        <div class="client-details">
+                            <h3>João Silva</h3>
+                            <p>joao.silva@email.com</p>
+                        </div>
+                    </div>
+                    <div class="client-status-indicator active" title="Já possui ficha ativa"></div>
+                </div>
+
+                <div class="client-option" data-client="willian" data-has-workout="false">
+                    <div class="client-option-info">
+                        <div class="client-avatar">WA</div>
+                        <div class="client-details">
+                            <h3>Willian Akamine</h3>
+                            <p>willian@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="client-status-indicator" title="Sem ficha ativa"></div>
+                </div>
+
+                <div class="client-option" data-client="carlos" data-has-workout="false">
+                    <div class="client-option-info">
+                        <div class="client-avatar">CS</div>
+                        <div class="client-details">
+                            <h3>Carlos Souza</h3>
+                            <p>carlos.souza@email.com</p>
+                        </div>
+                    </div>
+                    <div class="client-status-indicator" title="Sem ficha ativa"></div>
+                </div>
+
+                <div class="client-option" data-client="pedro" data-has-workout="false">
+                    <div class="client-option-info">
+                        <div class="client-avatar">PL</div>
+                        <div class="client-details">
+                            <h3>Pedro Lima</h3>
+                            <p>pedro.lima@email.com</p>
+                        </div>
+                    </div>
+                    <div class="client-status-indicator" title="Sem ficha ativa"></div>
+                </div>
+
+                <div class="client-option" data-client="breno2" data-has-workout="false">
+                    <div class="client-option-info">
+                        <div class="client-avatar">BT</div>
+                        <div class="client-details">
+                            <h3>breno teste</h3>
+                            <p>contato@sitenivel.com.br</p>
+                        </div>
+                    </div>
+                    <div class="client-status-indicator" title="Sem ficha ativa"></div>
+                </div>
+
+                <div class="client-option" data-client="jubileu" data-has-workout="false">
+                    <div class="client-option-info">
+                        <div class="client-avatar">JU</div>
+                        <div class="client-details">
+                            <h3>jubileu</h3>
+                            <p>jubileu@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="client-status-indicator" title="Sem ficha ativa"></div>
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn-secondary" onclick="closeModal()">Cancelar</button>
+                <button class="btn-primary" id="createWorkoutBtn" disabled onclick="createWorkout()">
+                    <i data-lucide="plus"></i>
+                    Criar Ficha de Treino
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Inicializar ícones Lucide
+        lucide.createIcons();
+
+        // Variáveis globais
+        let selectedClient = null;
+        let currentFilter = 'all';
+        let currentSort = 'name-asc';
+
+        // Funções do modal
+        function openModal() {
+            const modal = document.getElementById('clientModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            updateClientCounts();
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('clientModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            selectedClient = null;
+            updateCreateButton();
+            // Remove seleção de todos os clientes
+            document.querySelectorAll('.client-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+        }
+
+        function updateCreateButton() {
+            const createBtn = document.getElementById('createWorkoutBtn');
+            if (createBtn) {
+                createBtn.disabled = !selectedClient;
+            }
+        }
+
+        function updateClientCounts() {
+            const allClients = document.querySelectorAll('.client-option');
+            const withWorkout = document.querySelectorAll('.client-option[data-has-workout="true"]');
+            const withoutWorkout = document.querySelectorAll('.client-option[data-has-workout="false"]');
+            
+            const allBtn = document.querySelector('[data-filter="all"]');
+            const withBtn = document.querySelector('[data-filter="with-workout"]');
+            const withoutBtn = document.querySelector('[data-filter="without-workout"]');
+            
+            if (allBtn) {
+                allBtn.innerHTML = `<i data-lucide="users"></i> Todos (${allClients.length})`;
+            }
+            if (withBtn) {
+                withBtn.innerHTML = `<i data-lucide="user-check"></i> Com Ficha (${withWorkout.length})`;
+            }
+            if (withoutBtn) {
+                withoutBtn.innerHTML = `<i data-lucide="user-plus"></i> Sem Ficha (${withoutWorkout.length})`;
+            }
+            
+            // Reinicializar ícones
+            lucide.createIcons();
+        }
+
+        function applyFiltersAndSort() {
+            const clientOptions = Array.from(document.querySelectorAll('.client-option'));
+            
+            // Aplicar filtro
+            clientOptions.forEach(option => {
+                const hasWorkout = option.dataset.hasWorkout === 'true';
+                let show = false;
+                
+                switch(currentFilter) {
+                    case 'all':
+                        show = true;
+                        break;
+                    case 'with-workout':
+                        show = hasWorkout;
+                        break;
+                    case 'without-workout':
+                        show = !hasWorkout;
+                        break;
+                }
+                
+                if (show) {
+                    option.classList.remove('hidden');
+                } else {
+                    option.classList.add('hidden');
+                }
+            });
+        }
+
+        function createWorkout() {
+            if (selectedClient) {
+                alert(`Criando nova ficha de treino para: ${selectedClient.name}\nEmail: ${selectedClient.email}`);
+                closeModal();
+            }
+        }
+
+        // Aguardar que a página carregue completamente
+        window.addEventListener('load', function() {
+            console.log('Página carregada, inicializando eventos...');
+            
+            // Botão Nova Ficha
+            const addBtn = document.querySelector('.add-btn');
+            if (addBtn) {
+                addBtn.onclick = openModal;
+                console.log('Botão Nova Ficha configurado');
+            }
+
+            // Botão fechar modal
+            const closeBtn = document.querySelector('.close-btn');
+            if (closeBtn) {
+                closeBtn.onclick = closeModal;
+            }
+
+            // Botão cancelar
+            const cancelBtn = document.querySelector('.btn-secondary');
+            if (cancelBtn) {
+                cancelBtn.onclick = closeModal;
+            }
+
+            // Botão criar ficha
+            const createBtn = document.getElementById('createWorkoutBtn');
+            if (createBtn) {
+                createBtn.onclick = createWorkout;
+            }
+
+            // Filtros do modal
+            const filterBtns = document.querySelectorAll('.modal-filter-btn');
+            filterBtns.forEach(btn => {
+                btn.onclick = function() {
+                    // Remove ativo de todos
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    // Adiciona ativo ao clicado
+                    this.classList.add('active');
+                    
+                    currentFilter = this.dataset.filter;
+                    applyFiltersAndSort();
+                    console.log('Filtro aplicado:', currentFilter);
+                };
+            });
+
+            // Seleção de clientes
+            const clientOptions = document.querySelectorAll('.client-option');
+            clientOptions.forEach(option => {
+                option.onclick = function() {
+                    if (this.classList.contains('hidden')) return;
+                    
+                    // Remove seleção anterior
+                    clientOptions.forEach(opt => opt.classList.remove('selected'));
+                    
+                    // Adiciona seleção atual
+                    this.classList.add('selected');
+                    
+                    // Extrai dados do cliente
+                    const clientData = this.querySelector('.client-details');
+                    selectedClient = {
+                        id: this.dataset.client,
+                        name: clientData.querySelector('h3').textContent,
+                        email: clientData.querySelector('p').textContent,
+                        hasWorkout: this.dataset.hasWorkout === 'true'
+                    };
+                    
+                    updateCreateButton();
+                    console.log('Cliente selecionado:', selectedClient.name);
+                };
+            });
+
+            // Busca do modal
+            const modalSearch = document.getElementById('modalSearch');
+            if (modalSearch) {
+                modalSearch.oninput = function() {
+                    const searchTerm = this.value.toLowerCase();
+                    
+                    clientOptions.forEach(option => {
+                        const name = option.querySelector('h3').textContent.toLowerCase();
+                        const email = option.querySelector('p').textContent.toLowerCase();
+                        const matchesSearch = name.includes(searchTerm) || email.includes(searchTerm);
+                        
+                        if (matchesSearch) {
+                            option.style.display = 'flex';
+                        } else {
+                            option.style.display = 'none';
+                        }
+                    });
+                };
+            }
+
+            // Fechar modal clicando fora
+            const modal = document.getElementById('clientModal');
+            if (modal) {
+                modal.onclick = function(e) {
+                    if (e.target === this) {
+                        closeModal();
+                    }
+                };
+            }
+
+            // Fechar com ESC
+            document.onkeydown = function(e) {
+                if (e.key === 'Escape') {
+                    closeModal();
+                }
+            };
+
+            // Filtros da página principal
+            const filterTags = document.querySelectorAll('.filter-tag');
+            filterTags.forEach(tag => {
+                tag.onclick = function() {
+                    console.log('Filtro clicado:', this.textContent);
+                    
+                    filterTags.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const filterType = this.textContent.trim();
+                    const recordRows = document.querySelectorAll('.record-row');
+                    
+                    recordRows.forEach(row => {
+                        const statusBadge = row.querySelector('.status-badge');
+                        const isActive = statusBadge.classList.contains('status-active');
+                        
+                        // Mostrar todas as linhas primeiro
+                        row.style.display = 'grid';
+                        
+                        // Aplicar filtro específico
+                        if (filterType === 'Fichas Ativas' && !isActive) {
+                            row.style.display = 'none';
+                        } else if (filterType === 'Fichas Pendentes' && isActive) {
+                            row.style.display = 'none';
+                        } else if (filterType === 'Cadastrados Hoje') {
+                            // Simular - na vida real você teria uma data
+                            if (!row.querySelector('.client-details h3').textContent.includes('Willian')) {
+                                row.style.display = 'none';
+                            }
+                        } else if (filterType === 'Vencimento Próximo') {
+                            // Simular - na vida real você teria data de vencimento
+                            if (!isActive) {
+                                row.style.display = 'none';
+                            }
+                        }
+                    });
+                    
+                    console.log('Filtro aplicado:', filterType);
+                };
+            });
+
+            // Busca principal
+            const mainSearch = document.querySelector('.search-container .search-input');
+            if (mainSearch) {
+                mainSearch.oninput = function() {
+                    const searchTerm = this.value.toLowerCase();
+                    const recordRows = document.querySelectorAll('.record-row');
+                    
+                    recordRows.forEach(row => {
+                        const clientName = row.querySelector('.client-details h3').textContent.toLowerCase();
+                        const clientEmail = row.children[1].textContent.toLowerCase();
+                        const status = row.querySelector('.status-badge').textContent.toLowerCase();
+                        
+                        if (clientName.includes(searchTerm) || clientEmail.includes(searchTerm) || status.includes(searchTerm)) {
+                            row.style.display = 'grid';
+                        } else {
+                            row.style.display = 'none';
+                        }
+                    });
+                };
+            }
+
+            console.log('Todos os eventos configurados!');
+        });
+    </script>
+</body> 
+</html>-->
+
 
 <div class="p-4">
     <h1 class="hi-treino mb-3">Fichas de Treino</h1>
@@ -12,11 +1298,49 @@
         nova.
     </div>
 
-    <mat-form-field appearance="outline" class="mb-3 w-50">
+    <div class=" my-3">
+       
+        <div class="d-flex flex-wrap gap-2 align-items-center">
+            
+            <div class="input-group flex-grow-1" style="max-width: 400px;">
+                <span class="input-group-text">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </span>
+                <input type="text" class="form-control" placeholder="Buscar por nome, email ou status...">
+            </div>
+
+           
+            <button class="btn btn-outline-secondary d-flex align-items-center gap-2">
+                <i class="fa-solid fa-filter"></i>
+                Ordenar
+            </button>
+            <button class="btn btn-outline-secondary d-flex align-items-center gap-2">
+               <i class="fa-solid fa-file-export"></i>
+                Exportar
+            </button>
+            <button class="btn btn-primary d-flex align-items-center gap-2" onclick="openModal()">
+                <i class="fa-solid fa-plus"></i>
+                Nova Ficha
+            </button>
+        </div>
+
+        <div class="mt-3">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-outline-primary active">Todos</button>
+                <button type="button" class="btn btn-outline-primary">Fichas Ativas</button>
+                <button type="button" class="btn btn-outline-primary">Fichas Pendentes</button>
+                <button type="button" class="btn btn-outline-primary">Cadastrados Hoje</button>
+                <button type="button" class="btn btn-outline-primary">Vencimento Próximo</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- <mat-form-field appearance="outline" class="mb-3 w-50">
         <mat-label class="text-black">Buscar Cliente</mat-label>
         <input class="text-black" matInput type="text" [formControl]="clienteControl"
             placeholder="Digite o nome do cliente" />
-    </mat-form-field>
+    </mat-form-field> -->
 
 
     <table class="table table-bordered table-striped mt-2">

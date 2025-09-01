@@ -24,50 +24,55 @@ class Planos extends BaseController
             if ($this->model->affectedRows() > 0) {
                 return $this->response->setJSON(['msg' => 'Plano cadastrado'])->setStatusCode(200);
             }
-        }else{
+        } else {
             $error = $this->model->error();
             return $this->response->setJSON(["msg" => "Erro na inserção:" . $error['message']])->setStatusCode(200);
         }
     }
 
-    public function edit(){
-        $data = $this->request->getJson();
-        
-        $this->model->where('id', $data['id'])
-        ->set($data)
-        ->update();
+    public function edit()
+    {
+        $dados = $this->request->getJSON(true); 
 
-        $msg = array("msg" => "Plano editado com sucesso !!");
-        return $this->response->setJson($msg)->setStatusCode(200);
-        
+        $id = $dados['id'];
+        unset($dados['id']); 
+
+        $dados['data_modificacao'] = date('Y-m-d H:i:s');
+
+        if ($this->model->update($id, $dados)) {
+            return $this->response->setJSON(['status' => 'sucesso']);
+        }
+
+        return $this->response->setJSON(['status' => 'erro']);
     }
-    public function read(){
+    public function read()
+    {
         // $data = $this->request->getJson();
-        
+
         $dados = $this->model->select()
-        ->get();
+            ->get();
 
         return $this->response->setJson($dados->getResult())->setStatusCode(200);
-        
     }
-    public function readId($id){
-    
+    public function readId($id)
+    {
+
         $dados = $this->model->find($id);
-        if($dados) {
+        if ($dados) {
             return $this->response->setJson($dados)->setStatusCode(200);
         } else {
             return $this->response->setJson(["msg" => ['Registro não encontrado com o ID: ' . $id]])->setStatusCode(200);
-        }   
+        }
     }
 
-      public function delete(){
+    public function delete()
+    {
         $data = $this->request->getJson();
-            
+
         $this->model->where('id', $data->id)
-        ->delete();
+            ->delete();
 
         $msg = array("msg" => "Plano excluido com sucesso !!");
         return $this->response->setJson($msg)->setStatusCode(200);
-        
     }
 }

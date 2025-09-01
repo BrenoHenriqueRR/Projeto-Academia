@@ -1,0 +1,40 @@
+CRITICAL - 2025-09-01 20:50:12 --> Error: Cannot use object of type stdClass as array
+in APPPATH\Controllers\Planos.php on line 36.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Planos->edit()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Planos))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-09-01 20:50:31 --> Error: Cannot use object of type stdClass as array
+in APPPATH\Controllers\Planos.php on line 36.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Planos->edit()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Planos))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-09-01 20:50:53 --> TypeError: Illegal offset type
+in SYSTEMPATH\Model.php on line 685.
+ 1 APPPATH\Controllers\Planos.php(37): CodeIgniter\Model->set(Object(stdClass))
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Planos->edit()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Planos))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-09-01 20:51:24 --> TypeError: Illegal offset type
+in SYSTEMPATH\Model.php on line 685.
+ 1 APPPATH\Controllers\Planos.php(37): CodeIgniter\Model->set(Object(stdClass))
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Planos->edit()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Planos))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-09-01 20:53:14 --> TypeError: Illegal offset type
+in SYSTEMPATH\Model.php on line 685.
+ 1 APPPATH\Controllers\Planos.php(37): CodeIgniter\Model->set(Object(stdClass))
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Planos->edit()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Planos))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-09-01 20:53:24 --> TypeError: Illegal offset type
+in SYSTEMPATH\Model.php on line 685.
+ 1 APPPATH\Controllers\Planos.php(37): CodeIgniter\Model->set(Object(stdClass))
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Planos->edit()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Planos))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

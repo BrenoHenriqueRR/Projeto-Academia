@@ -1,83 +1,79 @@
-<div class="container">
-    <div *ngIf="tipo == 'plano'">
-        <h1 class="my-3">Edição de Planos da Academia</h1>
-        <form [formGroup]="planosForm">
-            @for (item of planos; track $index) {
-            <div class="row form-group">
-                <div class="col">
-                    <label class="form-label" for="nome">Nome do Plano</label>
-                    <input class="form-control" type="text" id="nome" formControlName="nome">
-                </div>
-                <div class="col">
-                    <label class="form-label" for="preco">Preço</label>
-                    <input class="form-control" type="number" id="preco" formControlName="preco" min="0">
-                </div>
-                <!-- <div class="col">
-                    <label class="form-label" for="descontoPlano">Desconto (%)</label>
-                    <input class="form-control" type="number" id="descontoPlano" formControlName="descontoPlano" min="0" (input)="calcularValorFinal()">
-                </div> -->
+<div *ngIf="loading"><app-modal-spinner></app-modal-spinner></div>
+<div class="container" *ngIf="planos && planos.length">
+
+    @for (item of planos; track item) {
+    <h2>Editar Plano: {{ item.nome }}</h2>
+
+    <form [formGroup]="planosForm" (ngSubmit)="salvar()">
+        <div class="row mb-3">
+            <div class="col-md-6 form-group">
+                <label for="nome">Nome do Plano</label>
+                <input type="text" id="nome" class="form-control" formControlName="nome" />
             </div>
-            <div class="form-group">
-                <label class="form-label" for="descricao">Descrição</label>
-                <textarea class="form-control" id="descricao" formControlName="descricao"></textarea>
+            <div class="col-md-6 form-group">
+                <label for="preco">Preço</label>
+                <input type="number" id="preco" class="form-control" formControlName="preco" min="0" />
             </div>
-            <div class="form-group">
-                <label class="form-label" for="duracao">Duração</label>
-                <select class="form-control" id="duracao" formControlName="duracao">
+        </div>
+
+        <div class="row form-group mt-3">
+            <div class="col-md-12">
+                <label for="descricao">Descrição</label>
+                <textarea id="descricao" class="form-control" formControlName="descricao" style="height: 120px"></textarea>
+            </div>
+        </div>
+
+
+        <div class="row form-group mt-3">
+            <div class="col-md-4">
+                <label for="duracao">Duração</label>
+                <select id="duracao" class="form-select" formControlName="duracao">
                     <option disabled selected>Escolhe uma opção</option>
-                    <option value="mensal">1 Mês</option>
-                    <option value="trimestral">3 Meses</option>
-                    <option value="semestral">6 Meses</option>
-                    <option value="anual">12 Meses</option>
+                    <option value="mensal">Mensal</option>
+                    <option value="trimestral">Trimestral</option>
+                    <option value="semestral">Semestral</option>
+                    <option value="anual">Anual</option>
                 </select>
             </div>
-            <!-- <div class="form-group">
-                <label class="mt-2 form-label" for="beneficio" title="Clique no botão para adicionar ou editar o benefício">
-                  Adicionar ou Editar Benefício:
-                </label>
-                <textarea
-                  class="form-control"
-                  id="beneficio"
-                  formControlName="beneficios"
-                  rows="2"
-                  [(ngModel)]="beneficioAtual"
-                ></textarea>
-                <button type="button" class="btn btn-primary my-3" (click)="adicionarOuEditarBeneficio()">
-                  {{ indiceEdicao !== null ? 'Salvar Alteração' : 'Adicionar Benefício' }}
-                </button>
-                <small class="ms-2">
-                  {{ indiceEdicao !== null ? 'Salve sua alteração.' : 'Clique no botão para adicionar o benefício.' }}
-                </small>
-              </div>
-              
-              <div *ngIf="beneficios.length > 0 && !editar" class="mt-4">
-                <h4>Benefícios Adicionados</h4>
-                <ul>
-                  <li class="mt-3" *ngFor="let beneficio of beneficios; let i = index">
-                    {{ beneficio }}
-                    <button type="button" class="btn btn-warning btn-sm ms-2" (click)="editarBeneficio(i)">
-                      Editar
-                    </button>
-                    <button type="button" class="btn btn-danger btn-sm ms-2" (click)="removerBeneficio(i)">
-                      Remover
-                    </button>
-                    <hr>
-                  </li>
-                </ul>
-              </div> -->
-              
-            <div class="form-group">
-                <label class="form-label" for="disponibilidade">Disponibilidade</label>
-                <select class="form-control" id="disponibilidade" formControlName="disponibilidade">
-                    <option class="text-capitalize" *ngIf="item.disponibilidade" selected value="{{item.disponibilidade}}">{{item.disponibilidade}}</option>
-                    @if (item.disponibilidade == 'ativo') {
-                      <option value="inativo">Inativo</option>
-                    }@else {
-                      <option value="inativo">Ativo</option>            
+
+            <div class="col-md-4">
+                <label for="dias_por_semana">Frequência</label>
+                <select id="dias_por_semana" class="form-select" formControlName="dias_por_semana">
+                    <option value="" disabled selected>Escolhe uma opção</option>
+                    @for (freq of option_frequencia; track $index) {
+                        @if (freq == 7) {
+                        <option [value]="freq">Todos os dias</option>
+                        }@else {
+                        <option [value]="freq">{{freq}}x semana</option>
+                        }
                     }
                 </select>
             </div>
-        }
-        </form>
-    </div>
+
+            <div class="col-md-4">
+                <label for="disponibilidade">Disponibilidade</label>
+                <select id="disponibilidade" class="form-select" formControlName="disponibilidade">
+                    <option class="text-capitalize" *ngIf="item.disponibilidade" selected value="{{item.disponibilidade}}">
+                        {{item.disponibilidade}}
+                    </option>
+                    @if (item.disponibilidade == 'ativo') {
+                    <option value="inativo">Inativo</option>
+                    }@else {
+                    <option value="ativo">Ativo</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+
+        <div class="row mt-4">
+            <div class="col text-start">
+                <button type="submit" class="btn btn-primary" [disabled]="loading">
+                    <span *ngIf="!loading">Salvar Alterações</span>
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
+                </button>
+            </div>
+        </div>
+    </form>
+    }
 </div>

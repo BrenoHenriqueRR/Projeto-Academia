@@ -1,79 +1,135 @@
 <div *ngIf="loading"><app-modal-spinner></app-modal-spinner></div>
-<div class="container" *ngIf="planos && planos.length">
+@if (tipo == 'plano') {
 
-    @for (item of planos; track item) {
-    <h2>Editar Plano: {{ item.nome }}</h2>
-
-    <form [formGroup]="planosForm" (ngSubmit)="salvar()">
-        <div class="row mb-3">
-            <div class="col-md-6 form-group">
-                <label for="nome">Nome do Plano</label>
-                <input type="text" id="nome" class="form-control" formControlName="nome" />
+    <div class="container" *ngIf="planos && planos.length">
+    
+        @for (item of planos; track item) {
+        <h2>Editar Plano: {{ item.nome }}</h2>
+    
+        <form [formGroup]="planosForm" (ngSubmit)="salvar()">
+            <div class="row mb-3">
+                <div class="col-md-6 form-group">
+                    <label for="nome">Nome do Plano</label>
+                    <input type="text" id="nome" class="form-control" formControlName="nome" />
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="preco">Preço</label>
+                    <input type="number" id="preco" class="form-control" formControlName="preco" min="0" />
+                </div>
             </div>
-            <div class="col-md-6 form-group">
-                <label for="preco">Preço</label>
-                <input type="number" id="preco" class="form-control" formControlName="preco" min="0" />
+    
+            <div class="row form-group mt-3">
+                <div class="col-md-12">
+                    <label for="descricao">Descrição</label>
+                    <textarea id="descricao" class="form-control" formControlName="descricao" style="height: 120px"></textarea>
+                </div>
             </div>
-        </div>
-
-        <div class="row form-group mt-3">
-            <div class="col-md-12">
-                <label for="descricao">Descrição</label>
-                <textarea id="descricao" class="form-control" formControlName="descricao" style="height: 120px"></textarea>
-            </div>
-        </div>
-
-
-        <div class="row form-group mt-3">
-            <div class="col-md-4">
-                <label for="duracao">Duração</label>
-                <select id="duracao" class="form-select" formControlName="duracao">
-                    <option disabled selected>Escolhe uma opção</option>
-                    <option value="mensal">Mensal</option>
-                    <option value="trimestral">Trimestral</option>
-                    <option value="semestral">Semestral</option>
-                    <option value="anual">Anual</option>
-                </select>
-            </div>
-
-            <div class="col-md-4">
-                <label for="dias_por_semana">Frequência</label>
-                <select id="dias_por_semana" class="form-select" formControlName="dias_por_semana">
-                    <option value="" disabled selected>Escolhe uma opção</option>
-                    @for (freq of option_frequencia; track $index) {
-                        @if (freq == 7) {
-                        <option [value]="freq">Todos os dias</option>
-                        }@else {
-                        <option [value]="freq">{{freq}}x semana</option>
+    
+    
+            <div class="row form-group mt-3">
+                <div class="col-md-4">
+                    <label for="duracao">Duração</label>
+                    <select id="duracao" class="form-select" formControlName="duracao">
+                        <option disabled selected>Escolhe uma opção</option>
+                        <option value="mensal">Mensal</option>
+                        <option value="trimestral">Trimestral</option>
+                        <option value="semestral">Semestral</option>
+                        <option value="anual">Anual</option>
+                    </select>
+                </div>
+    
+                <div class="col-md-4">
+                    <label for="dias_por_semana">Frequência</label>
+                    <select id="dias_por_semana" class="form-select" formControlName="dias_por_semana">
+                        <option value="" disabled selected>Escolhe uma opção</option>
+                        @for (freq of option_frequencia; track $index) {
+                            @if (freq == 7) {
+                            <option [value]="freq">Todos os dias</option>
+                            }@else {
+                            <option [value]="freq">{{freq}}x semana</option>
+                            }
                         }
-                    }
-                </select>
+                    </select>
+                </div>
+    
+                <div class="col-md-4">
+                    <label for="disponibilidade">Disponibilidade</label>
+                    <select id="disponibilidade" class="form-select" formControlName="disponibilidade">
+                        <option class="text-capitalize" *ngIf="item.disponibilidade" selected value="{{item.disponibilidade}}">
+                            {{item.disponibilidade}}
+                        </option>
+                        @if (item.disponibilidade == 'ativo') {
+                        <option value="inativo">Inativo</option>
+                        }@else {
+                        <option value="ativo">Ativo</option>
+                        }
+                    </select>
+                </div>
+            </div>
+    
+    
+            <div class="row mt-4">
+                <div class="col text-start">
+                    <button type="submit" class="btn btn-primary" [disabled]="loading">
+                        <span *ngIf="!loading">Salvar Alterações</span>
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
+                    </button>
+                </div>
+            </div>
+        </form>
+        }
+    </div>
+} @else {
+     <div class="container" *ngIf="extras && extras.length">
+    
+        @for (item of extras; track item) {
+        <h2>Editar Extra: {{ item.nome }}</h2>
+    
+        <form [formGroup]="extrasForm" (ngSubmit)="salvar()">
+            <div class="row mb-3">
+                <div class="col-md-6 form-group">
+                    <label for="nome">Nome do Extra</label>
+                    <input type="text" id="nome" class="form-control" formControlName="nome" />
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="preco">Preço</label>
+                    <input type="number" id="preco" class="form-control" formControlName="preco" min="0" />
+                </div>
+            </div>
+    
+            <div class="row form-group mt-3">
+                <div class="col-md-12">
+                    <label for="descricao">Descrição</label>
+                    <textarea id="descricao" class="form-control" formControlName="descricao" style="height: 120px"></textarea>
+                </div>
             </div>
 
-            <div class="col-md-4">
-                <label for="disponibilidade">Disponibilidade</label>
-                <select id="disponibilidade" class="form-select" formControlName="disponibilidade">
-                    <option class="text-capitalize" *ngIf="item.disponibilidade" selected value="{{item.disponibilidade}}">
-                        {{item.disponibilidade}}
-                    </option>
-                    @if (item.disponibilidade == 'ativo') {
-                    <option value="inativo">Inativo</option>
-                    }@else {
-                    <option value="ativo">Ativo</option>
-                    }
-                </select>
+            <div class="row form-group mt-3">
+                <div class="col-md-4">
+                    <label for="status">Status</label>
+                    <select id="status" class="form-select" formControlName="status">
+                        <option class="text-capitalize" *ngIf="item.status" selected value="{{item.status}}">
+                            {{item.status}}
+                        </option>
+                        @if (item.status == 'ativo') {
+                        <option value="inativo">Inativo</option>
+                        }@else {
+                        <option value="ativo">Ativo</option>
+                        }
+                    </select>
+                </div>
             </div>
-        </div>
-
-
-        <div class="row mt-4">
-            <div class="col text-start">
-                <button type="submit" class="btn btn-primary" [disabled]="loading">
-                    <span *ngIf="!loading">Salvar Alterações</span>
-                    <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
-                </button>
+    
+    
+            <div class="row mt-4">
+                <div class="col text-start">
+                    <button type="submit" class="btn btn-primary" [disabled]="loading">
+                        <span *ngIf="!loading">Salvar Alterações</span>
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
+                    </button>
+                </div>
             </div>
-        </div>
-    </form>
-    }
-</div>
+        </form>
+        }
+    </div>
+}

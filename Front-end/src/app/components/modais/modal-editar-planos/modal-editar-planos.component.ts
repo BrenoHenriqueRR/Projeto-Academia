@@ -18,6 +18,8 @@ export class ModalEditarPlanosComponent {
   tipo: string = '';
   loading = false;
   planos: any;
+  extras: any;
+  extrasForm: FormGroup = new FormGroup({});
   planosForm: FormGroup = new FormGroup({});;
   // novoBeneficio: string = ''; // Benefício atual que será adicionado
   // beneficioAtual: string = '';  // Para armazenar o benefício que está sendo adicionado ou editado

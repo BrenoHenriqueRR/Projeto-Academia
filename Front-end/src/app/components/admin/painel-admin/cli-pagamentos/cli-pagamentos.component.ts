@@ -11,33 +11,46 @@ import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
   styleUrl: './cli-pagamentos.component.css'
 })
 export class CliPagamentosComponent {
-  pagamentos: any;
+
+  pagamentos: any[] = [];   // ✅ inicializado como array
   filtrado: any[] = [];
   filtroStatus: string = 'todos';
 
   constructor(private pagamentosService: PnClienteService) {}
 
-  ngOnInit() {
-    this.pagamentosService.listarTodosPag().subscribe(res => {
-      this.pagamentos = res;
-      this.aplicarFiltro();
+  ngOnInit(): void {
+    this.pagamentosService.listarTodosPag().subscribe({
+      next: (res: any[]) => {
+        this.pagamentos = res;
+        console.log(this.pagamentos);
+        this.aplicarFiltro();
+      },
+      error: err => {
+        console.error('Erro ao carregar pagamentos:', err);
+      }
     });
   }
 
-  aplicarFiltro() {
+  aplicarFiltro(): void {
     if (this.filtroStatus === 'todos') {
       this.filtrado = this.pagamentos;
     } else {
-      this.filtrado = this.pagamentos.filter((p: { status_pagamento: string; }) => p.status_pagamento === this.filtroStatus);
+      this.filtrado = this.pagamentos.filter(
+        (p: { status_pagamento: string }) => p.status_pagamento === this.filtroStatus
+      );
     }
   }
 
-  realizarPagamento(id: number) {
+  realizarPagamento(id: number): void {
     if (confirm('Confirmar pagamento?')) {
-      // this.pagamentosService.realizarPagamento(id).subscribe(() => {
-      //   this.ngOnInit(); // recarrega
+      // this.pagamentosService.realizarPagamento(id).subscribe({
+      //   next: () => this.ngOnInit(), // ✅ recarrega lista
+      //   error: err => console.error('Erro ao realizar pagamento:', err)
       // });
     }
   }
 
+  removerPagamento(arg0: any) {
+throw new Error('Method not implemented.');
+}
 }

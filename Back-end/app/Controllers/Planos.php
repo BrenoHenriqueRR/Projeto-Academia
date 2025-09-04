@@ -35,7 +35,7 @@ class Planos extends BaseController
         $dados = $this->request->getJSON(true); 
 
         $id = $dados['id'];
-        unset($dados['id']); 
+        unset($dados['id']); // destruiu para não gerar conflito no update
 
         $dados['data_modificacao'] = date('Y-m-d H:i:s');
 

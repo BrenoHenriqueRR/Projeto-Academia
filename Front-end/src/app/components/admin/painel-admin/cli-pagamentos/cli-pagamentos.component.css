@@ -1,0 +1,11 @@
+.h1-anam::after{
+        content: '';
+        display: block;
+        width: 10rem;
+        height: 0.3rem;
+        background-color: #deed39;
+        margin: 0 auto;
+        position: absolute;
+        border-radius: 10px;
+
+}

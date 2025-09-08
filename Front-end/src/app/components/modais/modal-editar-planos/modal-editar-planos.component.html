@@ -6,7 +6,7 @@
         @for (item of planos; track item) {
         <h2>Editar Plano: {{ item.nome }}</h2>
     
-        <form [formGroup]="planosForm" (ngSubmit)="salvar()">
+        <form [formGroup]="planosForm" (ngSubmit)="salvarPlano()">
             <div class="row mb-3">
                 <div class="col-md-6 form-group">
                     <label for="nome">Nome do Plano</label>
@@ -85,7 +85,7 @@
         @for (item of extras; track item) {
         <h2>Editar Extra: {{ item.nome }}</h2>
     
-        <form [formGroup]="extrasForm" (ngSubmit)="salvar()">
+        <form [formGroup]="extrasForm" (ngSubmit)="salvarExtra()">
             <div class="row mb-3">
                 <div class="col-md-6 form-group">
                     <label for="nome">Nome do Extra</label>

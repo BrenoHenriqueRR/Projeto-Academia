@@ -1,4 +1,5 @@
 <div class="container-fluid mt-4">
+  <h1 class="h1-anam mb-5">Listagem de Pagamentos</h1>
 
   <!-- Filtro por status -->
   <div class="card mb-3 shadow-sm">
@@ -39,8 +40,8 @@
         <tbody>
           <tr *ngFor="let p of filtrado">
             <td>{{ p.id }}</td>
-            <td>{{ p.cliente }}</td>
-            <td>{{ p.plano }}</td>
+            <td>{{ p.nome_cliente }}</td>
+            <td>{{ p.nome_plano }}</td>
             <td>{{ p.valor | currency:'BRL' }}</td>
             <td>{{ p.forma_pagamento | uppercase }}</td>
             <td>{{ p.data_vencimento | date:'dd/MM/yyyy' }}</td>

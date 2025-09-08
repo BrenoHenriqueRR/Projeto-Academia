@@ -9,7 +9,7 @@ import { PlanosServiceService } from '../../../services/planosService/planos-ser
 @Component({
   selector: 'app-modal-editar-planos',
   standalone: true,
-  imports: [NgIf, ReactiveFormsModule,ModalSpinnerComponent],
+  imports: [NgIf, ReactiveFormsModule, ModalSpinnerComponent],
   templateUrl: './modal-editar-planos.component.html',
   styleUrl: './modal-editar-planos.component.css'
 })
@@ -25,16 +25,16 @@ export class ModalEditarPlanosComponent {
   // beneficioAtual: string = '';  // Para armazenar o benefício que está sendo adicionado ou editado
   // beneficios: string[] = [];    // Array para armazenar os benefícios
   // indiceEdicao: number | null = null; // Armazena o índice do benefício que está sendo editado
-  editar :boolean = false;
-  option_frequencia = [2,3,7];
+  editar: boolean = false;
+  option_frequencia = [2, 3, 7];
 
-  ngOnInit(){  
+  ngOnInit() {
     this.loading = true;
     setTimeout(async () => {
       await this.buscarDados();
       this.loading = false;
-    },200);
-    
+    }, 200);
+
   }
 
   constructor(private route: ActivatedRoute, private service: ConfigService,
@@ -45,53 +45,68 @@ export class ModalEditarPlanosComponent {
     });
   }
 
-  form(){
-    this.planosForm = new FormGroup({
-      nome:  new FormControl(this.planos[0].nome, [Validators.required]),
-      preco: new FormControl(this.planos[0].preco, [Validators.required]),
-      // descontoPlano: ('', ([Validators.required], Validators.min(1)]],
-      // beneficios: new FormControl (this.planos[0].beneficios, [Validators.required]),
-      descricao: new FormControl (this.planos[0].descricao, [Validators.required]),
-      duracao: new FormControl (this.planos[0].duracao, [Validators.required]),
-      disponibilidade: new FormControl (this.planos[0].disponibilidade, [Validators.required]),
-      dias_por_semana: new FormControl (this.planos[0].dias_por_semana, [Validators.required])
-    });
-    //  this.beneficios = this.planos[0].beneficios;
-    //  console.log(this.beneficios);
-    // this.beneficios = this.planosForm.get('beneficios')?.value
-    //   ? this.planosForm.get('beneficios')?.value.split(', ')
-    //   : [];
-  }
-
-  buscarDados() : Promise<void>{
-     return new Promise((resolve, reject) => {
-    switch (this.tipo) {
-      case 'plano':
-        this.service.pesquisarPlanosID(this.identificador).subscribe({
-          next: (dados) =>{
-            console.log(dados)
-            this.planos = Array(dados);
-            this.form();
-            resolve();
-          },error: (erro) => {
-            alert("erro ao pesquisar dados \n status:" + erro.status);
-            reject(erro);
-          }
-        })
-        break;
-      case 'extra':
-        
-        break;
-      default:
-        break;
+  form() {
+    if (this.tipo == 'plano') {
+      this.planosForm = new FormGroup({
+        nome: new FormControl(this.planos[0].nome, [Validators.required]),
+        preco: new FormControl(this.planos[0].preco, [Validators.required]),
+        // descontoPlano: ('', ([Validators.required], Validators.min(1)]],
+        // beneficios: new FormControl (this.planos[0].beneficios, [Validators.required]),
+        descricao: new FormControl(this.planos[0].descricao, [Validators.required]),
+        duracao: new FormControl(this.planos[0].duracao, [Validators.required]),
+        disponibilidade: new FormControl(this.planos[0].disponibilidade, [Validators.required]),
+        dias_por_semana: new FormControl(this.planos[0].dias_por_semana, [Validators.required])
+      });
+    } else {
+      this.extrasForm = new FormGroup({
+        nome: new FormControl(this.extras[0].nome, [Validators.required]),
+        descricao: new FormControl(this.extras[0].descricao, [Validators.required]),
+        preco: new FormControl(this.extras[0].preco, [Validators.required]),
+        status: new FormControl(this.extras[0].status, [Validators.required]),
+      });
     }
+
+  }
+
+  buscarDados(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      switch (this.tipo) {
+        case 'plano':
+          this.service.pesquisarPlanosID(this.identificador).subscribe({
+            next: (dados) => {
+              console.log(dados)
+              this.planos = Array(dados);
+              this.form();
+              resolve();
+            }, error: (erro) => {
+              alert("erro ao pesquisar dados \n status:" + erro.status);
+              reject(erro);
+            }
+          })
+          break;
+        case 'extra':
+          this.service.pesquisarPlanosExtrasID(JSON.stringify({id : this.identificador})).subscribe({
+            next: (dados) => {
+              this.extras = dados;
+              // console.log(this.extras)
+              this.form();
+              resolve();
+            }, error: (erro) => {
+              alert("erro ao pesquisar dados \n status:" + erro.status);
+              reject(erro);
+            }
+          })
+          break;
+        default:
+          break;
+      }
     });
   }
 
-  salvar() {
+  salvarPlano() {
     if (this.planosForm.valid) {
       this.loading = true;
-      const dadosAtualizados = JSON.stringify({...this.planosForm.value,id: this.identificador});
+      const dadosAtualizados = JSON.stringify({ ...this.planosForm.value, id: this.identificador });
       console.log(dadosAtualizados);
       this.planosService.editar(dadosAtualizados).subscribe({
         next: (resposta) => {
@@ -101,6 +116,27 @@ export class ModalEditarPlanosComponent {
         },
         error: (erro) => {
           alert('Erro ao atualizar plano\nStatus: ' + erro.status);
+          this.loading = false;
+        }
+      });
+    } else {
+      alert('Preencha todos os campos obrigatórios corretamente.');
+    }
+  }
+
+  salvarExtra(){
+     if (this.extrasForm.valid) {
+      this.loading = true;
+      const dadosAtualizados = JSON.stringify({ ...this.extrasForm.value, id: this.identificador });
+      console.log(dadosAtualizados);
+      this.service.updateExtra(dadosAtualizados).subscribe({
+        next: (msg) => {
+          alert('Extra atualizado com sucesso!');
+          location.reload();
+          // this.loading = false;
+        },
+        error: (erro) => {
+          alert('Erro ao atualizar Extra\nStatus: ' + erro.status);
           this.loading = false;
         }
       });

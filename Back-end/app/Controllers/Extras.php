@@ -49,18 +49,19 @@ class Extras extends BaseController
     public function edit()
     {
         $data = $this->request->getJson();
+         $id = $data->id;
+        unset($data->id); // destruiu para não gerar conflito no update
         try {
-                $this->model->where('id', $data['id'])
-                ->set($data)
-                ->update();
+            $this->model->update($id, $data);
     
             $msg = array("msg" => "Plano Extra editado com sucesso !!");
-            return $this->response->setJson($msg)->setStatusCode(200);
+            return $this->response->setJSON($msg)->setStatusCode(200);
         } catch (\Throwable $th) {
             $error = array("msg" => "Erro ao editar o plano extra!", "Erro" => $th->getMessage());
-            return $this->response->setJson($error)->setStatusCode(500);
+            return $this->response->setJSON($error)->setStatusCode(500);
         }
     }
+
     public function read()
     {
         // $data = $this->request->getJson();
@@ -68,16 +69,29 @@ class Extras extends BaseController
         $dados = $this->model->select()
             ->get();
 
-        return $this->response->setJson($dados->getResult())->setStatusCode(200);
+        return $this->response->setJSON($dados->getResult())->setStatusCode(200);
     }
-    public function delete()
+
+    public function readId()
     {
         $data = $this->request->getJson();
 
-        $this->model->where('id', $data['id'])
+        $dados = $this->model->select()
+        ->where('id', $data->id)
+        ->get();
+
+        return $this->response->setJson($dados->getResult())->setStatusCode(200);
+    }
+
+
+    public function delete()
+    {
+        $data = $this->request->getJSON();
+
+        $this->model->where('id', $data->id)
             ->delete();
 
         $msg = array("msg" => "Plano extra excluido com sucesso !!");
-        return $this->response->setJson($msg)->setStatusCode(200);
+        return $this->response->setJSON($msg)->setStatusCode(200);
     }
 }

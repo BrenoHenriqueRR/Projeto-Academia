@@ -159,8 +159,8 @@ class ClientePlanos extends BaseController
             ]);
 
             $this->clienteModel->set(['status' => 'ativo'])
-            ->where('id' , $cliPlanos['cliente_id'] )
-            ->update();
+                ->where('id', $cliPlanos['cliente_id'])
+                ->update();
 
             return $this->response->setJSON(['msg' => 'Pagamento concluído com sucesso'])->setStatusCode(200);
         } catch (\Throwable $th) {
@@ -182,5 +182,23 @@ class ClientePlanos extends BaseController
         } catch (\Throwable $th) {
             log_message('error', 'Erro ao criar novo pagamento: ' . $th->getMessage());
         }
+    }
+
+    public function atualizarAtrasados()
+    {
+        $this->pagamentosModel->where('status_pagamento', 'pendente')
+            ->where('data_vencimento <', date('Y-m-d'))
+            ->set(['status_pagamento' => 'atrasado'])
+            ->update();
+    }
+
+    public function cancelarPagamento()
+    {
+        $dados = $this->request->getJSON();
+        $id = $dados->id;
+        $this->pagamentosModel->update($id, [
+            'status_pagamento' => 'cancelado'
+        ]);
+        return $this->response->setJSON(['msg' => 'Pagamento cancelado'])->setStatusCode(200);
     }
 }

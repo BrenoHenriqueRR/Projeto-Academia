@@ -174,8 +174,10 @@ class Cliente extends BaseController
     public function pesquisarPag()
     {
         $dados = $this->pagamentosModel
-            ->select('*')
+            ->select('pagamentos.*, cliente.nome AS nome_cliente, planos.nome AS nome_plano, clientes_planos.data_vencimento')
             ->join('clientes_planos', 'clientes_planos.id = pagamentos.cliente_planos_id')
+            ->join('cliente', 'cliente.id = clientes_planos.cliente_id')
+            ->join('planos', 'planos.id = clientes_planos.plano_id')
             ->findAll(); 
 
         return $this->response->setJSON($dados)->setStatusCode(200);

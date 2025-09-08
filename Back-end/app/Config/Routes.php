@@ -139,6 +139,7 @@ $routes->group('Planos', function ($routes) {
 $routes->group('Extras', function ($routes) {
     $routes->post('create', 'Extras::create');
     $routes->get('read', 'Extras::read');
+    $routes->post('readId', 'Extras::readId');
     $routes->post('edit', 'Extras::edit');
     $routes->post('delete', 'Extras::delete');
 });

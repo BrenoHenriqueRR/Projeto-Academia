@@ -20,6 +20,7 @@ export class ConfigService {
   private url_pesquisarPlanosExtras = apiurl + '/Extras/read'
   private url_pesquisarPlanosExtras_id = apiurl + '/Extras/readId'
   private url_createPlanosExtras = apiurl + '/Extras/create'
+  private url_editarPlanosExtras = apiurl + '/Extras/edit'
   constructor(private http: HttpClient) { }
 
   create(dados: any):Observable<any>{
@@ -62,11 +63,17 @@ export class ConfigService {
   pesquisarPlanosExtras():Observable<any>{
     return this.http.get<any>(this.url_pesquisarPlanosExtras);
   }
-  pesquisarPlanosExtrasID():Observable<any>{
-    return this.http.get<any>(this.url_pesquisarPlanosExtras_id);
+  pesquisarPlanosExtrasID(id: any):Observable<any>{
+    return this.http.post<any>(this.url_pesquisarPlanosExtras_id, id);
+  }
+
+  updateExtra(dados:any):Observable<any>{
+    return this.http.post<any>(this.url_editarPlanosExtras, dados);
   }
   
   updateEtapa(data:any):Observable<any>{
     return this.http.post<any>(this.url_nextstep, data);
   }
+
+  
 }

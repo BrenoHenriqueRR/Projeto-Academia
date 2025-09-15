@@ -157,7 +157,7 @@ class ClientePlanos extends BaseController
                 'valor' => $pagamento['valor'], // ou o valor atual do plano
                 'funcionario_id' => $pagamento['funcionario_id']
             ]);
-
+            // Ativa o cliente
             $this->clienteModel->set(['status' => 'ativo'])
                 ->where('id', $cliPlanos['cliente_id'])
                 ->update();

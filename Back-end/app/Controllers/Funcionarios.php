@@ -25,6 +25,7 @@ class Funcionarios extends BaseController
             $caminhoImagem = 'assets/fotos-funcionarios/' . $nomeimg;
         }
 
+        
         // Receber os outros dados do formulário
         $dados = [
             'nome' => $this->request->getPost('nome'),

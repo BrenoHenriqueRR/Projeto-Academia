@@ -15,6 +15,7 @@ export class PnClienteService {
   private urlFoto = 'http://localhost/sites/Projeto1/Back-end/public/Cliente/inserirFoto';
   private urlgetFoto = 'http://localhost/sites/Projeto1/Back-end/public/Cliente/pegarFoto';
   private url_Planosid = 'http://localhost/sites/Projeto1/Back-end/public/ClientePlanos/pesquisarId';
+  private url_Pagamento = 'http://localhost/sites/Projeto1/Back-end/public/ClientePlanos/concluirPagamento';
   
 
   constructor(private http: HttpClient) {} 
@@ -41,6 +42,10 @@ export class PnClienteService {
 
   pegarfoto(id: any): Observable<any>{
     return this.http.post<any>(this.urlgetFoto,id)
+  }
+  
+  realizarPagamento(id: any): Observable<any>{
+    return this.http.post<any>(this.url_Pagamento,id)
   }
 
   listarTodosPag():Observable<any> {

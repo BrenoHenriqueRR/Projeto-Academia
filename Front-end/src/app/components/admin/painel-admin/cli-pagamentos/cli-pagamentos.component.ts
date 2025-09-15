@@ -43,10 +43,10 @@ export class CliPagamentosComponent {
 
   realizarPagamento(id: number): void {
     if (confirm('Confirmar pagamento?')) {
-      // this.pagamentosService.realizarPagamento(id).subscribe({
-      //   next: () => this.ngOnInit(), // ✅ recarrega lista
-      //   error: err => console.error('Erro ao realizar pagamento:', err)
-      // });
+      this.pagamentosService.realizarPagamento(JSON.stringify({id: id})).subscribe({
+        next: () => this.ngOnInit(), // ✅ recarrega lista
+        error: err => console.error('Erro ao realizar pagamento:', err)
+      });
     }
   }
 

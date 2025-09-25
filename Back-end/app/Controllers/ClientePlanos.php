@@ -93,6 +93,7 @@ class ClientePlanos extends BaseController
 
         $dados = $this->clientesPlanosModel->select()
             ->where('cliente_id', $id->id)
+            ->where('status', 'ativo')
             ->join('planos', 'clientes_planos.plano_id = planos.id')
             ->get();
 

@@ -1,12 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, LOCALE_ID } from '@angular/core';
 import { PnClienteService } from '../../../../services/admin/pn-cliente/pn-cliente.service';
 import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
+import { provideNgxMask } from 'ngx-mask';
 
 @Component({
   selector: 'app-cli-pagamentos',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule,FormsModule],
+  providers: [provideNgxMask(),{ provide: LOCALE_ID, useValue: 'pt-BR' }],
   templateUrl: './cli-pagamentos.component.html',
   styleUrl: './cli-pagamentos.component.css'
 })

@@ -22,7 +22,7 @@
             <tr>
                 <td>{{plano.nome}}</td>
                 <!-- <td>{{plano.descricao}}</td> -->
-                <td>R$ {{plano.preco}}</td>
+                <td>{{plano.preco | currency:'BRL' }}</td>
                 <td>{{plano.duracao}}</td>
                 <!-- <td>{{plano.beneficios}}</td> -->
                 <td>{{plano.disponibilidade}}</td>
@@ -60,7 +60,7 @@
             <tr>
                 <td>{{extra.nome}}</td>
                 <!-- <td>{{extras.descricao}}</td> -->
-                <td>{{extra.preco}}</td>
+                <td>{{extra.preco | currency:'BRL'}}    </td>
                 <!-- <td>{{extras.beneficios}}</td> -->
                 <td>{{extra.status}}</td>
                 <td>

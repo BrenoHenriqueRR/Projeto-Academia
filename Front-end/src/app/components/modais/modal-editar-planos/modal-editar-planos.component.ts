@@ -5,6 +5,7 @@ import { ConfigService } from '../../../services/admin/config/config.service';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ModalSpinnerComponent } from '../modal-spinner/modal-spinner.component';
 import { PlanosServiceService } from '../../../services/planosService/planos-service.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-modal-editar-planos',
@@ -38,7 +39,7 @@ export class ModalEditarPlanosComponent {
   }
 
   constructor(private route: ActivatedRoute, private service: ConfigService,
-    private fb: FormBuilder, private planosService: PlanosServiceService) {
+    private fb: FormBuilder, private planosService: PlanosServiceService,private alertas: ToastrService) {
     this.route.queryParams.subscribe(params => {
       this.identificador = params['id'];
       this.tipo = params['tipo'];
@@ -109,13 +110,13 @@ export class ModalEditarPlanosComponent {
       const dadosAtualizados = JSON.stringify({ ...this.planosForm.value, id: this.identificador });
       console.log(dadosAtualizados);
       this.planosService.editar(dadosAtualizados).subscribe({
-        next: (resposta) => {
-          alert('Plano atualizado com sucesso!');
+        next: () => {
+          this.alertas.success('Plano atualizado com sucesso!');
           this.loading = false;
           // Aqui você pode fechar o modal ou atualizar a tela conforme necessário
         },
         error: (erro) => {
-          alert('Erro ao atualizar plano\nStatus: ' + erro.status);
+          this.alertas.error('Erro ao atualizar plano\nStatus: ' + erro.status);
           this.loading = false;
         }
       });
@@ -131,12 +132,11 @@ export class ModalEditarPlanosComponent {
       console.log(dadosAtualizados);
       this.service.updateExtra(dadosAtualizados).subscribe({
         next: (msg) => {
-          alert('Extra atualizado com sucesso!');
-          location.reload();
-          // this.loading = false;
+          this.alertas.success('Extra atualizado com sucesso!');
+          this.loading = false; 
         },
         error: (erro) => {
-          alert('Erro ao atualizar Extra\nStatus: ' + erro.status);
+          this.alertas.error('Erro ao atualizar Extra\nStatus: ' + erro.status);
           this.loading = false;
         }
       });

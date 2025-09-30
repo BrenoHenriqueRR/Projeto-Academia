@@ -141,6 +141,22 @@ class Ficha extends BaseController
         }
     }
 
+    public function pesquisarAtivas(){
+                $fichas = $this->fichamodel
+                ->select('fichas.*, clientes_planos.data_vencimento')
+                ->join('clientes_planos', 'clientes_planos.cliente_id = fichas.cliente_id')
+                ->where('fichas.status', 'ativa')
+                ->where('clientes_planos.data_vencimento >=', date('Y-m-d'))
+                ->findAll();
+
+           return $this->response->setJSON($fichas);
+        
+    }
+
+    public function pesquisarPendentes(){
+        return $this->response->setJSON(['msg' => 'Ficha pesquisada com sucesso!']);
+    }
+
     public function pesquisarCli()
     {
         try {

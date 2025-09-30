@@ -73,13 +73,18 @@ $routes->group('Treino', function ($routes) {
 // =====================
 // FICHA DE TREINO
 // =====================
-$routes->post('/Ficha/create', 'Ficha::create');
-$routes->post('/Ficha/update', 'Ficha::update');
-$routes->post('/Ficha/pesquisarCli', 'Ficha::pesquisarCli');
-$routes->post('/Ficha/pesquisarFicha', 'Ficha::pesquisarFicha');
-$routes->post('/Ficha/fichaNaoConcluida', 'Ficha::fichaNaoConcluida');
-$routes->post('/Ficha/concluirFicha', 'Ficha::concluirFicha');
-$routes->post('/Ficha/imprimirFichaId', 'Ficha::imprimirFichaId');
+$routes->group('Ficha', function ($routes) {
+    $routes->post('create', 'Ficha::create');
+    $routes->post('update', 'Ficha::update');
+    $routes->post('pesquisarCli', 'Ficha::pesquisarCli');
+    $routes->post('pesquisarFicha', 'Ficha::pesquisarFicha');
+    $routes->post('pesquisar', 'Ficha::pesquisar');
+    $routes->get('pesquisarAtivas', 'Ficha::pesquisarAtivas');
+    $routes->get('pesquisarPendentes', 'Ficha::pesquisarPendentes');
+    $routes->post('fichaNaoConcluida', 'Ficha::fichaNaoConcluida');
+    $routes->post('concluirFicha', 'Ficha::concluirFicha');
+    $routes->post('imprimirFichaId', 'Ficha::imprimirFichaId');
+});
 
 // =====================
 // FINANCEIRO
@@ -93,7 +98,7 @@ $routes->group('Financeiro', function ($routes) {
     $routes->get('listaPagamentos', 'Financeiro::listaPagamentos');
     $routes->get('listaDespesas', 'Financeiro::listaDespesas');
     $routes->get('listaVendas', 'Financeiro::listaVendas');
-    $routes->get('pesquisarCliPendente', 'Financeiro::pesquisarCliPendente');
+    // $routes->get('pesquisarCliPendente', 'Financeiro::pesquisarCliPendente');
     $routes->get('getEstatisticasComparativas', 'Financeiro::getEstatisticasComparativas');
     $routes->post('pesquisarPagamentosCliente', 'Financeiro::pesquisarCliPendente');
     $routes->get('gerarRelatorioMensalPdf', 'Financeiro::gerarRelatorioMensalPdf');

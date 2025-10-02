@@ -1,0 +1,5 @@
+CRITICAL - 2025-10-02 14:44:39 --> Error: Class "App\Models\ClientesPlanosModel" not found
+in APPPATH\Commands\VerificarPagamentos.php on line 15.
+ 1 SYSTEMPATH\CLI\Commands.php(65): App\Commands\VerificarPagamentos->run([])
+ 2 SYSTEMPATH\CLI\Console.php(46): CodeIgniter\CLI\Commands->run('pagamentos:verificar', [])
+ 3 ROOTPATH\spark(102): CodeIgniter\CLI\Console->run()

@@ -21,7 +21,6 @@ class ClienteModel extends Model {
         'nivel_experiencia',
         'treino_com_personal',
         'email_verificado',
-        'RG',
         'termo_responsabilidade',
         'atestado_medico'
     ]; 

@@ -200,7 +200,7 @@ export class CadastroComponent {
     this.formcadastro = new FormGroup({
       foto_perfil: new FormControl(''),
       CPF: new FormControl('', [Validators.required]),
-      RG: new FormControl('', [Validators.required]),
+      // RG: new FormControl('', [Validators.required]),
       nome: new FormControl('', [Validators.required]),
       telefone: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),

@@ -118,7 +118,7 @@ export class ModalEditarComponent {
         CPF: new FormControl(this.data[0].CPF, Validators.required),
         personal_id: new FormControl(this.data[0].personal_id, Validators.required),
         foto_perfil: new FormControl(null),
-        RG: new FormControl(this.data[0].RG, Validators.required),
+        // RG: new FormControl(this.data[0].RG, Validators.required),
         telefone: new FormControl(this.data[0].telefone, Validators.required),
         endereco: new FormControl(this.data[0].endereco, Validators.required),
         datanascimento: new FormControl(this.data[0].datanascimento, Validators.required),

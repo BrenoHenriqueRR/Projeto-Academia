@@ -36,10 +36,20 @@ class Cliente extends BaseController
 
     public function create()
     {
+        // Verificar se já existe um cliente com o mesmo CPF
+        $cpf = $this->request->getPost('CPF');
+
+        $clienteExistente = $this->model->where('CPF', $cpf)->first();
+        if ($clienteExistente) {
+            return $this->response->setJSON([
+                'erro' => true,
+                'msg' => 'CPF já cadastrado'
+            ])->setStatusCode(400);
+        }
         $dados = [
             'nome' => $this->request->getPost('nome'),
             'CPF' => $this->request->getPost('CPF'),
-            'RG' => $this->request->getPost('RG'),
+            // 'RG' => $this->request->getPost('RG'),
             'telefone' => $this->request->getPost('telefone'),
             'email' => $this->request->getPost('email'),
             'endereco' => $this->request->getPost('endereco'),
@@ -106,7 +116,7 @@ class Cliente extends BaseController
         $anamneseJson = $this->request->getPost('anamnese');
         $foto = $this->request->getFile('foto_perfil');
 
-        
+
         $cliente = json_decode($clienteJson, true);
         $anamnese = json_decode($anamneseJson, true);
 
@@ -127,7 +137,7 @@ class Cliente extends BaseController
         $id = $this->model->getInsertID();
 
         $cliente['funcionario_id'] = $this->request->getPost('funcionario_id');
-      
+
 
         $anamnese['cliente_id'] = $id;
 
@@ -152,7 +162,7 @@ class Cliente extends BaseController
 
         $planos = [
             'plano' => $cliente['plano'][0],
-            'funcionario_id' => $cliente['funcionario_id'] 
+            'funcionario_id' => $cliente['funcionario_id']
         ];
 
         if (!empty($cliente['plano'])) {
@@ -178,7 +188,7 @@ class Cliente extends BaseController
             ->join('clientes_planos', 'clientes_planos.id = pagamentos.cliente_planos_id')
             ->join('cliente', 'cliente.id = clientes_planos.cliente_id')
             ->join('planos', 'planos.id = clientes_planos.plano_id')
-            ->findAll(); 
+            ->findAll();
 
         return $this->response->setJSON($dados)->setStatusCode(200);
     }
@@ -194,8 +204,8 @@ class Cliente extends BaseController
         $this->model->set([
             'status' => 'anulado'
         ])
-                ->where('id', $data['id'])
-                ->update();
+            ->where('id', $data['id'])
+            ->update();
 
         $msg = array("msg" => "Cliente deletado");
 
@@ -395,7 +405,7 @@ class Cliente extends BaseController
         return $this->response->setJSON($dados)->setStatusCode(200);
     }
 
-     public function relatorioClientesStatus()
+    public function relatorioClientesStatus()
     {
         // Instancia os models necessários
         $clienteModel = new ClienteModel();
@@ -410,7 +420,7 @@ class Cliente extends BaseController
             'clientes_ativos'   => $clienteModel->where('status', 'ativo')->findAll(),
             'clientes_inativos' => $clienteModel->where('status', 'inativo')->findAll(),
             'clientes_anulados' => $clienteModel->where('status', 'anulado')->findAll(),
-            
+
             'nome_academia'     => $academia['nome'],
             'cnpj_academia'     => $academia['cnpj'],
             'email_academia'    => $academia['email'],
@@ -421,7 +431,7 @@ class Cliente extends BaseController
 
         $html = view('relatorios/relatorio_clientes_status', $dadosView);
 
-           $options = new Options();
+        $options = new Options();
         // $options->set('defaultFont', 'DejaVu Sans');
         $options->set('isRemoteEnabled', true); // Mudei para false
         $options->set('isHtml5ParserEnabled', true);
@@ -440,7 +450,7 @@ class Cliente extends BaseController
         $dompdf->render();
 
         // Baixar o PDF diretamente
-        $nomeArquivo = 'relatorio-financeiro-' .'relatorio_clientes_status' . '.pdf';
+        $nomeArquivo = 'relatorio-financeiro-' . 'relatorio_clientes_status' . '.pdf';
 
         return $this->response
             ->setHeader('Content-Type', 'application/pdf')

@@ -7,12 +7,13 @@ import { ToastrService } from 'ngx-toastr';
 import { ConfigService } from '../../../services/admin/config/config.service';
 import { CadastroService } from '../../../services/cadastro.service';
 import { Route, Router } from '@angular/router';
-import { error } from 'jquery';
+import Swal from 'sweetalert2';
+import { ModalSpinnerComponent } from '../modal-spinner/modal-spinner.component';
 
 @Component({
   selector: 'app-modal-cadastro',
   standalone: true,
-  imports: [FormsModule,ReactiveFormsModule, NgxMaskDirective, CommonModule],
+  imports: [FormsModule,ReactiveFormsModule, NgxMaskDirective, CommonModule, ModalSpinnerComponent],
   templateUrl: './modal-cadastro.component.html',
   providers: [provideNgxMask({
     dropSpecialCharacters: false
@@ -24,6 +25,8 @@ export class ModalCadastroComponent {
   @ViewChild('modal') modal?: ElementRef
   @Input() tipo: string = '' ; // tipo do cadastro 
   @Output() CloseModal = new EventEmitter<void>();
+  loading = false;
+  // Formulários
   CliForm!: FormGroup<any>;
   funcForm!: FormGroup;
   planoForm!: FormGroup<any>;
@@ -68,6 +71,20 @@ export class ModalCadastroComponent {
   constructor(private fb: FormBuilder, private funcservice: PnFuncionarioService, private alertas: ToastrService,
     private academiaservice: ConfigService, private cliservice: CadastroService, private router: Router) { }
 
+  mostrarErro(mensagem: string) {
+ Swal.fire({
+    icon: 'error',
+    title: 'Ops!',
+    text: mensagem || 'Ocorreu um erro inesperado.',
+    confirmButtonText: 'Fechar',
+    confirmButtonColor: '#d33',
+    background: '#fff',
+    customClass: {
+      popup: 'animated fadeInDown'
+    }
+  });
+}
+
   inicializarForm() {
     this.funcForm = this.fb.group({
       foto: ['', Validators.required],
@@ -82,7 +99,7 @@ export class ModalCadastroComponent {
     this.CliForm = this.fb.group({
       foto_perfil: [''],
       CPF: ['', Validators.required],
-      RG: ['', Validators.required],
+      // RG: ['', Validators.required],
       nome: ['', Validators.required],
       telefone: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -172,6 +189,7 @@ export class ModalCadastroComponent {
         break;
       case 'cliente':
         if (this.CliForm.valid) {
+          this.loading = true;
           console.log(this.CliForm.getRawValue());
           const formData = new FormData();
           if (this.foto) {
@@ -184,7 +202,7 @@ export class ModalCadastroComponent {
           formData.append('endereco', this.CliForm.value.endereco);
           formData.append('telefone', this.CliForm.value.telefone);
           formData.append('CPF', this.CliForm.value.CPF);
-          formData.append('RG', this.CliForm.value.RG);
+          // formData.append('RG', this.CliForm.value.RG);
           formData.append('datanascimento', dataConvertida);
           formData.append('email', this.CliForm.value.email);
           formData.append('treino_com_personal', treino_com_personal);
@@ -199,16 +217,18 @@ export class ModalCadastroComponent {
             next: (dados) => {
               this.alertas.success(dados.msg);
               this.CliForm.reset();
-
               ($('#modal-cad') as any).modal('hide');
               this.CloseModal.emit();
+              this.loading = false;
             }, error: (er) => {
-              this.alertas.error("ocorreu um erro: " + er);
-              console.log(er);
+              this.mostrarErro(er.error.msg);
+              this.CliForm.get('CPF')?.setErrors({ duplicado: true });
+              this.loading = false;
             }
           })
         } else {
           this.alertas.error("Campos Vazios !!");
+          this.loading = false;
         }
         break;
       case 'planos':

@@ -1,3 +1,6 @@
+<div *ngIf="loading">
+        <app-modal-spinner></app-modal-spinner>
+    </div>
 @if (tipo == 'funcionario') {
 
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" id="btn-modal-cad" data-bs-target="#modal-cad"><i
@@ -189,13 +192,18 @@
                             <div class="col">
                                 <label for="cpf">CPF</label>
                                 <input type="text" id="cpf" name="cpf" mask="000.000.000-00"
-                                    placeholder="EX: xxx.xxx.xxx-xx" formControlName="CPF">
+                                    placeholder="EX: xxx.xxx.xxx-xx" formControlName="CPF"
+                                    [ngClass]="{'is-invalid': CliForm.get('CPF')?.errors}" />
+                                <div *ngIf="CliForm.get('CPF')?.hasError('duplicado')" class="text-danger small">
+                                    Este CPF já está cadastrado.
+                                </div>
+
                             </div>
-                            <div class="col">
+                            <!-- <div class="col">
                                 <label for="rg">RG</label>
                                 <input type="text" id="rg" name="rg" mask="00.000.000-0" placeholder="EX: xx.xxx.xxx-x"
                                     formControlName="RG">
-                            </div>
+                            </div> -->
                         </div>
                         <div class="row form-group">
                             <div class="col-3">

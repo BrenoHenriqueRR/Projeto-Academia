@@ -29,6 +29,7 @@ export class PnTreinoComponent {
   ngOnInit() {
     this.isLoading = true;
     this.cliservice.pesquisar().subscribe((dados) => {
+      console.log(dados);
       this.verificarFichas(dados);
     });
 

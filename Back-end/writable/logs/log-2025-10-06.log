@@ -104,3 +104,1397 @@ in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
 10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
 11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
 12 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-10-06 23:34:10 --> mysqli_sql_exception: Unknown column 'created_at' in 'where clause' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Cliente.php(439): CodeIgniter\BaseModel->findAll()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Cliente->relatorioClientesStatus()
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2025-10-06 23:34:11 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'created_at' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `cliente`
+WHERE `status` = :status:
+AND `status` = :status.1:
+AND `status` = :status.2:
+AND `created_at` BETWEEN \'2025-06-01 00:00:00\' AND \'2025-10-06 23:59:59\'
+AND `created_at` BETWEEN \'2025-06-01 00:00:00\' AND \'2025-10-06 23:59:59\'
+AND `created_at` BETWEEN \'2025-06-01 00:00:00\' AND \'2025-10-06 23:59:59\'', [...], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Cliente.php(439): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->relatorioClientesStatus()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-06 23:34:11 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'created_at' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `cliente`
+WHERE `status` = \'ativo\'
+AND `status` = \'inativo\'
+AND `status` = \'anulado\'
+AND `created_at` BETWEEN \'2025-06-01 00:00:00\' AND \'2025-10-06 23:59:59\'
+AND `created_at` BETWEEN \'2025-06-01 00:00:00\' AND \'2025-10-06 23:59:59\'
+AND `created_at` BETWEEN \'2025-06-01 00:00:00\' AND \'2025-10-06 23:59:59\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `cliente`
+WHERE `status` = \'ativo\'
+AND `status` = \'inativo\'
+AND `status` = \'anulado\'
+AND `created_at` BETWEEN \'2025-06-01 00:00:00\' AND \'2025-10-06 23:59:59\'
+AND `created_at` BETWEEN \'2025-06-01 00:00:00\' AND \'2025-10-06 23:59:59\'
+AND `created_at` BETWEEN \'2025-06-01 00:00:00\' AND \'2025-10-06 23:59:59\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `cliente`
+WHERE `status` = :status:
+AND `status` = :status.1:
+AND `status` = :status.2:
+AND `created_at` BETWEEN \'2025-06-01 00:00:00\' AND \'2025-10-06 23:59:59\'
+AND `created_at` BETWEEN \'2025-06-01 00:00:00\' AND \'2025-10-06 23:59:59\'
+AND `created_at` BETWEEN \'2025-06-01 00:00:00\' AND \'2025-10-06 23:59:59\'', [...], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Cliente.php(439): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->relatorioClientesStatus()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-06 23:34:11 --> [Caused by] mysqli_sql_exception: Unknown column 'created_at' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *
+FROM `cliente`
+WHERE `status` = \'ativo\'
+AND `status` = \'inativo\'
+AND `status` = \'anulado\'
+AND `created_at` BETWEEN \'2025-06-01 00:00:00\' AND \'2025-10-06 23:59:59\'
+AND `created_at` BETWEEN \'2025-06-01 00:00:00\' AND \'2025-10-06 23:59:59\'
+AND `created_at` BETWEEN \'2025-06-01 00:00:00\' AND \'2025-10-06 23:59:59\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `cliente`
+WHERE `status` = \'ativo\'
+AND `status` = \'inativo\'
+AND `status` = \'anulado\'
+AND `created_at` BETWEEN \'2025-06-01 00:00:00\' AND \'2025-10-06 23:59:59\'
+AND `created_at` BETWEEN \'2025-06-01 00:00:00\' AND \'2025-10-06 23:59:59\'
+AND `created_at` BETWEEN \'2025-06-01 00:00:00\' AND \'2025-10-06 23:59:59\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `cliente`
+WHERE `status` = \'ativo\'
+AND `status` = \'inativo\'
+AND `status` = \'anulado\'
+AND `created_at` BETWEEN \'2025-06-01 00:00:00\' AND \'2025-10-06 23:59:59\'
+AND `created_at` BETWEEN \'2025-06-01 00:00:00\' AND \'2025-10-06 23:59:59\'
+AND `created_at` BETWEEN \'2025-06-01 00:00:00\' AND \'2025-10-06 23:59:59\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `cliente`
+WHERE `status` = :status:
+AND `status` = :status.1:
+AND `status` = :status.2:
+AND `created_at` BETWEEN \'2025-06-01 00:00:00\' AND \'2025-10-06 23:59:59\'
+AND `created_at` BETWEEN \'2025-06-01 00:00:00\' AND \'2025-10-06 23:59:59\'
+AND `created_at` BETWEEN \'2025-06-01 00:00:00\' AND \'2025-10-06 23:59:59\'', [...], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Cliente.php(439): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->relatorioClientesStatus()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-06 23:42:38 --> ErrorException: Undefined variable $data_inicio
+in APPPATH\Views\Relatorios\relatorio_clientes_status.php on line 527.
+ 1 APPPATH\Views\Relatorios\relatorio_clientes_status.php(527): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data_inicio', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio_clientes_status.php', 527)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio_clientes_status.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('relatorios/relatorio_clientes_status', [], true)
+ 5 APPPATH\Controllers\Cliente.php(432): view('relatorios/relatorio_clientes_status', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->relatorioClientesStatus()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-10-06 23:46:33 --> mysqli_sql_exception: Unknown column 'cp.planos_id' in 'on clause' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('\r\n        SELEC...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('\r\n        SELEC...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('\r\n        SELEC...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Cliente.php(497): CodeIgniter\Database\BaseConnection->query('\r\n        SELEC...')
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Cliente->relatorioFinanceiroClientes()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2025-10-06 23:46:33 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'cp.planos_id' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 APPPATH\Controllers\Cliente.php(497): CodeIgniter\Database\BaseConnection->query('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.planos_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->relatorioFinanceiroClientes()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-06 23:46:33 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'cp.planos_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.planos_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.planos_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 3 APPPATH\Controllers\Cliente.php(497): CodeIgniter\Database\BaseConnection->query('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.planos_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->relatorioFinanceiroClientes()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-06 23:46:33 --> [Caused by] mysqli_sql_exception: Unknown column 'cp.planos_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.planos_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.planos_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.planos_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 4 APPPATH\Controllers\Cliente.php(497): CodeIgniter\Database\BaseConnection->query('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.planos_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->relatorioFinanceiroClientes()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-10-06 23:48:04 --> mysqli_sql_exception: Unknown column 'cp.planos_id' in 'on clause' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('\r\n        SELEC...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('\r\n        SELEC...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('\r\n        SELEC...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Cliente.php(497): CodeIgniter\Database\BaseConnection->query('\r\n        SELEC...')
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Cliente->relatorioFinanceiroClientes()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2025-10-06 23:48:04 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'cp.planos_id' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 APPPATH\Controllers\Cliente.php(497): CodeIgniter\Database\BaseConnection->query('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_plano_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.planos_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->relatorioFinanceiroClientes()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-06 23:48:04 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'cp.planos_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_plano_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.planos_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_plano_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.planos_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 3 APPPATH\Controllers\Cliente.php(497): CodeIgniter\Database\BaseConnection->query('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_plano_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.planos_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->relatorioFinanceiroClientes()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-06 23:48:04 --> [Caused by] mysqli_sql_exception: Unknown column 'cp.planos_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_plano_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.planos_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_plano_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.planos_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_plano_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.planos_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 4 APPPATH\Controllers\Cliente.php(497): CodeIgniter\Database\BaseConnection->query('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_plano_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.planos_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->relatorioFinanceiroClientes()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-10-06 23:48:16 --> mysqli_sql_exception: Unknown column 'pg.clientes_planos_id' in 'on clause' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('\r\n        SELEC...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('\r\n        SELEC...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('\r\n        SELEC...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Cliente.php(497): CodeIgniter\Database\BaseConnection->query('\r\n        SELEC...')
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Cliente->relatorioFinanceiroClientes()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2025-10-06 23:48:16 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pg.clientes_planos_id' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 APPPATH\Controllers\Cliente.php(497): CodeIgniter\Database\BaseConnection->query('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->relatorioFinanceiroClientes()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-06 23:48:16 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pg.clientes_planos_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 3 APPPATH\Controllers\Cliente.php(497): CodeIgniter\Database\BaseConnection->query('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->relatorioFinanceiroClientes()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-06 23:48:16 --> [Caused by] mysqli_sql_exception: Unknown column 'pg.clientes_planos_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 4 APPPATH\Controllers\Cliente.php(497): CodeIgniter\Database\BaseConnection->query('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->relatorioFinanceiroClientes()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-10-06 23:48:25 --> mysqli_sql_exception: Unknown column 'pg.cliente_plano_id' in 'on clause' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('\r\n        SELEC...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('\r\n        SELEC...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('\r\n        SELEC...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Cliente.php(497): CodeIgniter\Database\BaseConnection->query('\r\n        SELEC...')
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Cliente->relatorioFinanceiroClientes()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2025-10-06 23:48:25 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pg.cliente_plano_id' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 APPPATH\Controllers\Cliente.php(497): CodeIgniter\Database\BaseConnection->query('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.cliente_plano_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->relatorioFinanceiroClientes()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-06 23:48:25 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pg.cliente_plano_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.cliente_plano_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.cliente_plano_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 3 APPPATH\Controllers\Cliente.php(497): CodeIgniter\Database\BaseConnection->query('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.cliente_plano_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->relatorioFinanceiroClientes()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-06 23:48:25 --> [Caused by] mysqli_sql_exception: Unknown column 'pg.cliente_plano_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.cliente_plano_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.cliente_plano_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.cliente_plano_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 4 APPPATH\Controllers\Cliente.php(497): CodeIgniter\Database\BaseConnection->query('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.cliente_plano_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->relatorioFinanceiroClientes()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-10-06 23:49:32 --> mysqli_sql_exception: Unknown column 'pg.clientes_planos_id' in 'on clause' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('\r\n        SELEC...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('\r\n        SELEC...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('\r\n        SELEC...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Cliente.php(497): CodeIgniter\Database\BaseConnection->query('\r\n        SELEC...')
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Cliente->relatorioFinanceiroClientes()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2025-10-06 23:49:32 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pg.clientes_planos_id' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 APPPATH\Controllers\Cliente.php(497): CodeIgniter\Database\BaseConnection->query('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->relatorioFinanceiroClientes()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-06 23:49:32 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pg.clientes_planos_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 3 APPPATH\Controllers\Cliente.php(497): CodeIgniter\Database\BaseConnection->query('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->relatorioFinanceiroClientes()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-06 23:49:32 --> [Caused by] mysqli_sql_exception: Unknown column 'pg.clientes_planos_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 4 APPPATH\Controllers\Cliente.php(497): CodeIgniter\Database\BaseConnection->query('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->relatorioFinanceiroClientes()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-10-06 23:49:36 --> mysqli_sql_exception: Unknown column 'pg.clientes_planos_id' in 'on clause' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('\r\n        SELEC...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('\r\n        SELEC...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('\r\n        SELEC...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Cliente.php(497): CodeIgniter\Database\BaseConnection->query('\r\n        SELEC...')
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Cliente->relatorioFinanceiroClientes()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2025-10-06 23:49:36 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pg.clientes_planos_id' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 APPPATH\Controllers\Cliente.php(497): CodeIgniter\Database\BaseConnection->query('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->relatorioFinanceiroClientes()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-06 23:49:36 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pg.clientes_planos_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 3 APPPATH\Controllers\Cliente.php(497): CodeIgniter\Database\BaseConnection->query('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->relatorioFinanceiroClientes()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-06 23:49:36 --> [Caused by] mysqli_sql_exception: Unknown column 'pg.clientes_planos_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 4 APPPATH\Controllers\Cliente.php(497): CodeIgniter\Database\BaseConnection->query('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->relatorioFinanceiroClientes()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-10-06 23:49:48 --> mysqli_sql_exception: Unknown column 'pg.clientes_planos_id' in 'on clause' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('\r\n        SELEC...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('\r\n        SELEC...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('\r\n        SELEC...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Cliente.php(497): CodeIgniter\Database\BaseConnection->query('\r\n        SELEC...')
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Cliente->relatorioFinanceiroClientes()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2025-10-06 23:49:48 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pg.clientes_planos_id' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 APPPATH\Controllers\Cliente.php(497): CodeIgniter\Database\BaseConnection->query('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->relatorioFinanceiroClientes()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-06 23:49:48 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pg.clientes_planos_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 3 APPPATH\Controllers\Cliente.php(497): CodeIgniter\Database\BaseConnection->query('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->relatorioFinanceiroClientes()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-06 23:49:48 --> [Caused by] mysqli_sql_exception: Unknown column 'pg.clientes_planos_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 4 APPPATH\Controllers\Cliente.php(497): CodeIgniter\Database\BaseConnection->query('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->relatorioFinanceiroClientes()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-10-06 23:50:11 --> mysqli_sql_exception: Unknown column 'pg.clientes_planos_id' in 'on clause' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('\r\n        SELEC...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('\r\n        SELEC...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('\r\n        SELEC...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Cliente.php(496): CodeIgniter\Database\BaseConnection->query('\r\n        SELEC...')
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Cliente->relatorioFinanceiroClientes()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2025-10-06 23:50:11 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pg.clientes_planos_id' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 APPPATH\Controllers\Cliente.php(496): CodeIgniter\Database\BaseConnection->query('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos as pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->relatorioFinanceiroClientes()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-06 23:50:11 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pg.clientes_planos_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos as pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos as pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 3 APPPATH\Controllers\Cliente.php(496): CodeIgniter\Database\BaseConnection->query('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos as pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->relatorioFinanceiroClientes()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-06 23:50:11 --> [Caused by] mysqli_sql_exception: Unknown column 'pg.clientes_planos_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos as pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos as pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos as pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 4 APPPATH\Controllers\Cliente.php(496): CodeIgniter\Database\BaseConnection->query('
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos as pg
+        JOIN clientes_planos cp ON cp.id = pg.clientes_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+     ORDER BY c.nome ASC, pg.data_pagamento DESC')
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->relatorioFinanceiroClientes()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-06 23:52:59 --> ErrorException: Undefined variable $data_inicio
+in APPPATH\Views\Relatorios\relatorio_financeiro_clientes.php on line 31.
+ 1 APPPATH\Views\Relatorios\relatorio_financeiro_clientes.php(31): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data_inicio', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio_financeiro_clientes.php', 31)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio_financeiro_clientes.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('relatorios/relatorio_financeiro_clientes', [], true)
+ 5 APPPATH\Controllers\Cliente.php(531): view('relatorios/relatorio_financeiro_clientes', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->relatorioFinanceiroClientes()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-06 23:53:38 --> ErrorException: Undefined variable $data_inicio
+in APPPATH\Views\Relatorios\relatorio_financeiro_clientes.php on line 31.
+ 1 APPPATH\Views\Relatorios\relatorio_financeiro_clientes.php(31): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data_inicio', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio_financeiro_clientes.php', 31)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio_financeiro_clientes.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('relatorios/relatorio_financeiro_clientes', [], true)
+ 5 APPPATH\Controllers\Cliente.php(531): view('relatorios/relatorio_financeiro_clientes', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->relatorioFinanceiroClientes()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

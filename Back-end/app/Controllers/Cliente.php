@@ -457,4 +457,92 @@ class Cliente extends BaseController
             ->setHeader('Content-Disposition', 'inline; filename="' . $nomeArquivo . '"')
             ->setBody($dompdf->output());
     }
+
+    public function relatorioFinanceiroClientes()
+    {
+        $db = \Config\Database::connect();
+
+        // $dataInicio = $this->request->getGet('data_inicio');
+        // $dataFim = $this->request->getGet('data_fim');
+
+        // if ($dataInicio && $dataFim) {
+        //     $dataInicio .= ' 00:00:00';
+        //     $dataFim .= ' 23:59:59';
+        // }
+
+        $sql = "
+        SELECT 
+            c.id AS cliente_id,
+            c.nome AS cliente_nome,
+            c.email AS cliente_email,
+            p.nome AS plano_nome,
+            pg.valor AS valor_pago,
+            pg.forma_pagamento,
+            pg.status_pagamento,
+            pg.data_pagamento
+        FROM pagamentos as pg
+        JOIN clientes_planos cp ON cp.id = pg.cliente_planos_id
+        JOIN cliente c ON c.id = cp.cliente_id
+        JOIN planos p ON p.id = cp.plano_id
+        WHERE 1=1
+    ";
+
+        // if ($dataInicio && $dataFim) {
+        //     $sql .= " AND pg.data_pagamento BETWEEN '$dataInicio' AND '$dataFim'";
+        // }
+
+        $sql .= " ORDER BY c.nome ASC, pg.data_pagamento DESC";
+
+        $result = $db->query($sql)->getResultArray();
+
+        // Agrupar por cliente
+        $clientes = [];
+        foreach ($result as $row) {
+            $clientes[$row['cliente_id']]['nome'] = $row['cliente_nome'];
+            $clientes[$row['cliente_id']]['email'] = $row['cliente_email'];
+            $clientes[$row['cliente_id']]['pagamentos'][] = [
+                'plano_nome'       => $row['plano_nome'],
+                'valor_pago'       => $row['valor_pago'],
+                'forma_pagamento'  => $row['forma_pagamento'],
+                'status_pagamento' => $row['status_pagamento'],
+                'data_pagamento'   => $row['data_pagamento'],
+            ];
+        }
+
+        // Totais gerais
+        $totalGeral = array_sum(array_map(fn($r) => $r['valor_pago'], $result));
+
+        $academiaModel = new \App\Models\AcademiaModel();
+        $academia = $academiaModel->first();
+
+        $dadosView = [
+            'clientes'      => $clientes,
+            'total_geral'   => $totalGeral,
+            // 'data_inicio'   => $dataInicio ? date('d/m/Y', strtotime($dataInicio)) : '---',
+            // 'data_fim'      => $dataFim ? date('d/m/Y', strtotime($dataFim)) : '---',
+            'nome_academia' => $academia['nome'] ?? '---',
+            'logo_academia' => $academia['logo'] ?? '',
+            'cnpj_academia' => $academia['cnpj'] ?? '',
+            'email_academia' => $academia['email'] ?? '',
+            'telefone_academia' => $academia['telefone'] ?? '',
+            'gerado_em'     => date('d/m/Y H:i:s')
+        ];
+
+        $html = view('relatorios/relatorio_financeiro_clientes', $dadosView);
+
+        $options = new \Dompdf\Options();
+        $options->set('isRemoteEnabled', true);
+        $options->set('isHtml5ParserEnabled', true);
+        $dompdf = new \Dompdf\Dompdf($options);
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+
+        $nomeArquivo = 'relatorio_financeiro_clientes_' . date('Ymd_His') . '.pdf';
+
+        return $this->response
+            ->setHeader('Content-Type', 'application/pdf')
+            ->setHeader('Content-Disposition', 'inline; filename="' . $nomeArquivo . '"')
+            ->setBody($dompdf->output());
+    }
 }

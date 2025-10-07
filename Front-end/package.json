@@ -27,6 +27,7 @@
     "html2pdf.js": "^0.10.1",
     "jquery": "^3.7.1",
     "jspdf": "^2.5.1",
+    "ngx-daterangepicker-bootstrap": "^17.5.1",
     "ngx-mask": "^17.0.8",
     "ngx-pagination": "^6.0.3",
     "ngx-stripe": "^17.2.0",
@@ -34,7 +35,7 @@
     "popper.js": "^1.16.1",
     "rxjs": "~7.8.0",
     "select2": "^4.1.0-rc.0",
-    "sweetalert2": "^11.23.0",
+    "sweetalert2": "^11.24.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
   },

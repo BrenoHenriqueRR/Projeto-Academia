@@ -14,6 +14,7 @@ import { EscolhaCadastroComponent } from '../../../modais/escolha-cadastro/escol
 import { Block } from '@angular/compiler';
 import { FormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { ModalEscolhaRelatoriosComponent } from '../../../modais/modal-escolha-relatorios/modal-escolha-relatorios.component';
 
 @Component({
   selector: 'app-pn-clientes',
@@ -133,4 +134,17 @@ export class PnClientesComponent {
       }
     })
   }
+
+  abrirModalRelatorios(){
+    const dialogRef = this.dialog.open(ModalEscolhaRelatoriosComponent, {
+            width: '400px',
+            data: { tipo: 'relatorioClientes' },
+          });
+          dialogRef.afterClosed().subscribe((result) => {
+            if (result.confirmado) {
+              // Chame o serviço para gerar o relatório
+              console.log('Gerar relatório do tipo:', result.tipoRelatorio);
+            }
+          });
+        }
 }

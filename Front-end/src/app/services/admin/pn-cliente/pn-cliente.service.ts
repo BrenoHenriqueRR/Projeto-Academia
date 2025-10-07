@@ -16,9 +16,11 @@ export class PnClienteService {
   private urlgetFoto = 'http://localhost/sites/Projeto1/Back-end/public/Cliente/pegarFoto';
   private url_Planosid = 'http://localhost/sites/Projeto1/Back-end/public/ClientePlanos/pesquisarId';
   private url_Pagamento = 'http://localhost/sites/Projeto1/Back-end/public/ClientePlanos/concluirPagamento';
-  
+  private url_pdfstatus = 'http://localhost/sites/Projeto1/Back-end/public/Cliente/relatorioClientesStatus';
+  private url_pdfpagamentos = 'http://localhost/sites/Projeto1/Back-end/public/Cliente/relatorioClientesPagamentos';
 
-  constructor(private http: HttpClient) {} 
+
+  constructor(private http: HttpClient) { }
 
   pesquisar(): Observable<any> {
     return this.http.get<any>(this.url);
@@ -27,32 +29,52 @@ export class PnClienteService {
   pesquisarSAnam(): Observable<CliPesquisar> {
     return this.http.get<CliPesquisar>(this.urlSAnam);
   }
- 
-  pesquisarpid(id:any): Observable<any> {
+
+  pesquisarpid(id: any): Observable<any> {
     return this.http.post<any>(this.urlpid, id);
   }
 
-  delete(id: any): Observable<any>{
-    return this.http.post<any>(this.urldel,id)
+  delete(id: any): Observable<any> {
+    return this.http.post<any>(this.urldel, id)
   }
 
-  inserirfoto(imagem: FormData): Observable<any>{
-    return this.http.post<any>(this.urlFoto,imagem)
+  inserirfoto(imagem: FormData): Observable<any> {
+    return this.http.post<any>(this.urlFoto, imagem)
   }
 
-  pegarfoto(id: any): Observable<any>{
-    return this.http.post<any>(this.urlgetFoto,id)
-  }
-  
-  realizarPagamento(id: any): Observable<any>{
-    return this.http.post<any>(this.url_Pagamento,id)
+  pegarfoto(id: any): Observable<any> {
+    return this.http.post<any>(this.urlgetFoto, id)
   }
 
-  listarTodosPag():Observable<any> {
+  realizarPagamento(id: any): Observable<any> {
+    return this.http.post<any>(this.url_Pagamento, id)
+  }
+
+  listarTodosPag(): Observable<any> {
     return this.http.get<any>(this.urlpag);
   }
 
-  pesquisarIdPlano(id: any): Observable<any>{
-    return this.http.post<any>(this.url_Planosid,id)
+  pesquisarIdPlano(id: any): Observable<any> {
+    return this.http.post<any>(this.url_Planosid, id)
+  }
+
+  gerarRelatorioClientes(tipo: any): void {
+    switch (tipo) {
+      case 'status':
+        this.gerarRelatorioClientesStatus();
+        break;
+      case 'pagamentos':
+        this.gerarRelatorioClientesPagamentos();
+        break;
+    }
+  }
+
+  gerarRelatorioClientesStatus(): void {
+    // const url = this.url_pdfstatus;
+    window.open(this.url_pdfstatus, '_blank');
+  }
+
+  gerarRelatorioClientesPagamentos(): void {
+    window.open(this.url_pdfpagamentos, '_blank');
   }
 }

@@ -229,7 +229,6 @@
             color: #888;
         }
 
-        /* --- Fim do CSS --- */
     </style>
 </head>
 
@@ -334,7 +333,6 @@
             <?php endif; ?>
         </div>
 
-        <!-- Assinatura -->
         <div class="assinatura-box">
             <div class="assinatura-linha">
                 <div></div>
@@ -343,7 +341,6 @@
             </div>
         </div>
 
-        <!-- Rodapé -->
         <div class="rodape-relatorio clearfix">
             <div class="rodape-left">
                 <strong>Sistema de Gestão Financeira</strong><br>

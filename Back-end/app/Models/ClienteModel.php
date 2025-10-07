@@ -22,6 +22,7 @@ class ClienteModel extends Model {
         'treino_com_personal',
         'email_verificado',
         'termo_responsabilidade',
-        'atestado_medico'
+        'atestado_medico',
+        'data_criacao'
     ]; 
 }

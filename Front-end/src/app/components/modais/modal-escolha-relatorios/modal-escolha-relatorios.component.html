@@ -1,0 +1,50 @@
+@if (tipo == 'relatorioClientes') {
+  <h2 mat-dialog-title>📊 Relatórios dos Clientes</h2>
+
+  <mat-dialog-content>
+    <div class="d-flex flex-column gap-3">
+
+      <div class="itens">
+        <div class="d-flex flex-column gap-3 py-2">
+
+          <div class="d-flex align-items-center gap-2">
+            <mat-form-field appearance="fill" class="w-50">
+              <mat-label>Tipo de relatório</mat-label>
+              <mat-select [(value)]="tipoRelatorio">
+                <mat-option value="pagamentos">Pagamentos</mat-option>
+                <!-- <mat-option value="treino">Treinos</mat-option> -->
+                <mat-option value="status">Status</mat-option>
+                <!-- <mat-option value="geral">Completo</mat-option> -->
+              </mat-select>
+            </mat-form-field>
+             <div class="text-end">
+            <button mat-raised-button color="primary" (click)="gerarRelatorio(tipoRelatorio)">
+              <i class="fa-solid fa-file-pdf me-2"></i>Gerar Relatório
+            </button>
+          </div>  
+          </div>
+
+          <!-- <div class="d-flex align-items-center gap-2">
+            <mat-form-field appearance="fill">
+              <mat-label>Data Inicial</mat-label>
+              <input matInput [(ngModel)]="dataInicio" type="date">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Data Final</mat-label>
+              <input matInput [(ngModel)]="dataFim" type="date">
+            </mat-form-field>
+          </div> -->
+
+  
+
+        </div>
+      </div>
+
+    </div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions class="text-end pt-2">
+    <button mat-button (click)="cancelar()">Cancelar</button>
+  </mat-dialog-actions>
+}

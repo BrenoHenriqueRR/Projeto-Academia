@@ -1,0 +1,20 @@
+
+<div class="d-flex align-items-center gap-2">
+    <i class="bi bi-calendar3 text-primary"></i>
+    <span>
+        <input matInput
+               type="text"
+               ngxDaterangepickerMd
+               [alwaysShowCalendars]="true"  [locale]="{applyLabel: 'Aplicar', format: 'DD/MM/YYYY'}"
+               [showClearButton]="true"
+               [ranges]="ranges"
+                [lockStartDate]="false"
+               [showDropdowns]="true"
+               [(ngModel)]="selected"
+               name="daterange"
+               class="form-control"
+               placeholder="Selecione o período"
+               (ngModelChange)="onDateChange($event)" />
+               
+    </span>
+</div>

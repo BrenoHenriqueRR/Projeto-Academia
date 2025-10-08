@@ -8,12 +8,15 @@ import { ModalVendaComponent } from '../pn-loja/modal-venda/modal-venda.componen
 import { MatDialog } from '@angular/material/dialog';
 import { MaterialModule } from '../../../../modules/material.module';
 import { ModalSpinnerComponent } from '../../../modais/modal-spinner/modal-spinner.component';
+import moment from 'moment';
+import { DatapickerComponent } from "../../../datapicker/datapicker.component";
 
 
 @Component({
   selector: 'app-pn-financeiro',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, CommonModule, RouterLink, MaterialModule, ModalSpinnerComponent],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule, RouterLink, MaterialModule,
+    ModalSpinnerComponent, DatapickerComponent],
   templateUrl: './pn-financeiro.component.html',
   styleUrl: './pn-financeiro.component.css'
 })
@@ -23,6 +26,7 @@ export class PnFinanceiroComponent {
   ano = new Date().getFullYear();
   data_group !: FormGroup;
   resumo: any;
+  selected!: { startDate: moment.Moment, endDate: moment.Moment };
 
   // Novas propriedades para funcionalidades avançadas
   listaPagamentos: any[] = [];
@@ -34,6 +38,7 @@ export class PnFinanceiroComponent {
   margemLucro: number = 0;
   loading = false;
 
+  // No seu .ts
   // Dados para gráficos (pode ser expandido futuramente)
   dadosGrafico = {
     labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai'],
@@ -45,16 +50,21 @@ export class PnFinanceiroComponent {
     private service: PnFinanceiroService,
     private clienteService: PnClienteService,
     private dialog: MatDialog,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
   ) { }
 
   ngOnInit(): void {
-    this.data_group = new FormGroup({
-      start: new FormControl(null, [Validators.required]),
-      end: new FormControl(null, [Validators.required]),
-      Sstart: new FormControl(null), //string
-      Send: new FormControl(null), //string
-    })
+    this.selected = {
+      startDate: moment().subtract(29, 'days'),
+      endDate: moment()
+    };
+     this.data_group = new FormGroup({
+      start: new FormControl(this.selected.startDate, [Validators.required]),
+      end: new FormControl(this.selected.endDate, [Validators.required]),
+      Sstart: new FormControl(this.selected.startDate.format('YYYY-MM-DD')), // string formatada
+      Send: new FormControl(this.selected.endDate.format('YYYY-MM-DD')),     // string formatada
+    });
+
     this.carregarResumo();
     this.carregarClientesAtivos();
     this.carregarPagamentos();
@@ -64,7 +74,8 @@ export class PnFinanceiroComponent {
     this.loading = true;
     // this.data_group.value.start == null && this.data_group.value.end == null
     if (!this.data_group.valid) {
-      this.service.getResumo(this.mes.toString().padStart(2, '0'), this.ano.toString())
+      this.service.getResumo(this.data_group.value.Sstart,
+      this.data_group.value.Send)
         .subscribe({
           next: (data) => {
             this.resumo = data;
@@ -321,6 +332,12 @@ export class PnFinanceiroComponent {
     this.ano = new Date().getFullYear();
     this.carregarResumo();
   }
+
+  onDatePicked(event: { startDate: moment.Moment, endDate: moment.Moment }) {
+    console.log('Datas selecionadas:', event.startDate.format('YYYY-MM-DD'), 'até', event.endDate.format('YYYY-MM-DD'));
+    this.carregarResumo();
+  }
+
 
   // Método para atualizar todos os dados
   atualizarTodosDados() {

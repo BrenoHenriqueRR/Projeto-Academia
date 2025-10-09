@@ -29,14 +29,6 @@ export class DatapickerComponent {
     'Mês Passado': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
   }
 
-   ngOnInit(): void {
-    // 🔹 Define o intervalo padrão (últimos 30 dias)
-    // this.selected = {
-    //   startDate: moment().subtract(29, 'days'),
-    //   endDate: moment()
-    // };
-  }
-
   onDateChange(value: any) {
     this.dateSelected.emit(value);
   }

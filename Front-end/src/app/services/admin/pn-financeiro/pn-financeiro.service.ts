@@ -13,8 +13,8 @@ export class PnFinanceiroService {
   constructor(private http: HttpClient) { }
 
   // Método existente
-  getResumo(mes: string, ano: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/resumo?mes=${mes}&ano=${ano}`);
+  getResumo(data_inicio: string, data_fim: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/resumo?data_inicio=${data_inicio}&data_fim=${data_fim}`);
   }
 
   getResumoPeriodo(mes: string, ano: string): Observable<any> {
@@ -22,8 +22,8 @@ export class PnFinanceiroService {
   }
 
   // Novos métodos para as funcionalidades melhoradas
-  listaPagamentos(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/listaPagamentos`);
+  listaPagamentos(data_inicio: string, data_fim: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/listaPagamentos?data_inicio=${data_inicio}&data_fim=${data_fim}`);
   }
 
   listaDespesas(): Observable<any[]> {

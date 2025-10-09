@@ -112,7 +112,7 @@ export class PnFinanceiroComponent {
   }
 
   carregarPagamentos() {
-    this.service.listaPagamentos().subscribe({
+    this.service.listaPagamentos(this.data_group.value.Sstart, this.data_group.value.Send).subscribe({
       next: (data) => {
         this.listaPagamentos = data;
         console.log('Pagamentos carregados:', data);
@@ -335,7 +335,11 @@ export class PnFinanceiroComponent {
 
   onDatePicked(event: { startDate: moment.Moment, endDate: moment.Moment }) {
     console.log('Datas selecionadas:', event.startDate.format('YYYY-MM-DD'), 'até', event.endDate.format('YYYY-MM-DD'));
-    this.carregarResumo();
+     this.data_group.patchValue({
+        Sstart: event.startDate.format('YYYY-MM-DD'),
+        Send: event.endDate.format('YYYY-MM-DD')
+      })
+     this.atualizarTodosDados();
   }
 
 

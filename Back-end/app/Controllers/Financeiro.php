@@ -100,15 +100,15 @@ class Financeiro extends BaseController
     }
 
     public function listaPagamentos()
-{
-    // 1. Captura dos parâmetros da URL
-    $dataInicioParam = $this->request->getGet('data_inicio');
-    $dataFimParam = $this->request->getGet('data_fim');
+    {
+        // 1. Captura dos parâmetros da URL
+        $dataInicioParam = $this->request->getGet('data_inicio');
+        $dataFimParam = $this->request->getGet('data_fim');
 
-    // 2. Inicia a construção da query
-    $builder = $this->pagamentoModel;
+        // 2. Inicia a construção da query
+        $builder = $this->pagamentoModel;
 
-    $builder->select('
+        $builder->select('
         pagamentos.id,
         pagamentos.valor,
         pagamentos.data_pagamento,
@@ -120,39 +120,32 @@ class Financeiro extends BaseController
         clientes_planos.data_vencimento,
         funcionarios.nome as funcionario_nome
     ')
-        ->join('clientes_planos', 'pagamentos.cliente_planos_id = clientes_planos.id', 'left')
-        ->join('cliente', 'clientes_planos.cliente_id = cliente.id', 'left')
-        ->join('funcionarios', 'pagamentos.funcionario_id = funcionarios.id', 'left');
+            ->join('clientes_planos', 'pagamentos.cliente_planos_id = clientes_planos.id', 'left')
+            ->join('cliente', 'clientes_planos.cliente_id = cliente.id', 'left')
+            ->join('funcionarios', 'pagamentos.funcionario_id = funcionarios.id', 'left');
 
-    // 3. Aplica a lógica de filtro复合 (OR)
-    
-    // Se o usuário especificou um intervalo de datas...
-    if (!empty($dataInicioParam) && !empty($dataFimParam)) {
-        
-        $builder->groupStart(); // Inicia um grupo de parênteses: ( ... )
+        if (!empty($dataInicioParam) && !empty($dataFimParam)) {
 
-        // Condição 1: Pagamentos dentro do intervalo de data
-        // IMPORTANTE: Escolha a coluna de data correta para o filtro (data_vencimento, data_pagamento, etc)
-        $builder->where('clientes_planos.data_vencimento >=', $dataInicioParam);
-        $builder->where('clientes_planos.data_vencimento <=', $dataFimParam);
-        
-        $builder->groupEnd(); // Fecha o grupo: (data >= X AND data <= Y)
+            $builder->groupStart(); // Inicia um grupo de parênteses: ( ... )
 
-        // Condição 2: OU pagamentos com status 'pendente'
-        $builder->orWhere('pagamentos.status_pagamento', 'pendente');
+            // Condição 1: Pagamentos dentro do intervalo de data
+            // IMPORTANTE: Escolha a coluna de data correta para o filtro (data_vencimento, data_pagamento, etc)
+            $builder->where('clientes_planos.data_vencimento >=', $dataInicioParam);
+            $builder->where('clientes_planos.data_vencimento <=', $dataFimParam);
 
-    } else {
-        // Comportamento padrão: Se NENHUMA data for selecionada,
-        // talvez faça sentido mostrar apenas os pendentes.
-        // Se quiser mostrar tudo, simplesmente remova este bloco 'else'.
-        $builder->where('pagamentos.status_pagamento', 'pendente');
+            $builder->groupEnd(); // Fecha o grupo: (data >= X AND data <= Y)
+
+            $builder->orWhere('pagamentos.status_pagamento', 'pendente');
+        } else {
+
+            $builder->where('pagamentos.status_pagamento', 'pendente');
+        }
+
+        // 4. Executa a query final com os filtros e ordenação
+        $data = $builder->orderBy('pagamentos.data_criacao', 'DESC')->findAll();
+
+        return $this->response->setJSON($data);
     }
-
-    // 4. Executa a query final com os filtros e ordenação
-    $data = $builder->orderBy('pagamentos.data_criacao', 'DESC')->findAll();
-
-    return $this->response->setJSON($data);
-}
 
     public function listaDespesas()
     {
@@ -165,13 +158,19 @@ class Financeiro extends BaseController
 
     public function listaVendas()
     {
+        $data_inicio = $this->request->getGet('data_inicio');
+        $data_fim = $this->request->getGet('data_fim');
+
+        $dataInicio = date('Y-m-d', strtotime($data_inicio));
+        $dataFim = date('Y-m-d', strtotime($data_fim));
+
         $itemModel = new LojaItensModel();
 
-        $vendas = $this->vendaModel
+        $vendas = $this->vendaModel->where('data_venda >=', $dataInicio)
+            ->where('data_venda <=', $dataFim)
             ->orderBy('data_venda', 'DESC')
             ->findAll();
 
-        // Adicionar itens para cada venda (opcional, pode ser pesado)
         foreach ($vendas as &$venda) {
             $itens = $itemModel
                 ->select('
@@ -264,20 +263,6 @@ class Financeiro extends BaseController
         return $this->response->setJSON($relatorio);
     }
 
-    // public function exportarExcel()
-    // {
-    //     $json = file_get_contents('php://input');
-    //     $dados = json_decode($json, true);
-
-
-    //     return $this->response->setJSON([
-    //         'status' => 'success',
-    //         'message' => 'Dados preparados para exportação',
-    //         'dados' => $dados
-    //     ]);
-    // }
-
-    // Métodos auxiliares privados
     private function getNomeMes($numeroMes)
     {
         $meses = [

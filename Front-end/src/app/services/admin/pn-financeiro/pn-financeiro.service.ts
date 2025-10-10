@@ -30,8 +30,8 @@ export class PnFinanceiroService {
     return this.http.get<any[]>(`${this.apiUrl}/listaDespesas`);
   }
 
-  listaVendas(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/listaVendas`);
+  listaVendas(data_inicio: string, data_fim: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/listaVendas?data_inicio=${data_inicio}&data_fim=${data_fim}`);
   }
 
   // Método para buscar pagamentos pendentes

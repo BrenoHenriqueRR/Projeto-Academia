@@ -224,3 +224,448 @@ OR `status_pagamento` = :status_pagamento.1:
  9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
 10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
 11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-10-09 22:38:52 --> mysqli_sql_exception: Unknown column 'data_pagamento' in 'where clause' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `loja_ve...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `loja_ve...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `loja_ve...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `loja_ve...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(190): CodeIgniter\BaseModel->findAll()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Financeiro->listaVendas()
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2025-10-09 22:38:52 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'data_pagamento' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `loja_vendas_itens`.*, `loja_produtos`.`nome` as `produto_nome`
+FROM `loja_vendas_itens`
+LEFT JOIN `loja_produtos` ON `loja_vendas_itens`.`produto_id` = `loja_produtos`.`id`
+WHERE `venda_id` = :venda_id:
+AND `data_pagamento` >= :data_pagamento:
+AND `data_pagamento` <= :data_pagamento.1:', [...], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Financeiro.php(190): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->listaVendas()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-09 22:38:52 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'data_pagamento' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `loja_vendas_itens`.*, `loja_produtos`.`nome` as `produto_nome`
+FROM `loja_vendas_itens`
+LEFT JOIN `loja_produtos` ON `loja_vendas_itens`.`produto_id` = `loja_produtos`.`id`
+WHERE `venda_id` = \'18\'
+AND `data_pagamento` >= \'1970-01-01\'
+AND `data_pagamento` <= \'1970-01-01\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `loja_vendas_itens`.*, `loja_produtos`.`nome` as `produto_nome`
+FROM `loja_vendas_itens`
+LEFT JOIN `loja_produtos` ON `loja_vendas_itens`.`produto_id` = `loja_produtos`.`id`
+WHERE `venda_id` = \'18\'
+AND `data_pagamento` >= \'1970-01-01\'
+AND `data_pagamento` <= \'1970-01-01\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `loja_vendas_itens`.*, `loja_produtos`.`nome` as `produto_nome`
+FROM `loja_vendas_itens`
+LEFT JOIN `loja_produtos` ON `loja_vendas_itens`.`produto_id` = `loja_produtos`.`id`
+WHERE `venda_id` = :venda_id:
+AND `data_pagamento` >= :data_pagamento:
+AND `data_pagamento` <= :data_pagamento.1:', [...], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Financeiro.php(190): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->listaVendas()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-09 22:38:52 --> [Caused by] mysqli_sql_exception: Unknown column 'data_pagamento' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `loja_vendas_itens`.*, `loja_produtos`.`nome` as `produto_nome`
+FROM `loja_vendas_itens`
+LEFT JOIN `loja_produtos` ON `loja_vendas_itens`.`produto_id` = `loja_produtos`.`id`
+WHERE `venda_id` = \'18\'
+AND `data_pagamento` >= \'1970-01-01\'
+AND `data_pagamento` <= \'1970-01-01\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `loja_vendas_itens`.*, `loja_produtos`.`nome` as `produto_nome`
+FROM `loja_vendas_itens`
+LEFT JOIN `loja_produtos` ON `loja_vendas_itens`.`produto_id` = `loja_produtos`.`id`
+WHERE `venda_id` = \'18\'
+AND `data_pagamento` >= \'1970-01-01\'
+AND `data_pagamento` <= \'1970-01-01\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `loja_vendas_itens`.*, `loja_produtos`.`nome` as `produto_nome`
+FROM `loja_vendas_itens`
+LEFT JOIN `loja_produtos` ON `loja_vendas_itens`.`produto_id` = `loja_produtos`.`id`
+WHERE `venda_id` = \'18\'
+AND `data_pagamento` >= \'1970-01-01\'
+AND `data_pagamento` <= \'1970-01-01\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `loja_vendas_itens`.*, `loja_produtos`.`nome` as `produto_nome`
+FROM `loja_vendas_itens`
+LEFT JOIN `loja_produtos` ON `loja_vendas_itens`.`produto_id` = `loja_produtos`.`id`
+WHERE `venda_id` = :venda_id:
+AND `data_pagamento` >= :data_pagamento:
+AND `data_pagamento` <= :data_pagamento.1:', [...], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Financeiro.php(190): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->listaVendas()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-10-09 22:39:01 --> mysqli_sql_exception: Unknown column 'data_pagamento' in 'where clause' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `loja_ve...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `loja_ve...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `loja_ve...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `loja_ve...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(190): CodeIgniter\BaseModel->findAll()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Financeiro->listaVendas()
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2025-10-09 22:39:01 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'data_pagamento' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `loja_vendas_itens`.*, `loja_produtos`.`nome` as `produto_nome`
+FROM `loja_vendas_itens`
+LEFT JOIN `loja_produtos` ON `loja_vendas_itens`.`produto_id` = `loja_produtos`.`id`
+WHERE `venda_id` = :venda_id:
+AND `data_pagamento` >= :data_pagamento:
+AND `data_pagamento` <= :data_pagamento.1:', [...], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Financeiro.php(190): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->listaVendas()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-09 22:39:01 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'data_pagamento' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `loja_vendas_itens`.*, `loja_produtos`.`nome` as `produto_nome`
+FROM `loja_vendas_itens`
+LEFT JOIN `loja_produtos` ON `loja_vendas_itens`.`produto_id` = `loja_produtos`.`id`
+WHERE `venda_id` = \'18\'
+AND `data_pagamento` >= \'1970-01-01\'
+AND `data_pagamento` <= \'1970-01-01\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `loja_vendas_itens`.*, `loja_produtos`.`nome` as `produto_nome`
+FROM `loja_vendas_itens`
+LEFT JOIN `loja_produtos` ON `loja_vendas_itens`.`produto_id` = `loja_produtos`.`id`
+WHERE `venda_id` = \'18\'
+AND `data_pagamento` >= \'1970-01-01\'
+AND `data_pagamento` <= \'1970-01-01\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `loja_vendas_itens`.*, `loja_produtos`.`nome` as `produto_nome`
+FROM `loja_vendas_itens`
+LEFT JOIN `loja_produtos` ON `loja_vendas_itens`.`produto_id` = `loja_produtos`.`id`
+WHERE `venda_id` = :venda_id:
+AND `data_pagamento` >= :data_pagamento:
+AND `data_pagamento` <= :data_pagamento.1:', [...], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Financeiro.php(190): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->listaVendas()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-09 22:39:01 --> [Caused by] mysqli_sql_exception: Unknown column 'data_pagamento' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `loja_vendas_itens`.*, `loja_produtos`.`nome` as `produto_nome`
+FROM `loja_vendas_itens`
+LEFT JOIN `loja_produtos` ON `loja_vendas_itens`.`produto_id` = `loja_produtos`.`id`
+WHERE `venda_id` = \'18\'
+AND `data_pagamento` >= \'1970-01-01\'
+AND `data_pagamento` <= \'1970-01-01\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `loja_vendas_itens`.*, `loja_produtos`.`nome` as `produto_nome`
+FROM `loja_vendas_itens`
+LEFT JOIN `loja_produtos` ON `loja_vendas_itens`.`produto_id` = `loja_produtos`.`id`
+WHERE `venda_id` = \'18\'
+AND `data_pagamento` >= \'1970-01-01\'
+AND `data_pagamento` <= \'1970-01-01\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `loja_vendas_itens`.*, `loja_produtos`.`nome` as `produto_nome`
+FROM `loja_vendas_itens`
+LEFT JOIN `loja_produtos` ON `loja_vendas_itens`.`produto_id` = `loja_produtos`.`id`
+WHERE `venda_id` = \'18\'
+AND `data_pagamento` >= \'1970-01-01\'
+AND `data_pagamento` <= \'1970-01-01\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `loja_vendas_itens`.*, `loja_produtos`.`nome` as `produto_nome`
+FROM `loja_vendas_itens`
+LEFT JOIN `loja_produtos` ON `loja_vendas_itens`.`produto_id` = `loja_produtos`.`id`
+WHERE `venda_id` = :venda_id:
+AND `data_pagamento` >= :data_pagamento:
+AND `data_pagamento` <= :data_pagamento.1:', [...], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Financeiro.php(190): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->listaVendas()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-10-09 22:39:11 --> mysqli_sql_exception: Unknown column 'data_pagamento' in 'where clause' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `loja_ve...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `loja_ve...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `loja_ve...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `loja_ve...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(190): CodeIgniter\BaseModel->findAll()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Financeiro->listaVendas()
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2025-10-09 22:39:11 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'data_pagamento' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `loja_vendas_itens`.*, `loja_produtos`.`nome` as `produto_nome`
+FROM `loja_vendas_itens`
+LEFT JOIN `loja_produtos` ON `loja_vendas_itens`.`produto_id` = `loja_produtos`.`id`
+WHERE `venda_id` = :venda_id:
+AND `data_pagamento` >= :data_pagamento:
+AND `data_pagamento` <= :data_pagamento.1:', [...], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Financeiro.php(190): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->listaVendas()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-09 22:39:11 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'data_pagamento' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `loja_vendas_itens`.*, `loja_produtos`.`nome` as `produto_nome`
+FROM `loja_vendas_itens`
+LEFT JOIN `loja_produtos` ON `loja_vendas_itens`.`produto_id` = `loja_produtos`.`id`
+WHERE `venda_id` = \'18\'
+AND `data_pagamento` >= \'1970-01-01\'
+AND `data_pagamento` <= \'1970-01-01\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `loja_vendas_itens`.*, `loja_produtos`.`nome` as `produto_nome`
+FROM `loja_vendas_itens`
+LEFT JOIN `loja_produtos` ON `loja_vendas_itens`.`produto_id` = `loja_produtos`.`id`
+WHERE `venda_id` = \'18\'
+AND `data_pagamento` >= \'1970-01-01\'
+AND `data_pagamento` <= \'1970-01-01\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `loja_vendas_itens`.*, `loja_produtos`.`nome` as `produto_nome`
+FROM `loja_vendas_itens`
+LEFT JOIN `loja_produtos` ON `loja_vendas_itens`.`produto_id` = `loja_produtos`.`id`
+WHERE `venda_id` = :venda_id:
+AND `data_pagamento` >= :data_pagamento:
+AND `data_pagamento` <= :data_pagamento.1:', [...], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Financeiro.php(190): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->listaVendas()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-09 22:39:11 --> [Caused by] mysqli_sql_exception: Unknown column 'data_pagamento' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `loja_vendas_itens`.*, `loja_produtos`.`nome` as `produto_nome`
+FROM `loja_vendas_itens`
+LEFT JOIN `loja_produtos` ON `loja_vendas_itens`.`produto_id` = `loja_produtos`.`id`
+WHERE `venda_id` = \'18\'
+AND `data_pagamento` >= \'1970-01-01\'
+AND `data_pagamento` <= \'1970-01-01\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `loja_vendas_itens`.*, `loja_produtos`.`nome` as `produto_nome`
+FROM `loja_vendas_itens`
+LEFT JOIN `loja_produtos` ON `loja_vendas_itens`.`produto_id` = `loja_produtos`.`id`
+WHERE `venda_id` = \'18\'
+AND `data_pagamento` >= \'1970-01-01\'
+AND `data_pagamento` <= \'1970-01-01\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `loja_vendas_itens`.*, `loja_produtos`.`nome` as `produto_nome`
+FROM `loja_vendas_itens`
+LEFT JOIN `loja_produtos` ON `loja_vendas_itens`.`produto_id` = `loja_produtos`.`id`
+WHERE `venda_id` = \'18\'
+AND `data_pagamento` >= \'1970-01-01\'
+AND `data_pagamento` <= \'1970-01-01\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `loja_vendas_itens`.*, `loja_produtos`.`nome` as `produto_nome`
+FROM `loja_vendas_itens`
+LEFT JOIN `loja_produtos` ON `loja_vendas_itens`.`produto_id` = `loja_produtos`.`id`
+WHERE `venda_id` = :venda_id:
+AND `data_pagamento` >= :data_pagamento:
+AND `data_pagamento` <= :data_pagamento.1:', [...], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Financeiro.php(190): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->listaVendas()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-10-09 22:43:56 --> mysqli_sql_exception: Unknown column 'data_pagamento' in 'where clause' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `loja_ve...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `loja_ve...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `loja_ve...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `loja_ve...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(189): CodeIgniter\BaseModel->findAll()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Financeiro->listaVendas()
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2025-10-09 22:43:56 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'data_pagamento' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `loja_vendas_itens`.*, `loja_produtos`.`nome` as `produto_nome`
+FROM `loja_vendas_itens`
+LEFT JOIN `loja_produtos` ON `loja_vendas_itens`.`produto_id` = `loja_produtos`.`id`
+WHERE `venda_id` = :venda_id:
+AND `data_pagamento` >= :data_pagamento:
+AND `data_pagamento` <= :data_pagamento.1:', [...], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Financeiro.php(189): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->listaVendas()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-09 22:43:56 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'data_pagamento' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `loja_vendas_itens`.*, `loja_produtos`.`nome` as `produto_nome`
+FROM `loja_vendas_itens`
+LEFT JOIN `loja_produtos` ON `loja_vendas_itens`.`produto_id` = `loja_produtos`.`id`
+WHERE `venda_id` = \'18\'
+AND `data_pagamento` >= \'2025-04-02\'
+AND `data_pagamento` <= \'2025-11-01\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `loja_vendas_itens`.*, `loja_produtos`.`nome` as `produto_nome`
+FROM `loja_vendas_itens`
+LEFT JOIN `loja_produtos` ON `loja_vendas_itens`.`produto_id` = `loja_produtos`.`id`
+WHERE `venda_id` = \'18\'
+AND `data_pagamento` >= \'2025-04-02\'
+AND `data_pagamento` <= \'2025-11-01\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `loja_vendas_itens`.*, `loja_produtos`.`nome` as `produto_nome`
+FROM `loja_vendas_itens`
+LEFT JOIN `loja_produtos` ON `loja_vendas_itens`.`produto_id` = `loja_produtos`.`id`
+WHERE `venda_id` = :venda_id:
+AND `data_pagamento` >= :data_pagamento:
+AND `data_pagamento` <= :data_pagamento.1:', [...], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Financeiro.php(189): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->listaVendas()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-09 22:43:56 --> [Caused by] mysqli_sql_exception: Unknown column 'data_pagamento' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `loja_vendas_itens`.*, `loja_produtos`.`nome` as `produto_nome`
+FROM `loja_vendas_itens`
+LEFT JOIN `loja_produtos` ON `loja_vendas_itens`.`produto_id` = `loja_produtos`.`id`
+WHERE `venda_id` = \'18\'
+AND `data_pagamento` >= \'2025-04-02\'
+AND `data_pagamento` <= \'2025-11-01\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `loja_vendas_itens`.*, `loja_produtos`.`nome` as `produto_nome`
+FROM `loja_vendas_itens`
+LEFT JOIN `loja_produtos` ON `loja_vendas_itens`.`produto_id` = `loja_produtos`.`id`
+WHERE `venda_id` = \'18\'
+AND `data_pagamento` >= \'2025-04-02\'
+AND `data_pagamento` <= \'2025-11-01\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `loja_vendas_itens`.*, `loja_produtos`.`nome` as `produto_nome`
+FROM `loja_vendas_itens`
+LEFT JOIN `loja_produtos` ON `loja_vendas_itens`.`produto_id` = `loja_produtos`.`id`
+WHERE `venda_id` = \'18\'
+AND `data_pagamento` >= \'2025-04-02\'
+AND `data_pagamento` <= \'2025-11-01\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `loja_vendas_itens`.*, `loja_produtos`.`nome` as `produto_nome`
+FROM `loja_vendas_itens`
+LEFT JOIN `loja_produtos` ON `loja_vendas_itens`.`produto_id` = `loja_produtos`.`id`
+WHERE `venda_id` = :venda_id:
+AND `data_pagamento` >= :data_pagamento:
+AND `data_pagamento` <= :data_pagamento.1:', [...], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Financeiro.php(189): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->listaVendas()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-10-09 22:43:59 --> mysqli_sql_exception: Unknown column 'data_pagamento' in 'where clause' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `loja_ve...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `loja_ve...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `loja_ve...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `loja_ve...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Financeiro.php(189): CodeIgniter\BaseModel->findAll()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Financeiro->listaVendas()
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2025-10-09 22:43:59 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'data_pagamento' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `loja_vendas_itens`.*, `loja_produtos`.`nome` as `produto_nome`
+FROM `loja_vendas_itens`
+LEFT JOIN `loja_produtos` ON `loja_vendas_itens`.`produto_id` = `loja_produtos`.`id`
+WHERE `venda_id` = :venda_id:
+AND `data_pagamento` >= :data_pagamento:
+AND `data_pagamento` <= :data_pagamento.1:', [...], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Financeiro.php(189): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->listaVendas()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-09 22:43:59 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'data_pagamento' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `loja_vendas_itens`.*, `loja_produtos`.`nome` as `produto_nome`
+FROM `loja_vendas_itens`
+LEFT JOIN `loja_produtos` ON `loja_vendas_itens`.`produto_id` = `loja_produtos`.`id`
+WHERE `venda_id` = \'18\'
+AND `data_pagamento` >= \'2025-04-02\'
+AND `data_pagamento` <= \'2025-11-01\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `loja_vendas_itens`.*, `loja_produtos`.`nome` as `produto_nome`
+FROM `loja_vendas_itens`
+LEFT JOIN `loja_produtos` ON `loja_vendas_itens`.`produto_id` = `loja_produtos`.`id`
+WHERE `venda_id` = \'18\'
+AND `data_pagamento` >= \'2025-04-02\'
+AND `data_pagamento` <= \'2025-11-01\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `loja_vendas_itens`.*, `loja_produtos`.`nome` as `produto_nome`
+FROM `loja_vendas_itens`
+LEFT JOIN `loja_produtos` ON `loja_vendas_itens`.`produto_id` = `loja_produtos`.`id`
+WHERE `venda_id` = :venda_id:
+AND `data_pagamento` >= :data_pagamento:
+AND `data_pagamento` <= :data_pagamento.1:', [...], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Financeiro.php(189): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->listaVendas()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-09 22:43:59 --> [Caused by] mysqli_sql_exception: Unknown column 'data_pagamento' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `loja_vendas_itens`.*, `loja_produtos`.`nome` as `produto_nome`
+FROM `loja_vendas_itens`
+LEFT JOIN `loja_produtos` ON `loja_vendas_itens`.`produto_id` = `loja_produtos`.`id`
+WHERE `venda_id` = \'18\'
+AND `data_pagamento` >= \'2025-04-02\'
+AND `data_pagamento` <= \'2025-11-01\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `loja_vendas_itens`.*, `loja_produtos`.`nome` as `produto_nome`
+FROM `loja_vendas_itens`
+LEFT JOIN `loja_produtos` ON `loja_vendas_itens`.`produto_id` = `loja_produtos`.`id`
+WHERE `venda_id` = \'18\'
+AND `data_pagamento` >= \'2025-04-02\'
+AND `data_pagamento` <= \'2025-11-01\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `loja_vendas_itens`.*, `loja_produtos`.`nome` as `produto_nome`
+FROM `loja_vendas_itens`
+LEFT JOIN `loja_produtos` ON `loja_vendas_itens`.`produto_id` = `loja_produtos`.`id`
+WHERE `venda_id` = \'18\'
+AND `data_pagamento` >= \'2025-04-02\'
+AND `data_pagamento` <= \'2025-11-01\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `loja_vendas_itens`.*, `loja_produtos`.`nome` as `produto_nome`
+FROM `loja_vendas_itens`
+LEFT JOIN `loja_produtos` ON `loja_vendas_itens`.`produto_id` = `loja_produtos`.`id`
+WHERE `venda_id` = :venda_id:
+AND `data_pagamento` >= :data_pagamento:
+AND `data_pagamento` <= :data_pagamento.1:', [...], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Financeiro.php(189): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Financeiro->listaVendas()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Financeiro))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

@@ -137,7 +137,7 @@ export class PnFinanceiroComponent {
   }
 
   carregarVendas() {
-    this.service.listaVendas().subscribe({
+    this.service.listaVendas(this.data_group.value.Sstart, this.data_group.value.Send).subscribe({
       next: (data) => {
         this.listaVendas = data;
         console.log('Vendas carregadas:', data);

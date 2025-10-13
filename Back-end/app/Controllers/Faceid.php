@@ -94,8 +94,8 @@ class Faceid extends BaseController
             'version' => 'latest',
             'region'  => 'us-east-1', // Região 
             'credentials' => [ // Chaves concedidas pela AWS
-                'key'    => 'AKIA6ODU3OE2TJP3GNHX',
-                'secret' => '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',
+                'key'    => 'AKIA27TQ5KDG3AHXJDNR',
+                'secret' => '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',
             ],
             'suppress_php_deprecation_warning' => true,
             'http' => [

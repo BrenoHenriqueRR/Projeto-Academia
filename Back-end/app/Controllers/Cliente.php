@@ -7,6 +7,7 @@ use App\Models\AcademiaModel;
 use App\Models\ClienteModel;
 use App\Models\Clientesplanos;
 use App\Models\PagamentosModel;
+use App\Models\PresencaclientesModel;
 use CodeIgniter\CLI\Console;
 use CodeIgniter\Database\Query;
 use Dompdf\Dompdf;
@@ -21,6 +22,7 @@ class Cliente extends BaseController
     protected $email;
     protected $anamneseModel;
     protected $pagamentosModel;
+    protected $prensencaclientesModel;
 
 
     public function __construct()
@@ -32,6 +34,7 @@ class Cliente extends BaseController
         $this->email = new EmailController();
         $this->anamneseModel = new AnamneseModel();
         $this->pagamentosModel = new PagamentosModel();
+        $this->prensencaclientesModel = new PresencaclientesModel();
     }
 
     public function create()
@@ -99,10 +102,19 @@ class Cliente extends BaseController
             }
         }
 
+        $pin = random_int(1000, 999999);
+        $pin_hash = password_hash($pin, PASSWORD_DEFAULT);
+
+        $dados['pin'] = $pin_hash;
+        $this->model->update($id, ['pin' => $pin_hash]);
+
+        // Inclui o PIN para o template de e-mail
         $verif_email = array(
             'id' => $id,
-            'email' => $dados['email']
+            'email' => $dados['email'],
+            'pin' => $pin
         );
+
         $msg = array("msg" => "Cadastro Enviado");
 
         $this->email->verificaEmail($verif_email);
@@ -544,5 +556,9 @@ class Cliente extends BaseController
             ->setHeader('Content-Type', 'application/pdf')
             ->setHeader('Content-Disposition', 'inline; filename="' . $nomeArquivo . '"')
             ->setBody($dompdf->output());
+    }
+
+    public function registrarPresenca(){
+        
     }
 }

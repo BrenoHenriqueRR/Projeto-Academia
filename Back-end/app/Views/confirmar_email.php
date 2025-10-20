@@ -56,6 +56,7 @@
              Para continuar com a redefinição de sua senha, por favor, utilize o seguinte código de verificação:</p>
             <a class="button">Sua senha: <?= $senha ?></a>
         </div>
+        
         <div class="footer">
             <p>&copy; <?= date('Y') ?> Fitness Prime. Todos os direitos reservados.</p>
         </div>

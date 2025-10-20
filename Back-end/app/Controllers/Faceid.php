@@ -7,6 +7,7 @@ use App\Controllers\BaseController;
 use App\Models\FaceidModel;
 use CodeIgniter\HTTP\ResponseInterface;
 
+
 class Faceid extends BaseController
 {
     private $model;
@@ -63,7 +64,7 @@ class Faceid extends BaseController
 
         foreach ($selfies as $selfie) { // testa com todas as fotos do banco para localizar se existe uma foto igual e libera o acesso
 
-            
+
             // Passar o caminho da imagem no disco
             $caminhoImagemCliente = $selfie['caminho_imagem'];
 
@@ -78,14 +79,31 @@ class Faceid extends BaseController
 
             //echo $comparar;
             if ($comparar) {
-                $msg = array("msg" => "Acesso liberado com sucesso!");
-                return $this->response->setJSON($msg)->setStatusCode(200);
+                // 🔍 Pega informações do cliente
+                $cliente_id = $selfie['cliente_id'] ?? null;
+                $nome = $selfie['nome'] ?? null;
+
+                // Caso o nome não esteja em selfies, busca na tabela cliente
+                if (!$nome && $cliente_id) {
+                    $clienteModel = new \App\Models\ClienteModel();
+                    $cliente = $clienteModel->find($cliente_id);
+                    $nome = $cliente['nome'] ?? 'Cliente';
+                }
+
+                return $this->response->setJSON([
+                    'status' => 'sucesso',
+                    'cliente_id' => $cliente_id,
+                    'nome' => $nome,
+                    'msg' => 'Acesso liberado com sucesso!'
+                ])->setStatusCode(200);
             }
         }
 
-        // Se nenhuma imagem for correspondente
-        $msg = array("msg" => "Acesso negado! Nenhuma correspondência encontrada.");
-        return $this->response->setJSON($msg)->setStatusCode(403);
+        // ❌ Se nenhuma imagem combinar
+        return $this->response->setJSON([
+            'status' => 'erro',
+            'msg' => 'Acesso negado! Nenhuma correspondência encontrada.'
+        ])->setStatusCode(403);
     }
 
     private function compararImagens($imagemBase64, $caminhoImagemBanco)
@@ -94,8 +112,8 @@ class Faceid extends BaseController
             'version' => 'latest',
             'region'  => 'us-east-1', // Região 
             'credentials' => [ // Chaves concedidas pela AWS
-                'key'    => 'AKIA27TQ5KDG3AHXJDNR',
-                'secret' => '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',
+                'key'    => getenv('AWS_ACCESS_KEY_ID'),
+                'secret' => getenv('AWS_SECRET_ACCESS_KEY'),
             ],
             'suppress_php_deprecation_warning' => true,
             'http' => [
@@ -150,4 +168,4 @@ class Faceid extends BaseController
             return false;
         }
     }
-} 
+}

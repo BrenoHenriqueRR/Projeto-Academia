@@ -24,6 +24,7 @@ $routes->group('Cliente', function ($routes) {
     $routes->post('inserirFoto', 'Cliente::inserirFoto');
     $routes->post('pegarFoto', 'Cliente::pegarFoto');
     $routes->post('trocarSenha', 'Cliente::trocarSenha');
+    $routes->post('registrarPresenca', 'Cliente::registrarPresenca');
     $routes->get('relatorioClientesStatus', 'Cliente::relatorioClientesStatus');
     $routes->get('relatorioFinanceiroClientes', 'Cliente::relatorioFinanceiroClientes');
     $routes->get('relatorioClientesPagamentos', 'Cliente::relatorioClientesPagamentos');

@@ -1,5 +1,41 @@
-<div class="camera-container">
-    <video #video autoplay></video>
-    <canvas #overlay></canvas>
-    <button (click)="captureFace()">Capturar</button>
+<div class="presenca-container">
+  <h2 class="titulo"><i class="bi bi-person-check"></i> Registro de Presença</h2>
+
+  <div class="camera-section" *ngIf="!usarPin">
+    <div class="camera-box">
+      <video #video autoplay playsinline></video>
+      <div class="camera-overlay">
+        <div class="focus-frame"></div>
+      </div>
+    </div>
+
+    <div class="botoes">
+      <button class="btn-capturar" (click)="captureFace()">
+        <i class="bi bi-camera"></i> Capturar Rosto
+      </button>
+      <button class="btn-alternativo" (click)="alternarParaPin()">
+        <i class="bi bi-key"></i> Usar PIN
+      </button>
+    </div>
   </div>
+
+  <!-- Modo PIN -->
+  <div class="pin-section" *ngIf="usarPin">
+    <h4>Digite seu PIN de Acesso</h4>
+    <input
+      type="password"
+      maxlength="6"
+      [(ngModel)]="pin"
+      placeholder="PIN de 4 a 6 dígitos"
+      class="pin-input"
+    />
+    <div class="botoes">
+      <button class="btn-confirmar" (click)="enviarPin()">
+        <i class="bi bi-check-circle"></i> Confirmar
+      </button>
+      <button class="btn-voltar" (click)="alternarParaFace()">
+        <i class="bi bi-arrow-left"></i> Voltar para FaceID
+      </button>
+    </div>
+  </div>
+</div>

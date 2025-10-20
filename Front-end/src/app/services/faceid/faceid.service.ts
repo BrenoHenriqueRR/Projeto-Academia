@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 export class FaceidService {
   private url_create = 'http://localhost/sites/Projeto1/Back-end/public/Faceid/create';
   private url_comparar = 'http://localhost/sites/Projeto1/Back-end/public/Faceid/verificarFaceId';
+  private url_pin =  `${environment.apiUrl}/Faceid/presencaPorPin`;
 
   constructor(private http: HttpClient) {} 
 
@@ -21,5 +22,9 @@ export class FaceidService {
   comparar(foto: any) : Observable<any>{
     const base64 = foto;
     return this.http.post<any>(this.url_comparar,base64);
+  }
+
+  enviarPresenca(pin: string): Observable<any> {
+    return this.http.post<any>(this.url_pin, { pin });
   }
 }

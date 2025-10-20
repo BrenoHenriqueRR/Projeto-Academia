@@ -7,6 +7,7 @@ use App\Models\AcademiaModel;
 use App\Models\ClienteModel;
 use App\Models\Clientesplanos;
 use App\Models\PagamentosModel;
+use App\Models\PresencaclientesModel;
 use CodeIgniter\CLI\Console;
 use CodeIgniter\Database\Query;
 use Dompdf\Dompdf;
@@ -21,6 +22,7 @@ class Cliente extends BaseController
     protected $email;
     protected $anamneseModel;
     protected $pagamentosModel;
+    protected $prensencaclientesModel;
 
 
     public function __construct()
@@ -32,6 +34,7 @@ class Cliente extends BaseController
         $this->email = new EmailController();
         $this->anamneseModel = new AnamneseModel();
         $this->pagamentosModel = new PagamentosModel();
+        $this->prensencaclientesModel = new PresencaclientesModel();
     }
 
     public function create()
@@ -99,10 +102,19 @@ class Cliente extends BaseController
             }
         }
 
+        $pin = random_int(1000, 999999);
+        $pin_hash = password_hash($pin, PASSWORD_DEFAULT);
+
+        $dados['pin'] = $pin_hash;
+        $this->model->update($id, ['pin' => $pin_hash]);
+
+        // Inclui o PIN para o template de e-mail
         $verif_email = array(
             'id' => $id,
-            'email' => $dados['email']
+            'email' => $dados['email'],
+            'pin' => $pin
         );
+
         $msg = array("msg" => "Cadastro Enviado");
 
         $this->email->verificaEmail($verif_email);
@@ -544,5 +556,80 @@ class Cliente extends BaseController
             ->setHeader('Content-Type', 'application/pdf')
             ->setHeader('Content-Disposition', 'inline; filename="' . $nomeArquivo . '"')
             ->setBody($dompdf->output());
+    }
+
+    public function registrarPresenca()
+    {
+        $request = $this->request->getJSON(true);
+
+        $cliente_id = $request['cliente_id'] ?? null;
+        $metodo = $request['metodo_autenticacao'] ?? null;
+        $pin = $request['pin'] ?? null;
+
+
+        if (!$cliente_id || !$metodo) {
+            return $this->response->setJSON([
+                'status' => 'erro',
+                'msg' => 'Dados insuficientes para registrar presença.'
+            ]);
+        }
+
+        // 🔍 Busca cliente
+        $cliente = $this->model->find($cliente_id);
+        if (!$cliente) {
+            return $this->response->setJSON([
+                'status' => 'erro',
+                'msg' => 'Cliente não encontrado.'
+            ]);
+        }
+
+        $status = 'erro';
+        $observacao = '';
+
+        if ($metodo === 'faceid') {
+            // ✅ FaceID validado anteriormente via AWS Rekognition
+            $status = 'sucesso';
+            $observacao = 'Reconhecimento facial bem-sucedido.';
+        } elseif ($metodo === 'pin') {
+            if (!$pin) {
+                return $this->response->setJSON([
+                    'status' => 'erro',
+                    'msg' => 'PIN não informado.'
+                ]);
+            }
+
+            // 🔐 Valida PIN
+            if (password_verify($pin, $cliente['pin'])) {
+                $status = 'sucesso';
+                $observacao = 'Presença registrada via PIN.';
+            } else {
+                $observacao = 'PIN incorreto.';
+            }
+        } else {
+            return $this->response->setJSON([
+                'status' => 'erro',
+                'msg' => 'Método de autenticação inválido.'
+            ]);
+        }
+
+        // 📅 Monta dados pra salvar
+        $dados = [
+            'cliente_id' => $cliente_id,
+            'data' => date('Y-m-d H:i:s'),
+            'metodo_autenticacao' => $metodo,
+            'status' => $status,
+            'hora_entrada' => date('H:i:s'),
+            'observacao' => $observacao
+        ];
+
+        // 💾 Salva presença
+        $this->prensencaclientesModel->insert($dados);
+
+        return $this->response->setJSON([
+            'status' => $status,
+            'msg' => $status === 'sucesso'
+                ? 'Presença registrada com sucesso!'
+                : 'Falha ao registrar presença: ' . $observacao
+        ]);
     }
 }

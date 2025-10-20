@@ -1,20 +1,117 @@
-.camera-container {
-    position: relative;
-    width: 100%;
-    max-width: 400px;
-  }
-  video {
-    width: 100%;
-    border-radius: 10px;
-  }
-  canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-  }
-  button {
-    margin-top: 10px;
-  }
+.presenca-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 30px;
+  color: #222;
+}
+
+.titulo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+.camera-section,
+.pin-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.camera-box {
+  position: relative;
+  width: 360px;
+  height: 270px;
+  background: #000;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.camera-overlay .focus-frame {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  width: 60%;
+  height: 60%;
+  border: 3px solid #00bfff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #00bfff;
+}
+
+.botoes {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+button {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-capturar {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.btn-capturar:hover {
+  background-color: #0069d9;
+}
+
+.btn-alternativo {
+  background-color: #ffc107;
+  color: #333;
+}
+
+.btn-alternativo:hover {
+  background-color: #e0a800;
+}
+
+.pin-input {
+  font-size: 1.2rem;
+  padding: 10px;
+  width: 180px;
+  text-align: center;
+  border: 2px solid #007bff;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+.btn-confirmar {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.btn-confirmar:hover {
+  background-color: #218838;
+}
+
+.btn-voltar {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.btn-voltar:hover {
+  background-color: #5a6268;
+}
+
+.mensagem {
+  margin-top: 25px;
+  padding: 10px;
+  font-weight: 500;
+  color: #444;
+}

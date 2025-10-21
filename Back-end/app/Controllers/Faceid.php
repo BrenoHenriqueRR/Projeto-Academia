@@ -68,7 +68,7 @@ class Faceid extends BaseController
             // Passar o caminho da imagem no disco
             $caminhoImagemCliente = $selfie['caminho_imagem'];
 
-            print_r($caminhoImagemCliente);
+            // print_r($caminhoImagemCliente);
 
             if (!file_exists($caminhoImagemCliente)) {
                 continue;
@@ -93,13 +93,17 @@ class Faceid extends BaseController
                 return $this->response->setJSON([
                     'status' => 'sucesso',
                     'cliente_id' => $cliente_id,
-                    'nome' => $nome,
                     'msg' => 'Acesso liberado com sucesso!'
+                ])->setStatusCode(200);
+            }else{
+                return $this->response->setJSON([
+                    'status' => 'erro',
+                    'msg' => 'erro ao comparar imagens'
                 ])->setStatusCode(200);
             }
         }
 
-        // ❌ Se nenhuma imagem combinar
+        // Se nenhuma imagem combinar
         return $this->response->setJSON([
             'status' => 'erro',
             'msg' => 'Acesso negado! Nenhuma correspondência encontrada.'
@@ -163,8 +167,8 @@ class Faceid extends BaseController
                 return false;
             }
         } catch (\Exception $e) {
-            log_message('error', $e->getMessage());
-            var_dump($e->getMessage());
+            // log_message('error', $e->getMessage());
+            // var_dump($e->getMessage());
             return false;
         }
     }

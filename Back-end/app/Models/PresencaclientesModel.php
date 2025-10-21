@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class PresencaclientesModel extends Model
 {
-    protected $table            = 'presencaclientes';
+    protected $table            = 'presenca_clientes';
     protected $primaryKey       = 'id';
     protected $allowedFields    = ['cliente_id', 'data', 'hora_entrada', 'hora_saida', 'status', 'metodo_autenticacao', 'observacao'];
 }

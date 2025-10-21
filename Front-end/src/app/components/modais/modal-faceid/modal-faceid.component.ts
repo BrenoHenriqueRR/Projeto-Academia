@@ -46,18 +46,18 @@ export class ModalFaceidComponent implements AfterViewInit {
       "imagem": this.imagemCapturada
     };
 
-    //console.log(data);
+    console.log(data);
 
 
-    // const json = JSON.stringify(data);
-    // this.faceid.create(json).subscribe({
-    //   next: (response) => {
-    //     console.log('Selfie salva com sucesso!', response);
-    //     this.selfieSalva = true;  // Exibe o botão de Face ID após salvar     
-    //   }, error: (err) => {
-    //     console.error('Erro ao salvar selfie: ', err);
-    //   },
-    // })
+    const json = JSON.stringify(data);
+    this.faceid.create(json).subscribe({
+      next: (response) => {
+        console.log('Selfie salva com sucesso!', response);
+        this.selfieSalva = true;  // Exibe o botão de Face ID após salvar     
+      }, error: (err) => {
+        console.error('Erro ao salvar selfie: ', err);
+      },
+    })
 
 
   }

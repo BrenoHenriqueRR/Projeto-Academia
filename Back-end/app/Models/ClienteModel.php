@@ -23,6 +23,7 @@ class ClienteModel extends Model {
         'email_verificado',
         'termo_responsabilidade',
         'atestado_medico',
-        'data_criacao'
+        'data_criacao',
+        'pin'
     ]; 
 }

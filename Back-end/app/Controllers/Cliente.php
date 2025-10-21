@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+date_default_timezone_set('America/Sao_Paulo');
 
 use App\Models\AnamneseModel;
 use App\Models\AcademiaModel;
@@ -558,23 +559,48 @@ class Cliente extends BaseController
             ->setBody($dompdf->output());
     }
 
+    public function buscarCliPin($pin)
+    {
+        $pin = hash('sha256', $pin);
+        $cliente = $this->model->where('pin', $pin)->first();
+
+
+        if ($cliente) {
+            return ['cliente_id' => $cliente['id'], 'status' => 'sucesso'];
+        } else {
+            return false;
+        }
+    }
+
     public function registrarPresenca()
     {
         $request = $this->request->getJSON(true);
 
         $cliente_id = $request['cliente_id'] ?? null;
-        $metodo = $request['metodo_autenticacao'] ?? null;
+        $metodo = $request['metodo'] ?? null;
         $pin = $request['pin'] ?? null;
 
+        // if (!empty($pin)) {
+        //     $resultado = $this->buscarCliPin($pin);
 
-        if (!$cliente_id || !$metodo) {
+        //     if ($resultado) {
+        //         $cliente_id = $resultado;
+        //     }else{
+        //         return $this->response->setJSON([
+        //             'status' => 'erro',
+        //             'msg' => 'PIN inválido.'
+        //         ]);
+        //     }
+        // }
+
+        if (!$metodo) {
             return $this->response->setJSON([
                 'status' => 'erro',
                 'msg' => 'Dados insuficientes para registrar presença.'
             ]);
         }
 
-        // 🔍 Busca cliente
+        // buscar cliente
         $cliente = $this->model->find($cliente_id);
         if (!$cliente) {
             return $this->response->setJSON([
@@ -587,7 +613,7 @@ class Cliente extends BaseController
         $observacao = '';
 
         if ($metodo === 'faceid') {
-            // ✅ FaceID validado anteriormente via AWS Rekognition
+            // faceID validado anteriormente via AWS Rekognition
             $status = 'sucesso';
             $observacao = 'Reconhecimento facial bem-sucedido.';
         } elseif ($metodo === 'pin') {
@@ -598,8 +624,9 @@ class Cliente extends BaseController
                 ]);
             }
 
-            // 🔐 Valida PIN
-            if (password_verify($pin, $cliente['pin'])) {
+            //  Valida PIN
+            if ($result = $this->buscarCliPin($pin)) {
+                $cliente_id = $result['cliente_id'];
                 $status = 'sucesso';
                 $observacao = 'Presença registrada via PIN.';
             } else {
@@ -612,24 +639,63 @@ class Cliente extends BaseController
             ]);
         }
 
-        // 📅 Monta dados pra salvar
-        $dados = [
-            'cliente_id' => $cliente_id,
-            'data' => date('Y-m-d H:i:s'),
-            'metodo_autenticacao' => $metodo,
-            'status' => $status,
-            'hora_entrada' => date('H:i:s'),
-            'observacao' => $observacao
-        ];
+        $hoje = date('Y-m-d');
 
-        // 💾 Salva presença
-        $this->prensencaclientesModel->insert($dados);
+        // Verifica se já existe presença hoje sem hora_saida
+        $presencaAberta = $this->prensencaclientesModel
+            ->where('cliente_id', $cliente_id)
+            ->where('DATE(hora_entrada)', $hoje)
+            ->where('hora_saida', null)
+            ->first();
 
-        return $this->response->setJSON([
-            'status' => $status,
-            'msg' => $status === 'sucesso'
-                ? 'Presença registrada com sucesso!'
-                : 'Falha ao registrar presença: ' . $observacao
-        ]);
+        if ($presencaAberta) {
+            // Atualiza hora_saida
+            $this->prensencaclientesModel->update($presencaAberta['id'], [
+                'hora_saida' => date('Y-m-d H:i:s'),
+                'observacao' => $observacao
+            ]);
+
+            return $this->response->setJSON([
+                'status' => $status,
+                'msg' => 'Saída registrada com sucesso!'
+            ]);
+        } else {
+            // Cria novo registro de entrada
+            $dados = [
+                'cliente_id' => $cliente_id,
+                'metodo_autenticacao' => $metodo,
+                'status' => $status,
+                'hora_entrada' => date('Y-m-d H:i:s'),
+                'observacao' => $observacao
+            ];
+
+            $this->prensencaclientesModel->insert($dados);
+
+            return $this->response->setJSON([
+                'status' => $status,
+                'msg' => 'Entrada registrada com sucesso!'
+            ]);
+        }
+
+
+        // //  Monta dados pra salvar
+        // $dados = [
+        //     'cliente_id' => $cliente_id,
+        //     'data' => date('Y-m-d H:i:s'),
+        //     'metodo_autenticacao' => $metodo,
+        //     'status' => $status,
+        //     'hora_entrada' => date('Y-m-d H:i:s'),
+        //     'observacao' => $observacao
+        // ];
+
+        // //  Salva presença
+        // $this->prensencaclientesModel->insert($dados);
+
+        // return $this->response->setJSON([
+        //     'status' => $status,
+        //     'msg' => $status === 'sucesso'
+        //         ? 'Presença registrada com sucesso!'
+        //         : 'Falha ao registrar presença: ' . $observacao
+        // ]);
     }
 }

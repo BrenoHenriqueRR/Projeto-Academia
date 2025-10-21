@@ -1,0 +1,117 @@
+CRITICAL - 2025-10-20 22:40:21 --> CodeIgniter\HTTP\Exceptions\HTTPException: Failed to parse JSON string. Error: Syntax error
+in SYSTEMPATH\HTTP\IncomingRequest.php on line 588.
+ 1 SYSTEMPATH\HTTP\IncomingRequest.php(588): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidJSON('Syntax error')
+ 2 APPPATH\Controllers\Faceid.php(60): CodeIgniter\HTTP\IncomingRequest->getJSON()
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Faceid->verificarFaceId()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Faceid))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-10-20 22:43:05 --> Error executing "CompareFaces" on "https://rekognition.us-east-1.amazonaws.com"; AWS HTTP error: Client error: `POST https://rekognition.us-east-1.amazonaws.com` resulted in a `400 Bad Request` response:
+{"__type":"UnrecognizedClientException","message":"The security token included in the request is invalid."}
+ UnrecognizedClientException (client): The security token included in the request is invalid. - {"__type":"UnrecognizedClientException","message":"The security token included in the request is invalid."}
+ERROR - 2025-10-20 22:43:07 --> Error executing "CompareFaces" on "https://rekognition.us-east-1.amazonaws.com"; AWS HTTP error: Client error: `POST https://rekognition.us-east-1.amazonaws.com` resulted in a `400 Bad Request` response:
+{"__type":"UnrecognizedClientException","message":"The security token included in the request is invalid."}
+ UnrecognizedClientException (client): The security token included in the request is invalid. - {"__type":"UnrecognizedClientException","message":"The security token included in the request is invalid."}
+CRITICAL - 2025-10-20 22:48:23 --> CodeIgniter\HTTP\Exceptions\HTTPException: Failed to parse JSON string. Error: Syntax error
+in SYSTEMPATH\HTTP\IncomingRequest.php on line 588.
+ 1 SYSTEMPATH\HTTP\IncomingRequest.php(588): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidJSON('Syntax error')
+ 2 APPPATH\Controllers\Faceid.php(60): CodeIgniter\HTTP\IncomingRequest->getJSON()
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Faceid->verificarFaceId()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Faceid))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-20 22:49:22 --> CodeIgniter\HTTP\Exceptions\HTTPException: Failed to parse JSON string. Error: Syntax error
+in SYSTEMPATH\HTTP\IncomingRequest.php on line 588.
+ 1 SYSTEMPATH\HTTP\IncomingRequest.php(588): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidJSON('Syntax error')
+ 2 APPPATH\Controllers\Faceid.php(60): CodeIgniter\HTTP\IncomingRequest->getJSON()
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Faceid->verificarFaceId()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Faceid))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-20 22:49:43 --> CodeIgniter\HTTP\Exceptions\HTTPException: Failed to parse JSON string. Error: Syntax error
+in SYSTEMPATH\HTTP\IncomingRequest.php on line 588.
+ 1 SYSTEMPATH\HTTP\IncomingRequest.php(588): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidJSON('Syntax error')
+ 2 APPPATH\Controllers\Faceid.php(60): CodeIgniter\HTTP\IncomingRequest->getJSON()
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Faceid->verificarFaceId()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Faceid))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-20 22:49:55 --> CodeIgniter\HTTP\Exceptions\HTTPException: Failed to parse JSON string. Error: Syntax error
+in SYSTEMPATH\HTTP\IncomingRequest.php on line 588.
+ 1 SYSTEMPATH\HTTP\IncomingRequest.php(588): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidJSON('Syntax error')
+ 2 APPPATH\Controllers\Faceid.php(60): CodeIgniter\HTTP\IncomingRequest->getJSON()
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Faceid->verificarFaceId()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Faceid))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-20 22:50:00 --> CodeIgniter\HTTP\Exceptions\HTTPException: Failed to parse JSON string. Error: Syntax error
+in SYSTEMPATH\HTTP\IncomingRequest.php on line 588.
+ 1 SYSTEMPATH\HTTP\IncomingRequest.php(588): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidJSON('Syntax error')
+ 2 APPPATH\Controllers\Faceid.php(60): CodeIgniter\HTTP\IncomingRequest->getJSON()
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Faceid->verificarFaceId()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Faceid))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-20 22:50:08 --> CodeIgniter\HTTP\Exceptions\HTTPException: Failed to parse JSON string. Error: Syntax error
+in SYSTEMPATH\HTTP\IncomingRequest.php on line 588.
+ 1 SYSTEMPATH\HTTP\IncomingRequest.php(588): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidJSON('Syntax error')
+ 2 APPPATH\Controllers\Faceid.php(60): CodeIgniter\HTTP\IncomingRequest->getJSON()
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Faceid->verificarFaceId()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Faceid))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-10-20 23:01:26 --> Error executing "CompareFaces" on "https://rekognition.us-east-1.amazonaws.com"; AWS HTTP error: Client error: `POST https://rekognition.us-east-1.amazonaws.com` resulted in a `400 Bad Request` response:
+{"__type":"ValidationException","message":"1 validation error detected: Value at 'sourceImage.bytes' failed to satisfy c (truncated...)
+ ValidationException (client): 1 validation error detected: Value at 'sourceImage.bytes' failed to satisfy constraint: Member must have length greater than or equal to 1 - {"__type":"ValidationException","message":"1 validation error detected: Value at 'sourceImage.bytes' failed to satisfy constraint: Member must have length greater than or equal to 1"}
+ERROR - 2025-10-20 23:01:27 --> Error executing "CompareFaces" on "https://rekognition.us-east-1.amazonaws.com"; AWS HTTP error: Client error: `POST https://rekognition.us-east-1.amazonaws.com` resulted in a `400 Bad Request` response:
+{"__type":"ValidationException","message":"1 validation error detected: Value at 'sourceImage.bytes' failed to satisfy c (truncated...)
+ ValidationException (client): 1 validation error detected: Value at 'sourceImage.bytes' failed to satisfy constraint: Member must have length greater than or equal to 1 - {"__type":"ValidationException","message":"1 validation error detected: Value at 'sourceImage.bytes' failed to satisfy constraint: Member must have length greater than or equal to 1"}
+ERROR - 2025-10-20 23:01:29 --> Error executing "CompareFaces" on "https://rekognition.us-east-1.amazonaws.com"; AWS HTTP error: Client error: `POST https://rekognition.us-east-1.amazonaws.com` resulted in a `400 Bad Request` response:
+{"__type":"ValidationException","message":"1 validation error detected: Value at 'sourceImage.bytes' failed to satisfy c (truncated...)
+ ValidationException (client): 1 validation error detected: Value at 'sourceImage.bytes' failed to satisfy constraint: Member must have length greater than or equal to 1 - {"__type":"ValidationException","message":"1 validation error detected: Value at 'sourceImage.bytes' failed to satisfy constraint: Member must have length greater than or equal to 1"}
+ERROR - 2025-10-20 23:26:54 --> Error executing "CompareFaces" on "https://rekognition.us-east-1.amazonaws.com"; AWS HTTP error: Client error: `POST https://rekognition.us-east-1.amazonaws.com` resulted in a `400 Bad Request` response:
+{"__type":"InvalidParameterException","Code":"InvalidParameterException","Message":"Request has invalid parameters"}
+ InvalidParameterException (client): Request has invalid parameters - {"__type":"InvalidParameterException","Code":"InvalidParameterException","Message":"Request has invalid parameters"}
+ERROR - 2025-10-20 23:28:04 --> Error executing "CompareFaces" on "https://rekognition.us-east-1.amazonaws.com"; AWS HTTP error: Client error: `POST https://rekognition.us-east-1.amazonaws.com` resulted in a `400 Bad Request` response:
+{"__type":"InvalidParameterException","Code":"InvalidParameterException","Message":"Request has invalid parameters"}
+ InvalidParameterException (client): Request has invalid parameters - {"__type":"InvalidParameterException","Code":"InvalidParameterException","Message":"Request has invalid parameters"}
+CRITICAL - 2025-10-20 23:42:43 --> CodeIgniter\HTTP\Exceptions\HTTPException: Failed to parse JSON string. Error: Syntax error
+in SYSTEMPATH\HTTP\IncomingRequest.php on line 588.
+ 1 SYSTEMPATH\HTTP\IncomingRequest.php(588): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidJSON('Syntax error')
+ 2 APPPATH\Controllers\Cliente.php(563): CodeIgniter\HTTP\IncomingRequest->getJSON(true)
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->registrarPresenca()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-20 23:45:23 --> CodeIgniter\HTTP\Exceptions\HTTPException: Failed to parse JSON string. Error: Syntax error
+in SYSTEMPATH\HTTP\IncomingRequest.php on line 588.
+ 1 SYSTEMPATH\HTTP\IncomingRequest.php(588): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidJSON('Syntax error')
+ 2 APPPATH\Controllers\Cliente.php(563): CodeIgniter\HTTP\IncomingRequest->getJSON(true)
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->registrarPresenca()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-20 23:48:07 --> CodeIgniter\HTTP\Exceptions\HTTPException: Failed to parse JSON string. Error: Syntax error
+in SYSTEMPATH\HTTP\IncomingRequest.php on line 588.
+ 1 SYSTEMPATH\HTTP\IncomingRequest.php(588): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidJSON('Syntax error')
+ 2 APPPATH\Controllers\Cliente.php(563): CodeIgniter\HTTP\IncomingRequest->getJSON(true)
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->registrarPresenca()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-20 23:48:10 --> CodeIgniter\HTTP\Exceptions\HTTPException: Failed to parse JSON string. Error: Syntax error
+in SYSTEMPATH\HTTP\IncomingRequest.php on line 588.
+ 1 SYSTEMPATH\HTTP\IncomingRequest.php(588): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidJSON('Syntax error')
+ 2 APPPATH\Controllers\Cliente.php(563): CodeIgniter\HTTP\IncomingRequest->getJSON(true)
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->registrarPresenca()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-20 22:18:35 --> CodeIgniter\HTTP\Exceptions\HTTPException: Failed to parse JSON string. Error: Syntax error
+in SYSTEMPATH\HTTP\IncomingRequest.php on line 588.
+ 1 SYSTEMPATH\HTTP\IncomingRequest.php(588): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidJSON('Syntax error')
+ 2 APPPATH\Controllers\Cliente.php(577): CodeIgniter\HTTP\IncomingRequest->getJSON(true)
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->registrarPresenca()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

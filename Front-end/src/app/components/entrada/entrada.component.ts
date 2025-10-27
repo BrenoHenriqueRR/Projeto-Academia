@@ -67,15 +67,15 @@ export class EntradaComponent implements AfterViewInit {
       next: (res) => {
         Swal.close();
         if (res.status === 'sucesso') {
-          Swal.fire({
+          // console.log('Rosto reconhecido:', res.cliente_id);
+         this.faceid.enviarPresenca(JSON.stringify({ metodo: "faceid", cliente_id: res.cliente_id })).subscribe({
+          next: (response) => {
+            Swal.fire({
             icon: 'success',
             title: 'Presença confirmada!',
             text: 'Reconhecimento facial bem-sucedido ✅',
             confirmButtonColor: '#007bff',
           });
-          // console.log('Rosto reconhecido:', res.cliente_id);
-         this.faceid.enviarPresenca(JSON.stringify({ metodo: "faceid", cliente_id: `"${res.cliente_id}"` })).subscribe({
-          next: (response) => {
             console.log('Presença registrada via Face ID:', response);
           },
           error: (err) => {

@@ -561,6 +561,7 @@ class Cliente extends BaseController
 
     public function buscarCliPin($pin)
     {
+        //pin teste : 015245
         $pin = hash('sha256', $pin);
         $cliente = $this->model->where('pin', $pin)->first();
 
@@ -580,18 +581,18 @@ class Cliente extends BaseController
         $metodo = $request['metodo'] ?? null;
         $pin = $request['pin'] ?? null;
 
-        // if (!empty($pin)) {
-        //     $resultado = $this->buscarCliPin($pin);
+        if (!empty($pin)) {
+            $resultado = $this->buscarCliPin($pin);
 
-        //     if ($resultado) {
-        //         $cliente_id = $resultado;
-        //     }else{
-        //         return $this->response->setJSON([
-        //             'status' => 'erro',
-        //             'msg' => 'PIN inválido.'
-        //         ]);
-        //     }
-        // }
+            if ($resultado) {
+                $cliente_id = $resultado;
+            }else{
+                return $this->response->setJSON([
+                    'status' => 'erro',
+                    'msg' => 'PIN inválido.'
+                ]);
+            }
+        }
 
         if (!$metodo) {
             return $this->response->setJSON([
@@ -678,24 +679,92 @@ class Cliente extends BaseController
         }
 
 
-        // //  Monta dados pra salvar
-        // $dados = [
-        //     'cliente_id' => $cliente_id,
-        //     'data' => date('Y-m-d H:i:s'),
-        //     'metodo_autenticacao' => $metodo,
-        //     'status' => $status,
-        //     'hora_entrada' => date('Y-m-d H:i:s'),
-        //     'observacao' => $observacao
-        // ];
+    }       
 
-        // //  Salva presença
-        // $this->prensencaclientesModel->insert($dados);
+    public function estatisticaPresenca()
+    {
+        $model = new PresencaClientesModel();
 
-        // return $this->response->setJSON([
-        //     'status' => $status,
-        //     'msg' => $status === 'sucesso'
-        //         ? 'Presença registrada com sucesso!'
-        //         : 'Falha ao registrar presença: ' . $observacao
-        // ]);
+        // 📅 Recebe datas enviadas via GET ou POST
+        $dataInicio = $this->request->getVar('data_inicio');
+        $dataFim = $this->request->getVar('data_fim');
+
+        if (!$dataInicio || !$dataFim) {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'As datas de início e fim são obrigatórias.'
+            ]);
+        }
+
+        // 🔎 Filtro de período
+        $model->where('DATE(data) >=', $dataInicio)
+              ->where('DATE(data) <=', $dataFim);
+
+        // Total de registros
+        $total = $model->countAllResults(false);
+
+        // Recontar com filtros individuais (mantendo o período)
+        $sucesso = $model->where('status', 'sucesso')
+                         ->where('DATE(data) >=', $dataInicio)
+                         ->where('DATE(data) <=', $dataFim)
+                         ->countAllResults(false);
+
+        $erro = $model->where('status', 'erro')
+                      ->where('DATE(data) >=', $dataInicio)
+                      ->where('DATE(data) <=', $dataFim)
+                      ->countAllResults(false);
+
+        $faceid = $model->where('metodo_autenticacao', 'faceid')
+                        ->where('DATE(data) >=', $dataInicio)
+                        ->where('DATE(data) <=', $dataFim)
+                        ->countAllResults(false);
+
+        $pin = $model->where('metodo_autenticacao', 'pin')
+                     ->where('DATE(data) >=', $dataInicio)
+                     ->where('DATE(data) <=', $dataFim)
+                     ->countAllResults(false);
+
+        // Clientes únicos no período
+        $clientesUnicos = $model->distinct()
+            ->select('cliente_id')
+            ->where('DATE(data) >=', $dataInicio)
+            ->where('DATE(data) <=', $dataFim)
+            ->countAllResults(false);
+
+        // Estatísticas diárias dentro do período
+        $mensal = $model->select("
+                DATE(data) AS dia,
+                COUNT(*) AS total,
+                SUM(CASE WHEN status = 'sucesso' THEN 1 ELSE 0 END) AS sucesso,
+                SUM(CASE WHEN status = 'erro' THEN 1 ELSE 0 END) AS erro,
+                SUM(CASE WHEN metodo_autenticacao = 'faceid' THEN 1 ELSE 0 END) AS faceid,
+                SUM(CASE WHEN metodo_autenticacao = 'pin' THEN 1 ELSE 0 END) AS pin
+            ")
+            ->where('DATE(data) >=', $dataInicio)
+            ->where('DATE(data) <=', $dataFim)
+            ->groupBy('dia')
+            ->orderBy('dia', 'ASC')
+            ->findAll();
+
+        $data = [
+            'status' => 'success',
+            'filtro' => [
+                'data_inicio' => $dataInicio,
+                'data_fim' => $dataFim
+            ],
+            'resumo' => [
+                'total' => $total,
+                'sucesso' => $sucesso,
+                'erro' => $erro,
+                'faceid' => $faceid,
+                'pin' => $pin,
+                'clientes_unicos' => $clientesUnicos,
+                'taxa_sucesso' => $total > 0 ? round(($sucesso / $total) * 100, 1) : 0,
+                'taxa_erro' => $total > 0 ? round(($erro / $total) * 100, 1) : 0,
+            ],
+            'diario' => $mensal
+        ];
+
+        return $this->response->setJSON($data);
     }
 }

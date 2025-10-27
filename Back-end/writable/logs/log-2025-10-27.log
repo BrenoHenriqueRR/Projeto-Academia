@@ -1,0 +1,59 @@
+CRITICAL - 2025-10-27 10:47:01 --> CodeIgniter\HTTP\Exceptions\HTTPException: Failed to parse JSON string. Error: Syntax error
+in SYSTEMPATH\HTTP\IncomingRequest.php on line 588.
+ 1 SYSTEMPATH\HTTP\IncomingRequest.php(588): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidJSON('Syntax error')
+ 2 APPPATH\Controllers\Cliente.php(577): CodeIgniter\HTTP\IncomingRequest->getJSON(true)
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->registrarPresenca()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-27 17:04:33 --> ErrorException: Attempt to read property "logo" on array
+in APPPATH\Controllers\Cliente.php on line 734.
+ 1 APPPATH\Controllers\Cliente.php(734): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "logo" on array', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Cliente.php', 734)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->gerarRelatorioPresenca()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-27 17:07:54 --> ErrorException: Undefined variable $perido
+in APPPATH\Views\Relatorios\relatorio_presenca.php on line 193.
+ 1 APPPATH\Views\Relatorios\relatorio_presenca.php(193): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $perido', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio_presenca.php', 193)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio_presenca.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('relatorios/relatorio_presenca', [], true)
+ 5 APPPATH\Controllers\Cliente.php(751): view('relatorios/relatorio_presenca', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->gerarRelatorioPresenca()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-27 17:08:11 --> ErrorException: Undefined variable $inicio
+in APPPATH\Views\Relatorios\relatorio_presenca.php on line 193.
+ 1 APPPATH\Views\Relatorios\relatorio_presenca.php(193): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $inicio', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio_presenca.php', 193)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio_presenca.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('relatorios/relatorio_presenca', [], true)
+ 5 APPPATH\Controllers\Cliente.php(751): view('relatorios/relatorio_presenca', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->gerarRelatorioPresenca()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-27 17:08:53 --> ErrorException: Undefined variable $perido
+in APPPATH\Views\Relatorios\relatorio_presenca.php on line 193.
+ 1 APPPATH\Views\Relatorios\relatorio_presenca.php(193): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $perido', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio_presenca.php', 193)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio_presenca.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('relatorios/relatorio_presenca', [], true)
+ 5 APPPATH\Controllers\Cliente.php(751): view('relatorios/relatorio_presenca', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->gerarRelatorioPresenca()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-27 17:09:07 --> ErrorException: Undefined variable $perido
+in APPPATH\Views\Relatorios\relatorio_presenca.php on line 193.
+ 1 APPPATH\Views\Relatorios\relatorio_presenca.php(193): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $perido', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio_presenca.php', 193)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\Relatorios\\relatorio_presenca.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('relatorios/relatorio_presenca', [], true)
+ 5 APPPATH\Controllers\Cliente.php(751): view('relatorios/relatorio_presenca', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->gerarRelatorioPresenca()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

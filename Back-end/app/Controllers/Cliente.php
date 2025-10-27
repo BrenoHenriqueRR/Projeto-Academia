@@ -20,6 +20,7 @@ class Cliente extends BaseController
     protected $ClientesPlanoModel;
     protected $ClientePlanos;
     protected $ClientesPlanoExtraModel;
+    protected $academiaModel;
     protected $email;
     protected $anamneseModel;
     protected $pagamentosModel;
@@ -33,6 +34,7 @@ class Cliente extends BaseController
         $this->ClientePlanos = new ClientePlanos();
         $this->model = new ClienteModel();
         $this->email = new EmailController();
+        $this->academiaModel = new AcademiaModel();
         $this->anamneseModel = new AnamneseModel();
         $this->pagamentosModel = new PagamentosModel();
         $this->prensencaclientesModel = new PresencaclientesModel();
@@ -681,13 +683,12 @@ class Cliente extends BaseController
 
     }       
 
-    public function estatisticaPresenca()
+     public function gerarRelatorioPresenca()
     {
-        $model = new PresencaClientesModel();
+        $dataInicio = $this->request->getGet('data_inicio');
+        $dataFim = $this->request->getGet('data_fim');
 
-        // 📅 Recebe datas enviadas via GET ou POST
-        $dataInicio = $this->request->getVar('data_inicio');
-        $dataFim = $this->request->getVar('data_fim');
+        
 
         if (!$dataInicio || !$dataFim) {
             return $this->response->setJSON([
@@ -696,75 +697,97 @@ class Cliente extends BaseController
             ]);
         }
 
-        // 🔎 Filtro de período
-        $model->where('DATE(data) >=', $dataInicio)
-              ->where('DATE(data) <=', $dataFim);
+        $model = new PresencaClientesModel();
 
-        // Total de registros
-        $total = $model->countAllResults(false);
-
-        // Recontar com filtros individuais (mantendo o período)
-        $sucesso = $model->where('status', 'sucesso')
-                         ->where('DATE(data) >=', $dataInicio)
-                         ->where('DATE(data) <=', $dataFim)
-                         ->countAllResults(false);
-
-        $erro = $model->where('status', 'erro')
-                      ->where('DATE(data) >=', $dataInicio)
-                      ->where('DATE(data) <=', $dataFim)
-                      ->countAllResults(false);
-
-        $faceid = $model->where('metodo_autenticacao', 'faceid')
-                        ->where('DATE(data) >=', $dataInicio)
-                        ->where('DATE(data) <=', $dataFim)
-                        ->countAllResults(false);
-
-        $pin = $model->where('metodo_autenticacao', 'pin')
-                     ->where('DATE(data) >=', $dataInicio)
-                     ->where('DATE(data) <=', $dataFim)
-                     ->countAllResults(false);
-
-        // Clientes únicos no período
-        $clientesUnicos = $model->distinct()
-            ->select('cliente_id')
+        // 🔎 Buscar presenças dentro do intervalo
+        $presencas = $model
+            ->select('presenca_clientes.*, cliente.nome AS cliente_nome')
+            ->join('cliente', 'cliente.id = presenca_clientes.cliente_id')
             ->where('DATE(data) >=', $dataInicio)
             ->where('DATE(data) <=', $dataFim)
-            ->countAllResults(false);
-
-        // Estatísticas diárias dentro do período
-        $mensal = $model->select("
-                DATE(data) AS dia,
-                COUNT(*) AS total,
-                SUM(CASE WHEN status = 'sucesso' THEN 1 ELSE 0 END) AS sucesso,
-                SUM(CASE WHEN status = 'erro' THEN 1 ELSE 0 END) AS erro,
-                SUM(CASE WHEN metodo_autenticacao = 'faceid' THEN 1 ELSE 0 END) AS faceid,
-                SUM(CASE WHEN metodo_autenticacao = 'pin' THEN 1 ELSE 0 END) AS pin
-            ")
-            ->where('DATE(data) >=', $dataInicio)
-            ->where('DATE(data) <=', $dataFim)
-            ->groupBy('dia')
-            ->orderBy('dia', 'ASC')
+            ->orderBy('data', 'ASC')
             ->findAll();
 
-        $data = [
-            'status' => 'success',
-            'filtro' => [
-                'data_inicio' => $dataInicio,
-                'data_fim' => $dataFim
-            ],
-            'resumo' => [
-                'total' => $total,
-                'sucesso' => $sucesso,
-                'erro' => $erro,
-                'faceid' => $faceid,
-                'pin' => $pin,
-                'clientes_unicos' => $clientesUnicos,
-                'taxa_sucesso' => $total > 0 ? round(($sucesso / $total) * 100, 1) : 0,
-                'taxa_erro' => $total > 0 ? round(($erro / $total) * 100, 1) : 0,
-            ],
-            'diario' => $mensal
+        // 🧠 Calcular estatísticas
+        $resumo = [
+            'total' => count($presencas),
+            'sucesso' => count(array_filter($presencas, fn($p) => $p['status'] === 'sucesso')),
+            'erro' => count(array_filter($presencas, fn($p) => $p['status'] === 'erro')),
+            'faceid' => count(array_filter($presencas, fn($p) => $p['metodo_autenticacao'] === 'faceid')),
+            'pin' => count(array_filter($presencas, fn($p) => $p['metodo_autenticacao'] === 'pin')),
+            'clientes_unicos' => count(array_unique(array_column($presencas, 'cliente_id'))),
         ];
 
-        return $this->response->setJSON($data);
+        // Taxas
+        $resumo['taxa_sucesso'] = $resumo['total'] > 0 ? round(($resumo['sucesso'] / $resumo['total']) * 100, 1) : 0;
+        $resumo['taxa_erro'] = $resumo['total'] > 0 ? round(($resumo['erro'] / $resumo['total']) * 100, 1) : 0;
+
+         $academiaInfo = $this->academiaModel->first() ?? [
+            'nome' => 'Nome da Academia Padrão',
+            'cnpj' => '00.000.000/0000-00',
+            'email' => 'contato@academia.com',
+            'logo' => 'assets/img/logo_padrao.png',
+            'telefone' => '(00) 00000-0000'
+        ];
+        // Dados para a view
+        $dados = [
+            'logo_academia' =>  $academiaInfo['logo'],
+            'nome_academia' => $academiaInfo['nome'],
+            'cnpj_academia' => $academiaInfo['cnpj'],
+            'email_academia' => $academiaInfo['email'],
+            'telefone_academia' => $academiaInfo['telefone'],
+            'nome_mes' => $this->formataMes($dataInicio, $dataFim),
+            'ano' => date('Y', strtotime($dataInicio)),
+            'gerado_em' => date('d/m/Y H:i'),
+            'resumo' => $resumo,
+            'presencas' => $presencas,
+            'periodo' => [
+                'inicio' => date('d/m/Y', strtotime($dataInicio)),
+                'fim' => date('d/m/Y', strtotime($dataFim))
+            ]
+        ];
+
+        // 📄 Renderizar o HTML da view
+        $html = view('relatorios/relatorio_presenca', $dados);
+
+      $options = new Options();
+        $options->set('isRemoteEnabled', true);
+        $options->set('isHtml5ParserEnabled', true);
+        $options->set('defaultFont', 'Arial');
+        $options->set('chroot', FCPATH . 'public');
+
+        $dompdf = new Dompdf($options);
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+
+        $nomeArquivo = 'relatorio-Pagamentos-' . date('Ymd-His') . '.pdf';
+        return $this->response
+            ->setHeader('Content-Type', 'application/pdf')
+            ->setHeader('Content-Disposition', 'inline; filename="' . $nomeArquivo . '"')
+            ->setBody($dompdf->output());
+        //return $pdf->stream($nomeArquivo, ["Attachment" => true]);
+    }
+
+    /**
+     * Função auxiliar para formatar o nome do mês/intervalo no cabeçalho do relatório
+     */
+    private function formataMes($inicio, $fim)
+    {
+        $mesInicio = date('m', strtotime($inicio));
+        $mesFim = date('m', strtotime($fim));
+
+        $meses = [
+            '01' => 'Janeiro', '02' => 'Fevereiro', '03' => 'Março',
+            '04' => 'Abril', '05' => 'Maio', '06' => 'Junho',
+            '07' => 'Julho', '08' => 'Agosto', '09' => 'Setembro',
+            '10' => 'Outubro', '11' => 'Novembro', '12' => 'Dezembro'
+        ];
+
+        if ($mesInicio === $mesFim) {
+            return $meses[$mesInicio];
+        }
+
+        return $meses[$mesInicio] . ' - ' . $meses[$mesFim];
     }
 }

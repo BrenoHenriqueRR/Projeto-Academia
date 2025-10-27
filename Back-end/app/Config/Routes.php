@@ -28,6 +28,7 @@ $routes->group('Cliente', function ($routes) {
     $routes->get('relatorioClientesStatus', 'Cliente::relatorioClientesStatus');
     $routes->get('relatorioFinanceiroClientes', 'Cliente::relatorioFinanceiroClientes');
     $routes->get('relatorioClientesPagamentos', 'Cliente::relatorioClientesPagamentos');
+    $routes->get('gerarRelatorioPresenca', 'Cliente::gerarRelatorioPresenca');
 });
 
 // =====================

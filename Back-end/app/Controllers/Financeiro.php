@@ -283,11 +283,13 @@ class Financeiro extends BaseController
         return $meses[(int)$numeroMes] ?? 'Mês Inválido';
     }
 
-    private function getResumoData($mes, $ano)
+    private function getResumoData($data_inicio, $data_fim)
     {
         $pagamentos = $this->pagamentoModel
             ->select("SUM(valor) AS total_valor")
-            ->like('data_pagamento', "$ano-$mes")
+            // Alterado de 'like' para 'where' para usar o intervalo
+            ->where('data_pagamento >=', $data_inicio)
+            ->where('data_pagamento <=', $data_fim)
             ->groupStart()
             ->where('status_pagamento', 'pago')
             ->orWhere('status_pagamento', 'success')
@@ -296,12 +298,16 @@ class Financeiro extends BaseController
 
         $vendas = $this->vendaModel
             ->select('SUM(total) AS total')
-            ->like('data_venda', "$ano-$mes")
+            // Alterado de 'like' para 'where' para usar o intervalo
+            ->where('data_venda >=', $data_inicio)
+            ->where('data_venda <=', $data_fim)
             ->first()['total'] ?? 0;
 
         $despesas = $this->despesaModel
             ->select('SUM(valor) AS valor')
-            ->like('data', "$ano-$mes")
+            // Alterado de 'like' para 'where' para usar o intervalo
+            ->where('data >=', $data_inicio)
+            ->where('data <=', $data_fim)
             ->first()['valor'] ?? 0;
 
         return [
@@ -313,79 +319,86 @@ class Financeiro extends BaseController
     }
 
 
-    private function getPagamentosData($mes, $ano)
+    private function getPagamentosData($data_inicio, $data_fim)
     {
 
         return $this->pagamentoModel
             ->select('
-                pagamentos.*,
-                cliente.nome,
-                cliente.CPF as cpf
-            ')
+            pagamentos.*,
+            cliente.nome,
+            cliente.CPF as cpf
+        ')
             ->join('clientes_planos', 'pagamentos.cliente_planos_id = clientes_planos.id', 'left')
             ->join('cliente', 'clientes_planos.cliente_id = cliente.id', 'left')
-            ->like('data_pagamento', "$ano-$mes")
+
+            // Substituído o 'like' abaixo
+            // ->like('data_pagamento', "$ano-$mes")
+
+            // Pelas condições de 'where' com o intervalo
+            ->where('data_pagamento >=', $data_inicio)
+            ->where('data_pagamento <=', $data_fim)
+
             ->orderBy('data_pagamento', 'DESC')
             ->findAll();
     }
 
-    private function getDespesasData($mes, $ano)
+    private function getDespesasData($data_inicio, $data_fim)
     {
         $this->despesaModel = new DespesaModel();
 
         return $this->despesaModel
-            ->like('data', "$ano-$mes")
+            ->where('data >=', $data_inicio)
+            ->where('data <=', $data_fim)
+
             ->orderBy('data', 'DESC')
             ->findAll();
     }
-
-    private function getVendasData($mes, $ano)
+    private function getVendasData($data_inicio, $data_fim) // 1. Parâmetros alterados
     {
-
         return $this->vendaModel
-            ->like('data_venda', "$ano-$mes")
+            ->where('data_venda >=', $data_inicio)
+            ->where('data_venda <=', $data_fim)
+
             ->orderBy('data_venda', 'DESC')
             ->findAll();
     }
-
     public function gerarRelatorioMensalPdf()
     {
-        $mes = $this->request->getGet('mes');
-        $ano = $this->request->getGet('ano');
+        $data_inicio = $this->request->getGet('data_inicio');
+        $data_fim = $this->request->getGet('data_fim');
 
         $academia = $this->academiaModel->first();
 
-        // Buscar os dados para o relatório
-        $resumo = $this->getResumoData($mes, $ano);
-        $pagamentos = $this->getPagamentosData($mes, $ano);
-        $despesas = $this->getDespesasData($mes, $ano);
-        $vendas = $this->getVendasData($mes, $ano);
-        $nomeMes = $this->getNomeMes($mes);
+        // 2. Busca os dados usando o intervalo de datas
+        $resumo = $this->getResumoData($data_inicio, $data_fim);
+        $pagamentos = $this->getPagamentosData($data_inicio, $data_fim);
+        $despesas = $this->getDespesasData($data_inicio, $data_fim);
+        $vendas = $this->getVendasData($data_inicio, $data_fim);
+
+        // $nomeMes = $this->getNomeMes($mes); // Linha removida
 
         // Carregar o CSS do arquivo
         $css = file_get_contents(FCPATH . 'assets/css/relatorio_financeiro_mensal.css');
 
-        // Criação de HTML com a nova view
+        // 3. Criação de HTML (removido mes, ano, nome_mes e adicionado data_inicio, data_fim)
         $html = view('Relatorios/relatorio_financeiro_mensal', [
             'resumo' => $resumo,
             'pagamentos' => $pagamentos,
             'despesas' => $despesas,
             'vendas' => $vendas,
-            'mes' => $mes,
-            'ano' => $ano,
-            'nome_mes' => $nomeMes,
+            'data_inicio' => $data_inicio, // Adicionado
+            'data_fim' => $data_fim,       // Adicionado
             'gerado_em' => date('d/m/Y H:i:s'),
             'nome_academia' => $academia['nome'],
             'cnpj_academia' => $academia['cnpj'],
             'email_academia' => $academia['email'],
             'logo_academia' => $academia['logo'],
             'telefone_academia' => $academia['telefone'],
-
         ]);
 
         $options = new Options();
         // $options->set('defaultFont', 'DejaVu Sans');
-        $options->set('isRemoteEnabled', true); // Mudei para false
+        $options->set('isRemoteEnabled', true); // Manteve true
         $options->set('isHtml5ParserEnabled', true);
         $options->set('enable_font_subsetting', true);
         $options->set('debugKeepTemp', false);
@@ -401,8 +414,10 @@ class Financeiro extends BaseController
         $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();
 
-        // Baixar o PDF diretamente
-        $nomeArquivo = 'relatorio-financeiro-' . $nomeMes . '-' . $ano . '.pdf';
+        // 4. Nome do arquivo atualizado para usar o intervalo de datas
+        $data_inicio_format = date('d-m-Y', strtotime($data_inicio));
+        $data_fim_format = date('d-m-Y', strtotime($data_fim));
+        $nomeArquivo = 'relatorio-financeiro-' . $data_inicio_format . '_a_' . $data_fim_format . '.pdf';
 
         return $this->response
             ->setHeader('Content-Type', 'application/pdf')

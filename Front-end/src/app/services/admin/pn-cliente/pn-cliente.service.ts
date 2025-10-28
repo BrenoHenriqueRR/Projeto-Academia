@@ -18,6 +18,7 @@ export class PnClienteService {
   private url_Pagamento = 'http://localhost/sites/Projeto1/Back-end/public/ClientePlanos/concluirPagamento';
   private url_pdfstatus = 'http://localhost/sites/Projeto1/Back-end/public/Cliente/relatorioClientesStatus';
   private url_pdfpagamentos = 'http://localhost/sites/Projeto1/Back-end/public/Cliente/relatorioClientesPagamentos';
+  private url_pdfpresenca = 'http://localhost/sites/Projeto1/Back-end/public/Cliente/gerarRelatorioPresenca';
 
 
   constructor(private http: HttpClient) { }
@@ -66,7 +67,14 @@ export class PnClienteService {
       case 'pagamentos':
         this.gerarRelatorioClientesPagamentos();
         break;
+      case 'presenca':
+        // this.gerarRelatorioClientesPresenca();
+        break;
     }
+  }
+
+  gerarRelatorioClientesPresencaId(dados: any): void  {
+
   }
 
   gerarRelatorioClientesStatus(): void {
@@ -76,5 +84,9 @@ export class PnClienteService {
 
   gerarRelatorioClientesPagamentos(): void {
     window.open(this.url_pdfpagamentos, '_blank');
+  }
+  
+  gerarRelatorioClientesPresenca(data_inicio: string, data_fim: string): void {
+    window.open(`${this.url_pdfpresenca}?data_inicio=${data_inicio}&data_fim=${data_fim}`, '_blank');
   }
 }

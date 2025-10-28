@@ -50,14 +50,14 @@ export class PnFinanceiroService {
   }
 
   // Método existente
-  gerarPdfMensal(mes: string, ano: string): void {
-    const url = `${this.apiUrl}/gerarRelatorioMensalPdf?mes=${mes}&ano=${ano}`;
+  gerarPdfMensal(data_inicio: string, data_fim: string): void {
+    const url = `${this.apiUrl}/gerarRelatorioMensalPdf?data_inicio=${data_inicio}&data_fim=${data_fim}`;
     window.open(url, '_blank');
   }
 
   // Novos métodos para relatórios
-  gerarRelatorioCompleto(mes: string, ano: string): Observable<Blob> {
-    return this.http.get(`${this.apiUrl}/relatorioCompleto?mes=${mes}&ano=${ano}`, {
+  gerarRelatorioCompleto(data_inicio: string, data_fim: string): Observable<Blob> {
+    return this.http.get(`${this.apiUrl}/relatorioCompleto?data_inicio=${data_inicio}&data_fim=${data_fim}`, {
       responseType: 'blob'
     });
   }

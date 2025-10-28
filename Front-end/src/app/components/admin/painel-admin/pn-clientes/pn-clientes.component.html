@@ -72,23 +72,28 @@
                         <td>{{dados.CPF}}</td>
                         <td>{{dados.nome_personal}}</td>
                         <!-- <td>{{dados.frequencia}}</td> -->
-                        <td>
+                        <td clas>
                             @if(func == 'personal'){
                             <button class="pn-button" routerLink="treinos" [queryParams]="{ id: dados.id}">Cadastrar
                                 Treinos</button>
                             }@else {
-                            <button class="btn btn-outline-primary" routerLink="editar"
-                                [queryParams]="{ id: dados.id}"><i class="fas fa-edit"></i> Editar</button>
-                            <button class="pn-button btn-excluir" (click)="openmodal(dados.id)">Excluir</button>
+                            <button class="pn-button btn-outline-primary" title="Editar" routerLink="editar" 
+                                [queryParams]="{ id: dados.id}"><i class="fas fa-edit"></i></button>
+                            <button class="pn-button btn-excluir" title="Excluir" (click)="openmodal(dados.id)">
+                                <i class="fas fa-trash"></i>
+                            </button>
                             @if(func == 'Administrador'){
                             <button class="btn-treino" routerLink="treinos" [queryParams]="{ id: dados.id}">Cad
                                 Treinos</button>
                             }
                             <app-modal-confirmar (confirm)="validarmodal($event)"></app-modal-confirmar>
-                            <button type="button" class="pn-button" (click)="openmodalH(dados.id)"
-                                data-bs-toggle="modal" data-bs-target="#exibirModal">📜 Histórico</button>
+                            <button type="button" title="Historico" class="pn-button" (click)="openmodalH(dados.id)"
+                                data-bs-toggle="modal" data-bs-target="#exibirModal"><i class="fas fa-history"></i></button>
 
                             <app-modal-exibir #modalH></app-modal-exibir>
+                            <button type="button" class="pn-button"  title="Relatorios" (click)="abrirModalRelatorios()">
+                                <i class="fa-solid fa-chart-line mx-2"></i>
+                            </button>
                             }
                         </td>
                     </tr>

@@ -137,8 +137,9 @@ export class PnClientesComponent {
 
   abrirModalRelatorios(){
     const dialogRef = this.dialog.open(ModalEscolhaRelatoriosComponent, {
-            width: '400px',
-            data: { tipo: 'relatorioClientes' },
+            width: '700px',
+            height: '500px',
+            data: { tipo: 'x' },
           });
           dialogRef.afterClosed().subscribe((result) => {
             if (result.confirmado) {

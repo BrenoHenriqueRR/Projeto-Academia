@@ -8,11 +8,14 @@ use App\Models\AcademiaModel;
 use App\Models\ClienteModel;
 use App\Models\Clientesplanos;
 use App\Models\PagamentosModel;
+use App\Models\Planos;
 use App\Models\PresencaclientesModel;
 use CodeIgniter\CLI\Console;
 use CodeIgniter\Database\Query;
 use Dompdf\Dompdf;
 use Dompdf\Options;
+use DateTime;
+use DateInterval;
 
 class Cliente extends BaseController
 {
@@ -25,11 +28,13 @@ class Cliente extends BaseController
     protected $anamneseModel;
     protected $pagamentosModel;
     protected $prensencaclientesModel;
+    protected $planosModel;
 
 
     public function __construct()
     {
         $this->model = new ClienteModel();
+        $this->planosModel = new Planos();
         $this->ClientesPlanoModel = new Clientesplanos();
         $this->ClientePlanos = new ClientePlanos();
         $this->model = new ClienteModel();
@@ -105,7 +110,7 @@ class Cliente extends BaseController
             }
         }
 
-        $pin = random_int(1000, 999999);
+        $pin = random_int(100000, 999999);
         $pin_hash = password_hash($pin, PASSWORD_DEFAULT);
 
         $dados['pin'] = $pin_hash;
@@ -699,7 +704,6 @@ class Cliente extends BaseController
 
         $model = new PresencaClientesModel();
 
-        // 🔎 Buscar presenças dentro do intervalo
         $presencas = $model
             ->select('presenca_clientes.*, cliente.nome AS cliente_nome')
             ->join('cliente', 'cliente.id = presenca_clientes.cliente_id')
@@ -708,7 +712,6 @@ class Cliente extends BaseController
             ->orderBy('data', 'ASC')
             ->findAll();
 
-        // 🧠 Calcular estatísticas
         $resumo = [
             'total' => count($presencas),
             'sucesso' => count(array_filter($presencas, fn($p) => $p['status'] === 'sucesso')),
@@ -789,5 +792,104 @@ class Cliente extends BaseController
         }
 
         return $meses[$mesInicio] . ' - ' . $meses[$mesFim];
+    }
+
+    public function gerarRelatorioPresencaIndividual()
+    {
+        $cliente_id = $this->request->getVar('cliente_id');
+        $dataInicio = $this->request->getVar('data_inicio');
+        $dataFim = $this->request->getVar('data_fim');
+
+        if (!$cliente_id || !$dataInicio || !$dataFim) {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'É necessário informar o cliente, data de início e data de fim.'
+            ]);
+        }
+
+        $presencaModel = new PresencaClientesModel();
+
+        // 🔹 Busca presenças no período
+        $presencas = $presencaModel
+            ->select('presenca_clientes.*, cliente.nome as cliente_nome')
+            ->join('cliente', 'cliente.id = presenca_clientes.cliente_id')
+            ->where('presenca_clientes.cliente_id', $cliente_id)
+            ->where('DATE(data) >=', $dataInicio)
+            ->where('DATE(data) <=', $dataFim)
+            ->orderBy('data', 'ASC')
+            ->findAll();
+
+        if (empty($presencas)) {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'Nenhum registro de presença encontrado para o período informado.'
+            ]);
+        }
+
+        // 🔹 Busca o plano ativo do cliente
+        $planoCliente = $this->ClientesPlanoModel
+            ->where('cliente_id', $cliente_id)
+            ->where('status', 'ativo')
+            ->orderBy('data_inicio', 'DESC')
+            ->first();
+
+        $planoNome = 'Não informado';
+        $diasPlano = 0;
+        if ($planoCliente) {
+            $plano = $this->planosModel->find($planoCliente['plano_id']);
+            $planoNome = $plano['nome'] ?? 'Plano sem nome';
+            $diasPlano = $plano['dias_por_semana'] ?? 0; // campo que você pode adicionar, ex: 3 dias/semana
+        }
+
+        // 🧮 Cálculos de presença e tempo
+        $diasCompareceu = count(array_unique(array_map(fn($p) => date('Y-m-d', strtotime($p['data'])), $presencas)));
+     $totalMinutos = 0;
+        foreach ($presencas as $p) {
+            if ($p['hora_entrada'] && $p['hora_saida']) {
+                $entrada = new DateTime($p['hora_entrada']);
+                $saida = new DateTime($p['hora_saida']);
+                $totalMinutos += ($saida->getTimestamp() - $entrada->getTimestamp()) / 60;
+            }
+        }
+
+        $tempoTotalHoras = floor($totalMinutos / 60);
+        $tempoTotalMin = $totalMinutos % 60;
+        $tempoMedio = $diasCompareceu > 0 ? floor(($totalMinutos / $diasCompareceu) / 60) : 0;
+
+        // 🔹 Calcula percentual de comparecimento baseado no plano
+        $semanas = ceil((strtotime($dataFim) - strtotime($dataInicio)) / (7 * 24 * 60 * 60));
+        $diasEsperados = $diasPlano * $semanas;
+        $percentualComparecimento = $diasEsperados > 0 ? ($diasCompareceu / $diasEsperados) * 100 : 0;
+
+        $dados = [
+            'cliente' => $presencas[0]['cliente_nome'],
+            'periodo' => [
+                'inicio' => date('d/m/Y', strtotime($dataInicio)),
+                'fim' => date('d/m/Y', strtotime($dataFim))
+            ],
+            'plano' => [
+                'nome' => $planoNome,
+                'dias_semana' => $diasPlano,
+                'esperado' => $diasEsperados,
+                'compareceu' => $diasCompareceu,
+                'percentual' => $percentualComparecimento
+            ],
+            'resumo' => [
+                'tempo_total' => sprintf('%dh %02dm', $tempoTotalHoras, $tempoTotalMin),
+                'tempo_medio' => $tempoMedio . 'h/dia'
+            ],
+            'presencas' => $presencas,
+            'gerado_em' => date('d/m/Y H:i')
+        ];
+        
+
+        $html = view('relatorios/relatorio_presenca_individual', $dados);
+
+        $pdf = new Dompdf(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true]);
+        $pdf->loadHtml($html);
+        $pdf->setPaper('A4', 'portrait');
+        $pdf->render();
+
+        return $pdf->stream('Relatorio_Presenca_' . $dados['cliente'] . '.pdf', ["Attachment" => true]);
     }
 }

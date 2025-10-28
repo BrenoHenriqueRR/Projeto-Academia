@@ -203,7 +203,7 @@ export class PnFinanceiroComponent {
   }
 
   gerarPDF() {
-    this.service.gerarPdfMensal(this.mes.toString().padStart(2, '0'), this.ano.toString());
+    this.service.gerarPdfMensal(this.data_group.value.Sstart, this.data_group.value.Send);
   }
 
   // Métodos para atualização de status dos pagamentos

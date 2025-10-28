@@ -57,3 +57,26 @@ in APPPATH\Views\Relatorios\relatorio_presenca.php on line 193.
  7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
  8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-27 18:37:16 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "relatorios/relatorio_presenca_individual_plano.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(216): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('relatorios/relatorio_presenca_individual_plano.php')
+ 2 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('relatorios/relatorio_presenca_individual_plano', [], true)
+ 3 APPPATH\Controllers\Cliente.php(888): view('relatorios/relatorio_presenca_individual_plano', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->gerarRelatorioPresencaIndividual()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-27 19:03:47 --> Exception: DateTime::__construct(): Failed to parse time string (2025-10-01 00:00:00 2007-05-00 00:00:00) at position 20 (2): Double date specification
+in APPPATH\Controllers\Cliente.php on line 861.
+ 1 APPPATH\Controllers\Cliente.php(861): DateTime->__construct('2025-10-01 00:00:00 2007-05-00 00:00:00')
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->gerarRelatorioPresencaIndividual()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-27 19:08:48 --> Exception: DateTime::__construct(): Failed to parse time string (2025-10-01 00:00:00 2007-05-00 00:00:00) at position 20 (2): Double date specification
+in APPPATH\Controllers\Cliente.php on line 861.
+ 1 APPPATH\Controllers\Cliente.php(861): DateTime->__construct('2025-10-01 00:00:00 2007-05-00 00:00:00')
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->gerarRelatorioPresencaIndividual()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

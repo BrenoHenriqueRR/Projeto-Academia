@@ -55,13 +55,17 @@ export class ModalEscolhaRelatoriosComponent {
     this.listaClientes = data?.clientes || [];
   }
 
-  onDatePicked(event: { startDate: moment.Moment, endDate: moment.Moment }) {
-       this.data_group.patchValue({
-          Sstart: event.startDate.format('YYYY-MM-DD'),
-          Send: event.endDate.format('YYYY-MM-DD')
-        })
+ onDatePicked(event: { startDate: moment.Moment, endDate: moment.Moment }) {
+    
+    if (event.startDate && event.endDate) {
+        this.data_group.patchValue({
+            Sstart: event.startDate.format('YYYY-MM-DD'),
+            Send: event.endDate.format('YYYY-MM-DD')
+        });
+    } else {
+        this.data_group.patchValue({ Sstart: null, Send: null });
     }
-
+}
   cancelar() {
     this.dialogRef.close(false);
   }

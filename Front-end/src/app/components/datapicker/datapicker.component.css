@@ -1,0 +1,18 @@
+::ng-deep .cdk-overlay-container,
+::ng-deep .cdk-overlay-pane {
+  z-index: 1200 !important; /* acima do mat-dialog */
+}
+
+::ng-deep .daterangepicker {
+  z-index: 1201 !important;
+  position: fixed !important;
+  top: auto !important;
+  left: auto !important;
+}
+
+.date-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+

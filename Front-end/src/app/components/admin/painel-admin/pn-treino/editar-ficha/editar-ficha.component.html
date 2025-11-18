@@ -1,225 +1,381 @@
 <div class="container mt-4" [formGroup]="formFicha">
-  <div class="row">
-    <!-- Coluna esquerda: cadastro -->
-    <div class="col-md-4">
-
-      <!-- Card: Adicionar Exercício -->
-      <div class="card mb-4">
-        <div class="card-header bg-secondary text-white">
-          Adicionar Exercício
+    
+    <!-- CABEÇALHO COM BOTÃO DE TUTORIAL -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="mb-0">Montagem de Treino</h2>
+            <small class="text-muted">Configure os exercícios e a estrutura da ficha do aluno.</small>
         </div>
-        <div class="card-body" [formGroup]="formExercicio">
-          <!-- Grupo Muscular -->
-          <div class="mb-2">
-            <label class="form-label">Grupo Muscular</label>
-            <select class="form-select" formControlName="grupoMuscular" (change)="filtrarExercicios()">
-              <option value="" disabled selected>Selecione o grupo</option>
-              <option *ngFor="let grupo of gruposMusculares" [value]="grupo.id">{{ grupo.nome }}</option>
-            </select>
-          </div>
-
-          <!-- Exercício -->
-          <div class="mb-2">
-            <label class="form-label">Exercício</label>
-            <select class="form-select" formControlName="exercicio">
-              <option value="" disabled selected>Selecione o exercício</option>
-              <option *ngFor="let exer of exerciciosFiltrados" [value]="exer.id">{{ exer.nome }}</option>
-            </select>
-          </div>
-
-          <!-- Séries e Repetições -->
-          <div class="row">
-            <div class="col">
-              <label class="form-label">Séries</label>
-              <input type="number" class="form-control" formControlName="series">
-            </div>
-            <div class="col">
-              <label class="form-label">Repetições</label>
-              <input type="number" class="form-control" formControlName="repeticoes">
-            </div>
-          </div>
-
-          <!-- Observações -->
-          <div class="mt-2">
-            <label class="form-label">Observações</label>
-            <input type="text" class="form-control" formControlName="observacoes">
-          </div>
-
-          <!-- Botão Adicionar -->
-          <button class="btn btn-warning w-100 mt-3" type="button" (click)="adicionarExercicio()">Adicionar
-            Exercício</button>
-        </div>
-      </div>
-
-      <!-- Card: Ficha -->
-      <div class="card">
-        <div class="card-header bg-primary text-white">Ficha</div>
-
-        <div class="card-body">
-          <div class="mb-3">
-            <label class="form-label">Tipo de Treino</label>
-            <input formControlName="tipo" type="text" class="form-control" placeholder="Ex: A, B, C...">
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Ordem</label>
-            <input formControlName="ordem" type="number" class="form-control">
-          </div>
-          <div class="alert alert-info" role="alert">
-            <h5 class="alert-heading">Atenção!</h5>
-            <small>Por favor, siga a ordem das fichas ao criar registros no sistema.</small>
-            <hr>
-            <small class="mb-0">A sequência correta é essencial para a organização dos dados.</small>
-          </div>
-
-        </div>
-      </div>
-
-      <button class="btn btn-success w-100 mt-4" (click)="atualizarFicha()">Atualizar Ficha</button>
+        <button class="btn btn-info text-white shadow-sm" data-bs-toggle="modal" data-bs-target="#modalTutorial">
+            <i class="fa-solid fa-circle-info me-2"></i>
+            Como usar essa tela?
+        </button>
     </div>
 
-    <!-- Coluna direita: Tabela -->
-    <div class="col-md-8">
-      <div class="card">
-        <div class="card-header bg-dark text-white">
-          Ficha de Treino Atual
-        </div>
-        <div class="card-body">
-          <table class="table table-bordered table-hover">
-            <thead class="table-light">
-              <tr>
-                <th>Exercício</th>
-                <th>Grupo</th>
-                <th>Séries</th>
-                <th>Repetições</th>
-                <th>Obs.</th>
-                <th>Ação</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let item of listaExercicios; let i = index">
-                <td>{{ item.exercicio_nome }}</td>
-                <td>{{ item.grupo_nome }}</td>
-                <td>{{ item.series }}</td>
-                <td>{{ item.repeticoes }}</td>
-                <td>{{ item.observacoes }}</td>
-                <td>
-                  <button class="btn btn-sm btn-danger" (click)="removerExercicio(i)">Remover</button>
-                </td>
-              </tr>
-              <tr *ngIf="listaExercicios.length === 0">
-                <td colspan="6" class="text-center">Nenhum exercício adicionado.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <!-- Plano Atual e Fichas -->
-      <div class="card mb-3">
-        <div class="card-header bg-info text-white d-flex justify-content-between align-items-center">
-          <span>Informações do Cliente</span>
-          <button class="btn btn-sm btn-outline-light" (click)="abrirModalAnamnese()">
-            <i class="bi bi-person-vcard"></i> Ver Anamnese
-          </button>
-        </div>
-        <div class="card-body">
+    <div class="row">
+        <!-- Coluna esquerda: cadastro -->
+        <div class="col-md-4">
 
-          <p *ngFor="let planos of planoCliente "><strong>Plano Atual:</strong> {{ planos.nome || 'Nenhum plano ativo'
-            }} | {{planos.dias_por_semana}} dias por semana </p>
-          <hr>
-          <div class="d-flex flex-wrap gap-2">
-            <p><strong>Fichas já criadas:</strong></p>
-            <span class="badge bg-secondary" *ngFor="let ficha of fichasCliente">{{ ficha.tipo }}</span>
-            <button class="btn btn-primary" *ngIf="fichasCliente != null" [routerLink]="['../ver-fichas']" [queryParams]="{ id: cliente_id }"><small>Ver fichas</small></button>
-            <span *ngIf="fichasCliente == null">Nenhuma ficha cadastrada.</span>
-          </div>
+            <!-- Card: Adicionar Exercício -->
+            <div class="card mb-4 shadow-sm border-0">
+                <div class="card-header bg-secondary text-white d-flex justify-content-between align-items-center">
+                    <span class="fw-bold"><i class="fa-solid fa-dumbbell me-2"></i>1. Adicionar Exercício</span>
+                    <i class="fa-regular fa-circle-question help-icon text-white" 
+                       matTooltip="Selecione o grupo muscular e o exercício para começar."></i>
+                </div>
+                <div class="card-body bg-light" [formGroup]="formExercicio">
+                    <!-- Grupo Muscular -->
+                    <div class="mb-2">
+                        <div class="d-flex align-items-center">
+                            <label class="form-label me-2 fw-bold">Grupo Muscular</label>
+                        </div>
+                        <select class="form-select" formControlName="grupoMuscular" (change)="filtrarExercicios()">
+                            <option value="" disabled selected>Selecione o grupo</option>
+                            <option *ngFor="let grupo of gruposMusculares" [value]="grupo.id">{{ grupo.nome }}</option>
+                        </select>
+                    </div>
+
+                    <!-- Exercício -->
+                    <div class="mb-2">
+                        <label class="form-label fw-bold">Exercício</label>
+                        <select class="form-select" formControlName="exercicio">
+                            <option value="" disabled selected>Selecione o exercício</option>
+                            <option *ngFor="let exer of exerciciosFiltrados" [value]="exer.id">{{ exer.nome }}</option>
+                        </select>
+                    </div>
+
+                    <!-- Séries e Repetições -->
+                    <div class="row">
+                        <div class="col">
+                            <div class="d-flex align-items-center">
+                                <label class="form-label me-1">Séries</label>
+                            </div>
+                            <input type="number" class="form-control" formControlName="series" placeholder="Ex: 3">
+                        </div>
+                        <div class="col">
+                            <div class="d-flex align-items-center">
+                                <label class="form-label me-1">Repetições</label>
+                            </div>
+                            <input type="number" class="form-control" formControlName="repeticoes" placeholder="Ex: 12">
+                        </div>
+                    </div>
+
+                    <!-- Observações -->
+                    <div class="mt-2">
+                        <div class="d-flex align-items-center">
+                            <label class="form-label me-2">Observações</label>
+                        </div>
+                        <input type="text" class="form-control" formControlName="observacoes" placeholder="Ex: Falha concêntrica">
+                    </div>
+
+                    <!-- Botão Adicionar -->
+                    <button class="btn btn-warning w-100 mt-3 fw-bold" type="button" (click)="adicionarExercicio()">
+                        <i class="fa-solid fa-arrow-right me-2"></i> Adicionar à Lista
+                    </button>
+                </div>
+            </div>
+
+            <!-- Card: Ficha -->
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                    <span class="fw-bold"><i class="fa-solid fa-gear me-2"></i>3. Configurar Ficha</span>
+                    <i class="fa-regular fa-circle-question help-icon text-white" 
+                       matTooltip="Defina qual letra essa ficha representa (A, B, C)."></i>
+                </div>
+
+                <div class="card-body">
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center">
+                            <label class="form-label me-2 fw-bold">Tipo de Treino</label>
+                        </div>
+                        <input formControlName="tipo" type="text" class="form-control" placeholder="Ex: A, B, C, Superior...">
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center">
+                            <label class="form-label me-2 fw-bold">Ordem</label>
+                        </div>
+                        <input formControlName="ordem" type="number" class="form-control" placeholder="1">
+                    </div>
+                    <div class="alert alert-info p-2" role="alert">
+                        <small><i class="fa-solid fa-circle-info me-1"></i> A ordem define a sequência de exibição no app do aluno.</small>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center mt-4">
+                <button class="btn btn-success flex-grow-1 py-3 fw-bold shadow" (click)="atualizarFicha()">
+                    <i class="fa-solid fa-check me-2"></i> SALVAR FICHA COMPLETA
+                </button>
+            </div>
         </div>
-      </div>
+
+        <!-- Coluna direita: Tabela -->
+        <div class="col-md-8">
+            <!-- Card Lista de Exercícios -->
+            <div class="card shadow-sm border-0 mb-4">
+                <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                    <span class="fw-bold"><i class="fa-solid fa-list-check me-2"></i>2. Lista de Exercícios (Prévia)</span>
+                    <span class="badge bg-light text-dark">{{ listaExercicios.length }} exercícios</span>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0 align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Exercício</th>
+                                    <th>Grupo</th>
+                                    <th class="text-center">Séries</th>
+                                    <th class="text-center">Reps</th>
+                                    <th>Obs.</th>
+                                    <th class="text-center">Ação</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of listaExercicios; let i = index">
+                                    <td class="fw-bold text-primary">{{ item.exercicio_nome }}</td>
+                                    <td><span class="badge bg-secondary">{{ item.grupo_nome }}</span></td>
+                                    <td class="text-center">{{ item.series }}</td>
+                                    <td class="text-center">{{ item.repeticoes }}</td>
+                                    <td class="small text-muted">{{ item.observacoes || '-' }}</td>
+                                    <td class="text-center">
+                                        <button class="btn btn-sm btn-outline-danger border-0" (click)="removerExercicio(i)"
+                                                matTooltip="Remover da lista">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr *ngIf="listaExercicios.length === 0">
+                                    <td colspan="6" class="text-center py-5 text-muted">
+                                        <i class="fa-solid fa-dumbbell fa-3x mb-3 d-block opacity-25"></i>
+                                        Nenhum exercício adicionado ainda.<br>
+                                        Utilize o painel à esquerda para começar.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Plano Atual e Fichas -->
+            <div class="card border-info mb-3">
+                <div class="card-header bg-info text-white d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center">
+                        <i class="fa-solid fa-user-circle me-2"></i>
+                        <span class="fw-bold">Dados do Aluno</span>
+                    </div>
+                    <button class="btn btn-sm btn-light text-info fw-bold d-flex align-items-center gap-1" (click)="abrirModalAnamnese()">
+                        <i class="bi bi-person-vcard"></i> Consultar Anamnese
+                    </button>
+                </div>
+                <div class="card-body bg-light">
+                    <div class="row align-items-center">
+                        <div class="col-md-6 border-end">
+                             <p *ngFor="let planos of planoCliente" class="mb-1">
+                                <small class="text-muted text-uppercase fw-bold">Plano Atual</small><br>
+                                <span class="fs-5 text-dark fw-bold">{{ planos.nome || 'Sem plano' }}</span>
+                                <span class="badge bg-success ms-2">{{planos.dias_por_semana}}x semana</span>
+                             </p>
+                        </div>
+                        <div class="col-md-12">
+                            <small class=" text-uppercase fw-bold d-block mb-1">Estrutura Atual</small>
+                            <div class="d-flex flex-wrap gap-2 align-items-center">
+                                <ng-container *ngIf="fichasCliente && fichasCliente.length > 0; else semFichas">
+                                    <span class="badge bg-primary" *ngFor="let ficha of fichasCliente" 
+                                          matTooltip="Ficha já cadastrada no sistema">
+                                        Ficha {{ ficha.tipo }}
+                                    </span>
+                                    <button class="btn btn-link btn-sm text-decoration-none p-0 ms-2" 
+                                            [routerLink]="['../ver-fichas']" [queryParams]="{ id: cliente_id }">
+                                        Ver detalhes <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                    </button>
+                                </ng-container>
+                                <ng-template #semFichas>
+                                    <span class="text-muted fst-italic">Este aluno ainda não possui fichas.</span>
+                                </ng-template>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <!-- Modal Ficha de Anamnese -->
-  <div class="modal fade" id="modalAnamnese" tabindex="-1" aria-labelledby="anamneseModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header bg-primary text-white">
-          <h5 class="modal-title" id="anamneseModalLabel">Ficha de Anamnese do Cliente</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+    <!-- MODAL TUTORIAL / COMO USAR -->
+    <div class="modal fade" id="modalTutorial" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                    <h5 class="modal-title fw-bold"><i class="fa-solid fa-graduation-cap me-2"></i>Guia de Montagem de Treino</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="row g-4">
+                        <!-- PASSO 1 -->
+                        <div class="col-md-6">
+                            <div class="d-flex">
+                                <div class="flex-shrink-0">
+                                    <span class="badge rounded-pill bg-secondary fs-5">1</span>
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                    <h6 class="fw-bold">Selecione o Exercício</h6>
+                                    <p class="small text-muted mb-0">
+                                        No painel esquerdo (cinza), filtre pelo <strong>Grupo Muscular</strong> e escolha o <strong>Exercício</strong> desejado.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- PASSO 2 -->
+                        <div class="col-md-6">
+                            <div class="d-flex">
+                                <div class="flex-shrink-0">
+                                    <span class="badge rounded-pill bg-secondary fs-5">2</span>
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                    <h6 class="fw-bold">Defina a Carga de Trabalho</h6>
+                                    <p class="small text-muted mb-0">
+                                        Preencha <strong>Séries</strong> e <strong>Repetições</strong>. Use o campo "Observações" para técnicas como Drop-set ou Isometria.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- PASSO 3 -->
+                        <div class="col-md-6">
+                            <div class="d-flex">
+                                <div class="flex-shrink-0">
+                                    <span class="badge rounded-pill bg-warning text-dark fs-5">3</span>
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                    <h6 class="fw-bold">Adicionar à Lista</h6>
+                                    <p class="small text-muted mb-0">
+                                        Clique no botão amarelo <strong>"Adicionar Exercício"</strong>. O exercício irá para a tabela no lado direito (Lista de Exercícios).
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- PASSO 4 -->
+                        <div class="col-md-6">
+                            <div class="d-flex">
+                                <div class="flex-shrink-0">
+                                    <span class="badge rounded-pill bg-primary fs-5">4</span>
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                    <h6 class="fw-bold">Identifique a Ficha</h6>
+                                    <p class="small text-muted mb-0">
+                                        No painel azul "Ficha", defina o <strong>Tipo</strong> (ex: A, B) e a <strong>Ordem</strong> (1, 2) para organizar a sequência no app.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <hr class="my-4">
+                    
+                    <div class="alert alert-success d-flex align-items-center mb-0">
+                        <i class="fa-solid fa-check-circle fa-2x me-3"></i>
+                        <div>
+                            <strong>Finalização:</strong>
+                            <br>
+                            Após adicionar todos os exercícios desejados à lista da direita, clique no botão verde grande <strong>"SALVAR FICHA COMPLETA"</strong> para gravar tudo no sistema de uma vez.
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer bg-light">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Entendi</button>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-          <div class="row">
-            @for (anam of anamneseCliente; track $index) {
-            <div class="col-md-6 mb-3">
-              <strong>Problemas de Saúde:</strong><br>
-              {{ anam.perg_problemas_saude || 'Não informado' }}
-            </div>
-            <div class="col-md-6 mb-3">
-              <strong>Sintomas:</strong><br>
-              {{ anam.perg_sintomas || 'Não informado' }}
-            </div>
-            <div class="col-md-6 mb-3">
-              <strong>Faz uso de medicamentos?</strong><br>
-              {{ anam.perg_medicamentos || 'Não informado' }}
-            </div>
-            <div class="col-md-6 mb-3">
-              <strong>Histórico Familiar Cardíaco:</strong><br>
-              {{ anam.perg_historico_familiar_cardiaco == '1' ? 'Sim' : 'Não' }}
-            </div>
-            <div class="col-md-6 mb-3">
-              <strong>Possui restrição médica?</strong><br>
-              {{ anam.perg_restricao_medica || 'Não informado' }}
-            </div>
-            <div class="col-md-6 mb-3">
-              <strong>Está grávida?</strong><br>
-              {{ anam.perg_gravida === '1' ? 'Sim' : (anam.perg_gravida === '0' ? 'Não' : 'Não informado') }}
-            </div>
-            <div class="col-md-6 mb-3">
-              <strong>Fuma?</strong><br>
-              {{ anam.perg_fuma === '1' ? 'Sim' : (anam.perg_fuma === '0' ? 'Não' : 'Não informado') }}
-            </div>
-            <div class="col-md-6 mb-3">
-              <strong>Consome álcool?</strong><br>
-              {{ anam.perg_bebe_alcool === '1' ? 'Sim' : (anam.perg_bebe_alcool === '0' ? 'Não' : 'Não informado') }}
-            </div>
-            <div class="col-md-6 mb-3">
-              <strong>Pratica exercícios frequentemente?</strong><br>
-              {{ anam.perg_exercicio_frequente === '1' ? 'Sim' : (anam.perg_exercicio_frequente === '0' ? 'Não' : 'Nãoinformado') }}
-            </div>
-            <div class="col-md-6 mb-3">
-              <strong>Faz quanto de aeróbico por semana?</strong><br>
-              {{ anam.perg_qtde_aerobico || 'Não informado' }}
-            </div>
-            <div class="col-md-6 mb-3">
-              <strong>Já mediu colesterol?</strong><br>
-              {{ anam.perg_colesterol_medido === '1' ? 'Sim' : (anam.perg_colesterol_medido === '0' ? 'Não' : 'Nãoinformado') }}
-            </div>
-            <div class="col-md-6 mb-3">
-              <strong>Segue alimentação balanceada?</strong><br>
-              {{ anam.perg_alimentacao_balanceada === '1' ? 'Sim' : (anam.perg_alimentacao_balanceada === '0' ? 'Não' :
-              'Não informado') }}
-            </div>
-            <div class="col-md-6 mb-3">
-              <strong>Consome gordura em excesso?</strong><br>
-              {{ anam.perg_gordura_alta === '1' ? 'Sim' : (anam.perg_gordura_alta === '0' ? 'Não' : 'Não informado') }}
-            </div>
-            <div class="col-md-6 mb-3">
-              <strong>Nível de estresse:</strong><br>
-              {{ anam.perg_nivel_estresse || 'Não informado' }}
-            </div>
-            <div class="col-md-12 mb-3">
-              <strong>Objetivos de Saúde:</strong><br>
-              {{ anam.perg_objetivos_saude || 'Não informado' }}
-            </div>
-            <div class="col-md-12 mb-3">
-              <strong>Anotações adicionais:</strong><br>
-              {{ anam.anotacoes || 'Nenhuma anotação registrada.' }}
-            </div>
-            }
-          </div>
-        </div>
-
-        <div class="modal-footer">
-          <button class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-        </div>
-      </div>
     </div>
-  </div>
+
+    <!-- Modal Ficha de Anamnese -->
+    <div class="modal fade" id="modalAnamnese" tabindex="-1" aria-labelledby="anamneseModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title d-flex align-items-center" id="anamneseModalLabel">
+                        Ficha de Anamnese do Cliente
+                        <i class="fa-regular fa-circle-question help-icon text-white ms-2 fs-6" 
+                           matTooltip="Respostas fornecidas pelo aluno durante a avaliação inicial."></i>
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        @for (anam of anamneseCliente; track $index) {
+                        <div class="col-md-6 mb-3">
+                            <strong>Problemas de Saúde:</strong><br>
+                            {{ anam.perg_problemas_saude || 'Não informado' }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Sintomas:</strong><br>
+                            {{ anam.perg_sintomas || 'Não informado' }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Faz uso de medicamentos?</strong><br>
+                            {{ anam.perg_medicamentos || 'Não informado' }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Histórico Familiar Cardíaco:</strong><br>
+                            {{ anam.perg_historico_familiar_cardiaco == '1' ? 'Sim' : 'Não' }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Possui restrição médica?</strong><br>
+                            {{ anam.perg_restricao_medica || 'Não informado' }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Está grávida?</strong><br>
+                            {{ anam.perg_gravida === '1' ? 'Sim' : (anam.perg_gravida === '0' ? 'Não' : 'Não informado') }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Fuma?</strong><br>
+                            {{ anam.perg_fuma === '1' ? 'Sim' : (anam.perg_fuma === '0' ? 'Não' : 'Não informado') }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Consome álcool?</strong><br>
+                            {{ anam.perg_bebe_alcool === '1' ? 'Sim' : (anam.perg_bebe_alcool === '0' ? 'Não' : 'Não informado') }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Pratica exercícios frequentemente?</strong><br>
+                            {{ anam.perg_exercicio_frequente === '1' ? 'Sim' : (anam.perg_exercicio_frequente === '0' ? 'Não' : 'Nãoinformado') }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Faz quanto de aeróbico por semana?</strong><br>
+                            {{ anam.perg_qtde_aerobico || 'Não informado' }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Já mediu colesterol?</strong><br>
+                            {{ anam.perg_colesterol_medido === '1' ? 'Sim' : (anam.perg_colesterol_medido === '0' ? 'Não' : 'Nãoinformado') }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Segue alimentação balanceada?</strong><br>
+                            {{ anam.perg_alimentacao_balanceada === '1' ? 'Sim' : (anam.perg_alimentacao_balanceada === '0' ? 'Não' :
+                            'Não informado') }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Consome gordura em excesso?</strong><br>
+                            {{ anam.perg_gordura_alta === '1' ? 'Sim' : (anam.perg_gordura_alta === '0' ? 'Não' : 'Não informado') }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Nível de estresse:</strong><br>
+                            {{ anam.perg_nivel_estresse || 'Não informado' }}
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <strong>Objetivos de Saúde:</strong><br>
+                            {{ anam.perg_objetivos_saude || 'Não informado' }}
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <strong>Anotações adicionais:</strong><br>
+                            {{ anam.anotacoes || 'Nenhuma anotação registrada.' }}
+                        </div>
+                        }
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

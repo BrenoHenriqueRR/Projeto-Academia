@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { ModalCadastroComponent } from '../modal-cadastro/modal-cadastro.component';
+import { MaterialModule } from '../../../modules/material.module';
 @Component({
   selector: 'app-escolha-cadastro',
   standalone: true,
-  imports: [MatDialogModule,
-    MatButtonModule],
+  imports: [MaterialModule],
   templateUrl: './escolha-cadastro.component.html',
   styleUrl: './escolha-cadastro.component.css'
 })

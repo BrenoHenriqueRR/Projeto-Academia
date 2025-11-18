@@ -2,15 +2,33 @@
     <div *ngIf="loading">
         <app-modal-spinner></app-modal-spinner>
     </div>
-    <h1 class="h1-anam mb-5">Listagem de Anamnese</h1>
-    <button class="btn btn-primary mb-5" routerLink="cadastrar" ><i
-        class="fa-solid fa-plus p-1"></i></button>
+
+    <!-- Título com Ajuda -->
+    <div class="d-flex align-items-center gap-2 mb-5">
+        <h1 class="h1-anam mb-0">Listagem de Anamnese</h1>
+        <i class="fa-regular fa-circle-question help-icon fs-4"
+           matTooltip="Consulte e gerencie o histórico de saúde e avaliações físicas dos alunos."></i>
+    </div>
+
+    <!-- Botão Adicionar com Ajuda -->
+    <div class="mb-5 d-flex align-items-center gap-2">
+        <button class="btn btn-primary" routerLink="cadastrar">
+            <i class="fa-solid fa-plus p-1"></i> Adicionar
+        </button>
+        <i class="fa-regular fa-circle-question help-icon"
+           matTooltip="Criar um novo formulário de anamnese para um aluno."></i>
+    </div>
+
     <table id="clientes-table">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Nome</th>
-                <th>Ações</th>
+                <th>
+                    Ações
+                    <i class="fa-regular fa-circle-question help-icon ms-1"
+                       matTooltip="Opções para gerenciar o registro selecionado."></i>
+                </th>
             </tr>
         </thead>
         <tbody id="clientes-list">
@@ -19,14 +37,30 @@
                 <td>{{dados.id}}</td>
                 <td>{{dados.nome}}</td>
                 <td>
-                    <button class="pn-button" routerLink="editar" [queryParams]="{ id: dados.id}">Editar</button>
-                    <button class="pn-button bg-red" (click)="openmodal(dados.id)">Excluir</button>
+                    <button class="pn-button" routerLink="editar" [queryParams]="{ id: dados.id}"
+                        matTooltip="Editar as respostas desta anamnese.">
+                        Editar
+                    </button>
+                    
+                    <button class="pn-button bg-red" (click)="openmodal(dados.id)"
+                        matTooltip="Excluir permanentemente este registro de anamnese.">
+                        Excluir
+                    </button>
+                    
                     <app-modal-confirmar (confirm)="validarmodal($event)"></app-modal-confirmar>
                 </td>
             </tr>
             }
         </tbody>
     </table>
-    <pagination-controls class="pagination" (pageChange)="paginaAtual = $event" previousLabel="Anterior"
-        nextLabel="Próximo"></pagination-controls>
+
+    <!-- Paginação com Ajuda -->
+    <div class="d-flex justify-content-between align-items-center mt-3">
+        <pagination-controls class="pagination" (pageChange)="paginaAtual = $event" previousLabel="Anterior"
+            nextLabel="Próximo">
+        </pagination-controls>
+        
+        <i class="fa-regular fa-circle-question help-icon"
+           matTooltip="Navegue entre as páginas da lista de anamneses."></i>
+    </div>
 </div>

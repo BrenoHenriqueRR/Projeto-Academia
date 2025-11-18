@@ -2,43 +2,51 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;   
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 
-a,h1,h2,h3{
-    font-family: 'Anton' , serif !important;
+a,
+h1,
+h2,
+h3 {
+  font-family: 'Anton', serif !important;
 
 }
 
-p{
-    font-family: "Poppins", sans-serif !important;
+p {
+  font-family: "Poppins", sans-serif !important;
 }
 
-/* 1. Garante que o calendário seja posicionado no centro da tela (viewport) */
+::ng-deep .cdk-overlay-container {
+    z-index: 9999 !important;
+}
+
+::ng-deep .cdk-global-overlay-wrapper {
+    z-index: 10000 !important;
+}
+
+
 .daterangepicker.theme-dark {
   /* Força o posicionamento em relação ao viewport */
   position: fixed !important;
   /* Garante que ele fique acima de tudo */
   z-index: 10000 !important;
-  
-  /* Centraliza o calendário na tela */
-  top: 50% !important; 
+  top: 50% !important;
   left: 50% !important;
   transform: translate(-50%, -50%) !important;
 }
 
-/* 2. Remove qualquer restrição de overflow e transform do modal */
+
 .mat-dialog-container {
   overflow: visible !important;
-  transform: none !important; 
+  transform: none !important;
   perspective: none !important;
 }
 
-/* 3. Remove qualquer restrição de transform do overlay do modal */
 .cdk-overlay-pane {
   transform: none !important;
   perspective: none !important;

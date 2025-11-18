@@ -1,11 +1,20 @@
-<div class="container mt-4" [formGroup]="anamneseForm">
-    <h2>Editar Anamnese</h2>
+<div class="container mt-4">
+    <div class="d-flex align-items-center gap-2 mb-4">
+        <h2>Editar Anamnese</h2>
+        <i class="fa-regular fa-circle-question help-icon fs-5" 
+           matTooltip="Atualize o histórico médico, restrições e objetivos do aluno."></i>
+    </div>
   
     <!-- Formulário de Anamnese -->
     <form [formGroup]="anamneseForm" (ngSubmit)="atualizarAnamnese()">
+      
       <!-- PERGUNTA 1 -->
       <div class="mb-3">
-        <label class="form-label">1. Um médico já lhe disse que você tinha alguns dos problemas abaixo?</label>
+        <div class="d-flex align-items-center mb-2">
+            <label class="form-label mb-0 me-2">1. Um médico já lhe disse que você tinha alguns dos problemas abaixo?</label>
+            <i class="fa-regular fa-circle-question help-icon" 
+               matTooltip="Marque todas as condições diagnosticadas clinicamente."></i>
+        </div>
         <div class="row">
           <div class="col-md-4" *ngFor="let problema of problemasSaude">
             <div class="form-check">
@@ -16,136 +25,183 @@
             </div>
           </div>
           <label class="form-check-label my-2">Por favor explique: </label>
-          <input class="form-control" type="text" formControlName="perg_problemas_saude_desc">
+          <input class="form-control" type="text" formControlName="perg_problemas_saude_desc" 
+                 placeholder="Detalhes sobre o diagnóstico...">
         </div>
       </div>
   
       <!-- PERGUNTA 2 -->
       <div class="mb-3">
-        <label class="form-label">2. Você tem algum dos sintomas abaixo?</label>
+        <div class="d-flex align-items-center mb-2">
+            <label class="form-label mb-0 me-2">2. Você tem algum dos sintomas abaixo?</label>
+            <i class="fa-regular fa-circle-question help-icon" 
+               matTooltip="Sintomas frequentes ou recentes que podem afetar o treino."></i>
+        </div>
         <div class="row">
           <div class="col-md-4" *ngFor="let sintoma of sintomasLista">
-            <input class="form-check-input" type="checkbox" [value]="sintoma"
-                   [checked]="anamneseForm.get('perg_sintomas')?.value.includes(sintoma)"
-                   (change)="onCheckboxChange($event, 'perg_sintomas')">
-            <label class="form-check-label ms-2">{{ sintoma }}</label>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" [value]="sintoma"
+                    [checked]="anamneseForm.get('perg_sintomas')?.value.includes(sintoma)"
+                    (change)="onCheckboxChange($event, 'perg_sintomas')">
+                <label class="form-check-label ms-2">{{ sintoma }}</label>
+            </div>
           </div>
           <label class="form-check-label my-2">Por favor explique: </label>
-          <input class="form-control" type="text"  formControlName="perg_sintomas_desc">
+          <input class="form-control" type="text" formControlName="perg_sintomas_desc">
         </div>
       </div>
   
       <!-- PERGUNTA 3 -->
       <div class="mb-3">
-        <label class="form-label">3. Liste os medicamentos que você está tomando (nome e motivo)</label>
-        <textarea class="form-control" formControlName="perg_medicamentos"></textarea>
+        <div class="d-flex align-items-center mb-2">
+            <label class="form-label mb-0 me-2">3. Liste os medicamentos que você está tomando (nome e motivo)</label>
+            <i class="fa-regular fa-circle-question help-icon" 
+               matTooltip="Importante para identificar possíveis efeitos colaterais durante o exercício."></i>
+        </div>
+        <textarea class="form-control" formControlName="perg_medicamentos" rows="2"></textarea>
       </div>
   
       <!-- PERGUNTA 4 -->
       <div class="mb-3">
-        <label class="form-label">4. Algum parente próximo teve ataque cardíaco antes dos 50 anos?</label>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" value="1" formControlName="perg_historico_familiar_cardiaco">
-          <label class="form-check-label">Sim</label>
+        <div class="d-flex align-items-center mb-2">
+            <label class="form-label mb-0 me-2">4. Algum parente próximo teve ataque cardíaco antes dos 50 anos?</label>
+            <i class="fa-regular fa-circle-question help-icon" 
+               matTooltip="Considere pais ou irmãos (parentes de primeiro grau)."></i>
         </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" value="0" formControlName="perg_historico_familiar_cardiaco">
-          <label class="form-check-label">Não</label>
+        <div class="d-flex gap-3">
+            <div class="form-check">
+            <input class="form-check-input" type="radio" value="1" formControlName="perg_historico_familiar_cardiaco">
+            <label class="form-check-label">Sim</label>
+            </div>
+            <div class="form-check">
+            <input class="form-check-input" type="radio" value="0" formControlName="perg_historico_familiar_cardiaco">
+            <label class="form-check-label">Não</label>
+            </div>
         </div>
       </div>
   
       <!-- PERGUNTA 5 -->
       <div class="mb-3">
-        <label class="form-label">5. Algum médico disse que você tinha alguma restrição á prática de atividades físicas (inclusive cirurgia)</label>
+        <div class="d-flex align-items-center mb-2">
+            <label class="form-label mb-0 me-2">5. Algum médico disse que você tinha alguma restrição à prática de atividades físicas?</label>
+            <i class="fa-regular fa-circle-question help-icon" 
+               matTooltip="Descreva cirurgias recentes ou movimentos proibidos."></i>
+        </div>
         <input type="text" class="form-control" formControlName="perg_restricao_medica">
       </div>
   
       <!-- PERGUNTA 6 -->
       <div class="mb-3">
         <label class="form-label">6. Você está grávida?</label>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" value="1" formControlName="perg_gravida">
-          <label class="form-check-label">Sim</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" value="0" formControlName="perg_gravida">
-          <label class="form-check-label">Não</label>
+        <div class="d-flex gap-3">
+            <div class="form-check">
+            <input class="form-check-input" type="radio" value="1" formControlName="perg_gravida">
+            <label class="form-check-label">Sim</label>
+            </div>
+            <div class="form-check">
+            <input class="form-check-input" type="radio" value="0" formControlName="perg_gravida">
+            <label class="form-check-label">Não</label>
+            </div>
         </div>
       </div>
   
       <!-- PERGUNTA 7 -->
       <div class="mb-3">
         <label class="form-label">7. Você fuma?</label>
-        <input type="text" class="form-control" formControlName="perg_fuma">
+        <input type="text" class="form-control" formControlName="perg_fuma" placeholder="Não ou quantidade por dia">
       </div>
   
       <!-- PERGUNTA 8 -->
       <div class="mb-3">
         <label class="form-label">8. Você ingere bebidas alcoólicas?</label>
-        <input type="text" class="form-control" formControlName="perg_bebe_alcool">
+        <input type="text" class="form-control" formControlName="perg_bebe_alcool" placeholder="Frequência (Socialmente, Fim de semana, etc)">
       </div>
   
       <!-- PERGUNTA 9 -->
       <div class="mb-3">
-        <label class="form-label">9. Atualmente você tem se exercitado pelo menos 2 vezes por semana?</label>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" value="1" formControlName="perg_exercicio_frequente">
-          <label class="form-check-label">Sim</label>
+        <div class="d-flex align-items-center mb-2">
+            <label class="form-label mb-0 me-2">9. Atualmente você tem se exercitado pelo menos 2 vezes por semana?</label>
+            <i class="fa-regular fa-circle-question help-icon" 
+               matTooltip="Define se o aluno é sedentário ou ativo."></i>
         </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" value="0" formControlName="perg_exercicio_frequente">
-          <label class="form-check-label">Não</label>
+        <div class="d-flex gap-3">
+            <div class="form-check">
+            <input class="form-check-input" type="radio" value="1" formControlName="perg_exercicio_frequente">
+            <label class="form-check-label">Sim</label>
+            </div>
+            <div class="form-check">
+            <input class="form-check-input" type="radio" value="0" formControlName="perg_exercicio_frequente">
+            <label class="form-check-label">Não</label>
+            </div>
         </div>
       </div>
   
       <!-- PERGUNTA 10 -->
       <div class="mb-3">
-        <label class="form-label">10. Total de minutos dispensados em atividades aeróbicas por semana:</label>
+        <div class="d-flex align-items-center mb-2">
+            <label class="form-label mb-0 me-2">10. Total de minutos dispensados em atividades aeróbicas por semana:</label>
+            <i class="fa-regular fa-circle-question help-icon" 
+               matTooltip="Ex: Caminhada, corrida, natação, bicicleta."></i>
+        </div>
         <input type="number" class="form-control" formControlName="perg_qtde_aerobico">
       </div>
   
       <!-- PERGUNTA 11 -->
       <div class="mb-3">
         <label class="form-label">11. Você mediu sua taxa de colesterol no ano passado?</label>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" value="0" formControlName="perg_colesterol_medido">
-          <label class="form-check-label">Sim</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" value="1" formControlName="perg_colesterol_medido">
-          <label class="form-check-label">Não</label>
+        <div class="d-flex gap-3">
+            <div class="form-check">
+            <input class="form-check-input" type="radio" value="0" formControlName="perg_colesterol_medido">
+            <label class="form-check-label">Sim</label>
+            </div>
+            <div class="form-check">
+            <input class="form-check-input" type="radio" value="1" formControlName="perg_colesterol_medido">
+            <label class="form-check-label">Não</label>
+            </div>
         </div>
       </div>
   
       <!-- PERGUNTA 12 -->
       <div class="mb-3">
-        <label class="form-label">12. Você come alimentos dos 4 maiores grupos alimentares?</label>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" value="0" formControlName="perg_alimentacao_balanceada">
-          <label class="form-check-label">Sim</label>
+        <div class="d-flex align-items-center mb-2">
+            <label class="form-label mb-0 me-2">12. Você come alimentos dos 4 maiores grupos alimentares?</label>
+            <i class="fa-regular fa-circle-question help-icon" 
+               matTooltip="Proteínas, Carboidratos, Gorduras boas, Vitaminas/Minerais."></i>
         </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" value="1" formControlName="perg_alimentacao_balanceada">
-          <label class="form-check-label">Não</label>
+        <div class="d-flex gap-3">
+            <div class="form-check">
+            <input class="form-check-input" type="radio" value="0" formControlName="perg_alimentacao_balanceada">
+            <label class="form-check-label">Sim</label>
+            </div>
+            <div class="form-check">
+            <input class="form-check-input" type="radio" value="1" formControlName="perg_alimentacao_balanceada">
+            <label class="form-check-label">Não</label>
+            </div>
         </div>
       </div>
   
       <!-- PERGUNTA 13 -->
       <div class="mb-3">
         <label class="form-label">13. Sua dieta tem alto teor de gordura saturada?</label>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" value="1" formControlName="perg_gordura_alta">
-          <label class="form-check-label">Sim</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" value="0" formControlName="perg_gordura_alta">
-          <label class="form-check-label">Não</label>
+        <div class="d-flex gap-3">
+            <div class="form-check">
+            <input class="form-check-input" type="radio" value="1" formControlName="perg_gordura_alta">
+            <label class="form-check-label">Sim</label>
+            </div>
+            <div class="form-check">
+            <input class="form-check-input" type="radio" value="0" formControlName="perg_gordura_alta">
+            <label class="form-check-label">Não</label>
+            </div>
         </div>
       </div>
   
       <!-- PERGUNTA 14 -->
       <div class="mb-3">
-        <label class="form-label">14. Qual seu nível de estresse?</label>
+        <div class="d-flex align-items-center mb-2">
+            <label class="form-label mb-0 me-2">14. Qual seu nível de estresse?</label>
+            <i class="fa-regular fa-circle-question help-icon" 
+               matTooltip="Autoavaliação do estresse diário (Trabalho/Rotina)."></i>
+        </div>
         <select class="form-select" formControlName="perg_nivel_estresse">
           <option value="leve">Leve</option>
           <option value="moderado">Moderado</option>
@@ -156,27 +212,40 @@
   
       <!-- PERGUNTA 15 -->
       <div class="mb-3">
-        <label class="form-label">15. Quais são seus objetivos ao ingressar em um grupo de promoção de saúde?</label>
+        <div class="d-flex align-items-center mb-2">
+            <label class="form-label mb-0 me-2">15. Quais são seus objetivos ao ingressar em um grupo de promoção de saúde?</label>
+            <i class="fa-regular fa-circle-question help-icon" 
+               matTooltip="Informação crucial para a montagem da ficha de treino."></i>
+        </div>
         <div class="row">
           <div class="col-md-4" *ngFor="let objetivo of objetivos">
-            <input class="form-check-input" type="checkbox" [value]="objetivo"
-                   [checked]="anamneseForm.get('perg_objetivos_saude')?.value.includes(objetivo)"
-                   (change)="onCheckboxChange($event, 'perg_objetivos_saude')">
-            <label class="form-check-label ms-2">{{ objetivo }}</label>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" [value]="objetivo"
+                    [checked]="anamneseForm.get('perg_objetivos_saude')?.value.includes(objetivo)"
+                    (change)="onCheckboxChange($event, 'perg_objetivos_saude')">
+                <label class="form-check-label ms-2">{{ objetivo }}</label>
+            </div>
           </div>
-          <label class="form-check-label mt-4 mb-2">Se outro(explique): </label>
+          <label class="form-check-label mt-4 mb-2">Se outro (explique): </label>
           <input class="form-control" type="text" formControlName="perg_objetivos_saude_desc">
         </div>
       </div>
   
       <!-- Anotações -->
       <div class="mb-3">
-        <label class="form-label">Anotações:</label>
+        <div class="d-flex align-items-center mb-2">
+            <label class="form-label mb-0 me-2">Anotações:</label>
+            <i class="fa-regular fa-circle-question help-icon" 
+               matTooltip="Observações extras do avaliador ou do aluno."></i>
+        </div>
         <textarea class="form-control" rows="3" formControlName="anotacoes"></textarea>
       </div>
   
       <!-- Botão -->
-      <button type="submit" class="btn btn-primary">Salvar</button>
+      <div class="d-flex align-items-center mb-5">
+          <button type="submit" class="btn btn-primary">Salvar</button>
+          <i class="fa-regular fa-circle-question help-icon ms-3" 
+             matTooltip="Salva as alterações realizadas na ficha de anamnese."></i>
+      </div>
     </form>
-  </div>
-  
+</div>

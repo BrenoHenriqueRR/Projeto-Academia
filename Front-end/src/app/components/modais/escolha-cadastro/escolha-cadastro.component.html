@@ -1,14 +1,40 @@
-<h2 mat-dialog-title>Escolha o tipo de cadastro</h2>
+
+<h2 mat-dialog-title class="d-flex justify-content-between align-items-center">
+    Escolha o tipo de cadastro
+    <!-- Adicionei um título nativo (title) como fallback caso o style falhe miseravelmente em algum navegador específico -->
+    <i class="fa-regular fa-circle-question help-icon fs-6" 
+       title="Selecione a modalidade de cadastro que deseja iniciar."
+       matTooltip="Selecione a modalidade de cadastro que deseja iniciar."></i>
+</h2>
+
 <mat-dialog-content>
-  <div class="d-flex flex-column gap-2">
-    <button mat-raised-button color="primary" (click)="irParaCadastroCompleto()">
-      📝 Cadastro Completo
-    </button>
-    <small class="desc-small text-center">(Planos, cliente e anamnese)</small>
-    <button mat-raised-button color="accent" (click)="irParaCadastroSimples()">
-      👤 Apenas Cliente
-    </button>
-    <small class="desc-small text-center">(Cliente)</small>
+  <div class="d-flex flex-column gap-3 pt-2">
+    
+    <!-- Opção Cadastro Completo -->
+    <div>
+        <div class="d-flex align-items-center">
+            <button mat-raised-button color="primary" class="flex-grow-1 py-2" (click)="irParaCadastroCompleto()">
+                📝 Cadastro Completo
+            </button>
+            <i class="fa-regular fa-circle-question help-icon ms-3" 
+               title="Fluxo completo: Cadastra Dados Pessoais, Seleciona Plano, Registra Pagamento e Preenche Anamnese em sequência."
+               matTooltip="Fluxo completo: Cadastra Dados Pessoais, Seleciona Plano, Registra Pagamento e Preenche Anamnese em sequência."></i>
+        </div>
+        <small class="desc-small d-block text-center mt-1 text-white">(Planos, cliente e anamnese)</small>
+    </div>
+
+    <!-- Opção Apenas Cliente -->
+    <div>
+        <div class="d-flex align-items-center">
+            <button mat-raised-button color="accent" class="flex-grow-1 py-2" (click)="irParaCadastroSimples()">
+                👤 Apenas Cliente
+            </button>
+            <i class="fa-regular fa-circle-question help-icon ms-3" 
+               title="Cadastra apenas a ficha do aluno no sistema. Planos e treinos podem ser vinculados posteriormente."
+               matTooltip="Cadastra apenas a ficha do aluno no sistema. Planos e treinos podem ser vinculados posteriormente."></i>
+        </div>
+        <small class="desc-small d-block text-center mt-1 text-white">(Cliente)</small>
+    </div>
 
   </div>
 </mat-dialog-content>

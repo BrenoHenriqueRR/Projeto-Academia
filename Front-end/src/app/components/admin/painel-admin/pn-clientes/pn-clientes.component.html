@@ -96,7 +96,7 @@
                             <button class="pn-button" routerLink="treinos" [queryParams]="{ id: dados.id}">Cadastrar
                                 Treinos</button>
                             }@else {
-                            <button class="pn-button btn-outline-primary" title="Editar" routerLink="editar"
+                            <button class="pn-button btn-outline-primary" title="Editar" matTooltip="Editar o cliente selecionado" routerLink="editar"
                                 [queryParams]="{ id: dados.id}"><i class="fas fa-edit"></i></button>
                             <button class="pn-button btn-excluir"  matTooltip="Exclui o cliente do sistema após confirmação." title="Excluir" (click)="openmodal(dados.id)">
                                 <i class="fas fa-trash"></i>

@@ -2,47 +2,68 @@
 <app-modal-spinner></app-modal-spinner>
 }
 
-<div class="d-flex align-content-center justify-content-between">
-  <h1>Ficha Cliente: {{cliente_id}}</h1>
-  <button class="btn btn-danger" (click)="gerarPdf()">Gerar pdf</button>
-</div>
-<div *ngFor="let ficha of fichasComExercicios" class="card my-4 shadow-sm">
-  <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
-
-    <span> Ficha {{ ficha.tipo_treino }} - Ordem {{ ficha.ordem }}
-    </span>
-
-    <div> <a [routerLink]="['/admin/painel/treinos/editar-fichas']"  [queryParams]="{ id: ficha.ficha_id }" class="btn btn-sm btn-warning me-2">
-        <i class="bi bi-pencil-fill"></i> Editar
-      </a>
-
-      <!-- <button class="btn btn-sm btn-danger" (click)="excluirFicha(ficha.id)">
-        <i class="bi bi-trash-fill"></i> Excluir
-      </button> -->
+<div class="d-flex align-items-center justify-content-between mb-4">
+    <div class="d-flex align-items-center gap-2">
+        <h1 class="mb-0">Ficha Cliente: {{cliente_id}}</h1>
+        <i class="fa-regular fa-circle-question help-icon fs-4" 
+           matTooltip="Visualize abaixo todas as fichas de treino ativas (A, B, C...) atribuídas a este aluno."></i>
     </div>
 
-  </div>
+    <div class="d-flex align-items-center">
+        <button class="btn btn-danger" (click)="gerarPdf()">
+            <i class="fa-solid fa-file-pdf me-2"></i>Gerar PDF
+        </button>
+        <i class="fa-regular fa-circle-question help-icon ms-2" 
+           matTooltip="Baixa um arquivo PDF formatado contendo todas as fichas abaixo, pronto para impressão ou envio."></i>
+    </div>
+</div>
 
-  <div class="card-body p-0">
-    <table class="table table-striped mb-0">
-      <thead class="table-light">
-        <tr>
-          <th>Exercício</th>
-          <th>Grupo</th>
-          <th>Séries</th>
-          <th>Repetições</th>
-          <th>Observações</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let ex of ficha.exercicios">
-          <td>{{ ex.nome }}</td>
-          <td>{{ ex.grupo }}</td>
-          <td>{{ ex.series }}</td>
-          <td>{{ ex.repeticoes }}</td>
-          <td>{{ ex.obs || '-' }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<div *ngFor="let ficha of fichasComExercicios" class="card my-4 shadow-sm">
+    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+
+        <div class="d-flex align-items-center">
+            <span class="fw-bold fs-5"> Ficha {{ ficha.tipo_treino }} - Ordem {{ ficha.ordem }} </span>
+            <i class="fa-regular fa-circle-question help-icon ms-2 text-white" 
+               matTooltip="Tipo de treino (ex: A, B, C) e a ordem recomendada para execução."></i>
+        </div>
+
+        <div class="d-flex align-items-center">
+            <a [routerLink]="['/admin/painel/treinos/editar-fichas']" [queryParams]="{ id: ficha.ficha_id }"
+                class="btn btn-sm btn-warning me-2 d-flex align-items-center" matTooltip="Clique para alterar os exercícios, séries ou repetições desta ficha específica.">
+                <i class="bi bi-pencil-fill me-1"></i> Editar
+            </a>
+
+            <!-- <button class="btn btn-sm btn-danger" (click)="excluirFicha(ficha.id)">
+        <i class="bi bi-trash-fill"></i> Excluir
+      </button> -->
+        </div>
+
+    </div>
+
+    <div class="card-body p-0">
+        <table class="table table-striped mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>Exercício</th>
+                    <th>Grupo</th>
+                    <th>Séries</th>
+                    <th>Repetições</th>
+                    <th>
+                        Observações
+                        <i class="fa-regular fa-circle-question help-icon ms-1" style="font-size: 0.8rem;"
+                           matTooltip="Instruções específicas de execução (ex: 'Drop-set', 'Isometria 5s')."></i>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ex of ficha.exercicios">
+                    <td>{{ ex.nome }}</td>
+                    <td>{{ ex.grupo }}</td>
+                    <td>{{ ex.series }}</td>
+                    <td>{{ ex.repeticoes }}</td>
+                    <td>{{ ex.obs || '-' }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

@@ -9,11 +9,12 @@ import { CadastroService } from '../../../services/cadastro.service';
 import { Route, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { ModalSpinnerComponent } from '../modal-spinner/modal-spinner.component';
+import { MaterialModule } from '../../../modules/material.module';
 
 @Component({
   selector: 'app-modal-cadastro',
   standalone: true,
-  imports: [FormsModule,ReactiveFormsModule, NgxMaskDirective, CommonModule, ModalSpinnerComponent],
+  imports: [FormsModule,ReactiveFormsModule, NgxMaskDirective, CommonModule, ModalSpinnerComponent,MaterialModule],
   templateUrl: './modal-cadastro.component.html',
   providers: [provideNgxMask({
     dropSpecialCharacters: false

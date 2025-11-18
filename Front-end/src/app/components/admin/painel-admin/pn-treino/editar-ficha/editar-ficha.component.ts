@@ -6,11 +6,12 @@ import { AnamneseService } from '../../../../../services/admin/anamnese/anamnese
 import { PnClienteService } from '../../../../../services/admin/pn-cliente/pn-cliente.service';
 import { CadTreinoService } from '../../../../../services/cad-treino/cad-treino.service';
 import { CommonModule } from '@angular/common';
+import { MaterialModule } from '../../../../../modules/material.module';
 
 @Component({
   selector: 'app-editar-ficha',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink, CommonModule],
+  imports: [ReactiveFormsModule, RouterLink, CommonModule, MaterialModule],
   templateUrl: './editar-ficha.component.html',
   styleUrl: './editar-ficha.component.css'
 })
@@ -92,11 +93,11 @@ export class EditarFichaComponent {
 
           // 2. Transformamos a lista "plana" na lista de exercícios que o componente precisa
           this.listaExercicios = dadosDaApi.map((item: any) => {
-         
+
             return {
-              exercicio_id: item.exercicio_id, 
+              exercicio_id: item.exercicio_id,
               exercicio_nome: item.exercicio,
-              grupo_id: item.grupo_id,       
+              grupo_id: item.grupo_id,
               grupo_nome: item.grupo_muscular,
               series: item.series,
               repeticoes: item.repeticoes,
@@ -108,11 +109,9 @@ export class EditarFichaComponent {
           this.carregarDadosCliente();
 
         } else {
-          // Se a API não retornar nada, pode ser uma ficha nova ou um erro.
-          // Como estamos na tela de edição, tratamos como erro.
+
           this.alertas.error('Ficha não encontrada ou não possui exercícios.');
-          // Opcional: redirecionar se a ficha não existir
-          // this.router.navigate(['admin/painel/treinos']);
+
         }
       },
       error: (err) => {
@@ -123,7 +122,6 @@ export class EditarFichaComponent {
   }
 
 
-  // NOVO: Separei a lógica de carregar dados do cliente para reutilização
   carregarDadosCliente(): void {
     this.clienteservice.pesquisarIdPlano(JSON.stringify({ id: this.cliente_id })).subscribe({
       next: (dados) => this.planoCliente = dados,
@@ -138,7 +136,15 @@ export class EditarFichaComponent {
     // Para exibir as outras fichas já criadas
     this.service.pesquisarFichaId(JSON.stringify({ id: this.cliente_id, soficha: "sim" })).subscribe({
       next: (dados) => {
-        this.fichasCliente = dados.length > 0 ? dados : null;
+
+        if (dados.length > 0) {
+          this.fichasCliente = dados.sort((a: any, b: any) =>
+            a.tipo.localeCompare(b.tipo, 'pt-BR', { sensitivity: 'base' })
+          );
+        } else {
+          this.fichasCliente = null;
+        }
+
       }
     });
   }

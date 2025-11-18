@@ -41,22 +41,28 @@
                             <span class="item-description ms-2">Clientes</span>
                         </a>
                         <i (click)="openDrop()" class="open-drop fa-solid"
-                            [ngClass]="abrirDrop ? 'fa-chevron-up' : 'fa-chevron-down'" style="cursor: pointer;"></i>
+                            [ngClass]="abrirDrop ? 'fa-chevron-up' : 'fa-chevron-down'" style="cursor: pointer;">
+                        </i>
                     </div>
                 </li>
 
-                <li *ngIf="abrirDrop" class="ms-5 p-2 rounded" routerLinkActive="mat-accent">
-                    <a class="text-decoration-none text-white" routerLink="clientes/anamnese">
-                        <i class="fas fa-notes-medical mx-2"></i>
-                        <span class="item-description">Anamnese</span>
-                    </a>
-                </li>
-                <li *ngIf="abrirDrop" class="ms-5 p-2 rounded" routerLinkActive="mat-accent">
-                    <a class="text-decoration-none text-white" routerLink="clientes/pagamentos">
-                        <i class="fa-solid fa-sack-dollar mx-2"></i>
-                        <span class="item-description">Pagamentos</span>
-                    </a>
-                </li>
+                <ul class="dropdown-clientes" [class.aberto]="abrirDrop">
+                    <li routerLinkActive="mat-accent">
+                        <a routerLink="clientes/anamnese">
+                            <i class="fas fa-notes-medical mx-2"></i>
+                            <span class="item-description">Anamnese</span>
+                        </a>
+                    </li>
+
+                    <li routerLinkActive="mat-accent">
+                        <a routerLink="clientes/pagamentos">
+                            <i class="fa-solid fa-sack-dollar mx-2"></i>
+                            <span class="item-description">Pagamentos</span>
+                        </a>
+                    </li>
+                </ul>
+
+
 
                 @if (funcionalidade != 'personal') {
                 <li class="side-item" routerLinkActive="mat-accent">
@@ -78,7 +84,7 @@
                     </a>
                 </li>
                 }
-                
+
                 @if (funcionalidade == 'Administrador') {
                 <li class="side-item" routerLinkActive="mat-accent">
                     <a routerLink="pn-planos">

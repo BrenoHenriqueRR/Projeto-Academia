@@ -10,12 +10,13 @@ import { Router, RouterLink } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { ModalSpinnerComponent } from '../../../modais/modal-spinner/modal-spinner.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { MaterialModule } from '../../../../modules/material.module';
 
 @Component({
   selector: 'app-pn-treino',
   standalone: true,
   imports: [FormsModule, ReactiveFormsModule, CommonModule, ReactiveFormsModule,
-    MatFormFieldModule, MatInputModule, MatAutocompleteModule, RouterLink, ModalSpinnerComponent,
+    MatFormFieldModule, MatInputModule, MatAutocompleteModule,MaterialModule, RouterLink, ModalSpinnerComponent,
     NgxPaginationModule],
   templateUrl: './pn-treino.component.html',
   styleUrl: './pn-treino.component.css'

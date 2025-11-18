@@ -3,13 +3,15 @@ import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Va
 import { PnClienteService } from '../../../../../services/admin/pn-cliente/pn-cliente.service';
 import { ToastrService } from 'ngx-toastr';
 import { AnamneseService } from '../../../../../services/admin/anamnese/anamnese.service';
-import { NgFor } from '@angular/common';
+import { CommonModule, NgFor } from '@angular/common';
 import { ActivatedRoute, ActivatedRouteSnapshot, Route, Router } from '@angular/router';
+import { materialize } from 'rxjs';
+import { MaterialModule } from '../../../../../modules/material.module';
 
 @Component({
   selector: 'app-editar-anamnese',
   standalone: true,
-  imports: [ReactiveFormsModule, NgFor],
+  imports: [ReactiveFormsModule, CommonModule, MaterialModule],
   templateUrl: './editar-anamnese.component.html',
   styleUrl: './editar-anamnese.component.css'
 })

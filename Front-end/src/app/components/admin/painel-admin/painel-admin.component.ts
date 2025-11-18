@@ -23,7 +23,7 @@ import { ConfigService } from '../../../services/admin/config/config.service';
 })
 export class PainelAdminComponent {
   [x: string]: any;
-  abrirDrop: boolean = true
+  abrirDrop: boolean = false
   private dados: any;
   funcionalidade!: any;
   termoBusca: string = '';

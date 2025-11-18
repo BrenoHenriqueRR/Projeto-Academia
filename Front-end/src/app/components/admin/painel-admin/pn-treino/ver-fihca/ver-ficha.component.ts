@@ -4,11 +4,12 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CadTreinoService } from '../../../../../services/cad-treino/cad-treino.service';
 import { finalize } from 'rxjs';
 import { ModalSpinnerComponent } from '../../../../modais/modal-spinner/modal-spinner.component';
+import { MaterialModule } from '../../../../../modules/material.module';
 
 @Component({
   selector: 'app-ver-fihca',
   standalone: true,
-  imports: [CommonModule, ModalSpinnerComponent, RouterLink],
+  imports: [CommonModule, ModalSpinnerComponent, RouterLink, MaterialModule],
   templateUrl: './ver-fihca.component.html',
   styleUrl: './ver-fihca.component.css'
 })

@@ -1,18 +1,19 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PnClienteService } from '../../../../services/admin/pn-cliente/pn-cliente.service';
-import { NgFor, NgIf } from '@angular/common';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { AnamneseService } from '../../../../services/admin/anamnese/anamnese.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { RouterLink } from '@angular/router';
 import { ModalConfirmarComponent } from '../../../modais/modal-confirmar/modal-confirmar.component';
 import { ModalSpinnerComponent } from '../../../modais/modal-spinner/modal-spinner.component';
+import { MaterialModule } from '../../../../modules/material.module';
 
 @Component({
   selector: 'app-anamnese',
   standalone: true,
-  imports: [ReactiveFormsModule,NgxPaginationModule,RouterLink,ModalConfirmarComponent,ModalSpinnerComponent,NgIf],
+  imports: [ReactiveFormsModule,NgxPaginationModule,RouterLink,ModalConfirmarComponent,ModalSpinnerComponent,CommonModule,MaterialModule],
   templateUrl: './anamnese.component.html',
   styleUrl: './anamnese.component.css'
 })

@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, ViewChild } from '@angular/core';
 import { LOCALE_ID } from '@angular/core';
 import { ModalSpinnerComponent } from "../../../modais/modal-spinner/modal-spinner.component";
 import { CommonModule } from '@angular/common';
@@ -12,12 +12,13 @@ import { ModalProdutoComponent } from './modal-produto/modal-produto.component';
 import { ModalConfirmarComponent } from '../../../modais/modal-confirmar/modal-confirmar.component';
 import { ModalEditarComponent } from './modal-editar/modal-editar.component';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
+import { MaterialModule } from '../../../../modules/material.module';
 
 @Component({
   selector: 'app-pn-loja',
   standalone: true,
   imports: [ModalSpinnerComponent, CommonModule, NgxPaginationModule, FormsModule, ModalProdutoComponent,
-    ModalEditarComponent, ModalConfirmarComponent],
+    ModalEditarComponent, ModalConfirmarComponent, MaterialModule],
   providers: [provideNgxMask(), { provide: LOCALE_ID, useValue: 'pt-BR' }],
   templateUrl: './pn-loja.component.html',
   styleUrl: './pn-loja.component.css'
@@ -45,6 +46,34 @@ export class PnLojaComponent {
   }
 
   constructor(private lojaService: PnLojaService, private dialog: MatDialog, private alertas: ToastrService) { }
+
+  @HostListener('window:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    
+    if (event.key === 'F9' || event.key === 'f9') {
+      // Verifica se o carrinho tem itens antes de tentar finalizar
+      if (this.carrinho.length > 0) {
+        this.abrirModal();
+      }
+      // Previne o comportamento padrão do navegador (se houver)
+      event.preventDefault();
+    }
+    if (event.key === 'F8') {
+      if (this.carrinho.length > 0) {
+        this.removerTudo(this.carrinho.length - 1);
+      }
+      event.preventDefault();
+    }
+
+    if (event.key === 'F10') {
+      if (this.carrinho.length > 0) {
+        this.removerUnidade(this.carrinho.length - 1, this.carrinho[this.carrinho.length - 1]);
+      }
+      event.preventDefault();
+    }
+  }
+
+
 
   openmodal(id: any) {
     this.idDelete = id;
@@ -86,10 +115,10 @@ export class PnLojaComponent {
     this.ngOnInit();
   }
 
-// valorCarrinho(preco: any, qtd: any) {
-//   const precoNum = Number(String(preco).replace(',', '.'));
-//   return precoNum * Number(qtd);
-// }
+  // valorCarrinho(preco: any, qtd: any) {
+  //   const precoNum = Number(String(preco).replace(',', '.'));
+  //   return precoNum * Number(qtd);
+  // }
 
 
 

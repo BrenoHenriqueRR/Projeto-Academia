@@ -1,112 +1,280 @@
 <div class="fundo">
-  <div *ngIf="loading">
-    <app-modal-spinner></app-modal-spinner>
-  </div>
-
-  <div class="container">
-    <div *ngIf="loading == true" class="spinner-container">
-      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    <div *ngIf="loading">
+        <app-modal-spinner></app-modal-spinner>
     </div>
 
-    <h1 class="h1-cli">Loja de Suplementos</h1>
-
-    <div class="my-4 d-flex justify-content-between align-items-center">
-      <div class="d-flex gap-5">
-        <div *ngIf="tipo == 'Administrador'">
-          <app-modal-produto (CloseModal)="Closemodal()"></app-modal-produto>
+    <div class="container">
+        <div *ngIf="loading == true" class="spinner-container">
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
         </div>
-      </div>
+
+        <!-- Cabeçalho com Botão de Ajuda -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div class="d-flex align-items-center gap-2">
+                <h1 class="h1-cli mb-0">Loja de Suplementos</h1>
+                <i class="fa-regular fa-circle-question help-icon fs-4" 
+                   matTooltip="Ponto de venda (PDV). Use (Enter) para adicionar e (F9) para finalizar."></i>
+            </div>
+            <button class="btn btn-info text-white shadow-sm" data-bs-toggle="modal" data-bs-target="#modalTutorialLoja">
+                <i class="fa-solid fa-keyboard me-2"></i>
+                Atalhos & Ajuda
+            </button>
+        </div>
+
+        <div class="my-4 d-flex justify-content-between align-items-center">
+            <div class="d-flex gap-5">
+                <div *ngIf="tipo == 'Administrador'" class="d-flex align-items-center">
+                    <app-modal-produto (CloseModal)="Closemodal()"></app-modal-produto>
+                    <i class="fa-regular fa-circle-question help-icon ms-2" 
+                       matTooltip="Cadastrar novo produto no estoque da academia."></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabela de Produtos -->
+        <table id="produtos-table" class="table">
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Marca</th>
+                    <th>Unidade de Medida</th>
+                    <th>
+                        Estoque
+                        <i class="fa-regular fa-circle-question help-icon ms-1" style="font-size: 0.8rem;"
+                           matTooltip="Quantidade física disponível."></i>
+                    </th>
+                    <th>Preço</th>
+                    <th>
+                        Qtd
+                        <i class="fa-regular fa-circle-question help-icon ms-1" style="font-size: 0.8rem;"
+                           matTooltip="Quantidade a ser vendida. Pressione ENTER para adicionar."></i>
+                    </th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (produto of produtos | paginate: { itemsPerPage: 5, currentPage: paginaAtual }; track produto) {
+                <tr>
+                    <td>{{ produto.nome }}</td>
+                    <td>{{ produto.marca }}</td>
+                    <td>{{ produto.unidade_medida }}</td>
+                    <td>{{ produto.quantidade }}</td>
+                    <td>{{ produto.preco}} </td>
+                    <td>
+                        <!-- ADICIONADO: (keydown.enter) para adicionar ao pressionar Enter -->
+                        <input type="number" min="1" max="{{produto.quantidade}}" [(ngModel)]="produto.qtdSelecionada"
+                            (keydown.enter)="adicionarAoCarrinho(produto)"
+                            class="form-control form-control-sm border-primary" style="width: 70px;" 
+                            matTooltip="Digite e aperte ENTER"/>
+                    </td>
+                    <td>
+                        <button class="btn btn-sm btn-success" (click)="adicionarAoCarrinho(produto)"
+                                matTooltip="Adicionar ao carrinho (Ou aperte Enter no campo Qtd).">
+                            <i class="fas fa-plus"></i> Adicionar
+                        </button>
+                        
+                        <button *ngIf="tipo == 'Administrador'" class="btn btn-outline-primary btn-sm ms-2"
+                            (click)="editarProduto(produto)" data-bs-toggle="modal" data-bs-target="#modal-edit-p">
+                            <i class="fas fa-edit"></i> Editar
+                        </button>
+                        
+                        <app-modal-editar-prod (CloseModal)="Closemodal()" #modalP></app-modal-editar-prod>
+                        
+                        <button *ngIf="tipo == 'Administrador'" class="btn btn-danger btn-sm ms-2" (click)="openmodal(produto.id)">
+                            <i class="fas fa-trash"></i> Excluir
+                        </button>
+                        <app-modal-confirmar (confirm)="validarmodal($event)"></app-modal-confirmar>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class="d-flex justify-content-between align-items-center mt-3">
+            <pagination-controls class="pagination" (pageChange)="paginaAtual = $event" previousLabel="Anterior"
+                nextLabel="Próximo">
+            </pagination-controls>
+        </div>
+
+        <!-- Carrinho -->
+        <div class="mt-5 p-4 bg-light rounded border position-relative">
+            <!-- Badge de Atalho para Remover -->
+            <span class="position-absolute top-0 end-0 m-3 badge bg-secondary" 
+                  matTooltip="Pressione F8 para remover o último item lançado">
+                Atalho: F8 para cancelar último item
+            </span>
+
+            <div class="d-flex align-items-center mb-3">
+                <h5 class="mb-0 me-2">Itens na Venda</h5>
+                <i class="fa-regular fa-circle-question help-icon" 
+                   matTooltip="Resumo da venda atual."></i>
+            </div>
+
+            <table class="tabela-itens table table-sm table-borderless">
+                <thead class="border-bottom">
+                    <tr>
+                        <th style="width: 100px;">Ações</th>
+                        <th>Produto</th>
+                        <th>Qtd</th>
+                        <th class="text-end">Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of carrinho; let i = index">
+                        <td>
+                            <button class="btn btn-danger btn-sm me-2" (click)="removerTudo(i)"
+                                    title="Remover item">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                            <button class="btn btn-warning btn-sm " (click)="removerUnidade(i, item)"
+                                    title="Diminuir quantidade">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </td>
+                        <td>{{ item.nome }}</td>
+                        <td>{{ item.qtd }}</td>
+                        <td class="text-end">R${{ item.preco * item.qtd |number:'1.2-2':'pt-BR'}}</td>
+                    </tr>
+                    <tr *ngIf="carrinho.length === 0">
+                        <td colspan="4" class="text-center py-3 text-muted">
+                            Carrinho vazio.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="mt-3 d-flex justify-content-end align-items-center border-top pt-3">
+                <span class="fs-5 me-2">Total:</span>
+                <strong class="fs-4">R$ {{totalCarrinho | number:'1.2-2':'pt-BR'}}</strong>
+            </div>
+
+            <div class="d-flex justify-content-end mt-3">
+                <!-- Botão com atalho F9 visível -->
+                <button class="btn btn-primary btn-lg" (click)="abrirModal()" [disabled]="carrinho.length === 0"
+                        matTooltip="Pressione F9 para finalizar">
+                    Finalizar Venda (F9)
+                </button>
+            </div>
+        </div>
     </div>
 
-    <!-- Tabela de Produtos com seleção de quantidade -->
-    <table id="produtos-table" class="table ">
-      <thead>
-        <tr>
-          <th>Produto</th>
-          <th>Marca</th>
-          <th>Unidade de Medida</th>
-          <th>Estoque</th>
-          <th>Preço</th>
-          <th>Qtd</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for (produto of produtos | paginate: { itemsPerPage: 5, currentPage: paginaAtual }; track produto) {
-        <tr>
-          <td>{{ produto.nome }}</td>
-          <td>{{ produto.marca }}</td>
-          <td>{{ produto.unidade_medida }}</td>
-          <td>{{ produto.quantidade }}</td>
-          <td>{{ produto.preco}} </td>
-          <td>
-            <input type="number" min="1" max="{{produto.quantidade}}" [(ngModel)]="produto.qtdSelecionada"
-              class="form-control form-control-sm" style="width: 70px;" />
-          </td>
-          <td>
-            <button class="btn btn-sm btn-success" (click)="adicionarAoCarrinho(produto)">
-              <i class="fas fa-plus"></i> Adicionar
-            </button>
-            <button *ngIf="tipo == 'Administrador'" class="btn btn-outline-primary btn-sm ms-2"
-              (click)="editarProduto(produto)" data-bs-toggle="modal" data-bs-target="#modal-edit-p">
-              <i class="fas fa-edit"></i> Editar
-            </button>
-            <app-modal-editar-prod (CloseModal)="Closemodal()" #modalP></app-modal-editar-prod>
-            <button *ngIf="tipo == 'Administrador'" class="btn btn-danger btn-sm ms-2" (click)="openmodal(produto.id)">
-              <i class="fas fa-trash"></i> Excluir
-            </button>
-            <app-modal-confirmar (confirm)="validarmodal($event)"></app-modal-confirmar>
-          </td>
-        </tr>
-        }
-      </tbody>
-    </table>
+    <!-- MODAL TUTORIAL DA LOJA & ATALHOS -->
+    <div class="modal fade" id="modalTutorialLoja" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                    <h5 class="modal-title fw-bold"><i class="fa-solid fa-cash-register me-2"></i>Central de Ajuda PDV</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <!-- Navegação Interna do Modal -->
+                    <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active fw-bold" id="guia-tab" data-bs-toggle="tab" data-bs-target="#guia-pane" type="button" role="tab">Guia de Vendas</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link fw-bold" id="atalhos-tab" data-bs-toggle="tab" data-bs-target="#atalhos-pane" type="button" role="tab"><i class="fa-solid fa-keyboard me-2"></i>Teclas de Atalho</button>
+                        </li>
+                    </ul>
 
-    <pagination-controls class="pagination" (pageChange)="paginaAtual = $event" previousLabel="Anterior"
-      nextLabel="Próximo"></pagination-controls>
+                    <div class="tab-content p-4" id="myTabContent">
+                        <!-- ABA GUIA -->
+                        <div class="tab-pane fade show active" id="guia-pane" role="tabpanel">
+                            <div class="row g-4">
+                                <!-- PASSO 1 -->
+                                <div class="col-md-6">
+                                    <div class="d-flex">
+                                        <div class="flex-shrink-0">
+                                            <span class="badge rounded-pill bg-secondary fs-5">1</span>
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <h6 class="fw-bold">Escolha a Quantidade</h6>
+                                            <p class="small text-muted mb-0">
+                                                Digite a quantidade no campo numérico. Dica: Aperte <strong>ENTER</strong> para adicionar rapidamente.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- PASSO 2 -->
+                                <div class="col-md-6">
+                                    <div class="d-flex">
+                                        <div class="flex-shrink-0">
+                                            <span class="badge rounded-pill bg-success fs-5">2</span>
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <h6 class="fw-bold">Adicione ao Carrinho</h6>
+                                            <p class="small text-muted mb-0">
+                                                O produto irá para a lista de "Itens na Venda" abaixo da tabela.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- PASSO 3 -->
+                                <div class="col-md-6">
+                                    <div class="d-flex">
+                                        <div class="flex-shrink-0">
+                                            <span class="badge rounded-pill bg-warning text-dark fs-5">3</span>
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <h6 class="fw-bold">Gerencie o Carrinho</h6>
+                                            <p class="small text-muted mb-0">
+                                                Use <strong>F8</strong> para remover o último item se tiver errado.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- PASSO 4 -->
+                                <div class="col-md-6">
+                                    <div class="d-flex">
+                                        <div class="flex-shrink-0">
+                                            <span class="badge rounded-pill bg-primary fs-5">4</span>
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <h6 class="fw-bold">Finalize a Venda</h6>
+                                            <p class="small text-muted mb-0">
+                                                Pressione <strong>F9</strong> para abrir a tela de pagamento e nota fiscal.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-    <!-- Carrinho direto na tela -->
-    <div class="mt-5">
-      <h5>Itens na Venda</h5>
-
-      <table class="tabela-itens">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Produto</th>
-            <th>Qtd</th>
-            <th>Valor</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of carrinho; let i = index">
-            <td>
-              <!-- Remover item inteiro -->
-              <button class="btn btn-danger btn-sm me-2" title="Remover tudo" (click)="removerTudo(i)">
-                <i class="fas fa-trash-alt"></i>
-              </button>
-              <!-- Remover 1 unidade -->
-              <button class="btn btn-warning btn-sm " title="Remover 1 unidade" (click)="removerUnidade(i, item)">
-                <i class="fas fa-minus"></i>
-              </button>
-
-            </td>
-            <td>{{ item.nome }}</td>
-            <td>{{ item.qtd }}</td>
-            <td>R${{ item.preco * item.qtd |number:'1.2-2':'pt-BR'}}</td>
-          </tr>
-        </tbody>
-
-      </table>
-
-      <div class="mt-3 d-flex justify-content-end">
-        <strong class="mx-1">Total: </strong>
-        <strong>   {{totalCarrinho | number:'1.2-2':'pt-BR'}}</strong>
-      </div>
-
-      <button class="btn btn-primary mt-3" (click)="abrirModal()">
-        Finalizar Venda
-      </button>
+                        <!-- ABA ATALHOS ATUALIZADA -->
+                        <div class="tab-pane fade" id="atalhos-pane" role="tabpanel">
+                            <div class="alert alert-info">
+                                <i class="fa-solid fa-circle-info me-2"></i>
+                                Atalhos essenciais para agilidade no caixa.
+                            </div>
+                            <div class="list-group">
+                                <div class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
+                                    <div>
+                                        <strong>Adicionar Produto</strong>
+                                        <div class="small text-muted">Dentro do campo de quantidade</div>
+                                    </div>
+                                    <span class="badge bg-success border border-light p-2 font-monospace">ENTER ↵</span>
+                                </div>
+                                <div class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
+                                    <span>Remover último item do carrinho</span>
+                                    <span class="badge bg-danger border border-light p-2 font-monospace">F8</span>
+                                </div>
+                                <div class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
+                                    <span>Finalizar Venda (Pagamento)</span>
+                                    <span class="badge bg-primary border border-light p-2 font-monospace">F9</span>
+                                </div>
+                                <div class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
+                                    <span>Cancelar / Fechar Janelas</span>
+                                    <span class="badge bg-light text-dark border p-2 font-monospace">ESC</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer bg-light">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Entendi</button>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+
 </div>

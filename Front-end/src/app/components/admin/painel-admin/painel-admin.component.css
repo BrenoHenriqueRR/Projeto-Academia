@@ -22,6 +22,42 @@ main {
     /* position: fixed; */
 }
 
+/* Lista do dropdown */
+.dropdown-clientes {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .3s ease, opacity .2s ease;
+    padding-left: 25px;
+    list-style: none;
+    margin: 0;
+    opacity: 0;
+}
+
+/* Quando abre */
+.dropdown-clientes.aberto {
+    max-height: 100px; /* suficiente para 2 itens */
+    opacity: 1;
+}
+
+/* Itens do dropdown */
+.dropdown-clientes li {
+    margin: 4px 0;
+}
+
+.dropdown-clientes a {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-radius: 6px;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.dropdown-clientes a:hover {
+    background-color: #4d4d4d;
+}
+
 #sidebar_content {
     padding: 12px;
 }

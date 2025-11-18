@@ -7,11 +7,13 @@ import { CommonModule } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { PnClienteService } from '../../../../services/admin/pn-cliente/pn-cliente.service';
 import { AnamneseService } from '../../../../services/admin/anamnese/anamnese.service';
+import { MaterialModule } from '../../../../modules/material.module';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cad-treino',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, CommonModule,RouterLink],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule,RouterLink, MaterialModule],
   templateUrl: './cad-treino.component.html',
   styleUrl: './cad-treino.component.css'
 })
@@ -136,7 +138,12 @@ export class CadTreinoComponent {
 
   criarFicha(): void {
     if (this.formFicha.invalid || this.listaExercicios.length === 0) {
-      alert('Preencha todos os dados e adicione pelo menos um exercício.');
+      Swal.fire({
+                  icon: 'error',
+                  title: 'Erro!',
+                  text: 'Preencha todos os dados e adicione pelo menos um exercício.',
+                  confirmButtonColor: '#007bff',
+      });
       return;
     }
 

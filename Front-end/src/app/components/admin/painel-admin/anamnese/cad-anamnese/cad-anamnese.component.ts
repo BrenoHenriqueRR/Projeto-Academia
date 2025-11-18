@@ -1,14 +1,15 @@
-import { NgFor, NgIf } from '@angular/common';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PnClienteService } from '../../../../../services/admin/pn-cliente/pn-cliente.service';
 import { ToastrService } from 'ngx-toastr';
 import { AnamneseService } from '../../../../../services/admin/anamnese/anamnese.service';
+import { MaterialModule } from '../../../../../modules/material.module';
 
 @Component({
   selector: 'app-cad-anamnese',
   standalone: true,
-  imports: [ReactiveFormsModule, NgIf, NgFor],
+  imports: [ReactiveFormsModule, CommonModule, MaterialModule],
   templateUrl: './cad-anamnese.component.html',
   styleUrl: './cad-anamnese.component.css'
 })

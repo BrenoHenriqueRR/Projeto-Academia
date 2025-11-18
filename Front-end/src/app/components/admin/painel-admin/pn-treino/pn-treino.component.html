@@ -1299,9 +1299,9 @@
     </div>
 
     <div class=" my-3">
-       
+
         <div class="d-flex flex-wrap gap-2 align-items-center">
-            
+
             <div class="input-group flex-grow-1" style="max-width: 400px;">
                 <span class="input-group-text">
                     <i class="fa-solid fa-magnifying-glass"></i>
@@ -1309,13 +1309,13 @@
                 <input type="text" class="form-control" placeholder="Buscar por nome, email ou status...">
             </div>
 
-           
-            <button class="btn btn-outline-secondary d-flex align-items-center gap-2">
+
+            <!-- <button class="btn btn-outline-secondary d-flex align-items-center gap-2">
                 <i class="fa-solid fa-filter"></i>
                 Ordenar
-            </button>
+            </button> -->
             <button class="btn btn-outline-secondary d-flex align-items-center gap-2">
-               <i class="fa-solid fa-file-export"></i>
+                <i class="fa-solid fa-file-export"></i>
                 Exportar
             </button>
             <button class="btn btn-primary d-flex align-items-center gap-2" onclick="openModal()">
@@ -1342,7 +1342,6 @@
             placeholder="Digite o nome do cliente" />
     </mat-form-field> -->
 
-
     <table class="table table-bordered table-striped mt-2">
         <thead class="thead-dark">
             <tr>
@@ -1352,33 +1351,45 @@
                 <th>Ações</th>
             </tr>
         </thead>
+
         <tbody>
-            <tr *ngFor="let cliente of clientesFiltrados">
+            <tr *ngFor="let cliente of clientesFiltrados 
+            | paginate: { itemsPerPage: itensPorPagina, currentPage: paginaAtual }">
+
                 <td>{{ cliente.nome }}</td>
                 <td>{{ cliente.email }}</td>
+
                 <td>
                     <span [ngClass]="cliente.temFicha ? 'text-success' : 'text-danger'">
                         {{ cliente.temFicha ? '✅ Possui' : '❌ Não possui' }}
                     </span>
                 </td>
+
                 <td>
                     @if (cliente.temFicha) {
                     <button class="btn btn-primary btn-sm me-2" [routerLink]="['ver-fichas']"
                         [queryParams]="{ id: cliente.id }">
                         Ver Fichas
                     </button>
+
                     <button class="btn btn-secondary btn-sm me-2" [routerLink]="['cad-ficha']"
                         [queryParams]="{ id: cliente.id }">
                         Editar ficha
                     </button>
                     }
+
                     <button *ngIf="!cliente.temFicha" class="btn btn-success btn-sm" [routerLink]="['cad-ficha']"
                         [queryParams]="{ id: cliente.id }">
                         Cadastrar Ficha
                     </button>
-
                 </td>
             </tr>
         </tbody>
     </table>
+
+    <!-- PAGINAÇÃO DO NGX -->
+    <pagination-controls class="pagination" (pageChange)="paginaAtual = $event" previousLabel="Anterior"
+        nextLabel="Próximo">
+    </pagination-controls>
+    
 </div>

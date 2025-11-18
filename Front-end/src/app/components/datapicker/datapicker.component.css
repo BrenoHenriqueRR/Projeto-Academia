@@ -4,7 +4,6 @@
 }
 
 ::ng-deep .daterangepicker {
-  z-index: 1201 !important;
   position: fixed !important;
   top: auto !important;
   left: auto !important;

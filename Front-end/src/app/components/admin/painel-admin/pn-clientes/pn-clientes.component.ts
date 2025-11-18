@@ -15,13 +15,14 @@ import { Block } from '@angular/compiler';
 import { FormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ModalEscolhaRelatoriosComponent } from '../../../modais/modal-escolha-relatorios/modal-escolha-relatorios.component';
+import { MaterialModule } from '../../../../modules/material.module';
 
 @Component({
   selector: 'app-pn-clientes',
   standalone: true,
   imports: [NgxPaginationModule, RouterLink, NgIf, ModalConfirmarComponent,
     ModalFaceidComponent, ModalSpinnerComponent, ModalExibirComponent,
-    ModalCadastroComponent, FormsModule],
+    ModalCadastroComponent, FormsModule,MaterialModule],
   templateUrl: './pn-clientes.component.html',
   styleUrl: './pn-clientes.component.css'
 })
@@ -135,17 +136,17 @@ export class PnClientesComponent {
     })
   }
 
-  abrirModalRelatorios(){
-    const dialogRef = this.dialog.open(ModalEscolhaRelatoriosComponent, {
-            width: '700px',
-            height: '500px',
-            data: { tipo: 'x' },
-          });
-          dialogRef.afterClosed().subscribe((result) => {
-            if (result.confirmado) {
-              // Chame o serviço para gerar o relatório
-              console.log('Gerar relatório do tipo:', result.tipoRelatorio);
-            }
-          });
-        }
+    abrirModalRelatorios(){
+      const dialogRef = this.dialog.open(ModalEscolhaRelatoriosComponent, {
+              width: '700px',
+              height: '500px',
+              data: { tipo: 'x' },
+            });
+            dialogRef.afterClosed().subscribe((result) => {
+              if (result.confirmado) {
+                // Chame o serviço para gerar o relatório
+                console.log('Gerar relatório do tipo:', result.tipoRelatorio);
+              }
+            });
+          }
 }

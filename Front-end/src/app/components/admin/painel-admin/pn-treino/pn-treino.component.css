@@ -10,6 +10,15 @@
     border-radius: 10px;
 }
 
+.pagination {
+    width: 100%;
+    margin-top: 0.5rem;
+    text-align: center;
+    display: flex;
+    justify-content: end;
+    font-weight: 200;
+}
+
 input[type ="text"]{
     box-shadow: 1px 1px 2px rgb(179, 178, 178);
     border-radius: 10px;

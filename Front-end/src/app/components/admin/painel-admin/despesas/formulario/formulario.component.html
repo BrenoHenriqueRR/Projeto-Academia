@@ -1,36 +1,69 @@
 <div class="container mt-4">
-  <div class="card">
-    <div class="card-header bg-primary text-white">
-      <h1>{{ editando ? 'Editar Despesa' : 'Nova Despesa' }}</h1>
+  <div class="card shadow-sm">
+    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center gap-2">
+          <h1 class="mb-0 fs-3">{{ editando ? 'Editar Despesa' : 'Nova Despesa' }}</h1>
+          <i class="fa-regular fa-circle-question help-icon text-white fs-5" 
+             matTooltip="Formulário para registro de contas a pagar ou saídas de caixa."></i>
+      </div>
     </div>
-    <div class="card-body">
+    <div class="card-body bg-light">
       <form [formGroup]="form" (ngSubmit)="salvar()">
+        
         <div class="mb-3">
-          <label class="form-label">Descrição</label>
-          <input type="text" class="form-control" formControlName="descricao" />
+          <div class="d-flex align-items-center mb-1">
+              <label class="form-label mb-0 me-2">Descrição</label>
+              <i class="fa-regular fa-circle-question help-icon" 
+                 matTooltip="Nome da despesa (ex: Conta de Luz, Aluguel, Compra de Halteres)."></i>
+          </div>
+          <input type="text" class="form-control" formControlName="descricao" placeholder="Ex: Manutenção Ar Condicionado" />
         </div>
 
-        <div class="mb-3" >
-          <label class="form-label">Valor (R$)</label>
-          <input type="number" class="form-control" formControlName="valor" />
+        <div class="row">
+            <div class="col-md-6 mb-3">
+              <div class="d-flex align-items-center mb-1">
+                  <label class="form-label mb-0 me-2">Valor (R$)</label>
+                  <i class="fa-regular fa-circle-question help-icon" 
+                     matTooltip="Valor total a ser pago."></i>
+              </div>
+              <input type="number" class="form-control" formControlName="valor" placeholder="0,00" />
+            </div>
+    
+            <div class="col-md-6 mb-3">
+              <div class="d-flex align-items-center mb-1">
+                  <label class="form-label mb-0 me-2">Data de Vencimento</label>
+                  <i class="fa-regular fa-circle-question help-icon" 
+                     matTooltip="Data de vencimento ou data em que o pagamento foi realizado."></i>
+              </div>
+              <input type="date" class="form-control" formControlName="data" />
+            </div>
         </div>
 
-        <div class="mb-3">
-          <label class="form-label">Data</label>
-          <input type="date" class="form-control" formControlName="data" />
-        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+              <div class="d-flex align-items-center mb-1">
+                  <label class="form-label mb-0 me-2">Status:</label>
+                  <i class="fa-regular fa-circle-question help-icon" 
+                     matTooltip="Defina se o valor já saiu do caixa (Paga) ou se é uma previsão (Pendente)."></i>
+              </div>
+              <select class="form-select" formControlName="status">
+                <option value="pendente">Pendente</option>
+                <option value="paga">Paga</option>
+              </select>
+            </div>
 
-        <div class="mb-3">
-          <label class="form-label">Status:</label>
-          <select class="form-select" formControlName="status">
-            <option value="pendente">Pendente</option>
-            <option value="paga">Paga</option>
-          </select>
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label">Observação:</label>
-          <textarea class="form-control" formControlName="observacao"></textarea>
+            <div class="col-md-6 mb-3">
+              <div class="d-flex align-items-center mb-1">
+                  <label class="form-label mb-0 me-2">Tipo</label>
+                  <i class="fa-regular fa-circle-question help-icon" 
+                     matTooltip="Fixa: Recorrente todo mês (Aluguel). Variável: Esporádica (Conserto)."></i>
+              </div>
+              <select class="form-select" formControlName="tipo">
+                <option value="" selected disabled>Selecione a opção</option>
+                <option value="fixa">Fixa</option>
+                <option value="variavel">Variavel</option>
+              </select>
+            </div>
         </div>
 
         <!-- <div class="mb-3">
@@ -43,19 +76,29 @@
           </select>
         </div> -->
 
-        <div class="mb-3">
-          <label class="form-label">Tipo</label>
-          <select class="form-select" formControlName="tipo">
-            <option value="" selected disabled>Selecione a opção</option>
-            <option value="fixa">Fixa</option>
-            <option value="variavel">Variavel</option>
-          </select>
+        <div class="mb-4">
+          <div class="d-flex align-items-center mb-1">
+              <label class="form-label mb-0 me-2">Observação:</label>
+              <i class="fa-regular fa-circle-question help-icon" 
+                 matTooltip="Detalhes adicionais, número de nota fiscal ou justificativas."></i>
+          </div>
+          <textarea class="form-control" formControlName="observacao" rows="3"></textarea>
         </div>
 
-        <button type="submit" class="btn btn-success me-2" [disabled]="form.invalid">
-          {{ editando ? 'Atualizar' : 'Salvar' }}
-        </button>
-        <button class="btn btn-secondary" type="button" routerLink="/admin/painel/despesas">Cancelar</button>
+        <div class="d-flex align-items-center">
+            <button type="submit" class="btn btn-success me-2" [disabled]="form.invalid">
+              <i class="fa-solid fa-check me-2"></i>
+              {{ editando ? 'Atualizar' : 'Salvar' }}
+            </button>
+            
+            <button class="btn btn-secondary" type="button" routerLink="/admin/painel/despesas">
+                Cancelar
+            </button>
+            
+            <i class="fa-regular fa-circle-question help-icon ms-3" 
+               matTooltip="Salva as informações no financeiro. Certifique-se de que os dados estão corretos."></i>
+        </div>
+
       </form>
     </div>
   </div>

@@ -4,11 +4,12 @@ import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ModalSpinnerComponent } from '../../../../modais/modal-spinner/modal-spinner.component';
+import { MaterialModule } from '../../../../../modules/material.module';
 
 @Component({
   selector: 'app-listar',
   standalone: true,
-  imports: [RouterLink, CommonModule, NgxPaginationModule, ModalSpinnerComponent],
+  imports: [RouterLink, CommonModule, NgxPaginationModule, ModalSpinnerComponent, MaterialModule],
   templateUrl: './listar.component.html',
   styleUrl: './listar.component.css'
 })

@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { Despesa, DespesasService } from '../../../../../services/admin/despesas/despesas.service';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { MaterialModule } from '../../../../../modules/material.module';
 
 @Component({
   selector: 'app-formulario',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, MaterialModule],
   templateUrl: './formulario.component.html',
   styleUrl: './formulario.component.css'
 })

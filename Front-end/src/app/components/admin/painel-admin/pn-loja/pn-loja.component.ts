@@ -50,7 +50,7 @@ export class PnLojaComponent {
   @HostListener('window:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
     
-    if (event.key === 'F9' || event.key === 'f9') {
+    if (event.key === 'F9' ) {
       // Verifica se o carrinho tem itens antes de tentar finalizar
       if (this.carrinho.length > 0) {
         this.abrirModal();

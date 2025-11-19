@@ -1,507 +1,639 @@
 <div class="container-fluid my-4">
-  @if(loading){
-  <app-modal-spinner></app-modal-spinner>
-  }
-  <!-- Header com Filtros -->
-  <div class="row mb-4 d-flex align-items-center">
-    <div class="col-md-8">
-      <h2 class="fw-bold mb-0 align-items-center">💼 Dashboard Financeiro - Fitness Prime</h2>
-      <p class="text-muted">Acompanhe o desempenho financeiro da sua academia</p>
+    @if(loading){
+    <app-modal-spinner></app-modal-spinner>
+    }
+    
+    <!-- FIX DE Z-INDEX (Caso use Material Tooltips em modais/tabs) -->
+    <style>
+        ::ng-deep .cdk-overlay-container { z-index: 9999 !important; }
+    </style>
+
+    <!-- Header com Filtros e Botão de Tutorial -->
+    <div class="row mb-4 d-flex align-items-center">
+        <div class="col-md-6">
+            <div class="d-flex align-items-center gap-2">
+                <h2 class="fw-bold mb-0 align-items-center">💼 Dashboard Financeiro</h2>
+                <i class="fa-regular fa-circle-question help-icon fs-5" 
+                   matTooltip="Painel central de controle financeiro. Visualize receitas, despesas e a saúde do seu negócio."></i>
+            </div>
+            <p class="text-muted mb-0">Acompanhe o desempenho financeiro da sua academia</p>
+        </div>
+        <div class="col-md-6 d-flex justify-content-end align-items-center gap-3">
+            <!-- Botão Tutorial -->
+            <button class="btn btn-info text-white shadow-sm d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#modalTutorialDashboard">
+                <i class="fa-solid fa-graduation-cap me-2"></i>
+                Entenda os Números
+            </button>
+
+            <!-- DatePicker -->
+            <div class="d-flex align-items-center bg-white p-2 rounded shadow-sm">
+                <app-datapicker (dateSelected)="onDatePicked($event)"></app-datapicker>
+                <i class="fa-regular fa-circle-question help-icon ms-2 text-muted" 
+                   matTooltip="Selecione o mês e ano para filtrar TODOS os dados abaixo (KPIs, gráficos e listas)."></i>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-      <!-- <div class="card bg-light">
+
+    <!-- KPIs Principais -->
+    <div class="row g-4 mb-4">
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm h-100" style="background: linear-gradient(135deg, #28a745, #20c997);">
+                <div class="card-body text-white">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="bi bi-cash-coin fs-3 me-2"></i>
+                                <h6 class="mb-0 fw-bold">Receitas Totais</h6>
+                                <i class="fa-regular fa-circle-question help-icon ms-2 text-white" style="font-size: 0.8rem;" 
+                                   matTooltip="Soma de todas as mensalidades pagas + vendas da loja no período selecionado."></i>
+                            </div>
+                            <h2 class="fw-bold mb-1">R$ {{ (resumo?.total_pagamentos || 0) + (resumo?.total_vendas || 0) |
+                                number:'1.2-2' }}</h2>
+                            <small class="opacity-75">
+                                <i class="bi bi-graph-up me-1"></i>
+                                Pagamentos + Vendas
+                            </small>
+                        </div>
+                        <div class="fs-1 opacity-25">
+                            <i class="bi bi-arrow-up-circle"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm h-100" style="background: linear-gradient(135deg, #dc3545, #fd7e14);">
+                <div class="card-body text-white">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="bi bi-credit-card-2-front fs-3 me-2"></i>
+                                <h6 class="mb-0 fw-bold">Despesas Totais</h6>
+                                <i class="fa-regular fa-circle-question help-icon ms-2 text-white" style="font-size: 0.8rem;" 
+                                   matTooltip="Total de contas pagas ou registradas como despesa no período (Água, Luz, Aluguel, etc)."></i>
+                            </div>
+                            <h2 class="fw-bold mb-1">R$ {{ resumo?.total_despesas | number:'1.2-2' }}</h2>
+                            <small class="opacity-75">
+                                <i class="bi bi-graph-down me-1"></i>
+                                Gastos do período
+                            </small>
+                        </div>
+                        <div class="fs-1 opacity-25">
+                            <i class="bi bi-arrow-down-circle"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm h-100"
+                [ngClass]="(resumo?.lucro_liquido || 0) >= 0 ? 'bg-primary' : 'bg-warning'">
+                <div class="card-body text-white">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="bi bi-bar-chart-line fs-3 me-2"></i>
+                                <h6 class="mb-0 fw-bold">Lucro Líquido</h6>
+                                <i class="fa-regular fa-circle-question help-icon ms-2 text-white" style="font-size: 0.8rem;" 
+                                   matTooltip="O que sobra no caixa: (Receitas - Despesas). Se negativo, a academia está gastando mais do que recebe."></i>
+                            </div>
+                            <h2 class="fw-bold mb-1">R$ {{ resumo?.lucro_liquido | number:'1.2-2' }}</h2>
+                            <small class="opacity-75">
+                                <i [class]="(resumo?.lucro_liquido || 0) >= 0 ? 'bi bi-arrow-up' : 'bi bi-arrow-down'"
+                                    class="me-1"></i>
+                                {{ (resumo?.lucro_liquido || 0) >= 0 ? 'Resultado positivo' : 'Resultado negativo' }}
+                            </small>
+                        </div>
+                        <div class="fs-1 opacity-25">
+                            <i [class]="(resumo?.lucro_liquido || 0) >= 0 ? 'bi bi-graph-up' : 'bi bi-graph-down'"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm h-100" style="background: linear-gradient(135deg, #6f42c1, #e83e8c);">
+                <div class="card-body text-white">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="bi bi-people fs-3 me-2"></i>
+                                <h6 class="mb-0 fw-bold">Clientes Ativos</h6>
+                                <i class="fa-regular fa-circle-question help-icon ms-2 text-white" style="font-size: 0.8rem;" 
+                                   matTooltip="Total de alunos com status 'Ativo' no sistema atualmente."></i>
+                            </div>
+                            <h2 class="fw-bold mb-1">{{ clientesAtivos || 0 }}</h2>
+                            <small class="opacity-75">
+                                <i class="bi bi-person-check me-1"></i>
+                                Membros ativos
+                            </small>
+                        </div>
+                        <div class="fs-1 opacity-25">
+                            <i class="bi bi-people-fill"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Métricas Secundárias -->
+    <div class="row g-4 mb-4">
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0">
+                <div class="card-body text-center">
+                    <div class="mb-3 position-relative">
+                        <i class="bi bi-exclamation-triangle-fill fs-1 text-warning"></i>
+                        <i class="fa-regular fa-circle-question help-icon position-absolute top-0 end-0" 
+                           matTooltip="Mensalidades que já venceram e ainda não foram baixadas no sistema."></i>
+                    </div>
+                    <h5 class="fw-bold">Pagamentos Pendentes</h5>
+                    <h3 class="text-warning mb-2">{{ pagamentosPendentes.length || 0 }}</h3>
+                    <p class="text-muted small mb-0">Mensalidades em atraso</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0">
+                <div class="card-body text-center">
+                    <div class="mb-3 position-relative">
+                        <i class="bi bi-shop fs-1 text-info"></i>
+                        <i class="fa-regular fa-circle-question help-icon position-absolute top-0 end-0" 
+                           matTooltip="Valor arrecadado exclusivamente através da venda de suplementos e produtos."></i>
+                    </div>
+                    <h5 class="fw-bold">Vendas da Loja</h5>
+                    <h3 class="text-info mb-2">R$ {{ resumo?.total_vendas | number:'1.2-2' }}</h3>
+                    <p class="text-muted small mb-0">Produtos vendidos</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0">
+                <div class="card-body text-center">
+                    <div class="mb-3 position-relative">
+                        <i class="bi bi-percent fs-1" [ngClass]="margemLucro >= 0 ? 'text-success' : 'text-danger'"></i>
+                        <i class="fa-regular fa-circle-question help-icon position-absolute top-0 end-0" 
+                           matTooltip="Porcentagem de quanto sobra do faturamento total. Ideal acima de 20%."></i>
+                    </div>
+                    <h5 class="fw-bold">Margem de Lucro</h5>
+                    <h3 [ngClass]="margemLucro >= 0 ? 'text-success' : 'text-danger'" class="mb-2">{{ margemLucro |
+                        number:'1.1-1'
+                        }}%</h3>
+                    <p class="text-muted small mb-0">Do faturamento total</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navegação por Tabs -->
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-white d-flex align-items-center justify-content-between">
+            <ul class="nav nav-tabs card-header-tabs" id="financeiroTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="resumo-tab" data-bs-toggle="tab" data-bs-target="#resumo"
+                        type="button" role="tab">
+                        <i class="bi bi-speedometer2 me-2"></i>Resumo
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pagamentos-tab" data-bs-toggle="tab" data-bs-target="#pagamentos"
+                        type="button" role="tab">
+                        <i class="bi bi-credit-card me-2"></i>Pagamentos
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="despesas-tab" data-bs-toggle="tab" data-bs-target="#despesas"
+                        type="button" role="tab" (click)="carregarDespesas()">
+                        <i class="bi bi-receipt me-2"></i>Despesas
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="vendas-tab" data-bs-toggle="tab" data-bs-target="#vendas" type="button"
+                        role="tab" (click)="carregarVendas()">
+                        <i class="bi bi-shop me-2"></i>Vendas
+                    </button>
+                </li>
+            </ul>
+            <i class="fa-regular fa-circle-question help-icon me-3" 
+               matTooltip="Navegue pelas abas para ver os detalhes específicos de cada categoria financeira."></i>
+        </div>
+
         <div class="card-body">
-          <div class="row">
-            <div class="col-6">
-              <label class="form-label small">Mês</label>
-              <select class="form-select" [(ngModel)]="mes" (change)="carregarResumo()">
-                <option value="1">Janeiro</option>
-                <option value="2">Fevereiro</option>
-                <option value="3">Março</option>
-                <option value="4">Abril</option>
-                <option value="5">Maio</option>
-                <option value="6">Junho</option>
-                <option value="7">Julho</option>
-                <option value="8">Agosto</option>
-                <option value="9">Setembro</option>
-                <option value="10">Outubro</option>
-                <option value="11">Novembro</option>
-                <option value="12">Dezembro</option>
-              </select>
-            </div>
-            <div class="col-6">
-              <label class="form-label small">Ano</label>
-              <input type="number" class="form-control" [(ngModel)]="ano" (change)="carregarResumo()" min="2020"
-                max="2030">
-            </div>
-          </div>
-        </div>
-      </div> -->
-      <div class="mt-3 d-flex align-items-center">
-        <!-- <h3>Selecionar Data:</h3> -->
-        <app-datapicker (dateSelected)="onDatePicked($event)"></app-datapicker>
-      </div>
-    </div>
-  </div>
+            <div class="tab-content" id="financeiroTabContent">
+                <!-- Tab Resumo -->
+                <div class="tab-pane fade show active" id="resumo" role="tabpanel">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 class="fw-bold mb-3">📊 Distribuição Financeira</h5>
+                            <div class="d-flex align-items-center mb-3 p-3 bg-light rounded">
+                                <div class="me-3">
+                                    <div class="bg-success rounded-circle d-flex align-items-center justify-content-center"
+                                        style="width: 40px; height: 40px;">
+                                        <i class="bi bi-arrow-up text-white"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h6 class="mb-1">Receitas de Pagamentos</h6>
+                                    <strong class="text-success">R$ {{ resumo?.total_pagamentos | number:'1.2-2'
+                                        }}</strong>
+                                </div>
+                                <div class="text-end">
+                                    <small class="text-muted">{{ calcularPercentual(resumo?.total_pagamentos,
+                                        (resumo?.total_pagamentos ||
+                                        0) + (resumo?.total_vendas || 0)) }}%</small>
+                                </div>
+                            </div>
 
-  <!-- KPIs Principais -->
-  <div class="row g-4 mb-4">
-    <div class="col-md-3">
-      <div class="card border-0 shadow-sm h-100" style="background: linear-gradient(135deg, #28a745, #20c997);">
-        <div class="card-body text-white">
-          <div class="d-flex align-items-center justify-content-between">
-            <div>
-              <div class="d-flex align-items-center mb-2">
-                <i class="bi bi-cash-coin fs-3 me-2"></i>
-                <h6 class="mb-0 fw-bold">Receitas Totais</h6>
-              </div>
-              <h2 class="fw-bold mb-1">R$ {{ (resumo?.total_pagamentos || 0) + (resumo?.total_vendas || 0) |
-                number:'1.2-2' }}</h2>
-              <small class="opacity-75">
-                <i class="bi bi-graph-up me-1"></i>
-                Pagamentos + Vendas
-              </small>
-            </div>
-            <div class="fs-1 opacity-25">
-              <i class="bi bi-arrow-up-circle"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+                            <div class="d-flex align-items-center mb-3 p-3 bg-light rounded">
+                                <div class="me-3">
+                                    <div class="bg-info rounded-circle d-flex align-items-center justify-content-center"
+                                        style="width: 40px; height: 40px;">
+                                        <i class="bi bi-shop text-white"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h6 class="mb-1">Receitas de Vendas</h6>
+                                    <strong class="text-info">R$ {{ resumo?.total_vendas | number:'1.2-2' }}</strong>
+                                </div>
+                                <div class="text-end">
+                                    <small class="text-muted">{{ calcularPercentual(resumo?.total_vendas,
+                                        (resumo?.total_pagamentos || 0)
+                                        + (resumo?.total_vendas || 0)) }}%</small>
+                                </div>
+                            </div>
+                        </div>
 
-    <div class="col-md-3">
-      <div class="card border-0 shadow-sm h-100" style="background: linear-gradient(135deg, #dc3545, #fd7e14);">
-        <div class="card-body text-white">
-          <div class="d-flex align-items-center justify-content-between">
-            <div>
-              <div class="d-flex align-items-center mb-2">
-                <i class="bi bi-credit-card-2-front fs-3 me-2"></i>
-                <h6 class="mb-0 fw-bold">Despesas Totais</h6>
-              </div>
-              <h2 class="fw-bold mb-1">R$ {{ resumo?.total_despesas | number:'1.2-2' }}</h2>
-              <small class="opacity-75">
-                <i class="bi bi-graph-down me-1"></i>
-                Gastos do período
-              </small>
-            </div>
-            <div class="fs-1 opacity-25">
-              <i class="bi bi-arrow-down-circle"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+                        <div class="col-md-6">
+                            <h5 class="fw-bold mb-3">⚠️ Alertas Financeiros</h5>
 
-    <div class="col-md-3">
-      <div class="card border-0 shadow-sm h-100"
-        [ngClass]="(resumo?.lucro_liquido || 0) >= 0 ? 'bg-primary' : 'bg-warning'">
-        <div class="card-body text-white">
-          <div class="d-flex align-items-center justify-content-between">
-            <div>
-              <div class="d-flex align-items-center mb-2">
-                <i class="bi bi-bar-chart-line fs-3 me-2"></i>
-                <h6 class="mb-0 fw-bold">Lucro Líquido</h6>
-              </div>
-              <h2 class="fw-bold mb-1">R$ {{ resumo?.lucro_liquido | number:'1.2-2' }}</h2>
-              <small class="opacity-75">
-                <i [class]="(resumo?.lucro_liquido || 0) >= 0 ? 'bi bi-arrow-up' : 'bi bi-arrow-down'" class="me-1"></i>
-                {{ (resumo?.lucro_liquido || 0) >= 0 ? 'Resultado positivo' : 'Resultado negativo' }}
-              </small>
-            </div>
-            <div class="fs-1 opacity-25">
-              <i [class]="(resumo?.lucro_liquido || 0) >= 0 ? 'bi bi-graph-up' : 'bi bi-graph-down'"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-3">
-      <div class="card border-0 shadow-sm h-100" style="background: linear-gradient(135deg, #6f42c1, #e83e8c);">
-        <div class="card-body text-white">
-          <div class="d-flex align-items-center justify-content-between">
-            <div>
-              <div class="d-flex align-items-center mb-2">
-                <i class="bi bi-people fs-3 me-2"></i>
-                <h6 class="mb-0 fw-bold">Clientes Ativos</h6>
-              </div>
-              <h2 class="fw-bold mb-1">{{ clientesAtivos || 0 }}</h2>
-              <small class="opacity-75">
-                <i class="bi bi-person-check me-1"></i>
-                Membros ativos
-              </small>
-            </div>
-            <div class="fs-1 opacity-25">
-              <i class="bi bi-people-fill"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Métricas Secundárias -->
-  <div class="row g-4 mb-4">
-    <div class="col-md-4">
-      <div class="card shadow-sm border-0">
-        <div class="card-body text-center">
-          <div class="mb-3">
-            <i class="bi bi-exclamation-triangle-fill fs-1 text-warning"></i>
-          </div>
-          <h5 class="fw-bold">Pagamentos Pendentes</h5>
-          <h3 class="text-warning mb-2">{{ pagamentosPendentes.length || 0 }}</h3>
-          <p class="text-muted small mb-0">Mensalidades em atraso</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4">
-      <div class="card shadow-sm border-0">
-        <div class="card-body text-center">
-          <div class="mb-3">
-            <i class="bi bi-shop fs-1 text-info"></i>
-          </div>
-          <h5 class="fw-bold">Vendas da Loja</h5>
-          <h3 class="text-info mb-2">R$ {{ resumo?.total_vendas | number:'1.2-2' }}</h3>
-          <p class="text-muted small mb-0">Produtos vendidos</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4">
-      <div class="card shadow-sm border-0">
-        <div class="card-body text-center">
-          <div class="mb-3">
-            <i class="bi bi-percent fs-1" [ngClass]="margemLucro >= 0 ? 'text-success' : 'text-danger'"></i>
-          </div>
-          <h5 class="fw-bold">Margem de Lucro</h5>
-          <h3 [ngClass]="margemLucro >= 0 ? 'text-success' : 'text-danger'" class="mb-2">{{ margemLucro | number:'1.1-1'
-            }}%</h3>
-          <p class="text-muted small mb-0">Do faturamento total</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Navegação por Tabs -->
-  <div class="card shadow-sm border-0">
-    <div class="card-header bg-white">
-      <ul class="nav nav-tabs card-header-tabs" id="financeiroTabs" role="tablist">
-        <li class="nav-item" role="presentation">
-          <button class="nav-link active" id="resumo-tab" data-bs-toggle="tab" data-bs-target="#resumo" type="button"
-            role="tab">
-            <i class="bi bi-speedometer2 me-2"></i>Resumo
-          </button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link" id="pagamentos-tab" data-bs-toggle="tab" data-bs-target="#pagamentos" type="button"
-            role="tab">
-            <i class="bi bi-credit-card me-2"></i>Pagamentos
-          </button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link" id="despesas-tab" data-bs-toggle="tab" data-bs-target="#despesas" type="button"
-            role="tab" (click)="carregarDespesas()">
-            <i class="bi bi-receipt me-2"></i>Despesas
-          </button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link" id="vendas-tab" data-bs-toggle="tab" data-bs-target="#vendas" type="button"
-            role="tab" (click)="carregarVendas()">
-            <i class="bi bi-shop me-2"></i>Vendas
-          </button>
-        </li>
-      </ul>
-    </div>
-
-    <div class="card-body">
-      <div class="tab-content" id="financeiroTabContent">
-        <!-- Tab Resumo -->
-        <div class="tab-pane fade show active" id="resumo" role="tabpanel">
-          <div class="row">
-            <div class="col-md-6">
-              <h5 class="fw-bold mb-3">📊 Distribuição Financeira</h5>
-              <div class="d-flex align-items-center mb-3 p-3 bg-light rounded">
-                <div class="me-3">
-                  <div class="bg-success rounded-circle d-flex align-items-center justify-content-center"
-                    style="width: 40px; height: 40px;">
-                    <i class="bi bi-arrow-up text-white"></i>
-                  </div>
-                </div>
-                <div class="flex-grow-1">
-                  <h6 class="mb-1">Receitas de Pagamentos</h6>
-                  <strong class="text-success">R$ {{ resumo?.total_pagamentos | number:'1.2-2' }}</strong>
-                </div>
-                <div class="text-end">
-                  <small class="text-muted">{{ calcularPercentual(resumo?.total_pagamentos, (resumo?.total_pagamentos ||
-                    0) + (resumo?.total_vendas || 0)) }}%</small>
-                </div>
-              </div>
-
-              <div class="d-flex align-items-center mb-3 p-3 bg-light rounded">
-                <div class="me-3">
-                  <div class="bg-info rounded-circle d-flex align-items-center justify-content-center"
-                    style="width: 40px; height: 40px;">
-                    <i class="bi bi-shop text-white"></i>
-                  </div>
-                </div>
-                <div class="flex-grow-1">
-                  <h6 class="mb-1">Receitas de Vendas</h6>
-                  <strong class="text-info">R$ {{ resumo?.total_vendas | number:'1.2-2' }}</strong>
-                </div>
-                <div class="text-end">
-                  <small class="text-muted">{{ calcularPercentual(resumo?.total_vendas, (resumo?.total_pagamentos || 0)
-                    + (resumo?.total_vendas || 0)) }}%</small>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-6">
-              <h5 class="fw-bold mb-3">⚠️ Alertas Financeiros</h5>
-
-              <div *ngFor="let alerta of alertasFinanceiros" class="alert" [ngClass]="{
+                            <div *ngFor="let alerta of alertasFinanceiros" class="alert" [ngClass]="{
          'alert-warning': alerta.tipo === 'warning',
          'alert-danger': alerta.tipo === 'danger',
          'alert-info': alerta.tipo === 'info'
        }">
-                <div class="d-flex align-items-center">
-                  <i class="me-2" [ngClass]="{
-           'bi bi-exclamation-triangle': alerta.tipo === 'warning',
-           'bi bi-x-octagon': alerta.tipo === 'danger',
-           'bi bi-info-circle': alerta.tipo === 'info'
-         }"></i>
-                  <div>
-                    {{ alerta.mensagem }}
-                  </div>
-                </div>
-              </div>
-              <div class="alert alert-warning" *ngIf="(resumo?.lucro_liquido || 0) < 0">
-                <div class="d-flex align-items-center">
-                  <i class="bi bi-exclamation-triangle me-2"></i>
-                  <div>
-                    <strong>Atenção!</strong> Resultado negativo este mês.
-                    <br><small>Revise as despesas para melhorar a rentabilidade.</small>
-                  </div>
-                </div>
-              </div>
+                                <div class="d-flex align-items-center">
+                                    <i class="me-2" [ngClass]="{
+            'bi bi-exclamation-triangle': alerta.tipo === 'warning',
+            'bi bi-x-octagon': alerta.tipo === 'danger',
+            'bi bi-info-circle': alerta.tipo === 'info'
+          }"></i>
+                                    <div>
+                                        {{ alerta.mensagem }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="alert alert-warning" *ngIf="(resumo?.lucro_liquido || 0) < 0">
+                                <div class="d-flex align-items-center">
+                                    <i class="bi bi-exclamation-triangle me-2"></i>
+                                    <div>
+                                        <strong>Atenção!</strong> Resultado negativo este mês.
+                                        <br><small>Revise as despesas para melhorar a rentabilidade.</small>
+                                    </div>
+                                </div>
+                            </div>
 
-              <div class="alert alert-info" *ngIf="pagamentosPendentes.length > 0">
-                <div class="d-flex align-items-center">
-                  <i class="bi bi-info-circle me-2"></i>
-                  <div>
-                    <strong>{{ pagamentosPendentes.length }}</strong> pagamento(s) pendente(s).
-                    <br><small>Acompanhe as mensalidades em atraso.</small>
-                  </div>
-                </div>
-              </div>
+                            <div class="alert alert-info" *ngIf="pagamentosPendentes.length > 0">
+                                <div class="d-flex align-items-center">
+                                    <i class="bi bi-info-circle me-2"></i>
+                                    <div>
+                                        <strong>{{ pagamentosPendentes.length }}</strong> pagamento(s) pendente(s).
+                                        <br><small>Acompanhe as mensalidades em atraso.</small>
+                                    </div>
+                                </div>
+                            </div>
 
-              <div class="alert alert-success"
-                *ngIf="(resumo?.lucro_liquido || 0) >= 0 && !pagamentosPendentes?.length">
-                <div class="d-flex align-items-center">
-                  <i class="bi bi-check-circle me-2"></i>
-                  <div>
-                    <strong>Ótimo!</strong> Situação financeira estável.
-                    <br><small>Continue monitorando os resultados.</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tab Pagamentos -->
-        <div class="tab-pane fade" id="pagamentos" role="tabpanel">
-          <div class="d-flex justify-content-between align-items-center mb-3">
-            <h5 class="fw-bold mb-0">💳 Histórico de Pagamentos</h5>
-            <div class="gap-3 d-flex">
-              <button routerLink="../clientes/pagamentos" class="btn btn-danger btn-sm">
-                <i class="bi bi-plus"></i> Novo Pagamento
-              </button>
-              <button class="btn btn-success btn-sm">
-                <i class="bi bi-plus"></i> Gerar Relatório
-              </button>
-            </div>
-          </div>
-
-          <div class="table-responsive" style="max-height: 400px;">
-            <table class="table table-hover">
-              <thead class="table-light sticky-top">
-                <tr>
-                  <th>Cliente</th>
-                  <th>Valor</th>
-                  <th>Data Pagamento</th>
-                  <th>Data Vencimento</th>
-                  <th>Status</th>
-                  <th>Ações</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let pagamento of listaPagamentos">
-                  <td>
-                    <div class="d-flex align-items-center">
-                      <div
-                        class="avatar bg-primary text-white rounded-circle me-2 d-flex align-items-center justify-content-center"
-                        style="width: 32px; height: 32px; font-size: 12px;">
-                        {{ pagamento.nome?.charAt(0) || 'N' }}
-                      </div>
-                      <div>
-                        <strong>{{ pagamento.nome || 'Nome não informado' }}</strong>
-                        <br><small class="text-muted">{{ pagamento.cpf }}</small>
-                      </div>
+                            <div class="alert alert-success"
+                                *ngIf="(resumo?.lucro_liquido || 0) >= 0 && !pagamentosPendentes.length">
+                                <div class="d-flex align-items-center">
+                                    <i class="bi bi-check-circle me-2"></i>
+                                    <div>
+                                        <strong>Ótimo!</strong> Situação financeira estável.
+                                        <br><small>Continue monitorando os resultados.</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </td>
-                  <td><strong class="text-success">{{ pagamento.valor }}</strong></td>
-                  <td>{{ pagamento.data_pagamento | date:'dd/MM/yyyy' }}</td>
-                  <td>{{ pagamento.data_vencimento | date:'dd/MM/yyyy' }}</td>
-                  <td>
-                    <span class="badge" [ngClass]="{
-                      'bg-success': pagamento.status_pagamento === 'pago' || pagamento.status_pagamento === 'success',
-                      'bg-warning': pagamento.status_pagamento === 'pendente',
-                      'bg-danger': pagamento.status_pagamento === 'cancelado' || pagamento.status_pagamento === 'cancel'
-                    }">
-                      {{ getStatusLabel(pagamento.status_pagamento) }}
-                    </span>
-                  </td>
-                  <td>
-                    <button class="btn btn-sm btn-outline-success" (click)="abrirModal(pagamento.id)"
-                      *ngIf="pagamento.status_pagamento === 'pendente'">
-                      <i class="bi bi-check"></i>PAGAR
-                    </button>
-                  </td>
-                </tr>
-                <tr *ngIf="!listaPagamentos?.length">
-                  <td colspan="5" class="text-center text-muted py-4">
-                    <i class="bi bi-inbox fs-1 d-block mb-2"></i>
-                    Nenhum pagamento encontrado para este período
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+                </div>
 
-        <!-- Tab Despesas -->
-        <div class="tab-pane fade" id="despesas" role="tabpanel">
-          <div class="d-flex justify-content-between align-items-center mb-3">
-            <h5 class="fw-bold mb-0">🧾 Controle de Despesas</h5>
-            <div class="d-flex gap-3">
-              <button class="btn btn-danger btn-sm">
-                <i class="bi bi-plus"></i> Nova Despesa
-              </button>
-              <button class="btn btn-success btn-sm">
-                <i class="bi bi-plus"></i> Gerar Relatório
-              </button>
-            </div>
-          </div>
+                <!-- Tab Pagamentos -->
+                <div class="tab-pane fade" id="pagamentos" role="tabpanel">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="fw-bold mb-0">💳 Histórico de Pagamentos</h5>
+                        <div class="gap-3 d-flex">
+                            <button routerLink="../clientes/pagamentos" class="btn btn-danger btn-sm">
+                                <i class="bi bi-plus"></i> Novo Pagamento
+                            </button>
+                            <button class="btn btn-success btn-sm" matTooltip="Baixar relatório desta lista">
+                                <i class="bi bi-file-earmark-spreadsheet"></i> Relatório
+                            </button>
+                        </div>
+                    </div>
 
-          <div class="table-responsive" style="max-height: 400px;">
-            <table class="table table-hover">
-              <thead class="table-light sticky-top">
-                <tr>
-                  <th>Descrição</th>
-                  <th>Valor</th>
-                  <th>Tipo</th>
-                  <th>Data</th>
-                  <th>Status</th>
+                    <div class="table-responsive" style="max-height: 400px;">
+                        <table class="table table-hover">
+                            <thead class="table-light sticky-top">
+                                <tr>
+                                    <th>Cliente</th>
+                                    <th>Valor</th>
+                                    <th>Data Pagamento</th>
+                                    <th>Data Vencimento</th>
+                                    <th>Status</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let pagamento of listaPagamentos">
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar bg-primary text-white rounded-circle me-2 d-flex align-items-center justify-content-center"
+                                                style="width: 32px; height: 32px; font-size: 12px;">
+                                                {{ pagamento.nome?.charAt(0) || 'N' }}
+                                            </div>
+                                            <div>
+                                                <strong>{{ pagamento.nome || 'Nome não informado' }}</strong>
+                                                <br><small class="text-muted">{{ pagamento.cpf }}</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><strong class="text-success">{{ pagamento.valor }}</strong></td>
+                                    <td>{{ pagamento.data_pagamento | date:'dd/MM/yyyy' }}</td>
+                                    <td>{{ pagamento.data_vencimento | date:'dd/MM/yyyy' }}</td>
+                                    <td>
+                                        <span class="badge" [ngClass]="{
+                              'bg-success': pagamento.status_pagamento === 'pago' || pagamento.status_pagamento === 'success',
+                              'bg-warning': pagamento.status_pagamento === 'pendente',
+                              'bg-danger': pagamento.status_pagamento === 'cancelado' || pagamento.status_pagamento === 'cancel'
+                            }">
+                                            {{ getStatusLabel(pagamento.status_pagamento) }}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-success" (click)="abrirModal(pagamento.id)"
+                                            *ngIf="pagamento.status_pagamento === 'pendente'"
+                                            matTooltip="Confirmar recebimento">
+                                            <i class="bi bi-check"></i> PAGAR
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr *ngIf="!listaPagamentos.length">
+                                    <td colspan="5" class="text-center text-muted py-4">
+                                        <i class="bi bi-inbox fs-1 d-block mb-2"></i>
+                                        Nenhum pagamento encontrado para este período
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let despesa of listaDespesas">
-                  <td>
-                    <strong>{{ despesa.descricao }}</strong>
-                    <br><small class="text-muted" *ngIf="despesa.observacao">{{ despesa.observacao }}</small>
-                  </td>
-                  <td><strong class="text-danger">R$ {{ despesa.valor | number:'1.2-2' }}</strong></td>
-                  <td>
-                    <span class="badge" [ngClass]="{
-                      'bg-secondary': despesa.tipo === 'fixa',
-                      'bg-info': despesa.tipo === 'variável'
-                    }">
-                      {{ despesa.tipo }}
-                    </span>
-                  </td>
-                  <td>{{ despesa.data | date:'dd/MM/yyyy' }}</td>
-                  <td>
-                    <span class="badge" [ngClass]="{
-                      'bg-success': despesa.status === 'paga',
-                      'bg-warning': despesa.status === 'pendente'
-                    }">
-                      {{ despesa.status }}
-                    </span>
-                  </td>
-                </tr>
-                <tr *ngIf="!listaDespesas?.length">
-                  <td colspan="5" class="text-center text-muted py-4">
-                    <i class="bi bi-inbox fs-1 d-block mb-2"></i>
-                    Nenhuma despesa encontrada para este período
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+                <!-- Tab Despesas -->
+                <div class="tab-pane fade" id="despesas" role="tabpanel">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="fw-bold mb-0">🧾 Controle de Despesas</h5>
+                        <div class="d-flex gap-3">
+                            <button class="btn btn-danger btn-sm" matTooltip="Adicionar nova conta a pagar">
+                                <i class="bi bi-plus"></i> Nova Despesa
+                            </button>
+                            <button class="btn btn-success btn-sm" matTooltip="Baixar relatório de despesas">
+                                <i class="bi bi-file-earmark-spreadsheet"></i> Relatório
+                            </button>
+                        </div>
+                    </div>
 
-        <!-- Tab Vendas -->
-        <div class="tab-pane fade" id="vendas" role="tabpanel">
-          <div class="d-flex justify-content-between align-items-center mb-3">
-            <h5 class="fw-bold mb-0">🛒 Histórico de Vendas</h5>
-            <div class="d-flex gap-3">
-              <button [routerLink]="['../loja']" class="btn btn-danger btn-sm">
-                <i class="bi bi-plus"></i> Nova Venda
-              </button>
-              <button class="btn btn-success btn-sm">
-                <i class="bi bi-plus"></i> Gerar Relatório
-              </button>
-            </div>
-          </div>
+                    <div class="table-responsive" style="max-height: 400px;">
+                        <table class="table table-hover">
+                            <thead class="table-light sticky-top">
+                                <tr>
+                                    <th>Descrição</th>
+                                    <th>Valor</th>
+                                    <th>Tipo</th>
+                                    <th>Data</th>
+                                    <th>Status</th>
 
-          <div class="table-responsive" style="max-height: 400px;">
-            <table class="table table-hover">
-              <thead class="table-light sticky-top">
-                <tr>
-                  <th>Data</th>
-                  <th>Total</th>
-                  <th>Forma Pagamento</th>
-                  <!-- <th>Ações</th> -->
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let venda of listaVendas">
-                  <td>{{ venda.data_venda | date:'dd/MM/yyyy HH:mm' }}</td>
-                  <td><strong class="text-success">R$ {{ venda.total | number:'1.2-2':'pt-br' }}</strong></td>
-                  <td>
-                    <span class="badge bg-primary">{{ venda.forma_pagamento }}</span>
-                  </td>
-                  <!-- <td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let despesa of listaDespesas">
+                                    <td>
+                                        <strong>{{ despesa.descricao }}</strong>
+                                        <br><small class="text-muted" *ngIf="despesa.observacao">{{ despesa.observacao
+                                            }}</small>
+                                    </td>
+                                    <td><strong class="text-danger">R$ {{ despesa.valor | number:'1.2-2' }}</strong>
+                                    </td>
+                                    <td>
+                                        <span class="badge" [ngClass]="{
+                              'bg-secondary': despesa.tipo === 'fixa',
+                              'bg-info': despesa.tipo === 'variável'
+                            }">
+                                            {{ despesa.tipo }}
+                                        </span>
+                                    </td>
+                                    <td>{{ despesa.data | date:'dd/MM/yyyy' }}</td>
+                                    <td>
+                                        <span class="badge" [ngClass]="{
+                              'bg-success': despesa.status === 'paga',
+                              'bg-warning': despesa.status === 'pendente'
+                            }">
+                                            {{ despesa.status }}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr *ngIf="!listaDespesas.length">
+                                    <td colspan="5" class="text-center text-muted py-4">
+                                        <i class="bi bi-inbox fs-1 d-block mb-2"></i>
+                                        Nenhuma despesa encontrada para este período
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Tab Vendas -->
+                <div class="tab-pane fade" id="vendas" role="tabpanel">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="fw-bold mb-0">🛒 Histórico de Vendas</h5>
+                        <div class="d-flex gap-3">
+                            <button [routerLink]="['../loja']" class="btn btn-danger btn-sm">
+                                <i class="bi bi-plus"></i> Nova Venda
+                            </button>
+                            <button class="btn btn-success btn-sm">
+                                <i class="bi bi-file-earmark-spreadsheet"></i> Relatório
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive" style="max-height: 400px;">
+                        <table class="table table-hover">
+                            <thead class="table-light sticky-top">
+                                <tr>
+                                    <th>Data</th>
+                                    <th>Total</th>
+                                    <th>Forma Pagamento</th>
+                                    <!-- <th>Ações</th> -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let venda of listaVendas">
+                                    <td>{{ venda.data_venda | date:'dd/MM/yyyy HH:mm' }}</td>
+                                    <td><strong class="text-success">R$ {{ venda.total | number:'1.2-2':'pt-br'
+                                            }}</strong></td>
+                                    <td>
+                                        <span class="badge bg-primary">{{ venda.forma_pagamento }}</span>
+                                    </td>
+                                    <!-- <td>
                     <button class="btn btn-sm btn-outline-info">
                       <i class="bi bi-eye"></i>
                     </button>
                   </td> -->
-                </tr>
-                <tr *ngIf="!listaVendas?.length">
-                  <td colspan="4" class="text-center text-muted py-4">
-                    <i class="bi bi-inbox fs-1 d-block mb-2"></i>
-                    Nenhuma venda encontrada para este período
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+                                </tr>
+                                <tr *ngIf="!listaVendas.length">
+                                    <td colspan="4" class="text-center text-muted py-4">
+                                        <i class="bi bi-inbox fs-1 d-block mb-2"></i>
+                                        Nenhuma venda encontrada para este período
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 
-  <!-- Botões de Ação -->
-  <div class="d-flex gap-2 mt-4">
-    <button class="btn btn-outline-dark" (click)="gerarPDF()">
-      <i class="bi bi-file-earmark-pdf me-1"></i> Gerar Relatório PDF Mensal
-    </button>
+    <!-- Botões de Ação -->
+    <div class="d-flex gap-2 mt-4 align-items-center">
+        <button class="btn btn-outline-dark" (click)="gerarPDF()"
+                matTooltip="Baixa o relatório financeiro completo do mês selecionado.">
+            <i class="bi bi-file-earmark-pdf me-1"></i> Gerar Relatório PDF Mensal
+        </button>
 
-    <button class="btn btn-outline-primary" (click)="carregarResumo()">
-      <i class="bi bi-arrow-clockwise me-1"></i> Atualizar Dados
-    </button>
-  </div>
+        <button class="btn btn-outline-primary" (click)="carregarResumo()"
+                matTooltip="Recarrega todos os dados do dashboard.">
+            <i class="bi bi-arrow-clockwise me-1"></i> Atualizar Dados
+        </button>
+        
+        <i class="fa-regular fa-circle-question help-icon ms-2" 
+           matTooltip="Utilize estas opções para exportar dados ou garantir que está vendo as informações mais recentes."></i>
+    </div>
+
+    <!-- MODAL TUTORIAL / GUIA DO DASHBOARD -->
+    <div class="modal fade" id="modalTutorialDashboard" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-white">
+                    <h5 class="modal-title fw-bold"><i class="bi bi-speedometer2 me-2"></i>Guia do Dashboard Financeiro</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body bg-light">
+                    <div class="row g-4">
+                        <!-- Passo 1 -->
+                        <div class="col-md-4">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <span class="badge rounded-pill bg-primary fs-5 me-3">1</span>
+                                        <h6 class="fw-bold mb-0">Seletor de Data</h6>
+                                    </div>
+                                    <p class="text-muted small">
+                                        No topo à direita, o <strong>filtro de data</strong> controla todo o painel. Ao mudar o mês/ano, os Cards (KPIs), Gráficos e Listas (Pagamentos, Despesas) são atualizados automaticamente para mostrar apenas os dados daquele período.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Passo 2 -->
+                        <div class="col-md-4">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <span class="badge rounded-pill bg-success fs-5 me-3">2</span>
+                                        <h6 class="fw-bold mb-0">Indicadores (KPIs)</h6>
+                                    </div>
+                                    <ul class="list-unstyled small text-muted">
+                                        <li class="mb-2"><i class="bi bi-circle-fill text-success me-2" style="font-size: 8px;"></i><strong>Receitas:</strong> Soma de Mensalidades + Vendas da Loja.</li>
+                                        <li class="mb-2"><i class="bi bi-circle-fill text-danger me-2" style="font-size: 8px;"></i><strong>Despesas:</strong> Contas pagas (Luz, Aluguel, Equipamentos).</li>
+                                        <li class="mb-2"><i class="bi bi-circle-fill text-primary me-2" style="font-size: 8px;"></i><strong>Lucro Líquido:</strong> O que sobra no caixa (Receita - Despesa).</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Passo 3 -->
+                        <div class="col-md-4">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <span class="badge rounded-pill bg-info text-dark fs-5 me-3">3</span>
+                                        <h6 class="fw-bold mb-0">Abas de Detalhes</h6>
+                                    </div>
+                                    <p class="text-muted small">
+                                        Abaixo dos indicadores, use as abas para ver os detalhes:
+                                    </p>
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        <span class="badge bg-secondary">Resumo</span>
+                                        <span class="badge bg-secondary">Pagamentos</span>
+                                        <span class="badge bg-secondary">Despesas</span>
+                                        <span class="badge bg-secondary">Vendas</span>
+                                    </div>
+                                    <p class="text-muted small mt-2">
+                                        Cada aba possui botões próprios para adicionar novos registros ou exportar relatórios específicos.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Passo 4 -->
+                        <div class="col-md-6">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <span class="badge rounded-pill bg-warning text-dark fs-5 me-3">4</span>
+                                        <h6 class="fw-bold mb-0">Alertas Inteligentes</h6>
+                                    </div>
+                                    <p class="text-muted small">
+                                        O sistema analisa seus dados e exibe alertas na aba <strong>Resumo</strong>:
+                                        <br>
+                                        - Se o <strong>Lucro for negativo</strong>.
+                                        <br>
+                                        - Se houver muitos <strong>Pagamentos Pendentes</strong>.
+                                        <br>
+                                        - Se a saúde financeira estiver <strong>Estável</strong>.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Passo 5 -->
+                        <div class="col-md-6">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <span class="badge rounded-pill bg-dark fs-5 me-3">5</span>
+                                        <h6 class="fw-bold mb-0">Relatórios PDF</h6>
+                                    </div>
+                                    <p class="text-muted small">
+                                        Ao final do mês, clique no botão <strong>"Gerar Relatório PDF Mensal"</strong> no rodapé da página.
+                                        <br>
+                                        Isso criará um documento formatado com o balanço completo para impressão ou contabilidade.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer bg-white">
+                    <button type="button" class="btn btn-primary px-4" data-bs-dismiss="modal">Entendi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>

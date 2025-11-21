@@ -1,55 +1,80 @@
-<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" id="btn-modal-edit-p"
-    data-bs-target="#modal-edit-p"><i class="fa-solid fa-plus p-1"></i>Adicionar</button> -->
-
 <div class="modal fade" id="modal-edit-p" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>
-                    <i class="fas fa-box-open" style="margin-right: 8px; color: #007bff;"></i>
-                    Editar Produto
-                </h2>
+                <div class="d-flex align-items-center gap-2">
+                    <h2 class="mb-0 d-flex align-items-center">
+                        <i class="fas fa-box-open me-2" style="color: #007bff;"></i>
+                        Editar Produto
+                    </h2>
+                    <i class="fa-regular fa-circle-question help-icon fs-5" 
+                       matTooltip="Atualize os dados do produto, corrija preços ou ajuste o estoque manual."></i>
+                </div>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="container">
                     <form [formGroup]="produtoForm">
-                        <div class="row form-group">
+                        <div class="row form-group mb-3">
                             <div class="col">
-                                <label for="nome">Produto</label>
-                                <input type="text" id="nome" name="nome" placeholder="Ex: Whey Protein"
+                                <div class="d-flex align-items-center mb-1">
+                                    <label for="nome" class="me-2 mb-0">Produto</label>
+                                    <i class="fa-regular fa-circle-question help-icon" 
+                                       matTooltip="Nome comercial que aparecerá na lista de vendas."></i>
+                                </div>
+                                <input type="text" id="nome" name="nome" placeholder="Ex: Whey Protein" class="form-control"
                                     formControlName="nome">
                             </div>
                             <div class="col">
-                                <label for="preco">Preço em Real (R$)</label>
-                                <span></span>
-                                <input type="text" id="preco" name="preco"  formControlName="preco" (input)="onPrecoInput($event)"/>
+                                <div class="d-flex align-items-center mb-1">
+                                    <label for="preco" class="me-2 mb-0">Preço (R$)</label>
+                                    <i class="fa-regular fa-circle-question help-icon" 
+                                       matTooltip="Valor unitário de venda."></i>
+                                </div>
+                                <input type="text" id="preco" name="preco" class="form-control" formControlName="preco" (input)="onPrecoInput($event)"/>
                             </div>
-
                         </div>
-                        <div class="row form-group">
+
+                        <div class="row form-group mb-3">
                             <div class="col">
-                                <label for="status">Status</label>
-                                <select id="status" formControlName="status">
+                                <div class="d-flex align-items-center mb-1">
+                                    <label for="status" class="me-2 mb-0">Status</label>
+                                    <i class="fa-regular fa-circle-question help-icon" 
+                                       matTooltip="'Ativo' exibe o produto na loja. 'Inativo' esconde."></i>
+                                </div>
+                                <select id="status" class="form-select" formControlName="status">
                                     <option disabled selected>Escolha uma opção</option>
-                                    <option value="ativo">ativo</option>
-                                    <option value="inativo">inativo</option>
+                                    <option value="ativo">Ativo</option>
+                                    <option value="inativo">Inativo</option>
                                 </select>
                             </div>
                             <div class="col">
-                                <label for="quantidade">Quantidade</label>
-                                <input type="number" id="quantidade" name="quantidade" formControlName="quantidade">
+                                <div class="d-flex align-items-center mb-1">
+                                    <label for="quantidade" class="me-2 mb-0">Quantidade</label>
+                                    <i class="fa-regular fa-circle-question help-icon" 
+                                       matTooltip="Estoque atual disponível."></i>
+                                </div>
+                                <input type="number" id="quantidade" class="form-control" name="quantidade" formControlName="quantidade">
                             </div>
                         </div>
-                        <div class="row form-group">
+
+                        <div class="row form-group mb-3">
                             <div class="col">
-                                <label for="marca">Marca</label>
-                                <input type="text" placeholder="Ex: Growth, Monster" id="marca" name="marca"
+                                <div class="d-flex align-items-center mb-1">
+                                    <label for="marca" class="me-2 mb-0">Marca</label>
+                                    <i class="fa-regular fa-circle-question help-icon" 
+                                       matTooltip="Fabricante do produto (ex: Growth, Max Titanium)."></i>
+                                </div>
+                                <input type="text" placeholder="Ex: Growth, Monster" id="marca" name="marca" class="form-control"
                                     formControlName="marca">
                             </div>
                             <div class="col">
-                                <label for="unidade_medida">Unidade de Medida</label>
-                                <input type="text" placeholder="Ex: 500g, 200ml, 1un" id="unidade_medida"
+                                <div class="d-flex align-items-center mb-1">
+                                    <label for="unidade_medida" class="me-2 mb-0">Unidade de Medida</label>
+                                    <i class="fa-regular fa-circle-question help-icon" 
+                                       matTooltip="Peso, volume ou unidade (ex: 900g, 1un)."></i>
+                                </div>
+                                <input type="text" placeholder="Ex: 500g, 200ml, 1un" id="unidade_medida" class="form-control"
                                     name="unidade_medida" formControlName="unidade_medida">
                             </div>
                         </div>
@@ -58,8 +83,12 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button class="btn btn-primary" (click)="submit()">Editar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                <div class="d-flex align-items-center">
+                    <button class="btn btn-primary" (click)="submit()">Salvar Alterações</button>
+                    <i class="fa-regular fa-circle-question help-icon ms-2" 
+                       matTooltip="Confirma a edição e atualiza o produto na lista."></i>
+                </div>
             </div>
         </div>
     </div>

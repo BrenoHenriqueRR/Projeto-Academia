@@ -1,81 +1,130 @@
-<div class="container mt-2">
-    <h2>Planos Existentes :</h2>
-    <div class="mt-4">
-         <button class="btn btn-primary" (click)="abrirCadastro('planos')">
-            <i class="fa-solid fa-plus p-1"></i>Adicionar
-        </button>
-    </div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <!-- <th>Descrição</th> -->
-                <th>Preço</th>
-                <th>Duração</th>
-                <!-- <th>Benefícios</th> -->
-                <th>Disponibilidade</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody id="planosTableBody">
-            @for (plano of planos; track $index) {
-            <tr>
-                <td>{{plano.nome}}</td>
-                <!-- <td>{{plano.descricao}}</td> -->
-                <td>{{plano.preco | currency:'BRL' }}</td>
-                <td>{{plano.duracao}}</td>
-                <!-- <td>{{plano.beneficios}}</td> -->
-                <td>{{plano.disponibilidade}}</td>
-                <td>
-                    <button class="btn btn-primary" routerLink="editar"
-                        [queryParams]="{ id: plano.id, tipo: 'plano'}">Editar</button>
-                    <button class="btn btn-danger ms-4" (click)="openmodal(plano.id)">Excluir</button>
-                    <app-modal-confirmar (confirm)="validarmodal($event)"></app-modal-confirmar>
-                </td>
-            </tr>
-            }
-        </tbody>
-    </table>
-</div>
 <div class="container mt-4">
-    <h2>Extras :</h2>
-    <div class="mt-4">
-        <button class="btn btn-primary" (click)="abrirCadastro('extras')">
-            <i class="fa-solid fa-plus p-1"></i>Adicionar
-        </button>
+    <!-- SEÇÃO PLANOS -->
+    <div class="d-flex align-items-center justify-content-between mb-3">
+        <div class="d-flex align-items-center gap-2">
+            <h2 class="mb-0">Planos Existentes</h2>
+            <i class="fa-regular fa-circle-question help-icon fs-5" 
+               matTooltip="Gerencie os pacotes de assinatura recorrente oferecidos pela academia (Mensal, Trimestral, Anual)."></i>
+        </div>
     </div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <!-- <th>Descrição</th> -->
-                <th>Valor</th>
-                <!-- <th>Benefícios</th> -->
-                <th>Status</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody id="extraTableBody">
-            @for (extra of extras; track $index) {
-            <tr>
-                <td>{{extra.nome}}</td>
-                <!-- <td>{{extras.descricao}}</td> -->
-                <td>{{extra.preco | currency:'BRL'}}    </td>
-                <!-- <td>{{extras.beneficios}}</td> -->
-                <td>{{extra.status}}</td>
-                <td>
-                    <button class="btn btn-primary" routerLink="editar"
-                        [queryParams]="{ id: extra.id, tipo: 'extra'}">Editar</button>
-                    <button class="btn btn-danger ms-4" (click)="openmodal(extra.id)">Excluir</button>
-                    <app-modal-confirmar (confirm)="validarmodal($event)"></app-modal-confirmar>
-                </td>
-            </tr>
-            }
-        </tbody>
-    </table>
+
+    <div class="mb-4 d-flex align-items-center">
+        <button class="btn btn-primary" (click)="abrirCadastro('planos')">
+            <i class="fa-solid fa-plus p-1"></i>Adicionar Plano
+        </button>
+        <i class="fa-regular fa-circle-question help-icon ms-3" 
+           matTooltip="Cadastre um novo contrato com duração e valor definidos."></i>
+    </div>
+
+    <div class="table-responsive shadow-sm mb-5">
+        <table class="table table-hover border mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>Nome</th>
+                    <!-- <th>Descrição</th> -->
+                    <th>Preço</th>
+                    <th>Duração</th>
+                    <!-- <th>Benefícios</th> -->
+                    <th>
+                        Disponibilidade
+                        <i class="fa-regular fa-circle-question help-icon ms-1" style="font-size: 0.8rem;"
+                           matTooltip="Planos 'Inativos' não aparecem para venda na hora do cadastro do aluno."></i>
+                    </th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="planosTableBody">
+                @for (plano of planos; track $index) {
+                <tr>
+                    <td class="fw-bold">{{plano.nome}}</td>
+                    <!-- <td>{{plano.descricao}}</td> -->
+                    <td class="text-success">{{plano.preco | currency:'BRL' }}</td>
+                    <td>{{plano.duracao}}</td>
+                    <!-- <td>{{plano.beneficios}}</td> -->
+                    <td>
+                        <span class="badge" [ngClass]="plano.disponibilidade === 'ativo' ? 'bg-success' : 'bg-secondary'">
+                            {{plano.disponibilidade | titlecase}}
+                        </span>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary btn-sm me-2" routerLink="editar"
+                            [queryParams]="{ id: plano.id, tipo: 'plano'}"
+                            matTooltip="Alterar valor ou nome do plano.">
+                            <i class="fa-solid fa-pen"></i> Editar
+                        </button>
+                        <button class="btn btn-danger btn-sm" (click)="openmodal(plano.id)"
+                            matTooltip="Remover plano do sistema.">
+                            <i class="fa-solid fa-trash"></i> Excluir
+                        </button>
+                        <app-modal-confirmar (confirm)="validarmodal($event)"></app-modal-confirmar>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <!-- SEÇÃO EXTRAS -->
+    <div class="d-flex align-items-center justify-content-between mb-3 border-top pt-4">
+        <div class="d-flex align-items-center gap-2">
+            <h2 class="mb-0">Extras e Serviços Avulsos</h2>
+            <i class="fa-regular fa-circle-question help-icon fs-5" 
+               matTooltip="Itens cobrados à parte da mensalidade, como Avaliação Física, Diária Avulsa ou Matrícula."></i>
+        </div>
+    </div>
+
+    <div class="mb-4 d-flex align-items-center">
+        <button class="btn btn-primary" (click)="abrirCadastro('extras')">
+            <i class="fa-solid fa-plus p-1"></i>Adicionar Extra
+        </button>
+        <i class="fa-regular fa-circle-question help-icon ms-3" 
+           matTooltip="Crie uma nova taxa ou serviço adicional."></i>
+    </div>
+
+    <div class="table-responsive shadow-sm">
+        <table class="table table-hover border mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>Nome</th>
+                    <!-- <th>Descrição</th> -->
+                    <th>Valor</th>
+                    <!-- <th>Benefícios</th> -->
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="extraTableBody">
+                @for (extra of extras; track $index) {
+                <tr>
+                    <td class="fw-bold">{{extra.nome}}</td>
+                    <!-- <td>{{extras.descricao}}</td> -->
+                    <td class="text-success">{{extra.preco | currency:'BRL'}} </td>
+                    <!-- <td>{{extras.beneficios}}</td> -->
+                    <td>
+                        <span class="badge" [ngClass]="extra.status === 'ativo' ? 'bg-success' : 'bg-secondary'">
+                            {{extra.status | titlecase}}
+                        </span>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary btn-sm me-2" routerLink="editar"
+                            [queryParams]="{ id: extra.id, tipo: 'extra'}"
+                            matTooltip="Editar dados do serviço extra.">
+                            <i class="fa-solid fa-pen"></i> Editar
+                        </button>
+                        <button class="btn btn-danger btn-sm" (click)="openmodal(extra.id)"
+                            matTooltip="Excluir este item extra.">
+                            <i class="fa-solid fa-trash"></i> Excluir
+                        </button>
+                        <app-modal-confirmar (confirm)="validarmodal($event)"></app-modal-confirmar>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <app-modal-cadastro *ngIf="tipoSelecionado" [tipo]="tipoSelecionado" (CloseModal)="Closemodal()">
 </app-modal-cadastro>
-
-

@@ -4,11 +4,13 @@ import { ToastrService } from 'ngx-toastr';
 import { PnLojaService } from '../../../../../services/admin/pn-loja/pn-loja.service';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { FormatarService } from '../../../../../services/helpers/formatar/formatar.service';
+import { CommonModule } from '@angular/common';
+import { MaterialModule } from '../../../../../modules/material.module';
 
 @Component({
   selector: 'app-modal-editar-prod',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule,MaterialModule],
   providers: [provideNgxMask()],
   templateUrl: './modal-editar.component.html',
   styleUrl: './modal-editar.component.css'

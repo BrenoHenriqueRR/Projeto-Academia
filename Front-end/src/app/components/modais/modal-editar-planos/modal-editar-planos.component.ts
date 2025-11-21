@@ -1,4 +1,4 @@
-import { NgFor, NgIf } from '@angular/common';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { Component, input } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ConfigService } from '../../../services/admin/config/config.service';
@@ -6,11 +6,12 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 import { ModalSpinnerComponent } from '../modal-spinner/modal-spinner.component';
 import { PlanosServiceService } from '../../../services/planosService/planos-service.service';
 import { ToastrService } from 'ngx-toastr';
+import { MaterialModule } from '../../../modules/material.module';
 
 @Component({
   selector: 'app-modal-editar-planos',
   standalone: true,
-  imports: [NgIf, ReactiveFormsModule, ModalSpinnerComponent],
+  imports: [ReactiveFormsModule, ModalSpinnerComponent, CommonModule, MaterialModule],
   templateUrl: './modal-editar-planos.component.html',
   styleUrl: './modal-editar-planos.component.css'
 })

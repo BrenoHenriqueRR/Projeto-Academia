@@ -10,11 +10,12 @@ import { Route, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { ModalSpinnerComponent } from '../modal-spinner/modal-spinner.component';
 import { MaterialModule } from '../../../modules/material.module';
+import { ModalFaceidComponent } from "../modal-faceid/modal-faceid.component";
 
 @Component({
   selector: 'app-modal-cadastro',
   standalone: true,
-  imports: [FormsModule,ReactiveFormsModule, NgxMaskDirective, CommonModule, ModalSpinnerComponent,MaterialModule],
+  imports: [FormsModule, ReactiveFormsModule, NgxMaskDirective, CommonModule, ModalSpinnerComponent, MaterialModule, ModalFaceidComponent],
   templateUrl: './modal-cadastro.component.html',
   providers: [provideNgxMask({
     dropSpecialCharacters: false
@@ -24,7 +25,7 @@ import { MaterialModule } from '../../../modules/material.module';
 export class ModalCadastroComponent {
 
   @ViewChild('modal') modal?: ElementRef
-  @Input() tipo: string = '' ; // tipo do cadastro 
+  @Input() tipo: string = ''; // tipo do cadastro 
   @Output() CloseModal = new EventEmitter<void>();
   loading = false;
   // Formulários
@@ -45,11 +46,11 @@ export class ModalCadastroComponent {
   foto_cli!: File
   mostraSelectPersonal = false;
   menorDeIdade = false;
-  option_frequencia = [2,3,7];
+  option_frequencia = [2, 3, 7];
 
   ngOnInit() {
     this.inicializarForm();
-    
+
     console.log(this.tipo);
 
     this.academiaservice.pesquisarPlanos().subscribe({
@@ -73,18 +74,18 @@ export class ModalCadastroComponent {
     private academiaservice: ConfigService, private cliservice: CadastroService, private router: Router) { }
 
   mostrarErro(mensagem: string) {
- Swal.fire({
-    icon: 'error',
-    title: 'Ops!',
-    text: mensagem || 'Ocorreu um erro inesperado.',
-    confirmButtonText: 'Fechar',
-    confirmButtonColor: '#d33',
-    background: '#fff',
-    customClass: {
-      popup: 'animated fadeInDown'
-    }
-  });
-}
+    Swal.fire({
+      icon: 'error',
+      title: 'Ops!',
+      text: mensagem || 'Ocorreu um erro inesperado.',
+      confirmButtonText: 'Fechar',
+      confirmButtonColor: '#d33',
+      background: '#fff',
+      customClass: {
+        popup: 'animated fadeInDown'
+      }
+    });
+  }
 
   inicializarForm() {
     this.funcForm = this.fb.group({
@@ -122,8 +123,8 @@ export class ModalCadastroComponent {
       data_adicao: ['', Validators.required],
     });
     this.planoForm = this.fb.group({
-      nome: ['', ],
-      preco: ['', ],
+      nome: ['',],
+      preco: ['',],
       // descontoPlano: ['', [, Validators.min(1)]],
       descricao: ['', []],
       duracao: ['', []],
@@ -235,8 +236,8 @@ export class ModalCadastroComponent {
       case 'planos':
         if (this.planoForm.valid) {
           this.planoForm.patchValue({
-            preco : this.planoForm.get('preco')?.value.replace(/[^\d,.-]/g, '')
-        });
+            preco: this.planoForm.get('preco')?.value.replace(/[^\d,.-]/g, '')
+          });
           const dados = JSON.stringify(this.planoForm.getRawValue());
           console.log(dados);
           this.academiaservice.createPlanos(dados).subscribe({
@@ -276,12 +277,12 @@ export class ModalCadastroComponent {
     }
   }
 
-   onFileChangeCli(event: Event, tipo: string) {
+  onFileChangeCli(event: Event, tipo: string) {
     const input = event.target as HTMLInputElement;
 
     if (input.files && input.files.length > 0) {
       const file = input.files[0];
-      
+
       // Armazena o nome do arquivo para exibição
       this.fileNames[tipo] = file.name;
 
@@ -305,7 +306,7 @@ export class ModalCadastroComponent {
       this.fileNames[tipo] = '';
     }
   }
-  
+
 
 
   adicionarBeneficio() {
@@ -319,6 +320,18 @@ export class ModalCadastroComponent {
     }
   }
 
+  receberFotoDoFaceId(file: File) {
+    // 1. Atualiza o Reactive Form
+    this.CliForm.patchValue({
+      foto_perfil: file // Aqui você coloca o nome exato do seu control
+    });
+
+    // 2. Atualiza o feedback visual (nome do arquivo)
+    this.fileNames['foto'] = 'Captura via FaceID.jpg';
+
+    // 3. Se precisar atualizar a view manual
+    // this.cdr.detectChanges(); 
+  }
   // Função para converter text em hora //
   stringParaData(valor: string): string {
     if (!valor || valor.length !== 10) return 'invalid';

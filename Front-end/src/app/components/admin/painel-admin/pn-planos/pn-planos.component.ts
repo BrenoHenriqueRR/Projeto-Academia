@@ -7,12 +7,13 @@ import { CommonModule, NgFor } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { RouterLink } from '@angular/router';
+import { MaterialModule } from '../../../../modules/material.module';
 
 @Component({
   selector: 'app-pn-planos',
   standalone: true,
   imports: [ModalConfirmarComponent, ModalCadastroComponent, 
-    ReactiveFormsModule, RouterLink, CommonModule],
+    ReactiveFormsModule, RouterLink, CommonModule, MaterialModule],
   providers: [provideNgxMask()],
   templateUrl: './pn-planos.component.html',
   styleUrl: './pn-planos.component.css'

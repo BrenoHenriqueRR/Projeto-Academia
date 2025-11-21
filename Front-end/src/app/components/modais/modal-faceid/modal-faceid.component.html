@@ -1,49 +1,53 @@
-        <span data-bs-toggle="modal" data-bs-target="#modalfaceid" style="cursor: pointer;"
-            class="d-flex justify-content-center align-items-center flex-column">
-            <i class="fa-solid fa-camera fa-2xl"></i>
-            <br>
-            <p>Face Id</p>
-        </span>
+<div class="modal modal-lg fade" id="modalfaceid" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            
+            <div class="modal-header d-flex align-items-center justify-content-center flex-column border-0">
+                <button type="button" class="btn-close position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                <i style="font-size: 3.5rem;" class="fa-solid fa-camera text-primary mt-2"></i>
+                <h2 class="modal-title mt-2 fs-4" id="modalLabel">Reconhecimento Facial</h2>
+            </div>
 
-        <div class="modal modal-lg fade" id="modalfaceid" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header d-flex align-items-center justify-content-center flex-column">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        <i style="font-size: 3.5rem;" class="fa-solid fa-camera fa-2xl"></i>
-                        <h2 class="modal-title mt-4 fs-10" id="exampleModalLabel">Faceid</h2>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container p-2">
-                            <div class="selfie-container">
-                                
-                                <div *ngIf="!imagemCapturada" class="camera">
-                                    <h2>Tire uma Selfie</h2>
-                                    <video #video autoplay></video>
-                                    <button class="mt-3 btn btn-warning" (click)="capturarSelfie()">Capturar Selfie</button>
-                                </div>
-                                
-                                <div *ngIf="imagemCapturada" class="selfie-preview">
-                                    <h3>Selfie Capturada</h3>
-                                    <img [src]="imagemCapturada" alt="Selfie Capturada">
-                                    <br>
-                                    <div class="mt-5 d-flex justify-content-between align-items-center">
-                                        <button class="btn btn-primary" (click)="ngAfterViewInit()">Repetir</button>
-                                        <button class="btn btn-warning" (click)="salvarSelfie()">Salvar Selfie</button>
-                                    </div>
-                                </div>                          
-                            
-                                <!-- <div *ngIf="selfieSalva">
-                                <h3>Selfie Salva com Sucesso!</h3>
-                                <button (click)="realizarFaceID()">Verificar Face ID</button>
-                                </div>
-                            </div> -->
+            <div class="modal-body text-center">
+                <div class="container p-2">
+                    
+                    <div *ngIf="!imagemCapturada" class="camera-container">
+                        <h4 class="mb-3">Centralize seu rosto</h4>
+                        
+                        <div class="ratio ratio-4x3 bg-black rounded mb-3 overflow-hidden">
+                            <video #video autoplay playsinline style="object-fit: cover;"></video>
                         </div>
+
+                        <button class="btn btn-warning btn-lg px-5 rounded-pill" (click)="capturarSelfie()">
+                            <i class="fa-solid fa-camera me-2"></i> Capturar
+                        </button>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <!-- <button class="btn btn-primary">Cadastrar</button> -->
-                    </div>
+                    
+                    <div *ngIf="imagemCapturada" class="preview-container">
+                        <h4 class="mb-3">A foto ficou boa?</h4>
+                        
+                        <div class="d-flex justify-content-center mb-3">
+                            <img [src]="imagemCapturada" alt="Selfie Capturada" class="img-fluid rounded shadow-sm" style="max-height: 350px;">
+                        </div>
+
+                        <div class="d-flex justify-content-center gap-3 mt-4">
+                            <button class="btn btn-outline-secondary px-4" (click)="tentarNovamente()">
+                                <i class="fa-solid fa-rotate-left me-2"></i> Repetir
+                            </button>
+
+                            <button class="btn btn-success px-4" (click)="confirmarParaCadastro()" data-bs-dismiss="modal">
+                                <i class="fa-solid fa-check me-2"></i> Usar Foto
+                            </button>
+                        </div>
+                    </div>  
+
                 </div>
             </div>
+
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-light btn-sm" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+
         </div>
+    </div>
+</div>

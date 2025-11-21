@@ -1,12 +1,24 @@
 <div class="container">
     <div *ngIf="loading"><app-modal-spinner></app-modal-spinner></div>
-    <div class="func mt-3 mb-5">
+    
+    <!-- Cabeçalho com Ajuda -->
+    <div class="func mt-3 mb-5 d-flex align-items-center gap-2">
         @for (dados of data; track dados){
-        <h3>Funcionário: {{dados.nome}}</h3>
+        <h3 class="mb-0">Funcionário: {{dados.nome}}</h3>
         }
+        <i class="fa-regular fa-circle-question help-icon fs-5" 
+           matTooltip="Edite as informações pessoais, cargo e permissões de acesso deste colaborador."></i>
     </div>
+
+    <!-- Seção de Imagem -->
     <div class="d-flex align-items-center justify-content-between">
         <div class="img-perfil d-block">
+            <div class="d-flex align-items-center mb-2">
+                <label class="form-label mb-0 me-2">Foto de Perfil</label>
+                <i class="fa-regular fa-circle-question help-icon" 
+                   matTooltip="Clique na imagem abaixo para alterar a foto de identificação."></i>
+            </div>
+            
             <div class="img-inserir">
                 <label class="form-label" for="fileInput">
                     <i class="fa-solid fa-plus meio-img"></i>
@@ -19,29 +31,47 @@
             </div>
         </div>
     </div>
-    <div class="formulario">
+
+    <!-- Formulário -->
+    <div class="formulario mt-4">
         <form [formGroup]="formcadastro" method="post">
             @for (dados of data; track dados){
-            <div class="row">
-                <div class="col">
-                    <label class="form-label" for="nome">Nome</label>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center mb-1">
+                        <label class="form-label mb-0 me-2" for="nome">Nome</label>
+                        <i class="fa-regular fa-circle-question help-icon" 
+                           matTooltip="Nome completo do funcionário para registros e relatórios."></i>
+                    </div>
                     <input class="form-control" style="color: black;" type="text" id="nome" formControlName="nome" class="form-control"
                         required>
                 </div>
 
-                <div class="col">
-                    <label class="form-label" for="CPF">CPF</label>
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center mb-1">
+                        <label class="form-label mb-0 me-2" for="CPF">CPF</label>
+                        <i class="fa-regular fa-circle-question help-icon" 
+                           matTooltip="Cadastro de Pessoa Física. Fundamental para contratos e identificação única."></i>
+                    </div>
                     <input class="form-control" type="text" formControlName="CPF" mask = "000.000.000-00" class="form-control" id="CPF">
                 </div>
             </div>
-            <div class="row mt-1">
-                <div class="col">
-                    <label class="form-label" for="email">Email</label>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center mb-1">
+                        <label class="form-label mb-0 me-2" for="email">Email</label>
+                        <i class="fa-regular fa-circle-question help-icon" 
+                           matTooltip="Email utilizado para login no sistema e comunicação."></i>
+                    </div>
                     <input class="form-control" type="email" formControlName="email" class="form-control" id="email" required>
                 </div>
 
-                <div class="col">
-                    <label class="form-label" for="funcao">Função</label>
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center mb-1">
+                        <label class="form-label mb-0 me-2" for="funcao">Função</label>
+                        <i class="fa-regular fa-circle-question help-icon" 
+                           matTooltip="Define o nível de acesso: Admin (Total), Secretário (Gestão), Personal (Fichas e Alunos)."></i>
+                    </div>
                     <select class="form-control" (change)="cadFuncao($event)" name="funcao">
                         <option selected disabled>Escolha uma opção</option>
                         <option value="Personal">Personal</option>
@@ -51,15 +81,24 @@
                 </div>
             </div>
             }
-            <div class="continue-button mt-3">
-                <button *ngIf="!loading" type="submit" (click)="edit()" class="btn btn-primary">
-                    Enviar
-                </button>
-                <div *ngIf="loading" class="spinner-container">
-                    <button class="btn btn-primary" disabled>
-                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            
+            <div class="continue-button mt-4 d-flex align-items-center">
+                <ng-container *ngIf="!loading; else loadingBtn">
+                    <button type="submit" (click)="edit()" class="btn btn-primary">
+                        Enviar
                     </button>
-                </div>
+                </ng-container>
+                
+                <ng-template #loadingBtn>
+                    <div class="spinner-container">
+                        <button class="btn btn-primary" disabled>
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </ng-template>
+
+                <i class="fa-regular fa-circle-question help-icon ms-3" 
+                   matTooltip="Salva as alterações realizadas no cadastro do funcionário."></i>
             </div>
         </form>
     </div>

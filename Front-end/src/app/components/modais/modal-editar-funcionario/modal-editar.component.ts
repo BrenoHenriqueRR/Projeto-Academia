@@ -1,4 +1,4 @@
-import { NgIf } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ModalEditarService } from '../../../services/modal-editar/modal-editar.service';
@@ -9,11 +9,12 @@ import { window } from 'rxjs';
 import { environment } from '../../../../environments/environment';
 import { ModalSpinnerComponent } from "../modal-spinner/modal-spinner.component";
 import { provideNgxMask } from 'ngx-mask';
+import { MaterialModule } from '../../../modules/material.module';
 
 @Component({
   selector: 'app-modal-editar',
   standalone: true,
-  imports: [ReactiveFormsModule, NgIf, ModalSpinnerComponent],
+  imports: [ReactiveFormsModule, CommonModule, MaterialModule, ModalSpinnerComponent],
   providers: [provideNgxMask()],
   templateUrl: './modal-editar.component.html',
   styleUrl: './modal-editar.component.css'

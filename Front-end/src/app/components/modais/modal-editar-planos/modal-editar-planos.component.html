@@ -1,135 +1,189 @@
-<div *ngIf="loading"><app-modal-spinner></app-modal-spinner></div>
+<div *ngIf="loading">
+    <app-modal-spinner></app-modal-spinner>
+</div>
+
 @if (tipo == 'plano') {
 
-    <div class="container" *ngIf="planos && planos.length">
-    
-        @for (item of planos; track item) {
-        <h2>Editar Plano: {{ item.nome }}</h2>
-    
-        <form [formGroup]="planosForm" (ngSubmit)="salvarPlano()">
-            <div class="row mb-3">
-                <div class="col-md-6 form-group">
-                    <label for="nome">Nome do Plano</label>
-                    <input type="text" id="nome" class="form-control" formControlName="nome" />
-                </div>
-                <div class="col-md-6 form-group">
-                    <label for="preco">Preço</label>
-                    <input type="number" id="preco" class="form-control" formControlName="preco" min="0" />
-                </div>
-            </div>
-    
-            <div class="row form-group mt-3">
-                <div class="col-md-12">
-                    <label for="descricao">Descrição</label>
-                    <textarea id="descricao" class="form-control" formControlName="descricao" style="height: 120px"></textarea>
-                </div>
-            </div>
-    
-    
-            <div class="row form-group mt-3">
-                <div class="col-md-4">
-                    <label for="duracao">Duração</label>
-                    <select id="duracao" class="form-select" formControlName="duracao">
-                        <option disabled selected>Escolhe uma opção</option>
-                        <option value="mensal">Mensal</option>
-                        <option value="trimestral">Trimestral</option>
-                        <option value="semestral">Semestral</option>
-                        <option value="anual">Anual</option>
-                    </select>
-                </div>
-    
-                <div class="col-md-4">
-                    <label for="dias_por_semana">Frequência</label>
-                    <select id="dias_por_semana" class="form-select" formControlName="dias_por_semana">
-                        <option value="" disabled selected>Escolhe uma opção</option>
-                        @for (freq of option_frequencia; track $index) {
-                            @if (freq == 7) {
-                            <option [value]="freq">Todos os dias</option>
-                            }@else {
-                            <option [value]="freq">{{freq}}x semana</option>
-                            }
-                        }
-                    </select>
-                </div>
-    
-                <div class="col-md-4">
-                    <label for="disponibilidade">Disponibilidade</label>
-                    <select id="disponibilidade" class="form-select" formControlName="disponibilidade">
-                        <option class="text-capitalize" *ngIf="item.disponibilidade" selected value="{{item.disponibilidade}}">
-                            {{item.disponibilidade}}
-                        </option>
-                        @if (item.disponibilidade == 'ativo') {
-                        <option value="inativo">Inativo</option>
-                        }@else {
-                        <option value="ativo">Ativo</option>
-                        }
-                    </select>
-                </div>
-            </div>
-    
-    
-            <div class="row mt-4">
-                <div class="col text-start">
-                    <button type="submit" class="btn btn-primary" [disabled]="loading">
-                        <span *ngIf="!loading">Salvar Alterações</span>
-                        <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
-                    </button>
-                </div>
-            </div>
-        </form>
-        }
+<div class="container" *ngIf="planos && planos.length">
+
+    @for (item of planos; track item) {
+    <div class="d-flex align-items-center gap-2 mb-4">
+        <h2 class="mb-0">Editar Plano: {{ item.nome }}</h2>
+        <i class="fa-regular fa-circle-question help-icon fs-5" 
+           matTooltip="Ajuste as regras contratuais, valores e disponibilidade deste plano."></i>
     </div>
-} @else {
-     <div class="container" *ngIf="extras && extras.length">
-    
-        @for (item of extras; track item) {
-        <h2>Editar Extra: {{ item.nome }}</h2>
-    
-        <form [formGroup]="extrasForm" (ngSubmit)="salvarExtra()">
-            <div class="row mb-3">
-                <div class="col-md-6 form-group">
-                    <label for="nome">Nome do Extra</label>
-                    <input type="text" id="nome" class="form-control" formControlName="nome" />
+
+    <form [formGroup]="planosForm" (ngSubmit)="salvarPlano()">
+        <div class="row mb-3">
+            <div class="col-md-6 form-group">
+                <div class="d-flex align-items-center mb-1">
+                    <label for="nome" class="me-2 mb-0">Nome do Plano</label>
+                    <i class="fa-regular fa-circle-question help-icon" 
+                       matTooltip="Nome comercial exibido nos contratos e na seleção de matrícula."></i>
                 </div>
-                <div class="col-md-6 form-group">
-                    <label for="preco">Preço</label>
-                    <input type="number" id="preco" class="form-control" formControlName="preco" min="0" />
-                </div>
+                <input type="text" id="nome" class="form-control" formControlName="nome" />
             </div>
-    
-            <div class="row form-group mt-3">
-                <div class="col-md-12">
-                    <label for="descricao">Descrição</label>
-                    <textarea id="descricao" class="form-control" formControlName="descricao" style="height: 120px"></textarea>
+            <div class="col-md-6 form-group">
+                <div class="d-flex align-items-center mb-1">
+                    <label for="preco" class="me-2 mb-0">Preço</label>
+                    <i class="fa-regular fa-circle-question help-icon" 
+                       matTooltip="Valor monetário cobrado pelo período do plano."></i>
                 </div>
+                <input type="number" id="preco" class="form-control" formControlName="preco" min="0" />
+            </div>
+        </div>
+
+        <div class="row form-group mt-3">
+            <div class="col-md-12">
+                <div class="d-flex align-items-center mb-1">
+                    <label for="descricao" class="me-2 mb-0">Descrição</label>
+                    <i class="fa-regular fa-circle-question help-icon" 
+                       matTooltip="Informações detalhadas sobre benefícios e condições."></i>
+                </div>
+                <textarea id="descricao" class="form-control" formControlName="descricao"
+                    style="height: 120px"></textarea>
+            </div>
+        </div>
+
+
+        <div class="row form-group mt-3">
+            <div class="col-md-4">
+                <div class="d-flex align-items-center mb-1">
+                    <label for="duracao" class="me-2 mb-0">Duração</label>
+                    <i class="fa-regular fa-circle-question help-icon" 
+                       matTooltip="Vigência do contrato (Mensal, Trimestral, etc)."></i>
+                </div>
+                <select id="duracao" class="form-select" formControlName="duracao">
+                    <option disabled selected>Escolhe uma opção</option>
+                    <option value="mensal">Mensal</option>
+                    <option value="trimestral">Trimestral</option>
+                    <option value="semestral">Semestral</option>
+                    <option value="anual">Anual</option>
+                </select>
             </div>
 
-            <div class="row form-group mt-3">
-                <div class="col-md-4">
-                    <label for="status">Status</label>
-                    <select id="status" class="form-select" formControlName="status">
-                        <option class="text-capitalize" *ngIf="item.status" selected value="{{item.status}}">
-                            {{item.status}}
-                        </option>
-                        @if (item.status == 'ativo') {
-                        <option value="inativo">Inativo</option>
-                        }@else {
-                        <option value="ativo">Ativo</option>
-                        }
-                    </select>
+            <div class="col-md-4">
+                <div class="d-flex align-items-center mb-1">
+                    <label for="dias_por_semana" class="me-2 mb-0">Frequência</label>
+                    <i class="fa-regular fa-circle-question help-icon" 
+                       matTooltip="Quantas vezes na semana o aluno terá acesso liberado."></i>
                 </div>
+                <select id="dias_por_semana" class="form-select" formControlName="dias_por_semana">
+                    <option value="" disabled selected>Escolhe uma opção</option>
+                    @for (freq of option_frequencia; track $index) {
+                    @if (freq == 7) {
+                    <option [value]="freq">Todos os dias</option>
+                    }@else {
+                    <option [value]="freq">{{freq}}x semana</option>
+                    }
+                    }
+                </select>
             </div>
-    
-    
-            <div class="row mt-4">
-                <div class="col text-start">
-                    <button type="submit" class="btn btn-primary" [disabled]="loading">
-                        <span *ngIf="!loading">Salvar Alterações</span>
-                        <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
-                    </button>
+
+            <div class="col-md-4">
+                <div class="d-flex align-items-center mb-1">
+                    <label for="disponibilidade" class="me-2 mb-0">Disponibilidade</label>
+                    <i class="fa-regular fa-circle-question help-icon" 
+                       matTooltip="Se 'Inativo', o plano não aparecerá para novas vendas."></i>
                 </div>
+                <select id="disponibilidade" class="form-select" formControlName="disponibilidade">
+                    <option class="text-capitalize" *ngIf="item.disponibilidade" selected
+                        value="{{item.disponibilidade}}">
+                        {{item.disponibilidade}}
+                    </option>
+                    @if (item.disponibilidade == 'ativo') {
+                    <option value="inativo">Inativo</option>
+                    }@else {
+                    <option value="ativo">Ativo</option>
+                    }
+                </select>
             </div>
-        </form>
-        }
+        </div>
+
+
+        <div class="row mt-4">
+            <div class="col text-start d-flex align-items-center">
+                <button type="submit" class="btn btn-primary" [disabled]="loading">
+                    <span *ngIf="!loading">Salvar Alterações</span>
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
+                </button>
+                <i class="fa-regular fa-circle-question help-icon ms-3" 
+                   matTooltip="Confirma as edições no plano. Cuidado ao alterar preços de planos vigentes."></i>
+            </div>
+        </div>
+    </form>
+    }
+</div>
+} @else {
+<div class="container" *ngIf="extras && extras.length">
+
+    @for (item of extras; track item) {
+    <div class="d-flex align-items-center gap-2 mb-4">
+        <h2 class="mb-0">Editar Extra: {{ item.nome }}</h2>
+        <i class="fa-regular fa-circle-question help-icon fs-5" 
+           matTooltip="Edite serviços avulsos ou taxas adicionais."></i>
     </div>
+
+    <form [formGroup]="extrasForm" (ngSubmit)="salvarExtra()">
+        <div class="row mb-3">
+            <div class="col-md-6 form-group">
+                <div class="d-flex align-items-center mb-1">
+                    <label for="nome" class="me-2 mb-0">Nome do Extra</label>
+                    <i class="fa-regular fa-circle-question help-icon" 
+                       matTooltip="Ex: Taxa de Matrícula, Avaliação Física Avulsa."></i>
+                </div>
+                <input type="text" id="nome" class="form-control" formControlName="nome" />
+            </div>
+            <div class="col-md-6 form-group">
+                <div class="d-flex align-items-center mb-1">
+                    <label for="preco" class="me-2 mb-0">Preço</label>
+                    <i class="fa-regular fa-circle-question help-icon" 
+                       matTooltip="Valor a ser cobrado pelo item."></i>
+                </div>
+                <input type="number" id="preco" class="form-control" formControlName="preco" min="0" />
+            </div>
+        </div>
+
+        <div class="row form-group mt-3">
+            <div class="col-md-12">
+                <label for="descricao">Descrição</label>
+                <textarea id="descricao" class="form-control" formControlName="descricao"
+                    style="height: 120px"></textarea>
+            </div>
+        </div>
+
+        <div class="row form-group mt-3">
+            <div class="col-md-4">
+                <div class="d-flex align-items-center mb-1">
+                    <label for="status" class="me-2 mb-0">Status</label>
+                    <i class="fa-regular fa-circle-question help-icon" 
+                       matTooltip="Define se o item extra está visível para cobrança."></i>
+                </div>
+                <select id="status" class="form-select" formControlName="status">
+                    <option class="text-capitalize" *ngIf="item.status" selected value="{{item.status}}">
+                        {{item.status}}
+                    </option>
+                    @if (item.status == 'ativo') {
+                    <option value="inativo">Inativo</option>
+                    }@else {
+                    <option value="ativo">Ativo</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+
+        <div class="row mt-4">
+            <div class="col text-start d-flex align-items-center">
+                <button type="submit" class="btn btn-primary" [disabled]="loading">
+                    <span *ngIf="!loading">Salvar Alterações</span>
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
+                </button>
+                <i class="fa-regular fa-circle-question help-icon ms-3" 
+                   matTooltip="Salva as modificações neste item extra."></i>
+            </div>
+        </div>
+    </form>
+    }
+</div>
 }

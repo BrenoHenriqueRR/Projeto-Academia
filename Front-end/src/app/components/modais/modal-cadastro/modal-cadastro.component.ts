@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
 import { ModalSpinnerComponent } from '../modal-spinner/modal-spinner.component';
 import { MaterialModule } from '../../../modules/material.module';
 import { ModalFaceidComponent } from "../modal-faceid/modal-faceid.component";
+import { error } from 'jquery';
 
 @Component({
   selector: 'app-modal-cadastro',
@@ -30,6 +31,7 @@ export class ModalCadastroComponent {
   loading = false;
   // Formulários
   CliForm!: FormGroup<any>;
+  abaFoto: string = 'arquivo';
   funcForm!: FormGroup;
   planoForm!: FormGroup<any>;
   extraForm!: FormGroup<any>;
@@ -99,7 +101,7 @@ export class ModalCadastroComponent {
       senha: ['', Validators.required],
     });
     this.CliForm = this.fb.group({
-      foto_perfil: [''],
+      foto_perfil: ['', Validators.required],
       CPF: ['', Validators.required],
       // RG: ['', Validators.required],
       nome: ['', Validators.required],
@@ -195,7 +197,7 @@ export class ModalCadastroComponent {
           console.log(this.CliForm.getRawValue());
           const formData = new FormData();
           if (this.foto) {
-            formData.append('foto_perfil', this.foto_cli);
+            formData.append('foto_perfil', this.foto);
           }
           let funcionario_id = String(localStorage.getItem('idadmin'));
           let treino_com_personal = (this.CliForm.value.treino_com_personal == false) ? 'nao' : 'sim';
@@ -215,6 +217,11 @@ export class ModalCadastroComponent {
           formData.append('personal_id', this.CliForm.value.personal_id);
           formData.append('plano', this.CliForm.value.plano);
           formData.append('funcionario_id', funcionario_id);
+
+
+          console.log('Enviando foto:', this.foto);
+          console.log('Tamanho:', this.foto?.size);
+
           this.cliservice.sendData(formData).subscribe({
             next: (dados) => {
               this.alertas.success(dados.msg);
@@ -321,16 +328,23 @@ export class ModalCadastroComponent {
   }
 
   receberFotoDoFaceId(file: File) {
-    // 1. Atualiza o Reactive Form
+
+    // Armazena na variável solta (backup)
+    this.foto = file;
+
+    // [IMPORTANTE] Armazena DENTRO do formulário
     this.CliForm.patchValue({
-      foto_perfil: file // Aqui você coloca o nome exato do seu control
+      foto_perfil: file
     });
 
-    // 2. Atualiza o feedback visual (nome do arquivo)
-    this.fileNames['foto'] = 'Captura via FaceID.jpg';
+    // Marca o campo como válido e 'tocado'
+    this.CliForm.get('foto_perfil')?.updateValueAndValidity();
+    this.CliForm.get('foto_perfil')?.markAsDirty();
 
-    // 3. Se precisar atualizar a view manual
-    // this.cdr.detectChanges(); 
+    // Feedback visual
+    this.fileNames['foto'] = file.name;
+    this.abaFoto = 'arquivo';
+    this.alertas.success("Foto capturada!");
   }
   // Função para converter text em hora //
   stringParaData(valor: string): string {

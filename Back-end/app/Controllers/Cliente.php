@@ -10,6 +10,7 @@ use App\Models\ClienteModel;
 use App\Models\Clientesplanos;
 use App\Models\PagamentosModel;
 use App\Models\Planos;
+use App\Models\FaceidModel;
 use App\Models\PresencaclientesModel;
 use CodeIgniter\CLI\Console;
 use CodeIgniter\Database\Query;
@@ -87,6 +88,7 @@ class Cliente extends BaseController
 
         // Receber os outros dados do formulário
 
+
         $this->model->insert($dados);
         $id = $this->model->getInsertID();
 
@@ -94,25 +96,58 @@ class Cliente extends BaseController
             $this->ClientePlanos->create($plano, $id);
         }
 
-        if (isset($foto)) {
+        if ($foto) { // CodeIgniter retorna um objeto mesmo se vazio, mas vamos checar
+            
             if ($foto->isValid() && !$foto->hasMoved()) {
+                // --- SEU CÓDIGO QUE JÁ FUNCIONA ---
                 $nomeimg = $foto->getRandomName();
-
-                $caminhoPasta = 'assets/fotos-perfil/' . $id;
+                
+                // USE FCPATH para garantir o caminho absoluto e evitar erros de permissão
+                $caminhoPasta = FCPATH . 'assets/fotos-perfil/' . $id; 
+                
                 if (!is_dir($caminhoPasta)) {
-                    mkdir($caminhoPasta, 0755, true); // cria a pasta se não existir
+                    mkdir($caminhoPasta, 0755, true); 
                 }
 
-                $foto->move($caminhoPasta, $nomeimg);
-                $caminhoImagem = $caminhoPasta . '/' . $nomeimg;
+                try {
+                    $foto->move($caminhoPasta, $nomeimg);
+                    
+                    // Caminho relativo para o banco
+                    $caminhoImagem = 'assets/fotos-perfil/' . $id . '/' . $nomeimg;
 
-                // Atualiza o campo de imagem no banco
-                $this->model->update($id, ['foto_perfil' => $caminhoImagem]);
+                    // Atualiza o campo de imagem no banco
+                    $this->model->update($id, ['foto_perfil' => $caminhoImagem]);
+
+                    // Insere no FaceID
+                    $faceidModel = new \App\Models\FaceidModel(); // Garanta o namespace correto
+                    $faceidModel->insert([
+                        'cliente_id' => $id,      
+                        'caminho_imagem' => $caminhoImagem 
+                    ]);
+                } catch (\Exception $e) {
+                    log_message('error', 'Erro ao mover foto: ' . $e->getMessage());
+                }
+                // ----------------------------------
+            } else {
+                // --- AQUI ESTÁ O DEBUG DO PROBLEMA ---
+                // Se entrou aqui, o arquivo chegou mas é inválido (provavelmente tamanho)
+                $erro = $foto->getErrorString() . ' (' . $foto->getError() . ')';
+                log_message('error', 'ERRO UPLOAD FOTO: ' . $erro);
+                
+                // Opcional: Retornar erro para o front para você ver na hora
+                
+                return $this->response->setJSON([
+                    'erro' => true,
+                    'msg' => 'Erro na foto: ' . $erro
+                ])->setStatusCode(400);
+                
             }
+        } else {
+            log_message('error', 'A variável $foto veio vazia/nula.');
         }
 
         $pin = random_int(100000, 999999);
-        $pin_hash = password_hash($pin, PASSWORD_DEFAULT);
+        $pin_hash = hash('sha256', $pin);
 
         $dados['pin'] = $pin_hash;
         $this->model->update($id, ['pin' => $pin_hash]);

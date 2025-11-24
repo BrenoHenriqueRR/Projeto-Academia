@@ -47,7 +47,8 @@
       @for (plano of dadosPag; track $index) {
       <div class="d-flex flex-column">
         <p>id : {{plano.id}}</p>  
-        <p>Nome: {{plano.nome}}</p>
+        <p>Plano: {{plano.nome_plano}}</p>
+        <p>Cliente: {{plano.nome_cliente}}</p>
         <p>Valor: {{plano.valor | number:'1.2-2':'pt-BR'}}</p>
       </div>
       }
@@ -57,8 +58,8 @@
       <mat-label>Forma de pagamento</mat-label>
       <mat-select [(value)]="formaPagamento">
         <mat-option value="dinheiro">Dinheiro</mat-option>
-        <mat-option value="debito">Cartão Débito</mat-option>
-        <mat-option value="credito">Cartão Crédito</mat-option>
+        <mat-option value="cartao">Cartão Débito</mat-option>
+        <mat-option value="cartao">Cartão Crédito</mat-option>
         <mat-option value="pix">Pix</mat-option>
       </mat-select>
     </mat-form-field>

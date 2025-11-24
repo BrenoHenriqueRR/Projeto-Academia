@@ -211,28 +211,43 @@
                 <!-- FORMULÁRIO CLIENTE -->
                 <div *ngIf="tipo == 'cliente'" class="container">
                     <form [formGroup]="CliForm">
-                        <div class="card p-3 bg-light border-0">
-                            <div class="d-flex gap-3">
-                                <button type="button" class="btn btn-outline-primary w-50" (click)="fileInput.click()">
+
+                        <div class="card p-3 bg-light border-0 mb-3">
+                            <label class="mb-2 fw-bold text-muted">Foto de Perfil</label>
+
+                            <div class="d-flex gap-2 mb-3">
+                                <button type="button" class="btn w-50" [class.btn-primary]="abaFoto === 'arquivo'"
+                                    [class.btn-outline-primary]="abaFoto !== 'arquivo'" (click)="abaFoto = 'arquivo'">
                                     <i class="fa-solid fa-folder-open me-2"></i> Arquivo
                                 </button>
 
-                                <button type="button" class="btn btn-outline-dark w-50" 
-                                    data-bs-target="#modalfaceid" (click)="faceidRef.iniciarCamera()">
+                                <button type="button" class="btn w-50" [class.btn-primary]="abaFoto === 'faceid'"
+                                    [class.btn-outline-dark]="abaFoto !== 'faceid'" (click)="abaFoto = 'faceid'">
                                     <i class="fa-solid fa-camera me-2"></i> FaceID
                                 </button>
                             </div>
 
-                            <input #fileInput formControlName="foto_perfil" type="file" class="d-none"
-                                (change)="onFileChangeCli($event, 'foto')">
-                            <div class="mt-2 text-success small" *ngIf="fileNames['foto']">
-                                <i class="fa-solid fa-check-circle"></i> {{ fileNames['foto'] }}
+                            <div *ngIf="abaFoto === 'arquivo'" class="text-center p-3 border rounded bg-white">
+                                <button type="button" class="btn btn-outline-secondary" (click)="fileInput.click()">
+                                    Escolher imagem do computador
+                                </button>
+
+                                <input #fileInput formControlName="foto_perfil" type="file" class="d-none"
+                                    (change)="onFileChangeCli($event, 'foto')">
+
+                                <div class="mt-3 text-success fw-bold" *ngIf="fileNames['foto']">
+                                    <i class="fa-solid fa-circle-check me-1"></i>
+                                    {{ fileNames['foto'] }} selecionada.
+                                </div>
+                                <div class="mt-2 text-muted small" *ngIf="!fileNames['foto']">
+                                    Nenhuma foto selecionada.
+                                </div>
+                            </div>
+
+                            <div *ngIf="abaFoto === 'faceid'" class="border rounded bg-white overflow-hidden">
+                                <app-modal-faceid (fotoConfirmada)="receberFotoDoFaceId($event)"></app-modal-faceid>
                             </div>
                         </div>
-
-                        <app-modal-faceid #faceidRef (fotoConfirmada)="receberFotoDoFaceId($event)"></app-modal-faceid>
-
-
                         <div class="row mb-3 ">
                             <div class="col-md-6 form-group">
                                 <label for="nomeFunc" class="form-label">Nome Completo</label>

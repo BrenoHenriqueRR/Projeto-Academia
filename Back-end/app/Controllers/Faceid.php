@@ -17,9 +17,9 @@ class Faceid extends BaseController
         $this->model = new FaceidModel();
     }
 
-    public function create()
+    public function create($cliente_id,$caminhoImagem)
     {
-        $cliente_id = 70; // Id do cliente fixo para testes
+        // $cliente_id = 70; // Id do cliente fixo para testes
 
         // Diretório base onde as imagens serão salvas
         $base_dir = 'assets/selfies-clientes/' . $cliente_id;
@@ -29,25 +29,25 @@ class Faceid extends BaseController
             mkdir($base_dir, 0755, true);  // Cria o diretório com permissões apropriadas
         }
 
-        $dados = $this->request->getJSON();
+        // $dados = $this->request->getJSON();
 
-        $foto = $dados->imagem;
+        // $foto = $dados->imagem;
 
-        // Remove o cabeçalho data:image/png;base64, para processar o dado binário
-        $imagem = str_replace('data:image/png;base64,', '', $foto);
-        $imagem = base64_decode($imagem);
+        // // Remove o cabeçalho data:image/png;base64, para processar o dado binário
+        // $imagem = str_replace('data:image/png;base64,', '', $foto);
+        // $imagem = base64_decode($imagem);
 
-        // Gera um nome único para o arquivo
-        $nome_arquivo = rand(1000, 10000) . '-' . $cliente_id . '.png';
-        $caminho_imagem = $base_dir . '/' . $nome_arquivo;
+        // // Gera um nome único para o arquivo
+        // $nome_arquivo = rand(1000, 10000) . '-' . $cliente_id . '.png';
+        // $caminho_imagem = $base_dir . '/' . $nome_arquivo;
 
-        // Salva a imagem no caminho correto
-        file_put_contents($caminho_imagem, $imagem);
+        // // Salva a imagem no caminho correto
+        // file_put_contents($caminho_imagem, $imagem);
 
         // Atualiza o caminho da imagem na tabela selfies_clientes
         $data = [
             'cliente_id' => $cliente_id,
-            'caminho_imagem' => $caminho_imagem
+            'caminho_imagem' => $caminhoImagem
         ];
         $this->model->insert($data);
 
@@ -125,8 +125,6 @@ class Faceid extends BaseController
             ],
         ]);
 
-        // Decodifica a imagem base64 enviada pelo cliente
-        // remove o cabeçalho correspondente
         if (strpos($imagemBase64, 'data:image/jpeg;base64,') === 0) {
             $imagemBase64Cliente = str_replace('data:image/jpeg;base64,', '', $imagemBase64);
         } elseif (strpos($imagemBase64, 'data:image/png;base64,') === 0) {
@@ -146,7 +144,7 @@ class Faceid extends BaseController
 
         $imagemBancoBinario = file_get_contents($caminhoImagemBanco);
         if ($imagemBancoBinario === false) {
-            return false; // Erro ao ler a imagem do servidor
+            return false; 
         }
 
         try {

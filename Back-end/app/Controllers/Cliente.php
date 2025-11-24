@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+
 date_default_timezone_set('America/Sao_Paulo');
 
 use App\Models\AnamneseModel;
@@ -593,7 +594,7 @@ class Cliente extends BaseController
 
             if ($resultado) {
                 $cliente_id = $resultado;
-            }else{
+            } else {
                 return $this->response->setJSON([
                     'status' => 'erro',
                     'msg' => 'PIN inválido.'
@@ -684,16 +685,14 @@ class Cliente extends BaseController
                 'msg' => 'Entrada registrada com sucesso!'
             ]);
         }
+    }
 
-
-    }       
-
-     public function gerarRelatorioPresenca()
+    public function gerarRelatorioPresenca()
     {
         $dataInicio = $this->request->getGet('data_inicio');
         $dataFim = $this->request->getGet('data_fim');
 
-        
+
 
         if (!$dataInicio || !$dataFim) {
             return $this->response->setJSON([
@@ -725,7 +724,7 @@ class Cliente extends BaseController
         $resumo['taxa_sucesso'] = $resumo['total'] > 0 ? round(($resumo['sucesso'] / $resumo['total']) * 100, 1) : 0;
         $resumo['taxa_erro'] = $resumo['total'] > 0 ? round(($resumo['erro'] / $resumo['total']) * 100, 1) : 0;
 
-         $academiaInfo = $this->academiaModel->first() ?? [
+        $academiaInfo = $this->academiaModel->first() ?? [
             'nome' => 'Nome da Academia Padrão',
             'cnpj' => '00.000.000/0000-00',
             'email' => 'contato@academia.com',
@@ -753,7 +752,7 @@ class Cliente extends BaseController
         // 📄 Renderizar o HTML da view
         $html = view('relatorios/relatorio_presenca', $dados);
 
-      $options = new Options();
+        $options = new Options();
         $options->set('isRemoteEnabled', true);
         $options->set('isHtml5ParserEnabled', true);
         $options->set('defaultFont', 'Arial');
@@ -781,10 +780,18 @@ class Cliente extends BaseController
         $mesFim = date('m', strtotime($fim));
 
         $meses = [
-            '01' => 'Janeiro', '02' => 'Fevereiro', '03' => 'Março',
-            '04' => 'Abril', '05' => 'Maio', '06' => 'Junho',
-            '07' => 'Julho', '08' => 'Agosto', '09' => 'Setembro',
-            '10' => 'Outubro', '11' => 'Novembro', '12' => 'Dezembro'
+            '01' => 'Janeiro',
+            '02' => 'Fevereiro',
+            '03' => 'Março',
+            '04' => 'Abril',
+            '05' => 'Maio',
+            '06' => 'Junho',
+            '07' => 'Julho',
+            '08' => 'Agosto',
+            '09' => 'Setembro',
+            '10' => 'Outubro',
+            '11' => 'Novembro',
+            '12' => 'Dezembro'
         ];
 
         if ($mesInicio === $mesFim) {
@@ -843,7 +850,7 @@ class Cliente extends BaseController
 
         // 🧮 Cálculos de presença e tempo
         $diasCompareceu = count(array_unique(array_map(fn($p) => date('Y-m-d', strtotime($p['data'])), $presencas)));
-     $totalMinutos = 0;
+        $totalMinutos = 0;
         foreach ($presencas as $p) {
             if ($p['hora_entrada'] && $p['hora_saida']) {
                 $entrada = new DateTime($p['hora_entrada']);
@@ -881,7 +888,7 @@ class Cliente extends BaseController
             'presencas' => $presencas,
             'gerado_em' => date('d/m/Y H:i')
         ];
-        
+
 
         $html = view('relatorios/relatorio_presenca_individual', $dados);
 
@@ -889,7 +896,10 @@ class Cliente extends BaseController
         $pdf->loadHtml($html);
         $pdf->setPaper('A4', 'portrait');
         $pdf->render();
-
-        return $pdf->stream('Relatorio_Presenca_' . $dados['cliente'] . '.pdf', ["Attachment" => true]);
+        return $this->response
+            ->setHeader('Content-Type', 'application/pdf')
+            ->setHeader('Content-Disposition', 'inline; filename="' . 'Relatorio_Presenca_' . $dados['cliente'] . '"')
+            ->setBody($pdf->output());
+        // return $pdf->stream('Relatorio_Presenca_' . $dados['cliente'] . '.pdf', ["Attachment" => true]);
     }
 }

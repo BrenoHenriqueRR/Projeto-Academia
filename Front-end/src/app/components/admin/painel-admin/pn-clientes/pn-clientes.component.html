@@ -33,17 +33,7 @@
             </div>
             <app-modal-cadastro (CloseModal)="Closemodal()" tipo="cliente"></app-modal-cadastro>
             <div class="">
-                <!-- <span style="cursor: pointer;" class="d-flex justify-content-center align-items-center flex-column">
-                    <i class="fa-solid fa-camera fa-2xl"></i>
-                    <br>
-                    <p>Face Id</p> -->
-                <!-- <div class="d-flex">
-                    <app-modal-faceid></app-modal-faceid>
-                    <i class="fa-regular fa-circle-question help-icon"
-                        matTooltip="Abrir painel de reconhecimento facial."></i>
-                </div> -->
-                <!-- </span> -->
-                <button type="button" class="btn btn-primary" (click)="abrirModalRelatorios()">
+                <button type="button" class="btn btn-primary" (click)="abrirModalRelatorios('relatorioClientes', null)">
                     <i class="fa-solid fa-chart-line mx-2"></i> Relatórios <i
                         class="fa-regular fa-circle-question help-icon"
                         matTooltip="Relatórios de presença, pagamentos, treinos e mais."></i>
@@ -78,7 +68,6 @@
                         <th>Email</th>
                         <th>CPF</th>
                         <th>Personal</th>
-                        <!-- <th>Frequência</th> -->
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -90,7 +79,6 @@
                         <td>{{dados.email}}</td>
                         <td>{{dados.CPF}}</td>
                         <td>{{dados.nome_personal}}</td>
-                        <!-- <td>{{dados.frequencia}}</td> -->
                         <td clas>
                             @if(func == 'personal'){
                             <button class="pn-button" routerLink="treinos" [queryParams]="{ id: dados.id}">Cadastrar
@@ -111,7 +99,7 @@
                                     class="fas fa-history"></i></button>
 
                             <app-modal-exibir #modalH></app-modal-exibir>
-                            <button type="button" class="pn-button" title="Relatorios"  matTooltip="Abre relatórios detalhados deste cliente." (click)="abrirModalRelatorios()">
+                            <button type="button" class="pn-button" title="Relatorios"  matTooltip="Abre relatórios detalhados deste cliente." (click)="abrirModalRelatorios('relatorioClienteid', dados.id)">
                                 <i class="fa-solid fa-chart-line mx-2"></i>
                             </button>
                             }

@@ -29,7 +29,7 @@ $routes->group('Cliente', function ($routes) {
     $routes->get('relatorioFinanceiroClientes', 'Cliente::relatorioFinanceiroClientes');
     $routes->get('relatorioClientesPagamentos', 'Cliente::relatorioClientesPagamentos');
     $routes->get('gerarRelatorioPresenca', 'Cliente::gerarRelatorioPresenca');
-    $routes->post('gerarRelatorioPresencaIndividual', 'Cliente::gerarRelatorioPresencaIndividual');
+    $routes->get('gerarRelatorioPresencaIndividual', 'Cliente::gerarRelatorioPresencaIndividual');
 });
 
 // =====================

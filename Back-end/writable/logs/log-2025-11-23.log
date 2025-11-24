@@ -1,0 +1,267 @@
+ERROR - 2025-11-23 16:41:14 --> mysqli_sql_exception: Incorrect DATE value: 'null' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `presenc...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `presenc...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `presenc...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `presenc...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Cliente.php(713): CodeIgniter\BaseModel->findAll()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Cliente->gerarRelatorioPresenca()
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2025-11-23 16:41:14 --> CodeIgniter\Database\Exceptions\DatabaseException: Incorrect DATE value: 'null'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `presenca_clientes`.*, `cliente`.`nome` AS `cliente_nome`
+FROM `presenca_clientes`
+JOIN `cliente` ON `cliente`.`id` = `presenca_clientes`.`cliente_id`
+WHERE DATE(data) >= :DATE(data):
+AND DATE(data) <= :DATE(data).1:
+ORDER BY `data` ASC', [...], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Cliente.php(713): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->gerarRelatorioPresenca()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-23 16:41:14 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Incorrect DATE value: 'null'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `presenca_clientes`.*, `cliente`.`nome` AS `cliente_nome`
+FROM `presenca_clientes`
+JOIN `cliente` ON `cliente`.`id` = `presenca_clientes`.`cliente_id`
+WHERE DATE(data) >= \'null\'
+AND DATE(data) <= \'null\'
+ORDER BY `data` ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `presenca_clientes`.*, `cliente`.`nome` AS `cliente_nome`
+FROM `presenca_clientes`
+JOIN `cliente` ON `cliente`.`id` = `presenca_clientes`.`cliente_id`
+WHERE DATE(data) >= \'null\'
+AND DATE(data) <= \'null\'
+ORDER BY `data` ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `presenca_clientes`.*, `cliente`.`nome` AS `cliente_nome`
+FROM `presenca_clientes`
+JOIN `cliente` ON `cliente`.`id` = `presenca_clientes`.`cliente_id`
+WHERE DATE(data) >= :DATE(data):
+AND DATE(data) <= :DATE(data).1:
+ORDER BY `data` ASC', [...], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Cliente.php(713): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->gerarRelatorioPresenca()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-23 16:41:14 --> [Caused by] mysqli_sql_exception: Incorrect DATE value: 'null'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `presenca_clientes`.*, `cliente`.`nome` AS `cliente_nome`
+FROM `presenca_clientes`
+JOIN `cliente` ON `cliente`.`id` = `presenca_clientes`.`cliente_id`
+WHERE DATE(data) >= \'null\'
+AND DATE(data) <= \'null\'
+ORDER BY `data` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `presenca_clientes`.*, `cliente`.`nome` AS `cliente_nome`
+FROM `presenca_clientes`
+JOIN `cliente` ON `cliente`.`id` = `presenca_clientes`.`cliente_id`
+WHERE DATE(data) >= \'null\'
+AND DATE(data) <= \'null\'
+ORDER BY `data` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `presenca_clientes`.*, `cliente`.`nome` AS `cliente_nome`
+FROM `presenca_clientes`
+JOIN `cliente` ON `cliente`.`id` = `presenca_clientes`.`cliente_id`
+WHERE DATE(data) >= \'null\'
+AND DATE(data) <= \'null\'
+ORDER BY `data` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `presenca_clientes`.*, `cliente`.`nome` AS `cliente_nome`
+FROM `presenca_clientes`
+JOIN `cliente` ON `cliente`.`id` = `presenca_clientes`.`cliente_id`
+WHERE DATE(data) >= :DATE(data):
+AND DATE(data) <= :DATE(data).1:
+ORDER BY `data` ASC', [...], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Cliente.php(713): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->gerarRelatorioPresenca()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-11-23 16:46:46 --> mysqli_sql_exception: Incorrect DATE value: 'null' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `presenc...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `presenc...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `presenc...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `presenc...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Cliente.php(713): CodeIgniter\BaseModel->findAll()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Cliente->gerarRelatorioPresenca()
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2025-11-23 16:46:46 --> CodeIgniter\Database\Exceptions\DatabaseException: Incorrect DATE value: 'null'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `presenca_clientes`.*, `cliente`.`nome` AS `cliente_nome`
+FROM `presenca_clientes`
+JOIN `cliente` ON `cliente`.`id` = `presenca_clientes`.`cliente_id`
+WHERE DATE(data) >= :DATE(data):
+AND DATE(data) <= :DATE(data).1:
+ORDER BY `data` ASC', [...], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Cliente.php(713): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->gerarRelatorioPresenca()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-23 16:46:46 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Incorrect DATE value: 'null'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `presenca_clientes`.*, `cliente`.`nome` AS `cliente_nome`
+FROM `presenca_clientes`
+JOIN `cliente` ON `cliente`.`id` = `presenca_clientes`.`cliente_id`
+WHERE DATE(data) >= \'null\'
+AND DATE(data) <= \'null\'
+ORDER BY `data` ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `presenca_clientes`.*, `cliente`.`nome` AS `cliente_nome`
+FROM `presenca_clientes`
+JOIN `cliente` ON `cliente`.`id` = `presenca_clientes`.`cliente_id`
+WHERE DATE(data) >= \'null\'
+AND DATE(data) <= \'null\'
+ORDER BY `data` ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `presenca_clientes`.*, `cliente`.`nome` AS `cliente_nome`
+FROM `presenca_clientes`
+JOIN `cliente` ON `cliente`.`id` = `presenca_clientes`.`cliente_id`
+WHERE DATE(data) >= :DATE(data):
+AND DATE(data) <= :DATE(data).1:
+ORDER BY `data` ASC', [...], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Cliente.php(713): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->gerarRelatorioPresenca()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-23 16:46:46 --> [Caused by] mysqli_sql_exception: Incorrect DATE value: 'null'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `presenca_clientes`.*, `cliente`.`nome` AS `cliente_nome`
+FROM `presenca_clientes`
+JOIN `cliente` ON `cliente`.`id` = `presenca_clientes`.`cliente_id`
+WHERE DATE(data) >= \'null\'
+AND DATE(data) <= \'null\'
+ORDER BY `data` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `presenca_clientes`.*, `cliente`.`nome` AS `cliente_nome`
+FROM `presenca_clientes`
+JOIN `cliente` ON `cliente`.`id` = `presenca_clientes`.`cliente_id`
+WHERE DATE(data) >= \'null\'
+AND DATE(data) <= \'null\'
+ORDER BY `data` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `presenca_clientes`.*, `cliente`.`nome` AS `cliente_nome`
+FROM `presenca_clientes`
+JOIN `cliente` ON `cliente`.`id` = `presenca_clientes`.`cliente_id`
+WHERE DATE(data) >= \'null\'
+AND DATE(data) <= \'null\'
+ORDER BY `data` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `presenca_clientes`.*, `cliente`.`nome` AS `cliente_nome`
+FROM `presenca_clientes`
+JOIN `cliente` ON `cliente`.`id` = `presenca_clientes`.`cliente_id`
+WHERE DATE(data) >= :DATE(data):
+AND DATE(data) <= :DATE(data).1:
+ORDER BY `data` ASC', [...], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Cliente.php(713): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->gerarRelatorioPresenca()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-11-23 16:47:17 --> mysqli_sql_exception: Incorrect DATE value: 'null' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `presenc...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `presenc...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `presenc...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `presenc...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\Cliente.php(713): CodeIgniter\BaseModel->findAll()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\Cliente->gerarRelatorioPresenca()
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+#9 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2025-11-23 16:47:17 --> CodeIgniter\Database\Exceptions\DatabaseException: Incorrect DATE value: 'null'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `presenca_clientes`.*, `cliente`.`nome` AS `cliente_nome`
+FROM `presenca_clientes`
+JOIN `cliente` ON `cliente`.`id` = `presenca_clientes`.`cliente_id`
+WHERE DATE(data) >= :DATE(data):
+AND DATE(data) <= :DATE(data).1:
+ORDER BY `data` ASC', [...], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Cliente.php(713): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->gerarRelatorioPresenca()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-23 16:47:17 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Incorrect DATE value: 'null'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `presenca_clientes`.*, `cliente`.`nome` AS `cliente_nome`
+FROM `presenca_clientes`
+JOIN `cliente` ON `cliente`.`id` = `presenca_clientes`.`cliente_id`
+WHERE DATE(data) >= \'null\'
+AND DATE(data) <= \'null\'
+ORDER BY `data` ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `presenca_clientes`.*, `cliente`.`nome` AS `cliente_nome`
+FROM `presenca_clientes`
+JOIN `cliente` ON `cliente`.`id` = `presenca_clientes`.`cliente_id`
+WHERE DATE(data) >= \'null\'
+AND DATE(data) <= \'null\'
+ORDER BY `data` ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `presenca_clientes`.*, `cliente`.`nome` AS `cliente_nome`
+FROM `presenca_clientes`
+JOIN `cliente` ON `cliente`.`id` = `presenca_clientes`.`cliente_id`
+WHERE DATE(data) >= :DATE(data):
+AND DATE(data) <= :DATE(data).1:
+ORDER BY `data` ASC', [...], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Cliente.php(713): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->gerarRelatorioPresenca()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-23 16:47:17 --> [Caused by] mysqli_sql_exception: Incorrect DATE value: 'null'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `presenca_clientes`.*, `cliente`.`nome` AS `cliente_nome`
+FROM `presenca_clientes`
+JOIN `cliente` ON `cliente`.`id` = `presenca_clientes`.`cliente_id`
+WHERE DATE(data) >= \'null\'
+AND DATE(data) <= \'null\'
+ORDER BY `data` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `presenca_clientes`.*, `cliente`.`nome` AS `cliente_nome`
+FROM `presenca_clientes`
+JOIN `cliente` ON `cliente`.`id` = `presenca_clientes`.`cliente_id`
+WHERE DATE(data) >= \'null\'
+AND DATE(data) <= \'null\'
+ORDER BY `data` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `presenca_clientes`.*, `cliente`.`nome` AS `cliente_nome`
+FROM `presenca_clientes`
+JOIN `cliente` ON `cliente`.`id` = `presenca_clientes`.`cliente_id`
+WHERE DATE(data) >= \'null\'
+AND DATE(data) <= \'null\'
+ORDER BY `data` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `presenca_clientes`.*, `cliente`.`nome` AS `cliente_nome`
+FROM `presenca_clientes`
+JOIN `cliente` ON `cliente`.`id` = `presenca_clientes`.`cliente_id`
+WHERE DATE(data) >= :DATE(data):
+AND DATE(data) <= :DATE(data).1:
+ORDER BY `data` ASC', [...], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Cliente.php(713): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->gerarRelatorioPresenca()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

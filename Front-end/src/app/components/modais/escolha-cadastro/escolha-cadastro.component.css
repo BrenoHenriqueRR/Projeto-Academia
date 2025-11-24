@@ -1,13 +1,13 @@
-.desc-small{
+.desc-small {
     font-size: 0.7rem;
     margin-top: -10px;
 }
 
 ::ng-deep .cdk-overlay-connected-position-bounding-box {
-        z-index: 9999999 !important;
-    }
-    
-    /* Garante que o container global não esteja escondido */
-    ::ng-deep .cdk-overlay-container {
-        z-index: 9999999 !important;
-    }
+    z-index: 9999999 !important;
+}
+
+/* Garante que o container global não esteja escondido */
+::ng-deep .cdk-overlay-container {
+    z-index: 9999999 !important;
+}

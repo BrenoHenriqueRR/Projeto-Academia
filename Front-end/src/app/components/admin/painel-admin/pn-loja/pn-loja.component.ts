@@ -35,6 +35,8 @@ export class PnLojaComponent {
   carrinho: any[] = [];
   idDelete: number = 0;
   tipo: string = '';
+  filtroNome: string = '';
+  filtrado: any[] = [];
 
   produtoSelecionado: any = null;
 
@@ -86,6 +88,23 @@ export class PnLojaComponent {
     }
   }
 
+ aplicarFiltros() {
+  const termoPesquisa = this.filtroNome 
+    ? this.filtroNome.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase().trim() 
+    : '';
+
+  this.filtrado = this.produtos.filter((produto: any) => {
+    if (!termoPesquisa) return true;
+
+    const marcaLimpa = (produto.marca || '')
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    const nomeLimpo = (produto.nome || '') 
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase();
+
+    return marcaLimpa.includes(termoPesquisa) || nomeLimpo.includes(termoPesquisa);
+  });
+}
+
   adicionarAoCarrinho(produto: any) {
     const qtd = produto.qtdSelecionada || 1;
 
@@ -114,11 +133,6 @@ export class PnLojaComponent {
   Closemodal() {
     this.ngOnInit();
   }
-
-  // valorCarrinho(preco: any, qtd: any) {
-  //   const precoNum = Number(String(preco).replace(',', '.'));
-  //   return precoNum * Number(qtd);
-  // }
 
 
 
@@ -204,6 +218,7 @@ export class PnLojaComponent {
             maximumFractionDigits: 2,
           });
         });
+        this.aplicarFiltros();
         this.loading = false;
       }, error: (er) => {
         this.loading = false;

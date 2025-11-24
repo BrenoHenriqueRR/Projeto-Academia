@@ -21,8 +21,8 @@ import { MaterialModule } from '../../../../modules/material.module';
   selector: 'app-pn-clientes',
   standalone: true,
   imports: [NgxPaginationModule, RouterLink, NgIf, ModalConfirmarComponent,
-    ModalFaceidComponent, ModalSpinnerComponent, ModalExibirComponent,
-    ModalCadastroComponent, FormsModule,MaterialModule],
+    ModalSpinnerComponent, ModalExibirComponent,
+    ModalCadastroComponent, FormsModule, MaterialModule],
   templateUrl: './pn-clientes.component.html',
   styleUrl: './pn-clientes.component.css'
 })
@@ -136,17 +136,18 @@ export class PnClientesComponent {
     })
   }
 
-    abrirModalRelatorios(){
-      const dialogRef = this.dialog.open(ModalEscolhaRelatoriosComponent, {
-              width: '700px',
-              height: '500px',
-              data: { tipo: 'x' },
-            });
-            dialogRef.afterClosed().subscribe((result) => {
-              if (result.confirmado) {
-                // Chame o serviço para gerar o relatório
-                console.log('Gerar relatório do tipo:', result.tipoRelatorio);
-              }
-            });
-          }
+  abrirModalRelatorios(tipo: string, idCliente: any) {
+    const dialogRef = this.dialog.open(ModalEscolhaRelatoriosComponent, {
+      width: '700px',
+      height: '500px',
+      data: { tipo: tipo, idCliente: idCliente, },
+      
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result.confirmado) {
+        // Chame o serviço para gerar o relatório
+        console.log('Gerar relatório do tipo:', result.tipoRelatorio);
+      }
+    });
+  }
 }

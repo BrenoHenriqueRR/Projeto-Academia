@@ -88,7 +88,7 @@ export class PerfilComponent {
     if (this.data && this.data.length > 0) {
       this.formcadastro = new FormGroup({
         id: new FormControl(this.identificador),
-        nome: new FormControl(this.data[0].cliente_nome, [Validators.required]),
+        nome: new FormControl(this.data[0].nome, [Validators.required]),
         email: new FormControl(this.data[0].email, [Validators.required, Validators.email]),
         CPF: new FormControl(this.data[0].CPF, [Validators.required]),
         // personal_id: new FormControl(this.data[0].nome_personal, [Validators.required] ),

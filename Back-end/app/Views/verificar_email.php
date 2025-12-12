@@ -75,13 +75,13 @@
 >>>>>>> 5ba464a33bc7bbab60ef4548cd0a6277fe8b61b2
 <body>
     <div class="container">
-        <div class="header">
+        <!-- <div class="header">
             <h1>Verifique seu Email</h1>
-        </div>
+        </div> -->
         <div class="content">
             <p>Olá,</p>
-            <p>Obrigado por se cadastrar! Para ativar sua conta, clique no botão abaixo:</p>
-            <a class="button" href="<?= env('FRONTEND_URL') . "?id=" . $id ?>">Confirmar Email</a>
+            <p>Obrigado por se cadastrar!</p>
+            <!-- <a class="button" href="<?= env('FRONTEND_URL') . "?id=" . $id ?>">Confirmar Email</a> -->
         </div>
 <<<<<<< HEAD
 =======

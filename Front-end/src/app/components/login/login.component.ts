@@ -55,7 +55,7 @@ export class LoginComponent {
               this.loading = false;
               localStorage.setItem("idcliente" , id);
               this.alertas.success("Seja Bem vindo !!");
-              this.router.navigate(['/home-cliente']), {
+              this.router.navigate(['/home-cliente/treinos']), {
               };
             }, 150);
           }else{

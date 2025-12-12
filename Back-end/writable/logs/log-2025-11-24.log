@@ -37,3 +37,15 @@ ERROR - 2025-11-24 16:51:51 --> ERRO UPLOAD FOTO: The file "Foto_FaceID_261.png"
 ERROR - 2025-11-24 16:52:16 --> ERRO UPLOAD FOTO: The file "Foto_FaceID_915.png" exceeds your upload_max_filesize ini directive. (1)
 ERROR - 2025-11-24 16:55:16 --> ERRO UPLOAD FOTO: The file "Foto_FaceID_915.png" exceeds your upload_max_filesize ini directive. (1)
 ERROR - 2025-11-24 16:57:06 --> ERRO UPLOAD FOTO: The file "Foto_FaceID_481.png" exceeds your upload_max_filesize ini directive. (1)
+CRITICAL - 2025-11-24 17:50:43 --> ErrorException: Undefined variable $pin
+in APPPATH\Views\verificar_email.php on line 90.
+ 1 APPPATH\Views\verificar_email.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pin', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\verificar_email.php', 90)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Views\\verificar_email.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('verificar_email', [], true)
+ 5 APPPATH\Controllers\EmailController.php(82): view('verificar_email', [...])
+ 6 APPPATH\Controllers\Cliente.php(233): App\Controllers\EmailController->verificaEmail([...])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Cliente->createComplete()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Cliente))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

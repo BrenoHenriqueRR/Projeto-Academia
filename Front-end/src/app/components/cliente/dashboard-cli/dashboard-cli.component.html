@@ -1,10 +1,10 @@
 <div class="fundo">
     <div class="conteudo">
         <div class="dashboard">
-            <div class="card">
+            <!-- <div class="card">
                 <h2>Eventos</h2>
                 <p>Inverno começou aquece-se na nossa academia !</p>
-            </div>
+            </div> -->
             <div class="card">
                 <h2>Treinos</h2>
                 @for (treino of treinos; track treino.id) {
@@ -13,7 +13,7 @@
                 }
                 <a routerLink="/home-cliente/treinos">Ver</a>
             </div>
-            <div class="card">
+            <!-- <div class="card">
                 <h2>Pagamentos</h2>
                 @for (item of pagamentos; track $index) {
                 @if (item.status_pagamento == 'pendente') {
@@ -25,6 +25,6 @@
                 <a routerLink="/home-cliente/pagamentos">Ver</a>
                 }
                 }
-            </div>
+            </div> -->
         </div>
     </div>

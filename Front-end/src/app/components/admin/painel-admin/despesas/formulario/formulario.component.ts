@@ -23,7 +23,7 @@ export class FormularioComponent {
     private router: Router
   ) {
     this.form = this.fb.group({
-      id: ['', [Validators.required]],
+      id: ['', []],
       descricao: ['', [Validators.required]],
       valor: [null, [Validators.required]],
       tipo: ['fixa', Validators.required],
@@ -52,12 +52,14 @@ export class FormularioComponent {
     if (this.editando && this.id) {
       this.service.update(JSON.stringify(dados)).subscribe(() => {
         alert('Despesa atualizada!');
+        location.reload();
         this.router.navigate(['/despesas']);
       });
     } else {
       this.service.create(JSON.stringify(dados)).subscribe(() => {
         alert('Despesa cadastrada!');
-        this.router.navigate(['/despesas']);
+        location.reload();
+            this.router.navigate(['/despesas']);
       });
     }
   }

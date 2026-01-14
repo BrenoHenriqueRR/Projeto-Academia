@@ -2,24 +2,25 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CliPesquisar } from '../../../interfaces/cli-pesquisar';
 import { Observable } from 'rxjs';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PnClienteService {
-  private url = 'http://localhost/sites/Projeto1/Back-end/public/Cliente/pesquisar';
-  private urlSAnam = 'http://localhost/sites/Projeto1/Back-end/public/Cliente/getClientesSemAnamnese';
-  private urlpag = 'http://localhost/sites/Projeto1/Back-end/public/Cliente/pesquisarPag';
-  private urlpid = 'http://localhost/sites/Projeto1/Back-end/public/Cliente/pesquisarpid';
-  private urldel = 'http://localhost/sites/Projeto1/Back-end/public/Cliente/delete';
-  private urlFoto = 'http://localhost/sites/Projeto1/Back-end/public/Cliente/inserirFoto';
-  private urlgetFoto = 'http://localhost/sites/Projeto1/Back-end/public/Cliente/pegarFoto';
-  private url_Planosid = 'http://localhost/sites/Projeto1/Back-end/public/ClientePlanos/pesquisarId';
-  private url_Pagamento = 'http://localhost/sites/Projeto1/Back-end/public/ClientePlanos/concluirPagamento';
-  private url_pdfstatus = 'http://localhost/sites/Projeto1/Back-end/public/Cliente/relatorioClientesStatus';
-  private url_pdfpagamentos = 'http://localhost/sites/Projeto1/Back-end/public/Cliente/relatorioClientesPagamentos';
-  private url_pdfpresenca = 'http://localhost/sites/Projeto1/Back-end/public/Cliente/gerarRelatorioPresenca';
-  private url_pdfpresencaindv = 'http://localhost/sites/Projeto1/Back-end/public/Cliente/gerarRelatorioPresencaIndividual';
+  private url = environment.apiUrl + 'Cliente/pesquisar';
+  private urlSAnam = environment.apiUrl + 'Cliente/getClientesSemAnamnese';
+  private urlpag = environment.apiUrl + 'Cliente/pesquisarPag';
+  private urlpid = environment.apiUrl + 'Cliente/pesquisarpid';
+  private urldel = environment.apiUrl + 'Cliente/delete';
+  private urlFoto = environment.apiUrl + 'Cliente/inserirFoto';
+  private urlgetFoto = environment.apiUrl + 'Cliente/pegarFoto';
+  private url_Planosid = environment.apiUrl + 'ClientePlanos/pesquisarId';
+  private url_Pagamento = environment.apiUrl + 'ClientePlanos/concluirPagamento';
+  private url_pdfstatus = environment.apiUrl + 'Cliente/relatorioClientesStatus';
+  private url_pdfpagamentos = environment.apiUrl + 'Cliente/relatorioClientesPagamentos';
+  private url_pdfpresenca = environment.apiUrl + 'Cliente/gerarRelatorioPresenca';
+  private url_pdfpresencaindv = environment.apiUrl + 'Cliente/gerarRelatorioPresencaIndividual';
 
 
   constructor(private http: HttpClient) { }

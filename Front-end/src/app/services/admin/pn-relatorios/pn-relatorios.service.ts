@@ -2,12 +2,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PnRelatoriosService {
-  urlE: string = "http://localhost/sites/Projeto1/Back-end/public/Relatorios/rEstatistica";
+  urlE: string = environment.apiUrl + "Relatorios/rEstatistica";
 
   constructor(private http: HttpClient) { }
 

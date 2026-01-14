@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { formresponse } from '../../interfaces/formresponse';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-  private url = 'http://localhost/sites/Projeto1/Back-end/public/Cliente/login' 
-  private url_id = 'http://localhost/sites/Projeto1/Back-end/public/Cliente/pesquisarid' ;
+  private url = environment.apiUrl +'Cliente/login' 
+  private url_id = environment.apiUrl +'Cliente/pesquisarid' ;
    
 
   constructor(private http: HttpClient) {} 

@@ -3,15 +3,16 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { formresponse } from '../../interfaces/formresponse';
 import { CliPesquisar } from '../../interfaces/cli-pesquisar';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ModalEditarService {
-  url_cliente: string = 'http://localhost/sites/Projeto1/Back-end/public/Admin/editar';
-  url_pesquisar: string = 'http://localhost/sites/Projeto1/Back-end/public/Admin/buscar';
-  url_funcionario: string = 'http://localhost/sites/Projeto1/Back-end/public/Admin/buscarfuncionario'
-  url_editfuncionario: string = 'http://localhost/sites/Projeto1/Back-end/public/Admin/editfuncionario'
+  url_cliente: string = environment.apiUrl + 'Admin/editar';
+  url_pesquisar: string = environment.apiUrl + 'Admin/buscar';
+  url_funcionario: string = environment.apiUrl + 'Admin/buscarfuncionario'
+  url_editfuncionario: string = environment.apiUrl + 'Admin/editfuncionario'
 
   constructor(private http: HttpClient) { }
 

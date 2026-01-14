@@ -9,7 +9,7 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root'
 })
 export class UserTreinoService {
-  url_pesquisar: string = environment.apiUrl + "/Treino/pesquisar";
+  url_pesquisar: string = environment.apiUrl + "Treino/pesquisar";
 
   constructor(private http: HttpClient) { }
 

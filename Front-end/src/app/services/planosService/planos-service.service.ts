@@ -8,7 +8,7 @@ var apiurl = environment.apiUrl;
   providedIn: 'root'
 })
 export class PlanosServiceService {
-  url_edit = apiurl + "/Planos/edit";
+  url_edit = apiurl + "Planos/edit";
   constructor(private http: HttpClient) { }
 
   editar(dados: any):Observable<any>{

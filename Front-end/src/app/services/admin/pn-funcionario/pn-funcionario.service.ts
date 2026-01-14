@@ -10,9 +10,9 @@ import { environment } from '../../../../environments/environment';
 export class PnFuncionarioService {
   apiurl = environment.apiUrl;
 
-  private url = 'http://localhost/sites/Projeto1/Back-end/public/Admin/buscarfun';
-  private urldel = 'http://localhost/sites/Projeto1/Back-end/public/Admin/deletefun';
-  private urlcreate = 'http://localhost/sites/Projeto1/Back-end/public/Funcionarios/create';
+  private url = environment.apiUrl + 'Admin/buscarfun';
+  private urldel = environment.apiUrl + 'Admin/deletefun';
+  private urlcreate = environment.apiUrl + 'Funcionarios/create';
 
   constructor(private http: HttpClient) {} 
 

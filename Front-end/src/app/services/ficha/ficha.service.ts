@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FichaService {
-  private url = 'http://localhost/sites/Projeto1/Back-end/public/Ficha/create' 
+  private url = environment.apiUrl + 'Ficha/create' 
 
   constructor(private http: HttpClient) { }
 

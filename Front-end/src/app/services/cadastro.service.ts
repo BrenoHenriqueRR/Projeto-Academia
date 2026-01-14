@@ -8,9 +8,9 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class CadastroService {
-   private url_cliente = environment.apiUrl + '/Cliente/create';
-   private url_createC = environment.apiUrl + '/Cliente/createComplete';
-   private url_pesquisar = environment.apiUrl + '/Funcionarios/pesquisar';
+   private url_cliente = environment.apiUrl + 'Cliente/create';
+   private url_createC = environment.apiUrl + 'Cliente/createComplete';
+   private url_pesquisar = environment.apiUrl + 'Funcionarios/pesquisar';
    
 
   constructor(private http: HttpClient) {} 

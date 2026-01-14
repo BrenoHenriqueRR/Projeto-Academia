@@ -8,9 +8,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class FaceidService {
-  private url_create = 'http://localhost/sites/Projeto1/Back-end/public/Faceid/create';
-  private url_comparar = 'http://localhost/sites/Projeto1/Back-end/public/Faceid/verificarFaceId';
-  private url_pin =  `${environment.apiUrl}/Cliente/registrarPresenca`;
+  private url_create = environment.apiUrl + 'Faceid/create';
+  private url_comparar = environment.apiUrl + 'Faceid/verificarFaceId';
+  private url_pin =  `${environment.apiUrl}Cliente/registrarPresenca`;
 
   constructor(private http: HttpClient) {} 
 

@@ -9,19 +9,19 @@ var apiurl = environment.apiUrl;
   providedIn: 'root'
 })
 export class CadTreinoService {
-  private url_treino = apiurl + '/Treino/create'
-  private url_exer = apiurl + '/Treino/cadexer'
-  private url_grupo = apiurl + '/Treino/cadgrupo'
-  private url_ptipo = apiurl + '/Treino/ptipo'
-  private url_pgrupo = apiurl + '/Treino/pgrupo'
-  private url_pexer = apiurl + '/Treino/pexer'
-  private url_pidficha = apiurl + '/Ficha/pesquisarCli'
-  private url_idficha = apiurl + '/Ficha/pesquisarFicha'
-  private url_concluirficha = apiurl + '/Ficha/concluirFicha'
-  private url_fichaNC = apiurl + '/Ficha/fichaNaoConcluida'
-  private url_cficha = apiurl + '/Ficha/create'
-  private url_uficha = apiurl + '/Ficha/update'
-  private url_IFI = apiurl + '/Ficha/imprimirFichaId'
+  private url_treino = apiurl + 'Treino/create'
+  private url_exer = apiurl + 'Treino/cadexer'
+  private url_grupo = apiurl + 'Treino/cadgrupo'
+  private url_ptipo = apiurl + 'Treino/ptipo'
+  private url_pgrupo = apiurl + 'Treino/pgrupo'
+  private url_pexer = apiurl + 'Treino/pexer'
+  private url_pidficha = apiurl + 'Ficha/pesquisarCli'
+  private url_idficha = apiurl + 'Ficha/pesquisarFicha'
+  private url_concluirficha = apiurl + 'Ficha/concluirFicha'
+  private url_fichaNC = apiurl + 'Ficha/fichaNaoConcluida'
+  private url_cficha = apiurl + 'Ficha/create'
+  private url_uficha = apiurl + 'Ficha/update'
+  private url_IFI = apiurl + 'Ficha/imprimirFichaId'
 
   constructor(private http: HttpClient) { }
 

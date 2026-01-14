@@ -63,7 +63,8 @@ export class LoginComponent {
             this.alertas.error("Dados Incorretos");
           }
         }, error: (err) => {
-          this.alertas.error(err);
+          this.loading = false;
+          this.alertas.error(err.msg);
         },
       })
     } else {

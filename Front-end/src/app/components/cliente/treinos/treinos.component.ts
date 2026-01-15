@@ -1,12 +1,11 @@
 import { Component, ElementRef, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserTreinoService } from '../../../services/treino/user-treino.service';
 import { CommonModule, DatePipe, NgFor } from '@angular/common';
 import { FormBuilder, FormControl, FormGroup, FormsModule, FormArray, ReactiveFormsModule } from '@angular/forms';
 import { FichaService } from '../../../services/ficha/ficha.service';
 import { CadTreinoComponent } from '../../admin/painel-admin/cad-treino/cad-treino.component';
 import { CadTreinoService } from '../../../services/cad-treino/cad-treino.service';
-
-
 
 @Component({
   selector: 'app-treinos',
@@ -18,6 +17,7 @@ import { CadTreinoService } from '../../../services/cad-treino/cad-treino.servic
 export class TreinosComponent {
   ficha!: any;
   exercicios!: any;
+  loading: boolean = false;
 
   ngOnInit() {
     this.pesquisar();
@@ -25,7 +25,8 @@ export class TreinosComponent {
 
   constructor(
     private service: UserTreinoService,
-    private fichaservice: CadTreinoService
+    private fichaservice: CadTreinoService,
+    private router: Router
   ) { }
 
   enviar() {
@@ -48,6 +49,7 @@ export class TreinosComponent {
 
   pesquisar() {
     const idCliente = localStorage.getItem('idcliente');
+    this.loading = true;
 
     this.fichaservice.pesquisarFichaNaoConcluida(JSON.stringify({ id: idCliente })).subscribe({
       next: (dados) => {
@@ -59,18 +61,17 @@ export class TreinosComponent {
           this.ficha = null;
           this.exercicios = [];
         }
+        this.loading = false;
       },
       error: () => {
         console.error('Erro ao buscar ficha');
         this.ficha = null;
+        this.loading = false;
       }
     });
   }
 
+  irParaTodasFichas() {
+    this.router.navigate(['/home-cliente/treinos/todas']);
+  }
 }
-
-
-
-
-
-

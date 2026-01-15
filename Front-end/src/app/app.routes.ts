@@ -39,6 +39,7 @@ import { ListarComponent } from './components/admin/painel-admin/despesas/listar
 import { FormularioComponent } from './components/admin/painel-admin/despesas/formulario/formulario.component';
 import { ManualComponent } from './components/admin/painel-admin/manual/manual.component';
 import { EditarFichaComponent } from './components/admin/painel-admin/pn-treino/editar-ficha/editar-ficha.component';
+import { UserTreinosTodasComponent } from './components/cliente/treinos/user-treinos-todas/user-treinos-todas.component';
 
 
 export const routes: Routes = [
@@ -77,6 +78,7 @@ export const routes: Routes = [
             { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
             { path: 'dashboard', component: DashboardCliComponent, canActivate: [authGuard] },
             { path: 'treinos', component: TreinosComponent, canActivate: [authGuard] },
+            { path: 'treinos/todas', component: UserTreinosTodasComponent, canActivate: [authGuard] },
             { path: 'pagamentos', component: PagamentosComponent, canActivate: [authGuard] },
             { path: 'perfil', component: PerfilComponent, canActivate: [authGuard] },
         ]

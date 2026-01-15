@@ -1,12 +1,22 @@
 <div class="container mt-4">
-  <div class="mb-4">
-    <h1 class="h3 fw-bold text-dark">Treino {{ ficha?.tipo }}</h1>
-    <p class="text-muted">Ficha de hoje</p>
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h1 class="h3 fw-bold text-dark">Treino {{ ficha?.tipo }}</h1>
+      <p class="text-muted">Ficha de hoje</p>
+    </div>
+    <div class="d-flex align-items-center gap-2">
+      <div *ngIf="loading" class="spinner-border text-primary spinner-border-sm" role="status">
+        <span class="visually-hidden">Carregando...</span>
+      </div>
+      <button class="btn btn-outline-primary" (click)="irParaTodasFichas()">
+        Ver Todas as Fichas
+      </button>
+    </div>
   </div>
 
   <div *ngIf="ficha" class="card shadow-sm mb-4">
     <div class="card-body">
-      <h5 class="card-title">Treino de Hoje</h5>
+      <h5 class="card-title border-bottom pb-2 mb-3">Treino de Hoje</h5>
 
       <div class="table-responsive">
         <table class="table table-striped align-middle">
@@ -31,13 +41,34 @@
         </table>
       </div>
 
-      <div class="text-end mt-3">
-        <button class="btn btn-success" (click)="enviar()">Concluir</button>
+      <!-- Mobile View (Cards) -->
+      <div class="mobile-exercise-list">
+        <div class="exercise-card" *ngFor="let dados of exercicios">
+          <div class="exercise-header">
+            <div>
+              <div class="exercise-name">{{ dados.exercicio }}</div>
+              <div class="exercise-group">{{ dados.grupo_muscular }}</div>
+            </div>
+          </div>
+          <div class="exercise-stats">
+            <span class="stat-badge">{{ dados.series }} Séries</span>
+            <span class="stat-badge">{{ dados.repeticoes }} Reps</span>
+          </div>
+          <div class="exercise-obs" *ngIf="dados.observacoes">
+            <i class="bi bi-info-circle me-1"></i> {{ dados.observacoes }}
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4 mt-md-3">
+        <button class="btn btn-success btn-lg-mobile" (click)="enviar()">
+          Concluir Treino
+        </button>
       </div>
     </div>
   </div>
 
-  <div *ngIf="!ficha" class="alert alert-info">
+  <div *ngIf="!ficha && !loading" class="alert alert-info">
     Você ainda não possui fichas!
   </div>
 </div>

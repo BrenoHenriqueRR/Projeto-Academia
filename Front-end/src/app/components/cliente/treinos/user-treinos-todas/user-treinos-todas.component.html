@@ -1,0 +1,86 @@
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h3 fw-bold text-dark">
+            <span *ngIf="!visualizandoDetalhes">Minhas Fichas</span>
+            <span *ngIf="visualizandoDetalhes">Detalhes do Treino {{ ficha?.tipo }}</span>
+        </h1>
+        <button *ngIf="visualizandoDetalhes" class="btn btn-outline-secondary" (click)="voltar()">
+            <i class="bi bi-arrow-left me-2"></i>Voltar
+        </button>
+    </div>
+
+    <div *ngIf="loading" class="text-center py-5">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Carregando...</span>
+        </div>
+    </div>
+
+    <!-- Cards de Fichas -->
+    <div *ngIf="!visualizandoDetalhes && !loading" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 fade-in">
+        <div class="col" *ngFor="let f of todasFichas">
+            <div class="card h-100 shadow-sm card-ficha" (click)="verFicha(f.id)">
+                <div class="card-body text-center d-flex flex-column justify-content-center">
+                    <div class="mb-3">
+                        <i class="bi bi-journal-text fs-1 text-primary"></i>
+                    </div>
+                    <h5 class="card-title fw-bold text-uppercase">Treino {{ f.tipo }}</h5>
+                    <p class="card-text text-muted mb-0" *ngIf="f.ordem">Ordem: {{ f.ordem }}</p>
+                    <div class="mt-3">
+                        <span class="badge rounded-pill bg-success" *ngIf="f.concluida">Concluída</span>
+                        <span class="badge rounded-pill bg-secondary" *ngIf="!f.concluida">Pendente</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="todasFichas.length === 0" class="col-12 text-center text-muted">
+            <p>Nenhuma ficha encontrada.</p>
+        </div>
+    </div>
+
+    <!-- Detalhes da Ficha -->
+    <div *ngIf="visualizandoDetalhes && !loading" class="card shadow-sm mb-4 fade-in">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col">Exercício</th>
+                            <th scope="col">Grupo</th>
+                            <th scope="col" class="text-center">Séries</th>
+                            <th scope="col" class="text-center">Repetições</th>
+                            <th scope="col">Observações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let dados of exercicios">
+                            <td class="fw-semibold">{{ dados.exercicio }}</td>
+                            <td><span class="badge bg-light text-dark border">{{ dados.grupo_muscular }}</span></td>
+                            <td class="text-center">{{ dados.series }}</td>
+                            <td class="text-center">{{ dados.repeticoes }}</td>
+                            <td class="small text-muted">{{ dados.observacoes }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Mobile View (Cards) -->
+            <div class="mobile-exercise-list">
+                <div class="exercise-card" *ngFor="let dados of exercicios">
+                    <div class="exercise-header">
+                        <div>
+                            <div class="exercise-name">{{ dados.exercicio }}</div>
+                            <div class="exercise-group">{{ dados.grupo_muscular }}</div>
+                        </div>
+                    </div>
+                    <div class="exercise-stats">
+                        <span class="stat-badge">{{ dados.series }} Séries</span>
+                        <span class="stat-badge">{{ dados.repeticoes }} Reps</span>
+                    </div>
+                    <div class="exercise-obs" *ngIf="dados.observacoes">
+                        <i class="bi bi-info-circle me-1"></i> {{ dados.observacoes }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

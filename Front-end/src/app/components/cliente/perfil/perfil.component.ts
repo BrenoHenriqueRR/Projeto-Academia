@@ -1,16 +1,17 @@
-import { NgIf } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ModalEditarService } from '../../../services/modal-editar/modal-editar.service';
 import { ActivatedRoute } from '@angular/router';
 import { PnClienteService } from '../../../services/admin/pn-cliente/pn-cliente.service';
+import { environment } from '../../../../environments/environment';
 // import { CliPesquisar } from '../../../interfaces/cli-pesquisar';
 
 
 @Component({
   selector: 'app-perfil',
   standalone: true,
-  imports: [ReactiveFormsModule,NgIf],
+  imports: [ReactiveFormsModule,CommonModule],
   templateUrl: './perfil.component.html',
   styleUrl: './perfil.component.css'
 })
@@ -45,7 +46,7 @@ export class PerfilComponent {
     const idjson  = '{"id": "' + this.identificador + '"}';
     this.SinserirFoto.pegarfoto(idjson).subscribe({
       next: (foto) => {
-        this.caminhoFoto = 'http://localhost/sites/Projeto1/Back-end/public/' + foto[0].foto_perfil;
+        this.caminhoFoto = environment.apiUrl + foto[0].foto_perfil;
       },error(err) {
         console.log(err);
       },

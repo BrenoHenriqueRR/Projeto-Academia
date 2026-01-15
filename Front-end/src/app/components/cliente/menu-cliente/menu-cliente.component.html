@@ -1,78 +1,66 @@
-<nav class="navbar navbar-dark bg-dark fixed-top menu-cell">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Fitness Prime</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Fitness Prime</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Treinos</a>
-            </li>
-            <li class="nav-item dropdown">
-              <!-- <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Pagamentos
-              </a> -->
-              <ul class="dropdown-menu dropdown-menu-dark">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Perfil</a>
-            </li>
-          </ul>
-          <form class="d-flex mt-3" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-success" type="submit">Search</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </nav>
-
-
 <nav class="navbar navbar-expand-lg bg-fundo menu-pc">
-    <div class="container-fluid d-flex">
-      <a class="navbar-brand" href="#">Fitness Prime</a>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <div class="menu">
-            <ul class="navbar-nav d-flex">
-            <div class="d-flex ">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" routerLink="dashboard">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="treinos">Treinos</a>
-                </li>
-                <!-- <li class="nav-item">
+  <div class="container-fluid d-flex">
+    <a class="navbar-brand" href="#">Fitness Prime</a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="menu">
+        <ul class="navbar-nav d-flex">
+          <div class="d-flex ">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" routerLink="dashboard">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="treinos">Treinos</a>
+            </li>
+            <!-- <li class="nav-item">
                     <a class="nav-link" routerLink="pagamentos">Pagamentos</a>
                 </li> -->
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="perfil">Perfil</a>
-                </li>
-                <li class="nav-item">
-                    <a style="cursor: pointer;" class="nav-link" (click) = "loggout()">Sair</a>
-                </li>
-            </div>
-            </ul>
-        </div>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="perfil">Perfil</a>
+            </li>
+            <li class="nav-item">
+              <a style="cursor: pointer;" class="nav-link" (click)="loggout()">Sair</a>
+            </li>
+          </div>
+        </ul>
       </div>
     </div>
-  </nav>
+  </div>
+</nav>
 
-  <main>
-    <router-outlet></router-outlet>
-  </main>
+<main>
+  <router-outlet></router-outlet>
+</main>
+
+<!-- Mobile Bottom Navigation -->
+<nav class="navbar fixed-bottom navbar-dark bg-dark mobile-bottom-nav d-lg-none">
+  <div class="container-fluid justify-content-around">
+    <a class="nav-link text-white text-center" routerLink="dashboard" routerLinkActive="active-link">
+      <i class="bi bi-house fs-4"></i>
+      <div class="small">Home</div>
+    </a>
+    <a class="nav-link text-white text-center" routerLink="treinos" routerLinkActive="active-link">
+      <i class="fa-solid fa-dumbbell"></i>
+      <div class="small mt-1">Treinos</div>
+    </a>
+    <!-- <a class="nav-link text-white text-center" routerLink="pagamentos" routerLinkActive="active-link">
+        <i class="bi bi-cash-coin fs-4"></i>
+        <div class="small">Pagamentos</div>
+      </a> -->
+    <a class="nav-link text-white text-center" routerLink="perfil" routerLinkActive="active-link">
+      <i class="bi bi-person fs-4"></i>
+      <div class="small">Perfil</div>
+    </a>
+
+    <!-- Botão de Instalar App (PWA) -->
+    <a *ngIf="pwaService.showButton" class="nav-link text-warning text-center" style="cursor: pointer;"
+      (click)="installApp()">
+      <i class="bi bi-download fs-4"></i>
+      <div class="small">Instalar</div>
+    </a>
+
+    <a class="nav-link text-white text-center" style="cursor: pointer;" (click)="loggout()">
+      <i class="bi bi-box-arrow-right fs-4"></i>
+      <div class="small">Sair</div>
+    </a>
+  </div>
+</nav>

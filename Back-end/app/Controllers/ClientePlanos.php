@@ -91,10 +91,12 @@ class ClientePlanos extends BaseController
     {
         $id = $this->request->getJSON();
 
-        $dados = $this->clientesPlanosModel->select()
-            ->where('cliente_id', $id->id)
-            ->where('status', 'ativo')
+        $dados = $this->clientesPlanosModel
+            ->select('planos.*, cliente.nome as nome_cliente')
             ->join('planos', 'clientes_planos.plano_id = planos.id')
+            ->join('cliente', 'clientes_planos.cliente_id = cliente.id')
+            ->where('clientes_planos.cliente_id', $id->id)
+            ->where('clientes_planos.status', 'ativo')
             ->get();
 
         return $this->response->setJSON($dados->getResult())->setStatusCode(200);

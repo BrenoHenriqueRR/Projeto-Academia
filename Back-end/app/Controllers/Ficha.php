@@ -70,7 +70,7 @@ class Ficha extends BaseController
 
             if (!isset($data['ficha_id'])) {
                 return $this->response
-                    ->setStatusCode(400) // Bad Request
+                    ->setStatusCode(400)
                     ->setJSON(['error' => 'O ID da ficha é obrigatório para a atualização.']);
             }
 
@@ -123,17 +123,17 @@ class Ficha extends BaseController
         try {
             $id = $this->request->getJSON();
             $dados = $this->fichamodel
-                    ->select('fichas.id AS ficha_id,fichas.cliente_id, fichas.tipo, fichas.ordem, fichas.concluida,
+                ->select('fichas.id AS ficha_id,fichas.cliente_id, fichas.tipo, fichas.ordem, fichas.concluida,
                           ficha_exercicios.id AS ficha_exercicio_id, exercicios.nome AS exercicio,
                           grupos_musculares.nome AS grupo_muscular,
                           ficha_exercicios.repeticoes,
                           ficha_exercicios.series, ficha_exercicios.observacoes')
-                    ->join('ficha_exercicios', 'ficha_exercicios.ficha_id = fichas.id')
-                    ->join('exercicios', 'exercicios.id = ficha_exercicios.exercicio_id')
-                    ->join('grupos_musculares', 'grupos_musculares.id = exercicios.grupo_muscular_id')
-                    ->where('fichas.id', $id->id)
-                    ->orderBy('fichas.ordem', 'ASC')
-                    ->findAll();
+                ->join('ficha_exercicios', 'ficha_exercicios.ficha_id = fichas.id')
+                ->join('exercicios', 'exercicios.id = ficha_exercicios.exercicio_id')
+                ->join('grupos_musculares', 'grupos_musculares.id = exercicios.grupo_muscular_id')
+                ->where('fichas.id', $id->id)
+                ->orderBy('fichas.ordem', 'ASC')
+                ->findAll();
 
             return $this->response->setJSON($dados)->setStatusCode(200);
         } catch (Exception $e) {
@@ -141,19 +141,20 @@ class Ficha extends BaseController
         }
     }
 
-    public function pesquisarAtivas(){
-                $fichas = $this->fichamodel
-                ->select('fichas.*, clientes_planos.data_vencimento')
-                ->join('clientes_planos', 'clientes_planos.cliente_id = fichas.cliente_id')
-                ->where('fichas.status', 'ativa')
-                ->where('clientes_planos.data_vencimento >=', date('Y-m-d'))
-                ->findAll();
+    public function pesquisarAtivas()
+    {
+        $fichas = $this->fichamodel
+            ->select('fichas.*, clientes_planos.data_vencimento')
+            ->join('clientes_planos', 'clientes_planos.cliente_id = fichas.cliente_id')
+            ->where('fichas.status', 'ativa')
+            ->where('clientes_planos.data_vencimento >=', date('Y-m-d'))
+            ->findAll();
 
-           return $this->response->setJSON($fichas);
-        
+        return $this->response->setJSON($fichas);
     }
 
-    public function pesquisarPendentes(){
+    public function pesquisarPendentes()
+    {
         return $this->response->setJSON(['msg' => 'Ficha pesquisada com sucesso!']);
     }
 
@@ -163,7 +164,10 @@ class Ficha extends BaseController
             $clienteId = $this->request->getJSON();
 
             if (isset($clienteId->soficha)) {
-                $fichas = $this->fichamodel->select()->where('cliente_id', $clienteId->id)->get()->getResult();
+                $fichas = $this->fichamodel
+                    ->where('cliente_id', $clienteId->id)
+                    ->orderBy('ordem', 'ASC')
+                    ->findAll();
             } else {
                 $fichas = $this->fichamodel
                     ->select('fichas.id AS ficha_id, fichas.tipo, fichas.ordem, fichas.concluida,

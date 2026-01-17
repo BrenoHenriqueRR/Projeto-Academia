@@ -34,7 +34,7 @@ import { AnamneseComponent } from './components/admin/painel-admin/anamnese/anam
 import { CadAnamneseComponent } from './components/admin/painel-admin/anamnese/cad-anamnese/cad-anamnese.component';
 import { EditarAnamneseComponent } from './components/admin/painel-admin/anamnese/editar-anamnese/editar-anamnese.component';
 import { CliPagamentosComponent } from './components/admin/painel-admin/cli-pagamentos/cli-pagamentos.component';
-import { VerFichaComponent } from './components/admin/painel-admin/pn-treino/ver-fihca/ver-ficha.component';
+import { VerFichaComponent } from './components/admin/painel-admin/pn-treino/ver-ficha/ver-ficha.component';
 import { ListarComponent } from './components/admin/painel-admin/despesas/listar/listar.component';
 import { FormularioComponent } from './components/admin/painel-admin/despesas/formulario/formulario.component';
 import { ManualComponent } from './components/admin/painel-admin/manual/manual.component';

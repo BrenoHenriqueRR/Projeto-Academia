@@ -55,4 +55,29 @@ class Treino extends BaseController
 
         return $this->response->setJSON($data->getResult())->setStatusCode(200);
     }
+
+    public function cadexer()
+    {
+        try {
+            $data = $this->request->getJSON(true);
+
+            // Inserção no banco de dados
+            $this->exer->insert($data);
+
+            return $this->response
+                ->setStatusCode(ResponseInterface::HTTP_CREATED)
+                ->setJSON([
+                    'success' => true,
+                    'msg' => 'Exercício cadastrado com sucesso!'
+                ]);
+        } catch (\Exception $e) {
+            return $this->response
+                ->setStatusCode(ResponseInterface::HTTP_INTERNAL_SERVER_ERROR)
+                ->setJSON([
+                    'success' => false,
+                    'msg' => 'Ocorreu um erro! Tente novamente.',
+                    'error' => $e->getMessage()
+                ]);
+        }
+    }
 }

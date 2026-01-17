@@ -1,0 +1,255 @@
+ERROR - 2026-01-16 18:04:57 --> mysqli_sql_exception: Column 'status' in where clause is ambiguous in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\ClientePlanos.php(99): CodeIgniter\Model->__call('get', Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\ClientePlanos->pesquisarId()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientePlanos))
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2026-01-16 18:04:57 --> CodeIgniter\Database\Exceptions\DatabaseException: Column 'status' in where clause is ambiguous
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `clientes_planos`
+JOIN `planos` ON `clientes_planos`.`plano_id` = `planos`.`id`
+JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+WHERE `cliente_id` = :cliente_id:
+AND `status` = :status:', [...], false)
+ 2 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\ClientePlanos.php(99): CodeIgniter\Model->__call('get', [])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\ClientePlanos->pesquisarId()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientePlanos))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-01-16 18:04:57 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Column 'status' in where clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `clientes_planos`
+JOIN `planos` ON `clientes_planos`.`plano_id` = `planos`.`id`
+JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+WHERE `cliente_id` = \'1\'
+AND `status` = \'ativo\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `clientes_planos`
+JOIN `planos` ON `clientes_planos`.`plano_id` = `planos`.`id`
+JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+WHERE `cliente_id` = \'1\'
+AND `status` = \'ativo\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `clientes_planos`
+JOIN `planos` ON `clientes_planos`.`plano_id` = `planos`.`id`
+JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+WHERE `cliente_id` = :cliente_id:
+AND `status` = :status:', [...], false)
+ 4 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\ClientePlanos.php(99): CodeIgniter\Model->__call('get', [])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\ClientePlanos->pesquisarId()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientePlanos))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-01-16 18:04:57 --> [Caused by] mysqli_sql_exception: Column 'status' in where clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *
+FROM `clientes_planos`
+JOIN `planos` ON `clientes_planos`.`plano_id` = `planos`.`id`
+JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+WHERE `cliente_id` = \'1\'
+AND `status` = \'ativo\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `clientes_planos`
+JOIN `planos` ON `clientes_planos`.`plano_id` = `planos`.`id`
+JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+WHERE `cliente_id` = \'1\'
+AND `status` = \'ativo\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `clientes_planos`
+JOIN `planos` ON `clientes_planos`.`plano_id` = `planos`.`id`
+JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+WHERE `cliente_id` = \'1\'
+AND `status` = \'ativo\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `clientes_planos`
+JOIN `planos` ON `clientes_planos`.`plano_id` = `planos`.`id`
+JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+WHERE `cliente_id` = :cliente_id:
+AND `status` = :status:', [...], false)
+ 5 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\ClientePlanos.php(99): CodeIgniter\Model->__call('get', [])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\ClientePlanos->pesquisarId()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientePlanos))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2026-01-16 18:08:35 --> mysqli_sql_exception: Unknown table 'clientes_planos.planos' in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `cliente...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cliente...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cliente...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `cliente...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\ClientePlanos.php(99): CodeIgniter\Model->__call('get', Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\ClientePlanos->pesquisarId()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientePlanos))
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2026-01-16 18:08:35 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown table 'clientes_planos.planos'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `clientes_planos`.`planos`.*, `clientes_planos`.`cliente`.`nome`
+FROM `clientes_planos`
+JOIN `planos` ON `clientes_planos`.`plano_id` = `planos`.`id`
+JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+WHERE `cliente_id` = :cliente_id:
+AND `status` = :status:', [...], false)
+ 2 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\ClientePlanos.php(99): CodeIgniter\Model->__call('get', [])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\ClientePlanos->pesquisarId()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientePlanos))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-01-16 18:08:35 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown table 'clientes_planos.planos'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `clientes_planos`.`planos`.*, `clientes_planos`.`cliente`.`nome`
+FROM `clientes_planos`
+JOIN `planos` ON `clientes_planos`.`plano_id` = `planos`.`id`
+JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+WHERE `cliente_id` = \'1\'
+AND `status` = \'ativo\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `clientes_planos`.`planos`.*, `clientes_planos`.`cliente`.`nome`
+FROM `clientes_planos`
+JOIN `planos` ON `clientes_planos`.`plano_id` = `planos`.`id`
+JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+WHERE `cliente_id` = \'1\'
+AND `status` = \'ativo\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `clientes_planos`.`planos`.*, `clientes_planos`.`cliente`.`nome`
+FROM `clientes_planos`
+JOIN `planos` ON `clientes_planos`.`plano_id` = `planos`.`id`
+JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+WHERE `cliente_id` = :cliente_id:
+AND `status` = :status:', [...], false)
+ 4 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\ClientePlanos.php(99): CodeIgniter\Model->__call('get', [])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\ClientePlanos->pesquisarId()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientePlanos))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-01-16 18:08:35 --> [Caused by] mysqli_sql_exception: Unknown table 'clientes_planos.planos'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `clientes_planos`.`planos`.*, `clientes_planos`.`cliente`.`nome`
+FROM `clientes_planos`
+JOIN `planos` ON `clientes_planos`.`plano_id` = `planos`.`id`
+JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+WHERE `cliente_id` = \'1\'
+AND `status` = \'ativo\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `clientes_planos`.`planos`.*, `clientes_planos`.`cliente`.`nome`
+FROM `clientes_planos`
+JOIN `planos` ON `clientes_planos`.`plano_id` = `planos`.`id`
+JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+WHERE `cliente_id` = \'1\'
+AND `status` = \'ativo\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `clientes_planos`.`planos`.*, `clientes_planos`.`cliente`.`nome`
+FROM `clientes_planos`
+JOIN `planos` ON `clientes_planos`.`plano_id` = `planos`.`id`
+JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+WHERE `cliente_id` = \'1\'
+AND `status` = \'ativo\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `clientes_planos`.`planos`.*, `clientes_planos`.`cliente`.`nome`
+FROM `clientes_planos`
+JOIN `planos` ON `clientes_planos`.`plano_id` = `planos`.`id`
+JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+WHERE `cliente_id` = :cliente_id:
+AND `status` = :status:', [...], false)
+ 5 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\ClientePlanos.php(99): CodeIgniter\Model->__call('get', [])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\ClientePlanos->pesquisarId()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientePlanos))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+ERROR - 2026-01-16 18:10:06 --> mysqli_sql_exception: Column 'status' in where clause is ambiguous in C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `planos`...', 0)
+#1 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `planos`...')
+#2 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `planos`...')
+#3 C:\wamp64\www\sites\Projeto1\Back-end\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `planos`...', Array, false)
+#4 C:\wamp64\www\sites\Projeto1\Back-end\system\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\sites\Projeto1\Back-end\app\Controllers\ClientePlanos.php(100): CodeIgniter\Model->__call('get', Array)
+#6 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(941): App\Controllers\ClientePlanos->pesquisarId()
+#7 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientePlanos))
+#8 C:\wamp64\www\sites\Projeto1\Back-end\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\sites\Projeto1\Back-end\public\index.php(85): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2026-01-16 18:10:06 --> CodeIgniter\Database\Exceptions\DatabaseException: Column 'status' in where clause is ambiguous
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `planos`.*, `cliente`.`nome` as `nome_cliente`
+FROM `clientes_planos`
+JOIN `planos` ON `clientes_planos`.`plano_id` = `planos`.`id`
+JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+WHERE `cliente_id` = :cliente_id:
+AND `status` = :status:', [...], false)
+ 2 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\ClientePlanos.php(100): CodeIgniter\Model->__call('get', [])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\ClientePlanos->pesquisarId()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientePlanos))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-01-16 18:10:06 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Column 'status' in where clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `planos`.*, `cliente`.`nome` as `nome_cliente`
+FROM `clientes_planos`
+JOIN `planos` ON `clientes_planos`.`plano_id` = `planos`.`id`
+JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+WHERE `cliente_id` = \'1\'
+AND `status` = \'ativo\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `planos`.*, `cliente`.`nome` as `nome_cliente`
+FROM `clientes_planos`
+JOIN `planos` ON `clientes_planos`.`plano_id` = `planos`.`id`
+JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+WHERE `cliente_id` = \'1\'
+AND `status` = \'ativo\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `planos`.*, `cliente`.`nome` as `nome_cliente`
+FROM `clientes_planos`
+JOIN `planos` ON `clientes_planos`.`plano_id` = `planos`.`id`
+JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+WHERE `cliente_id` = :cliente_id:
+AND `status` = :status:', [...], false)
+ 4 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\ClientePlanos.php(100): CodeIgniter\Model->__call('get', [])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\ClientePlanos->pesquisarId()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientePlanos))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-01-16 18:10:06 --> [Caused by] mysqli_sql_exception: Column 'status' in where clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `planos`.*, `cliente`.`nome` as `nome_cliente`
+FROM `clientes_planos`
+JOIN `planos` ON `clientes_planos`.`plano_id` = `planos`.`id`
+JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+WHERE `cliente_id` = \'1\'
+AND `status` = \'ativo\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `planos`.*, `cliente`.`nome` as `nome_cliente`
+FROM `clientes_planos`
+JOIN `planos` ON `clientes_planos`.`plano_id` = `planos`.`id`
+JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+WHERE `cliente_id` = \'1\'
+AND `status` = \'ativo\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `planos`.*, `cliente`.`nome` as `nome_cliente`
+FROM `clientes_planos`
+JOIN `planos` ON `clientes_planos`.`plano_id` = `planos`.`id`
+JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+WHERE `cliente_id` = \'1\'
+AND `status` = \'ativo\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `planos`.*, `cliente`.`nome` as `nome_cliente`
+FROM `clientes_planos`
+JOIN `planos` ON `clientes_planos`.`plano_id` = `planos`.`id`
+JOIN `cliente` ON `clientes_planos`.`cliente_id` = `cliente`.`id`
+WHERE `cliente_id` = :cliente_id:
+AND `status` = :status:', [...], false)
+ 5 SYSTEMPATH\Model.php(872): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\ClientePlanos.php(100): CodeIgniter\Model->__call('get', [])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\ClientePlanos->pesquisarId()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClientePlanos))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AnamneseService } from '../../../../../services/admin/anamnese/anamnese.service';
@@ -7,15 +7,17 @@ import { PnClienteService } from '../../../../../services/admin/pn-cliente/pn-cl
 import { CadTreinoService } from '../../../../../services/cad-treino/cad-treino.service';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../../../../../modules/material.module';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-editar-ficha',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink, CommonModule, MaterialModule],
+  imports: [ReactiveFormsModule, FormsModule, RouterLink, CommonModule, MaterialModule],
   templateUrl: './editar-ficha.component.html',
   styleUrl: './editar-ficha.component.css'
 })
 export class EditarFichaComponent {
+
   formFicha!: FormGroup;
   formExercicio!: FormGroup;
   cliente_id: any;
@@ -27,6 +29,12 @@ export class EditarFichaComponent {
   exerciciosFiltrados: any[] = [];
   listaExercicios: any[] = [];
   anamneseCliente: any;
+  exercicioDigitado = '';
+  mostrarCriarExercicio = false;
+  novoExercicio = {
+    nome: '',
+    grupo_muscular_id: ''
+  };
 
   constructor(
     private fb: FormBuilder,
@@ -67,9 +75,7 @@ export class EditarFichaComponent {
       this.gruposMusculares = data;
     });
 
-    this.service.pexer().subscribe(data => {
-      this.todosExercicios = data;
-    });
+    this.carregarExercicios();
 
     // Se temos um ID de ficha, buscamos os dados para preencher o formulário
     if (this.ficha_id) {
@@ -77,11 +83,18 @@ export class EditarFichaComponent {
     }
   }
 
+  carregarExercicios(){
+    this.service.pexer().subscribe(data => {
+      this.todosExercicios = data;
+    });
+  }
+
   carregarDadosFicha(): void {
     this.service.pesquisarFicha(JSON.stringify({ id: this.ficha_id })).subscribe({
       next: (dadosDaApi) => {
         // 'dadosDaApi' é a lista de exercícios com dados da ficha repetidos
         if (dadosDaApi && dadosDaApi.length > 0) {
+          // console.log(dadosDaApi);
 
           // 1. Pegamos os dados da Ficha do primeiro registro
           const primeiroItem = dadosDaApi[0];
@@ -124,7 +137,10 @@ export class EditarFichaComponent {
 
   carregarDadosCliente(): void {
     this.clienteservice.pesquisarIdPlano(JSON.stringify({ id: this.cliente_id })).subscribe({
-      next: (dados) => this.planoCliente = dados,
+      next: (dados) => {
+        this.planoCliente = dados
+        console.log(dados)
+      },
       error: (err) => console.log("Cliente sem plano")
     });
 
@@ -157,7 +173,15 @@ export class EditarFichaComponent {
   }
 
   adicionarExercicio(): void {
-    if (this.formExercicio.invalid) return;
+    if (this.formExercicio.invalid){
+     Swal.fire({
+      title: 'Error',
+      text: 'Exercicio nao cadastrado, Faça o seu cadastro no sistema',
+      confirmButtonColor: '#ff0000',
+      
+     }) 
+     return;
+    }
 
     const exForm = this.formExercicio.value;
     const exercicio = this.todosExercicios.find(e => e.id == exForm.exercicio);
@@ -185,10 +209,50 @@ export class EditarFichaComponent {
     this.listaExercicios.splice(index, 1);
   }
 
+  selecionarExercicio(exercicio: any): void {
+    this.formExercicio.patchValue({
+      exercicio: exercicio.id,
+      grupoMuscular: exercicio.grupo_muscular_id
+    });
+
+    this.exercicioDigitado = exercicio.nome;
+    this.exerciciosFiltrados = [];
+    this.mostrarCriarExercicio = false;
+  }
+
+  filtrarExerciciosPorNome(): void {
+    const texto = this.exercicioDigitado?.toLowerCase() || '';
+    const grupoId = this.formExercicio.value.grupoMuscular;
+
+    this.exerciciosFiltrados = this.todosExercicios.filter(e =>
+      (!grupoId || e.grupo_muscular_id == grupoId) &&
+      e.nome.toLowerCase().includes(texto)
+    );
+
+    this.mostrarCriarExercicio =
+      texto.length > 2 &&
+      !this.todosExercicios.some(e => e.nome.toLowerCase() === texto);
+  }
+
+  onExercicioInput(event: Event): void {
+    const input = event.target as HTMLInputElement | null;
+    if (!input) return;
+
+    this.exercicioDigitado = input.value;
+    this.filtrarExerciciosPorNome();
+  }
+
   abrirModalAnamnese() {
     const modal = new (window as any).bootstrap.Modal(document.getElementById('modalAnamnese'));
     modal.show();
   }
+
+  abrirModalCriarExercicio() {
+    this.novoExercicio.nome = this.exercicioDigitado;
+    const modal = new (window as any).bootstrap.Modal(document.getElementById('modalExer'));
+    modal.show();
+  }
+
   atualizarFicha(): void {
     if (this.formFicha.invalid || this.listaExercicios.length === 0) {
       this.alertas.warning('Preencha todos os dados da ficha e adicione pelo menos um exercício.');
@@ -215,5 +279,37 @@ export class EditarFichaComponent {
         console.error(er);
       }
     });
+  }
+
+  salvarExercicio() {
+    let novoExer = JSON.stringify(this.novoExercicio);
+     const modalEl = document.getElementById('modalExer');
+  if (!modalEl) return;
+    console.log(novoExer);
+    this.service.cadexer(novoExer).subscribe({
+      next: (msg) => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Sucesso!',
+          text: msg.msg,
+          confirmButtonColor: '#009e15',
+        });
+        this.carregarExercicios();
+        
+       const modal = (window as any).bootstrap.Modal.getInstance(modalEl);
+      modal?.hide();
+
+      }, error: (er) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Erro!',
+          text: er.msg,
+          confirmButtonColor: '#007bff',
+        });
+         const modal = (window as any).bootstrap.Modal.getInstance(modalEl);
+      modal?.hide();
+      }
+    })
+    this.novoExercicio = {'nome' : '', 'grupo_muscular_id' : ''};
   }
 }

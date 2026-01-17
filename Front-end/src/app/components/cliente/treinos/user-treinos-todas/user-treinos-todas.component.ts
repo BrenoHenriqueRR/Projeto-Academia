@@ -29,6 +29,7 @@ export class UserTreinosTodasComponent {
         this.fichaservice.pesquisarFichaId(JSON.stringify({ id: idCliente, soficha: true })).subscribe({
             next: (dados: any) => {
                 this.todasFichas = dados;
+                console.log(this.todasFichas)
                 this.loading = false;
             },
             error: (err) => {

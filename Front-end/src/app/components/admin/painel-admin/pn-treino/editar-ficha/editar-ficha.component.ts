@@ -8,6 +8,7 @@ import { CadTreinoService } from '../../../../../services/cad-treino/cad-treino.
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../../../../../modules/material.module';
 import Swal from 'sweetalert2';
+import { error } from 'jquery';
 
 @Component({
   selector: 'app-editar-ficha',
@@ -106,9 +107,8 @@ export class EditarFichaComponent {
 
           // 2. Transformamos a lista "plana" na lista de exercícios que o componente precisa
           this.listaExercicios = dadosDaApi.map((item: any) => {
-
             return {
-              exercicio_id: item.exercicio_id,
+              exercicio_id: item.ficha_exercicio_id,
               exercicio_nome: item.exercicio,
               grupo_id: item.grupo_id,
               grupo_nome: item.grupo_muscular,
@@ -188,7 +188,6 @@ export class EditarFichaComponent {
     const grupo = this.gruposMusculares.find(g => g.id == exForm.grupoMuscular);
 
     if (!exercicio || !grupo) return;
-
     const item = {
       exercicio_id: exercicio.id,
       exercicio_nome: exercicio.nome,
@@ -268,17 +267,17 @@ export class EditarFichaComponent {
 
     console.log(JSON.stringify(fichaAtualizada));
 
-    // NOVO: Chamar o método de update no serviço
-    this.service.updateFicha(JSON.stringify(fichaAtualizada)).subscribe({
-      next: (dados) => {
-        this.alertas.success(dados.msg || 'Ficha atualizada com sucesso!');
-        this.router.navigate(['admin/painel/treinos']);
-      },
-      error: (er) => {
-        this.alertas.error('Erro ao atualizar a ficha.');
-        console.error(er);
-      }
-    });
+    // // NOVO: Chamar o método de update no serviço
+    // this.service.updateFicha(JSON.stringify(fichaAtualizada)).subscribe({
+    //   next: (dados) => {
+    //     this.alertas.success(dados.msg || 'Ficha atualizada com sucesso!');
+    //     this.router.navigate(['admin/painel/treinos']);
+    //   },
+    //   error: (er) => {
+    //     this.alertas.error('Erro ao atualizar a ficha.');
+    //     console.error(er);
+    //   }
+    // });
   }
 
   salvarExercicio() {

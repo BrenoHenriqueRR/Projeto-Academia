@@ -1,0 +1,30 @@
+CRITICAL - 2026-01-22 19:31:08 --> ErrorException: Array to string conversion
+in APPPATH\Controllers\Ficha.php on line 69.
+ 1 APPPATH\Controllers\Ficha.php(69): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Ficha.php', 69)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->update()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-01-22 19:31:37 --> ParseError: syntax error, unexpected token ";", expecting ")"
+in APPPATH\Controllers\Ficha.php on line 69.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(290): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Ficha.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Ficha')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Ficha')
+ 4 SYSTEMPATH\CodeIgniter.php(899): class_exists('\\App\\Controllers\\Ficha', true)
+ 5 SYSTEMPATH\CodeIgniter.php(489): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-01-22 19:31:49 --> ErrorException: Array to string conversion
+in APPPATH\Controllers\Ficha.php on line 69.
+ 1 APPPATH\Controllers\Ficha.php(69): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Ficha.php', 69)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->update()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-01-22 19:32:07 --> ErrorException: Array to string conversion
+in APPPATH\Controllers\Ficha.php on line 70.
+ 1 APPPATH\Controllers\Ficha.php(70): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\wamp64\\www\\sites\\Projeto1\\Back-end\\app\\Controllers\\Ficha.php', 70)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Ficha->update()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Ficha))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(85): CodeIgniter\CodeIgniter->run()

@@ -65,6 +65,7 @@ class Ficha extends BaseController
 
     public function update()
     {
+        $data = $this->request->getJSON(true);
         try {
             $data = $this->request->getJSON(true);
 

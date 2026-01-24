@@ -1,12 +1,120 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>sayuri</title>
+<style>
+    /* Estilo Base (Dark Mode) */
+    .nutrition-card {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #1e1e24; /* Cinza escuro moderno */
+        color: #fff;
+        width: 100%;
+        max-width: 400px;
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    /* Cabeçalho do Alimento */
+    .food-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #333;
+        padding-bottom: 15px;
+    }
+
+    .food-name {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #f0f0f0;
+        margin: 0;
+    }
+
+    .food-qty {
+        font-size: 0.9rem;
+        color: #888;
+        background: #2b2b36;
+        padding: 4px 10px;
+        border-radius: 20px;
+    }
+
+    /* Grid dos Macros */
+    .macros-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 12px;
+        text-align: center;
+    }
+
+    .macro-item {
+        background: #2b2b36;
+        padding: 12px;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: transform 0.2s;
+    }
+    
+    .macro-item:hover {
+        transform: translateY(-3px);
+    }
+
+    /* Cores Específicas para cada nutriente */
+    .label { font-size: 0.75rem; color: #aaa; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1px;}
+    .value { font-size: 1.1rem; font-weight: 700; }
+    
+    .prot .value { color: #00e676; } /* Verde Neon para Proteína */
+    .carb .value { color: #29b6f6; } /* Azul para Carbo */
+    .fat  .value { color: #ff5252; } /* Vermelho Suave para Gordura */
+
+    /* Círculo de Calorias (Destaque Central) */
+    .calories-section {
+        margin-top: 20px;
+        text-align: center;
+        background: linear-gradient(135deg, #2b2b36 0%, #1e1e24 100%);
+        padding: 15px;
+        border-radius: 12px;
+        border: 1px solid #333;
+    }
+
+    .cal-title { font-size: 0.8rem; color: #888; }
+    .cal-value { font-size: 2rem; font-weight: 800; color: #fff; }
+    .cal-unit { font-size: 1rem; color: #666; font-weight: 400; }
+
+</style>
 </head>
 <body>
-    <h1>eu amo a nene</h1>
-    but
+
+    <div class="nutrition-card">
+        
+        <div class="food-header">
+            <h3 class="food-name">Peito de Frango</h3>
+            <span class="food-qty">150g</span>
+        </div>
+
+        <div class="macros-grid">
+            <div class="macro-item prot">
+                <span class="label">Prot</span>
+                <span class="value">46.5g</span>
+            </div>
+            <div class="macro-item carb">
+                <span class="label">Carb</span>
+                <span class="value">0g</span>
+            </div>
+            <div class="macro-item fat">
+                <span class="label">Gord</span>
+                <span class="value">5.4g</span>
+            </div>
+        </div>
+
+        <div class="calories-section">
+            <div class="cal-title">TOTAL CALÓRICO</div>
+            <div class="cal-value">247 <span class="cal-unit">kcal</span></div>
+        </div>
+
+    </div>
+
 </body>
 </html>

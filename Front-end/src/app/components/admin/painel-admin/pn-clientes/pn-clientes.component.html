@@ -81,25 +81,34 @@
                         <td>{{dados.nome_personal}}</td>
                         <td clas>
                             @if(func == 'personal'){
-                            <button class="pn-button" routerLink="treinos" [queryParams]="{ id: dados.id}">Cadastrar
+                            <button class="pn-button" [routerLink]="['/admin/painel/treinos/editar-fichas']"
+                                [queryParams]="{ cliente_id: dados.id}">Cadastrar
                                 Treinos</button>
                             }@else {
-                            <button class="pn-button btn-outline-primary" title="Editar" matTooltip="Editar o cliente selecionado" routerLink="editar"
+                            <button class="pn-button btn-outline-primary" title="Editar"
+                                matTooltip="Editar o cliente selecionado" routerLink="editar"
                                 [queryParams]="{ id: dados.id}"><i class="fas fa-edit"></i></button>
-                            <button class="pn-button btn-excluir"  matTooltip="Exclui o cliente do sistema após confirmação." title="Excluir" (click)="openmodal(dados.id)">
+                            <button class="pn-button btn-excluir"
+                                matTooltip="Exclui o cliente do sistema após confirmação." title="Excluir"
+                                (click)="openmodal(dados.id)">
                                 <i class="fas fa-trash"></i>
                             </button>
                             @if(func == 'Administrador'){
-                            <button class="btn-treino" routerLink="treinos" [queryParams]="{ id: dados.id}">Cad
+                            <button class="btn-treino" [routerLink]="['/admin/painel/treinos/editar-fichas']"
+                                [queryParams]="{ cliente_id: dados.id}">Cad
                                 Treinos</button>
                             }
                             <app-modal-confirmar (confirm)="validarmodal($event)"></app-modal-confirmar>
-                            <button type="button"  matTooltip="Exibe todo o histórico do cliente: treinos, pagamentos, presença..." title="Historico" class="pn-button" (click)="openmodalH(dados.id)"
+                            <button type="button"
+                                matTooltip="Exibe todo o histórico do cliente: treinos, pagamentos, presença..."
+                                title="Historico" class="pn-button" (click)="openmodalH(dados.id)"
                                 data-bs-toggle="modal" data-bs-target="#exibirModal"><i
                                     class="fas fa-history"></i></button>
 
                             <app-modal-exibir #modalH></app-modal-exibir>
-                            <button type="button" class="pn-button" title="Relatorios"  matTooltip="Abre relatórios detalhados deste cliente." (click)="abrirModalRelatorios('relatorioClienteid', dados.id)">
+                            <button type="button" class="pn-button" title="Relatorios"
+                                matTooltip="Abre relatórios detalhados deste cliente."
+                                (click)="abrirModalRelatorios('relatorioClienteid', dados.id)">
                                 <i class="fa-solid fa-chart-line mx-2"></i>
                             </button>
                             }

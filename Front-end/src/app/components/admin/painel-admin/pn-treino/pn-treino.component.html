@@ -5,15 +5,16 @@
 <div class="p-4">
     <div class="d-flex align-items-center gap-2 mb-3">
         <h1 class="hi-treino mb-0">Fichas de Treino</h1>
-        <i class="fa-regular fa-circle-question help-icon fs-4" 
-           matTooltip="Gerencie as prescrições de exercícios dos alunos. Visualize quem já possui ficha ativa ou crie novas rotinas."></i>
+        <i class="fa-regular fa-circle-question help-icon fs-4"
+            matTooltip="Gerencie as prescrições de exercícios dos alunos. Visualize quem já possui ficha ativa ou crie novas rotinas."></i>
     </div>
 
-    
+
 
     <div class="alert alert-info mb-4">
         <i class="fa-solid fa-circle-info me-2"></i>
-        Utilize a barra de busca para encontrar um cliente. Aqui você pode ver quem já possui ficha cadastrada ou criar uma nova.
+        Utilize a barra de busca para encontrar um cliente. Aqui você pode ver quem já possui ficha cadastrada ou criar
+        uma nova.
     </div>
 
     <div class="my-3">
@@ -26,8 +27,8 @@
                     </span>
                     <input type="text" class="form-control" placeholder="Buscar por nome, email ou status...">
                 </div>
-                <i class="fa-regular fa-circle-question help-icon ms-2" 
-                   matTooltip="Pesquise pelo nome do aluno para verificar rapidamente a situação da ficha de treino dele."></i>
+                <i class="fa-regular fa-circle-question help-icon ms-2"
+                    matTooltip="Pesquise pelo nome do aluno para verificar rapidamente a situação da ficha de treino dele."></i>
             </div>
 
             <div class="d-flex align-items-center gap-2 ms-auto">
@@ -36,22 +37,22 @@
                         <i class="fa-solid fa-file-export"></i>
                         Exportar
                     </button>
-                    <i class="fa-regular fa-circle-question help-icon ms-2" 
-                       matTooltip="Baixa um relatório em Excel/PDF com a lista atual de fichas."></i>
-                </div> 
+                    <i class="fa-regular fa-circle-question help-icon ms-2"
+                        matTooltip="Baixa um relatório em Excel/PDF com a lista atual de fichas."></i>
+                </div>
 
                 <div class="d-flex align-items-center">
                     <button class="btn btn-primary d-flex align-items-center gap-2" onclick="openModal()">
                         <i class="fa-solid fa-plus"></i>
                         Nova Ficha
                     </button>
-                    <i class="fa-regular fa-circle-question help-icon ms-2" 
-                       matTooltip="Inicia o processo de criação de uma nova ficha de treino do zero."></i>
+                    <i class="fa-regular fa-circle-question help-icon ms-2"
+                        matTooltip="Inicia o processo de criação de uma nova ficha de treino do zero."></i>
                 </div>
             </div>
         </div>
 
-         <div class="mt-3 d-flex align-items-center gap-2">
+        <div class="mt-3 d-flex align-items-center gap-2">
             <div class="btn-group" role="group">
                 <button type="button" class="btn btn-outline-primary active">Todos</button>
                 <button type="button" class="btn btn-outline-primary">Fichas Ativas</button>
@@ -59,8 +60,8 @@
                 <button type="button" class="btn btn-outline-primary">Cadastrados Hoje</button>
                 <button type="button" class="btn btn-outline-primary">Vencimento Próximo</button>
             </div>
-            <i class="fa-regular fa-circle-question help-icon" 
-               matTooltip="Filtre a lista para focar em grupos específicos de alunos, como os que precisam renovar o treino."></i>
+            <i class="fa-regular fa-circle-question help-icon"
+                matTooltip="Filtre a lista para focar em grupos específicos de alunos, como os que precisam renovar o treino."></i>
         </div>
     </div>
 
@@ -71,13 +72,13 @@
                 <th>Email</th>
                 <th>
                     Status da Ficha
-                    <i class="fa-regular fa-circle-question help-icon ms-1 text-white" 
-                       matTooltip="Indica se o aluno já tem um treino vinculado ao perfil dele."></i>
+                    <i class="fa-regular fa-circle-question help-icon ms-1 text-white"
+                        matTooltip="Indica se o aluno já tem um treino vinculado ao perfil dele."></i>
                 </th>
                 <th>
                     Ações
-                    <i class="fa-regular fa-circle-question help-icon ms-1 text-white" 
-                       matTooltip="Opções de gerenciamento da ficha."></i>
+                    <i class="fa-regular fa-circle-question help-icon ms-1 text-white"
+                        matTooltip="Opções de gerenciamento da ficha."></i>
                 </th>
             </tr>
         </thead>
@@ -103,15 +104,14 @@
                         Ver Fichas
                     </button>
 
-                    <button class="btn btn-secondary btn-sm me-2" [routerLink]="['cad-ficha']"
-                        [queryParams]="{ id: cliente.id }"
-                        matTooltip="Alterar exercícios ou atualizar a ficha existente.">
-                        Editar Treino
+                    <button class="btn btn-secondary btn-sm me-2" [routerLink]="['ver-fichas']"
+                        [queryParams]="{ id: cliente.id }" matTooltip="Gerenciar fichas do aluno.">
+                        Gerenciar
                     </button>
                     }
 
-                    <button *ngIf="!cliente.temFicha" class="btn btn-success btn-sm" [routerLink]="['cad-ficha']"
-                        [queryParams]="{ id: cliente.id }"
+                    <button *ngIf="!cliente.temFicha" class="btn btn-success btn-sm" [routerLink]="['editar-fichas']"
+                        [queryParams]="{ cliente_id: cliente.id }"
                         matTooltip="O aluno está sem treino. Clique para criar a primeira ficha.">
                         Cadastrar Ficha
                     </button>
@@ -125,9 +125,8 @@
         <pagination-controls class="pagination" (pageChange)="paginaAtual = $event" previousLabel="Anterior"
             nextLabel="Próximo">
         </pagination-controls>
-        
-        <i class="fa-regular fa-circle-question help-icon" 
-           matTooltip="Navegue entre as páginas de resultados."></i>
+
+        <i class="fa-regular fa-circle-question help-icon" matTooltip="Navegue entre as páginas de resultados."></i>
     </div>
-    
+
 </div>

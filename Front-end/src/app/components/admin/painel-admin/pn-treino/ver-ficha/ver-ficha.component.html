@@ -2,68 +2,96 @@
 <app-modal-spinner></app-modal-spinner>
 }
 
-<div class="d-flex align-items-center justify-content-between mb-4">
-    <div class="d-flex align-items-center gap-2">
-        <h1 class="mb-0">Ficha Cliente: {{cliente_id}}</h1>
-        <i class="fa-regular fa-circle-question help-icon fs-4" 
-           matTooltip="Visualize abaixo todas as fichas de treino ativas (A, B, C...) atribuídas a este aluno."></i>
-    </div>
+<div class="container-fluid p-4">
 
-    <div class="d-flex align-items-center">
-        <button class="btn btn-danger" (click)="gerarPdf()">
-            <i class="fa-solid fa-file-pdf me-2"></i>Gerar PDF
+    <!-- Header Section -->
+    <div
+        class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-5 bg-white p-4 rounded shadow-sm border">
+        <div class="d-flex align-items-center mb-3 mb-md-0">
+            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3 shadow"
+                style="width: 50px; height: 50px;">
+                <i class="bi bi-person-lines-fill fs-4"></i>
+            </div>
+            <div>
+                <h2 class="fw-bold mb-0 text-dark">Treinos do Aluno</h2>
+                <small class="text-muted">ID Cliente: <strong>{{cliente_id}}</strong></small>
+            </div>
+        </div>
+
+        <button class="btn btn-outline-danger shadow-sm fw-bold px-4 py-2" (click)="gerarPdf()">
+            <i class="bi bi-file-earmark-pdf-fill me-2"></i> Baixar PDF Completo
         </button>
-        <i class="fa-regular fa-circle-question help-icon ms-2" 
-           matTooltip="Baixa um arquivo PDF formatado contendo todas as fichas abaixo, pronto para impressão ou envio."></i>
-    </div>
-</div>
-
-<div *ngFor="let ficha of fichasComExercicios" class="card my-4 shadow-sm">
-    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
-
-        <div class="d-flex align-items-center">
-            <span class="fw-bold fs-5"> Ficha {{ ficha.tipo_treino }} - Ordem {{ ficha.ordem }} </span>
-            <i class="fa-regular fa-circle-question help-icon ms-2 text-white" 
-               matTooltip="Tipo de treino (ex: A, B, C) e a ordem recomendada para execução."></i>
-        </div>
-
-        <div class="d-flex align-items-center">
-            <a [routerLink]="['/admin/painel/treinos/editar-fichas']" [queryParams]="{ id: ficha.ficha_id }"
-                class="btn btn-sm btn-warning me-2 d-flex align-items-center" matTooltip="Clique para alterar os exercícios, séries ou repetições desta ficha específica.">
-                <i class="bi bi-pencil-fill me-1"></i> Editar
-            </a>
-
-            <!-- <button class="btn btn-sm btn-danger" (click)="excluirFicha(ficha.id)">
-        <i class="bi bi-trash-fill"></i> Excluir
-      </button> -->
-        </div>
-
     </div>
 
-    <div class="card-body p-0">
-        <table class="table table-striped mb-0">
-            <thead class="table-light">
-                <tr>
-                    <th>Exercício</th>
-                    <th>Grupo</th>
-                    <th>Séries</th>
-                    <th>Repetições</th>
-                    <th>
-                        Observações
-                        <i class="fa-regular fa-circle-question help-icon ms-1" style="font-size: 0.8rem;"
-                           matTooltip="Instruções específicas de execução (ex: 'Drop-set', 'Isometria 5s')."></i>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let ex of ficha.exercicios">
-                    <td>{{ ex.nome }}</td>
-                    <td>{{ ex.grupo }}</td>
-                    <td>{{ ex.series }}</td>
-                    <td>{{ ex.repeticoes }}</td>
-                    <td>{{ ex.obs || '-' }}</td>
-                </tr>
-            </tbody>
-        </table>
+    <!-- Empty State -->
+    <div *ngIf="fichasComExercicios.length === 0 && !isLoading" class="text-center py-5">
+        <div class="mb-3">
+            <i class="bi bi-clipboard-x display-1 text-muted opacity-25"></i>
+        </div>
+        <h4 class="text-muted fw-bold">Nenhuma ficha de treino encontrada.</h4>
+        <p class="text-secondary">Cadastre uma nova ficha para este aluno começar a treinar.</p>
+        <button class="btn btn-success mt-3 shadow" [routerLink]="['/admin/painel/treinos/editar-fichas']"
+            [queryParams]="{ cliente_id: cliente_id }">
+            <i class="bi bi-plus-lg me-2"></i> Criar Primeira Ficha
+        </button>
+    </div>
+
+    <!-- List of Fichas -->
+    <div class="row g-4">
+        <div *ngFor="let ficha of fichasComExercicios" class="col-12 col-xl-6">
+            <div class="card border-0 shadow-sm h-100 overflow-hidden ficha-card">
+
+                <!-- Card Header -->
+                <div class="card-header bg-white border-bottom p-4 d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center">
+                        <span class="badge bg-primary fs-4 px-3 py-2 me-3 shadow-sm rounded-pill">
+                            {{ ficha.tipo_treino }}
+                        </span>
+                        <div>
+                            <h5 class="mb-0 fw-bold text-dark">Ficha de Treino {{ ficha.tipo_treino }}</h5>
+                            <small class="text-muted">Ordem de execução: <strong>#{{ ficha.ordem }}</strong></small>
+                        </div>
+                    </div>
+
+                    <a [routerLink]="['/admin/painel/treinos/editar-fichas']" [queryParams]="{ id: ficha.ficha_id }"
+                        class="btn btn-light text-primary border shadow-sm fw-bold btn-hover-effect">
+                        <i class="bi bi-pencil-square me-2"></i> Editar
+                    </a>
+                </div>
+
+                <!-- Card Body (Table) -->
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="bg-light text-secondary small text-uppercase">
+                                <tr>
+                                    <th class="ps-4 py-3 border-0">Exercício</th>
+                                    <th class="py-3 border-0">Grupo</th>
+                                    <th class="text-center py-3 border-0">Séries</th>
+                                    <th class="text-center py-3 border-0">Reps</th>
+                                    <th class="py-3 border-0">Obs</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let ex of ficha.exercicios">
+                                    <td class="ps-4 fw-bold text-dark">{{ ex.nome }}</td>
+                                    <td><span class="badge bg-secondary bg-opacity-10 text-secondary border">{{ ex.grupo
+                                            }}</span></td>
+                                    <td class="text-center fw-bold text-primary">{{ ex.series }}</td>
+                                    <td class="text-center fw-bold">{{ ex.repeticoes }}</td>
+                                    <td class="text-muted small fst-italic">{{ ex.obs || '' }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Card Footer (Stats or Info could go here) -->
+                <div class="card-footer bg-light p-3 border-top text-end">
+                    <small class="text-muted">{{ ficha.exercicios.length }} exercícios nesta ficha</small>
+                </div>
+
+            </div>
+        </div>
     </div>
 </div>

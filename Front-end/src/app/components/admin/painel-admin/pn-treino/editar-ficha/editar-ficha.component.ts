@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -8,34 +8,57 @@ import { CadTreinoService } from '../../../../../services/cad-treino/cad-treino.
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../../../../../modules/material.module';
 import Swal from 'sweetalert2';
-import { error } from 'jquery';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { Observable, startWith, map } from 'rxjs';
 
 @Component({
   selector: 'app-editar-ficha',
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule, RouterLink, CommonModule, MaterialModule],
+  imports: [
+    ReactiveFormsModule,
+    FormsModule,
+    RouterLink,
+    CommonModule,
+    MaterialModule,
+    MatAutocompleteModule,
+    MatInputModule,
+    MatFormFieldModule
+  ],
   templateUrl: './editar-ficha.component.html',
   styleUrl: './editar-ficha.component.css'
 })
-export class EditarFichaComponent {
+export class EditarFichaComponent implements OnInit {
 
   formFicha!: FormGroup;
   formExercicio!: FormGroup;
+
+  // IDs
   cliente_id: any;
-  ficha_id: any; // NOVO: para guardar o ID da ficha que estamos editando
+  ficha_id: any; // Se existir, é edição. Se não, é criação (mas precisa de cliente_id).
+
+  // Dados Auxiliares
   planoCliente: any;
   fichasCliente!: any;
   gruposMusculares: any[] = [];
   todosExercicios: any[] = [];
-  exerciciosFiltrados: any[] = [];
+
+  // Autocomplete
+  exerciciosFiltrados!: Observable<any[]>;
+
+  // Lista Local da Ficha
   listaExercicios: any[] = [];
+
+  // Outros
   anamneseCliente: any;
   exercicioDigitado = '';
-  mostrarCriarExercicio = false;
   novoExercicio = {
     nome: '',
     grupo_muscular_id: ''
   };
+
+  isEditMode = false;
 
   constructor(
     private fb: FormBuilder,
@@ -48,64 +71,95 @@ export class EditarFichaComponent {
   ) { }
 
   ngOnInit(): void {
-    // ALTERADO: Lógica para buscar dados da ficha para edição
-    this.route.queryParams.subscribe(params => {
-      const fichaId = params['id'];
-      if (fichaId) {
-        this.ficha_id = fichaId;
-      }
-    });
-    console.log(this.ficha_id);
-
-    // Inicializa os formulários primeiro
+    // 1. Inicializar Forms
     this.formFicha = this.fb.group({
       tipo: ['', Validators.required],
       ordem: ['', Validators.required]
     });
 
     this.formExercicio = this.fb.group({
-      grupoMuscular: ['', Validators.required],
-      exercicio: ['', Validators.required],
+      grupoMuscular: [''], // Opcional, serve mais para filtro visual se quisesse
+      exercicioObj: ['', Validators.required], // Vai guardar o objeto inteiro do exercício selecionado
       series: ['', Validators.required],
       repeticoes: ['', Validators.required],
       observacoes: ['']
     });
 
-    // Carrega os dados auxiliares (grupos e exercícios)
+    // 2. Carregar QueryParams
+    this.route.queryParams.subscribe(params => {
+      this.ficha_id = params['id'];   // Para Edição
+      this.cliente_id = params['cliente_id']; // Para Criação (novo)
+
+      // Se tem ficha_id, estamos EDITANDO
+      if (this.ficha_id) {
+        this.isEditMode = true;
+        this.carregarDadosFicha();
+      }
+      // Se não tem ficha_id, mas tem cliente_id, estamos CRIANDO
+      else if (this.cliente_id) {
+        this.isEditMode = false;
+        this.carregarDadosCliente(); // Apenas carrega dados do cliente para exibição
+      }
+      else {
+        this.alertas.error("Nenhum cliente ou ficha identificado.");
+        this.router.navigate(['admin/painel/treinos']);
+      }
+    });
+
+    // 3. Carregar Listas do Sistema (Grupos e Exercícios)
+    this.carregarGrupos();
+    this.carregarExercicios();
+  }
+
+  carregarGrupos() {
     this.service.pgrupo().subscribe(data => {
       this.gruposMusculares = data;
     });
-
-    this.carregarExercicios();
-
-    // Se temos um ID de ficha, buscamos os dados para preencher o formulário
-    if (this.ficha_id) {
-      this.carregarDadosFicha();
-    }
   }
 
-  carregarExercicios(){
+  carregarExercicios() {
     this.service.pexer().subscribe(data => {
       this.todosExercicios = data;
+      this.configurarAutocomplete();
     });
   }
+
+  configurarAutocomplete() {
+    // Configura o filtro do autocomplete baseado no input do usuário
+    this.exerciciosFiltrados = this.formExercicio.get('exercicioObj')!.valueChanges.pipe(
+      startWith(''),
+      map(value => {
+        const name = typeof value === 'string' ? value : value?.nome;
+        return name ? this._filter(name as string) : this.todosExercicios.slice();
+      })
+    );
+  }
+
+  private _filter(name: string): any[] {
+    const filterValue = name.toLowerCase();
+    return this.todosExercicios.filter(option => option.nome.toLowerCase().includes(filterValue));
+  }
+
+  displayFn(exercicio: any): string {
+    return exercicio && exercicio.nome ? exercicio.nome : '';
+  }
+
+  // --- CARREGAMENTO DE DADOS (Edição e Cliente) ---
 
   carregarDadosFicha(): void {
     this.service.pesquisarFicha(JSON.stringify({ id: this.ficha_id })).subscribe({
       next: (dadosDaApi) => {
-        // 'dadosDaApi' é a lista de exercícios com dados da ficha repetidos
         if (dadosDaApi && dadosDaApi.length > 0) {
-          // console.log(dadosDaApi);
-
-          // 1. Pegamos os dados da Ficha do primeiro registro
           const primeiroItem = dadosDaApi[0];
+
           this.formFicha.patchValue({
             tipo: primeiroItem.tipo,
             ordem: primeiroItem.ordem
           });
-          this.cliente_id = primeiroItem.cliente_id;
 
-          // 2. Transformamos a lista "plana" na lista de exercícios que o componente precisa
+          this.cliente_id = primeiroItem.cliente_id; // Define o cliente da ficha a ser editada
+
+          // Preenche a lista visual
           this.listaExercicios = dadosDaApi.map((item: any) => {
             return {
               exercicio_id: item.ficha_exercicio_id,
@@ -118,13 +172,14 @@ export class EditarFichaComponent {
             };
           });
 
-          // 3. Carregamos os dados complementares do cliente
+          // Carrega infos do cliente (Anamnese, Planos...)
           this.carregarDadosCliente();
 
         } else {
-
-          this.alertas.error('Ficha não encontrada ou não possui exercícios.');
-
+          // Ficha existe mas tá vazia? Ou erro?
+          // Se for vazia, ainda precisamos do cliente_id...
+          // Mas normalmente a API retorna array vazio se não achar.
+          this.alertas.warning('Ficha sem exercícios ou não encontrada.');
         }
       },
       error: (err) => {
@@ -134,25 +189,30 @@ export class EditarFichaComponent {
     });
   }
 
-
   carregarDadosCliente(): void {
+    if (!this.cliente_id) return;
+
+    // Plano
     this.clienteservice.pesquisarIdPlano(JSON.stringify({ id: this.cliente_id })).subscribe({
       next: (dados) => {
-        this.planoCliente = dados
-        console.log(dados)
+        if (Array.isArray(dados) && dados.length > 0) {
+          this.planoCliente = dados[0];
+        } else {
+          this.planoCliente = dados;
+        }
       },
-      error: (err) => console.log("Cliente sem plano")
+      error: () => console.log("Cliente sem plano")
     });
 
+    // Anamnese
     this.anamneseservice.readIdCliente(JSON.stringify({ id: this.cliente_id })).subscribe({
       next: (dados) => this.anamneseCliente = dados.dados,
-      error: (err) => console.log("Cliente sem anamnese")
+      error: () => console.log("Cliente sem anamnese")
     });
 
-    // Para exibir as outras fichas já criadas
+    // Outras Fichas
     this.service.pesquisarFichaId(JSON.stringify({ id: this.cliente_id, soficha: "sim" })).subscribe({
       next: (dados) => {
-
         if (dados.length > 0) {
           this.fichasCliente = dados.sort((a: any, b: any) =>
             a.tipo.localeCompare(b.tipo, 'pt-BR', { sensitivity: 'base' })
@@ -160,86 +220,109 @@ export class EditarFichaComponent {
         } else {
           this.fichasCliente = null;
         }
-
       }
     });
   }
 
-  // As funções abaixo permanecem IGUAIS!
-  filtrarExercicios(): void {
-    const grupoId = this.formExercicio.value.grupoMuscular;
-    this.exerciciosFiltrados = this.todosExercicios.filter(e => e.grupo_muscular_id == grupoId);
-    this.formExercicio.patchValue({ exercicio: '' });
-  }
+  // --- AÇÕES DO FORMULÁRIO ---
 
   adicionarExercicio(): void {
-    if (this.formExercicio.invalid){
-     Swal.fire({
-      title: 'Error',
-      text: 'Exercicio nao cadastrado, Faça o seu cadastro no sistema',
-      confirmButtonColor: '#ff0000',
-      
-     }) 
-     return;
+    if (this.formExercicio.invalid) {
+      this.formExercicio.markAllAsTouched();
+      return;
     }
 
-    const exForm = this.formExercicio.value;
-    const exercicio = this.todosExercicios.find(e => e.id == exForm.exercicio);
-    const grupo = this.gruposMusculares.find(g => g.id == exForm.grupoMuscular);
+    const { exercicioObj, series, repeticoes, observacoes } = this.formExercicio.value;
 
-    if (!exercicio || !grupo) return;
+    // Validação extra caso tenha digitado algo mas não selecionado do autocomplete corretamente (se for string)
+    if (typeof exercicioObj === 'string') {
+      this.alertas.warning("Selecione um exercício válido da lista.");
+      return;
+    }
+
     const item = {
-      exercicio_id: exercicio.id,
-      exercicio_nome: exercicio.nome,
-      grupo_id: grupo.id,
-      grupo_nome: grupo.nome,
-      series: exForm.series,
-      repeticoes: exForm.repeticoes,
-      observacoes: exForm.observacoes
+      // Para salvar no banco precisamos do ID do exercício
+      exercicio_id: exercicioObj.id,
+      exercicio_nome: exercicioObj.nome,
+
+      grupo_id: exercicioObj.grupo_muscular_id,
+      // Vamos tentar achar o nome do grupo na lista de grupos carregada
+      grupo_nome: this.gruposMusculares.find(g => g.id == exercicioObj.grupo_muscular_id)?.nome || ' - ',
+
+      series,
+      repeticoes,
+      observacoes
     };
 
-    console.log(item);
+    console.log("Adicionando Item:", item);
 
     this.listaExercicios.push(item);
+
+    // Resetar form de exercício, mantendo talvez o grupo? Não, limpa tudo.
     this.formExercicio.reset();
+
+    // Foco volta pro input de exercicio? Seria bom.
   }
 
   removerExercicio(index: number): void {
     this.listaExercicios.splice(index, 1);
   }
 
-  selecionarExercicio(exercicio: any): void {
-    this.formExercicio.patchValue({
-      exercicio: exercicio.id,
-      grupoMuscular: exercicio.grupo_muscular_id
-    });
+  // --- FINALIZAR (SALVAR) ---
 
-    this.exercicioDigitado = exercicio.nome;
-    this.exerciciosFiltrados = [];
-    this.mostrarCriarExercicio = false;
+  salvarFichaCompleta(): void {
+    if (this.formFicha.invalid) {
+      this.alertas.warning('Preencha o Tipo da Ficha e a Ordem.');
+      return;
+    }
+    if (this.listaExercicios.length === 0) {
+      this.alertas.warning('Adicione pelo menos um exercício à ficha.');
+      return;
+    }
+
+    const dadosFicha = {
+      exercicios: this.listaExercicios,
+      ...this.formFicha.value,
+      cliente_id: this.cliente_id
+    };
+
+    if (this.isEditMode) {
+      // UPDATE
+      // Backend espera `ficha_id` dentro do objeto para update?
+      const payload = {
+        ...dadosFicha,
+        ficha_id: this.ficha_id
+      };
+
+      this.service.updateFicha(JSON.stringify(payload)).subscribe({
+        next: (dados) => {
+          this.alertas.success(dados.msg || 'Ficha atualizada com sucesso!');
+          this.router.navigate(['admin/painel/treinos/ver-fichas'], { queryParams: { id: this.cliente_id } });
+        },
+        error: (er) => {
+          this.alertas.error('Erro ao atualizar a ficha.');
+          console.error(er);
+        }
+      });
+
+    } else {
+      // CREATE
+      this.service.createFicha(JSON.stringify(dadosFicha)).subscribe({
+        next: (dados) => {
+          this.alertas.success(dados.msg || 'Ficha criada com sucesso!');
+          this.router.navigate(['admin/painel/treinos/ver-fichas'], { queryParams: { id: this.cliente_id } });
+        },
+        error: (er) => {
+          this.alertas.error('Erro ao criar a ficha.');
+          console.error(er);
+        }
+      });
+    }
   }
 
-  filtrarExerciciosPorNome(): void {
-    const texto = this.exercicioDigitado?.toLowerCase() || '';
-    const grupoId = this.formExercicio.value.grupoMuscular;
+  // --- MODAIS E CREATE EXERCICIO RAPIDO ---
 
-    this.exerciciosFiltrados = this.todosExercicios.filter(e =>
-      (!grupoId || e.grupo_muscular_id == grupoId) &&
-      e.nome.toLowerCase().includes(texto)
-    );
-
-    this.mostrarCriarExercicio =
-      texto.length > 2 &&
-      !this.todosExercicios.some(e => e.nome.toLowerCase() === texto);
-  }
-
-  onExercicioInput(event: Event): void {
-    const input = event.target as HTMLInputElement | null;
-    if (!input) return;
-
-    this.exercicioDigitado = input.value;
-    this.filtrarExerciciosPorNome();
-  }
+  // --- MODAIS E CREATE EXERCICIO RAPIDO ---
 
   abrirModalAnamnese() {
     const modal = new (window as any).bootstrap.Modal(document.getElementById('modalAnamnese'));
@@ -247,68 +330,40 @@ export class EditarFichaComponent {
   }
 
   abrirModalCriarExercicio() {
-    this.novoExercicio.nome = this.exercicioDigitado;
     const modal = new (window as any).bootstrap.Modal(document.getElementById('modalExer'));
     modal.show();
   }
 
-  atualizarFicha(): void {
-    if (this.formFicha.invalid || this.listaExercicios.length === 0) {
-      this.alertas.warning('Preencha todos os dados da ficha e adicione pelo menos um exercício.');
+  salvarExercicio() {
+    if (!this.novoExercicio.nome || !this.novoExercicio.grupo_muscular_id) {
+      this.alertas.warning("Preencha o nome e selecione o grupo muscular.");
       return;
     }
 
-    const fichaAtualizada = {
-      ficha_id: this.ficha_id, // NOVO: Enviar o ID da ficha para o backend saber qual atualizar
-      exercicios: this.listaExercicios,
-      ...this.formFicha.value,
-      cliente_id: this.cliente_id
+    const payload = {
+      nome: this.novoExercicio.nome,
+      grupo_muscular_id: this.novoExercicio.grupo_muscular_id
     };
 
-    console.log(JSON.stringify(fichaAtualizada));
+    this.service.cadexer(JSON.stringify(payload)).subscribe({
+      next: (res) => {
+        this.alertas.success("Exercício criado com sucesso!");
 
-    // // NOVO: Chamar o método de update no serviço
-    // this.service.updateFicha(JSON.stringify(fichaAtualizada)).subscribe({
-    //   next: (dados) => {
-    //     this.alertas.success(dados.msg || 'Ficha atualizada com sucesso!');
-    //     this.router.navigate(['admin/painel/treinos']);
-    //   },
-    //   error: (er) => {
-    //     this.alertas.error('Erro ao atualizar a ficha.');
-    //     console.error(er);
-    //   }
-    // });
-  }
-
-  salvarExercicio() {
-    let novoExer = JSON.stringify(this.novoExercicio);
-     const modalEl = document.getElementById('modalExer');
-  if (!modalEl) return;
-    console.log(novoExer);
-    this.service.cadexer(novoExer).subscribe({
-      next: (msg) => {
-        Swal.fire({
-          icon: 'success',
-          title: 'Sucesso!',
-          text: msg.msg,
-          confirmButtonColor: '#009e15',
-        });
+        // Recarregar lista de exercicios para aparecer no autocomplete
         this.carregarExercicios();
-        
-       const modal = (window as any).bootstrap.Modal.getInstance(modalEl);
-      modal?.hide();
 
-      }, error: (er) => {
-        Swal.fire({
-          icon: 'error',
-          title: 'Erro!',
-          text: er.msg,
-          confirmButtonColor: '#007bff',
-        });
-         const modal = (window as any).bootstrap.Modal.getInstance(modalEl);
-      modal?.hide();
+        // Limpar form
+        this.novoExercicio = { nome: '', grupo_muscular_id: '' };
+
+        // Fechar modal (gambiarra via JS clean ou so hide)
+        const el = document.getElementById('modalExer');
+        const modal = (window as any).bootstrap.Modal.getInstance(el);
+        modal.hide();
+      },
+      error: (err) => {
+        this.alertas.error("Erro ao criar exercício.");
+        console.error(err);
       }
     })
-    this.novoExercicio = {'nome' : '', 'grupo_muscular_id' : ''};
   }
 }

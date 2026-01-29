@@ -1,0 +1,23 @@
+/* Custom styles for Ver Ficha */
+
+.ficha-card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease;
+}
+
+.ficha-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+}
+
+.btn-hover-effect {
+    transition: all 0.2s;
+}
+
+.btn-hover-effect:hover {
+    background-color: #e9ecef;
+    transform: scale(1.05);
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(67, 97, 238, 0.04);
+}

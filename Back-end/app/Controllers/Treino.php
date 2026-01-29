@@ -50,7 +50,8 @@ class Treino extends BaseController
         // Decodificar o JSON em um array PHP
         $data = json_decode($json, true);
 
-        $dados = $this->exer->select();
+        $dados = $this->exer->select('exercicios.*,grupos_musculares.nome as grupo_muscular')
+       ->join('grupos_musculares', 'grupos_musculares.id = exercicios.grupo_muscular_id');
         $data = $dados->get();
 
         return $this->response->setJSON($data->getResult())->setStatusCode(200);
